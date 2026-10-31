@@ -70,11 +70,14 @@ def propagate(u: np.ndarray, dx: float, lam_um: float, stack: LayerStack, fresne
     u = u.astype(np.complex64, copy=False)
     spec = sfft.fft2(u, workers=WORKERS, overwrite_x=True)
     del u
-    h = transfer_function(n, dx, lam_um, stack, fresnel=fresnel)
+    piston = 1.0
     if remove_piston:
-        h *= np.exp(-1j * np.angle(h[0, 0])).astype(np.complex64)
-    spec *= h
-    del h
+        h00 = transfer_function(n, dx, lam_um, stack, fresnel=fresnel, block_rows=slice(0, 1))[0, 0]
+        piston = np.complex64(np.exp(-1j * np.angle(h00)))
+    block = max(1, (64 * 1024 * 1024) // (8 * n))  # ~64 MB of float64 temporaries per block
+    for r0 in range(0, n, block):
+        sl = slice(r0, min(n, r0 + block))
+        spec[sl] *= transfer_function(n, dx, lam_um, stack, fresnel=fresnel, block_rows=sl) * piston
     return sfft.ifft2(spec, workers=WORKERS, overwrite_x=True)
 
 

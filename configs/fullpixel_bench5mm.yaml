@@ -1,0 +1,16 @@
+# Full-pixel validation, 5 mm aperture at NA 0.5 through a 1 mm fused-silica plate.
+# Bench geometry chosen so that the full aperture fits in memory at the meta-atom pitch.
+run_id: fullpixel_bench5mm
+wavelength_um: 1.075
+na: 0.5
+stack: [[1000, air], [1000, fused_silica], [2693, air]]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.5
+sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
+pupil_oversample: 4
+pupil_guard: 1.6
+wgs_iter: 60
+wgs_fix: 30
+upsample: 4
+render_upsample: 8

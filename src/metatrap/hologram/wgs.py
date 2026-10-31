@@ -68,7 +68,33 @@ def pupil_amplitude(grid: PupilGrid, stack: LayerStack, na: float, illumination:
     jac = stack.pupil_jacobian(np.where(inside, S, 0.0), grid.lam_um)
     cos_t = np.sqrt(np.clip(1 - S**2, 1e-12, None))
     a = np.where(inside, e_ms * np.sqrt(jac / cos_t), 0.0)
+    # Fractional coverage of each pupil cell by the aperture disc (8 x 8 supersampling).
+    # Without it the disc edge is a staircase of whole samples, and the design cancels
+    # the zero order on the wrong edge geometry: a full-pixel test then shows a zero-order
+    # focus of ~1e-3 of the power from the outermost few per cent of the aperture radius.
+    cov = disc_coverage(SX, SY, grid.ds, na)
+    edge = (cov > 0) & ~inside
+    if np.any(edge):
+        s_e = np.minimum(S[edge], na)
+        r_e = stack.ray_height(s_e, grid.lam_um)
+        e_e = profile(illumination["kind"], r_e, radius, **kw)
+        a[edge] = e_e * np.sqrt(stack.pupil_jacobian(s_e, grid.lam_um) / np.sqrt(1 - s_e**2))
+    a = a * np.sqrt(cov)
     return a / np.sqrt(np.sum(a**2))
+
+
+def disc_coverage(SX, SY, ds, radius, sub: int = 8):
+    """Fraction of each square cell (side ds, centred on SX, SY) inside the disc |s| <= radius."""
+    S = np.hypot(SX, SY)
+    cov = (S <= radius).astype(float)
+    band = np.abs(S - radius) <= ds
+    if np.any(band):
+        o = (np.arange(sub) + 0.5) / sub - 0.5
+        ox, oy = np.meshgrid(o, o, indexing="ij")
+        bx = SX[band][:, None] + ds * ox.ravel()[None, :]
+        by = SY[band][:, None] + ds * oy.ravel()[None, :]
+        cov[band] = np.mean(np.hypot(bx, by) <= radius, axis=1)
+    return cov
 
 
 def site_indices(grid: PupilGrid, sites_um: np.ndarray) -> tuple[np.ndarray, np.ndarray]:

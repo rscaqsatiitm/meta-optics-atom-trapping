@@ -1,0 +1,48 @@
+{
+  "reference": {
+    "peak": 13263555.937109211,
+    "p_core": 15558095.621179592,
+    "waist_um": 0.9540522794182905,
+    "p_in": 19629614.0,
+    "core_fraction": 0.7925828608336156
+  },
+  "grid": {
+    "n": 10240,
+    "dx_um": 0.5,
+    "pupil_n": 360,
+    "pupil_ds": 0.0026543209876543207,
+    "pupil_samples": 109015
+  },
+  "debye": {
+    "n_sites": 2304,
+    "depth_nonuniformity_rms": 0.36214134169015466,
+    "depth_min_over_mean": 0.14769809688124036,
+    "array_efficiency": 0.8688717007242961,
+    "core_efficiency": 0.6705556619000851,
+    "cell_power_nonuniformity_rms": 0.2965990660671329,
+    "waist_mean_um": 0.9740477557960764,
+    "waist_std_um": 0.032888881094676435,
+    "position_error_rms_um": 0.15664750984825138,
+    "strehl_mean": 0.8789924778327983,
+    "strehl_min": 0.4767280603499038,
+    "predicted_mode_efficiency_sum": 0.7638835906982422,
+    "predicted_nonuniformity_rms": 0.22049379348754883,
+    "design_history_nonuniformity_final": 0.003609419617228233
+  },
+  "exact": {
+    "n_sites": 2304,
+    "depth_nonuniformity_rms": 0.2081060260821678,
+    "depth_min_over_mean": 0.49172358978265274,
+    "array_efficiency": 0.8714494311282246,
+    "core_efficiency": 0.7193744756071304,
+    "cell_power_nonuniformity_rms": 0.27768055222693355,
+    "waist_mean_um": 0.9670447990025148,
+    "waist_std_um": 0.026740040402788934,
+    "position_error_rms_um": 0.11613794214109457,
+    "strehl_mean": 0.9565311916898048,
+    "strehl_min": 0.6130406479050567,
+    "predicted_mode_efficiency_sum": 0.9058755040168762,
+    "predicted_nonuniformity_rms": 0.0014644281473010778,
+    "design_history_nonuniformity_final": 0.0014607995355636195
+  }
+}

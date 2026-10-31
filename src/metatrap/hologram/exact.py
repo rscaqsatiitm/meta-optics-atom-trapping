@@ -47,8 +47,11 @@ class PupilSampling:
         s1 = grid.s_coords()
         SX, SY = np.meshgrid(s1, s1, indexing="ij")
         S = np.hypot(SX, SY)
-        mask = (S <= na) & (a_full > 0)
-        sx, sy, s = SX[mask], SY[mask], S[mask]
+        mask = a_full > 0  # includes partially covered edge cells
+        sx, sy = SX[mask], SY[mask]
+        s = np.minimum(S[mask], na)  # edge cells: evaluate the ray mapping at the rim
+        scale = np.where(S[mask] > 0, s / np.where(S[mask] > 0, S[mask], 1), 1.0)
+        sx, sy = sx * scale, sy * scale
         rho = stack.ray_height(s, grid.lam_um)
         with np.errstate(invalid="ignore", divide="ignore"):
             ux = np.where(s > 0, sx / np.where(s > 0, s, 1), 0.0)
@@ -102,6 +105,7 @@ def debye_kernels(ps: PupilSampling, sites_um: np.ndarray, lam_um: float, block:
 class ExactWGSResult:
     psi: np.ndarray  # (M,) pupil phase on the samples
     mode_amp: np.ndarray  # (N,) complex site mode amplitudes E_j
+    coeffs: np.ndarray  # (N,) final site coefficients c_j, psi = arg(K c)
     history_nonuniformity: list
     history_efficiency: list
 
@@ -135,10 +139,11 @@ def wgs_exact(ps: PupilSampling, K: np.ndarray, n_iter: int = 60, n_fix: int | N
         if n_fix is not None and it == n_fix:
             fixed = np.angle(e)
         th = fixed if fixed is not None else np.angle(e)
-        q = K @ (g * tgt * np.exp(1j * th)).astype(np.complex64)
+        c = (g * tgt * np.exp(1j * th)).astype(np.complex64)
+        q = K @ c
         psi = np.angle(q)
     e = mode_amplitudes(ps, psi, K)
-    return ExactWGSResult(psi=psi.astype(np.float64), mode_amp=e, history_nonuniformity=hu, history_efficiency=he)
+    return ExactWGSResult(psi=psi.astype(np.float64), mode_amp=e, coeffs=c, history_nonuniformity=hu, history_efficiency=he)
 
 
 def focal_field_at(ps: PupilSampling, pupil_field: np.ndarray, points_um: np.ndarray, table: OPLTable, lam_um: float, block: int = 256) -> np.ndarray:
@@ -157,3 +162,61 @@ def focal_field_at(ps: PupilSampling, pupil_field: np.ndarray, points_um: np.nda
         d = table(rho) - ps.opl0[:, None]
         out[j0 : j0 + block] = w @ np.exp(1j * k0 * d).astype(np.complex64)
     return out
+
+
+@dataclass
+class RenderGrid:
+    """Unit-modulus hologram field exp(i psi) on a fine pupil grid, for rendering."""
+
+    field: np.ndarray  # (m, m) complex, zero outside the computed disc
+    ds: float
+    c0: int  # index of sigma = 0
+
+
+def render_grid(ps: PupilSampling, stack: LayerStack, sites_um: np.ndarray, coeffs: np.ndarray, lam_um: float, na: float,
+                kind: str = "exact", table: OPLTable | None = None, margin: int = 8, upsample: int = 8, block: int = 64) -> RenderGrid:
+    """Back-propagated pupil field Q = sum_j K(sigma, x_j) c_j on a finer grid.
+
+    Q is evaluated on the design grid out to NA + margin samples (so that the Fourier
+    interpolation does not ring inside the aperture), Fourier-upsampled by ``upsample``
+    and normalised to unit modulus. Bilinear interpolation of this fine grid has a
+    focal-plane envelope sinc^2(x ds_fine / lambda), i.e. > 0.98 in intensity over the
+    array for upsample = 8 (DERIVED), against ~0.5 at the array corner without it.
+    """
+    g = ps.grid
+    s1 = g.s_coords()
+    SX, SY = np.meshgrid(s1, s1, indexing="ij")
+    S = np.hypot(SX, SY)
+    mask = S <= na + margin * g.ds
+    sx, sy, s = SX[mask], SY[mask], S[mask]
+    k0 = 2 * np.pi / lam_um
+    q = np.zeros(len(s), np.complex128)
+    if kind == "exact":
+        rho_ms = stack.ray_height(s, lam_um)
+        with np.errstate(invalid="ignore", divide="ignore"):
+            ux = np.where(s > 0, sx / np.where(s > 0, s, 1), 0.0)
+            uy = np.where(s > 0, sy / np.where(s > 0, s, 1), 0.0)
+        rx, ry = -ux * rho_ms, -uy * rho_ms
+        opl0 = stack.opl(s, lam_um)
+        for j0 in range(0, len(sites_um), block):
+            xs = sites_um[j0 : j0 + block]
+            rho = np.hypot(rx[:, None] - xs[None, :, 0], ry[:, None] - xs[None, :, 1])
+            q += np.exp(-1j * k0 * (table(rho) - opl0[:, None])) @ coeffs[j0 : j0 + block]
+    else:
+        sig = np.column_stack([sx, sy])
+        for j0 in range(0, len(sites_um), block):
+            q += np.exp(-1j * k0 * (sig @ sites_um[j0 : j0 + block].T)) @ coeffs[j0 : j0 + block]
+    full = np.zeros(SX.shape, np.complex128)
+    full[mask] = q
+    n = g.n
+    m = n * upsample
+    spec = np.fft.fftshift(np.fft.fft2(np.fft.ifftshift(full)))
+    big = np.zeros((m, m), np.complex128)
+    c = m // 2 - n // 2
+    big[c : c + n, c : c + n] = spec
+    fine = np.fft.fftshift(np.fft.ifft2(np.fft.ifftshift(big)))
+    s_f = (np.arange(m) - m // 2) * (g.ds / upsample)
+    SXf, SYf = np.meshgrid(s_f, s_f, indexing="ij")
+    keep = np.hypot(SXf, SYf) <= na + 0.5 * margin * g.ds
+    fine = np.where(keep, fine / np.maximum(np.abs(fine), 1e-30), 0.0)
+    return RenderGrid(field=fine, ds=g.ds / upsample, c0=m // 2)
