@@ -27,7 +27,7 @@ def plot_curves(lib, material, lam, picks, path, n_in):
     fig, ax = plt.subplots(1, 2, figsize=(10, 4))
     for pk in picks:
         w, t, T0 = lib.curve(material, pk["pitch_um"], pk["height_um"], lam)
-        lbl = f"p={pk['pitch_um']:.2f} h={pk['height_um']:.1f} (eta16={pk['eta']:.3f})"
+        lbl = f"p={pk['pitch_um']:.2f} h={pk['height_um']:.1f} (eta16={pk['eta']:.3f}, robust {pk['eta_robust']:.3f})"
         ax[0].plot(w * 1e3, np.unwrap(np.angle(t)) / (2 * np.pi), label=lbl)
         ax[1].plot(w * 1e3, T0, label=lbl)
     ax[0].set_xlabel("pillar width (nm)")
@@ -59,7 +59,12 @@ def main(cfg_path):
             continue
         top = rows[: cfg.get("n_plot", 5)]
         plot_curves(lib, mat, lam, top, out / f"curves_{mat}_{int(lam*1e3)}.png", n_in)
-        best = rows[0]
+        # Tie-break: among geometries within ``tie_tol`` of the best robust efficiency,
+        # take the shortest pillar (lowest etch depth and aspect ratio), then the best eta.
+        tol = cfg.get("tie_tol", 0.003)
+        near = [r for r in rows if r["eta_robust"] >= rows[0]["eta_robust"] - tol]
+        hmin = min(r["height_um"] for r in near)
+        best = max((r for r in near if r["height_um"] == hmin), key=lambda r: r["eta_robust"])
         selection[mat] = best
         print(mat, "best", best, flush=True)
     write_json(out / "selection.json", selection)

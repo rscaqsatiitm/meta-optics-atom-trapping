@@ -61,11 +61,35 @@ def feasible(widths_um, pitch_um, height_um, lim: FabLimits) -> np.ndarray:
     return (w >= lim.min_feature_um) & (pitch_um - w >= lim.min_gap_um) & (height_um / w <= lim.max_aspect)
 
 
-def densify(widths_um, t, n_dense: int = 2000):
-    """Cubic interpolation of Re t and Im t on a dense width grid."""
-    cs_r, cs_i = CubicSpline(widths_um, t.real), CubicSpline(widths_um, t.imag)
+def densify(widths_um, t, n_dense: int = 2000, kind: str = "linear"):
+    """Interpolate Re t and Im t on a dense width grid.
+
+    Linear interpolation is the default: it cannot overshoot |t| between samples, which
+    cubic splines do across under-sampled pillar resonances (producing eta > 1).
+    """
     wd = np.linspace(widths_um[0], widths_um[-1], n_dense)
-    return wd, cs_r(wd) + 1j * cs_i(wd)
+    if kind == "cubic":
+        cs_r, cs_i = CubicSpline(widths_um, t.real), CubicSpline(widths_um, t.imag)
+        return wd, cs_r(wd) + 1j * cs_i(wd)
+    return wd, np.interp(wd, widths_um, t.real) + 1j * np.interp(wd, widths_um, t.imag)
+
+
+def eta_robust(wd, td, n_ratio: float, n_levels: int, bias_um: float = 0.010):
+    """eta_N averaged over a uniform width bias of -bias, 0, +bias (widths chosen at zero bias).
+
+    A geometry whose phase curve is steep (near a resonance) loses efficiency under a
+    fabrication bias; this metric ranks such geometries down.
+    """
+    eta0, off = eta_n(wd, td, n_ratio, n_levels)
+    phases = 2 * np.pi * np.arange(n_levels) / n_levels
+    idx = best_widths(wd, td, phases, off)
+    w_sel = wd[idx]
+    vals = []
+    for b in (-bias_um, 0.0, bias_um):
+        wb = np.clip(w_sel + b, wd[0], wd[-1])
+        tb = np.interp(wb, wd, td.real) + 1j * np.interp(wb, wd, td.imag)
+        vals.append(n_ratio * np.abs(np.mean(tb * np.exp(-1j * phases))) ** 2)
+    return float(np.mean(vals)), eta0, vals
 
 
 def best_widths(wd, td, target_phases, offset=0.0):
@@ -123,14 +147,15 @@ def scan_geometries(lib, material: str, lam_um: float, n_in: float, lim: FabLimi
             if ok.sum() < 4:
                 continue
             wd, td = densify(w[ok], t[ok])
-            eta, _ = eta_n(wd, td, 1.0 / n_in, n_levels)
+            eta_r, eta, per_bias = eta_robust(wd, td, 1.0 / n_in, n_levels)
             rows.append({
-                "pitch_um": float(p), "height_um": float(h), "eta": eta,
+                "pitch_um": float(p), "height_um": float(h), "eta_robust": eta_r, "eta": eta,
+                "eta_bias_minus10nm": per_bias[0], "eta_bias_plus10nm": per_bias[2],
                 "coverage_rad": phase_coverage(wd, td),
                 "T0_min": float((1.0 / n_in) * np.min(np.abs(td) ** 2)),
                 "T0_mean": float((1.0 / n_in) * np.mean(np.abs(td) ** 2)),
                 "w_min_um": float(w[ok].min()), "w_max_um": float(w[ok].max()),
                 "aspect_max": float(h / w[ok].min()),
             })
-    rows.sort(key=lambda r: -r["eta"])
+    rows.sort(key=lambda r: -r["eta_robust"])
     return rows
