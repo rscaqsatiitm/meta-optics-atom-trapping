@@ -44,8 +44,13 @@ def main(cfg_path):
     res = {"aperture_diameter_mm": 2 * radius / 1000, "n_sites": len(sites), "efficiency_chain": chain, "chain_total": chain_total, "cases": {}}
     print(f"aperture {2*radius/1000:.2f} mm, {len(sites)} sites, chain {chain_total:.3f}", flush=True)
     for ill in cfg["illuminations"]:
-        tag = ill["kind"] if ill["kind"] == "top_hat" else f"gauss_w{ill['waist_over_radius']}"
-        ill_abs = {"kind": "top_hat"} if ill["kind"] == "top_hat" else {"kind": "gaussian", "waist_um": ill["waist_over_radius"] * radius}
+        if ill["kind"] == "top_hat":
+            ef = ill.get("edge_frac", 0.0)
+            tag = "top_hat" if ef == 0 else f"top_hat_edge{ef:g}"
+            ill_abs = {"kind": "top_hat", "edge_um": ef * radius}
+        else:
+            tag = f"gauss_w{ill['waist_over_radius']}"
+            ill_abs = {"kind": "gaussian", "waist_um": ill["waist_over_radius"] * radius}
         clip = 0.0 if ill["kind"] == "top_hat" else float(np.exp(-2 / ill["waist_over_radius"] ** 2))
         g = PupilGrid.for_sites(lam, pitch, cfg.get("pupil_oversample", 4), na, field_extent, guard=cfg.get("pupil_guard", 1.6))
         ps = X.PupilSampling.build(g, stack, na, ill_abs)

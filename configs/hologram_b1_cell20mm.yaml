@@ -7,6 +7,7 @@ site_pitch_um: 4.5                                        # [CONFIRM?: array pit
 sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
 illuminations:
   - {kind: top_hat}
+  - {kind: top_hat, edge_frac: 0.1}                        # raised-cosine edge, suppresses the edge zero order
   - {kind: gaussian, waist_over_radius: 2.0}               # ref. 4-like: waist ~ diameter
 pupil_oversample: 4
 pupil_guard: 1.6
