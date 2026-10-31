@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metatrap"
+version = "0.1.0"
+description = "Phase A simulation code for SiN meta-optics for cesium tweezer arrays (ANRF/ARG/2026/009937)"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "h5py>=3.10",
+    "pyyaml>=6",
+    "jax[cpu]>=0.4.30",
+    "fmmax>=1.7",
+    "grcwa>=0.1.2",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: tests that take more than ~30 s"]
+addopts = "-m 'not slow'"
