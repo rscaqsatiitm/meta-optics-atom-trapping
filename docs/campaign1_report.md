@@ -21,7 +21,7 @@ this at no extra cost and is required for the 10^4-site goal.
 (iii) A hard-edged phase-only aperture produces a zero-order focus on the optical axis
 carrying ~1e-3 of the power, which a sampled design cannot cancel and which outshines a
 site for arrays above ~1,000 sites. A soft illumination edge over 10 % of the radius
-suppresses it ~30x.
+suppresses it 31x.
 
 (iv) Meta-atoms: Si-rich SiN pillars (0.50 um pitch, 1.5 um tall, 150 to 390 nm wide) give a
 16-level efficiency of 0.96 in the local-periodic approximation, robust to +/-10 nm width
@@ -264,7 +264,7 @@ power model these are a utilisation of 0.736 and NA_eff = 0.531, against the 0.3
 
 | Model | Sites at 1 mK, 50 W | Sites at 0.3 mK, 50 W | Depth of 2,304 sites at 50 W |
 |---|---|---|---|
-| Proposal (ref. 4 measured: 0.37, 0.47) | 2,811 | 9,370 | 1.22 mK |
+| Proposal (ref. 4 measured: 12.2 W / 33 W = 0.37, 0.47) | 2,809 | 9,362 | 1.22 mK |
 | This model, soft-edged top hat | 7,137 | 23,791 | 3.10 mK |
 | x 0.95 (scalar normalisation, Section 6) | 6,780 | 22,601 | 2.94 mK |
 | x 0.95 x 0.81 (ref. 4 measured / predicted power) | 5,492 | 18,307 | 2.38 mK |
