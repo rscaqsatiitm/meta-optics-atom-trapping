@@ -32,6 +32,8 @@ class Substrate:
     alpha_exp: float  # linear expansion 1/K
     poisson: float
     n: float  # refractive index at the design wavelength
+    youngs_GPa: float = 0.0
+    strength_MPa: float = 0.0  # characteristic (mean) strength used for the stress margin
     source: str = ""
 
     @property
@@ -43,19 +45,21 @@ class Substrate:
 
 # Values with provenance; see docs/model_notes.md.
 FUSED_SILICA = Substrate(
-    name="fused_silica", kappa=1.38, dndT=9.6e-6, alpha_exp=0.52e-6, poisson=0.17, n=1.4495,
+    name="fused_silica", kappa=1.38, dndT=9.6e-6, alpha_exp=0.52e-6, poisson=0.16, n=1.4495,
+    youngs_GPa=72.7, strength_MPa=52.4,
     source=(
         "kappa 1.38 W/m/K (Corning HPFS 7980 product information as quoted in search; the 2003 sheet "
-        "read this session gives 1.30); dn/dT 9.6 ppm/K at 1064 nm and alpha 0.52 ppm/K (5-35 C), "
-        "Corning 7980 sheet (uqgoptics copy, read 2026-10-31); nu 0.17 [VALUE?: verify]"
+        "read this session gives 1.30); dn/dT 9.6 ppm/K at 1064 nm, alpha 0.52 ppm/K (5-35 C), E 72.7 GPa, "
+        "nu 0.16, modulus of rupture (abraded) 52.4 MPa: Corning 7980 sheet (uqgoptics copy, read 2026-10-31)"
     ),
 )
 SAPPHIRE = Substrate(
-    name="sapphire", kappa=33.0, dndT=13.0e-6, alpha_exp=5.0e-6, poisson=0.27, n=1.7543,
+    name="sapphire", kappa=33.0, dndT=13.0e-6, alpha_exp=5.0e-6, poisson=0.25, n=1.7543,
+    youngs_GPa=335.0, strength_MPa=400.0,
     source=(
-        "kappa 33.0 W/m/K perpendicular to c at 300 K and alpha 5.0 ppm/K perpendicular, Alkor sapphire "
-        "data sheet (read 2026-10-31); dn/dT [VALUE?: approx. 13 ppm/K, quoted at 0.546 um in a vendor "
-        "sheet, verify at 1075 nm]; nu [VALUE?: approx. 0.27, verify]"
+        "kappa 33.0 W/m/K perpendicular to c at 300 K, alpha 5.0 ppm/K perpendicular, E 335 GPa, nu 0.25: "
+        "Alkor sapphire data sheet (read 2026-10-31); dn/dT [VALUE?: approx. 13 ppm/K, quoted at 0.546 um, "
+        "verify at 1075 nm]; strength [VALUE?: approx. 400 MPa flexural, not retrieved, verify]"
     ),
 )
 SUBSTRATES = {s.name: s for s in (FUSED_SILICA, SAPPHIRE)}

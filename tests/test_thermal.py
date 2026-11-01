@@ -26,4 +26,18 @@ def test_thick_substrate_gaussian_matches_half_space():
 
 
 def test_chi_fused_silica():
-    assert FUSED_SILICA.chi == pytest.approx(9.6e-6 + 0.4495 * 1.17 * 0.52e-6)
+    assert FUSED_SILICA.chi == pytest.approx(9.6e-6 + 0.4495 * 1.16 * 0.52e-6)
+
+
+def test_disc_stress_uniform_and_hot_core():
+    from metatrap.thermal.damage import disc_stresses
+
+    R = 10e-3
+    rc = (np.arange(4000) + 0.5) / 4000 * R
+    sr, st, st_edge = disc_stresses(rc, np.full_like(rc, 7.0), R, FUSED_SILICA)
+    assert np.max(np.abs(sr)) < 1e-6 * 7.0 * 37.8e3 + 1.0 and abs(st_edge) < 1.0  # uniform heating: stress free
+    a, T0 = 3e-3, 10.0
+    T = np.where(rc < a, T0, 0.0)
+    _, _, st_edge = disc_stresses(rc, T, R, FUSED_SILICA)
+    aE = FUSED_SILICA.alpha_exp * FUSED_SILICA.youngs_GPa * 1e9
+    assert st_edge == pytest.approx(aE * T0 * a**2 / R**2, rel=1e-3)
