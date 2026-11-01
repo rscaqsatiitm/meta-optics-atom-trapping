@@ -61,10 +61,47 @@ class Meta:
 
 
 @dataclass
+class Frame:
+    """Change of coordinate frame, for decentre and tilt tolerances.
+
+    The downstream elements are rotated by ``tilt_rad`` about the y axis through the current
+    origin and then shifted by (dx_um, dy_um) in the rotated frame. Rays are intersected exactly
+    with the rotated plane (in the medium of index ``n`` in which the frame change lies, normally
+    air), and their positions and transverse direction cosines are re-expressed in the new
+    frame. Frame(b, dx, dy) ... Frame(-b, -dx, -dy) around an element tilts and decentres that
+    element alone (to first order in the shift for combined tilt and decentre).
+    """
+
+    tilt_rad: float = 0.0
+    dx_um: float = 0.0
+    dy_um: float = 0.0
+    n: float = 1.0
+
+
+def _apply_frame(fr: Frame, x, y, px, py, opl, alive):
+    n = fr.n
+    p2 = px**2 + py**2
+    ok = p2 < n**2
+    cz = np.sqrt(np.where(ok, n**2 - p2, 1.0))
+    ux, uy, uz = px / n, py / n, cz / n
+    sb, cb = np.sin(fr.tilt_rad), np.cos(fr.tilt_rad)
+    # Plane through the origin with normal N = (sin b, 0, cos b); ray X = (x, y, 0) + s u.
+    s = -(x * sb) / (ux * sb + uz * cb)
+    X, Y, Z = x + s * ux, y + s * uy, s * uz
+    opl = opl + n * s
+    # In-plane axes e1 = (cos b, 0, -sin b), e2 = (0, 1, 0).
+    xn = X * cb - Z * sb - fr.dx_um
+    yn = Y - fr.dy_um
+    pxn = n * (ux * cb - uz * sb)
+    pyn = n * uy
+    return xn, yn, pxn, pyn, opl, alive & ok
+
+
+@dataclass
 class System:
     elements: list = field(default_factory=list)
 
-    def trace(self, x, y, px, py, lam_um: float, stop: dict | None = None):
+    def trace(self, x, y, px, py, lam_um: float, stop: dict | None = None, opl0=None):
         """Trace rays; returns final (x, y, px, py, opl_um, alive) at the end of the last medium.
 
         ``stop`` = {"index": i, "radius_um": R} vignettes rays outside R at element i.
@@ -74,12 +111,14 @@ class System:
         px, py = np.array(px, float), np.array(py, float)
         # Phase of the incoming plane wave across the launch plane (so that image positions,
         # not only aberrations, come out right).
-        opl = px * x + py * y
+        opl = px * x + py * y if opl0 is None else np.array(opl0, float)
         alive = np.ones_like(x, bool)
         for i, el in enumerate(self.elements):
             if stop is not None and stop["index"] == i:
                 alive &= np.hypot(x, y) <= stop["radius_um"]
-            if isinstance(el, Medium):
+            if isinstance(el, Frame):
+                x, y, px, py, opl, alive = _apply_frame(el, x, y, px, py, opl, alive)
+            elif isinstance(el, Medium):
                 p2 = px**2 + py**2
                 ok = p2 < el.n**2
                 alive &= ok
@@ -97,6 +136,24 @@ class System:
                 py = py + g * uy
                 opl = opl + el.phase(r, lam_um) / k0
         return x, y, px, py, opl, alive
+
+
+def point_source_rays(x, y, theta: float, L_um: float | None):
+    """Directions and launch optical path for rays at (x, y) on the first plane (in air).
+
+    L_um = None: collimated beam at field angle theta (about y). Otherwise a spherical wave
+    whose centre lies a distance |L| before (L > 0, diverging) or after (L < 0, converging) the
+    plane, laterally at -L tan(theta) so that the chief direction stays theta. The launch
+    optical path is the spherical-wave eikonal, so that image positions and wavefronts are
+    consistent with the collimated case.
+    """
+    if L_um is None or not np.isfinite(L_um):
+        px = np.full_like(x, np.sin(theta))
+        return px, np.zeros_like(x), px * x
+    xs = -L_um * np.tan(theta)
+    d = np.sqrt((x - xs) ** 2 + y**2 + L_um**2)
+    sg = np.sign(L_um)
+    return sg * (x - xs) / d, sg * y / d, sg * (d - abs(L_um) / np.cos(theta))
 
 
 def pupil_grid(radius_um: float, n: int):

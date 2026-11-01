@@ -1,0 +1,37 @@
+# Air-spaced aplanatic metasurface doublet for side B, NA 0.5, through the cell stack.
+run_id: metalens_doublet
+na: 0.5
+cell: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?: side-B air gap, wall, distance to atoms]
+spacer: [[16000, air]]                                    # corrector to focusing plate (plate substrates neglected)
+wavelengths_um: [0.8523, 0.8946, 1.0644]                  # Cs D2, Cs D1, tweezer
+field_heights_um: [0, 80, 160, 240, 320, 400]             # v2 array corner at 399 um
+headroom_heights_um: [0, 400, 600, 800, 1000, 1300, 1600]
+spacing_scan_um: [12000, 14000, 15000, 16000, 17000, 18000]
+chromatic:
+  detunings_nm: [0.01, 0.1, 0.5, 1.0, 2.0, 5.0, 11.0]
+  v_max_per_um: 5.0e-5
+tolerance_heights_um: [-400, -200, 0, 200, 400]
+tolerances:
+  - {name: nominal}
+  - {name: spacer +50um, spacer_delta_um: 50}
+  - {name: spacer +200um, spacer_delta_um: 200}
+  - {name: spacer -200um, spacer_delta_um: -200}
+  - {name: wall +50um, wall_delta_um: 50}
+  - {name: wall +200um, wall_delta_um: 200}
+  - {name: decentre 2um, m2_decentre_um: 2}
+  - {name: decentre 5um, m2_decentre_um: 5}
+  - {name: decentre 10um, m2_decentre_um: 10}
+  - {name: decentre 25um, m2_decentre_um: 25}
+  - {name: decentre 50um, m2_decentre_um: 50}
+  - {name: plate tilt 0.1deg, m2_tilt_rad: 0.0017453}
+  - {name: plate tilt 0.25deg, m2_tilt_rad: 0.0043633}
+  - {name: plate tilt 0.5deg, m2_tilt_rad: 0.0087266}
+  - {name: plate tilt 0.1deg compensated, m2_tilt_rad: 0.0017453, compensate: true}
+  - {name: plate tilt 0.25deg compensated, m2_tilt_rad: 0.0043633, compensate: true}
+  - {name: plate tilt 0.5deg compensated, m2_tilt_rad: 0.0087266, compensate: true}
+  - {name: cell tilt 0.1deg, cell_tilt_rad: 0.0017453}
+  - {name: cell tilt 0.25deg, cell_tilt_rad: 0.0043633}
+  - {name: cell tilt 0.5deg, cell_tilt_rad: 0.0087266}
+  - {name: cell tilt 1deg, cell_tilt_rad: 0.0174533}
+wave_axial: {r_max_um: 9000.0, v_max_over_k: 0.70, edge_um: 5.0}
+baselines: {heights_um: [0, 75, 150, 282, 400], silica_spacer_um: 2000}
