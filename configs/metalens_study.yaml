@@ -1,0 +1,17 @@
+# Ray-optics architecture study for the meta-objective (side B), NA 0.5, through the cell stack.
+run_id: metalens_study
+na: 0.5
+cell: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?: side-B air gap, wall, distance to atoms]
+substrate_um: 500
+n_terms: 7
+n_rays_opt: 24
+maxiter: 30
+wavelengths_um: [0.852, 1.0644]
+field_heights_um: [150, 400]          # v1 (48 x 48 at 4.5 um, corner) and v2 (142 x 142 at 4.0 um, corner)
+field_fractions: [0.0, 0.5, 0.8, 1.0]
+architectures:
+  - {kind: singlet}
+  - {kind: stop_shifted, extra: {stop_distance_um: 5000}}
+  - {kind: stop_shifted, extra: {stop_distance_um: 15000}}
+  - {kind: doublet, extra: {doublet_substrate_um: 1000}}
+  - {kind: doublet, extra: {doublet_substrate_um: 3000}}
