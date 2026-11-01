@@ -6,7 +6,29 @@ Technical report. Design under test: v2, 142 x 142 = 20,164 Cs sites at 4.0 um p
 
 ## Summary
 
-<!-- SUMMARY -->
+Result. Before the 18.4 mm, 20,164-site design (v2, array 50 um beyond the lens focus) is
+committed to fabrication, the four checks and the damage model give the following.
+(i) Light on the axis: with the defocused array the axial spot (0.11 of the mean site peak)
+is no brighter than the interstitial background maxima (~0.1 to 0.15 everywhere). The
+spurious-trap level of the array is therefore set by the background, not by a zero order.
+(ii) Cell wall: thickness errors of +/-50 um add < 1 % rms. The relative tilt between the
+metasurface and the wall must be <= 0.1 deg (7.4 % rms, against 5.3 % at zero tilt);
+0.25 deg gives 14.8 %.
+(iii) Fabrication: a realistic combination of stitching (20 nm), per-field bias (2 nm),
+smooth (3 nm, 5 um) and random (3 nm) width errors gives 6.2 % rms non-uniformity, minimum
+0.78, array efficiency 0.80. The most damaging error is long-range width variation (5 nm rms
+over 50 um: 7.5 % rms).
+(iv) Vector focusing: uniform from the axis to the array corner to 1e-4 in peak and 0.1 % in
+waist (peak 0.917 of scalar, fictitious field 0.63 G per mK).
+(v) Damage: thermo-elastic stress is never binding (<= 1.5 MPa at 100 W). The binding
+limits are the thermal focal shift and the temperature, for Si-rich SiN on fused silica at the
+upper absorption estimate (150 to 180 W). Sapphire or LPCVD SiN raises every limit above
+1 kW. Absorbing particles larger than ~100 um radius must be excluded on fused silica above
+150 W.
+
+Main limitation. All non-uniformities are open-loop (no camera feedback after
+fabrication), each error case is a single random realisation, and the meta-atoms are treated
+in the local periodic approximation.
 
 ## 1. Light on the axis: coherent spot or background?
 
@@ -75,7 +97,57 @@ the spurious-trap level.
 
 ## 3. Correlated fabrication errors
 
-<!-- FAB -->
+Method. Each case renders the full v2 metasurface with library pillars (LPA transmission of
+the selected Si-rich family at 1075 nm, transmission and phase per pillar), with width errors
+added before the lookup (hologram/render.py, pillar_errors). The result is propagated through
+the cell by the folded transfer function and evaluated in the array plane without repeating
+the feedback (scripts/fullaperture_checks.py; results/checks_v2, fab:*). The error models
+are as follows:
+(i) write-field stitching: each 100 um write field displaced rigidly by a Gaussian offset
+of the stated rms (`[VALUE?: write-field size of the e-beam tool used]`);
+(ii) per-field width bias, a dose or focus offset per write field;
+(iii) smooth width noise, a Gaussian random field with the stated rms and correlation length;
+(iv) a combination of all three with uncorrelated 3 nm noise.
+Every case is one random realisation (one seed), so differences below ~0.3 % rms are not
+significant `[VALUE?: seed-to-seed scatter not computed]`.
+
+| Case | Depth non-uniformity (rms) | Min / mean | Array efficiency | Interstitial max | On-axis |
+|---|---|---|---|---|---|
+| ideal phases (reference) | 5.3 % | 0.84 | 0.858 | 0.12 | 0.11 |
+| library pillars, no errors | 5.4 % | 0.84 | 0.826 | - | 0.11 |
+| library, uncorrelated 5 nm (campaign 1b) | 5.7 % | 0.81 | 0.796 | - | 0.11 |
+| stitching 20 nm rms | 5.6 % | 0.81 | 0.825 | 0.13 | 0.12 |
+| stitching 50 nm rms | 6.7 % | 0.78 | 0.822 | 0.14 | 0.11 |
+| per-field width bias 3 nm rms | 6.2 % | 0.78 | 0.812 | 0.14 | 0.11 |
+| smooth 5 nm rms, correlation 5 um | 5.8 % | 0.81 | 0.796 | 0.13 | 0.11 |
+| smooth 5 nm rms, correlation 50 um | 7.5 % | 0.75 | 0.806 | 0.15 | 0.12 |
+| combined: stitch 20 nm, bias 2 nm, smooth 3 nm / 5 um, random 3 nm | 6.2 % | 0.78 | 0.799 | 0.14 | 0.11 |
+
+The position error (0.083 to 0.086 um rms) and the mean waist (0.869 um) are unchanged by
+every error model, so fabrication errors act on the depths only.
+
+Interpretation. The correlation length decides where the error light goes. With a 5 um
+correlation length the phase errors scatter into angles ~ lambda / L ~ 0.2. This carries the
+light out of the array field: the efficiency drops (0.796, as for uncorrelated noise) and the
+uniformity hardly changes (5.8 %). With a 50 um correlation length the scattering angles are
+~ 0.02. This redistributes light within the array, over a few hundred um at the 15 mm working
+distance: the efficiency barely changes (0.806), but the depths become non-uniform (7.5 %,
+minimum 0.75) (Provisional; scaling argument consistent with both cases). Stitching and
+per-field bias are periodic at the 100 um write field. They behave like weak gratings of
+period 100 um, whose orders (sin theta ~ 0.011, i.e. ~160 um in the array plane) add faint
+displaced copies of the array that beat with it. Hence 20 nm stitching costs 0.2 % rms,
+50 nm costs 1.3 %, and a 3 nm per-field bias costs 0.8 % and 1.4 % in efficiency.
+
+Specifications that follow (to stay within ~1 % rms of the library design, before camera
+feedback): stitching <= 20 to 30 nm rms; per-field width (dose) uniformity <= 2 to 3 nm rms;
+long-range width variation (tens of um and beyond) <= 3 to 5 nm rms. Long-range variation
+also includes film thickness and etch-depth gradients across the 18.4 mm part, which change
+the pillar phase like a width error `[VALUE?: SiN thickness uniformity across a 25 mm
+substrate]`. The realistic combination gives 6.2 % rms and an efficiency of 0.80, against
+5.4 % and 0.83 for perfect library pillars. These are within the 10 % rms target before any
+feedback. Camera feedback (weighted GS on measured depths) acts on exactly these slowly
+varying errors, since they are static and deterministic once the part is made; it is not
+simulated here.
 
 ## 4. Vector focusing off axis
 
@@ -156,4 +228,12 @@ limits altogether. (iv) Limitations: steady state only (no turn-on transients), 
 ambient (a poorly heat-sunk mount, which changes both the temperature and its profile, is
 not modelled), no damage of the cell window coatings modelled.
 
-<!-- LIMITATIONS -->
+## 6. Limitations
+
+(i) One random realisation per fabrication case; seed-to-seed scatter not quantified. (ii)
+LPA meta-atom response, with the aperture-averaged supercell edge factor accounted for in
+campaign 1b but not in these renders. (iii) No camera feedback after fabrication or
+installation. (iv) Thermal model steady-state only, rim at ambient. (v) Film absorption from
+literature-based estimates (campaign 1b), not measured. Next logical step: a seed ensemble
+for the two most damaging cases (smooth 50 um, stitching 50 um), then the 18.4 mm design
+release with the tolerance list above.
