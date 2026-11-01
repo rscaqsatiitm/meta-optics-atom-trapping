@@ -19,8 +19,9 @@ by this error. With the grid enforced to cover 1.08 NA (hologram/wgs.py,
 PupilGrid.for_sites, now checked in pupil_amplitude), the hard-edged 2 mm test gives an
 on-axis intensity of 4e-4 of the mean site peak (previously 0.463) and an exact-design array
 efficiency of 0.878 (previously 0.858). A soft edge is therefore not required. The
-full-pixel, folded-validation and in-cell results below are being rerun with the
-corrected grid; numbers marked "(pre-fix)" are superseded once replaced. The field
+full-pixel, folded-validation and in-cell results have been rerun with the corrected grid;
+the corrected values are in docs/campaign1b_report.md, Section 1, and supersede the
+corresponding numbers in Sections 4.2 to 4.4 and the Summary below. The field
 aberration model, the library, the supercell, thermal and vector results did not use
 this grid and are unaffected.
 
