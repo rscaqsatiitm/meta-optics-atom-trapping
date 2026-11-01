@@ -23,14 +23,16 @@ absorbs 5.9e-4 of the light, and moves the focus by 0.11 um at 100 W on 0.5 mm f
 creates a fictitious magnetic field on Cs of up to 0.58 G per mK of depth; the bias field
 should be along the tweezer polarisation (Section 3).
 
-(iv) v1 at full aperture (48 x 48, 1.36 x 10^9 pixels): 8.0 % rms after two feedback rounds;
-with library pillars and 5 or 10 nm rms width noise the uniformity is unchanged and the
-efficiency falls from 0.84 to 0.80 or 0.75; 2,304 sites at 50 W reach 2.9 to 3.3 mK
+(iv) v1 at full aperture (48 x 48, 1.36 x 10^9 pixels): with the array designed 50 um beyond
+the lens focus, 2.0 to 2.1 % rms (weakest site 0.94 of the mean) after two feedback rounds,
+with ideal phase, library pillars or 5 nm rms width noise (8.0 % with the array in the lens
+focus). Pillar errors cost efficiency, not uniformity: 0.88 (ideal), 0.85 (library), 0.82
+(5 nm noise), 0.75 (10 nm noise, in-focus run). 2,304 sites at 50 W reach 3.1 to 3.4 mK
 (Section 4).
 
-(v) v2, 20,164 sites at 4.0 um pitch from the same 18.4 mm metasurface: 5.3 to 5.7 % rms after
-two feedback rounds, with library pillars and 5 nm noise; 0.34 to 0.37 mK at 50 W and 0.68 to
-0.74 mK at 100 W. The exact-kernel design is mandatory (the standard design keeps a Strehl
+(v) v2, 20,164 sites at 4.0 um pitch from the same 18.4 mm metasurface: 5.3 to 5.7 % rms
+(weakest site 0.81 to 0.84 of the mean) after two feedback rounds, with library pillars and
+5 nm noise, inside the 10 % target; 0.34 to 0.37 mK at 50 W and 0.68 to 0.74 mK at 100 W. The exact-kernel design is mandatory (the standard design keeps a Strehl
 ratio of 0.02 at the corners). Designing the array 50 um beyond the lens focus removes the
 undiffracted light from the array plane and raises the weakest site from 0.78 to 0.84 of the
 mean (Section 5).
@@ -174,6 +176,22 @@ supercell edge factor 0.879 x AR-coated substrate 0.995 `[VALUE?]` x AR-coated c
 | Library pillars | 0.648 | 3.19 mK | 6.37 mK |
 | + 5 nm noise | 0.623 | 3.06 mK | 6.13 mK |
 | + 10 nm noise | 0.581 | 2.86 mK | 5.71 mK |
+
+v1 with the array 50 um beyond the lens focus (results/fullaperture_v1_dz50;
+configs/fullaperture_v1_dz50.yaml; see Section 5 for the method):
+
+| Case | Depth non-uniformity (rms) | Min / mean | Array efficiency | On-axis intensity / site peak | Mean depth, 50 W |
+|---|---|---|---|---|---|
+| Ideal phase, no feedback | 4.7 % | 0.87 | 0.876 | 0.013 | - |
+| Ideal phase, 1 round | 3.4 % | 0.91 | 0.881 | 0.008 | - |
+| Ideal phase, 2 rounds | 2.0 % | 0.94 | 0.882 | 0.007 | 3.37 mK |
+| Library pillars (LPA) | 2.1 % | 0.94 | 0.849 | 0.008 | 3.24 mK |
+| + 5 nm rms width noise | 2.1 % | 0.94 | 0.817 | 0.008 | 3.12 mK |
+
+The array defocus reduces the non-uniformity of v1 from 12.9 % to 4.7 % before feedback and
+from 8.0 % to 2.0 % after two rounds, and raises the efficiency by ~1.5 %. Most of the
+site-to-site scatter of the in-focus design was therefore interference with undiffracted
+light, not a limitation of the hologram. The defocused design is our baseline for v1.
 
 ## 5. v2: 20,000 sites
 
