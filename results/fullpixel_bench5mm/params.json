@@ -29,16 +29,19 @@
       "pitch_um": 4.5
     },
     "pupil_oversample": 4,
-    "pupil_guard": 1.6,
+    "pupil_guard": 2.0,
     "wgs_iter": 60,
     "wgs_fix": 30,
     "upsample": 4,
     "render_upsample": 8,
+    "feedback_rounds": 2,
+    "feedback_gain": 0.5,
+    "feedback_wgs_iter": 30,
     "_config_path": "configs/fullpixel_bench5mm.yaml"
   },
   "git": {
-    "commit": "1fc794af949cea3c9b97b35a98a6284dd90f9d72",
-    "dirty": "True"
+    "commit": "a76278b82521555001269d74b929dd8c5acc7378",
+    "dirty": "False"
   },
   "versions": {
     "python": "3.13.18",
@@ -55,5 +58,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-10-31T22:16:49+00:00"
+  "utc": "2026-11-01T08:36:58+00:00"
 }
