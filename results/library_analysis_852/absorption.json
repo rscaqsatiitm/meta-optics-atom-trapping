@@ -1,0 +1,12 @@
+{
+  "sin_lpcvd": {
+    "absorbed_fraction_phase_avg": -9.630185359516194e-07,
+    "absorbed_fraction_max": 1.963235065034321e-05,
+    "absorbed_fraction_min": -8.936155445933782e-05
+  },
+  "sin_si_rich": {
+    "absorbed_fraction_phase_avg": 3.8373069432848444e-06,
+    "absorbed_fraction_max": 1.9000008074593184e-05,
+    "absorbed_fraction_min": -2.0057536893814625e-05
+  }
+}

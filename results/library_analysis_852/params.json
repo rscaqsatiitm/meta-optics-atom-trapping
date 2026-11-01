@@ -1,0 +1,44 @@
+{
+  "config": {
+    "run_id": "library_analysis_852",
+    "library": "data/library_main.h5",
+    "design_wavelength_um": 0.852,
+    "fab_limits": {
+      "min_feature_um": 0.1,
+      "min_gap_um": 0.1,
+      "max_aspect": 10.0
+    },
+    "n_plot": 5,
+    "supercell_n": [
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "tie_tol": 0.003,
+    "supercell_grid": 48,
+    "supercell_terms_per_cell": 80,
+    "_config_path": "configs/library_analysis_852.yaml"
+  },
+  "git": {
+    "commit": "b61140248ab7230bf5b53d1bbd0070188693eadd",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-01T21:14:03+00:00"
+}
