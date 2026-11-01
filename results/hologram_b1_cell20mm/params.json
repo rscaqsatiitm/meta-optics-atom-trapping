@@ -34,7 +34,7 @@
       },
       {
         "kind": "gaussian",
-        "waist_over_radius": 2.0
+        "waist_over_radius": 1.0
       }
     ],
     "pupil_oversample": 4,
@@ -47,8 +47,8 @@
       100
     ],
     "efficiency_chain": {
-      "metasurface_lpa": 0.9,
-      "edge_vs_lpa": 0.95,
+      "metasurface_lpa": 0.96,
+      "edge_vs_lpa": 0.886,
       "substrate_entrance_ar": 0.995,
       "cell_wall_ar": 0.99,
       "beam_shaper": 0.95
@@ -56,7 +56,7 @@
     "_config_path": "configs/hologram_b1_cell20mm.yaml"
   },
   "git": {
-    "commit": "b29a1aa421d8287631076f6bb91d92aa997752a4",
+    "commit": "6a656bfb09229f550b32cb5330c52997033d2c32",
     "dirty": "True"
   },
   "versions": {
@@ -74,5 +74,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-01T00:33:53+00:00"
+  "utc": "2026-11-01T00:48:06+00:00"
 }

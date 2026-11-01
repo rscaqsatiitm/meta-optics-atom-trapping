@@ -14,11 +14,11 @@ pupil_guard: 1.6
 wgs_iter: 60
 wgs_fix: 30
 laser_powers_W: [10, 50, 100]
-# Multiplicative efficiency factors outside the scalar pupil model. Values are
-# placeholders until the library and coatings are fixed; see docs/model_notes.md.
+# Multiplicative efficiency factors outside the scalar pupil model; see docs/model_notes.md.
+# Meta-atom family: Si-rich SiN, p = 0.50 um, h = 1.5 um (results/library_analysis_1075).
 efficiency_chain:
-  metasurface_lpa: 0.90        # [SIM: replaced by eta_inf of the chosen meta-atom family]
-  edge_vs_lpa: 0.95            # [SIM: replaced by aperture-weighted supercell result]
+  metasurface_lpa: 0.960       # SIM: 16-level LPA efficiency incl. exit Fresnel loss (selection.json, eta)
+  edge_vs_lpa: 0.886           # SIM: supercell/LPA ratio, aperture-averaged, soft-edge top hat (edge_factor.json); Provisional below 13 deg
   substrate_entrance_ar: 0.995 # [VALUE?: AR-coated entrance face]
   cell_wall_ar: 0.99           # [CONFIRM?: AR coating on both cell-wall faces]
   beam_shaper: 0.95            # [VALUE?: top-hat shaper throughput]

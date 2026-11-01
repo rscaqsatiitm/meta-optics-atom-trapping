@@ -87,7 +87,34 @@ bias or a 50 nm height error. Hence the film index at 1075 nm should be measured
 ellipsometry on each deposition run and fed into the lookup (materials.from_csv), rather
 than taken from the literature.
 
-<!-- SUPERCELL -->
+Edge efficiency (results/library_analysis_1075/supercell.json, edge_factor.json). Blazed
+supercells of N selected pillars deflect normally incident light into the first order at
+sin(theta) = lambda / (N p), which is the local behaviour of the hologram where the lens
+deflects by theta. First-order efficiency, mean of x and y polarisation (RCWA; the
+local-periodic prediction for the same widths is 0.96 to 0.97 in every case):
+
+| LPCVD, sin(theta) | 0.224 | 0.299 | 0.358 | 0.448 |
+|---|---|---|---|---|
+| eta (x, y) | 0.877, 0.860 | 0.886, 0.793 | 0.863, 0.761 | 0.820, 0.762 |
+
+| Si-rich, sin(theta) | 0.269 | 0.358 | 0.430 | 0.538 |
+|---|---|---|---|---|
+| eta (x, y) | 0.877, 0.867 | 0.873, 0.862 | 0.811, 0.858 | 0.851, 0.747 |
+
+These efficiencies are converged: at N = 4 (LPCVD) the result moves from 0.820 to 0.817
+to 0.821 between 80 and 200 terms per cell and 48 to 96 grid points per cell, and at N = 8
+from 0.877 to 0.876. The 10 to 20 % shortfall relative to the local-periodic
+approximation therefore reflects near-field coupling between neighbouring pillars of
+very different widths. It appears mostly as reflection (5 to 15 %, against 3 to 4 % for
+uniform arrays) and as the -1 and zero orders (2 to 7 %). Averaged over the
+aperture with the incident intensity (NA 0.55, in-cell stack), the ratio to the local-periodic
+value is 0.842 (top hat), 0.846 (soft edge) and 0.864 (Gaussian, w = R) for LPCVD, and
+0.879, 0.886 and 0.900 for Si-rich SiN. With its higher efficiency at the rim and the
+shorter etch, the Si-rich family is our baseline. The meta-atom-limited efficiency of the
+hologram is then 0.96 x 0.886 = 0.85 before the pupil-model design efficiency.
+Optimising widths for the supercell environment rather than for the periodic array
+(e.g. by inverse design on 2 to 4 neighbours) is the standard remedy and is not yet
+done.
 
 ## 4. Hologram design: field aberration of the standard (Debye) design
 
@@ -231,11 +258,61 @@ Thermo-optic changes inside the pillars are negligible by comparison: for LPCVD 
 
 ## 6. Limitations
 
-<!-- LIMITATIONS -->
+The results are model-dependent in the following specific ways.
+
+(i) Scalar optics. All propagation is scalar. At NA 0.5 the scalar normalisation is
+ambiguous at the 5 % level: the pupil model, which conserves the z-component of the
+Poynting flux, predicts a peak intensity per watt 5 % above the full-pixel scalar
+angular-spectrum result, which conserves the integral of |U|^2. A linearly polarised
+focus at NA 0.55 is also slightly elliptical, and its depth differs from the scalar value
+by a few per cent `[VALUE?: quantify with a vector Debye-Wolf model]`. Absolute trap depths
+therefore carry a ~5 to 10 % model uncertainty. Relative quantities (uniformity, Strehl
+ratio, field dependence) are less affected.
+
+(ii) Local-periodic approximation. The full-pixel validation used an ideal phase-only
+metasurface. Meta-atom amplitude and phase errors enter through the 16-level LPA
+efficiency (0.96) and the aperture-averaged supercell factor (0.886 for Si-rich SiN),
+treated as multiplicative factors. Their effect on uniformity was not simulated. They add
+a diffuse background and site-to-site noise that a full-wave or library-rendered
+full-pixel run would quantify (the renderer accepts a lookup table; not yet run).
+
+(iii) Supercell factor below 13 deg. Supercells were computed down to sin(theta) = 0.22
+(LPCVD) and 0.27 (Si-rich); the ratio is interpolated to 1 at normal incidence. If the
+inter-pillar coupling loss persists at small deflections, the factor is lower by up to
+~0.05 (Provisional). The supercell results themselves are converged to 0.4 % in Fourier
+order and grid.
+
+(iv) The full-pixel validation is limited to a 5 mm aperture by memory (10^8 pixels,
+~5 GB). The 18 to 20 mm in-cell design is evaluated only with the pupil model and the
+ray-traced aberration model, which the 5 mm case validates for field dependence but not
+for the edge-generated zero order (Section 4.3). Block-wise propagation of the full
+aperture, as in refs. 4 and 14, is the next numerical step.
+
+(v) Thermal model. Steady state, rim held at ambient, linear face losses, photo-elastic
+terms neglected. The substrate of ref. 4, the dn/dT of sapphire and of our films, and
+the film absorption are not known and are marked `[VALUE?]`.
+
+(vi) Fabrication. Proximity effects, sidewall angle and stitching errors of electron-beam
+writing are not modelled beyond a uniform width bias, a height offset and an index
+error.
 
 ## 7. Next steps
 
-<!-- NEXT -->
+1. Measure n and k of the CNNP ICP-PECVD and CoE-CPPICS LPCVD films at 1075 nm
+   (ellipsometry for n, photothermal or calorimetric for k), load them through
+   `materials.from_csv`, and rebuild the library. The index is the dominant
+   tolerance (Section 3) and k sets the thermal margin (Section 5).
+2. Run the 5 mm full-pixel validation with the library lookup instead of ideal phases,
+   and with Monte Carlo width errors, to quantify meta-atom-induced non-uniformity
+   and stray light.
+3. Block-wise full-aperture propagation for the 18 to 20 mm in-cell design, to check the
+   zero order and the edge-zone efficiency at full scale.
+4. Vector Debye-Wolf focusing at NA 0.55 for absolute depths and spot ellipticity.
+5. Second campaign: the dispersion-engineered library at 852/895/1064 nm (the
+   single-pillar library at these wavelengths is being completed in data/library_main.h5)
+   and the doublet meta-objective (B2), reusing the propagation, exact-kernel and
+   aberration code.
+6. Confirm the placeholders below with the PI and the fabrication centres.
 
 ## Provenance ledger and open placeholders
 
