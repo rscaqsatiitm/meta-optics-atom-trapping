@@ -128,7 +128,7 @@
         ]
       },
       {
-        "name": "ours_fs_0.5mm_gauss",
+        "name": "ours_fs_0.5mm_gauss_w1R",
         "substrate": "fused_silica",
         "thickness_mm": 0.5,
         "substrate_radius_mm": 12.5,
@@ -150,7 +150,7 @@
         "na": 0.55,
         "beam": {
           "kind": "gaussian",
-          "waist_over_radius": 2.0
+          "waist_over_radius": 1.0
         },
         "powers_W": [
           1,
@@ -188,7 +188,7 @@
         "na": 0.58,
         "beam": {
           "kind": "gaussian",
-          "waist_over_radius": 2.0
+          "waist_over_radius": 1.0
         },
         "powers_W": [
           28.5
@@ -263,7 +263,7 @@
     "_config_path": "configs/thermal_h2a.yaml"
   },
   "git": {
-    "commit": "810b0563d49629e070fed5948d1212a392766b08",
+    "commit": "94f4aee1ffdb1c5ef4b3e80c3f265444d9043580",
     "dirty": "True"
   },
   "versions": {
@@ -281,5 +281,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-10-31T22:09:56+00:00"
+  "utc": "2026-11-01T00:40:14+00:00"
 }

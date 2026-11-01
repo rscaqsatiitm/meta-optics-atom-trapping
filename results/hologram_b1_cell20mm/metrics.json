@@ -1,0 +1,116 @@
+{
+  "aperture_diameter_mm": 18.42760311771506,
+  "n_sites": 2304,
+  "efficiency_chain": {
+    "metasurface_lpa": 0.9,
+    "edge_vs_lpa": 0.95,
+    "substrate_entrance_ar": 0.995,
+    "cell_wall_ar": 0.99,
+    "beam_shaper": 0.95
+  },
+  "chain_total": 0.8001068625,
+  "cases": {
+    "top_hat": {
+      "clip_loss": 0.0,
+      "pupil_samples": 142299,
+      "ideal_peak_per_W_per_um2": 0.7864236318078314,
+      "debye_model": {
+        "strehl_min": 0.9399147705513451,
+        "strehl_mean": 0.9896644139222565,
+        "dz_min_um": -1.2674489196161003,
+        "dz_max_um": -0.0005738065821891822,
+        "lateral_shift_max_um": 0.005244733826137171
+      },
+      "debye": {
+        "mode_efficiency_sum": 0.9083012938499451,
+        "depth_nonuniformity_rms": 0.04037553071975708,
+        "depth_min_over_mean": 0.7979669570922852,
+        "delivered_fraction_chain": 0.7267380952835083,
+        "mean_depth_mK_at_10W": 0.6276463607644512,
+        "mean_depth_mK_at_50W": 3.1382316185033647,
+        "mean_depth_mK_at_100W": 6.2764632370067295
+      },
+      "exact": {
+        "mode_efficiency_sum": 0.9281697869300842,
+        "depth_nonuniformity_rms": 3.393550287000835e-05,
+        "depth_min_over_mean": 0.9999131560325623,
+        "delivered_fraction_chain": 0.7426350116729736,
+        "mean_depth_mK_at_10W": 0.6413757108342757,
+        "mean_depth_mK_at_50W": 3.2068785541713782,
+        "mean_depth_mK_at_100W": 6.4137571083427565
+      },
+      "proposal_model_equivalent": {
+        "utilisation": 0.7426350116729736,
+        "na_eff_ideal_spot": 0.5378507835237077
+      }
+    },
+    "top_hat_edge0.1": {
+      "clip_loss": 0.0,
+      "pupil_samples": 142031,
+      "ideal_peak_per_W_per_um2": 0.7675417769498638,
+      "debye_model": {
+        "strehl_min": 0.9476679196963946,
+        "strehl_mean": 0.9910193835965705,
+        "dz_min_um": -1.2807446146579993,
+        "dz_max_um": -0.0005798275259813534,
+        "lateral_shift_max_um": 0.005432394820452956
+      },
+      "debye": {
+        "mode_efficiency_sum": 0.9075119495391846,
+        "depth_nonuniformity_rms": 0.031227927654981613,
+        "depth_min_over_mean": 0.8416264057159424,
+        "delivered_fraction_chain": 0.726106584072113,
+        "mean_depth_mK_at_10W": 0.6120444138188618,
+        "mean_depth_mK_at_50W": 3.060222069094309,
+        "mean_depth_mK_at_100W": 6.120444138188618
+      },
+      "exact": {
+        "mode_efficiency_sum": 0.9248566031455994,
+        "depth_nonuniformity_rms": 0.002605244517326355,
+        "depth_min_over_mean": 0.993703305721283,
+        "delivered_fraction_chain": 0.7399841547012329,
+        "mean_depth_mK_at_10W": 0.6237420083208375,
+        "mean_depth_mK_at_50W": 3.1187101772562573,
+        "mean_depth_mK_at_100W": 6.237420354512515
+      },
+      "proposal_model_equivalent": {
+        "utilisation": 0.7399841547012329,
+        "na_eff_ideal_spot": 0.5313547160557135
+      }
+    },
+    "gauss_w2.0": {
+      "clip_loss": 0.6065306597126334,
+      "pupil_samples": 142299,
+      "ideal_peak_per_W_per_um2": 0.7892622793434431,
+      "debye_model": {
+        "strehl_min": 0.9430591889223767,
+        "strehl_mean": 0.9902119932958211,
+        "dz_min_um": -1.271897558363338,
+        "dz_max_um": -0.0005758211770681847,
+        "lateral_shift_max_um": 0.005326116102763985
+      },
+      "debye": {
+        "mode_efficiency_sum": 0.9055358171463013,
+        "depth_nonuniformity_rms": 0.03642861172556877,
+        "depth_min_over_mean": 0.8180135488510132,
+        "delivered_fraction_chain": 0.2850785553455353,
+        "mean_depth_mK_at_10W": 0.2470964093189168,
+        "mean_depth_mK_at_50W": 1.2354819768491547,
+        "mean_depth_mK_at_100W": 2.4709639536983095
+      },
+      "exact": {
+        "mode_efficiency_sum": 0.9271997809410095,
+        "depth_nonuniformity_rms": 0.002563296817243099,
+        "depth_min_over_mean": 0.9949159026145935,
+        "delivered_fraction_chain": 0.2918987274169922,
+        "mean_depth_mK_at_10W": 0.25300791568303915,
+        "mean_depth_mK_at_50W": 1.2650395319182428,
+        "mean_depth_mK_at_100W": 2.5300790638364856
+      },
+      "proposal_model_equivalent": {
+        "utilisation": 0.2918987274169922,
+        "na_eff_ideal_spot": 0.5388206129371749
+      }
+    }
+  }
+}

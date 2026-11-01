@@ -33,14 +33,14 @@ cases:
     beam: {kind: top_hat}
     powers_W: [1, 10, 30, 50, 100]
     a_film: [1.0e-5, 1.0e-4, 1.0e-3]
-  - name: ours_fs_0.5mm_gauss
+  - name: ours_fs_0.5mm_gauss_w1R
     substrate: fused_silica
     thickness_mm: 0.5
     substrate_radius_mm: 12.5
     stack: *cell
     wavelength_um: 1.075
     na: 0.55
-    beam: {kind: gaussian, waist_over_radius: 2.0}
+    beam: {kind: gaussian, waist_over_radius: 1.0}
     powers_W: [1, 10, 30, 50, 100]
     a_film: [1.0e-5, 1.0e-4, 1.0e-3]
   # Literature cases (substrate material and thickness not reported: assumed).
@@ -51,7 +51,7 @@ cases:
     stack: [[2500, air], [3500, pyrex], [9000, air]]   # ref. 4: 2.5 mm air, 3.5 mm Pyrex, 9 mm vacuum
     wavelength_um: 0.85
     na: 0.58
-    beam: {kind: gaussian, waist_over_radius: 2.0}     # ref. 4: waist ~ metasurface diameter
+    beam: {kind: gaussian, waist_over_radius: 1.0}     # ref. 4: 1/e^2 beam diameter ~ metasurface diameter (86.5 % transmitted)
     powers_W: [28.5]
     a_film: [1.0e-5, 1.0e-4, 1.0e-3]
   - name: ref14_like

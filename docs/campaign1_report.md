@@ -184,14 +184,15 @@ config configs/thermal_h2a.yaml):
 | fused silica 0.5 mm | top hat | 100 | 1e-3 | 10.2 | -0.18 | 1.0000 | 0.9974 |
 | fused silica 1.0 mm | top hat | 100 | 1e-3 | 6.7 | -0.24 | 1.0000 | 0.9955 |
 | sapphire 0.5 mm | top hat | 100 | 1e-3 | 0.75 | -0.025 | 1.0000 | 1.0000 |
-| fused silica 0.5 mm | Gaussian, w = 2R | 100 | 1e-3 | 11.2 | -0.22 | 1.0000 | 0.9963 |
+| fused silica 0.5 mm | Gaussian, w = R (13.5 % clipped) | 100 | 1e-3 | 14.6 | -0.33 | 1.0000 | 0.9920 |
 
 Three results follow. First, with the die heat-sunk at its rim the substrate thermal
 lens is almost a pure defocus over the NA 0.55 pupil: the Strehl ratio after refocusing
 stays above 0.9999 in every case run, so substrate heating does not degrade the spots,
 it moves them. Second, the error-budget limit of 1 um focal shift at 100 W is reached
 at a_film = 5.4e-3 (0.5 mm fused silica, top hat), 4.1e-3 (1 mm fused silica) and
-4.0e-2 (0.5 mm sapphire). The sapphire margin is ~7x rather than the 24x ratio of
+4.0e-2 (0.5 mm sapphire); for a Gaussian beam with w = R it drops to 3.0e-3 on 0.5 mm
+fused silica, because the absorbed power is concentrated near the centre. The sapphire margin is ~7x rather than the 24x ratio of
 thermal conductivities for two reasons: face cooling already limits the fused-silica
 temperature, so the temperature ratio is 13.6x (10.2 K against 0.75 K), and the
 thermo-optic path coefficient chi = dn/dT + (n - 1)(1 + nu) alpha is ~1.8x larger for
@@ -204,21 +205,25 @@ size at fixed absorbed power. Both limits are reproduced by the solver
 grows with beam size at fixed intensity) survives, and is stronger in the plate limit,
 since absorbed power grows as w^2 at fixed intensity.
 
-Implication for the ref. 4 shortfall (12.2 W measured against 15.0 W predicted). If
-the 19 % deficit were a Strehl loss of refocused spots, no film absorption up to 30 %
-reproduces it in this model. As a fixed-plane loss it requires a_film = 1.65 % (dT =
-32 K, focal shift -1.15 um), under our assumed 1 mm fused-silica substrate (ref. 4 does
-not state its substrate). For a 1.15 um Si-rich film at 850 nm this corresponds to an
-extinction coefficient of order 2e-3 [DERIVED: k ~ a lambda / (4 pi h f), with fill
-fraction f ~ 0.5], well above typical values for SiN `[VALUE?: measured k of CNNP
-films]`. With the same a_film, the ref. 14 case (2.5 W on 5 mm) gives a fixed-plane
-Strehl of 0.997, consistent with its unchanged efficiency. Hence substrate heating
-explains the ref. 4 deficit only if the film absorbs at the per-cent level; at the
-0.01 to 0.1 % level it is negligible. We therefore regard the thermal explanation in the
-proposal as Speculative, and the model points to two cheaper discriminating
-measurements for H2a: the film absorption itself (photothermal or calorimetric, at
-1075 nm), and the focal-plane position against power, which this model predicts to
-move by -0.18 um per 100 W per 0.1 % absorption on 0.5 mm fused silica.
+Implication for the ref. 4 shortfall (12.2 W measured against 15.0 W predicted). We
+model ref. 4 with its stated geometry (2.5 mm air, 3.5 mm Pyrex, 9 mm vacuum, NA 0.58,
+850 nm) and a Gaussian beam whose 1/e^2 diameter equals the aperture (w = R, which
+reproduces its 86.5 % truncated transmission); its substrate is not stated, so we assume
+1 mm fused silica `[VALUE?]`. If the 19 % deficit were a Strehl loss of the refocused
+spots, it would need a_film = 22 % and a 560 K temperature rise, which is not plausible.
+As a fixed-plane loss (atoms held at the cold focal plane while the focus moves) it
+needs a_film = 1.16 %, a 29 K rise and a -1.18 um focal shift. For a 1.15 um Si-rich
+film at 850 nm, 1.16 % absorption corresponds to an extinction coefficient of order
+1.4e-3 [DERIVED: k ~ a lambda / (4 pi h f), fill fraction f ~ 0.5], well above typical
+SiN values `[VALUE?: measured k of CNNP films]`. With the same a_film, the ref. 14 case
+(2.5 W on 5 mm, w/R = 1.44) has a fixed-plane Strehl of 0.998, consistent with its
+unchanged efficiency. Hence substrate heating explains the ref. 4 deficit only if the film
+absorbs at the per-cent level; at 0.01 to 0.1 % it is negligible. We therefore regard the
+thermal explanation in the proposal as Speculative. The model points to two inexpensive,
+discriminating measurements for H2a: the film absorption itself (photothermal or
+calorimetric, at 1075 nm), and the focal-plane position against power. The model predicts
+the focus moves by -0.18 um per 100 W per 0.1 % absorption on 0.5 mm fused silica with
+a top-hat beam.
 Thermo-optic changes inside the pillars are negligible by comparison: for LPCVD SiN
 (dn/dT ~ 2.5e-5 /K `[VALUE?]`) at dT = 10 K, dn = 2.5e-4 changes the pillar phase by
 ~2 mrad (DERIVED, dphi/dn ~ k0 h ~ 9 rad); even the Si-rich value of 1.65e-4 /K

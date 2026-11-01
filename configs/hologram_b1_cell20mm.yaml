@@ -8,7 +8,7 @@ sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
 illuminations:
   - {kind: top_hat}
   - {kind: top_hat, edge_frac: 0.1}                        # raised-cosine edge, suppresses the edge zero order
-  - {kind: gaussian, waist_over_radius: 2.0}               # ref. 4-like: waist ~ diameter
+  - {kind: gaussian, waist_over_radius: 1.0}               # ref. 4-like: 1/e^2 diameter = aperture (13.5 % clipped)
 pupil_oversample: 4
 pupil_guard: 1.6
 wgs_iter: 60
