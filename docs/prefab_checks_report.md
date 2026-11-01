@@ -38,7 +38,40 @@ neighbouring Airy spots at 2.8 um).
 
 ## 2. Cell-wall tolerances
 
-<!-- CELL -->
+The design assumes a 4 mm fused-silica wall parallel to the metasurface. Errors in the wall
+change only the propagation, so one folded render of the metasurface is re-propagated with the
+perturbed transfer function: thickness errors through the layered stack, tilts with the exact
+plane-wave transfer function of a tilted slab (propagation/folded.py,
+transfer_function_tilted; zero tilt reproduces the layered result to 5e-8 rad). Each case is
+evaluated at its best focus (scan) with the array re-centred and re-scaled by a least-squares
+fit to the found peaks, and without repeating the feedback (results/checks_v2, cell:*).
+
+| Wall error | Depth non-uniformity (rms) | Min / mean | Array efficiency | Array displacement |
+|---|---|---|---|---|
+| none | 5.3 % | 0.84 | 0.858 | - |
+| thickness +50 um | 6.0 % | 0.81 | 0.855 | focus -33 um |
+| thickness -50 um | 6.2 % | 0.80 | 0.855 | focus +33 um |
+| thickness +100 um | 7.6 % | 0.75 | 0.850 | focus -66 um |
+| thickness +200 um | 12.9 % | 0.58 | 0.824 | focus -132 um |
+| tilt 0.1 deg | 7.4 % | 0.76 | 0.855 | 2.5 um lateral |
+| tilt 0.25 deg | 14.8 % | 0.59 | 0.840 | 6.2 um lateral |
+| tilt 0.5 deg | 24.7 % | 0.36 | 0.790 | 12.1 um lateral |
+<!-- TILT1 -->
+
+The array follows the focus: a wall thicker by dt moves it by -dt cos(t)/sqrt(n^2 - sin^2 t)
+~ -0.66 dt (rms ray), which the atoms follow, and a tilted wall shifts it laterally by
+d sin(b)[1 - cos(b)/sqrt(n^2 - sin^2 b)]. The cost in uniformity comes from the
+field-dependent part of the path through the wall, which the exact design pre-compensates
+for the nominal wall only. Thickness errors of +/-50 um add < 1 % rms and +/-100 um ~2.3 %, so a
+standard cell-wall tolerance is acceptable (`[VALUE?: thickness tolerance of the purchased
+cell]`). Tilt is the critical tolerance: the relative tilt between the metasurface and the wall
+must be kept to <= 0.1 deg (1.7 mrad) to stay within ~2 % of the nominal non-uniformity. This is
+an alignment specification rather than a fabrication one: the metasurface mount needs tip/tilt
+adjustment and an autocollimation (back-reflection) reference to the wall, which resolves
+far below 0.1 deg. Alternatively the measured wall thickness and tilt can be included in the
+design kernels, and camera feedback after installation recovers part of the uniformity (not
+simulated here). The interstitial maxima rise with tilt (0.32 at 0.25 deg), so tilt also raises
+the spurious-trap level.
 
 ## 3. Correlated fabrication errors
 
