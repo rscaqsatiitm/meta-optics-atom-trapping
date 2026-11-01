@@ -1,0 +1,65 @@
+{
+  "config": {
+    "run_id": "fullpixel_zeroorder_2mm_edge0",
+    "wavelength_um": 1.075,
+    "na": 0.5,
+    "stack": [
+      [
+        400,
+        "air"
+      ],
+      [
+        400,
+        "fused_silica"
+      ],
+      [
+        1078,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat",
+      "edge_um": 0.0
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.5,
+    "sites": {
+      "kind": "square",
+      "nx": 24,
+      "ny": 24,
+      "pitch_um": 4.5,
+      "center": [
+        60.0,
+        60.0
+      ]
+    },
+    "pupil_oversample": 4,
+    "pupil_guard": 3.0,
+    "wgs_iter": 80,
+    "wgs_fix": 30,
+    "upsample": 4,
+    "render_upsample": 4,
+    "save_png": false,
+    "_config_path": "configs/fullpixel_zeroorder_2mm_edge0.yaml"
+  },
+  "git": {
+    "commit": "ecdb424ae6a1b90b780cd9c7d710e144733470d0",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-01T01:02:56+00:00"
+}

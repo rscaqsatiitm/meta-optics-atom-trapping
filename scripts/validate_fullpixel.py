@@ -54,7 +54,7 @@ def main(cfg_path):
     print(f"aperture {2*radius/1000:.3f} mm, grid {n}^2 at {dx} um", flush=True)
 
     # Pupil-domain designs.
-    field_extent = np.ptp(sites[:, 0]) + pitch
+    field_extent = 2 * np.abs(sites).max() + pitch  # covers arrays displaced from the axis
     g = PupilGrid.for_sites(lam, pitch, cfg.get("pupil_oversample", 4), na, field_extent, guard=cfg.get("pupil_guard", 1.6))
     ps = X.PupilSampling.build(g, stack, na, ill)
     tab = X.OPLTable(stack, lam, radius + 2 * np.abs(sites).max() + 20)
@@ -121,6 +121,9 @@ def main(cfg_path):
         del f
         m = E.spot_metrics(I, dxu, sites, pitch, lam, na, p_in, ref)
         per = m.pop("per_site")
+        # Intensity on the optical axis relative to the mean site peak (zero-order check;
+        # meaningful when no site lies within ~1 um of the axis).
+        m["axis_intensity_over_mean_site_peak"] = float(I[I.shape[0] // 2, I.shape[1] // 2] / per["peak"].mean())
         m["predicted_mode_efficiency_sum"] = float(pred[name].sum())
         m["predicted_nonuniformity_rms"] = float(pred[name].std() / pred[name].mean())
         m["design_history_nonuniformity_final"] = d.history_nonuniformity[-1]

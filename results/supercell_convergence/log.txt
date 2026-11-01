@@ -1,0 +1,9 @@
+N=4 terms/cell=80 grid=48: eta=0.8199 R=0.0923 eta0=0.0207 (36s)
+N=4 terms/cell=140 grid=48: eta=0.8202 R=0.0911 eta0=0.0210 (62s)
+N=4 terms/cell=200 grid=64: eta=0.8168 R=0.0876 eta0=0.0231 (150s)
+N=4 terms/cell=140 grid=96: eta=0.8213 R=0.0879 eta0=0.0174 (79s)
+N=8 terms/cell=80 grid=48: eta=0.8769 R=0.0830 eta0=0.0024 (121s)
+N=8 terms/cell=140 grid=48: eta=0.8761 R=0.0827 eta0=0.0025 (506s)
+N=8 terms/cell=200 grid=64: eta=0.8687 R=0.0868 eta0=0.0025 (866s)
+N=8 terms/cell=140 grid=96: eta=0.8769 R=0.0848 eta0=0.0014 (230s)
+uniform 4-cell: T0 0.9688 R 0.0312 | single cell: T0 0.9689 R 0.0311
