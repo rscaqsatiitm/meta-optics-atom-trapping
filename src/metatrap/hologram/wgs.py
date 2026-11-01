@@ -46,17 +46,32 @@ class PupilGrid:
 
     @classmethod
     def for_sites(cls, lam_um: float, pitch_um: float, oversample: int, na: float, field_um: float, guard: float = 2.0):
-        """Grid with dx = pitch/oversample and a focal period >= guard x field extent."""
+        """Grid with dx = pitch/oversample and a focal period >= guard x field extent.
+
+        The direction-cosine half-extent of the grid is sigma_max = lambda / (2 dx), fixed by
+        the focal sampling alone. It must exceed the NA with a margin, otherwise the pupil
+        is clipped to a square of half-width sigma_max and, at rendering, metasurface pixels
+        outside it receive no hologram phase and focus onto the axis as a plain lens.
+        ``oversample`` is therefore raised as needed so that sigma_max >= 1.08 NA.
+        (Before this check the default oversample of 4 at 4.5 um pitch gave
+        sigma_max = 0.478 < NA; see docs/campaign1_report.md, erratum.)
+        """
+        oversample = max(int(oversample), int(np.ceil(2 * 1.08 * na * pitch_um / lam_um)))
         dx = pitch_um / oversample
         n_min_field = int(np.ceil(guard * field_um / dx))
-        n_min_pupil = int(np.ceil(2.2 * na * n_min_field * dx / lam_um))  # pupil diameter in samples
-        n = max(n_min_field, n_min_pupil, 64)
+        n = max(n_min_field, 64)
         n = int(sfft.next_fast_len(n))
         return cls(n=n, ds=lam_um / (n * dx), lam_um=lam_um)
+
+    @property
+    def s_max(self) -> float:
+        return (self.n // 2 - 1) * self.ds
 
 
 def pupil_amplitude(grid: PupilGrid, stack: LayerStack, na: float, illumination: dict) -> np.ndarray:
     """Amplitude A(s) on the pupil grid for a given illumination of the metasurface."""
+    if grid.s_max < na + 2 * grid.ds:
+        raise ValueError(f"pupil grid covers |sigma| <= {grid.s_max:.3f} < NA {na}; refine the focal sampling (oversample)")
     s1 = grid.s_coords()
     SX, SY = np.meshgrid(s1, s1, indexing="ij")
     S = np.hypot(SX, SY)

@@ -11,7 +11,7 @@ pixel_um: 0.5
 site_pitch_um: 4.5
 sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
 pupil_oversample: 4
-pupil_guard: 1.6
+pupil_guard: 2.0
 wgs_iter: 60
 wgs_fix: 30
 upsample: 4

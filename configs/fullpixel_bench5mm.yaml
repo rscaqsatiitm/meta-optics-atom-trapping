@@ -1,4 +1,5 @@
-# Full-pixel validation, 5 mm aperture at NA 0.5 through a 1 mm fused-silica plate.
+# Full-pixel validation, 5 mm aperture at NA 0.5 through a 1 mm fused-silica plate, hard-edged
+# top hat, exact design with two feedback rounds (rerun after the pupil-grid fix).
 # Bench geometry chosen so that the full aperture fits in memory at the meta-atom pitch.
 run_id: fullpixel_bench5mm
 wavelength_um: 1.075
@@ -9,8 +10,11 @@ pixel_um: 0.5
 site_pitch_um: 4.5
 sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
 pupil_oversample: 4
-pupil_guard: 1.6
+pupil_guard: 2.0
 wgs_iter: 60
 wgs_fix: 30
 upsample: 4
 render_upsample: 8
+feedback_rounds: 2
+feedback_gain: 0.5
+feedback_wgs_iter: 30

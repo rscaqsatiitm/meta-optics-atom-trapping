@@ -43,7 +43,7 @@
     "_config_path": "configs/fullpixel_zeroorder_2mm_edge0.yaml"
   },
   "git": {
-    "commit": "ecdb424ae6a1b90b780cd9c7d710e144733470d0",
+    "commit": "6585c8290b813bef9d1b1dc444259f7569cfe779",
     "dirty": "True"
   },
   "versions": {
@@ -61,5 +61,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-01T01:02:56+00:00"
+  "utc": "2026-11-01T07:12:13+00:00"
 }

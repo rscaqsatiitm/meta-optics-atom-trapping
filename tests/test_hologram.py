@@ -53,3 +53,25 @@ def test_aberration_model_on_axis_and_symmetry():
     assert a["strehl"][0] == pytest.approx(1.0, abs=1e-9)
     assert a["strehl"][1] == pytest.approx(a["strehl"][2], rel=1e-3)
     assert a["dz_um"][1] < 0  # field curvature towards the metasurface
+
+
+def test_symmetric_design_matches_full_kernels():
+    """D4-reduced WGS: unfolding the wedge phase and evaluating with full kernels reproduces E_j."""
+    from metatrap.hologram import symmetric as S
+
+    sites = targets.square_grid(12, 12, 4.5)
+    g = W.PupilGrid.for_sites(LAM, 4.5, 4, 0.55, 2 * np.abs(sites).max() + 4.5, guard=1.8)
+    tab = X.OPLTable(STACK, LAM, STACK.aperture_for_na(0.55, LAM) + 200)
+    fs, fstab, inv = S.wedge_sites(sites)
+    assert len(fs) == 6 * 7 // 2 and fstab.sum() == len(fs) + 6
+    wp = S.WedgePupil.build(g, STACK, 0.55, {"kind": "top_hat"})
+    KG = S.kernels_G(wp, fs, tab, LAM)
+    r = S.wgs_symmetric(wp, KG, fstab, n_iter=40, n_fix=20)
+    ps = X.PupilSampling.build(g, STACK, 0.55, {"kind": "top_hat"})
+    full_psi = S.unfold(g.n, wp.ij, r.psi.astype(np.float64), dtype=np.float64)
+    psi_samples = full_psi[ps.mask]
+    K = X.kernels(ps, sites, tab, LAM)
+    e_full = X.mode_amplitudes(ps, psi_samples, K)
+    assert np.allclose(np.abs(e_full), np.abs(r.mode_amp[inv]), rtol=2e-3, atol=1e-6)
+    ee = np.abs(e_full) ** 2
+    assert ee.std() / ee.mean() < 0.01
