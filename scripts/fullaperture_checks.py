@@ -167,12 +167,14 @@ def main(cfg_path):
                 d_w = layers[wall][0]
                 sx = d_w * np.sin(beta) * (1 - np.cos(beta) / np.sqrt(n_wall**2 - np.sin(beta) ** 2))
                 shift = (float(sx), 0.0)
-            # Focus shift of a thicker wall at the rms ray angle of the pupil, and the paraxial
-            # magnification change of the array (effective path L_eff grows by dt / n).
+            # The thicker wall is added without removing vacuum, so the evaluation plane moves dt
+            # further away while the focus moves only ~dt (1 - 1/n): relative to the evaluation
+            # plane the focus lies at -dt cos(t) / sqrt(n^2 - sin^2 t), evaluated at the rms ray
+            # angle of the pupil. At that plane the effective path is unchanged to first order, so
+            # the scale starts at 1 and is fitted.
             s_rms = G["na"] / np.sqrt(2)
-            centre = dt * (1 - np.sqrt(1 - s_rms**2) / np.sqrt(n_wall**2 - s_rms**2))
-            L_eff = sum(l[0] / l_n for l, l_n in zip(G["layers"], G["stack"].indices(G["lam"])))
-            scale = 1 + dt / (n_wall * L_eff)
+            centre = -dt * np.sqrt(1 - s_rms**2) / np.sqrt(n_wall**2 - s_rms**2)
+            scale = 1.0
             dz, m, _ = focus_scan(G, F, p_in, H0, shift, centre, scale=scale)
             for _ in range(2):  # refine scale and shift from the measured peaks, then rescan focus
                 sc_fit, sx_fit, sy_fit = fit_similarity(G["sites"] * scale + np.array(shift), m["_per"], G["cfg"]["site_pitch_um"])
