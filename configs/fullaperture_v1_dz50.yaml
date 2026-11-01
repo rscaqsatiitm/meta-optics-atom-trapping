@@ -1,0 +1,36 @@
+# v1 with the array plane 50 um beyond the lens focus, full 18.4 mm aperture: 48 x 48 Cs sites at 4.5 um, NA 0.55, in-cell stack, 1075 nm.
+# D4-symmetric exact design, folded propagation of the whole metasurface at the
+# meta-atom pitch, two feedback rounds with ideal pillars, then library pillars with
+# width errors (local-periodic approximation per pixel).
+run_id: fullaperture_v1_dz50
+wavelength_um: 1.075
+na: 0.55
+stack: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.5
+sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
+pupil_guard: 1.25            # relative to the diagonal extent of the array
+wgs_iter: 60
+wgs_fix: 30
+render_upsample: 8
+n_fold: 4096                 # 2.048 mm focal window
+upsample: 4
+feedback_rounds: 2
+array_defocus_um: 50.0   # array plane 50 um beyond the lens focus: undiffracted light is defocused there
+feedback_gain: 0.5
+feedback_wgs_iter: 30
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}   # selected with the literature film estimate (library_analysis_est_1075)
+pillar_cases:
+  - {name: library_lpa}
+  - {name: library_sigma5nm, errors: {sigma_um: 0.005, seed: 1}}
+power_budget:
+  core_fraction_ideal: 0.82   # core (first-dark-ring) fraction of the aberration-free spot of this pupil [SIM: bench reference 0.817-0.82]
+  na_eff: 0.574               # SIM: ideal-spot peak per watt of the hard top-hat pupil (hologram_b1_cell20mm, after the pupil-grid fix)
+  powers_W: [50, 100]
+  extra_factors:
+    edge_vs_lpa: 0.879        # SIM: supercell factor, Si-rich, top hat (edge_factor.json); not in the per-pixel LPA
+    substrate_entrance_ar: 0.995   # [VALUE?]
+    cell_wall_ar: 0.99             # [CONFIRM?]
+    beam_shaper: 0.95              # [VALUE?]
+    vector_peak: 0.923             # SIM: vector/scalar peak ratio at NA 0.55 (vector_check)
