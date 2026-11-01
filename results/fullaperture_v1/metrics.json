@@ -8,6 +8,14 @@
       "array_efficiency": 0.8620507757062236,
       "core_efficiency": 0.7222513163526464,
       "axis_intensity_over_mean_site_peak": 0.03869209305717242
+    },
+    {
+      "round": 1,
+      "depth_nonuniformity_rms": 0.11773689551244815,
+      "depth_min_over_mean": 0.6222014404975788,
+      "array_efficiency": 0.8675001021491326,
+      "core_efficiency": 0.7267129409134503,
+      "axis_intensity_over_mean_site_peak": 0.045011334444622304
     }
   ],
   "pupil_model": {
