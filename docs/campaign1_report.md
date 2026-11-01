@@ -41,7 +41,53 @@ and 7.5 mW). (`tests/test_atoms.py`)
 
 ## 3. Meta-atom library
 
-<!-- LIBRARY -->
+Numerics (results/rcwa_convergence, SIM). With the Jones-direct-Fourier formulation the
+relative transmission phase converges to 0.003 rad at 197 Fourier terms. The
+permittivity grid adds 0.01 to 0.03 rad between 256 and 1024 points, largest for
+gaps below 60 nm, which the fabrication limits exclude. The plain-FFT formulation
+converges about ten times more slowly (0.07 rad error at 317 terms), and grcwa, which
+uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms. This is an independent check of
+the solver wrapper and its phase convention. The library (data/library_main.h5,
+configs/library_main.yaml) covers 5 pitches (0.40 to 0.60 um), 13 heights (0.8 to
+2.0 um), 40 widths and 4 wavelengths for LPCVD SiN (Luke et al. dispersion) and Si-rich
+SiN (n = 2.3, `[VALUE?]`), at 197 terms on a 256 grid.
+
+Selection at 1075 nm (results/library_analysis_1075). Geometries are ranked by the
+first-order efficiency of a 16-level blazed grating in the local-periodic approximation,
+including the Fresnel loss at the exit face, averaged over a uniform width bias of -10,
+0 and +10 nm. Fabrication limits are a minimum feature and gap of 100 nm and h/w <= 10
+(`[CONFIRM?: CNNP etch capability]`). About 65 geometries per film are feasible, and the
+best dozen lie within 0.5 % of each other, limited by the aspect ratio. Among those within
+0.3 % of the best we take the shortest pillar:
+
+| Film | Pitch (um) | Height (um) | Widths (nm) | eta_16 | eta_16, +/-10 nm averaged | Phase coverage (rad) | Min. T0 |
+|---|---|---|---|---|---|---|---|
+| LPCVD SiN | 0.60 | 1.6 | 168 to 492 | 0.967 | 0.960 | 6.13 | 0.93 |
+| Si-rich SiN | 0.50 | 1.5 | 150 to 390 | 0.960 | 0.957 | 6.60 | 0.90 |
+
+The Si-rich height agrees with the proposal's estimate (1.15 um at 852 nm from ref. 14,
+~26 % taller at 1075 nm, i.e. ~1.45 um). An earlier ranking with cubic interpolation
+returned eta > 1 for resonant geometries (minimum T0 of 0.02 to 0.3); this was spline
+overshoot across under-sampled resonances, and those geometries also lose most under a
+width bias. Linear interpolation and the bias-averaged metric remove them.
+
+Tolerances of the selected families (8 phase levels, direct RCWA; the common phase
+offset is removed, since a uniform offset does not affect the hologram):
+
+| Perturbation | LPCVD: differential phase rms (rad) | LPCVD: efficiency ratio | Si-rich: differential phase rms (rad) | Si-rich: efficiency ratio |
+|---|---|---|---|---|
+| width +10 nm | 0.050 | 0.998 | 0.079 | 0.998 |
+| width -10 nm | 0.071 | 0.997 | 0.064 | 0.991 |
+| index +0.05 | 0.126 | 0.979 | 0.117 | 0.989 |
+| index -0.05 | 0.146 | 0.984 | 0.109 | 0.986 |
+| height +50 nm | 0.045 | 0.998 | 0.065 | 1.000 |
+
+A ±0.05 index error costs 1 to 2 % of efficiency, several times more than a 10 nm width
+bias or a 50 nm height error. Hence the film index at 1075 nm should be measured by
+ellipsometry on each deposition run and fed into the lookup (materials.from_csv), rather
+than taken from the literature.
+
+<!-- SUPERCELL -->
 
 ## 4. Hologram design: field aberration of the standard (Debye) design
 
