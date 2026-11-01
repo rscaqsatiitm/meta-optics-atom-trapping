@@ -68,8 +68,25 @@ def summary(m):
     return {k: m[k] for k in keys if k in m}
 
 
-def focus_scan(G, F, p_in, H0, site_shift, centre_um, coarse=(-3, -2, -1, 0, 1, 2, 3), fine=(-0.5, -0.25, 0.25, 0.5)):
-    """Best plane (max mean site peak) near centre_um beyond the design plane; returns (dz, metrics)."""
+def fit_similarity(sites, per, pitch):
+    """Least-squares scale and shift mapping target sites onto the found peaks (outliers dropped)."""
+    fx, fy = per["x"], per["y"]
+    ok = np.hypot(fx - sites[:, 0], fy - sites[:, 1]) < 0.3 * pitch
+    n = int(ok.sum())
+    A = np.zeros((2 * n, 3))
+    A[0::2, 0], A[1::2, 0] = sites[ok, 0], sites[ok, 1]
+    A[0::2, 1], A[1::2, 2] = 1.0, 1.0
+    b = np.empty(2 * n)
+    b[0::2], b[1::2] = fx[ok], fy[ok]
+    (scale, sx, sy), *_ = np.linalg.lstsq(A, b, rcond=None)
+    return float(scale), float(sx), float(sy)
+
+
+def focus_scan(G, F, p_in, H0, site_shift, centre_um, coarse=(-3, -2, -1, 0, 1, 2, 3), fine=(-0.5, -0.25, 0.25, 0.5), scale=1.0):
+    """Best plane (max mean site peak) near centre_um beyond the design plane; returns (dz, metrics, mean peak).
+
+    The target sites are scale * sites + site_shift (a wall error rescales and shifts the array).
+    """
     lam, dx, nf = G["lam"], G["dx"], G["nf"]
     k0 = 2 * np.pi / lam
     f = np.fft.fftfreq(nf, d=dx)
@@ -78,7 +95,8 @@ def focus_scan(G, F, p_in, H0, site_shift, centre_um, coarse=(-3, -2, -1, 0, 1, 
 
     def ev(dz):
         H = H0 * np.exp(1j * k0 * dz * sz)
-        m, per, _ = FA.focal_metrics(G["cfg"], F, dx, lam, G["na"], G["sites"], p_in, H=H, site_shift=site_shift)
+        m, per, _ = FA.focal_metrics(G["cfg"], F, dx, lam, G["na"], G["sites"] * scale, p_in, H=H, site_shift=site_shift)
+        m["_per"] = per
         return float(per["peak"].mean()), m
 
     best = None
@@ -149,13 +167,19 @@ def main(cfg_path):
                 d_w = layers[wall][0]
                 sx = d_w * np.sin(beta) * (1 - np.cos(beta) / np.sqrt(n_wall**2 - np.sin(beta) ** 2))
                 shift = (float(sx), 0.0)
-            centre = dt * (1 - 1 / n_wall)  # paraxial focal shift of a thicker plate
-            dz, m, _ = focus_scan(G, F, p_in, H0, shift, centre)
-            if beta != 0:  # refine the lateral re-centring once
-                off = m["mean_site_offset_um"]
-                shift = (shift[0] + off[0], shift[1] + off[1])
-                dz, m, _ = focus_scan(G, F, p_in, H0, shift, dz, coarse=(-0.5, 0, 0.5), fine=(-0.25, 0.25))
-            res[key] = summary(m) | {"best_focus_um": dz, "paraxial_focus_um": centre, "array_shift_um": shift, "case": case, "seconds": time.time() - t0}
+            # Focus shift of a thicker wall at the rms ray angle of the pupil, and the paraxial
+            # magnification change of the array (effective path L_eff grows by dt / n).
+            s_rms = G["na"] / np.sqrt(2)
+            centre = dt * (1 - np.sqrt(1 - s_rms**2) / np.sqrt(n_wall**2 - s_rms**2))
+            L_eff = sum(l[0] / l_n for l, l_n in zip(G["layers"], G["stack"].indices(G["lam"])))
+            scale = 1 + dt / (n_wall * L_eff)
+            dz, m, _ = focus_scan(G, F, p_in, H0, shift, centre, scale=scale)
+            for _ in range(2):  # refine scale and shift from the measured peaks, then rescan focus
+                sc_fit, sx_fit, sy_fit = fit_similarity(G["sites"] * scale + np.array(shift), m["_per"], G["cfg"]["site_pitch_um"])
+                scale, shift = scale * sc_fit, (shift[0] * sc_fit + sx_fit, shift[1] * sc_fit + sy_fit)
+                dz, m, _ = focus_scan(G, F, p_in, H0, shift, dz, coarse=(-1, -0.5, 0, 0.5, 1), fine=(-0.25, 0.25), scale=scale)
+            m.pop("_per", None)
+            res[key] = summary(m) | {"best_focus_um": dz, "predicted_focus_um": centre, "array_shift_um": shift, "array_scale": scale, "case": case, "seconds": time.time() - t0}
             print(key, {k: (round(v, 4) if isinstance(v, float) else v) for k, v in res[key].items()}, flush=True)
             save()
         del F
