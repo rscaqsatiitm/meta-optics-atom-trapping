@@ -36,6 +36,19 @@ class Geometry:
     substrate_um: float = 500.0
 
 
+class CompositeMeta:
+    """Base metasurface (any object with phase/dphase_dr) plus an even-polynomial correction."""
+
+    def __init__(self, base, coeffs, lam_design_um, name=""):
+        self.base, self.corr = base, Meta(np.asarray(coeffs), lam_design_um, name)
+
+    def phase(self, r, lam_um):
+        return self.base.phase(r, lam_um) + self.corr.phase(r, lam_um)
+
+    def dphase_dr(self, r, lam_um):
+        return self.base.dphase_dr(r, lam_um) + self.corr.dphase_dr(r, lam_um)
+
+
 def cell_media(geom: Geometry, lam_um: float):
     return [Medium(float(materials.get(m).n(lam_um)), float(t), m) for t, m in geom.cell]
 
@@ -49,6 +62,13 @@ def build(arch: str, params: np.ndarray, geom: Geometry, lam_um: float, R: float
     elif arch == "stop_shifted":
         d = extra["stop_distance_um"]
         el += [Medium(1.0, d, "air"), Medium(ns, geom.substrate_um, "substrate"), Meta(_c(params[:n_terms], extra["lens_R"]), geom.lam_design_um, "lens")]
+        stop = {"index": 0, "radius_um": R}
+    elif arch == "aplanat_doublet":
+        # Exact aplanatic spline phases (extra["base1"], extra["base2"]) plus polynomial corrections.
+        m1 = CompositeMeta(extra["base1"], _c(params[:n_terms], R), geom.lam_design_um, "corrector")
+        m2 = CompositeMeta(extra["base2"], _c(params[n_terms : 2 * n_terms], extra["lens_R"]), geom.lam_design_um, "focusing")
+        sub = extra.get("spacer_medium") or Medium(ns, extra["doublet_substrate_um"], "substrate")
+        el += [m1, sub, m2]
         stop = {"index": 0, "radius_um": R}
     elif arch == "doublet":
         t_d = extra["doublet_substrate_um"]
@@ -112,25 +132,39 @@ def marginal_na(arch, params, geom, lam_um, R, n_terms, extra):
     return float(np.hypot(pxf[0], pyf[0])) if alive[0] else np.nan
 
 
-def optimise(arch, p0, geom, lam_um, R, n_terms, extra, thetas, na_target, weights=None, n_rays=28, maxiter=400):
-    """Minimise a soft maximum of the rms wavefront over field angles (common image plane),
-    with the on-axis marginal ray held at the target NA. The last parameter is dz_common."""
-    weights = np.ones(len(thetas)) if weights is None else np.asarray(weights)
+def optimise(arch, p0, geom, lam_um, R, n_terms, extra, thetas, na_target, weights=None, n_rays=28, maxiter=400, scale=None):
+    """Minimise a soft maximum of the rms wavefront (waves) over field angles with one common
+    image plane, holding the on-axis marginal ray at the target NA. Parameters are scaled by
+    their starting magnitude and optimised with L-BFGS-B (finite differences). The last
+    variable is the common image-plane offset dz (um)."""
+    from scipy.special import logsumexp
 
-    def merit(v):
+    weights = np.ones(len(thetas)) if weights is None else np.asarray(weights)
+    if scale is None:
+        scale = np.concatenate([np.maximum(np.abs(p0), 1e-3 * max(np.abs(p0).max(), 1e-3)), [1.0]])
+    else:
+        scale = np.concatenate([np.broadcast_to(np.asarray(scale, float), p0.shape), [1.0]])
+
+    def merit(u):
+        v = u * scale
         params, dz = v[:-1], v[-1]
         q = evaluate(arch, params, geom, lam_um, R, n_terms, extra, thetas, n_rays=n_rays, dz_common=dz)
         rms = np.array([qq["rms_waves"] for qq in q])
         if not np.all(np.isfinite(rms)) or any(qq["n_rays"] < 10 for qq in q):
             return 1e3
         na = marginal_na(arch, params, geom, lam_um, R, n_terms, extra)
-        pen = 1e3 * (na - na_target) ** 2 if np.isfinite(na) else 1e3
-        soft = np.log(np.sum(weights * np.exp(20 * rms))) / 20
-        return float(soft + pen)
+        if not np.isfinite(na):
+            return 1e3
+        soft = logsumexp(20 * rms, b=weights) / 20
+        return float(min(soft + 1e3 * (na - na_target) ** 2, 1e3))
 
-    v0 = np.concatenate([p0, [0.0]])
-    res = minimize(merit, v0, method="Powell", options={"maxiter": maxiter, "xtol": 1e-6, "ftol": 1e-9})
-    return res.x[:-1], res.x[-1], res
+    u0 = np.concatenate([p0, [0.0]]) / scale
+    best = minimize(merit, u0, method="L-BFGS-B", options={"maxiter": maxiter, "eps": 1e-6})
+    # A Nelder-Mead polish from the gradient result helps where vignetting makes the merit kinked.
+    pol = minimize(merit, best.x, method="Nelder-Mead", options={"maxiter": 20 * len(u0), "xatol": 1e-7, "fatol": 1e-7, "adaptive": True})
+    res = pol if pol.fun < best.fun else best
+    v = res.x * scale
+    return v[:-1], v[-1], res
 
 
 def hyperbolic_start(geom: Geometry, lam_um: float, R_fit: float, n_terms: int, extra_air_um: float = 0.0):
