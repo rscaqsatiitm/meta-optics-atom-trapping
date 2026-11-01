@@ -76,8 +76,15 @@ def _create(path: Path, spec: LibrarySpec):
         )
 
 
-def run_sweep(spec: LibrarySpec, path: str | Path, log=print) -> Path:
+def run_sweep(spec: LibrarySpec, path: str | Path, log=print, max_batches: int | None = None) -> Path:
+    """Run (or resume) the sweep. ``max_batches`` stops after that many new batches.
+
+    JAX's CPU compilation cache grows over a long sweep until LLVM fails to allocate
+    memory (observed after a few hundred batches on 15 GB), so long sweeps should run
+    as a loop of fresh processes with a batch limit (scripts/run_library.py --max-batches).
+    """
     path = Path(path)
+    n_new = 0
     if not path.exists():
         _create(path, spec)
     # Wavelength is the outermost loop so that the first wavelength listed (the
@@ -103,6 +110,9 @@ def run_sweep(spec: LibrarySpec, path: str | Path, log=print) -> Path:
                         f["t_cross"][im, ip, ih, il, :] = r.t_cross
                         f["done"][im, ip, ih, il] = True
                     log(f"{mat} p={p} h={h} lam={lam}: {time.time()-t0:.1f}s, T0 range {r.T0.min():.3f}-{r.T0.max():.3f}")
+                    n_new += 1
+                    if max_batches is not None and n_new >= max_batches:
+                        return path
     return path
 
 
@@ -140,3 +150,8 @@ class Library:
         """(widths_um, complex t normalised to unit max |t| reference-free, T0) for one geometry."""
         im, ip, ih, il = self.index(material, pitch, height, lam)
         return self.width_frac * self.pitch_um[ip], self.t[im, ip, ih, il], self.T0[im, ip, ih, il]
+
+
+def is_complete(path: str | Path) -> bool:
+    with h5py.File(path, "r") as f:
+        return bool(np.all(f["done"][:]))
