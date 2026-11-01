@@ -16,5 +16,23 @@
       2.4962405064622463e-06
     ],
     "seconds": 967.7094445228577
+  },
+  "axis_light:configs/fullaperture_v2_dz50.yaml": {
+    "depth_nonuniformity_rms": 0.05272892230967288,
+    "depth_min_over_mean": 0.8350716550892834,
+    "array_efficiency": 0.8575630078204032,
+    "core_efficiency": 0.7105529737683658,
+    "waist_mean_um": 0.868854679259329,
+    "position_error_rms_um": 0.08266719603524886,
+    "axis_intensity_over_mean_site_peak": 0.10641711386774046,
+    "interstitial_median": 0.012811626369995043,
+    "interstitial_p99": 0.08579237087049184,
+    "interstitial_max": 0.12174878938770448,
+    "interstitial_max_radius_um": 121.6552506059644,
+    "mean_site_offset_um": [
+      7.369703648807816e-07,
+      4.847948287186066e-08
+    ],
+    "seconds": 756.0510561466217
   }
 }
