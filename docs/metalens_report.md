@@ -1,0 +1,281 @@
+# Side-B metasurface objective: design study (ray optics with an axisymmetric wave check)
+
+Technical report. Target: a flat (metasurface) objective outside the cell, NA 0.5 at the atoms,
+imaging or addressing the v2 array (142 x 142 sites at 4.0 um, corner at 399 um from the axis)
+through the cell stack 2.5 mm air | 4 mm fused silica | 9 mm vacuum `[CONFIRM?: side-B air gap,
+wall, distance to the atoms]`. All numbers are SIM (review before submission) unless marked;
+code: src/metatrap/metalens/{raytrace,aplanat,doublet,wave_axial}.py,
+scripts/metalens_doublet.py, configs/metalens_doublet.yaml, results/metalens_doublet/.
+
+## Summary
+
+Result. An air-spaced aplanatic metasurface doublet works over the whole v2 field: corrector
+metasurface (aperture stop, radius R1 = 8.106 mm), 16.0 mm of air, focusing metasurface, then
+the cell. Its ray-traced Strehl ratio is >= 0.9992 at every field point out to 400 um in one
+flat focal plane, at each of 852.3, 894.6 and 1064.4 nm, each with its own phase maps. The
+field headroom is large: Strehl 0.96 (852 nm) and 0.975 (1064 nm) at 1.0 mm. An independent
+axisymmetric wave-optics propagation (quasi-discrete Hankel transform through both plates and
+the cell) gives on-axis Strehl 0.9989 / 0.9988 / 0.9980 at the three wavelengths, with the
+focus on the nominal plane to < 1 nm and a focal-spot 1/e^2 radius equal to the Airy value
+(0.71 um at 852 nm, 0.88 um at 1064 nm).
+
+Main limitation. A metasurface phase map works at one wavelength. With the 852 nm maps,
+the focus moves by -18.8 um per nm of detuning. If the input beam is re-focused, the Strehl
+stays >= 0.8 only to about +/-1.8 nm. At 894.6 nm and 1064.4 nm the Strehl is 0.02 and 0.004
+even with re-focusing. Co-focal operation at two or three of these wavelengths therefore needs
+independent phase maps per wavelength (multi-wavelength meta-atoms covering the full 2 pi x 2 pi
+phase torus) or separate optical paths.
+
+Mechanical tolerances (852 nm, Strehl >= 0.92 over the field after refocusing):
+(i) decentre between the plates <= 5 um (2 um gives 0.987);
+(ii) plate spacing within +/-50 um (0.992);
+(iii) cell-wall thickness within +/-50 um (0.988);
+(iv) relative plate tilt <= 0.1 deg, after its coma is nulled by decentring the focusing plate;
+uncorrected, a 0.1 deg tilt is equivalent to a 28 um decentre and fails;
+(v) tilt of the cell relative to the objective <= 0.1 deg (0.93 at the corner).
+
+## 1. Why this architecture
+
+| Architecture (852 nm, NA 0.5) | Strehl at image height 0 / 75 / 150 / 282 / 400 um (best focus per field) |
+|---|---|
+| Hyperbolic singlet, stop at the lens | 1.000 / 0.015 / 0.001 / 0.002 / 0.007 |
+| Aplanatic doublet on a 2 mm silica spacer | 1.000 / 0.997 / 0.949 / 0.511 / 0.055 |
+| Air-spaced aplanatic doublet, 16 mm | 1.000 / 1.000 / 1.000 / 0.9995 / 0.9992 |
+
+The singlet fails because a single flat phase profile can make the axial focus stigmatic but
+cannot also satisfy the Abbe sine condition: off-axis coma appears at once (Strehl 0.015 at
+75 um). We also tried polynomial phase profiles optimised by ray tracing (singlet, singlet with
+a displaced stop, doublets on 1 and 3 mm substrates; results/metalens_study). None reached a
+useful field: the merit landscape at NA 0.5 and f = 16 mm, with up to ~2,400 waves of phase,
+defeated the optimiser. We therefore abandoned that route for an analytic construction.
+
+Construction (src/metatrap/metalens/aplanat.py). Take a ray entering the corrector at height
+h1. We require that it leave the focusing plate with transverse direction cosine
+s_f = h1 / f (sine condition, f = R1 / NA) and that it reach the axial focus through the cell
+stack. This fixes its height at the focusing plate, h2 = sum_i d_i s_f / sqrt(n_i^2 - s_f^2).
+The ray between the plates then has the transverse direction cosine p that satisfies
+h2 - h1 = sum_j t_j p / sqrt(n_j^2 - p^2) over the spacer layers. The generalised Snell law
+gives the two phase gradients, dphi1/dr (h1) = k0 p and dphi2/dr (h2) = -k0 (s_f + p).
+Here, k0 = 2 pi / lambda, and d_i, n_i (t_j, n_j) are the thicknesses and indices of the cell
+(spacer) layers. The result is stigmatic on axis with zero linear coma by construction. Only
+astigmatism and field curvature remain, quadratic in the field.
+
+The 2 mm silica-spaced version of this construction is good to only ~150 um. Spacing the
+plates by about one focal length in air makes the focusing plate sit at the back focal plane
+of the stop. The system becomes telecentric (chief-ray direction cosine at the atoms 3.6e-4
+at 400 um), and every field point then uses nearly the same zone structure of the focusing
+plate, shifted laterally. This is the flat-optics analogue of placing the stop at the front
+focal plane, as in wide-field metalenses with a front aperture (`[REF?: Kalvach and Szabo,
+J. Opt. Soc. Am. A 33, A66 (2016); unverified]`). Metasurface doublets corrected for
+monochromatic aberrations by ray-traced optimisation were demonstrated by Arbabi et al.
+(800 um aperture, f/0.9, > 60 deg field at 850 nm, ~70 % efficiency;
+[Nat. Commun. 7, 13682 (2016)](https://doi.org/10.1038/ncomms13682), arXiv:1604.06160).
+They did not treat a 16 mm aperture, a focus behind a 4 mm window, or a flat-field
+requirement across a fixed atom plane, which is what this design addresses.
+
+Spacing scan (one common focal plane over 0 to 400 um; minimum Strehl):
+
+| Plate spacing | 852.3 nm | 894.6 nm | 1064.4 nm |
+|---|---|---|---|
+| 12 mm | 0.778 | 0.797 | 0.852 |
+| 14 mm | 0.933 | 0.940 | 0.957 |
+| 15 mm | 0.979 | 0.981 | 0.987 |
+| 16 mm | 0.9992 | 0.9993 | 0.9995 |
+| 17 mm | 0.991 | 0.992 | 0.995 |
+| 18 mm | 0.957 | 0.961 | 0.972 |
+
+The optimum, 16 mm, lies just below f = 16.21 mm, as expected from telecentricity.
+
+## 2. Design data (16 mm spacing)
+
+| Quantity | 852.3 nm | 894.6 nm | 1064.4 nm |
+|---|---|---|---|
+| Stop radius R1 (common) | 8.106 mm | 8.106 mm | 8.106 mm |
+| Marginal ray height at the focusing plate R2 | 8.106 mm | 8.107 mm | 8.109 mm |
+| Focal length f = R1 / NA | 16.21 mm | 16.21 mm | 16.21 mm |
+| Corrector: max deflection / total phase | 0.025 / 155 waves | 0.025 / - | 0.025 / 125 waves |
+| Focusing plate: deflection at R2 / at R2 + 0.4 mm | 0.500 / 0.525 | 0.500 / 0.525 | 0.500 / 0.525 |
+| Focusing plate: local zone period at R2 + 0.4 mm | 1.62 um | - | 2.03 um |
+| Focusing plate: total phase | 2,376 waves | - | 1,903 waves |
+
+The corrector is weak (zone period >= 34 um at 852 nm). All the difficulty sits in the outer
+zones of the focusing plate. To serve the 400 um field, the focusing plate needs a radius of
+R2 + 0.4 mm ~ 8.5 mm, and its deflection there reaches 0.525. Section 6 gives the meta-atom
+efficiency at this deflection. The plate substrates are neglected in this study. A plane
+substrate before the corrector changes nothing for collimated input. A substrate between the
+plates is handled by the layered-spacer option of the construction, but has not been
+evaluated here.
+
+## 3. Field performance
+
+Free focus per field (852.3 nm; 1064.4 nm in parentheses), with the field curvature dz:
+
+| Image height | 0 | 400 um | 600 um | 800 um | 1.0 mm | 1.3 mm | 1.6 mm |
+|---|---|---|---|---|---|---|---|
+| Strehl | 1.000 | 0.9992 (0.9995) | 0.996 (0.997) | 0.986 (0.991) | 0.961 (0.975) | 0.874 (0.917) | 0.670 (0.766) |
+| Focus dz (um) | 0 | -0.11 | -0.24 | -0.42 | -0.66 | -1.11 | -1.94 |
+
+In one flat plane (dz = -0.10 um) the Strehl ratio is >= 0.9992 everywhere from 0 to 400 um
+at all three wavelengths. The residual is astigmatism and field curvature, quadratic in
+field. The field curvature over the v2 array, 0.11 um, is 0.03 of the depth of focus
+(lambda / NA^2 = 3.4 um at 852 nm). The field over which the Strehl ratio stays >= 0.8 has a
+radius of ~1.4 mm, room for arrays about 3.5 times wider than v2.
+
+## 4. Wave-optics check (on axis)
+
+Method (src/metatrap/metalens/wave_axial.py): the radially symmetric scalar field is
+propagated with the quasi-discrete Hankel transform (window 9 mm, spectral cut-off 0.70 / lambda,
+N = 11,838 to 14,784 samples). The steps are: a top-hat beam with a 5 um tanh edge at the
+stop, times exp(i phi1); 16 mm of air; times exp(i phi2); the cell layers, each by its exact
+transfer function exp(i k0 d sqrt(n^2 - (lambda nu)^2)), without Fresnel interface losses. The
+Strehl ratio is the on-axis intensity relative to that of the same angular spectrum with all
+phases aligned, maximised over the focal plane. The transform was checked on a Gaussian beam
+(spectrum error 4e-16, inverse transform error 3e-15).
+
+| Wavelength | Strehl (wave) | Best focus relative to nominal plane | 1/e^2 radius | Spectral power beyond 1.1 NA |
+|---|---|---|---|---|
+| 852.3 nm | 0.9989 | +3e-5 um | 0.71 um | 1e-6 |
+| 894.6 nm | 0.9988 | +4e-6 um | 0.74 um | 1e-6 |
+| 1064.4 nm | 0.9980 | +2e-4 um | 0.88 um | 4e-6 |
+
+The waists equal the Airy 1/e^2 radius 0.41 lambda / NA (0.70, 0.73 and 0.87 um) to within
+the 0.01 um grid. The 0.1 to 0.2 % shortfall from the ray value (1.000) is consistent with
+edge diffraction of the stop over the 16 mm spacer. This test is independent of the ray
+tracer: it uses only the phase profiles and exact propagation. It confirms the phase
+construction, the focal position through the 4 mm wall, and the stationary-phase (ray)
+assumption at this Fresnel number (R1^2 / (lambda L) ~ 4,800). Limitation: on axis only; the
+off-axis field relies on the ray trace.
+
+## 5. Chromatic behaviour and the multi-wavelength requirement
+
+A metasurface keeps its phase in radians as the wavelength changes (fixed 2 pi zones). Its
+deflection therefore scales as lambda / lambda_d, as for a diffractive lens. We evaluated the
+852.3 nm design at other wavelengths in two ways: (a) collimated input and the nominal atom
+plane; (b) the input vergence re-adjusted (point source at distance L) to bring the best
+axial focus back to the atom plane.
+
+| Detuning | Focus shift, collimated input | Strehl (a), nominal plane | Strehl (b), refocused input: on axis / 400 um | Residual rms (b) |
+|---|---|---|---|---|
+| 0.01 nm | -0.19 um | 0.997 | 1.000 / 0.998 | 0.0004 waves |
+| 0.1 nm | -1.9 um | 0.74 | 0.999 / 0.998 | 0.004 waves |
+| 0.5 nm | -9.4 um | 0.05 | 0.983 / 0.982 | 0.021 waves |
+| 1 nm | -18.8 um | < 0.01 | 0.933 / 0.934 | 0.042 waves |
+| 2 nm | -37.6 um | < 0.01 | 0.755 / 0.755 | 0.084 waves |
+| 5 nm | -94 um | < 0.01 | 0.19 / 0.20 | 0.23 waves |
+| 42.3 nm (894.6 nm) | -762 um | < 0.01 | 0.02 / 0.006 | 2.0 waves |
+| 212.1 nm (1064.4 nm) | -3,250 um | < 0.01 | 0.004 / 0.001 | 16.7 waves |
+
+Consequences. (i) For the 852 nm imaging light alone the dispersion is harmless: the D2
+fluorescence is 5 MHz wide, and laser wavelengths are stable to far below 0.01 nm. (ii)
+Re-focusing removes defocus but not the residual spherical aberration, which grows linearly
+with the detuning. A single phase map therefore serves only a band of about +/-1.8 nm
+(Strehl >= 0.8; computed for positive detunings, interpolated as exp(-(2 pi W_rms)^2)). (iii) 852/895/1064 nm co-focal operation through one objective requires
+independent phase maps per wavelength. With independent maps (common stop radius), each
+wavelength reproduces the single-wavelength results above (Sections 3 and 4), since the
+construction is exact per wavelength.
+
+What the meta-atoms must supply. The two focusing-plate maps differ by 473 waves (852/1064)
+and 112 waves (852/895) at the edge. The required phase pairs (phi_852 mod 2 pi,
+phi_1064 mod 2 pi), weighted by area, fill the torus nearly uniformly: every bin of a 36 x 36
+grid holds 0.84 to 1.18 times the mean (0.83 to 1.12 for 852/895). The library must therefore
+provide every phase pair with high transmission; a partial region of the torus does not
+suffice. Two-wavelength meta-molecules that achieve independent full coverage were
+demonstrated at 1550 and 915 nm (NA 0.46, 65 % measured efficiency; Arbabi et al.,
+[Optica 3, 628 (2016)](https://authors.library.caltech.edu/records/32je3-2pw19),
+arXiv:1601.05847). For 852 and 1064 nm (ratio 1.25) this is a scaled version of that problem
+(Provisional). For 852 and 895 nm (ratio 1.05) it is much harder. A propagation-phase
+pillar of height h gives phases in nearly the ratio 1.05 at the two wavelengths, so the phase
+difference available across a library is only ~ 0.05 x (2 pi x 1.3) ~ 0.4 rad, against the
+2 pi required (Speculative; estimate, not simulated). Broadband dispersion engineering is not an
+option at this size: the delay-bandwidth bound limits achromatic metalenses to apertures and
+NAs orders of magnitude smaller than these
+([Presutti and Monticone, arXiv:2001.10899](https://arxiv.org/abs/2001.10899); venue not
+verified in session). Discrete-wavelength operation (wrapped phases) is not bound by that
+limit.
+
+Recommendation. Use the objective at one design wavelength, or at 852 + 1064 nm with a
+two-wavelength meta-atom library (next RCWA campaign). Bring 894.6 nm light through another
+path (for example the hologram side, or a dichroic-combined beam focused by its own optic).
+`[CONFIRM?: which side-B functions need 852, 895 and 1064 nm at a diffraction-limited focus]`.
+
+## 6. Meta-atom efficiency at the required deflection
+
+<!-- META -->
+
+## 7. Mechanical tolerances
+
+852.3 nm; image heights -400, -200, 0, 200, 400 um along the perturbation; one common focal
+plane re-optimised per case (refocusing allowed); same input angles as the nominal design.
+Tilts are modelled as exact rotations of the downstream optics (raytrace.Frame).
+
+| Perturbation | Strehl at -400 / -200 / 0 / 200 / 400 um | Best common plane dz | Note |
+|---|---|---|---|
+| none | 0.9992 / 0.9995 / 0.9992 / 0.9995 / 0.9992 | -0.10 um | |
+| spacing +50 um | 0.992 / 0.997 / 0.998 / 0.997 / 0.992 | -0.03 um | magnification change 1.4e-4 |
+| spacing +/-200 um | 0.90 to 0.91 / 0.96 / 0.98 / 0.96 / 0.90 to 0.91 | +0.17 / -0.39 um | magnification change 5.5e-4 |
+| wall +50 um | 0.988 / 0.989 / 0.989 / 0.989 / 0.988 | -33.2 um | atoms follow the focus |
+| wall +200 um | 0.85 (all fields) | -132.7 um | uncorrected spherical aberration |
+| decentre 2 um | 0.986 / 0.987 / 0.987 / 0.987 / 0.988 | | image shifts 0.96 x decentre |
+| decentre 5 um | 0.921 / 0.924 / 0.925 / 0.925 / 0.928 | | |
+| decentre 10 um | 0.73 (all fields) | | |
+| decentre 25 um | 0.12 | | |
+| plate tilt 0.1 deg | 0.05 to 0.07 | | equivalent to a 28 um decentre |
+| plate tilt 0.1 deg, coma nulled by a 31 um decentre | 0.962 / 0.985 / 0.999 / 0.994 / 0.962 | | |
+| plate tilt 0.25 deg, nulled (78 um) | 0.78 / 0.93 / 0.999 / 0.95 / 0.78 | | |
+| plate tilt 0.5 deg, nulled (155 um) | 0.34 / 0.76 / 0.998 / 0.80 / 0.34 | | |
+| cell tilt 0.1 deg | 0.933 / 0.967 / 0.971 / 0.957 / 0.933 | -0.14 um | |
+| cell tilt 0.25 deg | 0.65 / 0.80 / 0.84 / 0.78 / 0.65 | | |
+| cell tilt 0.5 deg | 0.20 / 0.40 / 0.48 / 0.38 / 0.20 | | |
+
+Interpretation. The decentre sensitivity comes from the corrector. Its ~155 waves of
+aspheric phase cancel the spherical aberration of the focusing plate, and a lateral offset
+delta of a profile with spherical aberration W ~ a r^4 produces coma ~ 4 a delta r^3
+(Provisional; consistent with the 2 to 10 um results). A tilt eps of the focusing plate
+displaces it, relative to the incoming beam, by about the spacing times eps (16 mm x
+1.75 mrad = 28 um). A decentre of 31 um nulls the axial coma of a 0.1 deg tilt, and the residual
+(astigmatism, 0.96 at the corner) is acceptable. Hence the alignment procedure is: centre the
+focusing plate on the corrector while observing the axial focus through the cell (coma
+nulling), with tip/tilt kept within ~0.1 deg (autocollimation resolves far less). The
+required centring, <= 2 to 5 um, is comparable to that of high-NA refractive objectives
+`[REF?: typical centring tolerances of NA 0.5 objectives]`. It is set by mount
+adjustment, not by the lithography, whose overlay between plates is irrelevant once the
+plates are aligned optically. The cell tilt (<= 0.1 deg) is the same specification as for the
+hologram (docs/prefab_checks_report.md, Section 2), so one alignment of the cell normal
+serves both sides. The wall thickness must be known to +/-50 um, or the design recomputed
+for the measured value: a +200 um error leaves 0.85, uncorrectable by refocusing.
+
+## 8. Limitations and next steps
+
+Limitations: (i) scalar ray optics off axis; the wave check covers the axis only. (ii)
+Ideal phase maps: no meta-atom efficiency, quantisation or local-periodic-approximation
+error is included in Sections 1 to 5 and 7 (see Section 6). (iii) Plate substrates and
+their tolerances, thermal effects of the 1064 nm beam on the plates, and polarisation (vector
+focusing: an 8 % peak reduction at NA 0.55 on side A, results/vector_check) are not included. (iv)
+Collection efficiency for imaging (NA 0.5 collects 6.7 % of isotropic fluorescence, DERIVED:
+(1 - cos asin 0.5) / 2) is set by the NA, not modelled here.
+
+Next steps: (i) two-wavelength (852/1064 nm) meta-atom library by RCWA (pillar pairs or ring
+pillars) and its torus coverage; (ii) the focusing-plate efficiency map from supercells at
+deflections 0 to 0.53 (Section 6); (iii) an off-axis wave check (Kirchhoff integral from the
+focusing plate with exact cell kernels, as for the hologram); (iv) a substrate-bearing
+version of the design (layered spacer) and its tolerances.
+
+## Provenance ledger
+
+| Value | Location | Type | Pointer |
+|---|---|---|---|
+| Strehl, focus, deflections, tolerances, chromatic data | Sections 1 to 3, 5, 7 | SIM, review before submission | results/metalens_doublet/doublet.json |
+| Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
+| Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
+| Polynomial-optimisation failures | Section 1 | SIM | results/metalens_study/metalens_study.json |
+| Airy 1/e^2 radius 0.41 lambda / NA | Section 4 | DERIVED | (2 J1(v)/v)^2 = e^-2 at v = 2.58 |
+| Depth of focus lambda / NA^2 = 3.4 um | Section 3 | DERIVED | 0.852 / 0.25 |
+| Fresnel number 4,800 | Section 4 | DERIVED | 8106^2 / (0.852 x 16000) |
+| Arbabi doublet: 800 um, f/0.9, > 60 deg, ~70 % | Section 1 | SOURCE | Nat. Commun. 7, 13682 (2016), abstract (search result) |
+| Meta-molecules: 1550/915 nm, NA 0.46, 65 % | Section 5 | SOURCE | Optica 3, 628 (2016), Caltech repository record |
+| Delay-bandwidth bound | Section 5 | SOURCE (arXiv) | arXiv:2001.10899 |
+| Cs D2 natural linewidth 5.2 MHz | Section 5 | recalled `[VALUE?: verify, Steck]` | |
+
+Open placeholders: `[CONFIRM?: side-B air gap, wall, distance to the atoms]`;
+`[CONFIRM?: which side-B functions need 852, 895 and 1064 nm]`; `[REF?: Kalvach and Szabo]`;
+`[REF?: centring tolerances of NA 0.5 objectives]`; `[VALUE?: Cs D2 linewidth]`.
