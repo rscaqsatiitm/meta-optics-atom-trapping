@@ -1,0 +1,20 @@
+{
+  "axis_light:configs/fullaperture_v2.yaml": {
+    "depth_nonuniformity_rms": 0.053072328497865646,
+    "depth_min_over_mean": 0.7771708559529837,
+    "array_efficiency": 0.8544473463023035,
+    "core_efficiency": 0.707533823348718,
+    "waist_mean_um": 0.866799776927964,
+    "position_error_rms_um": 0.08380819613262368,
+    "axis_intensity_over_mean_site_peak": 0.3803147630138423,
+    "interstitial_median": 0.01253518474849885,
+    "interstitial_p99": 0.08718077743752677,
+    "interstitial_max": 0.3803147630138423,
+    "interstitial_max_radius_um": 0.0,
+    "mean_site_offset_um": [
+      3.470027415434286e-06,
+      2.4962405064622463e-06
+    ],
+    "seconds": 967.7094445228577
+  }
+}
