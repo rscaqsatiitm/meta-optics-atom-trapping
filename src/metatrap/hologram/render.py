@@ -22,6 +22,38 @@ from ..propagation.layers import LayerStack
 from .exact import PupilSampling, RenderGrid
 
 
+def _hash_normal(i, j, seed: int, salt: int):
+    """Deterministic standard-normal values for integer grid indices (i, j) (vectorised).
+
+    Used for spatially correlated fabrication errors, which must be identical for every
+    block of the metasurface that touches the same write field or noise cell.
+    """
+    def mix(x):
+        x = (x ^ (x >> np.uint64(30))) * np.uint64(0xBF58476D1CE4E5B9)
+        x = (x ^ (x >> np.uint64(27))) * np.uint64(0x94D049BB133111EB)
+        return x ^ (x >> np.uint64(31))
+
+    with np.errstate(over="ignore"):
+        a = (np.asarray(i, np.int64).astype(np.uint64) * np.uint64(0x9E3779B97F4A7C15)
+             + np.asarray(j, np.int64).astype(np.uint64) * np.uint64(0xC2B2AE3D27D4EB4F)
+             + np.uint64(seed * 1_000_003 + salt * 7919))
+        u1 = (mix(a) >> np.uint64(11)).astype(np.float64) / float(1 << 53)
+        u2 = (mix(a + np.uint64(0x632BE59BD9B4E019)) >> np.uint64(11)).astype(np.float64) / float(1 << 53)
+    u1 = np.clip(u1, 1e-300, 1.0)
+    return np.sqrt(-2.0 * np.log(u1)) * np.cos(2 * np.pi * u2)
+
+
+def _smooth_noise(x, y, length: float, seed: int, salt: int):
+    """Unit-variance value noise with correlation length ~length (bilinear on a grid of that spacing)."""
+    gx, gy = x / length, y / length
+    i0, j0 = np.floor(gx).astype(np.int64), np.floor(gy).astype(np.int64)
+    u, v = gx - i0, gy - j0
+    w = [(1 - u) * (1 - v), u * (1 - v), (1 - u) * v, u * v]
+    nodes = [(0, 0), (1, 0), (0, 1), (1, 1)]
+    val = sum(wk * _hash_normal(i0 + a, j0 + b, seed, salt) for wk, (a, b) in zip(w, nodes))
+    return val / np.sqrt(sum(wk**2 for wk in w))
+
+
 def metasurface_blocks(
     n: int,
     dx: float,
@@ -79,6 +111,22 @@ def metasurface_blocks(
         if not inside.any():
             continue
         Ri, Xi, Yi = R[inside], X[inside], Y[inside]
+        Ra = Ri  # true radius for the illumination amplitude
+        dw_corr = 0.0
+        if pillar_errors and pillar_errors.get("field_um"):
+            fsz, sd = pillar_errors["field_um"], pillar_errors.get("seed", 0)
+            fx = np.floor((Xi + radius) / fsz).astype(np.int64)
+            fy = np.floor((Yi + radius) / fsz).astype(np.int64)
+            st = pillar_errors.get("stitch_sigma_um", 0.0)
+            if st > 0:
+                Xi = Xi - st * _hash_normal(fx, fy, sd, 1)
+                Yi = Yi - st * _hash_normal(fx, fy, sd, 2)
+                Ri = np.hypot(Xi, Yi)
+            fb = pillar_errors.get("field_bias_sigma_um", 0.0)
+            if fb > 0:
+                dw_corr = dw_corr + fb * _hash_normal(fx, fy, sd, 3)
+        if pillar_errors and pillar_errors.get("corr_sigma_um", 0.0) > 0:
+            dw_corr = dw_corr + pillar_errors["corr_sigma_um"] * _smooth_noise(Xi + radius, Yi + radius, pillar_errors["corr_length_um"], pillar_errors.get("seed", 0), 4)
         s = s_of_r(Ri)
         phi = -k0 * (stack.opl(s, lam_um) - opl_axis)
         if extra_phase is not None:
@@ -95,13 +143,13 @@ def metasurface_blocks(
         if lookup is None:
             t = np.exp(1j * phi)
         elif pillar_errors:
-            w = lookup.width_for_phase(phi) + pillar_errors.get("bias_um", 0.0)
+            w = lookup.width_for_phase(phi) + pillar_errors.get("bias_um", 0.0) + dw_corr
             if pillar_errors.get("sigma_um", 0.0) > 0:
                 w = w + pillar_errors["sigma_um"] * rng.standard_normal(w.shape)
             t = lookup.t_of_width(w) * amp_scale
         else:
             t = lookup.t_for_phase(phi) * amp_scale
-        amp = profile(illumination["kind"], Ri, radius, **kw)
+        amp = profile(illumination["kind"], Ra, radius, **kw)
         blk = np.zeros(R.shape, np.complex64)
         blk[inside] = (amp * t).astype(np.complex64)
         if with_incident:

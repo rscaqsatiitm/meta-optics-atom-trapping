@@ -47,27 +47,61 @@ def build_lookup(cfg, lam):
     return L.build(w[ok], t[ok], lc["pitch_um"], lc["height_um"], n_in, 1.0, L.FabLimits(min_feature_um=0, min_gap_um=0, max_aspect=1e9))
 
 
-def simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, errors, nf, n, dx, stack_eval=None):
+def render_fold(cfg, stack, lam, na, ill, g, fs, fstab, tab, d, lookup, errors, nf, n, dx):
+    """Render the full metasurface block by block and fold it; returns (F, p_transmitted, p_incident) per pixel area."""
     holo = S.render_grid_symmetric(g, stack, na, ill, fs, fstab, d.coeffs, tab, lam, upsample=cfg.get("render_upsample", 8))
-    t0 = time.time()
-    blocks = metasurface_blocks(n, dx, stack, lam, na, None, None, ill, holo=holo, lookup=lookup, pillar_errors=errors, block=cfg.get("block_rows", 128), with_incident=True)
+    blocks = metasurface_blocks(n, dx, stack, lam, na, None, None, ill, holo=holo, lookup=lookup, pillar_errors=errors,
+                                block=cfg.get("block_rows", 128), with_incident=True)
     F, p_pix, p_inc_pix = fold_blocks(blocks, n, nf)
     del holo
     gc.collect()
-    foc = propagate_folded(F, dx, lam, stack_eval if stack_eval is not None else stack)
-    del F
-    half = np.abs(sites).max() + 4 * cfg["site_pitch_um"]
+    return F, p_pix, p_inc_pix
+
+
+def interstitial_stats(I, dxu, sites, pitch):
+    """Intensity at the centres between four sites, relative to the mean site peak is applied by the caller."""
+    c = I.shape[0] // 2
+    xs = np.unique(np.round(sites[:, 0], 6))
+    mids = 0.5 * (xs[1:] + xs[:-1])
+    X, Y = np.meshgrid(mids, mids, indexing="ij")
+    ii = np.clip(c + np.round(X / dxu).astype(int), 0, I.shape[0] - 1)
+    jj = np.clip(c + np.round(Y / dxu).astype(int), 0, I.shape[1] - 1)
+    return I[ii, jj].ravel(), np.hypot(X, Y).ravel()
+
+
+def focal_metrics(cfg, F, dx, lam, na, sites, p_in, H=None, stack_eval=None, site_shift=(0.0, 0.0)):
+    """Propagate a folded field (with transfer function H, or through stack_eval) and measure every site."""
+    nf = F.shape[0]
+    foc = propagate_folded(F, dx, lam, stack_eval) if H is None else np.fft.fftshift(np.fft.ifft2(np.fft.fft2(F) * H))
+    sx, sy = site_shift
+    half = np.abs(sites).max() + 4 * cfg["site_pitch_um"] + max(abs(sx), abs(sy))
     w = int(np.ceil(2 * half / dx / 2) * 2)
     c = nf // 2 - w // 2
     win = foc[c : c + w, c : c + w]
-    I = np.abs(fourier_upsample(win, cfg.get("upsample", 4))) ** 2
-    dxu = dx / cfg.get("upsample", 4)
-    p_in = p_inc_pix * dx * dx  # efficiencies relative to the light incident on the metasurface
-    m = E.spot_metrics(I, dxu, sites, cfg["site_pitch_um"], lam, na, p_in)
-    m["metasurface_transmission"] = float(p_pix / p_inc_pix)
+    up = cfg.get("upsample", 4)
+    I = np.abs(fourier_upsample(win, up)) ** 2
+    dxu = dx / up
+    tsites = sites + np.array([sx, sy])
+    m = E.spot_metrics(I, dxu, tsites, cfg["site_pitch_um"], lam, na, p_in)
     per = m.pop("per_site")
-    m["axis_intensity_over_mean_site_peak"] = float(I[I.shape[0] // 2, I.shape[1] // 2] / per["peak"].mean())
-    # Stray light: power in the array region outside the site cells, relative to input.
+    pk_mean = per["peak"].mean()
+    m["axis_intensity_over_mean_site_peak"] = float(I[I.shape[0] // 2, I.shape[1] // 2] / pk_mean)
+    vals, rad = interstitial_stats(I, dxu, tsites, cfg["site_pitch_um"])
+    vals = vals / pk_mean
+    m["interstitial_median"] = float(np.median(vals))
+    m["interstitial_p99"] = float(np.percentile(vals, 99))
+    m["interstitial_max"] = float(vals.max())
+    m["interstitial_max_radius_um"] = float(rad[np.argmax(vals)])
+    m["mean_site_offset_um"] = (float(np.mean(per["x"] - tsites[:, 0])), float(np.mean(per["y"] - tsites[:, 1])))
+    return m, per, I
+
+
+def simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, errors, nf, n, dx, stack_eval=None):
+    t0 = time.time()
+    F, p_pix, p_inc_pix = render_fold(cfg, stack, lam, na, ill, g, fs, fstab, tab, d, lookup, errors, nf, n, dx)
+    p_in = p_inc_pix * dx * dx  # efficiencies relative to the light incident on the metasurface
+    m, per, _ = focal_metrics(cfg, F, dx, lam, na, sites, p_in, stack_eval=stack_eval if stack_eval is not None else stack)
+    m["metasurface_transmission"] = float(p_pix / p_inc_pix)
     m["seconds"] = time.time() - t0
     return m, per, p_in
 
