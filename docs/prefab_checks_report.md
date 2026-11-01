@@ -56,7 +56,7 @@ fit to the found peaks, and without repeating the feedback (results/checks_v2, c
 | tilt 0.1 deg | 7.4 % | 0.76 | 0.855 | 2.5 um lateral |
 | tilt 0.25 deg | 14.8 % | 0.59 | 0.840 | 6.2 um lateral |
 | tilt 0.5 deg | 24.7 % | 0.36 | 0.790 | 12.1 um lateral |
-<!-- TILT1 -->
+| tilt 1 deg | 31.7 % | 0.20 | 0.734 | array fails (peaks displaced ~1 um rms after fitting) |
 
 The array follows the focus: a wall thicker by dt moves it by -dt cos(t)/sqrt(n^2 - sin^2 t)
 ~ -0.66 dt (rms ray), which the atoms follow, and a tilted wall shifts it laterally by
