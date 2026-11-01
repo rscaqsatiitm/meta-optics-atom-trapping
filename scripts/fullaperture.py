@@ -47,14 +47,14 @@ def build_lookup(cfg, lam):
     return L.build(w[ok], t[ok], lc["pitch_um"], lc["height_um"], n_in, 1.0, L.FabLimits(min_feature_um=0, min_gap_um=0, max_aspect=1e9))
 
 
-def simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, errors, nf, n, dx):
+def simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, errors, nf, n, dx, stack_eval=None):
     holo = S.render_grid_symmetric(g, stack, na, ill, fs, fstab, d.coeffs, tab, lam, upsample=cfg.get("render_upsample", 8))
     t0 = time.time()
     blocks = metasurface_blocks(n, dx, stack, lam, na, None, None, ill, holo=holo, lookup=lookup, pillar_errors=errors, block=cfg.get("block_rows", 128), with_incident=True)
     F, p_pix, p_inc_pix = fold_blocks(blocks, n, nf)
     del holo
     gc.collect()
-    foc = propagate_folded(F, dx, lam, stack)
+    foc = propagate_folded(F, dx, lam, stack_eval if stack_eval is not None else stack)
     del F
     half = np.abs(sites).max() + 4 * cfg["site_pitch_um"]
     w = int(np.ceil(2 * half / dx / 2) * 2)
@@ -79,6 +79,14 @@ def main(cfg_path):
     lam, na, pitch, dx = cfg["wavelength_um"], cfg["na"], cfg["site_pitch_um"], cfg["pixel_um"]
     stack = LayerStack.from_list(cfg["stack"])
     radius = stack.aperture_for_na(na, lam)
+    # Optional array defocus: the sites are designed and evaluated in a plane array_defocus_um
+    # beyond the lens focus (exact kernels to the shifted plane), while the metasurface lens
+    # phase still focuses at the original plane. Undiffracted (zero-order) light then reaches
+    # the array plane defocused by many Rayleigh ranges.
+    dz = float(cfg.get("array_defocus_um", 0.0))
+    layers = [list(l) for l in cfg["stack"]]
+    layers[-1][0] = float(layers[-1][0]) + dz
+    stack_sites = LayerStack.from_list(layers)
     ill = dict(cfg["illumination"])
     if "edge_frac" in ill:
         ill["edge_um"] = ill.pop("edge_frac") * radius
@@ -88,7 +96,7 @@ def main(cfg_path):
     fs, fstab, inv = S.wedge_sites(sites)
     rmax = np.abs(sites).max() * np.sqrt(2)
     g = PupilGrid.for_sites(lam, pitch, 4, na, 2 * rmax, guard=cfg.get("pupil_guard", 1.25))
-    tab = OPLTable(stack, lam, radius + 2 * rmax + 20)
+    tab = OPLTable(stack_sites, lam, radius + 2 * rmax + 20)
     nf = cfg["n_fold"]
     n = int(np.ceil((2 * radius / dx + 2) / nf) * nf)
     print(f"aperture {2*radius/1000:.2f} mm, metasurface {n}^2 = {n*n/1e9:.2f} Gpx, {len(sites)} sites ({len(fs)} fundamental), "
@@ -130,7 +138,7 @@ def main(cfg_path):
 
     if not feedback_done:
         for rnd in range(rnd0, n_rounds + 1):
-            m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, None, None, nf, n, dx)
+            m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, None, None, nf, n, dx, stack_sites)
             h = {"round": rnd, **{k: m[k] for k in ("depth_nonuniformity_rms", "depth_min_over_mean", "array_efficiency", "core_efficiency", "axis_intensity_over_mean_site_peak")}}
             results["feedback_history"] = [x for x in results["feedback_history"] if x["round"] != rnd] + [h]
             print("ideal pillars, round", rnd, h, f"{m['seconds']:.0f}s", flush=True)
@@ -156,7 +164,7 @@ def main(cfg_path):
         if case["name"] in results["runs"]:
             print("skip (done)", case["name"], flush=True)
             continue
-        m, per, _ = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, case.get("errors"), nf, n, dx)
+        m, per, _ = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, case.get("errors"), nf, n, dx, stack_sites)
         results["runs"][case["name"]] = m
         print(case["name"], {k: round(v, 4) for k, v in m.items() if isinstance(v, float)}, flush=True)
         np.savez_compressed(out / f"per_site_{case['name']}.npz", sites=sites, **per)
