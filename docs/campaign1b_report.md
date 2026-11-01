@@ -207,7 +207,31 @@ reduces the on-axis intensity from 0.10 to 0.010 of a site peak and, because the
 sites no longer interfere with it, the non-uniformity after one feedback round from 9.8 % to
 4.4 %.
 
-<!-- V2DZ -->
+v2 with the array 50 um beyond the lens focus (results/fullaperture_v2_dz50;
+configs/fullaperture_v2_dz50.yaml):
+
+| Case | Depth non-uniformity (rms) | Min / mean | Array efficiency | On-axis intensity / site peak |
+|---|---|---|---|---|
+| Ideal phase, no feedback | 6.3 % | 0.68 | 0.846 | 0.026 |
+| Ideal phase, 1 round | 6.0 % | 0.80 | 0.853 | 0.004 |
+| Ideal phase, 2 rounds | 5.3 % | 0.84 | 0.858 | 0.11 |
+| Library pillars (LPA) | 5.4 % | 0.84 | 0.826 | 0.11 |
+| + 5 nm rms width noise | 5.7 % | 0.81 | 0.796 | 0.11 |
+
+| Case | Utilisation | Mean depth, 20,164 sites, 50 W | 100 W |
+|---|---|---|---|
+| Ideal phase | 0.658 | 0.37 mK | 0.74 mK |
+| Library pillars | 0.633 | 0.36 mK | 0.71 mK |
+| + 5 nm noise | 0.609 | 0.34 mK | 0.68 mK |
+
+The array defocus raises the weakest site from 0.78 to 0.84 of the mean at equal rms
+non-uniformity and costs no efficiency. The on-axis intensity drops from 0.21 to 0.026 before
+feedback and from 0.38 to 0.11 after two rounds. A zero order focused 50 um before the array
+plane would be weaker there by ~(z_R / dz)^2 ~ 5e-4 (DERIVED, z_R ~ 1.1 um), so we expect the
+residual 0.11 to be interstitial background rather than a focused spot. We have not checked
+this: the interstitial intensity statistics were not saved in these runs. This is the first
+check for the next campaign, together with an explicit dark-point constraint at the axis if
+the residual proves to be a coherent spot.
 
 ## 6. Limitations
 
