@@ -71,7 +71,7 @@
     ],
     "power_budget": {
       "core_fraction_ideal": 0.82,
-      "na_eff": 0.538,
+      "na_eff": 0.574,
       "powers_W": [
         50,
         100
@@ -87,7 +87,7 @@
     "_config_path": "configs/fullaperture_v1.yaml"
   },
   "git": {
-    "commit": "b0c55f6048281d9eef5c51097766f4c620dfa78f",
+    "commit": "e3d2d4aacdd243af143ef3b461f9edb6e5a6d745",
     "dirty": "True"
   },
   "versions": {
@@ -105,5 +105,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-01T09:45:59+00:00"
+  "utc": "2026-11-01T10:37:51+00:00"
 }

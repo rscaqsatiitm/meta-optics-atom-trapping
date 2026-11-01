@@ -11,6 +11,7 @@ and the WGS warm-started. Writes metrics.json and per-site npz.
 """
 
 import gc
+import json
 import sys
 import time
 
@@ -89,49 +90,77 @@ def main(cfg_path):
     g = PupilGrid.for_sites(lam, pitch, 4, na, 2 * rmax, guard=cfg.get("pupil_guard", 1.25))
     tab = OPLTable(stack, lam, radius + 2 * rmax + 20)
     nf = cfg["n_fold"]
-    n = int(np.ceil(2 * radius / dx / nf + 0.01) * nf)
+    n = int(np.ceil((2 * radius / dx + 2) / nf) * nf)
     print(f"aperture {2*radius/1000:.2f} mm, metasurface {n}^2 = {n*n/1e9:.2f} Gpx, {len(sites)} sites ({len(fs)} fundamental), "
           f"pupil n={g.n} ds={g.ds:.2e} s_max={g.s_max:.3f}", flush=True)
 
-    t0 = time.time()
-    wp = S.WedgePupil.build(g, stack, na, ill)
-    K = S.kernels_G(wp, fs, tab, lam)
-    print(f"K_G {K.shape} {K.nbytes/1e9:.2f} GB in {time.time()-t0:.0f}s", flush=True)
-    d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("wgs_iter", 60), n_fix=cfg.get("wgs_fix", 30))
-    mult = 8.0 / fstab
-    eta = np.abs(d.mode_amp) ** 2
-    pred = {"mode_efficiency_sum": float(np.sum(mult * eta)),
-            "nonuniformity_rms": float(np.sqrt(np.sum(mult * (eta - np.sum(mult * eta) / mult.sum()) ** 2) / mult.sum()) / (np.sum(mult * eta) / mult.sum()))}
-    print("pupil model", pred, flush=True)
-    lookup = build_lookup(cfg, lam)
-    results = {"aperture_mm": 2 * radius / 1000, "n_pixels": n * n, "n_sites": len(sites), "pupil_model": pred, "runs": {}}
+    # Checkpointing: design state after every feedback round, metrics after every step,
+    # so a run longer than one background session resumes where it stopped.
+    state_path, metrics_path = out / "state.npz", out / "metrics.json"
+    results = json.load(open(metrics_path)) if metrics_path.exists() else {}
+    results.setdefault("runs", {})
+    results.setdefault("feedback_history", [])
+    n_rounds = cfg.get("feedback_rounds", 0)
+    state = dict(np.load(state_path)) if state_path.exists() else None
+    feedback_done = bool(state is not None and int(state["next_round"]) > n_rounds)
 
-    tgt = np.ones(len(fs))
-    hist = []
-    for rnd in range(cfg.get("feedback_rounds", 0) + 1):
-        m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, None, None, nf, n, dx)
-        hist.append({"round": rnd, **{k: m[k] for k in ("depth_nonuniformity_rms", "depth_min_over_mean", "array_efficiency", "core_efficiency", "axis_intensity_over_mean_site_peak")}})
-        print("ideal pillars, round", rnd, hist[-1], f"{m['seconds']:.0f}s", flush=True)
-        if rnd == cfg.get("feedback_rounds", 0):
-            break
-        pk = per["peak"]
-        orbit_mean = np.bincount(inv, weights=pk) / np.bincount(inv)
-        tgt = tgt * (pk.mean() / orbit_mean) ** cfg.get("feedback_gain", 0.5)
-        d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt)
-    results["runs"]["ideal"] = m
-    results["feedback_history"] = hist
-    np.savez_compressed(out / "per_site_ideal.npz", sites=sites, **per)
+    wp = K = None
+    if not feedback_done:
+        t0 = time.time()
+        wp = S.WedgePupil.build(g, stack, na, ill)
+        K = S.kernels_G(wp, fs, tab, lam)
+        print(f"K_G {K.shape} {K.nbytes/1e9:.2f} GB in {time.time()-t0:.0f}s", flush=True)
+    if state is None:
+        d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("wgs_iter", 60), n_fix=cfg.get("wgs_fix", 30))
+        mult = 8.0 / fstab
+        eta = np.abs(d.mode_amp) ** 2
+        mean = np.sum(mult * eta) / mult.sum()
+        results["pupil_model"] = {"mode_efficiency_sum": float(np.sum(mult * eta)),
+                                  "nonuniformity_rms": float(np.sqrt(np.sum(mult * (eta - mean) ** 2) / mult.sum()) / mean)}
+        print("pupil model", results["pupil_model"], flush=True)
+        tgt, rnd0 = np.ones(len(fs)), 0
+    else:
+        d = S.SymWGSResult(psi=state["psi"], coeffs=state["coeffs"], mode_amp=np.zeros(len(fs)), history_nonuniformity=[], history_efficiency=[])
+        tgt, rnd0 = state["tgt"], int(state["next_round"])
+        print(f"resumed from checkpoint at round {rnd0}", flush=True)
+    results.update({"aperture_mm": 2 * radius / 1000, "n_pixels": n * n, "n_sites": len(sites)})
+
+    def save_state(next_round):
+        np.savez_compressed(state_path, psi=d.psi, coeffs=d.coeffs, tgt=tgt, next_round=next_round)
+
+    if not feedback_done:
+        for rnd in range(rnd0, n_rounds + 1):
+            m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, None, None, nf, n, dx)
+            h = {"round": rnd, **{k: m[k] for k in ("depth_nonuniformity_rms", "depth_min_over_mean", "array_efficiency", "core_efficiency", "axis_intensity_over_mean_site_peak")}}
+            results["feedback_history"] = [x for x in results["feedback_history"] if x["round"] != rnd] + [h]
+            print("ideal pillars, round", rnd, h, f"{m['seconds']:.0f}s", flush=True)
+            if rnd == n_rounds:
+                results["runs"]["ideal"] = m
+                np.savez_compressed(out / "per_site_ideal.npz", sites=sites, **per)
+                save_state(n_rounds + 1)
+                write_json(metrics_path, results)
+                break
+            pk = per["peak"]
+            orbit_mean = np.bincount(inv, weights=pk) / np.bincount(inv)
+            tgt = tgt * (pk.mean() / orbit_mean) ** cfg.get("feedback_gain", 0.5)
+            d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt)
+            save_state(rnd + 1)
+            write_json(metrics_path, results)
     del K
     gc.collect()
 
+    lookup = build_lookup(cfg, lam)
     for case in cfg.get("pillar_cases", []):
         if lookup is None:
             break
-        errs = case.get("errors")
-        m, per, _ = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, errs, nf, n, dx)
+        if case["name"] in results["runs"]:
+            print("skip (done)", case["name"], flush=True)
+            continue
+        m, per, _ = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, lookup, case.get("errors"), nf, n, dx)
         results["runs"][case["name"]] = m
         print(case["name"], {k: round(v, 4) for k, v in m.items() if isinstance(v, float)}, flush=True)
         np.savez_compressed(out / f"per_site_{case['name']}.npz", sites=sites, **per)
+        write_json(metrics_path, results)
 
     # Power budget from the simulated efficiency (ideal or library pillars), with stated extra factors.
     pb_cfg = cfg.get("power_budget")
@@ -143,7 +172,7 @@ def main(cfg_path):
             rows[name] = {"utilisation": util, **{f"depth_mK_at_{p}W": float(pb.depth_K(p, len(sites)) * 1e3) for p in pb_cfg["powers_W"]}}
         results["power_budget"] = rows
         print("power budget", rows, flush=True)
-    write_json(out / "metrics.json", results)
+    write_json(metrics_path, results)
 
 
 if __name__ == "__main__":
