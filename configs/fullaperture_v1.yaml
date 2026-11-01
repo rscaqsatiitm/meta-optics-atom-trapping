@@ -27,7 +27,7 @@ pillar_cases:
   - {name: library_bias+10nm, errors: {bias_um: 0.010, seed: 3}}
 power_budget:
   core_fraction_ideal: 0.82   # core (first-dark-ring) fraction of the aberration-free spot of this pupil [SIM: bench reference 0.817-0.82]
-  na_eff: 0.538               # SIM: ideal-spot peak per watt of the hard top-hat pupil (hologram_b1_cell20mm)
+  na_eff: 0.574               # SIM: ideal-spot peak per watt of the hard top-hat pupil (hologram_b1_cell20mm, after the pupil-grid fix)
   powers_W: [50, 100]
   extra_factors:
     edge_vs_lpa: 0.879        # SIM: supercell factor, Si-rich, top hat (edge_factor.json); not in the per-pixel LPA
