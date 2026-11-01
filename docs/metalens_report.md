@@ -34,6 +34,11 @@ Mechanical tolerances (852 nm, Strehl >= 0.92 over the field after refocusing):
 uncorrected, a 0.1 deg tilt is equivalent to a 28 um decentre and fails;
 (v) tilt of the cell relative to the objective <= 0.1 deg (0.93 at the corner).
 
+Efficiency (Section 6): blazed-supercell RCWA of the single-pillar libraries gives an estimated
+doublet focusing efficiency of 0.80 to 0.83 at 852 and 1064 nm (LPCVD or Si-rich SiN). The loss
+sits in the outer zones of the focusing plate, where the deflection reaches 0.5 (ring
+efficiency 0.73 to 0.81).
+
 ## 1. Why this architecture
 
 | Architecture (852 nm, NA 0.5) | Strehl at image height 0 / 75 / 150 / 282 / 400 um (best focus per field) |
@@ -200,7 +205,36 @@ path (for example the hologram side, or a dichroic-combined beam focused by its 
 
 ## 6. Meta-atom efficiency at the required deflection
 
-<!-- META -->
+Method (scripts/metalens_efficiency.py; results/library_analysis_852, _1064;
+results/metalens_doublet/efficiency.json). For each film we use the pillar family chosen from
+the single-pillar library at that wavelength (square SiN pillars on fused silica, fabrication
+limits 0.10 um feature and gap, aspect ratio <= 10; analyse_library.py). We compute the
+first-order efficiency of blazed supercells of N = 3, 4, 5, 6 and 8 pillars by RCWA (fmmax,
+80 Fourier terms per pillar, 48 x 48 grid per pillar), for x and y polarisation, and take the
+mean of the two. The efficiency is interpolated linearly in the local deflection
+s = |dphi/dr| / k0, with the LPA value at s = 0. It is then averaged over each plate, weighted
+by a uniform pupil followed along the design rays.
+
+| Wavelength, film | Family (pitch, height) | eta at s ~ 0.5 (x / y) | Corrector | Focusing plate (rings 0-0.5 / 0.9-1.0 R1) | Doublet |
+|---|---|---|---|---|---|
+| 852 nm, LPCVD (n ~ 2.0) | 0.55 um, 1.7 um | 0.76 / 0.60 (s = 0.52) | 0.967 | 0.825 (0.90 / 0.73) | 0.80 |
+| 852 nm, Si-rich (n ~ 2.3) | 0.45 um, 1.3 um | 0.69 / 0.76 (s = 0.47) | 0.963 | 0.851 (0.91 / 0.74) | 0.82 |
+| 1064 nm, LPCVD | 0.60 um, 1.6 um | 0.82 / 0.78 (s = 0.44) | 0.960 | 0.841 (0.90 / 0.79) | 0.81 |
+| 1064 nm, Si-rich | 0.50 um, 1.6 um | 0.82 / 0.70 (s = 0.53) | 0.961 | 0.862 (0.92 / 0.81) | 0.83 |
+
+Hence a single-wavelength doublet is expected to focus 0.80 to 0.83 of the transmitted light
+(Provisional). The losses are reflection (4 to 28 % in the steepest supercells) and light
+in the zero and -1 orders. Three limitations apply. (i) The supercells sample s coarsely
+(N = 3 and 4 are the only points above s = 0.35), and the N = 3 values scatter between
+polarisations and films by +/-0.08, so the outer-ring values are uncertain at that level.
+(ii) The averaging ignores the correlation between the zones of the two plates and the
+polarisation structure of a linearly polarised beam. (iii) Substrate Fresnel losses
+(~3.5 % per uncoated silica face) are excluded; anti-reflection coatings are assumed. The
+outer-ring deficit (0.73 to 0.81 against 0.90 to 0.92 near the axis) apodises the pupil
+slightly. This lowers the peak intensity relative to the transmitted power and broadens the
+spot by an amount not computed here. These numbers are for one wavelength per plate. A
+two-wavelength meta-molecule library (Section 5) will have lower efficiency, by an amount not
+known before that library is simulated; Arbabi et al. measured 65 % at NA 0.46.
 
 ## 7. Mechanical tolerances
 
@@ -247,16 +281,17 @@ for the measured value: a +200 um error leaves 0.85, uncorrectable by refocusing
 ## 8. Limitations and next steps
 
 Limitations: (i) scalar ray optics off axis; the wave check covers the axis only. (ii)
-Ideal phase maps: no meta-atom efficiency, quantisation or local-periodic-approximation
-error is included in Sections 1 to 5 and 7 (see Section 6). (iii) Plate substrates and
+Ideal phase maps in Sections 1 to 5 and 7: the meta-atom efficiency enters only through the
+aperture averages of Section 6, not through the imaging (no quantisation or local-periodic-
+approximation phase error is propagated). (iii) Plate substrates and
 their tolerances, thermal effects of the 1064 nm beam on the plates, and polarisation (vector
 focusing: an 8 % peak reduction at NA 0.55 on side A, results/vector_check) are not included. (iv)
 Collection efficiency for imaging (NA 0.5 collects 6.7 % of isotropic fluorescence, DERIVED:
 (1 - cos asin 0.5) / 2) is set by the NA, not modelled here.
 
 Next steps: (i) two-wavelength (852/1064 nm) meta-atom library by RCWA (pillar pairs or ring
-pillars) and its torus coverage; (ii) the focusing-plate efficiency map from supercells at
-deflections 0 to 0.53 (Section 6); (iii) an off-axis wave check (Kirchhoff integral from the
+pillars) and its torus coverage; (ii) denser supercell sampling above s = 0.35 (non-integer
+blazes or larger supercells), to firm up the outer-ring efficiency of Section 6; (iii) an off-axis wave check (Kirchhoff integral from the
 focusing plate with exact cell kernels, as for the hologram); (iv) a substrate-bearing
 version of the design (layered spacer) and its tolerances.
 
@@ -265,6 +300,7 @@ version of the design (layered spacer) and its tolerances.
 | Value | Location | Type | Pointer |
 |---|---|---|---|
 | Strehl, focus, deflections, tolerances, chromatic data | Sections 1 to 3, 5, 7 | SIM, review before submission | results/metalens_doublet/doublet.json |
+| Plate and doublet efficiencies | Section 6, Summary | SIM, review before submission | results/metalens_doublet/efficiency.json; results/library_analysis_852, _1064/supercell.json |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
 | Polynomial-optimisation failures | Section 1 | SIM | results/metalens_study/metalens_study.json |
