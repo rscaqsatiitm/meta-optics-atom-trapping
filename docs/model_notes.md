@@ -35,6 +35,9 @@ plain-FFT (Laurent) formulation converges slowly (0.07 rad error at 317 terms); 
 which uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms, an independent check of
 the wrapper and phase conventions.
 
+Numerical validity filter: entries with cross-polarised amplitude above 0.05 (forbidden
+by symmetry; found only at narrow gaps and resonances) are excluded from the lookup.
+
 Fabrication limits (default, `[CONFIRM?: CNNP etch capability]`): minimum feature
 100 nm, minimum gap 100 nm, aspect ratio h/w <= 10.
 

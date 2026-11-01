@@ -28,6 +28,10 @@ class FabLimits:
     min_feature_um: float = 0.10
     min_gap_um: float = 0.10
     max_aspect: float = 10.0
+    # Numerical validity: square pillars at normal incidence have zero cross-polarised
+    # transmission by symmetry. Entries above this amplitude (wide pillars with narrow
+    # gaps at resonances, where the RCWA is least converged) are excluded.
+    max_cross: float = 0.05
 
 
 @dataclass
@@ -144,6 +148,8 @@ def scan_geometries(lib, material: str, lam_um: float, n_in: float, lim: FabLimi
             if np.any(~np.isfinite(t)):
                 continue
             ok = feasible(w, p, h, lim)
+            if lib.t_cross is not None:
+                ok &= lib.t_cross[im, ip, ih, il] <= lim.max_cross
             if ok.sum() < 4:
                 continue
             wd, td = densify(w[ok], t[ok])

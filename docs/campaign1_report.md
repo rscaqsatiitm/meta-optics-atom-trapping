@@ -86,7 +86,15 @@ uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms. This is an independent 
 the solver wrapper and its phase convention. The library (data/library_main.h5,
 configs/library_main.yaml) covers 5 pitches (0.40 to 0.60 um), 13 heights (0.8 to
 2.0 um), 40 widths and 4 wavelengths for LPCVD SiN (Luke et al. dispersion) and Si-rich
-SiN (n = 2.3, `[VALUE?]`), at 197 terms on a 256 grid.
+SiN (n = 2.3, `[VALUE?]`), at 197 terms on a 256 grid; about 20,800 RCWA solves in all. A
+symmetry check flags unreliable entries: square pillars at normal incidence have zero
+cross-polarised transmission, yet 4 to 24 % of entries per (wavelength, pitch) show a
+cross-polarised amplitude above 0.01, up to 0.55. They occur only for wide pillars
+(width above 0.6 of the pitch, mostly above 0.8, i.e. narrow gaps) at resonances (mean T0
+0.46 against 0.94 elsewhere), where the RCWA is least converged. The lookup now excludes
+entries above 0.05. The two selected families are unaffected (maximum 0.012 within their
+fabricable widths). Wide-pillar entries at 895 and 852 nm should be recomputed at higher
+order before they are used for the meta-objective.
 
 Selection at 1075 nm (results/library_analysis_1075). Geometries are ranked by the
 first-order efficiency of a 16-level blazed grating in the local-periodic approximation,

@@ -128,6 +128,7 @@ class Library:
     T: np.ndarray
     R: np.ndarray
     attrs: dict
+    t_cross: np.ndarray | None = None
 
     @classmethod
     def load(cls, path: str | Path) -> "Library":
@@ -137,6 +138,7 @@ class Library:
                 pitch_um=f["pitch_um"][:], height_um=f["height_um"][:],
                 wavelength_um=f["wavelength_um"][:], width_frac=f["width_frac"][:],
                 t=f["t"][:], T0=f["T0"][:], T=f["T"][:], R=f["R"][:], attrs=dict(f.attrs),
+                t_cross=f["t_cross"][:] if "t_cross" in f else None,
             )
 
     def index(self, material: str, pitch: float, height: float, lam: float):
