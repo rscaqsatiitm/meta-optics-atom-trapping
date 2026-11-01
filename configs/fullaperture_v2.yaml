@@ -20,7 +20,7 @@ feedback_rounds: 2
 block_rows: 64
 feedback_gain: 0.5
 feedback_wgs_iter: 30
-library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.5}
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}   # selected with the literature film estimate (library_analysis_est_1075)
 pillar_cases:
   - {name: library_lpa}
   - {name: library_sigma5nm, errors: {sigma_um: 0.005, seed: 1}}

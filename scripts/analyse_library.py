@@ -69,6 +69,23 @@ def main(cfg_path):
         print(mat, "best", best, flush=True)
     write_json(out / "selection.json", selection)
 
+    # Absorption of the chosen family (A = 1 - T - R), averaged uniformly over phase
+    # through the lookup table (each phase level is equally used by a hologram).
+    absorb = {}
+    for mat, best in selection.items():
+        p, h = best["pitch_um"], best["height_um"]
+        im, ip, ih, il = lib.index(mat, p, h, lam)
+        w = lib.width_frac * p
+        A = 1.0 - lib.T[im, ip, ih, il] - lib.R[im, ip, ih, il]
+        lk = L.build(w, lib.t[im, ip, ih, il], p, h, n_in, 1.0, lim)
+        a_tab = np.interp(lk.table_width, w, A)
+        absorb[mat] = {"absorbed_fraction_phase_avg": float(np.mean(a_tab)), "absorbed_fraction_max": float(a_tab.max()),
+                       "absorbed_fraction_min": float(a_tab.min())}
+        print(mat, "absorption", absorb[mat], flush=True)
+    write_json(out / "absorption.json", absorb)
+    if not cfg.get("run_sensitivity", True):
+        return
+
     # Sensitivity of the chosen family: +/- width bias and +/- index change (direct RCWA).
     sens = {}
     for mat, best in selection.items():

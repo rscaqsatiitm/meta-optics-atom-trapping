@@ -1,0 +1,134 @@
+{
+  "config": {
+    "run_id": "thermal_film_estimates",
+    "cases": [
+      {
+        "name": "ours_fs_0.5mm_tophat",
+        "substrate": "fused_silica",
+        "thickness_mm": 0.5,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "top_hat"
+        },
+        "powers_W": [
+          50,
+          100
+        ],
+        "a_film": [
+          3.5e-06,
+          0.00027,
+          0.00059,
+          0.0027
+        ]
+      },
+      {
+        "name": "ours_fs_1mm_tophat",
+        "substrate": "fused_silica",
+        "thickness_mm": 1.0,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "top_hat"
+        },
+        "powers_W": [
+          50,
+          100
+        ],
+        "a_film": [
+          3.5e-06,
+          0.00027,
+          0.00059,
+          0.0027
+        ]
+      },
+      {
+        "name": "ours_sapphire_0.5mm_tophat",
+        "substrate": "sapphire",
+        "thickness_mm": 0.5,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "top_hat"
+        },
+        "powers_W": [
+          50,
+          100
+        ],
+        "a_film": [
+          3.5e-06,
+          0.00027,
+          0.00059,
+          0.0027
+        ]
+      }
+    ],
+    "inversions": [],
+    "_config_path": "configs/thermal_film_estimates.yaml"
+  },
+  "git": {
+    "commit": "f5a228f70bd43fe5431a4c59618a3f2a3ebd79d1",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-01T08:36:19+00:00"
+}
