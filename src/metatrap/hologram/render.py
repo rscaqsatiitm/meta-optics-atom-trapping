@@ -36,8 +36,13 @@ def metasurface_blocks(
     extra_phase=None,
     holo: RenderGrid | None = None,
     pillar_errors: dict | None = None,
+    with_incident: bool = False,
 ):
     """Yield (row_start, complex64 block) of the field just after the metasurface.
+
+    With ``with_incident`` the generator yields (row_start, block, incident_power_sum),
+    where the last item is sum |illumination amplitude|^2 over the block (per pixel area),
+    so that efficiencies can be quoted relative to the light incident on the metasurface.
 
     The optical axis is at pixel n//2. ``ps``/``psi`` may be None for a plain lens.
     ``holo`` (a fine RenderGrid from exact.render_grid) takes precedence over
@@ -99,7 +104,10 @@ def metasurface_blocks(
         amp = profile(illumination["kind"], Ri, radius, **kw)
         blk = np.zeros(R.shape, np.complex64)
         blk[inside] = (amp * t).astype(np.complex64)
-        yield r0, blk
+        if with_incident:
+            yield r0, blk, float(np.sum(amp**2))
+        else:
+            yield r0, blk
 
 
 def metasurface_field(n: int, dx: float, stack: LayerStack, lam_um: float, na: float, ps, psi, illumination: dict, **kw) -> np.ndarray:

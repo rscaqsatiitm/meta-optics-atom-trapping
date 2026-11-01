@@ -26,24 +26,31 @@ from .angular_spectrum import WORKERS, transfer_function
 from .layers import LayerStack
 
 
-def fold_blocks(blocks, n: int, n_fold: int) -> tuple[np.ndarray, float]:
-    """Fold (row_start, block) pieces of an n x n field (axis at n//2) modulo n_fold.
+def fold_blocks(blocks, n: int, n_fold: int):
+    """Fold (row_start, block[, incident]) pieces of an n x n field (axis at n//2) modulo n_fold.
 
-    Returns the folded field (axis at index 0) and the total power sum |E|^2 (per pixel area).
+    Returns (folded field with the axis at index 0, transmitted power sum |E|^2 per pixel
+    area); if the pieces carry an incident-power term, a third item with its sum is returned.
     n must be a multiple of n_fold.
     """
     if n % n_fold:
         raise ValueError("n must be a multiple of n_fold")
     F = np.zeros((n_fold, n_fold), np.complex128)
     power = 0.0
+    incident = None
     c = n // 2
-    for r0, blk in blocks:
+    for item in blocks:
+        r0, blk = item[0], item[1]
+        if len(item) > 2:
+            incident = (incident or 0.0) + item[2]
         b = blk.shape[0]
         power += float(np.sum(np.abs(blk) ** 2))
         cols = np.roll(blk, -c, axis=1).astype(np.complex128)  # column c -> 0; n % n_fold == 0
         cols = cols.reshape(b, n // n_fold, n_fold).sum(axis=1)
         rows = (np.arange(r0, r0 + b) - c) % n_fold
         np.add.at(F, rows, cols)
+    if incident is not None:
+        return F, power, incident
     return F, power
 
 
