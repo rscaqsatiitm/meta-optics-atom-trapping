@@ -1,0 +1,87 @@
+{
+  "reference": {
+    "peak": 11070709.367820725,
+    "p_core": 14102689.582357965,
+    "waist_um": 0.9932599591540087,
+    "p_in": 17258476.0,
+    "core_fraction": 0.8171457075559838
+  },
+  "grid": {
+    "n": 10240,
+    "dx_um": 0.5,
+    "pupil_n": 360,
+    "pupil_ds": 0.0026543209876543207,
+    "pupil_samples": 109015
+  },
+  "debye": {
+    "n_sites": 2304,
+    "depth_nonuniformity_rms": 0.2362427460628625,
+    "depth_min_over_mean": 0.2842770243239701,
+    "array_efficiency": 0.8774242371631072,
+    "core_efficiency": 0.6907109851803475,
+    "cell_power_nonuniformity_rms": 0.12443434721555265,
+    "waist_mean_um": 1.0034662518255946,
+    "waist_std_um": 0.02929050421785626,
+    "position_error_rms_um": 0.09875197777050988,
+    "strehl_mean": 0.9133668594193219,
+    "strehl_min": 0.5165381405183216,
+    "predicted_mode_efficiency_sum": 0.788414716720581,
+    "predicted_nonuniformity_rms": 0.19693492352962494,
+    "design_history_nonuniformity_final": 0.0033674214884130724
+  },
+  "exact": {
+    "n_sites": 2304,
+    "depth_nonuniformity_rms": 0.07774395751327462,
+    "depth_min_over_mean": 0.6523966902268784,
+    "array_efficiency": 0.8800201187009972,
+    "core_efficiency": 0.7514397733151432,
+    "cell_power_nonuniformity_rms": 0.09221527715084384,
+    "waist_mean_um": 0.9974151020498163,
+    "waist_std_um": 0.024306196726847494,
+    "position_error_rms_um": 0.07706642788476188,
+    "strehl_mean": 0.9844267745376085,
+    "strehl_min": 0.8358075763661693,
+    "predicted_mode_efficiency_sum": 0.9115680456161499,
+    "predicted_nonuniformity_rms": 0.0014719227328896523,
+    "design_history_nonuniformity_final": 0.0014718977834893051
+  },
+  "exact_feedback": {
+    "n_sites": 2304,
+    "depth_nonuniformity_rms": 0.045958373881856855,
+    "depth_min_over_mean": 0.8301258009967797,
+    "array_efficiency": 0.886577728927807,
+    "core_efficiency": 0.7570423730230775,
+    "cell_power_nonuniformity_rms": 0.0614001557681901,
+    "waist_mean_um": 0.9976141426288267,
+    "waist_std_um": 0.024288050601330064,
+    "position_error_rms_um": 0.07705178413330471,
+    "strehl_mean": 0.9837771359131077,
+    "strehl_min": 0.8004069900518889,
+    "predicted_mode_efficiency_sum": 0.9202385544776917,
+    "predicted_nonuniformity_rms": 0.07485499978065491,
+    "design_history_nonuniformity_final": 0.004315412622960866
+  },
+  "feedback_history": [
+    {
+      "round": 0,
+      "depth_nonuniformity_rms": 0.07774395751327462,
+      "depth_min_over_mean": 0.6523966902268784,
+      "array_efficiency": 0.8800201187009972,
+      "strehl_mean": 0.9844267745376085
+    },
+    {
+      "round": 1,
+      "depth_nonuniformity_rms": 0.06388434348012215,
+      "depth_min_over_mean": 0.8107389329643342,
+      "array_efficiency": 0.8844618317863884,
+      "strehl_mean": 0.9835912464027482
+    },
+    {
+      "round": 2,
+      "depth_nonuniformity_rms": 0.045958373881856855,
+      "depth_min_over_mean": 0.8301258009967797,
+      "array_efficiency": 0.886577728927807,
+      "strehl_mean": 0.9837771359131077
+    }
+  ]
+}

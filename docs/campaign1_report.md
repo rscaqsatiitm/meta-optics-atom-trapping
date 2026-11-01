@@ -91,7 +91,85 @@ than taken from the literature.
 
 ## 4. Hologram design: field aberration of the standard (Debye) design
 
-<!-- HOLOGRAM -->
+### 4.1 The Debye design is not adequate beyond ~100 um from the axis
+
+The usual design (weighted Gerchberg-Saxton with an FFT between pupil and focal plane,
+as for SLM arrays) assumes that the metasurface phase which focuses to site x_j is the
+on-axis lens phase plus a tilt in direction-cosine space. For direct projection
+through a 15 mm path this neglects a path difference of order |x_j|^2 / (2 WD) ~ 0.8 um
+at 150 um from the axis (DERIVED). Ray-traced through the actual layer stack
+(hologram/field_model.py), the residual after removing tilt and defocus gives, for
+NA 0.55 and a top-hat beam (results/hologram_b1_cell20mm, aberration_*.png):
+
+| Distance from axis (um) | 50 | 100 | 150 | 200 | 300 |
+|---|---|---|---|---|---|
+| Strehl ratio, Debye design | 0.999 | 0.988 | 0.939 | 0.819 | 0.346 |
+| Axial focus shift (um) | -0.14 | -0.57 | -1.28 | -2.27 | -5.10 |
+
+A 48 x 48 array at 4.5 um pitch has its corners at 150 um, so the Debye design costs ~6 %
+of depth at the corners and has 1.3 um of field curvature, above the 1 um focal
+tolerance of the error budget. A 100 x 100 array (corners at 318 um) would have
+corner Strehl ratios near 0.3. We do not know how refs. 4 and 14 handled this (the
+retrieved text of ref. 4 mentions block-wise FFT propagation), but ref. 4's measured
+first dark radius of 1.11 um against the 0.9 um design is consistent in sign with
+field-dependent aberration (Speculative).
+
+### 4.2 Exact-kernel design
+
+Replacing the tilt kernel by the exact path difference through the stack,
+K_ij = exp(-i k0 [OPL(r_i -> x_j) - OPL0(r_i)]), removes the field dependence at no
+extra cost for 2,304 sites (K is a 160,000 x 2,304 complex64 matrix, 16 s for 60 WGS
+iterations on 4 CPU cores). For the in-cell geometry, evaluated with the exact kernels:
+
+| Design | Mode efficiency, sum over sites | Depth non-uniformity (rms) | Corner / centre |
+|---|---|---|---|
+| Debye | 0.908 | 4.0 % | 0.82 |
+| Exact | 0.928 | 0.41 % | 0.99 |
+
+### 4.3 Full-pixel validation and two effects the pupil model misses
+
+We rendered the designs onto a 5 mm, NA 0.5 metasurface (10,240^2 pixels at 0.5 um,
+behind a 1 mm fused-silica plate) and propagated the full aperture with the exact scalar
+angular-spectrum method (scripts/validate_fullpixel.py). The plain lens reproduces the
+paraxial Airy peak intensity to 0.6 %. This geometry has a short working distance
+(4.7 mm), so its field aberration is stronger than in the cell (Strehl 0.62 at 150 um
+for the Debye design, against 0.94 in the cell). It is therefore a strict test of the
+exact kernels.
+
+The validation exposed two effects, both now handled in the code:
+
+1. Rendering. Bilinear interpolation of the hologram phase from the design pupil grid
+   acts as a focal-plane envelope sinc^2(x ds / lambda), which weakened corner sites
+   by ~2x. The back-propagated pupil field is now evaluated slightly beyond the NA and
+   Fourier-upsampled 8x before rendering (exact.render_grid). Direct per-pixel
+   evaluation of the exact site superposition gives the same result to 0.1 %.
+2. An edge-generated zero order. A hard-edged, phase-only aperture produces a focus
+   on the optical axis carrying ~1e-3 of the power, even though the design places only
+   2e-6 there. Resolved by radius, the discrepancy comes entirely from the outermost
+   ~5 % of the aperture radius, where the zero-order integrand oscillates at full
+   amplitude up to a discontinuity. Neither a finer pupil grid nor edge-coverage
+   weighting removes it. A raised-cosine edge on the illumination over 10 % of the
+   radius suppresses it ~30x (to 1.5 % of a site peak for a 24 x 24 array). Since the
+   zero-order power is fixed while the site power scales as 1/N, a hard-edged aperture
+   gives a zero-order spot brighter than a site for N ~ 1,000 or more; a soft-edged
+   top-hat shaper is therefore a requirement, not an option.
+
+Final full-pixel results, 48 x 48 sites, soft edge (results/fullpixel_bench5mm_softedge;
+configs/fullpixel_bench5mm_softedge.yaml):
+
+| Design | Depth non-uniformity (rms) | Min / mean depth | Mean Strehl | Array efficiency |
+|---|---|---|---|---|
+| Debye | 23.6 % | 0.28 | 0.91 | 0.877 |
+| Exact | 7.8 % | 0.65 | 0.98 | 0.880 |
+| Exact + 2 rounds of model feedback | 4.6 % | 0.83 | 0.98 | 0.887 |
+
+Array efficiency is the power within pitch/2 of each site divided by the incident
+power, for an ideal phase-only metasurface (no meta-atom losses). The feedback rounds
+rescale the WGS targets by (mean / measured peak)^0.5 using the full-pixel result as
+the measurement; experimentally this is camera or atom feedback. The residual 4.6 %
+is within the 10 % rms target of Table 1, before meta-atom and fabrication errors.
+
+<!-- INCELL -->
 
 ## 5. High-power thermal model (hypothesis H2a)
 
