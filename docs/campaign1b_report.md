@@ -9,7 +9,31 @@ in its erratum.
 
 ## Summary of results
 
-<!-- SUMMARY -->
+(i) Correction. A pupil-grid error in the campaign 1 design code clipped every design and
+produced the reported on-axis zero order; with it fixed, a plain hard-edged top hat
+performs as well as a soft edge, and the 5 mm bench reaches 4.7 % rms after two feedback
+rounds (Section 1).
+
+(ii) Films (literature estimates). Si-rich SiN with n(852 nm) = 2.30 is estimated at
+n(1075 nm) = 2.277 and k ~ 6.7e-5 (band 3e-5 to 3e-4); the selected pillar becomes 1.6 um tall,
+absorbs 5.9e-4 of the light, and moves the focus by 0.11 um at 100 W on 0.5 mm fused silica
+(0.50 um at the upper band), inside the 1 um budget. LPCVD SiN absorbs < 1e-5 (Section 2).
+
+(iii) Vector optics at NA 0.55 lowers the peak by 7.7 %, makes the spots 7 % elliptical and
+creates a fictitious magnetic field on Cs of up to 0.58 G per mK of depth; the bias field
+should be along the tweezer polarisation (Section 3).
+
+(iv) v1 at full aperture (48 x 48, 1.36 x 10^9 pixels): 8.0 % rms after two feedback rounds;
+with library pillars and 5 or 10 nm rms width noise the uniformity is unchanged and the
+efficiency falls from 0.84 to 0.80 or 0.75; 2,304 sites at 50 W reach 2.9 to 3.3 mK
+(Section 4).
+
+(v) v2, 20,164 sites at 4.0 um pitch from the same 18.4 mm metasurface: 5.3 to 5.7 % rms after
+two feedback rounds, with library pillars and 5 nm noise; 0.34 to 0.37 mK at 50 W and 0.68 to
+0.74 mK at 100 W. The exact-kernel design is mandatory (the standard design keeps a Strehl
+ratio of 0.02 at the corners). Designing the array 50 um beyond the lens focus removes the
+undiffracted light from the array plane and raises the weakest site from 0.78 to 0.84 of the
+mean (Section 5).
 
 ## 1. Correction to campaign 1 (pupil-grid clipping)
 
@@ -235,8 +259,47 @@ the residual proves to be a coherent spot.
 
 ## 6. Limitations
 
-<!-- LIMITATIONS -->
+(i) Scalar propagation in all full-aperture runs; the vector check (Section 3) supplies a
+7.7 % depth correction and the spot ellipticity for an on-axis spot only. Off-axis vector
+effects at 400 um field were not computed.
+
+(ii) Pillars enter through the local-periodic approximation per pixel. The coupling loss at
+large deflection (supercell factor 0.879) is applied as an aperture-averaged multiplier,
+not per pixel, so its effect on uniformity and stray light is not simulated. Width errors
+are uncorrelated per pillar; correlated errors (proximity effect, stitching fields of
+electron-beam writing) are not modelled and would act differently: a slowly varying width
+error behaves like a phase aberration and would degrade spots locally rather than add a
+diffuse background.
+
+(iii) Feedback uses the simulated focal intensity as the measurement, with two rounds only.
+In both v1 and v2 the non-uniformity was still falling after the second round.
+
+(iv) The film n(lambda) and k are literature estimates (Section 2); the Si-rich index
+extrapolation rests on five films that do not reach n(852) = 2.3.
+
+(v) The residual on-axis intensity of 0.11 of a site peak in v2 is not yet identified as
+background or as a coherent spot (Section 5).
+
+(vi) The folded propagation aliases stray light from more than 1.0 mm off axis into the
+window; on the 5 mm bench this changed the per-site depths by up to 2.5 %.
 
 ## Provenance ledger and open placeholders
 
-<!-- LEDGER -->
+All values below are SIM (review before submission) unless marked.
+
+| Value | Section | Pointer |
+|---|---|---|
+| Corrected bench, folded-validation and in-cell numbers | 1 | results/fullpixel_bench5mm*, folded_validation_5mm, hologram_b1_cell20mm, fullpixel_zeroorder_2mm_* |
+| Si-rich SiN n(lambda) (E0 = 5.83 eV, Ed = 23.5 eV) | 2 | DERIVED from SOURCE data (Luke 2015; Vogt 2015; Beliaev 2022); materials.py |
+| k = 1.8e-7 (LPCVD), 6.7e-5 (Si-rich), band 3e-5 to 3e-4 | 2 | SOURCE: Kumar et al. 2025 (DOI 10.1021/acsphotonics.5c01886); Steinlechner et al. 2017; band is an assumption |
+| Selected families, absorption 5.9e-4 / <1e-5 | 2 | results/library_analysis_est_1075 |
+| Thermal focal shifts with estimated absorption | 2 | results/thermal_film_estimates |
+| Vector factors (0.923, waists, circularity, fictitious field) | 3 | results/vector_check |
+| v1 full-aperture metrics and power budget | 4 | results/fullaperture_v1, fullaperture_v1_dz50 |
+| v2 full-aperture metrics and power budget | 5 | results/fullaperture_v2, fullaperture_v2_dz50 |
+| Debye-design aberration at v2 radii | 5 | hologram/field_model.py (command in session log; reproduce with spot_aberrations) |
+
+Open placeholders: cell geometry `[CONFIRM?]`; AR coatings (0.995, 0.99) and shaper
+throughput (0.95) `[VALUE?]`; v2 pitch 4.0 um `[CONFIRM?: compatible with the 895 nm
+addressing and Rydberg zone layout]`; CNNP etch limits `[CONFIRM?]`; Si-rich film index at
+852 nm (2.30, from ref. 14 as quoted in the proposal) `[VALUE?]`.
