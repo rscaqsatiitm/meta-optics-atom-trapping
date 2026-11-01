@@ -38,7 +38,7 @@
       }
     ],
     "pupil_oversample": 4,
-    "pupil_guard": 1.6,
+    "pupil_guard": 2.0,
     "wgs_iter": 60,
     "wgs_fix": 30,
     "laser_powers_W": [
@@ -56,7 +56,7 @@
     "_config_path": "configs/hologram_b1_cell20mm.yaml"
   },
   "git": {
-    "commit": "6a656bfb09229f550b32cb5330c52997033d2c32",
+    "commit": "78a477f1bb3f5316a98090d306e70dcb0ec62655",
     "dirty": "True"
   },
   "versions": {
@@ -74,5 +74,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-01T00:48:06+00:00"
+  "utc": "2026-11-01T09:32:32+00:00"
 }
