@@ -153,7 +153,61 @@ supercell edge factor 0.879 x AR-coated substrate 0.995 `[VALUE?]` x AR-coated c
 
 ## 5. v2: 20,000 sites
 
-<!-- V2 -->
+Target: 142 x 142 = 20,164 sites at 4.0 um pitch, from the same 18.4 mm, NA 0.55 metasurface
+(results/fullaperture_v2; configs/fullaperture_v2.yaml). Our choice of 4.0 um is a
+compromise between two considerations. First, a smaller pitch keeps the array corners
+closer to the axis (399 um against 450 um at 4.5 um pitch), which limits the field the
+hologram must correct and reduces the pupil sampling, and hence the design cost.
+However, a smaller pitch increases the overlap between neighbouring traps (Airy first
+zero 1.2 um, i.e. 0.3 of the pitch) and tightens the addressing tolerance of the 895 nm
+beams; ref. 4 used 4.30 um.
+
+Field of view. The Debye design is unusable at this size: its Strehl ratio is 0.82 at
+200 um, 0.44 at 282 um (the array edge) and 0.02 at the corners (399 um), with up to 9 um of
+field curvature (hologram/field_model.py). The exact-kernel design is therefore required,
+not merely preferable. Without symmetry the exact problem needs a ~1.7 x 10^6 x 20,164
+kernel (~270 GB); the D4 reduction (hologram/symmetric.py) needs 103,459 x 2,556 complex64
+entries (2.1 GB, built in 7 min on 4 cores). The reduction is exact (tests/test_hologram.py).
+
+Full-aperture results (1.36 x 10^9 pixels, folded into a 2.048 mm window):
+
+| Case | Depth non-uniformity (rms) | Min / mean | Array efficiency | On-axis intensity / site peak |
+|---|---|---|---|---|
+| Pupil model (exact kernels) | 0.24 % | - | mode efficiency 0.869 | - |
+| Ideal phase, no feedback | 7.0 % | 0.75 | 0.845 | 0.21 |
+| Ideal phase, 2 feedback rounds | 5.3 % | 0.78 | 0.854 | 0.38 |
+| Library pillars (LPA) | 5.5 % | 0.79 | 0.823 | 0.40 |
+| + 5 nm rms width noise | 5.7 % | 0.77 | 0.793 | 0.40 |
+
+Power budget (same factors as Section 4, NA_eff = 0.574):
+
+| Case | Utilisation | Mean depth, 20,164 sites, 50 W | 100 W |
+|---|---|---|---|
+| Ideal phase | 0.655 | 0.37 mK | 0.74 mK |
+| Library pillars | 0.631 | 0.35 mK | 0.71 mK |
+| + 5 nm noise | 0.607 | 0.34 mK | 0.68 mK |
+
+Hence 20,000 Cs traps at 0.34 to 0.37 mK need 50 W at 1075 nm, and 100 W gives 0.7 mK, inside
+the 0.3 to 1 mK range the proposal considers for loading and imaging. The array is uniform
+to 5 to 6 % rms after two feedback rounds, better than v1 at the same stage (8.0 %); we have
+not established why.
+
+Zero order. The on-axis spot, which lies between the four central sites, grows to 0.4 of a
+site peak in v2 (0.05 in v1), since its power is fixed while each site's power scales as
+1/N. It is a weak extra trap at ~40 % of the site depth, 2.8 um from four sites, and must be
+removed. We attribute it to the residual difference between the sampled pupil model and
+the continuous metasurface (Provisional): a 24 x 24 array on the 5 mm bench designed with
+coarse pupil sampling (guard 1.25) shows 0.14 of a site peak on the axis, whereas a 24 x 24
+array on a 2 mm aperture designed with fine sampling (guard 3, array off axis) shows 4e-4.
+The remedy we adopt
+is to design the array in a plane displaced from the lens focus: the exact kernels focus
+the sites at the shifted plane, while undiffracted light still focuses at the original
+plane, ~45 Rayleigh ranges away for a 50 um shift. On the 5 mm bench (24 x 24 sites) this
+reduces the on-axis intensity from 0.10 to 0.010 of a site peak and, because the central
+sites no longer interfere with it, the non-uniformity after one feedback round from 9.8 % to
+4.4 %.
+
+<!-- V2DZ -->
 
 ## 6. Limitations
 
