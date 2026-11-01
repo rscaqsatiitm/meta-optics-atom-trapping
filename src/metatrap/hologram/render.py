@@ -22,7 +22,7 @@ from ..propagation.layers import LayerStack
 from .exact import PupilSampling, RenderGrid
 
 
-def metasurface_field(
+def metasurface_blocks(
     n: int,
     dx: float,
     stack: LayerStack,
@@ -35,13 +35,20 @@ def metasurface_field(
     block: int = 256,
     extra_phase=None,
     holo: RenderGrid | None = None,
-) -> np.ndarray:
-    """Complex64 field (n x n) just after the metasurface; optical axis at pixel n//2.
+    pillar_errors: dict | None = None,
+):
+    """Yield (row_start, complex64 block) of the field just after the metasurface.
 
-    ``ps``/``psi`` may be None for a plain lens. ``holo`` (a fine RenderGrid from
-    exact.render_grid) takes precedence over ``ps``/``psi`` and should be used for
-    arrays wider than a few tens of um (see exact.render_grid for the reason).
-    ``extra_phase(r_um)`` adds a radial phase (e.g. a deliberate defocus) if given.
+    The optical axis is at pixel n//2. ``ps``/``psi`` may be None for a plain lens.
+    ``holo`` (a fine RenderGrid from exact.render_grid) takes precedence over
+    ``ps``/``psi`` and should be used for arrays wider than a few tens of um.
+    ``extra_phase(r_um)`` adds a radial phase if given.
+
+    With ``lookup`` each pixel takes the library transmission of the pillar chosen for
+    its phase (local-periodic approximation), scaled by sqrt(n_out/n_in) so that |E|^2
+    is a power density. ``pillar_errors`` = {"sigma_um": s, "bias_um": b, "seed": k}
+    adds a uniform width bias and independent Gaussian width noise per pixel before the
+    transmission is looked up (requires ``lookup``).
     """
     k0 = 2 * np.pi / lam_um
     radius = stack.aperture_for_na(na, lam_um)
@@ -56,7 +63,8 @@ def metasurface_field(
         hg = ps.to_grid(np.exp(1j * psi).astype(np.complex128), fill=0.0)
         holo_re, holo_im = hg.real, hg.imag
         ds, c0 = ps.grid.ds, ps.grid.n // 2
-    out = np.zeros((n, n), np.complex64)
+    rng = np.random.default_rng(pillar_errors.get("seed", 0)) if pillar_errors else None
+    amp_scale = np.sqrt(lookup.n_ratio) if lookup is not None else 1.0
     coords = (np.arange(n) - n // 2) * dx
     for r0 in range(0, n, block):
         xs = coords[r0 : r0 + block]
@@ -79,11 +87,26 @@ def metasurface_field(
             hr = map_coordinates(holo_re, [fi, fj], order=1, mode="constant")
             hi = map_coordinates(holo_im, [fi, fj], order=1, mode="constant")
             phi = phi + np.angle(hr + 1j * hi)
-        t = lookup.t_for_phase(phi) if lookup is not None else np.exp(1j * phi)
+        if lookup is None:
+            t = np.exp(1j * phi)
+        elif pillar_errors:
+            w = lookup.width_for_phase(phi) + pillar_errors.get("bias_um", 0.0)
+            if pillar_errors.get("sigma_um", 0.0) > 0:
+                w = w + pillar_errors["sigma_um"] * rng.standard_normal(w.shape)
+            t = lookup.t_of_width(w) * amp_scale
+        else:
+            t = lookup.t_for_phase(phi) * amp_scale
         amp = profile(illumination["kind"], Ri, radius, **kw)
         blk = np.zeros(R.shape, np.complex64)
         blk[inside] = (amp * t).astype(np.complex64)
-        out[r0 : r0 + block] = blk
+        yield r0, blk
+
+
+def metasurface_field(n: int, dx: float, stack: LayerStack, lam_um: float, na: float, ps, psi, illumination: dict, **kw) -> np.ndarray:
+    """Complex64 field (n x n) just after the metasurface; see metasurface_blocks."""
+    out = np.zeros((n, n), np.complex64)
+    for r0, blk in metasurface_blocks(n, dx, stack, lam_um, na, ps, psi, illumination, **kw):
+        out[r0 : r0 + blk.shape[0]] = blk
     return out
 
 

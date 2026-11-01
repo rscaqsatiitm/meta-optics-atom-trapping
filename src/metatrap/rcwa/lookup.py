@@ -56,6 +56,11 @@ class Lookup:
         m = len(self.table_phase)
         return np.round(np.mod(np.asarray(phi), 2 * np.pi) / (2 * np.pi) * m).astype(int) % m
 
+    def t_of_width(self, w_um):
+        """Library transmission at arbitrary widths (linear interpolation, clipped to the family)."""
+        w = np.clip(np.asarray(w_um, dtype=float), self.widths_um[0], self.widths_um[-1])
+        return np.interp(w, self.widths_um, self.t.real) + 1j * np.interp(w, self.widths_um, self.t.imag)
+
     def eta_levels(self, n_levels: int) -> float:
         return eta_n(self.widths_um, self.t, self.n_ratio, n_levels)[0]
 

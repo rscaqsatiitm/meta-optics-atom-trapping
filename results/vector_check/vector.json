@@ -1,0 +1,33 @@
+{
+  "r_v": -0.0801676896473527,
+  "alpha_s_au": 1124.8218042441054,
+  "scalar": {
+    "peak": 66681.20217548926,
+    "waist_x_um": 0.8864749608259358,
+    "waist_y_um": 0.8864749608260575
+  },
+  "rotation": {
+    "peak_over_scalar": 0.9227846920647406,
+    "waist_x_um": 0.944944151382149,
+    "waist_y_um": 0.8802289528749271,
+    "Ez2_max_over_peak": 0.04299462934038851,
+    "Ez2_fraction_power_in_window": 0.06954276886667134,
+    "Cx_max_in_half_max_core": 0.004055264576975295,
+    "Cy_max_in_half_max_core": 0.4829960219987639,
+    "Cz_max_in_half_max_core": 3.9778177363178835e-17,
+    "B_fict_y_max_core_G_per_mK": 0.5764460159277539,
+    "dBy_dx_centre_G_per_um_per_mK": 1.085353223280262
+  },
+  "projection": {
+    "peak_over_scalar": 0.9238230739864343,
+    "waist_x_um": 0.9423460908258011,
+    "waist_y_um": 0.8801266845881478,
+    "Ez2_max_over_peak": 0.0402537568692844,
+    "Ez2_fraction_power_in_window": 0.06601944941349797,
+    "Cx_max_in_half_max_core": 0.007885599659294255,
+    "Cy_max_in_half_max_core": 0.4704703753688693,
+    "Cz_max_in_half_max_core": 8.223910307665691e-17,
+    "B_fict_y_max_core_G_per_mK": 0.5614969091693961,
+    "dBy_dx_centre_G_per_um_per_mK": 1.0542763188157664
+  }
+}
