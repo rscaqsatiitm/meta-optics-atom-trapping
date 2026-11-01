@@ -1,0 +1,9 @@
+# Vector focusing of off-axis sites, in-cell stack, NA 0.55, top hat, 1075 nm (v2 corners at 399 um).
+run_id: vector_offaxis
+wavelength_um: 1.075
+na: 0.55
+stack: [[2500, air], [4000, fused_silica], [9000, air]]
+pupil_n: 300
+grid_half_um: 1.6
+grid_step_um: 0.04
+sites_um: [[0, 0], [200, 0], [282, 0], [0, 282], [200, 200], [282, 282]]
