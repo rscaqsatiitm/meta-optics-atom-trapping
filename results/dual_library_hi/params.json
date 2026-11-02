@@ -28,18 +28,6 @@
           1.6,
           2.0
         ]
-      },
-      {
-        "name": "si_crystalline",
-        "substrate": "sapphire_o",
-        "pitch_um": [
-          0.45
-        ],
-        "height_um": [
-          0.6,
-          0.8,
-          1.0
-        ]
       }
     ],
     "families": {
@@ -65,8 +53,8 @@
     "_config_path": "configs/dual_library_hi.yaml"
   },
   "git": {
-    "commit": "b1886eae36d03fdc4039ad1df191f19dad04c939",
-    "dirty": "False"
+    "commit": "18d03d97fa051e3960749fc71c848c70bde9e845",
+    "dirty": "True"
   },
   "versions": {
     "python": "3.13.18",
@@ -83,5 +71,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-02T09:46:39+00:00"
+  "utc": "2026-11-02T09:48:10+00:00"
 }

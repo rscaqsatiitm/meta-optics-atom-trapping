@@ -8,7 +8,7 @@ wavelengths_um: [0.852, 1.0644]
 materials:
   - {name: tio2_ald, substrate: fused_silica, pitch_um: [0.55], height_um: [1.6, 2.0]}       # [CONFIRM?: achievable ALD TiO2 height]
   - {name: gan_o, substrate: sapphire_o, pitch_um: [0.45], height_um: [1.6, 2.0]}           # birefringence neglected
-  - {name: si_crystalline, substrate: sapphire_o, pitch_um: [0.45], height_um: [0.6, 0.8, 1.0]}  # silicon on sapphire
+  # crystalline Si: see configs/dual_library_si.yaml (full numerics; 121 terms not converged at n = 3.6)
 families:
   ring: {step_um: 0.02}
   duo: {step_um: 0.02}
