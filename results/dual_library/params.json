@@ -1,0 +1,65 @@
+{
+  "config": {
+    "run_id": "dual_library",
+    "output_dir": "data/dual_library",
+    "materials": [
+      "sin_lpcvd",
+      "sin_si_rich"
+    ],
+    "substrate": "fused_silica",
+    "wavelengths_um": [
+      0.852,
+      1.0644
+    ],
+    "pitch_um": [
+      0.5,
+      0.55
+    ],
+    "height_um": [
+      1.6,
+      2.0,
+      2.4
+    ],
+    "families": {
+      "ring": {
+        "step_um": 0.01
+      },
+      "duo": {
+        "step_um": 0.02
+      }
+    },
+    "rules": {
+      "min_feature_um": 0.1,
+      "max_aspect": 15.0
+    },
+    "n_terms": 121,
+    "n_grid": 128,
+    "batch": 24,
+    "convergence": {
+      "n_atoms": 6,
+      "n_terms": 197,
+      "n_grid": 256
+    },
+    "_config_path": "configs/dual_library.yaml"
+  },
+  "git": {
+    "commit": "1dbcf7381e77a3f02907bc4df479f40d59406584",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-02T06:08:09+00:00"
+}
