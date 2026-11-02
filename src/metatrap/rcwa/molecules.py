@@ -130,3 +130,21 @@ def plate_efficiency(ta, tb, phi_a, phi_b, weights, n_ratio_a=1.0, n_ratio_b=1.0
             if best is None or min(a, b) > min(best[0], best[1]):
                 best = (float(a), float(b), float(oa), float(ob))
     return best
+
+
+def material_groups(cfg: dict):
+    """(material, substrate, pitch, height) groups of a dual-library config.
+
+    ``materials`` is either a list of names (sharing cfg substrate, pitch_um, height_um) or a
+    list of dicts {name, substrate, pitch_um, height_um} (per-material lattice and stack)."""
+    out = []
+    for m in cfg["materials"]:
+        if isinstance(m, str):
+            for p in cfg["pitch_um"]:
+                for h in cfg["height_um"]:
+                    out.append((m, cfg["substrate"], float(p), float(h)))
+        else:
+            for p in m["pitch_um"]:
+                for h in m["height_um"]:
+                    out.append((m["name"], m["substrate"], float(p), float(h)))
+    return out

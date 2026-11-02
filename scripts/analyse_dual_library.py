@@ -16,7 +16,7 @@ import sys
 
 import numpy as np
 
-from metatrap.rcwa.molecules import dual_efficiency
+from metatrap.rcwa.molecules import dual_efficiency, material_groups
 from metatrap.runio import REPO_ROOT, load_config, run_dir, write_json
 
 
@@ -57,12 +57,12 @@ def plates_eval(cfg, od, out, la, lb):
     plates = {"corrector": (d1.m1.phase(r, 0.8523), d2.m1.phase(r, 1.0644)),
               "focusing": (d1.m2.phase(h2, 0.8523), d2.m2.phase(h2, 1.0644))}
     res = []
-    for mat in cfg["materials"]:
-        for h in cfg["height_um"]:
+    for mat, _sub, pitch, h in material_groups(cfg):
+        if True:
             for ar_max in (10.0, 15.0):
                 ta, tb, nra, nrb = [], [], None, None
                 for fam in cfg["families"]:
-                    z = load(od, fam, mat, cfg["pitch_um"][-1], h, (la, lb))
+                    z = load(od, fam, mat, pitch, h, (la, lb))
                     if z is None:
                         continue
                     ok = h / min_feature(fam, z[0]["params"]) <= ar_max + 1e-9
@@ -72,7 +72,7 @@ def plates_eval(cfg, od, out, la, lb):
                 if not ta:
                     continue
                 ta, tb = np.concatenate(ta), np.concatenate(tb)
-                row = {"material": mat, "height_um": h, "max_aspect": ar_max, "n_atoms": int(len(ta))}
+                row = {"material": mat, "pitch_um": pitch, "height_um": h, "max_aspect": ar_max, "n_atoms": int(len(ta))}
                 for name, (pa, pb) in plates.items():
                     ea, eb, oa, ob = plate_efficiency(ta, tb, pa, pb, r, nra, nrb)
                     row[f"{name}_eta_852"], row[f"{name}_eta_1064"] = ea, eb
@@ -90,9 +90,9 @@ def main(cfg_path):
     la, lb = cfg["wavelengths_um"]
     rows = []
     best = None
-    for mat in cfg["materials"]:
-        for p in cfg["pitch_um"]:
-            for h in cfg["height_um"]:
+    for mat, _sub, p, h in material_groups(cfg):
+        if True:
+            if True:
                 fams = {}
                 for fam in cfg["families"]:
                     z = load(od, fam, mat, p, h, (la, lb))

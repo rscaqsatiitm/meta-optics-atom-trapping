@@ -172,10 +172,25 @@ PYREX = Material(
     source="[VALUE?: approx. 1.47 for borosilicate 3.3, verify]",
 )
 
+GAN_O = Material(
+    name="gan_o",
+    n_func=_sellmeier_formula1((2.60, 1.75, 0.256, 4.1, 17.86)),
+    valid_um=(0.35, 10.0),
+    source="Barker and Ilegems, Phys. Rev. B 7, 743 (1973), DOI 10.1103/PhysRevB.7.743; wurtzite GaN, ordinary ray "
+    "(n_e lower by ~0.02 to 0.04 at 0.85 to 1.06 um; birefringence neglected); via refractiveindex.info",
+)
+
 AIR = Material(name="air", n_func=_const(1.0), valid_um=(0.1, 100.0), source="n = 1 (vacuum/air, 3e-4 neglected)")
 
 REGISTRY: dict[str, Material] = {
-    m.name: m for m in (SIN_LPCVD, SIN_LPCVD_K, SIN_SI_RICH_EST, FUSED_SILICA, SAPPHIRE_O, SIN_SI_RICH, PYREX, AIR)
+    m.name: m for m in (SIN_LPCVD, SIN_LPCVD_K, SIN_SI_RICH_EST, FUSED_SILICA, SAPPHIRE_O, SIN_SI_RICH, PYREX, GAN_O, AIR)
+}
+
+_DATA = Path(__file__).resolve().parents[2] / "data" / "materials"
+# Tabulated literature films (CSV with provenance in the header line).
+TABULATED = {
+    "tio2_ald": _DATA / "tio2_ald_siefke2016.csv",  # Siefke et al., Adv. Opt. Mater. 4, 1780 (2016)
+    "si_crystalline": _DATA / "si_crystalline_schinke2015.csv",  # Schinke et al., AIP Adv. 5, 067168 (2015)
 }
 
 
@@ -187,6 +202,8 @@ def get(name: str) -> Material:
         # e.g. "sin_si_rich_est:2.25:3e-4" -> n(852) = 2.25, k = 3e-4
         parts = name.split(":")
         return sin_si_rich_estimate(float(parts[1]), float(parts[2]) if len(parts) > 2 else K_SIN_SI_RICH_1064)
+    if name in TABULATED:
+        return from_csv(TABULATED[name], name)
     try:
         return REGISTRY[name]
     except KeyError as exc:
