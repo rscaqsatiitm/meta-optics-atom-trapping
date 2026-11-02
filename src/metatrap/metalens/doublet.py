@@ -70,7 +70,8 @@ def system(d: Doublet, lam_um: float, pert: Perturbation | None = None, m1=None,
     spacer = [list(l) for l in d.spec.spacer]
     spacer[0][0] = float(spacer[0][0]) + pert.spacer_delta_um
     cell = [list(l) for l in d.spec.cell]
-    cell[pert.wall_index][0] = float(cell[pert.wall_index][0]) + pert.wall_delta_um
+    if pert.wall_delta_um:
+        cell[pert.wall_index][0] = float(cell[pert.wall_index][0]) + pert.wall_delta_um
     el = [m1 or d.m1] + _media(spacer, lam_um)
     n_sp = el[-1].n
     if pert.m2_decentre_um or pert.m2_tilt_rad:
