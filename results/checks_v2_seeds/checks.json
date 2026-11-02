@@ -52,5 +52,32 @@
       }
     },
     "seconds": 1323.9804589748383
+  },
+  "fab:smooth5nm_L50um_s23": {
+    "depth_nonuniformity_rms": 0.07516690430238204,
+    "depth_min_over_mean": 0.7394443190956717,
+    "array_efficiency": 0.8056032117962308,
+    "core_efficiency": 0.6617116933120603,
+    "waist_mean_um": 0.868996292733906,
+    "position_error_rms_um": 0.08604715972440531,
+    "axis_intensity_over_mean_site_peak": 0.1293489381555704,
+    "interstitial_median": 0.01390395520486915,
+    "interstitial_p99": 0.09173606801634555,
+    "interstitial_max": 0.15622736012740565,
+    "interstitial_max_radius_um": 121.6552506059644,
+    "mean_site_offset_um": [
+      0.0002362302669240437,
+      0.00012070901415360673
+    ],
+    "metasurface_transmission": 0.9562978516129378,
+    "case": {
+      "name": "smooth5nm_L50um_s23",
+      "errors": {
+        "corr_sigma_um": 0.005,
+        "corr_length_um": 50.0,
+        "seed": 23
+      }
+    },
+    "seconds": 1611.2752430438995
   }
 }
