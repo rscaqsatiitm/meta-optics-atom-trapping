@@ -435,6 +435,110 @@ hologram (docs/prefab_checks_report.md, Section 2), so one alignment of the cell
 serves both sides. The wall thickness must be known to +/-50 um, or the design recomputed
 for the measured value: a +200 um error leaves 0.85, uncorrectable by refocusing.
 
+## 9. Lens set for the experiment: two lenses, or one lens for all wavelengths
+
+Requirement (USER): a 1075 nm lens (side A), and a lens for 852, 895 and 1064 nm (side B),
+in the two-sided architecture; preferably one lens for all four wavelengths. All results are
+SIM (review before submission), in ray optics unless stated. Cell stack 2.5 mm air | 4 mm
+fused silica | 9 mm vacuum on both sides `[CONFIRM?]`.
+
+### 9.1 Lens A: 1075 nm, NA 0.55 (configs/metalens_1075.yaml; results/metalens_1075)
+
+This is the same air-spaced aplanatic doublet at NA 0.55 (as the side-A hologram): R1 =
+9.21 mm, f = 16.75 mm. The spacing scan gives an optimum at 17.0 mm. In one common plane the
+Strehl ratio is >= 0.9992 over 0 to 400 um; at free focus it is 0.968 at 1.0 mm and 0.890 at
+1.3 mm. The axisymmetric wave check gives 0.9974. Tolerances (Strehl over -400 / 0 / 400 um):
+decentre 2 um 0.984 to 0.988, 5 um 0.913 to 0.921; spacing +50 um 0.990; wall +50 um 0.983;
+plate tilt 0.1 deg with coma nulled 0.959 / 0.998; cell tilt 0.1 deg 0.929 / 0.965. The
+focusing plate needs a deflection of 0.55 at R2 (0.63 at the field-extended radius). The
+estimated doublet efficiency from the 1075 nm supercells is 0.80 (LPCVD) / 0.82 (Si-rich).
+The LPCVD supercells reach only s = 0.45, so the outer ring is extrapolated and this value
+is optimistic. The side-A meta-hologram already combines this lens with the array hologram.
+Lens A is needed only if the 1075 nm pattern is generated upstream (SLM or AOD) instead.
+
+### 9.2 One metasurface doublet for several wavelengths
+
+A metasurface phase map works at one wavelength (Section 5), and multi-wavelength meta-atoms
+lose about half of the light (Sections 5b, 5c). We therefore keep single-wavelength meta-atoms
+and move the wavelength dependence out of the shared lens. The shared doublet is designed at
+a wavelength lambda_d between the operating wavelengths. Each operating wavelength then
+receives, in its own beam path before the beams are combined, a two-surface aplanatic
+pre-corrector. Surface A sits a distance L before surface C, and C is relayed 1:1 onto the stop
+at the corrector metasurface (src/metatrap/metalens/multiwave.py, aplanatic_precorrector).
+The pre-corrector is constructed exactly by back-tracing from the focus through the
+diffractively dispersed plates. It restores both the stigmatic axial focus and the sine
+condition at that wavelength, so the shared lens works at its NA over the field. The residual
+is astigmatism and field curvature from the wavelength mismatch. A single stop corrector
+without surface A restores only the axis: at 895 nm it gives Strehl 0.90 at 100 um and
+0.16 at 400 um, and at 1064 nm it fails at once.
+
+Minimum Strehl ratio over 0 to 400 um in one common plane per wavelength
+(results/multiwave/optics.json; scripts/metalens_multiwave.py):
+
+| Shared lambda_d, L | 852.3 nm | 894.6 nm | 1064.4 nm | 1075 nm |
+|---|---|---|---|---|
+| 852.3 nm (no correction needed at 852), 5 mm | 0.999 | 0.993 | 0.37 | - |
+| 900 nm, 5 mm | 0.999 | 0.999 | 0.74 | 0.68 |
+| 950 nm, 5 mm | 0.995 | 0.999 | 0.94 | 0.92 |
+| 960 nm, 5 mm | 0.993 | 0.999 | 0.959 | 0.943 |
+| 990 nm, 3 mm | 0.953 | 0.988 | 0.987 | 0.979 |
+| 990 nm, 5 mm | 0.985 | 0.996 | 0.987 | 0.980 |
+| 990 nm, 10 mm | 0.999 | 0.999 | 0.978 | 0.970 |
+
+The pre-correctors are mostly power: 200 to 1,500 waves peak-to-valley, e.g. 430 / 530 waves
+(A / C) at 1064 nm for lambda_d = 990 nm, L = 5 mm. Each is a weak refractive asphere pair or a
+pair of single-wavelength phase plates in that wavelength's path. Without a relay (C placed
+20 to 40 mm before the shared lens, in front of the dichroic combiner) the Strehl ratio drops
+to 0.5 to 0.8 or worse, so the pupil relay is required. A 1:1 relay that is achromatic over
+852 to 1075 nm is assumed ideal here `[not simulated: relay aberrations at 16 mm pupil
+diameter and +/-1.4 deg field]`.
+
+Meta-atom efficiency at the operating wavelengths (results/multiwave/atoms.json;
+scripts/multiwave_atoms.py; square pillars on fused silica, aspect ratio <= 10, 197-term
+RCWA). Atoms are chosen for the phase at lambda_d; at another wavelength the first diffraction
+order carries the intended phase profile.
+
+| Family, lambda_d | First order per plate: 852 / 895 / 1064 / 1075 nm | Zero order per plate |
+|---|---|---|
+| LPCVD, p 0.50, h 1.6 um, lambda_d 960 nm | 0.82 / 0.89 / 0.88 / 0.87 | 1 to 4 % |
+| LPCVD, p 0.50, h 1.6 um, lambda_d 990 nm | 0.76 / 0.84 / 0.92 / 0.91 | 2 to 5 % |
+| Si-rich, p 0.45, h 1.3 um, lambda_d 960 nm | 0.74 / 0.88 / 0.87 / 0.86 | 1 to 5 % |
+
+With the deflection factor of the focusing plate and the corrector (~0.84 in total, Section 6),
+the doublet efficiency is ~0.84 eta^2. For LPCVD, p 0.50, h 1.6 um this gives 0.57 / 0.66 /
+0.66 / 0.64 (lambda_d = 960 nm) or 0.48 / 0.60 / 0.71 / 0.69 (990 nm), against 0.80 for a
+single-wavelength doublet (Provisional: LPA, supercell factor transferred from 852 nm,
+pre-corrector and relay losses excluded). The zero order of each plate (1 to 5 %) is only
+weakly focused and spreads over millimetres in the atom plane. Its intensity there is ~1e-6
+of a focal spot (area ratio ~1 um^2 / 1 mm^2, DERIVED), negligible for trapping.
+
+### 9.3 Options
+
+| Option | Lens(es) | Strehl over +/-400 um | Doublet efficiency | Notes |
+|---|---|---|---|---|
+| (a) Two lenses, as proposed | A: 1075 nm, NA 0.55 (or the hologram); B: shared doublet lambda_d = 960 to 990 nm with pre-correctors at 852 / 895 / 1064 | A >= 0.999; B >= 0.96 (960) or >= 0.985 (990) | A 0.80; B 0.57 / 0.66 / 0.66 (960) or 0.48 / 0.60 / 0.71 (990) | B needs three pre-corrector modules and a pupil relay |
+| (b) One lens for all four | shared doublet lambda_d = 990 nm, L = 5 mm, NA 0.5 | >= 0.980 at all four | 0.48 / 0.60 / 0.71 / 0.69 | 1075 nm at NA 0.5 instead of 0.55; high-power 1075 nm through the shared lens |
+| (c) Two-wavelength meta-atoms, for comparison | doublet with dual atoms (852 / 1064) | as single-wavelength | ~0.5 (AR 15), 0.3 to 0.45 (AR 10) | no 895 / 1075 without further correction |
+
+Our choice is (a) with lambda_d = 990 nm for lens B, or (b) if one lens on one side is
+preferred. The trade-off is as follows. First, (b) gives full flexibility, since every
+wavelength reaches every site through the same optic, and keeps the cell accessible from
+the other side. However, it lowers the 1075 nm NA from 0.55 to 0.5 and its efficiency from
+~0.80 to ~0.69. This costs ~1.4 x in power per trap depth, since the depth scales as
+eta NA^2, i.e. (0.80 x 0.55^2) / (0.69 x 0.50^2) = 1.40 (DERIVED). In addition, 50 to 100 W of
+1075 nm then passes through the shared lens, so it must be LPCVD SiN on fused silica or on
+sapphire (Section 5 of the damage model in docs/prefab_checks_report.md). Second, in both
+options the 852 nm collection efficiency of lens B is ~0.5 instead of ~0.8, the price of
+sharing the lens. A dedicated 852 nm doublet (0.80) remains the choice if imaging fidelity
+dominates. Third, the pre-correctors and the relay are conventional optics but add alignment
+degrees of freedom. Their centring tolerance against the shared lens is expected to be similar
+to the plate decentre tolerance (a few um, Section 7) `[not simulated]`.
+
+Next steps: (i) a meta-atom library at lambda_d = 990 nm with supercells over the
+focusing-plate deflections at each operating wavelength; (ii) tolerances of the pre-corrector
+modules and the relay; (iii) the wave-optics check of the corrected system off axis
+(Section 4b method) at 852 and 1075 nm.
+
 ## 8. Limitations and next steps
 
 Limitations: (i) scalar optics throughout; off axis, the field between the plates is ray
@@ -461,6 +565,9 @@ version of the design (layered spacer) and its tolerances.
 | Off-axis superposition Strehl, foci, widths, apodisation | Section 4b | SIM, review before submission | doublet.json, wave_offaxis |
 | Film indices TiO2, GaN, c-Si | Section 5c | SOURCE | Siefke 2016; Barker 1973; Schinke 2015 (refractiveindex.info database files, data/materials/) |
 | Other-film and fine-grid efficiencies | Section 5c | SIM, review before submission | results/dual_library_fine, _si_fine, _hi |
+| Lens A design, tolerances, efficiency | Section 9.1 | SIM, review before submission | results/metalens_1075 |
+| Shared-lens Strehl ratios with pre-correctors | Section 9.2 | SIM, review before submission | results/multiwave/optics.json; 900 / 950 nm rows from an inline scan (not stored) |
+| Cross-wavelength atom efficiencies | Section 9.2 | SIM, review before submission | results/multiwave/atoms.json |
 | Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library/dual_efficiency.json, plate_efficiency.json |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |

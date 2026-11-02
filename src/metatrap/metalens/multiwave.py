@@ -100,7 +100,7 @@ def crosswave_efficiency(lib, material: str, pitch: float, height: float, lam_d:
     return out
 
 
-def aplanatic_precorrector(d, lam_um: float, L_um: float, na: float | None = None, n_pts: int = 4001, ext: float = 1.1):
+def aplanatic_precorrector(d, lam_um: float, L_um: float, na: float | None = None, n_pts: int = 4001, ext: float = 1.1, D_um: float = 0.0):
     """Two phase surfaces A and C (A a distance L_um in air before C, C in the stop at the
     corrector metasurface) that make the fixed metasurface doublet stigmatic AND aplanatic at
     lam_um. Rays are back-traced from the focus: a final ray of direction cosine s_f meets the
@@ -109,7 +109,9 @@ def aplanatic_precorrector(d, lam_um: float, L_um: float, na: float | None = Non
     must have just after C. The sine condition puts its input height at A at hA = s_f f with
     f = R1 / NA, and the straight path from A to C fixes the direction q between them. Then
     dphi_A/dr (hA) = k0 q and dphi_C/dr (h1) = k0 (p_c - q). In practice A and C sit in the
-    wavelength's own beam path and are relayed onto the stop (a 1:1 relay is assumed ideal)."""
+    wavelength's own beam path and are relayed onto the stop (a 1:1 relay is assumed ideal), or,
+    with D_um > 0, C sits D_um before the corrector metasurface (room for a dichroic combiner, no
+    relay; the stop is then at C)."""
     from ..propagation.layers import LayerStack
 
     na = d.spec.na if na is None else na
@@ -124,6 +126,9 @@ def aplanatic_precorrector(d, lam_um: float, L_um: float, na: float | None = Non
     n_sp, t_sp = sp.indices(lam_um), sp.thicknesses()
     h1 = h2 - sum(t * p_in / np.sqrt(n**2 - p_in**2) for t, n in zip(t_sp, n_sp))
     p_c = p_in - d.m1.dphase_dr(h1, lam_um) / k0
+    if D_um:
+        # C sits D_um in air before the corrector metasurface (no relay): back-propagate.
+        h1 = h1 - D_um * p_c / np.sqrt(1 - p_c**2)
     hA = s_f * f
     dlt = h1 - hA
     q = dlt / np.sqrt(L_um**2 + dlt**2)
@@ -140,7 +145,8 @@ def aplanatic_precorrector(d, lam_um: float, L_um: float, na: float | None = Non
     return A, C, info
 
 
-def precorrected_system(d, lam_um: float, A, C, L_um: float) -> System:
+def precorrected_system(d, lam_um: float, A, C, L_um: float, D_um: float = 0.0) -> System:
     from .raytrace import Medium
 
-    return System([A, Medium(1.0, L_um, "air (relayed)"), C, d.m1] + _media(d.spec.spacer, lam_um) + [d.m2] + _media(d.spec.cell, lam_um))
+    mid = [Medium(1.0, D_um, "air (dichroic combiner)")] if D_um else []
+    return System([A, Medium(1.0, L_um, "air (relayed)"), C] + mid + [d.m1] + _media(d.spec.spacer, lam_um) + [d.m2] + _media(d.spec.cell, lam_um))
