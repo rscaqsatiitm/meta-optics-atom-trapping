@@ -1,0 +1,59 @@
+{
+  "config": {
+    "run_id": "dual_library_si_fine",
+    "output_dir": "data/dual_library_si_fine",
+    "wavelengths_um": [
+      0.852,
+      1.0644
+    ],
+    "materials": [
+      {
+        "name": "si_crystalline",
+        "substrate": "sapphire_o",
+        "pitch_um": [
+          0.45
+        ],
+        "height_um": [
+          1.0,
+          1.2
+        ]
+      }
+    ],
+    "families": {
+      "ring": {
+        "step_um": 0.01
+      },
+      "duo": {
+        "step_um": 0.01
+      }
+    },
+    "rules": {
+      "min_feature_um": 0.1,
+      "max_aspect": 15.0
+    },
+    "n_terms": 197,
+    "n_grid": 256,
+    "batch": 24,
+    "_config_path": "configs/dual_library_si_fine.yaml"
+  },
+  "git": {
+    "commit": "514037e0de5b849b77a8458844f0e92dcc733d60",
+    "dirty": "False"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-02T10:23:04+00:00"
+}
