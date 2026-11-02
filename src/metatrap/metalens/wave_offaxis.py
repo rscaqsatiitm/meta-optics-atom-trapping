@@ -139,3 +139,56 @@ def strehl_offaxis(d, lam_um: float, theta: float, x_ray: float, dz_ray: float, 
     return {"strehl": float(best[0] / ref**2), "peak_rel_uniform_lossless": float(best[0] / ref0**2), "x_um": float(p0[0]), "y_um": float(p0[1]), "dz_um": float(dz0),
             "w_x_um": half_width(Ix), "w_y_um": half_width(Iy), "n_samples": int(len(amp)),
             "transmitted_weight": float(np.sum(amp**2) / np.sum(pf["amp"] ** 2))}
+
+
+def plate_field_front(d, lam_um: float, theta: float, front: list, stop_index: int, stop_radius: float, launch_radius: float, n_pupil: int = 300):
+    """As plate_field, for a system with extra elements in front of the corrector metasurface
+    (e.g. a per-wavelength pre-corrector A | air | C). Rays are launched on the first front
+    element over launch_radius and vignetted at element stop_index."""
+    c = (np.arange(n_pupil) + 0.5) / n_pupil * 2 * launch_radius - launch_radius
+    X, Y = np.meshgrid(c, c, indexing="ij")
+    px, py, opl0 = point_source_rays(X, Y, theta, None)
+    from .doublet import _media
+
+    sysm = System(list(front) + [d.m1] + _media(d.spec.spacer, lam_um))
+    xf, yf, pxf, pyf, opl, alive = sysm.trace(X.ravel(), Y.ravel(), px.ravel(), py.ravel(), lam_um,
+                                              stop={"index": stop_index, "radius_um": stop_radius}, opl0=opl0.ravel())
+    x2, y2, opl, alive = xf.reshape(X.shape), yf.reshape(X.shape), opl.reshape(X.shape), alive.reshape(X.shape)
+    dx2 = np.gradient(x2, c, axis=0), np.gradient(x2, c, axis=1)
+    dy2 = np.gradient(y2, c, axis=0), np.gradient(y2, c, axis=1)
+    J = np.abs(dx2[0] * dy2[1] - dx2[1] * dy2[0])
+    r2 = np.hypot(x2, y2)
+    opl = opl + d.m2.phase(r2, lam_um) / (2 * np.pi / lam_um)
+    dA1 = (c[1] - c[0]) ** 2
+    m = alive
+    s2 = np.abs(d.m2.dphase_dr(r2, lam_um)) / (2 * np.pi / lam_um)
+    return {"x": x2[m], "y": y2[m], "amp": np.sqrt(J[m]) * dA1, "opl": opl[m], "s1": np.zeros(m.sum()), "s2": s2[m]}
+
+
+def strehl_from_field(d, lam_um, pf, x_ray, dz_ray, span_um=0.5, dz_span_um=1.0):
+    """Best-focus Strehl ratio of a precomputed plate field (see strehl_offaxis)."""
+    amp = pf["amp"]
+    fs = FocalSum(d.spec.cell, lam_um, d.info["R2_um"] * 1.3 + abs(x_ray) + 50)
+    ref = np.sum(np.abs(amp))
+    best = None
+    for dz in dz_ray + np.linspace(-dz_span_um, dz_span_um, 9):
+        g = np.linspace(-span_um, span_um, 11)
+        GX, GY = np.meshgrid(x_ray + g, g, indexing="ij")
+        P = np.column_stack([GX.ravel(), GY.ravel()])
+        I = np.abs(fs.field(pf, amp, P, dz)) ** 2
+        j = int(np.argmax(I))
+        if best is None or I[j] > best[0]:
+            best = (I[j], dz, P[j])
+    _, dz0, p0 = best
+    for _ in range(2):
+        g = np.linspace(-0.08, 0.08, 9)
+        cands = []
+        for dz in dz0 + np.linspace(-0.12, 0.12, 7):
+            GX, GY = np.meshgrid(p0[0] + g, p0[1] + g, indexing="ij")
+            P = np.column_stack([GX.ravel(), GY.ravel()])
+            I = np.abs(fs.field(pf, amp, P, dz)) ** 2
+            j = int(np.argmax(I))
+            cands.append((I[j], dz, P[j]))
+        best = max(cands, key=lambda c: c[0])
+        _, dz0, p0 = best
+    return {"strehl": float(best[0] / ref**2), "x_um": float(p0[0]), "dz_um": float(dz0)}
