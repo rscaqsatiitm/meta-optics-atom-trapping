@@ -1,0 +1,29 @@
+{
+  "fab:smooth5nm_L50um_s21": {
+    "depth_nonuniformity_rms": 0.07493414901580435,
+    "depth_min_over_mean": 0.7034913133739812,
+    "array_efficiency": 0.8056650537026124,
+    "core_efficiency": 0.6617016523169894,
+    "waist_mean_um": 0.8689457742539886,
+    "position_error_rms_um": 0.08612404316728446,
+    "axis_intensity_over_mean_site_peak": 0.12427767645041668,
+    "interstitial_median": 0.013792681310933787,
+    "interstitial_p99": 0.09191546395322599,
+    "interstitial_max": 0.17921644886065477,
+    "interstitial_max_radius_um": 121.6552506059644,
+    "mean_site_offset_um": [
+      -0.00023287930173871246,
+      -0.0005296606247019199
+    ],
+    "metasurface_transmission": 0.9562918785779035,
+    "case": {
+      "name": "smooth5nm_L50um_s21",
+      "errors": {
+        "corr_sigma_um": 0.005,
+        "corr_length_um": 50.0,
+        "seed": 21
+      }
+    },
+    "seconds": 1596.4233543872833
+  }
+}
