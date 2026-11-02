@@ -3,8 +3,8 @@
     "run_id": "dual_library",
     "output_dir": "data/dual_library",
     "materials": [
-      "sin_lpcvd",
-      "sin_si_rich"
+      "sin_si_rich",
+      "sin_lpcvd"
     ],
     "substrate": "fused_silica",
     "wavelengths_um": [
@@ -12,7 +12,6 @@
       1.0644
     ],
     "pitch_um": [
-      0.5,
       0.55
     ],
     "height_um": [
@@ -22,7 +21,7 @@
     ],
     "families": {
       "ring": {
-        "step_um": 0.01
+        "step_um": 0.02
       },
       "duo": {
         "step_um": 0.02
@@ -43,8 +42,8 @@
     "_config_path": "configs/dual_library.yaml"
   },
   "git": {
-    "commit": "1dbcf7381e77a3f02907bc4df479f40d59406584",
-    "dirty": "True"
+    "commit": "2fbf486bfe1990c5f2da043923085f79783f00f1",
+    "dirty": "False"
   },
   "versions": {
     "python": "3.13.18",
@@ -61,5 +60,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-02T06:08:09+00:00"
+  "utc": "2026-11-02T06:37:14+00:00"
 }
