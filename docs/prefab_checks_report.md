@@ -17,7 +17,7 @@ metasurface and the wall must be <= 0.1 deg (7.4 % rms, against 5.3 % at zero ti
 (iii) Fabrication: a realistic combination of stitching (20 nm), per-field bias (2 nm),
 smooth (3 nm, 5 um) and random (3 nm) width errors gives 6.2 % rms non-uniformity, minimum
 0.78, array efficiency 0.80. The most damaging error is long-range width variation (5 nm rms
-over 50 um: 7.5 % rms).
+over 50 um: 7.5 % rms, minimum 0.70 to 0.75 over three realisations).
 (iv) Vector focusing: uniform from the axis to the array corner to 1e-4 in peak and 0.1 % in
 waist (peak 0.917 of scalar, fictitious field 0.63 G per mK).
 (v) Damage: thermo-elastic stress is never binding (<= 1.5 MPa at 100 W). The binding
@@ -108,8 +108,16 @@ of the stated rms (`[VALUE?: write-field size of the e-beam tool used]`);
 (ii) per-field width bias, a dose or focus offset per write field;
 (iii) smooth width noise, a Gaussian random field with the stated rms and correlation length;
 (iv) a combination of all three with uncorrelated 3 nm noise.
-Every case is one random realisation (one seed), so differences below ~0.3 % rms are not
-significant `[VALUE?: seed-to-seed scatter not computed]`.
+Each case in the table is one random realisation. Seed-to-seed scatter was measured on the
+two most damaging cases with three realisations each (results/checks_v2_seeds; seeds 12, 22,
+24 for stitching, 15, 21, 23 for smooth noise). The rms non-uniformity and the efficiency
+are reproducible to 0.03 % and 1e-4 (sample standard deviations). The extremes are not: the
+minimum site depth scatters by 0.015 (stitching 50 nm: 0.78, 0.76, 0.75) to 0.026 (smooth
+5 nm, 50 um: 0.75, 0.70, 0.74). The brightest interstitial point scatters by 0.012 to 0.014
+(0.13 to 0.18). Hence the rms values in the table are significant to ~0.1 %, while minima and
+interstitial maxima carry an uncertainty of a few hundredths and should be quoted as ranges.
+The ensemble job reached the 2 h limit before its last three cases (a fourth seed of each,
+and a 500 um correlation length), which were not run.
 
 | Case | Depth non-uniformity (rms) | Min / mean | Array efficiency | Interstitial max | On-axis |
 |---|---|---|---|---|---|
@@ -117,10 +125,10 @@ significant `[VALUE?: seed-to-seed scatter not computed]`.
 | library pillars, no errors | 5.4 % | 0.84 | 0.826 | - | 0.11 |
 | library, uncorrelated 5 nm (campaign 1b) | 5.7 % | 0.81 | 0.796 | - | 0.11 |
 | stitching 20 nm rms | 5.6 % | 0.81 | 0.825 | 0.13 | 0.12 |
-| stitching 50 nm rms | 6.7 % | 0.78 | 0.822 | 0.14 | 0.11 |
+| stitching 50 nm rms (3 seeds) | 6.7 % | 0.75 to 0.78 | 0.822 | 0.13 to 0.15 | 0.10 to 0.11 |
 | per-field width bias 3 nm rms | 6.2 % | 0.78 | 0.812 | 0.14 | 0.11 |
 | smooth 5 nm rms, correlation 5 um | 5.8 % | 0.81 | 0.796 | 0.13 | 0.11 |
-| smooth 5 nm rms, correlation 50 um | 7.5 % | 0.75 | 0.806 | 0.15 | 0.12 |
+| smooth 5 nm rms, correlation 50 um (3 seeds) | 7.5 % | 0.70 to 0.75 | 0.806 | 0.15 to 0.18 | 0.12 |
 | combined: stitch 20 nm, bias 2 nm, smooth 3 nm / 5 um, random 3 nm | 6.2 % | 0.78 | 0.799 | 0.14 | 0.11 |
 
 The position error (0.083 to 0.086 um rms) and the mean waist (0.869 um) are unchanged by
@@ -230,10 +238,10 @@ not modelled), no damage of the cell window coatings modelled.
 
 ## 6. Limitations
 
-(i) One random realisation per fabrication case; seed-to-seed scatter not quantified. (ii)
+(i) One random realisation per fabrication case except the two worst (three each); the
+minimum depth and interstitial maxima scatter by a few hundredths between realisations. (ii)
 LPA meta-atom response, with the aperture-averaged supercell edge factor accounted for in
 campaign 1b but not in these renders. (iii) No camera feedback after fabrication or
 installation. (iv) Thermal model steady-state only, rim at ambient. (v) Film absorption from
-literature-based estimates (campaign 1b), not measured. Next logical step: a seed ensemble
-for the two most damaging cases (smooth 50 um, stitching 50 um), then the 18.4 mm design
-release with the tolerance list above.
+literature-based estimates (campaign 1b), not measured. Next logical step: the 18.4 mm design release with the tolerance list above, with
+camera-feedback correction planned for the slowly varying errors.
