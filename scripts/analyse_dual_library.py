@@ -38,6 +38,51 @@ def load(od, fam, mat, p, h, lams):
     return out
 
 
+def plates_eval(cfg, od, out, la, lb):
+    """Efficiency of the best libraries for the actual phase-pair distributions of the two
+    doublet plates (configs/metalens_doublet.yaml designs; 852.3 / 1064.4 nm maps evaluated
+    against the 852.0 / 1064.4 nm library)."""
+    from metatrap.metalens import doublet as D
+    from metatrap.rcwa.molecules import plate_efficiency
+
+    mc = load_config(REPO_ROOT / "configs/metalens_doublet.yaml")
+    spec = D.DoubletSpec(mc["na"], mc["cell"], [list(l) for l in mc["spacer"]])
+    d1 = D.make(spec, 0.8523)
+    d2 = D.make(spec, 1.0644, R1_um=d1.info["R1_um"])
+    R1 = d1.info["R1_um"]
+    r = np.linspace(0, R1, 20001)
+    from metatrap.propagation.layers import LayerStack
+
+    h2 = LayerStack.from_list(mc["cell"]).ray_height(r / d1.info["f_um"], 0.8523)  # zone followed by the ray of h1
+    plates = {"corrector": (d1.m1.phase(r, 0.8523), d2.m1.phase(r, 1.0644)),
+              "focusing": (d1.m2.phase(h2, 0.8523), d2.m2.phase(h2, 1.0644))}
+    res = []
+    for mat in cfg["materials"]:
+        for h in cfg["height_um"]:
+            for ar_max in (10.0, 15.0):
+                ta, tb, nra, nrb = [], [], None, None
+                for fam in cfg["families"]:
+                    z = load(od, fam, mat, cfg["pitch_um"][-1], h, (la, lb))
+                    if z is None:
+                        continue
+                    ok = h / min_feature(fam, z[0]["params"]) <= ar_max + 1e-9
+                    ta.append(z[0]["t"][ok])
+                    tb.append(z[1]["t"][ok])
+                    nra, nrb = 1 / float(z[0]["n_in"]), 1 / float(z[1]["n_in"])
+                if not ta:
+                    continue
+                ta, tb = np.concatenate(ta), np.concatenate(tb)
+                row = {"material": mat, "height_um": h, "max_aspect": ar_max, "n_atoms": int(len(ta))}
+                for name, (pa, pb) in plates.items():
+                    ea, eb, oa, ob = plate_efficiency(ta, tb, pa, pb, r, nra, nrb)
+                    row[f"{name}_eta_852"], row[f"{name}_eta_1064"] = ea, eb
+                row["doublet_lpa_852"] = row["corrector_eta_852"] * row["focusing_eta_852"]
+                row["doublet_lpa_1064"] = row["corrector_eta_1064"] * row["focusing_eta_1064"]
+                res.append(row)
+                print("plates", {k: (round(v, 3) if isinstance(v, float) else v) for k, v in row.items()}, flush=True)
+    write_json(out / "plate_efficiency.json", res)
+
+
 def main(cfg_path):
     cfg = load_config(cfg_path)
     out = run_dir(cfg["run_id"])
@@ -80,6 +125,7 @@ def main(cfg_path):
                         if best is None or score > best[0]:
                             best = (score, row, ta[ok], tb[ok], nra)
     write_json(out / "dual_efficiency.json", rows)
+    plates_eval(cfg, od, out, la, lb)
     if best is not None:
         import matplotlib
 

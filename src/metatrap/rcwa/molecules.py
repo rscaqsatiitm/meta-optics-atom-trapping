@@ -112,3 +112,21 @@ def offset_scan(ta, tb, n_ratio_a=1.0, n_ratio_b=1.0, bins=48, n_off=12):
         ea, eb, sa, sb, _ = dual_efficiency(ta, tb, n_ratio_a, n_ratio_b, bins, 1.0, wb)
         rows.append({"weight_b": wb, "eta_a": ea, "eta_b": eb, "rms_a": sa, "rms_b": sb})
     return rows
+
+
+def plate_efficiency(ta, tb, phi_a, phi_b, weights, n_ratio_a=1.0, n_ratio_b=1.0, n_offsets=12):
+    """Two-wavelength efficiency of a library for the phase pairs (phi_a, phi_b) a given plate
+    needs (samples with area weights), maximised over the free global phase offset at each
+    wavelength (n_offsets x n_offsets grid). Returns (eta_a, eta_b, offset_a, offset_b)."""
+    w = np.asarray(weights, float) / np.sum(weights)
+    best = None
+    for oa in 2 * np.pi * np.arange(n_offsets) / n_offsets:
+        for ob in 2 * np.pi * np.arange(n_offsets) / n_offsets:
+            ea_ = np.exp(-1j * (phi_a + oa))
+            eb_ = np.exp(-1j * (phi_b + ob))
+            k = np.argmax(np.real(ta[None, :] * ea_[:, None]) + np.real(tb[None, :] * eb_[:, None]), axis=1)
+            a = n_ratio_a * abs(np.sum(w * ta[k] * ea_)) ** 2
+            b = n_ratio_b * abs(np.sum(w * tb[k] * eb_)) ** 2
+            if best is None or min(a, b) > min(best[0], best[1]):
+                best = (float(a), float(b), float(oa), float(ob))
+    return best

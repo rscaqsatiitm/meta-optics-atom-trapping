@@ -247,9 +247,63 @@ verified in session). Discrete-wavelength operation (wrapped phases) is not boun
 limit.
 
 Recommendation. Use the objective at one design wavelength, or at 852 + 1064 nm with a
-two-wavelength meta-atom library (next RCWA campaign). Bring 894.6 nm light through another
+two-wavelength meta-atom library at roughly half the single-wavelength efficiency (Section 5b). Bring 894.6 nm light through another
 path (for example the hologram side, or a dichroic-combined beam focused by its own optic).
 `[CONFIRM?: which side-B functions need 852, 895 and 1064 nm at a diffraction-limited focus]`.
+
+## 5b. Two-wavelength (852 / 1064 nm) meta-atoms: RCWA screen
+
+Method (src/metatrap/rcwa/molecules.py; scripts/run_dual_library.py,
+analyse_dual_library.py; configs/dual_library.yaml; results/dual_library). Two C4v-symmetric
+(polarisation-independent) families on a 0.55 um square lattice: square rings (outer width,
+square hole) and two-pillar cells (one square at the cell centre and one at the corners). The
+layer heights are 1.6, 2.0 and 2.4 um, for Si-rich and LPCVD SiN on fused silica, solved at
+852 and 1064.4 nm by RCWA. The numerics are reduced for a screen: 121 Fourier terms and a
+128 grid. A spot check against 197 terms and a 256 grid on 12 atoms gives |dphi| <= 0.08 rad,
+except one near-resonant ring at 0.17 rad. Geometries are on a 0.02 um grid with features
+>= 0.10 um. We report two aspect-ratio limits (height / smallest solid feature): 10, the
+working assumption for the etch, and 15. The figure of merit is the focusing efficiency at
+each wavelength when every required phase pair must be realised. The atom for a target pair
+maximises Re[t_852 e^{-i theta_852}] + Re[t_1064 e^{-i theta_1064}], and the efficiency is
+|<t e^{-i theta}>|^2 (times n_out / n_in) over the targets. We use two target sets: (a) a
+uniform torus, and (b) the actual phase pairs of each doublet plate, with the global phase
+offset of each wavelength optimised.
+
+| Film, height, aspect limit | Atoms | Uniform torus: eta 852 / 1064 | Same atoms, one wavelength only | Doublet (corrector x focusing plate, LPA): 852 / 1064 |
+|---|---|---|---|---|
+| Si-rich, 1.6 um, AR <= 10 | 58 | 0.67 / 0.56 | 0.94 / 0.95 | 0.45 / 0.33 |
+| Si-rich, 1.6 um, AR <= 15 | 137 | 0.73 / 0.71 | 0.97 / 0.97 | 0.55 / 0.52 |
+| Si-rich, 2.4 um, AR <= 15 | 63 | 0.75 / 0.71 | 0.96 / 0.95 | 0.57 / 0.51 |
+| LPCVD, 1.6 um, AR <= 10 | 58 | 0.53 / 0.55 | 0.93 / 0.96 | 0.29 / 0.31 |
+| LPCVD, 2.4 um, AR <= 15 | 63 | 0.70 / 0.63 | 0.94 / 0.95 | 0.49 / 0.41 |
+
+(Union of both families; results/dual_library/dual_efficiency.json and plate_efficiency.json
+list every family, height and limit.)
+
+Observations. (i) Within AR <= 10, heights of 2.0 and 2.4 um admit no rings and no two-pillar
+cells (walls and pillars would have to be >= 0.2 to 0.24 um), so only solid pillars remain,
+and these give 0.45 to 0.55. Solid pillars alone are not hopeless, because their phase wraps
+by different amounts at the two wavelengths (11.6 against 8.4 rad at 1.6 um, Si-rich), but
+they fill the torus only along a few lines. (ii) The second geometric parameter is what fills
+the torus. It needs thin walls or close pillar pairs, hence the strong dependence on the
+aspect-ratio limit (Si-rich 1.6 um: 0.56 to 0.71 at 1064 nm). (iii) The corrector does not
+benefit from its weaker phase profile: its required pairs, sampled along the radius, still
+fill the torus nearly as uniformly as those of the focusing plate. (iv) Including the
+deflection losses of the focusing plate (Section 6, factor ~0.87 relative to the LPA), we
+estimate a two-wavelength doublet at ~0.45 to 0.50 (852 nm) and ~0.45 (1064 nm) with AR 15,
+and ~0.3 to 0.4 with AR 10, against 0.80 to 0.83 for single-wavelength plates (Provisional:
+screen numerics, LPA, coarse geometry grid).
+
+Implication. A two-wavelength SiN objective is possible but costs roughly half of the light
+at each wavelength, or more if the aspect ratio stays at 10. For the 852 nm imaging path this
+halves the collection efficiency. For the 1064 nm tweezer path it doubles the required
+power. The alternatives, in order of our preference, are as follows. (i) Separate the
+functions: a single-wavelength 852 nm objective on side B (0.80 to 0.83), with 1064 nm
+delivered by another path. (ii) A higher-index film to raise the phase per unit height and
+relax the aspect ratio (e.g. TiO2 or GaN at n ~ 2.4 to 2.5 `[VALUE?: index and absorption at
+852 and 1064 nm; not simulated]`). (iii) A denser screen (finer geometry grid, more families
+such as rings with a central pillar), which may add several per cent but is unlikely to close
+the gap.
 
 ## 6. Meta-atom efficiency at the required deflection
 
@@ -338,8 +392,8 @@ focusing: an 8 % peak reduction at NA 0.55 on side A, results/vector_check) are 
 Collection efficiency for imaging (NA 0.5 collects 6.7 % of isotropic fluorescence, DERIVED:
 (1 - cos asin 0.5) / 2) is set by the NA, not modelled here.
 
-Next steps: (i) two-wavelength (852/1064 nm) meta-atom library by RCWA (pillar pairs or ring
-pillars) and its torus coverage; (ii) denser supercell sampling above s = 0.35 (non-integer
+Next steps: (i) decide between a single-wavelength objective and a two-wavelength one at
+roughly half the efficiency (Section 5b); (ii) denser supercell sampling above s = 0.35 (non-integer
 blazes or larger supercells), to firm up the outer-ring efficiency of Section 6; (iii) a substrate-bearing
 version of the design (layered spacer) and its tolerances.
 
@@ -350,6 +404,7 @@ version of the design (layered spacer) and its tolerances.
 | Strehl, focus, deflections, tolerances, chromatic data | Sections 1 to 3, 5, 7 | SIM, review before submission | results/metalens_doublet/doublet.json |
 | Plate and doublet efficiencies | Section 6, Summary | SIM, review before submission | results/metalens_doublet/efficiency.json; results/library_analysis_852, _1064/supercell.json |
 | Off-axis superposition Strehl, foci, widths, apodisation | Section 4b | SIM, review before submission | doublet.json, wave_offaxis |
+| Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library/dual_efficiency.json, plate_efficiency.json |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
 | Polynomial-optimisation failures | Section 1 | SIM | results/metalens_study/metalens_study.json |
@@ -363,4 +418,5 @@ version of the design (layered spacer) and its tolerances.
 
 Open placeholders: `[CONFIRM?: side-B air gap, wall, distance to the atoms]`;
 `[CONFIRM?: which side-B functions need 852, 895 and 1064 nm]`; `[REF?: Kalvach and Szabo]`;
-`[REF?: centring tolerances of NA 0.5 objectives]`; `[VALUE?: Cs D2 linewidth]`.
+`[REF?: centring tolerances of NA 0.5 objectives]`; `[VALUE?: Cs D2 linewidth]`;
+`[VALUE?: TiO2 / GaN film index and absorption at 852 and 1064 nm]`.
