@@ -148,8 +148,56 @@ the 0.01 um grid. The 0.1 to 0.2 % shortfall from the ray value (1.000) is consi
 edge diffraction of the stop over the 16 mm spacer. This test is independent of the ray
 tracer: it uses only the phase profiles and exact propagation. It confirms the phase
 construction, the focal position through the 4 mm wall, and the stationary-phase (ray)
-assumption at this Fresnel number (R1^2 / (lambda L) ~ 4,800). Limitation: on axis only; the
-off-axis field relies on the ray trace.
+assumption at this Fresnel number (R1^2 / (lambda L) ~ 4,800). It is on axis only; Section 4b
+covers the field.
+
+## 4b. Off-axis check by superposition from the focusing plate
+
+Method (src/metatrap/metalens/wave_offaxis.py; doublet.json, wave_offaxis). Rays from a
+uniformly filled stop (300 x 300 grid, 70,688 samples) are traced through the corrector and
+the spacer, where geometrical optics holds (Fresnel number ~4,800). Each sample then
+radiates from the focusing plate with amplitude sqrt(J) dA and its accumulated phase. Here, J
+is the local area magnification from the stop to the plate. The focal field is the sum of
+these contributions through the cell, each with the exact point-to-point optical path of the
+layer stack, the same kernel as the exact hologram model, which was validated against
+full-pixel angular-spectrum propagation in campaign 1. The image is located as an intensity
+maximum by a lateral and axial search, not by fitting the eikonal. Hence this tests the
+ray-traced Strehl ratios and image positions of Section 3 independently in the second half of
+the system. In the "apodised" cases the meta-atom power efficiency versus local deflection
+(Section 6) weights both plates.
+
+| Wavelength | Image height | Strehl, superposition / ray trace | Focus, superposition / ray (um) | 1/e^2 half-width, radial / tangential |
+|---|---|---|---|---|
+| 852.3 nm | 0 | 1.000 / 1.000 | 0.000 / 0.000 | 0.70 / 0.70 um |
+| | 400 um | 0.9992 / 0.9992 | -0.105 / -0.105 | 0.70 / 0.70 um |
+| | 1.0 mm | 0.960 / 0.961 | -0.657 / -0.657 | 0.71 / 0.70 um |
+| | 1.3 mm | 0.872 / 0.874 | -1.07 / -1.11 | 0.73 / 0.70 um |
+| 1064.4 nm | 0 | 1.000 / 1.000 | 0.000 / 0.000 | 0.86 / 0.86 um |
+| | 400 um | 0.9995 / 0.9995 | -0.105 / -0.105 | 0.86 / 0.86 um |
+| | 1.0 mm | 0.975 / 0.975 | -0.657 / -0.657 | 0.87 / 0.86 um |
+| | 1.3 mm | 0.915 / 0.917 | -1.07 / -1.11 | 0.89 / 0.88 um |
+
+The two methods agree to <= 0.003 in Strehl ratio and to 1e-4 um in image position at every
+field point. At 1.3 mm the intensity maximum lies 0.04 um from the least-squares plane of the
+ray fit, as expected once astigmatism is present: the diffraction maximum falls between the
+line foci. The lateral sampling of the profiles is 0.02 um.
+
+Apodisation by the meta-atom efficiency (Section 6 curves):
+
+| Wavelength, film | Transmitted fraction, axis / 400 um | Peak relative to lossless uniform pupil, axis / 400 um | Half-width, axis |
+|---|---|---|---|
+| 852.3 nm, LPCVD | 0.789 / 0.788 | 0.792 / 0.791 | 0.70 um (unchanged) |
+| 852.3 nm, Si-rich | 0.812 / 0.812 | 0.815 / 0.814 | 0.70 um (unchanged) |
+| 1064.4 nm, LPCVD | 0.802 / 0.801 | 0.804 / 0.803 | 0.88 um (+0.02) |
+| 1064.4 nm, Si-rich | 0.823 / 0.822 | 0.825 / 0.824 | 0.88 um (+0.02) |
+
+Hence the weaker outer zones cost the peak intensity only through the transmitted power
+(the ratio of peak to transmitted fraction is 1.00). Within the 0.02 um sampling of the
+profiles, they broaden the spot by at most one step at 1064 nm and not at all at 852 nm. A
+site at the array corner receives the same peak as one on the axis. The ray-path weighting
+here gives transmitted fractions 0.01 below the area averages of Section 6 (0.789 against
+0.798 at 852 nm, LPCVD), because it follows each ray from its zone on the corrector to its
+zone on the focusing plate.
 
 ## 5. Chromatic behaviour and the multi-wavelength requirement
 
@@ -280,7 +328,8 @@ for the measured value: a +200 um error leaves 0.85, uncorrectable by refocusing
 
 ## 8. Limitations and next steps
 
-Limitations: (i) scalar ray optics off axis; the wave check covers the axis only. (ii)
+Limitations: (i) scalar optics throughout; off axis, the field between the plates is ray
+optical (Section 4b), and no vector effects are included. (ii)
 Ideal phase maps in Sections 1 to 5 and 7: the meta-atom efficiency enters only through the
 aperture averages of Section 6, not through the imaging (no quantisation or local-periodic-
 approximation phase error is propagated). (iii) Plate substrates and
@@ -291,8 +340,7 @@ Collection efficiency for imaging (NA 0.5 collects 6.7 % of isotropic fluorescen
 
 Next steps: (i) two-wavelength (852/1064 nm) meta-atom library by RCWA (pillar pairs or ring
 pillars) and its torus coverage; (ii) denser supercell sampling above s = 0.35 (non-integer
-blazes or larger supercells), to firm up the outer-ring efficiency of Section 6; (iii) an off-axis wave check (Kirchhoff integral from the
-focusing plate with exact cell kernels, as for the hologram); (iv) a substrate-bearing
+blazes or larger supercells), to firm up the outer-ring efficiency of Section 6; (iii) a substrate-bearing
 version of the design (layered spacer) and its tolerances.
 
 ## Provenance ledger
@@ -301,6 +349,7 @@ version of the design (layered spacer) and its tolerances.
 |---|---|---|---|
 | Strehl, focus, deflections, tolerances, chromatic data | Sections 1 to 3, 5, 7 | SIM, review before submission | results/metalens_doublet/doublet.json |
 | Plate and doublet efficiencies | Section 6, Summary | SIM, review before submission | results/metalens_doublet/efficiency.json; results/library_analysis_852, _1064/supercell.json |
+| Off-axis superposition Strehl, foci, widths, apodisation | Section 4b | SIM, review before submission | doublet.json, wave_offaxis |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
 | Polynomial-optimisation failures | Section 1 | SIM | results/metalens_study/metalens_study.json |
