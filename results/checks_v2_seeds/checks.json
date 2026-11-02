@@ -25,5 +25,32 @@
       }
     },
     "seconds": 1596.4233543872833
+  },
+  "fab:stitch50nm_s22": {
+    "depth_nonuniformity_rms": 0.06743153415316391,
+    "depth_min_over_mean": 0.7640354812573138,
+    "array_efficiency": 0.8216255697487497,
+    "core_efficiency": 0.6785512665718667,
+    "waist_mean_um": 0.8697902389610194,
+    "position_error_rms_um": 0.08500343915675111,
+    "axis_intensity_over_mean_site_peak": 0.10015221555309307,
+    "interstitial_median": 0.01348275114100538,
+    "interstitial_p99": 0.0893101363463173,
+    "interstitial_max": 0.1539307445582225,
+    "interstitial_max_radius_um": 121.6552506059644,
+    "mean_site_offset_um": [
+      -0.0004208720304282964,
+      5.5492233307980855e-05
+    ],
+    "metasurface_transmission": 0.971294271214207,
+    "case": {
+      "name": "stitch50nm_s22",
+      "errors": {
+        "field_um": 100.0,
+        "stitch_sigma_um": 0.05,
+        "seed": 22
+      }
+    },
+    "seconds": 1323.9804589748383
   }
 }
