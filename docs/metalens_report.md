@@ -539,6 +539,56 @@ focusing-plate deflections at each operating wavelength; (ii) tolerances of the 
 modules and the relay; (iii) the wave-optics check of the corrected system off axis
 (Section 4b method) at 852 and 1075 nm.
 
+### 8.4 Checks of the shared lens (lambda_d = 990 nm, L = 5 mm)
+
+Wave optics off axis (results/multiwave/wavecheck.json; scripts/multiwave_wavecheck.py). We
+used the superposition method of Section 4b, with the pre-corrector surfaces included in the
+ray part. At 400 um it gives Strehl ratios 0.985 / 0.996 / 0.988 / 0.982 at 852 / 895 / 1064 /
+1075 nm, against 0.987 / 0.997 / 0.989 / 0.984 from the ray trace. On axis it gives 1.000 at
+all four, and the foci agree to 1e-4 um.
+
+Efficiency from supercells (results/multiwave/supercells.json, doublet_efficiency.json;
+scripts/multiwave_supercells.py). The family is LPCVD SiN, p 0.50 um, h 1.6 um. Supercells of
+N = 3, 4 and 6 pillars, chosen at 990 nm, were solved by RCWA at each operating wavelength,
+x and y polarisation averaged. The first-order efficiency versus deflection (LPA value at
+s = 0) is:
+
+| Wavelength | s = 0 (LPA) | N = 6 | N = 4 | N = 3 | Corrector | Focusing plate | Doublet |
+|---|---|---|---|---|---|---|---|
+| 852.3 nm | 0.76 | 0.63 (s 0.28) | 0.50 (0.43) | 0.69 (0.57) | 0.75 | 0.61 | 0.46 |
+| 894.6 nm | 0.84 | 0.69 (0.30) | 0.65 (0.45) | 0.73 (0.60) | 0.84 | 0.70 | 0.59 |
+| 1064.4 nm | 0.92 | 0.79 (0.35) | 0.70 (0.53) | 0.67 (0.71) | 0.91 | 0.78 | 0.71 |
+| 1075 nm | 0.91 | 0.78 (0.36) | 0.69 (0.54) | 0.64 (0.72) | 0.90 | 0.77 | 0.69 |
+
+These confirm the estimate of Section 8.2 (0.48 / 0.60 / 0.71 / 0.69) to within 0.02. The
+supercells reflect 6 to 20 % and send 2 to 19 % into the zero order. At 1064 and 1075 nm,
+where the blaze is short of 2 pi, they send 4 to 13 % into the -1 order. The non-monotonic
+852 nm values (N = 4 below N = 3) indicate a near-field resonance of this family at 852 nm.
+A family chosen for the multi-wavelength figure of merit, rather than taken from the
+single-wavelength ranking, should recover part of this (next step).
+
+Pre-corrector module tolerances (results/multiwave/precorrector_tolerances.json; ideal
+relay). The worst Strehl over -400 / 0 / 400 um after refocusing is as follows.
+
+| Error | 852.3 nm | 1064.4 nm |
+|---|---|---|
+| none | 0.985 | 0.986 |
+| module decentre 5 um | 0.966 | 0.983 |
+| module decentre 20 um | 0.74 | 0.94 |
+| module tilt 0.1 deg | 0.95 | 0.97 |
+| module tilt 0.5 deg | 0.48 | 0.74 |
+| A-C spacing +20 um | 0.984 (focus -4.0 um) | 0.986 (focus -1.6 um) |
+| A-C spacing +100 um | 0.95 (focus -18 um) | 0.98 (focus -5.9 um) |
+
+The 852 nm module carries the largest correction (~1,000 / 1,500 waves) and is the most
+sensitive. Each module needs centring to ~5 um and tilt to <= 0.1 deg against the shared lens,
+the same class as the plate tolerances of Section 7. The A-C spacing acts as a fine focus
+adjustment (0.18 um of focus per um at 852 nm), which brings all wavelengths into the atom
+plane. Relay aberrations remain unmodelled.
+
+A comparison with infinity-corrected refractive objectives is given in
+docs/objective_comparison.md.
+
 ## 9. Limitations and next steps
 
 Limitations: (i) scalar optics throughout; off axis, the field between the plates is ray
@@ -567,6 +617,7 @@ version of the design (layered spacer) and its tolerances.
 | Other-film and fine-grid efficiencies | Section 5c | SIM, review before submission | results/dual_library_fine, _si_fine, _hi |
 | Lens A design, tolerances, efficiency | Section 8.1 | SIM, review before submission | results/metalens_1075 |
 | Shared-lens Strehl ratios with pre-correctors | Section 8.2 | SIM, review before submission | results/multiwave/optics.json; 900 / 950 nm rows from an inline scan (not stored) |
+| Shared-lens wave check, supercells, module tolerances | Section 8.4 | SIM, review before submission | results/multiwave/wavecheck.json, supercells.json, doublet_efficiency.json, precorrector_tolerances.json |
 | Cross-wavelength atom efficiencies | Section 8.2 | SIM, review before submission | results/multiwave/atoms.json |
 | Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library/dual_efficiency.json, plate_efficiency.json |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
