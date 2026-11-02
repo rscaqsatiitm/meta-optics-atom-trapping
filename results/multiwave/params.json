@@ -1,0 +1,113 @@
+{
+  "config": {
+    "run_id": "multiwave",
+    "na": 0.5,
+    "cell": [
+      [
+        2500,
+        "air"
+      ],
+      [
+        4000,
+        "fused_silica"
+      ],
+      [
+        9000,
+        "air"
+      ]
+    ],
+    "spacer": [
+      [
+        16000,
+        "air"
+      ]
+    ],
+    "design_um": [
+      0.96,
+      0.99
+    ],
+    "operating_um": [
+      0.8523,
+      0.8946,
+      1.0644,
+      1.075
+    ],
+    "precorrector_L_um": [
+      3000,
+      5000,
+      10000
+    ],
+    "field_heights_um": [
+      0,
+      100,
+      200,
+      300,
+      400
+    ],
+    "fab_limits": {
+      "min_feature_um": 0.1,
+      "min_gap_um": 0.1,
+      "max_aspect": 10.0
+    },
+    "width_frac": {
+      "min": 0.12,
+      "max": 0.9,
+      "n": 40
+    },
+    "n_terms": 197,
+    "n_grid": 256,
+    "families": [
+      {
+        "material": "sin_lpcvd",
+        "pitch_um": 0.5,
+        "height_um": 1.6
+      },
+      {
+        "material": "sin_lpcvd",
+        "pitch_um": 0.55,
+        "height_um": 1.7
+      },
+      {
+        "material": "sin_lpcvd",
+        "pitch_um": 0.55,
+        "height_um": 1.9
+      },
+      {
+        "material": "sin_si_rich",
+        "pitch_um": 0.45,
+        "height_um": 1.3
+      },
+      {
+        "material": "sin_si_rich",
+        "pitch_um": 0.5,
+        "height_um": 1.5
+      },
+      {
+        "material": "sin_si_rich",
+        "pitch_um": 0.55,
+        "height_um": 1.6
+      }
+    ],
+    "_config_path": "configs/multiwave.yaml"
+  },
+  "git": {
+    "commit": "5f1b5a98ba449104e716f141f690365ae3eb15aa",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-02T18:13:39+00:00"
+}
