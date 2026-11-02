@@ -3,13 +3,13 @@
 # subset at the start of the run, convergence.json).
 run_id: dual_library
 output_dir: data/dual_library
-materials: [sin_lpcvd, sin_si_rich]
+materials: [sin_si_rich, sin_lpcvd]
 substrate: fused_silica
 wavelengths_um: [0.852, 1.0644]
-pitch_um: [0.50, 0.55]
+pitch_um: [0.55]                     # 0.50 dropped for run time (one ring file at 0.50 kept)
 height_um: [1.6, 2.0, 2.4]
 families:
-  ring: {step_um: 0.01}
+  ring: {step_um: 0.02}
   duo: {step_um: 0.02}
 rules: {min_feature_um: 0.10, max_aspect: 15.0}    # superset; analysis also applies max_aspect 10
 n_terms: 121
