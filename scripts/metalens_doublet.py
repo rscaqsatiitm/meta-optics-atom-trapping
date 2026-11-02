@@ -194,6 +194,35 @@ def main(cfg_path):
         res["wave_axial"] = wa
         save()
 
+    # 8. Off-axis wave check (superposition from the focusing plate), optionally apodised by the
+    #    meta-atom efficiency versus deflection (results/<run_id>/efficiency.json).
+    wo = cfg.get("wave_offaxis")
+    if wo:
+        from metatrap.metalens import wave_offaxis as WO
+
+        res.setdefault("wave_offaxis", {})
+        eff_path = out / "efficiency.json"
+        eff = json.load(open(eff_path)) if eff_path.exists() else {}
+        for lam in wo["wavelengths_um"]:
+            dd = designs[lam]
+            sysm = D.system(dd, lam)
+            for h in wo["heights_um"]:
+                th = D.theta_for_height(sysm, R1, lam, h, f)
+                q = D.quality(sysm, R1, lam, th)
+                cases = [("ideal", None)]
+                if h in wo.get("apodised_heights_um", []):
+                    for mat, e in eff.get(str(lam), {}).items():
+                        cases.append((mat, (np.array(e["sin_theta"]), np.array(e["eta_xy_mean"]))))
+                for tag, eta in cases:
+                    key = f"{lam}:{h}:{tag}"
+                    if key in res["wave_offaxis"]:
+                        continue
+                    t0 = time.time()
+                    r = WO.strehl_offaxis(dd, lam, th, q["x_um"], q["dz_um"], eta=eta, n_pupil=wo["n_pupil"])
+                    res["wave_offaxis"][key] = r | {"ray_strehl": q["strehl"], "ray_x_um": q["x_um"], "ray_dz_um": q["dz_um"], "seconds": time.time() - t0}
+                    print("wave_offaxis", key, {k: (round(v, 4) if isinstance(v, float) else v) for k, v in res["wave_offaxis"][key].items()}, flush=True)
+                    save()
+
 
 if __name__ == "__main__":
     main(sys.argv[1])

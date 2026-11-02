@@ -35,3 +35,4 @@ tolerances:
   - {name: cell tilt 1deg, cell_tilt_rad: 0.0174533}
 wave_axial: {r_max_um: 9000.0, v_max_over_k: 0.70, edge_um: 5.0}
 baselines: {heights_um: [0, 75, 150, 282, 400], silica_spacer_um: 2000}
+wave_offaxis: {wavelengths_um: [0.8523, 1.0644], heights_um: [0, 400, 1000, 1300], apodised_heights_um: [0, 400], n_pupil: 300}

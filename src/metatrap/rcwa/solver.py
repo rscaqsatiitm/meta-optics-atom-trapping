@@ -79,19 +79,36 @@ def solve_pillars(
 ) -> PillarResult:
     """Normal-incidence response of a batch of pillar widths (one eigensolve batch)."""
     widths = np.atleast_1d(np.asarray(widths, dtype=float))
-    lv = fmmax.LatticeVectors(u=cell.pitch * fmmax.X, v=cell.pitch * fmmax.Y)
+    eps = cell.permittivity(widths, eps_pillar, eps_clad, n_grid).astype(complex)
+    return solve_eps(eps, cell.pitch, cell.height, lam_um, eps_in, eps_out, n_terms, formulation, labels=widths)
+
+
+def solve_eps(
+    eps: np.ndarray,
+    pitch_um: float,
+    height_um: float,
+    lam_um: float,
+    eps_in: complex,
+    eps_out: complex = 1.0,
+    n_terms: int = 150,
+    formulation: str = "jones_direct_fourier",
+    labels=None,
+) -> PillarResult:
+    """Normal-incidence response of a batch of square unit cells with permittivity maps
+    eps (B, n_grid, n_grid) on a square lattice of the given pitch (patterned layer of the
+    given height between the incidence and exit half-spaces)."""
+    lv = fmmax.LatticeVectors(u=pitch_um * fmmax.X, v=pitch_um * fmmax.Y)
     expansion = fmmax.generate_expansion(lv, n_terms, fmmax.Truncation.CIRCULAR)
     nt = expansion.num_terms
     k0 = jnp.zeros(2)
     lam = jnp.asarray(lam_um)
 
-    eps = cell.permittivity(widths, eps_pillar, eps_clad, n_grid).astype(complex)
     inc = _uniform(lam, k0, lv, eps_in, expansion)
     out = _uniform(lam, k0, lv, eps_out, expansion)
     pil = fmmax.eigensolve_isotropic_media(
-        lam, k0, lv, jnp.asarray(eps), expansion, formulation=FORMULATIONS[formulation]
+        lam, k0, lv, jnp.asarray(eps.astype(complex)), expansion, formulation=FORMULATIONS[formulation]
     )
-    s = fmmax.stack_s_matrix([inc, pil, out], [jnp.asarray(0.0), jnp.asarray(cell.height), jnp.asarray(0.0)])
+    s = fmmax.stack_s_matrix([inc, pil, out], [jnp.asarray(0.0), jnp.asarray(height_um), jnp.asarray(0.0)])
 
     a0 = _xy_input_amplitudes(inc, nt)  # (2nt, 2)
     a0b = jnp.broadcast_to(a0, s.s11.shape[:-2] + a0.shape)
@@ -111,7 +128,7 @@ def solve_pillars(
 
     t_x = np.asarray(tx[..., 0, 0])
     return PillarResult(
-        widths=widths,
+        widths=np.asarray(labels) if labels is not None else np.arange(eps.shape[0]),
         t_x=t_x,
         t_y=np.asarray(ty[..., 0, 1]),
         t_cross=np.abs(np.asarray(ty[..., 0, 0])),
