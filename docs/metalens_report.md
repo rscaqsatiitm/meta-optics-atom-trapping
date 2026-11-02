@@ -299,11 +299,66 @@ at each wavelength, or more if the aspect ratio stays at 10. For the 852 nm imag
 halves the collection efficiency. For the 1064 nm tweezer path it doubles the required
 power. The alternatives, in order of our preference, are as follows. (i) Separate the
 functions: a single-wavelength 852 nm objective on side B (0.80 to 0.83), with 1064 nm
-delivered by another path. (ii) A higher-index film to raise the phase per unit height and
-relax the aspect ratio (e.g. TiO2 or GaN at n ~ 2.4 to 2.5 `[VALUE?: index and absorption at
-852 and 1064 nm; not simulated]`). (iii) A denser screen (finer geometry grid, more families
+delivered by another path. (ii) Other films (Section 5c: TiO2, GaN and crystalline Si
+were simulated; none closes the gap). (iii) A denser screen (finer geometry grid, more families
 such as rings with a central pillar), which may add several per cent but is unlikely to close
 the gap.
+
+## 5c. Other films (TiO2, GaN, crystalline Si) and a finer geometry grid
+
+Films (literature data, retrieved in session from the refractiveindex.info database):
+(i) ALD TiO2, n = 2.332 / 2.308 at 852 / 1064 nm, k ~ 0
+([Siefke et al., Adv. Opt. Mater. 4, 1780 (2016)](https://doi.org/10.1002/adom.201600250));
+(ii) wurtzite GaN, ordinary index 2.348 / 2.333
+([Barker and Ilegems, Phys. Rev. B 7, 743 (1973)](https://doi.org/10.1103/PhysRevB.7.743));
+birefringence neglected);
+(iii) crystalline Si, n = 3.634 / 3.555, k = 3.4e-3 / 8.2e-5, i.e. alpha = 500 / 10 cm^-1
+([Schinke et al., AIP Adv. 5, 067168 (2015)](https://doi.org/10.1063/1.4923379)).
+TiO2 is on fused silica at 0.55 um pitch. GaN and Si are on sapphire at 0.45 um pitch,
+below lambda / n_sapphire = 0.484 um at 852 nm. Numerics as in Section 5b, except crystalline
+Si, for which 121 Fourier terms were not converged (errors up to 0.25 rad and 50 % in
+amplitude). Si was therefore solved with 197 terms and a 256 grid; against 289 terms the
+errors are <= 0.036 rad for two-pillar cells and <= 0.125 rad / 10 % for resonant rings. The
+TiO2 and GaN screens agree with 197-term solutions to <= 0.081 rad and 1.6 %
+(results/dual_library_hi/convergence_tio2_gan.json).
+
+The geometry grid matters as much as the film. Refining it from 0.02 to 0.01 um raises
+every library by 0.05 to 0.10 (more atoms fill the torus), so the table compares films on the
+fine grid. Doublet efficiency = corrector x focusing plate, for the actual phase pairs, in the
+LPA, before the deflection factor (~0.87) of Section 6:
+
+| Film, height | Aspect <= 10: 852 / 1064 nm | Aspect <= 15: 852 / 1064 nm | One wavelength only | Absorbed at 852 nm (median atom) |
+|---|---|---|---|---|
+| Si-rich SiN, 1.6 um | 0.53 / 0.40 | 0.63 / 0.58 | 0.97 to 0.98 | ~0 |
+| ALD TiO2, 1.6 um | 0.49 / 0.44 | 0.62 / 0.61 | 0.96 to 0.98 | ~0 |
+| LPCVD SiN, 1.6 um | 0.31 / 0.36 | 0.43 / 0.43 | 0.97 | ~0 |
+| crystalline Si on sapphire, 1.0 um | 0.46 / 0.51 | 0.46 / 0.51 | 0.91 to 0.92 | 6 to 9 % |
+| crystalline Si on sapphire, 1.2 um | 0.30 / 0.54 | 0.48 / 0.52 | 0.92 to 0.95 | 7 to 11 % |
+| GaN on sapphire, 1.6 um (0.02 um grid only) | 0.33 / 0.26 | 0.45 / 0.32 | 0.88 to 0.93 | ~0 |
+
+(results/dual_library_fine, dual_library_si_fine, dual_library_hi; plate_efficiency.json.)
+
+Findings. (i) TiO2 and GaN offer no index advantage over Si-rich SiN: their indices at
+852 to 1064 nm are only 0.03 to 0.05 higher. TiO2 performs like Si-rich SiN. GaN is worse
+because sapphire forces the smaller pitch. Their practical value would lie in the process
+(templated ALD and GaN etching reach high aspect ratios), i.e. in moving from the left to the
+middle column `[VALUE?: aspect ratios demonstrated for TiO2 and GaN metasurfaces at
+~1.6 um height]`. (ii) Crystalline Si needs only 1.0 um, so the aspect-ratio rule never
+binds (h / 10 = 0.10 um = the minimum feature). It is the best film within aspect ratio 10
+at 1064 nm (0.51) and comparable to Si-rich SiN at 852 nm (0.46 against 0.53). However, it
+absorbs 6 to 11 % at 852 nm in its resonant atoms, and its single-wavelength ceiling is lower
+(0.91 to 0.95). (iii) No film closes the gap. After the deflection factor, the best
+two-wavelength doublets reach ~0.54 / 0.51 (Si-rich SiN or TiO2, aspect ratio 15) or
+~0.40 to 0.46 (aspect ratio 10), against 0.80 to 0.83 for a single-wavelength doublet. The
+limit is set by how densely a two-parameter, fabricable library covers the phase torus, not
+by the index (Provisional: LPA, screen numerics, two families, 0.01 um grid).
+
+Updated recommendation. For a two-wavelength objective, Si-rich SiN or ALD TiO2 at 1.6 um with
+the highest aspect ratio the process allows, on the 0.01 um grid or finer (~0.5 per
+wavelength at aspect ratio 15). If aspect ratio 10 is a hard limit, crystalline Si on
+sapphire is the alternative at 1064 nm, at the price of 852 nm absorption. The single-
+wavelength 852 nm objective (0.80 to 0.83) remains our preferred option unless 1064 nm must
+pass through the same optic.
 
 ## 6. Meta-atom efficiency at the required deflection
 
@@ -393,7 +448,7 @@ Collection efficiency for imaging (NA 0.5 collects 6.7 % of isotropic fluorescen
 (1 - cos asin 0.5) / 2) is set by the NA, not modelled here.
 
 Next steps: (i) decide between a single-wavelength objective and a two-wavelength one at
-roughly half the efficiency (Section 5b); (ii) denser supercell sampling above s = 0.35 (non-integer
+roughly half the efficiency (Sections 5b, 5c), and obtain the achievable aspect ratio; (ii) denser supercell sampling above s = 0.35 (non-integer
 blazes or larger supercells), to firm up the outer-ring efficiency of Section 6; (iii) a substrate-bearing
 version of the design (layered spacer) and its tolerances.
 
@@ -404,6 +459,8 @@ version of the design (layered spacer) and its tolerances.
 | Strehl, focus, deflections, tolerances, chromatic data | Sections 1 to 3, 5, 7 | SIM, review before submission | results/metalens_doublet/doublet.json |
 | Plate and doublet efficiencies | Section 6, Summary | SIM, review before submission | results/metalens_doublet/efficiency.json; results/library_analysis_852, _1064/supercell.json |
 | Off-axis superposition Strehl, foci, widths, apodisation | Section 4b | SIM, review before submission | doublet.json, wave_offaxis |
+| Film indices TiO2, GaN, c-Si | Section 5c | SOURCE | Siefke 2016; Barker 1973; Schinke 2015 (refractiveindex.info database files, data/materials/) |
+| Other-film and fine-grid efficiencies | Section 5c | SIM, review before submission | results/dual_library_fine, _si_fine, _hi |
 | Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library/dual_efficiency.json, plate_efficiency.json |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
@@ -419,4 +476,5 @@ version of the design (layered spacer) and its tolerances.
 Open placeholders: `[CONFIRM?: side-B air gap, wall, distance to the atoms]`;
 `[CONFIRM?: which side-B functions need 852, 895 and 1064 nm]`; `[REF?: Kalvach and Szabo]`;
 `[REF?: centring tolerances of NA 0.5 objectives]`; `[VALUE?: Cs D2 linewidth]`;
-`[VALUE?: TiO2 / GaN film index and absorption at 852 and 1064 nm]`.
+`[VALUE?: aspect ratios demonstrated for TiO2 / GaN metasurfaces at ~1.6 um]`;
+`[CONFIRM?: silicon-on-sapphire film thickness, ALD TiO2 height]`.

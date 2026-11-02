@@ -1,0 +1,80 @@
+[
+  {
+    "material": "sin_si_rich",
+    "pitch_um": 0.55,
+    "height_um": 1.6,
+    "max_aspect": 10.0,
+    "n_atoms": 129,
+    "corrector_eta_852": 0.7347960196044525,
+    "corrector_eta_1064": 0.6419168954698214,
+    "focusing_eta_852": 0.7174290339660776,
+    "focusing_eta_1064": 0.6235598264140683,
+    "doublet_lpa_852": 0.5271639985069414,
+    "doublet_lpa_1064": 0.4002735879114195
+  },
+  {
+    "material": "sin_si_rich",
+    "pitch_um": 0.55,
+    "height_um": 1.6,
+    "max_aspect": 15.0,
+    "n_atoms": 420,
+    "corrector_eta_852": 0.7968481518533294,
+    "corrector_eta_1064": 0.7713792499442665,
+    "focusing_eta_852": 0.7842636889669556,
+    "focusing_eta_1064": 0.7570904451287119,
+    "doublet_lpa_852": 0.6249390711189929,
+    "doublet_lpa_1064": 0.5840038597033567
+  },
+  {
+    "material": "tio2_ald",
+    "pitch_um": 0.55,
+    "height_um": 1.6,
+    "max_aspect": 10.0,
+    "n_atoms": 129,
+    "corrector_eta_852": 0.7110703194839892,
+    "corrector_eta_1064": 0.6716550132020543,
+    "focusing_eta_852": 0.6927800011255082,
+    "focusing_eta_1064": 0.6548948677695043,
+    "doublet_lpa_852": 0.49261529673243354,
+    "doublet_lpa_1064": 0.43986342105768406
+  },
+  {
+    "material": "tio2_ald",
+    "pitch_um": 0.55,
+    "height_um": 1.6,
+    "max_aspect": 15.0,
+    "n_atoms": 420,
+    "corrector_eta_852": 0.792796681366414,
+    "corrector_eta_1064": 0.7887112370000365,
+    "focusing_eta_852": 0.7764038985023216,
+    "focusing_eta_1064": 0.7752748833064828,
+    "doublet_lpa_852": 0.6155304341325867,
+    "doublet_lpa_1064": 0.611468012227715
+  },
+  {
+    "material": "sin_lpcvd",
+    "pitch_um": 0.55,
+    "height_um": 1.6,
+    "max_aspect": 10.0,
+    "n_atoms": 129,
+    "corrector_eta_852": 0.5678546925127606,
+    "corrector_eta_1064": 0.6119726670671495,
+    "focusing_eta_852": 0.5402505471133834,
+    "focusing_eta_1064": 0.5949427107609547,
+    "doublet_lpa_852": 0.306783808310921,
+    "doublet_lpa_1064": 0.36408867745654117
+  },
+  {
+    "material": "sin_lpcvd",
+    "pitch_um": 0.55,
+    "height_um": 1.6,
+    "max_aspect": 15.0,
+    "n_atoms": 420,
+    "corrector_eta_852": 0.6637635415535079,
+    "corrector_eta_1064": 0.6634558717959745,
+    "focusing_eta_852": 0.6415113818209489,
+    "focusing_eta_1064": 0.6481666249301136,
+    "doublet_lpa_852": 0.4258118667443577,
+    "doublet_lpa_1064": 0.43002995321206294
+  }
+]
