@@ -435,14 +435,14 @@ hologram (docs/prefab_checks_report.md, Section 2), so one alignment of the cell
 serves both sides. The wall thickness must be known to +/-50 um, or the design recomputed
 for the measured value: a +200 um error leaves 0.85, uncorrectable by refocusing.
 
-## 9. Lens set for the experiment: two lenses, or one lens for all wavelengths
+## 8. Lens set for the experiment: two lenses, or one lens for all wavelengths
 
 Requirement (USER): a 1075 nm lens (side A), and a lens for 852, 895 and 1064 nm (side B),
 in the two-sided architecture; preferably one lens for all four wavelengths. All results are
 SIM (review before submission), in ray optics unless stated. Cell stack 2.5 mm air | 4 mm
 fused silica | 9 mm vacuum on both sides `[CONFIRM?]`.
 
-### 9.1 Lens A: 1075 nm, NA 0.55 (configs/metalens_1075.yaml; results/metalens_1075)
+### 8.1 Lens A: 1075 nm, NA 0.55 (configs/metalens_1075.yaml; results/metalens_1075)
 
 This is the same air-spaced aplanatic doublet at NA 0.55 (as the side-A hologram): R1 =
 9.21 mm, f = 16.75 mm. The spacing scan gives an optimum at 17.0 mm. In one common plane the
@@ -456,7 +456,7 @@ The LPCVD supercells reach only s = 0.45, so the outer ring is extrapolated and 
 is optimistic. The side-A meta-hologram already combines this lens with the array hologram.
 Lens A is needed only if the 1075 nm pattern is generated upstream (SLM or AOD) instead.
 
-### 9.2 One metasurface doublet for several wavelengths
+### 8.2 One metasurface doublet for several wavelengths
 
 A metasurface phase map works at one wavelength (Section 5), and multi-wavelength meta-atoms
 lose about half of the light (Sections 5b, 5c). We therefore keep single-wavelength meta-atoms
@@ -512,7 +512,7 @@ pre-corrector and relay losses excluded). The zero order of each plate (1 to 5 %
 weakly focused and spreads over millimetres in the atom plane. Its intensity there is ~1e-6
 of a focal spot (area ratio ~1 um^2 / 1 mm^2, DERIVED), negligible for trapping.
 
-### 9.3 Options
+### 8.3 Options
 
 | Option | Lens(es) | Strehl over +/-400 um | Doublet efficiency | Notes |
 |---|---|---|---|---|
@@ -539,7 +539,7 @@ focusing-plate deflections at each operating wavelength; (ii) tolerances of the 
 modules and the relay; (iii) the wave-optics check of the corrected system off axis
 (Section 4b method) at 852 and 1075 nm.
 
-## 8. Limitations and next steps
+## 9. Limitations and next steps
 
 Limitations: (i) scalar optics throughout; off axis, the field between the plates is ray
 optical (Section 4b), and no vector effects are included. (ii)
@@ -565,9 +565,9 @@ version of the design (layered spacer) and its tolerances.
 | Off-axis superposition Strehl, foci, widths, apodisation | Section 4b | SIM, review before submission | doublet.json, wave_offaxis |
 | Film indices TiO2, GaN, c-Si | Section 5c | SOURCE | Siefke 2016; Barker 1973; Schinke 2015 (refractiveindex.info database files, data/materials/) |
 | Other-film and fine-grid efficiencies | Section 5c | SIM, review before submission | results/dual_library_fine, _si_fine, _hi |
-| Lens A design, tolerances, efficiency | Section 9.1 | SIM, review before submission | results/metalens_1075 |
-| Shared-lens Strehl ratios with pre-correctors | Section 9.2 | SIM, review before submission | results/multiwave/optics.json; 900 / 950 nm rows from an inline scan (not stored) |
-| Cross-wavelength atom efficiencies | Section 9.2 | SIM, review before submission | results/multiwave/atoms.json |
+| Lens A design, tolerances, efficiency | Section 8.1 | SIM, review before submission | results/metalens_1075 |
+| Shared-lens Strehl ratios with pre-correctors | Section 8.2 | SIM, review before submission | results/multiwave/optics.json; 900 / 950 nm rows from an inline scan (not stored) |
+| Cross-wavelength atom efficiencies | Section 8.2 | SIM, review before submission | results/multiwave/atoms.json |
 | Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library/dual_efficiency.json, plate_efficiency.json |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
