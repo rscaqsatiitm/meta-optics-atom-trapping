@@ -21,6 +21,28 @@
       ],
       "metasurface_transmission": 1.0,
       "seconds": 345.1303298473358
+    },
+    "library_lpa": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.07504142592723824,
+      "depth_min_over_mean": 0.7549042404178858,
+      "array_efficiency": 0.8282296106337401,
+      "core_efficiency": 0.6703151888609429,
+      "cell_power_nonuniformity_rms": 0.07911456666531395,
+      "waist_mean_um": 0.8660921249240462,
+      "waist_std_um": 0.024835354762209414,
+      "position_error_rms_um": 0.09503791420256014,
+      "axis_intensity_over_mean_site_peak": 0.10402235268449149,
+      "interstitial_median": 0.015664468332503335,
+      "interstitial_p99": 0.10091406594908096,
+      "interstitial_max": 0.25703192896051,
+      "interstitial_max_radius_um": 572.0,
+      "mean_site_offset_um": [
+        -2.5133731493680297e-06,
+        -2.9788339091588316e-06
+      ],
+      "metasurface_transmission": 0.9712936656127568,
+      "seconds": 355.39503598213196
     }
   },
   "feedback_history": [
