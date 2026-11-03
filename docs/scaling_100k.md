@@ -51,6 +51,51 @@ gives the number of sites inside the inscribed square, N = 2 r^2 / a^2 (DERIVED)
 The axial spot is 0.78 um (Airy 1/e^2 radius 0.41 lambda / NA = 0.80 um). The 100,000-site
 array corner lies at 891 um (4 um pitch) or 669 um (3 um pitch).
 
+## Full 100,000-site design at the cell geometry
+
+Run: 316 x 316 = 99,856 sites at 4.0 um pitch (array corner 891 um from the axis), NA 0.55,
+1075 nm, 18.4 mm metasurface (1.36 x 10^9 pixels), present cell stack, array 50 um beyond the
+lens focus. Settings as v2 (configs/fullaperture_100k.yaml; results/fullaperture_100k): 60
+D4-symmetric WGS iterations with exact kernels, two feedback rounds of 30 iterations, then
+library pillars (Si-rich SiN estimate, p 0.5 um, h 1.6 um) without and with 5 nm rms width
+noise. The kernel (517,262 wedge pupil samples x 12,561 fundamental sites, ~50 GB dense) is
+evaluated on the fly (src/metatrap/hologram/lazy.py; numba, vectorised sincos, relative
+agreement with the dense kernel 1e-5): ~150 s per WGS iteration on 4 cores, 0.5 GB of memory.
+The run survived two container restarts through the new checkpoints (every 10 WGS
+iterations and before each feedback round). One deviation from v2: the render grid is
+upsampled 5 x instead of 8 x, to fit in memory.
+
+| Case | Depth non-uniformity (rms) | Min / mean | Array efficiency | Mean waist | Position error (rms) | Interstitial p99 / max | Depth at 50 W | Power for 0.3 mK |
+|---|---|---|---|---|---|---|---|---|
+| Pupil model (exact kernels) | 0.24 % | - | mode efficiency 0.854 | - | - | - | - | - |
+| Ideal phase, round 0 / 1 / 2 | 8.7 / 8.5 / 7.0 % | 0.66 / 0.69 / 0.76 | 0.852 / 0.855 / 0.857 | - | - | - | 0.073 mK | 205 W |
+| Library pillars (LPA) | 7.5 % | 0.75 | 0.828 | 0.866 um | 0.095 um | 0.10 / 0.26 | 0.070 mK | 213 W |
+| + 5 nm rms width noise | 8.5 % | 0.70 | 0.803 | 0.865 um | 0.098 um | 0.10 / 0.28 | 0.068 mK | 221 W |
+| v2 (20,164 sites), library pillars, for comparison | 5.4 % | 0.84 | 0.826 | 0.869 um | 0.083 um | 0.09 / 0.12 | 0.356 mK | - |
+
+What the full design shows. (i) The physics scales as predicted above. The array efficiency
+(0.83 with library pillars) and the spot size and position are those of the 20,164-site
+design. The power for 0.3 mK, 213 W, matches the 210 W estimate. The depth shows no field
+dependence: the radially binned mean stays within 0.995 to 1.002 from the axis to 780 um, and
+the outermost ring of sites averages 0.999 (v2: 0.987). (ii) The remaining non-uniformity is
+site-to-site scatter, not a field effect. A smooth radial fit explains 0.11 % of the 7.05 %
+rms, and neighbouring sites are uncorrelated (correlation coefficient 0.01). The feedback
+converges more slowly than for v2 (8.7 to 7.0 % in two rounds, against 6.3 to 5.3 %). We
+attribute this, provisionally, to the 5 x render upsampling and to the four times larger
+number of sites sharing each pupil degree of freedom. Further feedback rounds (~1.5 h each)
+and an 8 x render on a larger-memory machine are the obvious next steps; neither has been
+run. (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
+(v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
+0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
+feedback (dark targets) would address it.
+
+Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 99,856
+traps with 0.83 efficiency and 7.5 % rms depth non-uniformity with library pillars, after two
+feedback rounds. 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
+outside its thermal limits; use LPCVD SiN or sapphire). The main limitation is the
+convergence of the depth uniformity, which is set by the design iterations and not by the
+optics.
+
 ## Discussion
 
 Why the hologram does not care much. In the exact-kernel design every site receives its own
@@ -94,5 +139,4 @@ versus deflection mixes two Si-rich families (p 0.50 / h 1.5 um below s = 0.54, 
 above) and assumes the local-grating picture. The lens field radius uses free focus per
 field point; a common plane gives slightly smaller radii (Section 3 of docs/metalens_report.md).
 Vacuum geometries without a window are used throughout; the 15.5 mm row approximates the
-present cell. Next step: a full 100,000-site exact-kernel design at the cell geometry with
-on-the-fly kernels, as a ~1 day job or on a larger machine.
+present cell. The full 100,000-site design is reported above.
