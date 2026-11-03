@@ -1,0 +1,97 @@
+{
+  "config": {
+    "run_id": "fullaperture_100k",
+    "wavelength_um": 1.075,
+    "na": 0.55,
+    "stack": [
+      [
+        2500,
+        "air"
+      ],
+      [
+        4000,
+        "fused_silica"
+      ],
+      [
+        9000,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.0,
+    "sites": {
+      "kind": "square",
+      "nx": 316,
+      "ny": 316,
+      "pitch_um": 4.0
+    },
+    "pupil_guard": 1.25,
+    "wgs_iter": 60,
+    "wgs_fix": 30,
+    "render_upsample": 5,
+    "n_fold": 4096,
+    "upsample": 4,
+    "feedback_rounds": 2,
+    "array_defocus_um": 50.0,
+    "block_rows": 64,
+    "feedback_gain": 0.5,
+    "feedback_wgs_iter": 30,
+    "library": {
+      "path": "data/library_est_1075.h5",
+      "material": "sin_si_rich_est",
+      "pitch_um": 0.5,
+      "height_um": 1.6
+    },
+    "pillar_cases": [
+      {
+        "name": "library_lpa"
+      },
+      {
+        "name": "library_sigma5nm",
+        "errors": {
+          "sigma_um": 0.005,
+          "seed": 1
+        }
+      }
+    ],
+    "power_budget": {
+      "core_fraction_ideal": 0.82,
+      "na_eff": 0.574,
+      "powers_W": [
+        50,
+        100
+      ],
+      "extra_factors": {
+        "edge_vs_lpa": 0.879,
+        "substrate_entrance_ar": 0.995,
+        "cell_wall_ar": 0.99,
+        "beam_shaper": 0.95,
+        "vector_peak": 0.923
+      }
+    },
+    "_config_path": "configs/fullaperture_100k.yaml"
+  },
+  "git": {
+    "commit": "5aa6662d23a134827794d9aaf590858d941a4154",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-03T09:31:05+00:00"
+}
