@@ -117,7 +117,13 @@ def mode_amplitudes(wp: WedgePupil, psi: np.ndarray, K: np.ndarray) -> np.ndarra
 
 
 def wgs_symmetric(wp: WedgePupil, K: np.ndarray, fstab: np.ndarray, n_iter: int = 60, n_fix: int | None = 30,
-                  seed: int = 0, psi0: np.ndarray | None = None, target: np.ndarray | None = None) -> SymWGSResult:
+                  seed: int = 0, psi0: np.ndarray | None = None, target: np.ndarray | None = None,
+                  ckpt_path=None, ckpt_every: int = 10) -> SymWGSResult:
+    """Weighted GS on the wedge. With ckpt_path, the loop state (psi, g, fixed phases, iteration)
+    is saved every ckpt_every iterations and restored on the next call with the same path, so a
+    long design survives a restart; the file is removed when the loop finishes."""
+    import os
+
     rng = np.random.default_rng(seed)
     nf = K.shape[1]
     tgt = np.ones(nf) if target is None else np.asarray(target, float)
@@ -131,7 +137,13 @@ def wgs_symmetric(wp: WedgePupil, K: np.ndarray, fstab: np.ndarray, n_iter: int 
     fixed = None
     hu, he = [], []
     c = None
-    for it in range(n_iter):
+    it0 = 0
+    if ckpt_path is not None and os.path.exists(str(ckpt_path)):
+        z = np.load(str(ckpt_path))
+        psi, g, it0 = z["psi"], z["g"], int(z["it"])
+        fixed = z["fixed"] if bool(z["has_fixed"]) else None
+        hu, he = list(z["hu"]), list(z["he"])
+    for it in range(it0, n_iter):
         e = mode_amplitudes(wp, psi, K)
         a = np.abs(e)
         q = a**2 / tgt**2
@@ -145,6 +157,13 @@ def wgs_symmetric(wp: WedgePupil, K: np.ndarray, fstab: np.ndarray, n_iter: int 
         th = fixed if fixed is not None else np.angle(e)
         c = (g * tgt * np.exp(1j * th)).astype(np.complex64)
         psi = np.angle(K @ (c / fstab).astype(np.complex64))
+        if ckpt_path is not None and (it + 1) % ckpt_every == 0 and it + 1 < n_iter:
+            tmp = str(ckpt_path) + ".tmp.npz"
+            np.savez(tmp, psi=psi, g=g, it=it + 1, fixed=(fixed if fixed is not None else np.zeros(1)), has_fixed=fixed is not None,
+                     hu=np.array(hu), he=np.array(he))
+            os.replace(tmp, str(ckpt_path))
+    if ckpt_path is not None and os.path.exists(str(ckpt_path)):
+        os.remove(str(ckpt_path))
     e = mode_amplitudes(wp, psi, K)
     return SymWGSResult(psi=psi.astype(np.float64), coeffs=c, mode_amp=e, history_nonuniformity=hu, history_efficiency=he)
 

@@ -153,7 +153,8 @@ def main(cfg_path):
         K = S.kernels_G(wp, fs, tab, lam)
         print(f"K_G {K.shape} {K.nbytes/1e9:.2f} GB in {time.time()-t0:.0f}s", flush=True)
     if state is None:
-        d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("wgs_iter", 60), n_fix=cfg.get("wgs_fix", 30))
+        d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("wgs_iter", 60), n_fix=cfg.get("wgs_fix", 30), ckpt_path=out / "wgs_ckpt.npz")
+        np.savez_compressed(state_path, psi=d.psi, coeffs=d.coeffs, tgt=np.ones(len(fs)), next_round=0)
         mult = 8.0 / fstab
         eta = np.abs(d.mode_amp) ** 2
         mean = np.sum(mult * eta) / mult.sum()
@@ -165,10 +166,18 @@ def main(cfg_path):
         d = S.SymWGSResult(psi=state["psi"], coeffs=state["coeffs"], mode_amp=np.zeros(len(fs)), history_nonuniformity=[], history_efficiency=[])
         tgt, rnd0 = state["tgt"], int(state["next_round"])
         print(f"resumed from checkpoint at round {rnd0}", flush=True)
+        if "pending" in state and bool(state["pending"]) and not feedback_done:
+            d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt,
+                                ckpt_path=out / "wgs_ckpt.npz")
+            np.savez_compressed(state_path, psi=d.psi, coeffs=d.coeffs, tgt=tgt, next_round=rnd0, pending=False)
+            print("finished pending feedback WGS", flush=True)
     results.update({"aperture_mm": 2 * radius / 1000, "n_pixels": n * n, "n_sites": len(sites)})
 
-    def save_state(next_round):
-        np.savez_compressed(state_path, psi=d.psi, coeffs=d.coeffs, tgt=tgt, next_round=next_round)
+    def save_state(next_round, pending_tgt=None):
+        # pending_tgt: the feedback WGS for next_round is under way with this target; on resume
+        # it is re-run (continuing from its own checkpoint) before the round's simulation.
+        np.savez_compressed(state_path, psi=d.psi, coeffs=d.coeffs, tgt=tgt if pending_tgt is None else pending_tgt, next_round=next_round,
+                            pending=pending_tgt is not None)
 
     if not feedback_done:
         for rnd in range(rnd0, n_rounds + 1):
@@ -185,7 +194,9 @@ def main(cfg_path):
             pk = per["peak"]
             orbit_mean = np.bincount(inv, weights=pk) / np.bincount(inv)
             tgt = tgt * (pk.mean() / orbit_mean) ** cfg.get("feedback_gain", 0.5)
-            d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt)
+            save_state(rnd + 1, pending_tgt=tgt)
+            d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt,
+                                ckpt_path=out / "wgs_ckpt.npz")
             save_state(rnd + 1)
             write_json(metrics_path, results)
     del K
