@@ -75,8 +75,8 @@
     "_config_path": "configs/fullaperture_100k.yaml"
   },
   "git": {
-    "commit": "5aa6662d23a134827794d9aaf590858d941a4154",
-    "dirty": "True"
+    "commit": "b6caef7f936db3c9c3bda772df5757ac95725e39",
+    "dirty": "False"
   },
   "versions": {
     "python": "3.13.18",
@@ -93,5 +93,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-03T09:31:05+00:00"
+  "utc": "2026-11-03T13:04:19+00:00"
 }
