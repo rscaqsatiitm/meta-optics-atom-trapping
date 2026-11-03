@@ -1,0 +1,8 @@
+# Steep-deflection supercells at 1075 nm (single-wavelength atoms) for the 100,000-site scaling study.
+run_id: scaling_100k_sc_lpcvd
+operating_um: [1.075]
+fab_limits: {min_feature_um: 0.10, min_gap_um: 0.10, max_aspect: 10.0}
+width_frac: {min: 0.12, max: 0.90, n: 40}
+n_terms: 197
+n_grid: 256
+supercell: {material: sin_lpcvd, pitch_um: 0.50, height_um: 1.6, design_um: 1.075, n_cells: [3, 4, 5], grid_per_cell: 48, terms_per_cell: 80}

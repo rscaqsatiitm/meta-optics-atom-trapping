@@ -1,0 +1,15 @@
+# 100,000-site scaling: hologram spot quality and meta-atom deflection versus working distance
+# (metasurface in vacuum, no window), and the imaging-lens field radius.
+run_id: scaling_100k
+wavelength_um: 1.075
+na: 0.55
+working_distances_um: [3000, 6000, 10000, 15500, 25000]
+# Site radii: 0 (axis), 335 / 670 um (3 um pitch, 1e5 sites: mid / corner), 894 um (4 um pitch corner), 1265 um (4 um pitch, 1e5 x 2)
+site_radii_um: [0, 335, 670, 894, 1265]
+n_aperture: 360
+supercell_family: sin_si_rich
+supercell_files: [results/library_analysis_1075/supercell.json, results/scaling_100k_sc_si_rich/supercells.json]
+eta_lpa: 0.97     # Si-rich p 0.45 h 1.3 um, LPA efficiency at 1075 nm (library_analysis_1075 selection)
+lens: true
+lens_na: 0.5
+lens_wavelength_um: 0.8523
