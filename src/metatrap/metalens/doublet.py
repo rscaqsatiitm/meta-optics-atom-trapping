@@ -32,6 +32,7 @@ class DoubletSpec:
     cell: list  # [[thickness_um, material], ...] after the focusing plate
     spacer: list  # [[thickness_um, material], ...] between the plates
     n_pts: int = 4001
+    ext: float = 1.1  # construction radius / R1 (must cover R2 + field height on the focusing plate)
 
 
 @dataclass
@@ -44,7 +45,7 @@ class Doublet:
 
 
 def make(spec: DoubletSpec, lam_design_um: float, R1_um: float | None = None) -> Doublet:
-    m1, _, m2, _, info = aplanat.design(lam_design_um, spec.na, spec.cell, spacer=spec.spacer, R1_um=R1_um, n_pts=spec.n_pts)
+    m1, _, m2, _, info = aplanat.design(lam_design_um, spec.na, spec.cell, spacer=spec.spacer, R1_um=R1_um, n_pts=spec.n_pts, ext=spec.ext)
     return Doublet(m1, m2, info, lam_design_um, spec)
 
 

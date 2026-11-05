@@ -72,7 +72,7 @@ def _invert_height(st: LayerStack, dh, lam_um: float):
 
 
 def design(lam_um: float, na: float, cell: list, substrate: str = "fused_silica", t_um: float = 2000.0, n_pts: int = 4001,
-           spacer: list | None = None, R1_um: float | None = None):
+           spacer: list | None = None, R1_um: float | None = None, ext: float = 1.1):
     """Return (meta1, spacer Media, meta2, cell Media, info) for the aplanatic doublet.
 
     ``spacer`` is the list [[thickness_um, material], ...] between the two metasurfaces
@@ -88,9 +88,10 @@ def design(lam_um: float, na: float, cell: list, substrate: str = "fused_silica"
     k0 = 2 * np.pi / lam_um
     R1 = R2 if R1_um is None else float(R1_um)
     f = R1 / na
-    # The construction is extended to 1.1 R1 so that off-axis bundles, which reach the second
-    # surface slightly beyond R2, still see the designed phase (the stop stays at R1).
-    h1 = np.linspace(0, 1.1 * R1, n_pts)
+    # The construction is extended to ext x R1 (default 1.1) so that off-axis bundles, which
+    # reach the second surface beyond R2 by about the field height, still see the designed phase
+    # (the stop stays at R1). Beyond the construction the phase continues linearly.
+    h1 = np.linspace(0, ext * R1, n_pts)
     s_f = h1 / f
     h2 = st.ray_height(s_f, lam_um)
     if np.any(np.diff(h2) <= 0):
