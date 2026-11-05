@@ -80,9 +80,12 @@ dependence: the radially binned mean stays within 0.995 to 1.002 from the axis t
 the outermost ring of sites averages 0.999 (v2: 0.987). (ii) The remaining non-uniformity is
 site-to-site scatter, not a field effect. A smooth radial fit explains 0.11 % of the 7.05 %
 rms, and neighbouring sites are uncorrelated (correlation coefficient 0.01). The feedback
-converges more slowly than for v2 (8.7 to 7.0 % in two rounds, against 6.3 to 5.3 %). We
-attribute this, provisionally, to the 5 x render upsampling and to the four times larger
-number of sites sharing each pupil degree of freedom. Further feedback rounds (~1.5 h each)
+converges more slowly than for v2 (8.7 to 7.0 % in two rounds, against 6.3 to 5.3 %). The number of
+pupil samples per site is the same in both designs (8 x 103,459 / 20,164 = 41 for v2;
+8 x 517,262 / 99,856 = 41 here), because the pupil grid is refined in proportion to the field.
+We therefore attribute the slower convergence, provisionally, to the coarser render grid
+(5 x instead of 8 x upsampling of a pupil field that now has 2.2 times finer structure per
+axis). Further feedback rounds (~1.5 h each)
 and an 8 x render on a larger-memory machine are the obvious next steps; neither has been
 run. (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
@@ -140,3 +143,57 @@ above) and assumes the local-grating picture. The lens field radius uses free fo
 field point; a common plane gives slightly smaller radii (Section 3 of docs/metalens_report.md).
 Vacuum geometries without a window are used throughout; the 15.5 mm row approximates the
 present cell. The full 100,000-site design is reported above.
+
+## Imaging the 100,000-site array, and the capacity of a 20 mm chip
+
+Imaging lens (852.3 nm, NA 0.5, ray trace, one common focal plane; results/scaling_100k/
+imaging_field.json):
+
+| Field radius covered | Dedicated 852 nm doublet (16 mm, Section 3 of docs/metalens_report.md): min Strehl | Shared 990 nm lens with 852 nm pre-corrector: min Strehl |
+|---|---|---|
+| 400 um (v2 corner) | 0.999 | 0.985 |
+| 670 um (100,000 sites, 3 um pitch) | 0.993 | - |
+| 891 um (100,000 sites, 4 um pitch) | 0.977 | 0.686 (0.913 at 894.6 nm) |
+| 1,265 um | 0.889 | 0.192 |
+| 1,600 um | 0.677 | - |
+
+Hence the 100,000-site array can be imaged with the dedicated 852 nm doublet (Strehl >= 0.977 in
+one plane, focus spread 0.5 um), but not well through the shared multi-wavelength lens, whose
+pre-corrected field is narrower. The field of the dedicated lens with Strehl >= 0.8 has a
+radius of ~1.4 mm (interpolated), i.e. an inscribed square of 2.0 mm.
+
+Camera and photons (Provisional). Ref. [Manetsch et al., arXiv:2403.12021] images 6,100 atoms
+at 7.2 um spacing on a qCMOS camera with magnification 5.1, 80 ms exposure and a 7 x 7 pixel box
+per site (SOURCE, read in session). For 4 um pitch a magnification of ~5.75 gives ~5 pixels per
+site and a 7.3 mm square image `[VALUE?: qCMOS pixel 4.6 um, sensor 4096 x 2304 (~18.8 x 10.6 mm);
+recalled]`. The collected fraction at NA 0.5 is 0.067 of 4 pi (DERIVED) against 0.082 at NA 0.55.
+With a lens efficiency of 0.80 (theory; ~0.6 if the fabrication penalty of the only measured
+metalens tweezer applies), the detected photon number per atom is ~0.5 to 0.8 of that of a
+refractive NA 0.55 objective, `[VALUE?: objective transmission]`, so the exposure time would
+grow by ~1.3 to 2 x for the same fidelity.
+
+Hologram field at the present geometry (single-site ideal spots, 15.5 mm vacuum model,
+results/scaling_100k/hologram_large_field.json): relative depth 0.983 at 1.6 mm, 0.968 at
+2.3 mm, 0.940 at 3.2 mm, 0.887 at 4.5 mm and 0.790 at 6.4 mm, with waists <= 0.90 um and largest
+meta-atom deflection 0.61 to 0.73.
+
+Capacity of one 18.4 mm chip (DERIVED from the above; 4 um / 3 um pitch):
+
+| Limit | Value | Sites |
+|---|---|---|
+| Hologram field (depth >= 0.89 of axis, radius 4.5 mm, inscribed square) | 6.4 mm square | 2.5 million / 4.5 million |
+| Metasurface space-bandwidth | 1.36 x 10^9 pixels against ~1 um^2 per resolvable spot | not limiting |
+| Imaging field of the dedicated 852 nm doublet (Strehl >= 0.8, radius 1.4 mm) | 2.0 mm square | 0.25 million / 0.44 million |
+| Laser power, 0.2 mK (0.3 mK), N = 140.6 mK x site/W x P / U | 200 W: 141,000 (94,000); 1 kW: 703,000 (469,000) | |
+| Design computation, ~ N^2 (100,000 sites: ~5 h on 4 cores) | 500,000 sites: ~5 days on 4 cores | GPU or cluster |
+
+The chip is not the constraint: its field and space-bandwidth support millions of sites. The
+binding limits are the imaging field of a single objective (~0.25 to 0.45 million sites) and the
+trap power, ~1 kW for ~0.5 to 0.7 million sites at 0.2 mK. At 1 kW the intensity on an 18.4 mm
+chip is 375 W/cm^2; this requires LPCVD SiN (global heating 0.4 K, SIM scaling) or a sapphire
+substrate, and absorbing particles below ~18 um radius on fused silica (DERIVED, 50 K). Several
+lasers can be added only at the same wavelength, because the array scales laterally with lambda:
+1 nm of detuning moves a site at 891 um by 0.8 um, comparable to the waist. Two
+polarisation-combined amplifiers at the same wavelength, as in ref. [Manetsch], double the power
+through the polarisation-independent metasurface. Atom loading, rearrangement time and vacuum
+lifetime at 10^5 to 10^6 atoms are outside this optical study.
