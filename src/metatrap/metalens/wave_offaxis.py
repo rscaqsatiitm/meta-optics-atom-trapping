@@ -32,13 +32,18 @@ from ..propagation.layers import LayerStack
 from .raytrace import Medium, System, point_source_rays
 
 
-def plate_field(d, lam_um: float, theta: float, n_pupil: int = 400):
-    """Samples (x2, y2, amplitude, phase/k0) just after the focusing plate for field angle theta."""
+def plate_field(d, lam_um: float, theta: float, n_pupil: int = 400, extra_opl=None):
+    """Samples (x2, y2, amplitude, phase/k0) just after the focusing plate for field angle theta.
+
+    extra_opl(x, y): optional optical path (um) added at the stop, e.g. a per-field
+    pre-compensation supplied by a lenslet of a lenslet-array relay."""
     R1 = d.info["R1_um"]
     c = (np.arange(n_pupil) + 0.5) / n_pupil * 2 * R1 - R1
     X, Y = np.meshgrid(c, c, indexing="ij")
     inside = np.hypot(X, Y) <= R1
     px, py, opl0 = point_source_rays(X, Y, theta, None)
+    if extra_opl is not None:
+        opl0 = opl0 + extra_opl(X, Y)
     from .doublet import _media
 
     sysm = System([d.m1] + _media(d.spec.spacer, lam_um))

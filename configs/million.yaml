@@ -19,6 +19,7 @@ imaging:
   designs:
     - {name: f16, air_gap_um: 2500}
     - {name: f25, air_gap_um: 10000}
+  wavecheck_field_um: [2828]
     - {name: f42, air_gap_um: 25000}
 mla:
   wavelength_um: 1.075
