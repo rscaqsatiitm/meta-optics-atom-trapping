@@ -160,7 +160,11 @@ imaging_field.json):
 Hence the 100,000-site array can be imaged with the dedicated 852 nm doublet (Strehl >= 0.977 in
 one plane, focus spread 0.5 um), but not well through the shared multi-wavelength lens, whose
 pre-corrected field is narrower. The field of the dedicated lens with Strehl >= 0.8 has a
-radius of ~1.4 mm (interpolated), i.e. an inscribed square of 2.0 mm.
+radius of ~1.4 mm (interpolated), i.e. an inscribed square of 2.0 mm. Correction (docs/million_sites.md,
+Section 2): these values used an aplanatic construction extended only to 1.1 R1, so the outer
+focusing-plate zones reached by fields beyond ~0.8 mm carried a linearly extrapolated phase.
+With the construction extended to 1.6 R1 and the plate spacing equal to f, the same NA 0.5
+objective reaches a Strehl ratio >= 0.8 out to 1.62 mm (0.33 million sites at 4 um pitch).
 
 Camera and photons (Provisional). Ref. [Manetsch et al., arXiv:2403.12021] images 6,100 atoms
 at 7.2 um spacing on a qCMOS camera with magnification 5.1, 80 ms exposure and a 7 x 7 pixel box
