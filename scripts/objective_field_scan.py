@@ -49,16 +49,17 @@ def main(cfg_path):
             if key in res:
                 continue
             cell = [[gap, "air"]] + [list(l) for l in oc["cell_rest"]]
-            ext = oc.get("ext", 1.1)
-            try:
-                d0 = D.make(D.DoubletSpec(na, cell, [[1000.0, "air"]], n_pts=2001, ext=ext), lam)
-            except Exception as e:
-                print(key, "failed:", e, flush=True)
-                continue
-            f0 = d0.info["f_um"]
+            ext = min(oc.get("ext", 1.1), 0.95 / na)  # keep the construction below grazing directions
+            from metatrap.propagation.layers import LayerStack
+
+            f0 = LayerStack.from_list(cell).aperture_for_na(na, lam) / na
             best = None
             for frac in oc["spacing_fracs"]:
-                d = D.make(D.DoubletSpec(na, cell, [[frac * f0, "air"]], n_pts=2001, ext=ext), lam)
+                try:
+                    d = D.make(D.DoubletSpec(na, cell, [[frac * f0, "air"]], n_pts=2001, ext=ext), lam)
+                except Exception as e:
+                    print(key, frac, "failed:", e, flush=True)
+                    continue
                 s = D.system(d, lam)
                 m = min_strehl(s, d.info["R1_um"], lam, d.info["f_um"], 0.06 * f0)
                 if best is None or m > best[0]:

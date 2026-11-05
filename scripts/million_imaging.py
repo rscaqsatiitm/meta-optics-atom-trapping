@@ -31,8 +31,10 @@ def main(cfg_path):
     for des in ic["designs"]:
         name = des["name"]
         cell = [[des["air_gap_um"], "air"], [4000, "fused_silica"], [9000, "air"]]
-        d0 = D.make(D.DoubletSpec(na, cell, [[1000.0, "air"]], n_pts=2001, ext=ic["ext"]), lam)
-        d = D.make(D.DoubletSpec(na, cell, [[d0.info["f_um"] * des.get("spacing_frac", 1.0), "air"]], n_pts=2001, ext=ic["ext"]), lam)
+        from metatrap.propagation.layers import LayerStack
+
+        f0 = LayerStack.from_list(cell).aperture_for_na(na, lam) / na
+        d = D.make(D.DoubletSpec(na, cell, [[f0 * des.get("spacing_frac", 1.0), "air"]], n_pts=2001, ext=min(ic["ext"], 0.95 / na)), lam)
         R1, f = d.info["R1_um"], d.info["f_um"]
         s = D.system(d, lam)
         dz, _ = D.common_plane(s, R1, lam, list(np.linspace(0, max(ic["field_um"]), 6)), f, n_rays=28)

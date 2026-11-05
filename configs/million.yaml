@@ -20,3 +20,12 @@ imaging:
     - {name: f16, air_gap_um: 2500}
     - {name: f25, air_gap_um: 10000}
     - {name: f42, air_gap_um: 25000}
+mla:
+  wavelength_um: 1.075
+  na: 0.5
+  pitch_um: [3.0, 4.0]
+  demag: [5, 10, 20]
+  field_um: [0, 1000, 1770, 2121, 2828]
+  objectives:
+    - {name: f16, air_gap_um: 2500}
+    - {name: f25, air_gap_um: 10000}
