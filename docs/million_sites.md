@@ -20,14 +20,17 @@ this field: an exact-kernel site at 2.83 mm keeps ~0.95 of the axial depth, and 
 <= 0.82 um (SIM, single-site kernels). Its design, however, needs ~3 weeks on the present
 4-core machine, or ~1 GPU-day (DERIVED). A metasurface lenslet array relayed by the
 meta-objective scales by construction. With per-lenslet aberration pre-compensation it
-restores Strehl 1.0 over the full 2.83 mm field (ray model). The lenslets then need only small
+restores the Strehl ratio over the full 2.83 mm field (1.0 in the ray model; 0.96 to 0.99 in a
+wave-optics check). The lenslets then need only small
 extra deflections: <= 0.15 with a 25 mm objective and 10x demagnification.
 
 (ii) Imaging. For one common focal plane with Strehl >= 0.8 out to the 4 um-pitch corner, the
-aplanatic meta-doublet needs f ~ 42 mm at NA 0.5 (42 mm plates). At 3 um pitch f ~ 25 mm
-suffices (field radius 2.11 mm). Higher NA costs field quickly: NA 0.6 needs f ~ 77 mm (92 mm
-plates) for the same field. In ensquared-energy terms the 16 mm doublet images to ~2.1 mm
-radius (66 % of the light in the site box) and fails at 2.83 mm (37 %).
+aplanatic meta-doublet needs f ~ 42 mm at NA 0.5 (42 mm plates). In wave optics it then puts
+>= 0.90 of each atom's light in its 4 um box with <= 3.6 % in any neighbour, across the whole
+10^6-site array. At 3 um pitch f ~ 25 mm suffices (field radius 2.11 mm). Higher NA costs
+field quickly: NA 0.6 needs f ~ 77 mm (92 mm plates) for the same field, and NA 0.7 does not
+reach it below 120 mm. The 16 mm doublet images to ~2.1 mm radius (66 % of the light in the
+site box) and fails at 2.83 mm (37 %).
 
 (iii) One optic for 10 to 10^6 traps. A direct (pupil-plane) hologram cannot do this.
 Shrinking the beam on it reduces the NA, not the number of sites. The lenslet-array
@@ -167,7 +170,12 @@ Ray model at 1075 nm, NA 0.5, one common atom plane over 0 to 2.83 mm:
 | f = 25 mm | 0 / 1.77 / 2.83 mm | 1.00 / 0.95 / 0.47 -> 1.000 | 0.03 / 0.19 / 0.77 waves PV | up to 0.30 / 0.15 / 0.07 |
 
 (The low "before" values for the 16 mm objective include the compromise focus of one plane over
-the whole field; the correction also removes that defocus.) Hence the trapping side reaches
+the whole field; the correction also removes that defocus.) Wave-optics check (superposition method of Section 4b of the metalens
+report, the correction W applied at the stop from a 96 x 96 sampling with linear interpolation;
+results/million/mla_wavecheck.json): at the 2.83 mm corner the Strehl ratio rises from 0.117 to
+0.964 (f = 16 mm) and from 0.467 to 0.987 (f = 25 mm). The uncorrected values agree with the
+ray model (0.079, 0.473). The 1 to 4 % shortfall from 1.0 is consistent with the coarse sampling
+of the correction (Provisional). Hence the trapping side reaches
 10^6 sites at 4 um pitch with a 25 mm meta-objective, using M = 10 lenslets (NA_L = 0.05 plus
 <= 0.15 of correction deflection), or even with the present 16 mm objective at M = 20. The
 plates must cover R2 plus the field (an 8.1 + 2.8 mm radius for the 16 mm design).
@@ -249,7 +257,7 @@ Provenance ledger:
 |---|---|---|---|
 | Field radii vs f and NA | Section 2 | SIM, review before submission | results/million/objective_field.json |
 | Ensquared energies | Section 2 | SIM, review before submission | results/million/imaging_ee.json |
-| Lenslet pre-compensation | Section 4 | SIM, review before submission | results/million/mla.json |
+| Lenslet pre-compensation | Section 4 | SIM, review before submission | results/million/mla.json, mla_wavecheck.json |
 | Hologram large-field depth | Section 3 | SIM | results/scaling_100k/hologram_large_field.json |
 | 10^5-site design results | Section 3 | SIM | results/fullaperture_100k |
 | Pause et al. MLA parameters | Section 4 | SOURCE | arXiv:2310.09191 (HTML, read in session) |
