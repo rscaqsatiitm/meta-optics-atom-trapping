@@ -44,6 +44,14 @@ lithography rather than e-beam; GPU-class computation for direct holograms beyon
 a large-format camera (>= 16 Mpx); and the efficiency of the lenslet route (square-to-circular
 pupil fill).
 
+![Field radius versus focal length and NA; ensquared energy across the 10^6-site field](../results/million/million_summary.png)
+
+Figure 1. Left: field radius with a minimum common-plane Strehl ratio >= 0.8 for the air-spaced
+aplanatic meta-objective (852.3 nm, cell stack with air gap 2.5 to 50 mm, construction to 1.6 R1)
+versus focal length, at NA 0.5, 0.6 and 0.7; the dotted lines mark the 10^6-site corners. Right:
+ensquared energy in the 4 um site box (wave optics, one common plane over 0 to 2.83 mm) for the
+16, 25 and 42 mm objectives at NA 0.5; a diffraction-limited spot gives 0.93.
+
 ## 1. Requirements
 
 | Quantity | 4 um pitch | 3 um pitch | 2.5 um pitch |
@@ -182,8 +190,8 @@ plates must cover R2 plus the field (an 8.1 + 2.8 mm radius for the 16 mm design
 
 Power scaling at constant depth. Efficiency chain (Provisional): lenslet ~0.95 (eta at
 s <= 0.1 from the supercell curve); square-aperture fill of the circular pupil pi/4 = 0.785
-(~0.95 with lenslets that also map the square aperture onto the circular pupil, a
-gradient-index-free phase that a metasurface can encode; not simulated); tube lens ~0.98
+(~0.95 if each lenslet also maps its square aperture onto the circular pupil, a phase-only
+mapping, the gradient of a convex potential, that a metasurface can encode; not simulated); tube lens ~0.98
 `[VALUE?]`; meta-objective ~0.80; total ~0.57 (~0.70). Relative to the direct hologram (0.83)
 and with NA 0.5 instead of 0.55, the depth per watt per site is ~0.57 (~0.70) x 0.83 of the
 hologram's 140.6 mK x site/W, i.e. ~80 (~98) mK x site/W. For 0.2 mK traps:
