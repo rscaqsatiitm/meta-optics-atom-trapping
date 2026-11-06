@@ -16,6 +16,7 @@ imaging:
   n_pupil: 220
   n_grid: 81
   field_um: [0, 1000, 1770, 2121, 2828]   # 1e6 sites: corner 1.77 mm (2.5 um pitch), 2.12 mm (3 um), 2.83 mm (4 um)
+  corrected_field_um: [1770, 2121, 2828]
   designs:
     - {name: f16, air_gap_um: 2500}
     - {name: f25, air_gap_um: 10000}
@@ -30,3 +31,25 @@ mla:
     - {name: f16, air_gap_um: 2500}
     - {name: f25, air_gap_um: 10000}
   wavecheck_field_um: [2828]
+tolerances_f42:
+  air_gap_um: 25000
+  heights_um: [-2828, 0, 2828]
+  cases:
+    - {name: nominal}
+    - {name: spacer +50um, spacer_delta_um: 50}
+    - {name: spacer +200um, spacer_delta_um: 200}
+    - {name: wall +50um, wall_delta_um: 50}
+    - {name: decentre 2um, m2_decentre_um: 2}
+    - {name: decentre 5um, m2_decentre_um: 5}
+    - {name: decentre 10um, m2_decentre_um: 10}
+    - {name: cell tilt 0.05deg, cell_tilt_rad: 0.00087266}
+    - {name: cell tilt 0.1deg, cell_tilt_rad: 0.0017453}
+patch:
+  wavelength_um: 1.075
+  na: 0.5
+  pitch_um: 4.0
+  air_gap_um: 10000          # 25 mm trapping objective
+  centres_um: [0, 2828]
+  pistons: [equal, alternating, random]
+  n_pupil: 150
+  grid_um: 0.2

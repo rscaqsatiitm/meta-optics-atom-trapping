@@ -1,0 +1,24 @@
+{
+  "f16:1770": {
+    "ray_strehl_uncorrected": 0.11222093960362726,
+    "uncorrected": {
+      "ensquared_energy": 0.7072544974792033,
+      "max_neighbour": 0.0876768417472406
+    },
+    "corrected": {
+      "ensquared_energy": 0.9277282408955074,
+      "max_neighbour": 0.014982453301587062
+    }
+  },
+  "f16:2121": {
+    "ray_strehl_uncorrected": 0.09093105164335405,
+    "uncorrected": {
+      "ensquared_energy": 0.6661157573635044,
+      "max_neighbour": 0.08190058384960738
+    },
+    "corrected": {
+      "ensquared_energy": 0.9280291227719699,
+      "max_neighbour": 0.014913454678327984
+    }
+  }
+}
