@@ -122,7 +122,7 @@ and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the tabl
 | Objective f | 0 mm | 1.06 mm | 1.50 mm | 2.12 mm |
 |---|---|---|---|---|
 | 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | 0.631 / 0.115 (S 0.33) |
-| 25 mm | 0.914 / 0.016 (S 0.99) | running | running | running |
+| 25 mm | 0.914 / 0.016 (S 0.99) | 0.911 / 0.020 (S 0.99) | running | running |
 | 42 mm | running | running | running | running |
 
 Choice of the common plane. The plane is chosen to maximise the minimum ray Strehl ratio over
