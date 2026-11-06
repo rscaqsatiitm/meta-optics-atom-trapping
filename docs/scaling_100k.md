@@ -109,7 +109,8 @@ from the round-2 state). All of the residual is orbit-to-orbit: the scatter with
 | 2 (FFT render / tiled render) | 7.05 / 7.14 % | 0.76 | 0.857 | 0.109 / 0.102 |
 | 3 | 5.96 % | 0.75 | 0.858 | 0.147 |
 | 4 | 5.47 % | 0.77 | 0.859 | 0.162 |
-| 5 to 6 | running | | | |
+| 5 | 5.07 % | 0.82 | 0.860 | 0.172 |
+| 6 | running | | | |
 
 Convergence diagnostic (per-site depths saved every round). The per-orbit depth errors of
 rounds 2 and 3 are nearly uncorrelated (correlation -0.13, regression slope -0.11). A linear,
