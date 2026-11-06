@@ -122,6 +122,38 @@ same scheme are expected to converge slowly. More effective options are a lower 
 WGS restarted closer to the previous solution (fewer iterations), or a feedback that acts on
 the pupil phase directly rather than on the WGS targets (not tested).
 
+Pupil-phase feedback (feedback_mode: pupil_phase in scripts/fullaperture.py;
+configs/fullaperture_100k_pp.yaml). The WGS-target feedback above re-runs 30 WGS iterations
+with free site phases and reset weights, which can carry the design to a different solution
+each round. The alternative keeps the current design: the site phases and coefficients c_j are
+retained, their amplitudes are scaled by the measured correction (field amplitude ~
+(mean / orbit depth)^(g/2)), and the pupil phase is recomputed as arg(K c) with one kernel
+product. The design then moves by a small step, so the measured error map stays valid, and a
+round costs one simulation plus one product.
+
+Test on the 16 x 16-site check case (configs/tiled_check.yaml, short stack, array 50 um beyond
+focus, ideal pillars; depth non-uniformity rms, rounds 0 to 5):
+
+| Feedback | Round 0 | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|---|
+| WGS targets, gain 0.5 | 6.95 % | 2.36 % | 0.45 % | 0.12 % | 0.04 % | 0.01 % |
+| Pupil phase, gain 0.5 | 6.95 % | 4.54 % | 3.16 % | 2.32 % | 1.77 % | 1.38 % |
+| Pupil phase, gain 1.0 | 6.95 % | 2.57 % | 1.46 % | 0.92 % | 0.62 % | 0.42 % |
+| Pupil phase, gain 1.4 | 6.95 % | 2.36 % | 1.06 % | 0.54 % | 0.31 % | 0.19 % |
+
+At this size the WGS-target feedback converges fastest, so its slow convergence at 10^5 sites
+is a large-array effect. The pupil-phase feedback is stable and keeps the error map
+correlated (round-to-round orbit-error slopes 0.64 to 0.75 at gain 0.5); the phase-only
+projection passes ~0.7 of an amplitude correction, hence the higher gain.
+
+100k design, pupil-phase feedback at gain 1.2 from the same round-2 state (A/B comparison
+with the WGS-target rounds above):
+
+| Round | Depth non-uniformity rms | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 2 (start) | 7.14 % | 0.76 | 0.857 | 0.102 | - |
+| 3 to 8 | running | | | | |
+
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
 0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
