@@ -194,7 +194,7 @@ than with ideal pillars. The final design is also evaluated with random pillar w
 | Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
 |---|---|---|---|---|---|
 | 8 (start; ideal-pillar design) | 2.69 % | 0.91 | 0.828 | 0.122 | - |
-| 9 | 1.47 % | 0.94 | 0.827 | 0.119 | (pending) |
+| 9 | 1.47 % | 0.94 | 0.827 | 0.119 | -0.10 |
 | 10 to 13 | running | | | | |
 | Final design, sigma 5 nm width errors | running | | | | - |
 
