@@ -32,6 +32,7 @@ numpy/scipy for propagation and the thermal solver.
 | `scripts/` | Entry points; each writes `results/<run_id>/params.json` (config, git hash, versions) |
 | `docs/model_notes.md` | Equations, assumptions and the provenance ledger |
 | `docs/campaign1_report.md` | Results of the first campaign |
+| `src/metatrap/cavity/`, `docs/cavity_concept.md` | Cavity-enhanced large-period lattice with graded-phase flat-top modes for 10^5 to 10^6 sites: power budget, Fox-Li model, tolerances, defects |
 
 ## Provenance rules
 

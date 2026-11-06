@@ -220,7 +220,7 @@ def driven(ring: RingStrip, e_in, t_in, loss_rt, psi, x0=None, tol=1e-9):
     return e, info
 
 
-def lock_and_solve(ring: RingStrip, e_in, t_in, loss_rt, psi0, span=None, iters=40):
+def lock_and_solve(ring: RingStrip, e_in, t_in, loss_rt, psi0, span=None, iters=40, recentre=8):
     """Golden-section search of psi around psi0 maximising the circulating power."""
     r = np.sqrt((1 - t_in) * (1 - loss_rt))
     lw = 2 * (1 - r) / np.sqrt(r)  # full width (rad) of the resonance in psi
@@ -233,23 +233,44 @@ def lock_and_solve(ring: RingStrip, e_in, t_in, loss_rt, psi0, span=None, iters=
         cache["x"] = e
         return np.vdot(e, e).real / pin, e
 
-    a, b = psi0 - span, psi0 + span
-    gr = (np.sqrt(5) - 1) / 2
-    c, d = b - gr * (b - a), a + gr * (b - a)
-    pc, pd = power(c)[0], power(d)[0]
-    for _ in range(iters):
-        if pc > pd:
-            b, d, pd = d, c, pc
-            c = b - gr * (b - a)
-            pc = power(c)[0]
-        else:
-            a, c, pc = c, d, pd
-            d = a + gr * (b - a)
-            pd = power(d)[0]
-        if b - a < 1e-3 * lw:
+    def golden(centre):
+        a, b = centre - span, centre + span
+        gr = (np.sqrt(5) - 1) / 2
+        c, d = b - gr * (b - a), a + gr * (b - a)
+        pc, pd = power(c)[0], power(d)[0]
+        for _ in range(iters):
+            if pc > pd:
+                b, d, pd = d, c, pc
+                c = b - gr * (b - a)
+                pc = power(c)[0]
+            else:
+                a, c, pc = c, d, pd
+                d = a + gr * (b - a)
+                pd = power(d)[0]
+            if b - a < 1e-3 * lw:
+                break
+        return 0.5 * (a + b)
+
+    # Self-consistent re-centring: a perturbation can shift the fundamental's round-trip phase by
+    # more than the search span. Lock to the Rayleigh-quotient phase of the circulating field,
+    # iterate, then refine by golden section; keep the better of this and the direct search.
+    psi = psi0
+    for _ in range(recentre):
+        _, e = power(psi)
+        lam_e = np.vdot(e, ring.roundtrip(e)) / np.vdot(e, e)
+        new = -np.angle(lam_e)
+        new = psi + np.angle(np.exp(1j * (new - psi)))
+        if abs(new - psi) < 0.05 * lw:
+            psi = new
             break
-    psi = 0.5 * (a + b)
-    g, e = power(psi)
+        psi = new
+    best = None
+    for centre in {round(psi0, 12), round(psi, 12)}:
+        p_ = golden(centre)
+        g_, e_ = power(p_)
+        if best is None or g_ > best[1]:
+            best = (p_, g_, e_)
+    psi, g, e = best
     return {"psi": psi, "enhancement": g, "field": e, "linewidth_rad": lw}
 
 
