@@ -41,8 +41,8 @@ lenslet array for 0.2 mK.
 
 What must improve: wafer-scale (40 to 50 mm) metasurface fabrication, which needs DUV
 lithography rather than e-beam; GPU-class computation for direct holograms beyond ~10^5 sites;
-a large-format camera (>= 16 Mpx); and the efficiency of the lenslet route (square-to-circular
-pupil fill).
+a large-format camera (>= 16 Mpx); and the pupil fill of the lenslet route, which a square
+lenslet limits to 0.785 and a hexagonal lenslet raises to 0.91 to 0.93 (Section 4).
 
 ![Field radius versus focal length and NA; ensquared energy across the 10^6-site field](../results/million/million_summary.png)
 
@@ -112,6 +112,32 @@ Entries: ensquared energy in the 4 um box / largest neighbour-box fraction (ray 
 | 42 mm (gap 25 mm) | 0.93 / 0.014 (S 0.99) | 0.93 / 0.015 (S 0.99) | 0.93 / 0.019 (S 0.98) | 0.92 / 0.021 (S 0.96) | 0.90 / 0.036 (S 0.84) |
 
 Hence the 42 mm objective images the 10^6-site array at 4 um pitch with >= 0.90 of the light in the site box and <= 3.6 % in any neighbour, the 25 mm objective does so to 2.12 mm (0.89 / 0.043; the 3 um-pitch corner, where the box is smaller and the EE correspondingly lower) and degrades to 0.73 / 0.082 at 2.83 mm, and the 16 mm objective, whose single plane is a compromise over the whole field, keeps 0.66 / 0.073 at 2.12 mm and fails at 2.83 mm (0.37 / 0.24).
+
+Tolerances of the 42 mm imaging objective (ray model, common plane re-optimised per case,
+field points -2.83 / 0 / +2.83 mm; results/million/tolerances_f42.json,
+scripts/million_tolerances.py):
+
+| Case | Strehl ratio at -2.83 / 0 / +2.83 mm |
+|---|---|
+| Nominal | 0.84 / 0.99 / 0.84 |
+| Plate spacing +50 um / +200 um | 0.68 / 0.99 / 0.68; 0.23 / 0.96 / 0.23 |
+| Cell wall +50 um (refocus -33 um) | 0.81 / 0.98 / 0.81 |
+| Focusing plate decentred 2 / 5 / 10 um | 0.76 / 0.98 / 0.90; 0.61 / 0.91 / 0.96; 0.37 / 0.70 / 0.92 |
+| Cell tilted 0.05 deg | 0.49 / 0.99 / 0.49 |
+| Cell tilted 0.1 deg | 0.67 / 0.27 / 0.07 (refocus -3.7 um) |
+
+Used to the edge of its field, the objective has no Strehl margin there. To hold the 0.8
+criterion the spacing must be held to about 10 to 25 um and the plate centring to about 1 um
+(DERIVED: linear and quadratic interpolation between the nominal and the 50 um and 2 um cases). The
+wall thickness is uncritical, since a refocus absorbs it. The cell tilt rows are pessimistic:
+they keep the evaluation plane perpendicular to the objective axis, while the atom plane tilts
+with the cell. The depth of focus (+-lambda / (2 NA^2) = +-1.7 um) over the +-2.83 mm field
+requires the atom plane and the objective axis to be perpendicular to ~0.6 mrad (0.03 deg),
+or a matching tilt of the objective (DERIVED). For imaging, the ensquared energy is the
+relevant metric and is far more forgiving than the Strehl ratio: the 25 mm objective at
+2.83 mm (Strehl 0.30) still puts 0.73 of the light in the site box. Hence these tolerances
+bound the Strehl criterion, not the imaging fidelity (Provisional; ensquared energy not
+recomputed per case).
 
 ## 3. Trap generation route A: one direct hologram
 
@@ -188,13 +214,32 @@ of the correction (Provisional). Hence the trapping side reaches
 <= 0.15 of correction deflection), or even with the present 16 mm objective at M = 20. The
 plates must cover R2 plus the field (an 8.1 + 2.8 mm radius for the 16 mm design).
 
+Pupil fill. Because N_F ~ 1, each lenslet aperture is imaged into the objective pupil: the
+uniformly lit aperture shape is the pupil amplitude. A phase on the lenslet cannot reshape it
+into a disc. (An earlier draft of this report assumed a square-to-circle phase mapping with
+~0.95 fill. That mapping needs geometric-optics propagation over many Fresnel lengths, which
+the lenslet does not have.) The focal peak per watt, relative to a uniformly filled disc, is
+|S n D|^2 / (|S| pi) for an aperture S and the pupil disc D (results/million/pupil_fill.json,
+scripts/million_pupil_fill.py; DERIVED, numerical):
+
+| Lenslet aperture (scaled to the stop radius R1) | Transmitted through the stop | Peak per watt |
+|---|---|---|
+| Square, circumscribing the stop (half-width R1) | 0.785 | 0.785 |
+| Square, inscribed (half-width 0.71 R1) | 1.00 | 0.637 |
+| Square, optimum (half-width 0.91 R1) | 0.888 | 0.831 |
+| Hexagon, circumscribing (inradius R1) | 0.907 | 0.907 |
+| Hexagon, optimum (inradius 0.96 R1) | 0.956 | 0.929 |
+
+A hexagonal lenslet array gains 18 % in depth per watt over the circumscribed square, but
+produces a triangular trap lattice. A square lattice keeps the square lenslet, best slightly
+under-filled (0.831). Light outside the stop is lost there, not scattered towards the atoms.
+
 Power scaling at constant depth. Efficiency chain (Provisional): lenslet ~0.95 (eta at
-s <= 0.1 from the supercell curve); square-aperture fill of the circular pupil pi/4 = 0.785
-(~0.95 if each lenslet also maps its square aperture onto the circular pupil, a phase-only
-mapping, the gradient of a convex potential, that a metasurface can encode; not simulated); tube lens ~0.98
-`[VALUE?]`; meta-objective ~0.80; total ~0.57 (~0.70). Relative to the direct hologram (0.83)
-and with NA 0.5 instead of 0.55, the depth per watt per site is ~0.57 (~0.70) x 0.83 of the
-hologram's 140.6 mK x site/W, i.e. ~80 (~98) mK x site/W. For 0.2 mK traps:
+s <= 0.1 from the supercell curve); pupil fill 0.785 (square) or 0.929 (hexagon, optimum);
+tube lens ~0.98 `[VALUE?]`; meta-objective ~0.80; total ~0.57 (square) or ~0.67 (hexagon).
+Relative to the direct hologram (0.83), and with NA 0.5 instead of 0.55, the depth per watt per
+site is ~80 mK x site/W (square) or ~95 mK x site/W (hexagon), against the hologram's
+140.6 mK x site/W. For 0.2 mK traps (square lenslets):
 
 | N | Flat-top side on the MLA (M = 10, a = 4 um) | Power (pi/4 fill) | Intensity on the MLA |
 |---|---|---|---|
@@ -221,18 +266,37 @@ as a plane wave of relative intensity ~0.03 x (pi w^2 / 2) / a^2 ~ 2 x 10^-3 of 
 | Element | Size for 10^6 (4 um pitch) | Status | What must improve |
 |---|---|---|---|
 | Direct hologram (route A) | 18.4 mm chip (as now) | fabrication as for v2 | design computation on GPU (~1 GPU-day); more feedback rounds for uniformity |
-| Lenslet array (route B) | 40 mm (M = 10) | low NA_L, easy meta-atoms | wafer-scale patterning (DUV lithography `[REF?]`); square-to-circle pupil mapping |
+| Lenslet array (route B) | 40 mm (M = 10) | low NA_L, easy meta-atoms | wafer-scale patterning (DUV lithography `[REF?]`); pupil fill (0.785 square, 0.93 hexagon) |
 | Trapping meta-objective (route B) | 25 mm plates | as the present doublet, scaled | plate size; alignment as Section 7 of the metalens report |
 | Imaging meta-objective | 42 mm plates at NA 0.5 (25 mm at 3 um pitch) | design exists (aplanat) | 42 to 50 mm wafer-scale metasurfaces; or field-dependent correction in image space (below) |
 | Camera | >= 4000 x 4000 pixels | `[VALUE?: large-format sCMOS]` | or field splitting onto 4 cameras |
 | Cell | 4 mm wall, 9 mm vacuum | unchanged | thinner cells do not help the field (Section 6) |
 
-Imaging beyond the single-objective field (proposal, not simulated). The imaging counterpart of
-per-lenslet pre-compensation is a corrector array placed slightly behind an intermediate image.
-At magnification M_i the atoms' beams are separated there, if the distance d from the image
+Imaging beyond the single-objective field. The imaging counterpart of per-lenslet
+pre-compensation is a corrector array placed slightly behind an intermediate image. At
+magnification M_i the atoms' beams are separated there, if the distance d from the image
 satisfies d < a M_i / (2 NA / M_i). Each element can then remove the field-dependent aberration
-of its own atom before a second relay to the camera. This would let a compact objective image
-10^6 atoms.
+of its own atom before a second relay to the camera. By reciprocity, the corrected
+point-spread function equals that with -W applied at the stop. We computed it in wave optics
+(superposition method, 852.3 nm, NA 0.5, one common plane, W from a 96 x 96 ray sampling;
+results/million/imaging_corrected.json, scripts/million_imaging_corrected.py). Entries are
+ensquared energy in the 4 um box / largest neighbour-box fraction:
+
+| Objective | Field radius | Uncorrected | Corrected |
+|---|---|---|---|
+| f = 16 mm | 1.77 mm | 0.71 / 0.088 | 0.928 / 0.015 |
+| f = 16 mm | 2.12 mm | 0.67 / 0.082 | 0.928 / 0.015 |
+| f = 16 mm | 2.83 mm | 0.39 / 0.216 | 0.928 / 0.015 |
+| f = 25 mm | 1.77 mm | 0.92 / 0.025 | 0.928 / 0.015 |
+| f = 25 mm | 2.12 mm | 0.89 / 0.045 | 0.928 / 0.015 |
+| f = 25 mm | 2.83 mm | 0.73 / 0.084 | 0.928 / 0.015 |
+
+The diffraction-limited values on this grid are 0.93 / 0.014. Hence, with an ideal per-atom
+corrector, even the present 16 mm objective images the full 10^6-site field at 4 um pitch. The
+model leaves out the corrector array itself (its fill factor and the overlap of neighbouring
+beams at its plane), the second relay, and the alignment of the array to the field. The
+correction is static, so the corrector array is a fixed metasurface matched to one objective
+and one cell.
 
 ## 6. Does a thinner cell or a closer lens help?
 
