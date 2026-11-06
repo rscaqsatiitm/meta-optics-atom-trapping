@@ -181,6 +181,7 @@ def main(cfg_path):
         np.savez_compressed(state_path, psi=d.psi, coeffs=d.coeffs, tgt=tgt if pending_tgt is None else pending_tgt, next_round=next_round,
                             pending=pending_tgt is not None)
 
+    prev_err = None
     if not feedback_done:
         for rnd in range(rnd0, n_rounds + 1):
             m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, None, None, nf, n, dx, stack_sites)
@@ -196,10 +197,26 @@ def main(cfg_path):
             pk = per["peak"]
             np.savez_compressed(out / f"per_site_round{rnd}.npz", sites=sites, peak=pk, tgt=tgt)  # convergence diagnostics
             orbit_mean = np.bincount(inv, weights=pk) / np.bincount(inv)
-            tgt = tgt * (pk.mean() / orbit_mean) ** cfg.get("feedback_gain", 0.5)
-            save_state(rnd + 1, pending_tgt=tgt)
-            d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt,
-                                ckpt_path=out / "wgs_ckpt.npz")
+            corr = (pk.mean() / orbit_mean) ** cfg.get("feedback_gain", 0.5)
+            tgt = tgt * corr
+            if cfg.get("feedback_mode", "wgs") == "pupil_phase":
+                # Pupil-phase feedback: keep the site phases and coefficients of the current
+                # design, scale the coefficient amplitudes by the measured correction (field
+                # amplitude ~ sqrt(depth)), and recompute the phase-only pupil field with one
+                # kernel product. The design moves by a small step, so the measured error map
+                # stays valid for it (the WGS re-run converges to a new solution each round).
+                c_new = (d.coeffs * np.sqrt(corr)).astype(np.complex64)
+                psi = np.angle(K @ (c_new / fstab).astype(np.complex64))
+                d = S.SymWGSResult(psi=psi.astype(np.float64), coeffs=c_new, mode_amp=S.mode_amplitudes(wp, psi, K),
+                                   history_nonuniformity=[], history_efficiency=[])
+                if prev_err is not None:
+                    err = orbit_mean / orbit_mean.mean() - 1
+                    print(f"feedback diagnostic: orbit-error slope round {rnd - 1} -> {rnd}: {np.polyfit(prev_err, err, 1)[0]:.3f}", flush=True)
+                prev_err = orbit_mean / orbit_mean.mean() - 1
+            else:
+                save_state(rnd + 1, pending_tgt=tgt)
+                d = S.wgs_symmetric(wp, K, fstab, n_iter=cfg.get("feedback_wgs_iter", 30), n_fix=None, psi0=d.psi, target=tgt,
+                                    ckpt_path=out / "wgs_ckpt.npz")
             save_state(rnd + 1)
             write_json(metrics_path, results)
     del K
