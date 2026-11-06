@@ -97,7 +97,32 @@ uncorrelated ~1.7 % component, which does not change the total in quadrature, an
 residual belongs to the design itself. Its origin, given that the pupil model predicts
 0.24 %, is unresolved. Candidates are the pupil-model sampling of the aperture edge and too few
 feedback rounds. More feedback rounds (~1.5 h each on 4 cores, minutes on a GPU) are the next
-test. (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
+test. Further feedback rounds (results/fullaperture_100k_fb, configs/fullaperture_100k_fb.yaml;
+ideal pillars, gain 0.5, 30 WGS iterations per round, tiled render in the loop, continuing
+from the round-2 state). All of the residual is orbit-to-orbit: the scatter within the
+8-site D4 orbits is <= 0.02 % rms, so the orbit targets can in principle remove it.
+
+| Round | Depth non-uniformity rms | Min / mean | Array efficiency | Axis intensity / mean peak |
+|---|---|---|---|---|
+| 0 (fullaperture_100k) | 8.71 % | 0.66 | 0.852 | 0.020 |
+| 1 | 8.52 % | 0.69 | 0.855 | 0.110 |
+| 2 (FFT render / tiled render) | 7.05 / 7.14 % | 0.76 | 0.857 | 0.109 / 0.102 |
+| 3 | 5.96 % | 0.75 | 0.858 | 0.147 |
+| 4 to 6 | running | | | |
+
+Convergence diagnostic (per-site depths saved every round). The per-orbit depth errors of
+rounds 2 and 3 are nearly uncorrelated (correlation -0.13, regression slope -0.11). A linear,
+stable response at gain 0.5 would give a slope of +0.5. Hence each feedback round removes the
+previous error pattern (with a slight overshoot), but the re-run WGS creates a new pattern of
+almost the same size (~5.9 % rms uncorrelated with round 2). The mismatch between the pupil
+model (0.24 %) and the full simulation is therefore not a fixed per-orbit bias that feedback
+can learn; it changes with the design (Provisional, from one pair of rounds). The axis
+intensity also grows with the rounds (0.02 to 0.15 of a mean site peak). More rounds of the
+same scheme are expected to converge slowly. More effective options are a lower gain with the
+WGS restarted closer to the previous solution (fewer iterations), or a feedback that acts on
+the pupil phase directly rather than on the WGS targets (not tested).
+
+(iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
 0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
 feedback (dark targets) would address it.
