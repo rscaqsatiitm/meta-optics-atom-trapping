@@ -93,7 +93,11 @@ def metasurface_blocks(
     opl_axis = stack.opl(0.0, lam_um)
     kw = {k: v for k, v in illumination.items() if k != "kind"}
     holo_re = holo_im = None
-    if holo is not None:
+    holo_sample = getattr(holo, "sample", None) if holo is not None else None
+    if holo_sample is not None:  # tiled render grid (hologram/tiled.py): fine values on demand
+        ds, c0 = holo.ds, holo.c0
+        holo_re = True
+    elif holo is not None:
         holo_re, holo_im = holo.field.real, holo.field.imag
         ds, c0 = holo.ds, holo.c0
     elif ps is not None:
@@ -137,9 +141,12 @@ def metasurface_blocks(
                 uy = np.where(Ri > 0, Yi / np.where(Ri > 0, Ri, 1), 0.0)
             fi = (-ux * s) / ds + c0
             fj = (-uy * s) / ds + c0
-            hr = map_coordinates(holo_re, [fi, fj], order=1, mode="constant")
-            hi = map_coordinates(holo_im, [fi, fj], order=1, mode="constant")
-            phi = phi + np.angle(hr + 1j * hi)
+            if holo_sample is not None:
+                phi = phi + np.angle(holo_sample(fi, fj))
+            else:
+                hr = map_coordinates(holo_re, [fi, fj], order=1, mode="constant")
+                hi = map_coordinates(holo_im, [fi, fj], order=1, mode="constant")
+                phi = phi + np.angle(hr + 1j * hi)
         if lookup is None:
             t = np.exp(1j * phi)
         elif pillar_errors:
