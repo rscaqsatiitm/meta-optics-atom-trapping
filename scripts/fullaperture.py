@@ -182,15 +182,20 @@ def main(cfg_path):
                             pending=pending_tgt is not None)
 
     prev_err = None
+    # feedback_pillars: library -> the feedback loop simulates library pillars (local-periodic
+    # model), so the deterministic library error is corrected along with the design residual.
+    fb_library = cfg.get("feedback_pillars", "ideal") == "library"
+    fb_lookup = build_lookup(cfg, lam) if fb_library else None
+    fb_label, fb_key = ("library pillars", "library_lpa") if fb_library else ("ideal pillars", "ideal")
     if not feedback_done:
         for rnd in range(rnd0, n_rounds + 1):
-            m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, None, None, nf, n, dx, stack_sites)
+            m, per, p_in = simulate(cfg, stack, lam, na, ill, sites, g, fs, fstab, inv, tab, d, fb_lookup, None, nf, n, dx, stack_sites)
             h = {"round": rnd, **{k: m[k] for k in ("depth_nonuniformity_rms", "depth_min_over_mean", "array_efficiency", "core_efficiency", "axis_intensity_over_mean_site_peak")}}
             results["feedback_history"] = [x for x in results["feedback_history"] if x["round"] != rnd] + [h]
-            print("ideal pillars, round", rnd, h, f"{m['seconds']:.0f}s", flush=True)
+            print(f"{fb_label}, round", rnd, h, f"{m['seconds']:.0f}s", flush=True)
             if rnd == n_rounds:
-                results["runs"]["ideal"] = m
-                np.savez_compressed(out / "per_site_ideal.npz", sites=sites, **per)
+                results["runs"][fb_key] = m
+                np.savez_compressed(out / f"per_site_{fb_key}.npz", sites=sites, **per)
                 save_state(n_rounds + 1)
                 write_json(metrics_path, results)
                 break
