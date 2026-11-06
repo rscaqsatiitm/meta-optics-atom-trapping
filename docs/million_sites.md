@@ -322,12 +322,24 @@ traps.
 | Axis | -W_j | equal | 5.2 % | 0.84 | 0.018 |
 | Axis | -W_j | alternating | 4.0 % | 0.88 | 0.083 |
 | Axis | -W_j | random | 13.7 % | 0.73 | 0.078 |
-| 2.83 mm | none / -W_j | all three | running | running | running |
+| 2.83 mm | none | equal | 6.8 % | 0.92 | 0.12 |
+| 2.83 mm | none | alternating | 8.1 % | 0.85 | 0.33 |
+| 2.83 mm | none | random | 28 % | 0.51 | 0.67 |
+| 2.83 mm | -W_j | all three | running | running | running |
 
 On the axis the single-trap depths are identical (< 0.01 % rms), so the whole spread is
 interference between the traps, through the overlapping Airy rings of neighbours 4 um apart.
 The correction changes nothing here, as expected for an aberration-free field. The two random
 rows differ only by the random draw.
+
+At the 2.83 mm corner without correction, the single-trap peak falls to 0.47 of the on-axis
+value (ray Strehl ratio 0.47), and the broadened spots overlap more: the spread grows to 7 to
+8 % with periodic pistons and 28 % with random ones, and the interstitial light reaches 0.12
+(equal), 0.33 (alternating) and 0.67 (random) of the mean peak. For equal and random pistons
+the brightest point in some trap windows lies at the edge of the +-0.6 um search window, i.e.
+the trap maximum is displaced or merged with a neighbour's. The uncorrected corner is therefore
+unusable, as expected from Strehl 0.47; the corrected rows test whether per-lenslet
+pre-compensation restores the on-axis behaviour.
 
 Bulk value from larger patches (results/million/patch_bulk.json,
 scripts/million_patch_bulk.py). Near the axis every trap field is a translated copy of the
