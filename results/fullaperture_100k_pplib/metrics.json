@@ -21,6 +21,28 @@
       ],
       "metasurface_transmission": 0.9712910342753347,
       "seconds": 514.431539773941
+    },
+    "library_sigma5nm": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.035289348400880056,
+      "depth_min_over_mean": 0.8538477515509527,
+      "array_efficiency": 0.8015940491685261,
+      "core_efficiency": 0.646075006897106,
+      "cell_power_nonuniformity_rms": 0.055500060727321006,
+      "waist_mean_um": 0.865262487724464,
+      "waist_std_um": 0.03184949414141344,
+      "position_error_rms_um": 0.09776436421208462,
+      "axis_intensity_over_mean_site_peak": 0.1269544849999623,
+      "interstitial_median": 0.01606074539436317,
+      "interstitial_p99": 0.10523484163310469,
+      "interstitial_max": 0.27178895311879936,
+      "interstitial_max_radius_um": 463.20621757485077,
+      "mean_site_offset_um": [
+        -1.4191087926557565e-05,
+        9.592359719076823e-05
+      ],
+      "metasurface_transmission": 0.9562773742269098,
+      "seconds": 705.9419906139374
     }
   },
   "feedback_history": [
@@ -75,5 +97,17 @@
   ],
   "aperture_mm": 18.42760311771506,
   "n_pixels": 1358954496,
-  "n_sites": 99856
+  "n_sites": 99856,
+  "power_budget": {
+    "library_lpa": {
+      "utilisation": 0.620293256821235,
+      "depth_mK_at_50W": 0.07039027081869423,
+      "depth_mK_at_100W": 0.14078054163738846
+    },
+    "library_sigma5nm": {
+      "utilisation": 0.5981933010812767,
+      "depth_mK_at_50W": 0.06788238950205894,
+      "depth_mK_at_100W": 0.13576477900411787
+    }
+  }
 }
