@@ -197,7 +197,7 @@ than with ideal pillars. The final design is also evaluated with random pillar w
 | 9 | 1.47 % | 0.94 | 0.827 | 0.119 | -0.10 |
 | 10 | 1.07 % | 0.95 | 0.828 | 0.113 | -0.26 |
 | 11 | 0.91 % | 0.97 | 0.827 | 0.107 | -0.37 |
-| 12 | 0.84 % | 0.97 | 0.827 | 0.109 | (pending) |
+| 12 | 0.84 % | 0.97 | 0.827 | 0.109 | -0.45 |
 | 13 | running | | | | |
 | Final design, sigma 5 nm width errors | running | | | | - |
 
