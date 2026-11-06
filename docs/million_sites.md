@@ -325,19 +325,54 @@ traps.
 | 2.83 mm | none / -W_j | all three | running | running | running |
 
 On the axis the single-trap depths are identical (< 0.01 % rms), so the whole spread is
-interference between the traps, through the overlapping Airy rings of neighbours 4 um apart
-(first dark ring at 1.3 um, rings at a few per cent beyond). The correction changes nothing
-here, as expected for an aberration-free field. The two random rows differ only by the random
-draw. Three points follow. (i) Random pistons cost 11 to 14 % rms in depth and must be avoided;
-the lenslet pistons are a fabricated, static degree of freedom and should be specified in the
-metasurface design. (ii) Equal and alternating pistons are periodic, so in the interior of a
-large array every site sees the same neighbourhood; the 4 to 5 % found here is then mostly the
-edge of the 7 x 7 patch (the inner 5 x 5 includes sites next to the outer ring, which lacks its
-own outer neighbours). Hence it bounds the boundary effect of a finite array, not the bulk
-value, which this patch is too small to give (Provisional). The same holds at the edge of the
-10^6 array, where the outermost rows will need a piston or amplitude adjustment. (iii)
-Alternating pistons lower the spread slightly but raise the brightest interstitial point from
-0.018 to 0.08 of a trap peak, so equal pistons are preferable when interstitial light matters.
+interference between the traps, through the overlapping Airy rings of neighbours 4 um apart.
+The correction changes nothing here, as expected for an aberration-free field. The two random
+rows differ only by the random draw.
+
+Bulk value from larger patches (results/million/patch_bulk.json,
+scripts/million_patch_bulk.py). Near the axis every trap field is a translated copy of the
+on-axis amplitude PSF U0(r): exact fields of traps at 50 and 100 um from the axis overlap with
+the shifted U0 to 0.999997, with a piston change < 0.001 rad. The patch field is therefore the
+convolution of the phased site lattice with U0 (computed once by the same superposition method,
+kept to r <= 60 um), evaluated on a 0.1 um grid. On the 7 x 7 this reproduces the exact
+non-uniformity to within 0.5 percentage points (4.7 / 4.0 / 10.8 / 13.4 % against 5.2 / 4.0 /
+11.1 / 13.7 %).
+
+| Pistons | Patch | Central 7 x 7 non-uniformity | Central depth / single trap | Interstitial max / central peak |
+|---|---|---|---|---|
+| Equal | 7 / 15 / 31 / 51 | 10.8 / 2.1 / 1.8 / (0) % | 0.67 / 0.61 / 0.64 / 0.66 | 0.068 / 0.019 / 0.012 / 0.012 |
+| Alternating | 7 / 15 / 31 / 51 | 4.7 / 1.7 / 0.33 / (0) % | 1.20 / 1.17 / 1.17 / 1.17 | 0.110 / 0.086 / 0.081 / 0.080 |
+| Random (2 to 4 draws) | 7 / 15 / 31 / 51 | 12.0 / 13.3 / 14.3 / 13.8 % | 1.02 / 1.01 / 1.03 / 1.05 | - |
+
+(For 51 x 51 the central traps are farther than 60 um from the edge, so with the truncated
+kernel they are identical by construction; the entry is not a measurement.) For the random case
+the "central" region is the central 15 x 15 where available; min / mean of the depth there is
+0.65 to 0.74.
+
+Infinite-lattice check (DERIVED). For a periodic lattice the field at a site is a sum of the
+plane waves at the reciprocal-lattice vectors inside the pupil, so the bulk depth relative to a
+single trap is (n_G / n_P)^2, with n_G the number of such vectors and n_P = pi a^2 NA^2 /
+lambda^2 = 10.87 the number of lattice cells per pupil area (uniform, aberration-free pupil).
+At a = 4 um, NA 0.5, 1075 nm: equal pistons n_G = 9 (orders (0,0), (1,0), (1,1) and their
+images), giving 0.69; alternating pistons shift the reciprocal lattice by (1/2, 1/2)/a, n_G = 12,
+giving 1.22. The patch values (0.59 to 0.67 depending on the kernel radius, and 1.17) agree to
+~5 %, the residual being the pupil apodisation and the slowly converging lattice sum
+(Provisional).
+
+Three points follow. (i) Interference sets the depth per watt of the lenslet route at the
+level of tens of per cent, and the per-lenslet piston pattern is the control: alternating 0 / pi
+pistons give 1.17 to 1.22 times the single-trap depth in the bulk, equal pistons 0.6 to 0.7
+times. Hence the power table above (which assumes independent traps) should be multiplied by
+~1/1.2 for alternating pistons and ~1/0.65 for equal ones. The value depends on the pitch in
+steps, as reciprocal-lattice orders enter or leave the pupil, so a and the piston pattern
+should be chosen together. (ii) With periodic pistons the bulk is uniform: alternating pistons
+reach 0.33 % rms over the central 7 x 7 of a 31 x 31 patch. Equal pistons converge more slowly
+(1.8 % at 31 x 31, with the edge 48 to 60 um away), and their edge rows differ by +12 to +21 %
+from the bulk, against <= 4 % for alternating pistons. The outer few rows of a finite array
+therefore need a piston or amplitude adjustment, most for equal pistons. (iii) Random pistons
+give 13 to 14 % rms in the bulk, independent of patch size, with min / mean ~0.65 to 0.7; they
+must be avoided. Alternating pistons raise the brightest interstitial point to 0.08 of a trap
+peak (equal: 0.012), i.e. ~25 uK at 0.3 mK, the price of their higher depth.
 
 
 ## 5. Practical feasibility and what must improve
@@ -413,6 +448,8 @@ Provenance ledger:
 | 42 mm objective tolerances | Section 2 | SIM, review before submission | results/million/tolerances_f42.json |
 | Pupil fill | Section 4 | DERIVED (numerical) | results/million/pupil_fill.json |
 | Lenslet patch interference | Section 4 | SIM, review before submission | results/million/patch.json |
+| Bulk interference (larger patches) | Section 4 | SIM, review before submission | results/million/patch_bulk.json |
+| Infinite-lattice depth factors 0.69 / 1.22 | Section 4 | DERIVED | (n_G / n_P)^2 in text |
 | Lenslet pre-compensation | Section 4 | SIM, review before submission | results/million/mla.json, mla_wavecheck.json |
 | Hologram large-field depth | Section 3 | SIM | results/scaling_100k/hologram_large_field.json |
 | 10^5-site design results | Section 3 | SIM | results/fullaperture_100k |
