@@ -97,17 +97,119 @@ uncorrelated ~1.7 % component, which does not change the total in quadrature, an
 residual belongs to the design itself. Its origin, given that the pupil model predicts
 0.24 %, is unresolved. Candidates are the pupil-model sampling of the aperture edge and too few
 feedback rounds. More feedback rounds (~1.5 h each on 4 cores, minutes on a GPU) are the next
-test. (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
+test. Further feedback rounds (results/fullaperture_100k_fb, configs/fullaperture_100k_fb.yaml;
+ideal pillars, gain 0.5, 30 WGS iterations per round, tiled render in the loop, continuing
+from the round-2 state). All of the residual is orbit-to-orbit: the scatter within the
+8-site D4 orbits is <= 0.02 % rms, so the orbit targets can in principle remove it.
+
+| Round | Depth non-uniformity rms | Min / mean | Array efficiency | Axis intensity / mean peak |
+|---|---|---|---|---|
+| 0 (fullaperture_100k) | 8.71 % | 0.66 | 0.852 | 0.020 |
+| 1 | 8.52 % | 0.69 | 0.855 | 0.110 |
+| 2 (FFT render / tiled render) | 7.05 / 7.14 % | 0.76 | 0.857 | 0.109 / 0.102 |
+| 3 | 5.96 % | 0.75 | 0.858 | 0.147 |
+| 4 | 5.47 % | 0.77 | 0.859 | 0.162 |
+| 5 | 5.07 % | 0.82 | 0.860 | 0.172 |
+| 6 | 4.78 % | 0.80 | 0.861 | 0.072 |
+| Library pillars after round 6 | 5.48 % | 0.80 | 0.832 | 0.069 |
+
+Convergence diagnostic (per-site depths saved every round). The per-orbit depth errors of
+rounds 2 and 3 are nearly uncorrelated (correlation -0.13, regression slope -0.11). A linear,
+stable response at gain 0.5 would give a slope of +0.5. Hence each feedback round removes the
+previous error pattern (with a slight overshoot), but the re-run WGS creates a new pattern of
+almost the same size (~5.9 % rms uncorrelated with round 2). Round 4 behaves alike (5.47 %,
+slope round 3 to 4: -0.04), and the axis light keeps growing (0.16). The mismatch between the pupil
+model (0.24 %) and the full simulation is therefore not a fixed per-orbit bias that feedback
+can learn; it changes with the design (Provisional, from one pair of rounds). The axis
+intensity also grows with the rounds (0.02 to 0.15 of a mean site peak). More rounds of the
+same scheme are expected to converge slowly. More effective options are a lower gain with the
+WGS restarted closer to the previous solution (fewer iterations), or a feedback that acts on
+the pupil phase directly rather than on the WGS targets (not tested).
+
+Pupil-phase feedback (feedback_mode: pupil_phase in scripts/fullaperture.py;
+configs/fullaperture_100k_pp.yaml). The WGS-target feedback above re-runs 30 WGS iterations
+with free site phases and reset weights, which can carry the design to a different solution
+each round. The alternative keeps the current design: the site phases and coefficients c_j are
+retained, their amplitudes are scaled by the measured correction (field amplitude ~
+(mean / orbit depth)^(g/2)), and the pupil phase is recomputed as arg(K c) with one kernel
+product. The design then moves by a small step, so the measured error map stays valid, and a
+round costs one simulation plus one product.
+
+Test on the 16 x 16-site check case (configs/tiled_check.yaml, short stack, array 50 um beyond
+focus, ideal pillars; depth non-uniformity rms, rounds 0 to 5):
+
+| Feedback | Round 0 | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|---|
+| WGS targets, gain 0.5 | 6.95 % | 2.36 % | 0.45 % | 0.12 % | 0.04 % | 0.01 % |
+| Pupil phase, gain 0.5 | 6.95 % | 4.54 % | 3.16 % | 2.32 % | 1.77 % | 1.38 % |
+| Pupil phase, gain 1.0 | 6.95 % | 2.57 % | 1.46 % | 0.92 % | 0.62 % | 0.42 % |
+| Pupil phase, gain 1.4 | 6.95 % | 2.36 % | 1.06 % | 0.54 % | 0.31 % | 0.19 % |
+
+At this size the WGS-target feedback converges fastest, so its slow convergence at 10^5 sites
+is a large-array effect. The pupil-phase feedback is stable and keeps the error map
+correlated (round-to-round orbit-error slopes 0.64 to 0.75 at gain 0.5); the phase-only
+projection passes ~0.7 of an amplitude correction, hence the higher gain.
+
+100k design, pupil-phase feedback at gain 1.2 from the same round-2 state (A/B comparison
+with the WGS-target rounds above):
+
+| Round | Depth non-uniformity rms | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 2 (start) | 7.14 % | 0.76 | 0.857 | 0.102 | - |
+| 3 | 1.77 % | 0.92 | 0.857 | 0.103 | -0.02 |
+| 4 | 0.53 % | 0.98 | 0.857 | 0.106 | -0.04 |
+| 5 | 0.18 % | 0.99 | 0.857 | 0.107 | -0.04 |
+| 6 | 0.068 % | 0.99 | 0.857 | 0.108 | -0.04 |
+| 7 | 0.029 % | 0.99 | 0.857 | 0.108 | -0.03 |
+| 8 | 0.015 % | 0.999 | 0.857 | 0.108 | - |
+| Library pillars after round 8 | 2.69 % | 0.91 | 0.828 | 0.122 | - |
+
+One pupil-phase round removes three quarters of the residual (7.14 to 1.77 % rms, min / mean
+0.76 to 0.92) with no loss of efficiency (0.857) and no increase of the axis light (0.103),
+where one WGS-target round from the same state gave 5.96 % and raised the axis light to 0.147.
+The orbit-error slope of -0.02 means the gain of 1.2 corrected the round-2 pattern almost
+exactly; the remaining 1.77 % is uncorrelated with it and is the error introduced by the step
+itself, which later rounds act on. Round 4 brings it to 0.53 % rms (min / mean 0.98), i.e.
+the pupil-model level is approached in two rounds. Round 5 reaches 0.18 % rms (min / mean
+0.99), below the 0.24 % of the pupil model itself. Rounds 6 to 8 continue at a factor ~2 to 3 per
+round to 0.015 % rms (min / mean 0.999) with orbit-error slopes of -0.03 to -0.04, unchanged
+efficiency 0.857 and axis light 0.108. One orbit (radius 768 um) lagged at 0.9945 in round 7 and
+reached 0.9986 in round 8. Hence, with ideal pillars, the design residual of the 10^5-site
+hologram is removed by pupil-phase feedback in five to six rounds (~14 min each on 4 cores);
+with library pillars the same design gives 2.69 % rms (min / mean 0.91, efficiency 0.828),
+against 7.5 % for the round-2 design. The remaining 2.7 % is the pillar library's own phase and
+amplitude error under the local-periodic approximation. It is deterministic, so feedback with
+the library pillars in the loop (the same scheme, simulated with library_lpa) should remove most
+of it; this has not been run. Random width errors (sigma 5 nm) are not correctable this way.
+
+Feedback with library pillars in the loop (feedback_pillars: library;
+configs/fullaperture_100k_pplib.yaml). The same pupil-phase feedback, gain 1.2, but each round
+simulates the metasurface with the library pillars (local-periodic model) instead of ideal
+phase pixels, so the deterministic library error is corrected together with the design
+residual. It starts from the round-8 pupil-phase design. On the 16 x 16 check case it converges
+from 6.9 to 0.50 % rms in four rounds (orbit-error slopes 0.14 to 0.62), somewhat more slowly
+than with ideal pillars. The final design is also evaluated with random pillar width errors
+(sigma 5 nm, uncorrelated per pixel), which feedback cannot remove.
+
+| Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 8 (start; ideal-pillar design) | running | | | | - |
+| 9 to 13 | running | | | | |
+| Final design, sigma 5 nm width errors | running | | | | - |
+
+(iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
 0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
 feedback (dark targets) would address it.
 
 Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 99,856
-traps with 0.83 efficiency and 7.5 % rms depth non-uniformity with library pillars, after two
-feedback rounds. 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
-outside its thermal limits; use LPCVD SiN or sapphire). The main limitation is the
-convergence of the depth uniformity, which is set by the design iterations and not by the
-optics.
+traps with 0.83 efficiency. With pupil-phase feedback (six rounds from the round-2 design) the
+depth non-uniformity is 0.015 % rms with ideal pillars and 2.7 % with library pillars (min / mean
+0.91), against 7.5 % after the original two WGS-target rounds; four further WGS-target rounds
+reach only 4.8 % (ideal) and 5.5 % (library pillars). 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
+outside its thermal limits; use LPCVD SiN or sapphire). The design residual is no longer a
+limitation; the remaining 2.7 % is the deterministic error of the pillar library in the
+local-periodic model, which feedback with library pillars in the loop should reduce (not run).
 
 ## Discussion
 

@@ -322,12 +322,32 @@ traps.
 | Axis | -W_j | equal | 5.2 % | 0.84 | 0.018 |
 | Axis | -W_j | alternating | 4.0 % | 0.88 | 0.083 |
 | Axis | -W_j | random | 13.7 % | 0.73 | 0.078 |
-| 2.83 mm | none / -W_j | all three | running | running | running |
+| 2.83 mm | none | equal | 6.8 % | 0.92 | 0.12 |
+| 2.83 mm | none | alternating | 8.1 % | 0.85 | 0.33 |
+| 2.83 mm | none | random | 28 % | 0.51 | 0.67 |
+| 2.83 mm | -W_j | equal | 4.8 % | 0.85 | 0.018 |
+| 2.83 mm | -W_j | alternating | 3.7 % | 0.91 | 0.104 |
+| 2.83 mm | -W_j | random | 13.0 % | 0.77 | 0.093 |
 
 On the axis the single-trap depths are identical (< 0.01 % rms), so the whole spread is
 interference between the traps, through the overlapping Airy rings of neighbours 4 um apart.
 The correction changes nothing here, as expected for an aberration-free field. The two random
 rows differ only by the random draw.
+
+At the 2.83 mm corner without correction, the single-trap peak falls to 0.47 of the on-axis
+value (ray Strehl ratio 0.47), and the broadened spots overlap more: the spread grows to 7 to
+8 % with periodic pistons and 28 % with random ones, and the interstitial light reaches 0.12
+(equal), 0.33 (alternating) and 0.67 (random) of the mean peak. For equal and random pistons
+the brightest point in some trap windows lies at the edge of the +-0.6 um search window, i.e.
+the trap maximum is displaced or merged with a neighbour's. The uncorrected corner is therefore
+unusable, as expected from Strehl 0.47. With per-lenslet pre-compensation the corner behaves
+as the axis: the single-trap peak returns to 0.985 of the on-axis value, the single-trap depths
+agree to 0.02 % rms, all peaks lie within 0.001 um of their sites (0.2 um, one grid step, for
+random pistons), and the spread and interstitial light take their on-axis values (4.8 / 3.7 /
+13.0 % against 5.2 / 4.0 / 11 to 14 %; interstitial 0.018 / 0.10 / 0.09 against 0.018 / 0.08 /
+0.08 to 0.09). Hence, in wave optics and including the coherent interference of neighbouring
+traps, per-lenslet correction makes the 25 mm objective serve the full 10^6-site field at 4 um
+pitch, and the bulk interference values below apply across the whole field.
 
 Bulk value from larger patches (results/million/patch_bulk.json,
 scripts/million_patch_bulk.py). Near the axis every trap field is a translated copy of the

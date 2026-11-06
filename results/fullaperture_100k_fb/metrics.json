@@ -1,5 +1,50 @@
 {
-  "runs": {},
+  "runs": {
+    "ideal": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.04780169061917303,
+      "depth_min_over_mean": 0.8024969965066326,
+      "array_efficiency": 0.8609245420012407,
+      "core_efficiency": 0.699302895687793,
+      "cell_power_nonuniformity_rms": 0.0630513668019593,
+      "waist_mean_um": 0.8661999464885028,
+      "waist_std_um": 0.021260255963409445,
+      "position_error_rms_um": 0.09275521029963552,
+      "axis_intensity_over_mean_site_peak": 0.07245769685131524,
+      "interstitial_median": 0.015054173749794415,
+      "interstitial_p99": 0.09803786753494508,
+      "interstitial_max": 0.31541065392077083,
+      "interstitial_max_radius_um": 572.0,
+      "mean_site_offset_um": [
+        -8.885167005703355e-07,
+        9.306959060986881e-07
+      ],
+      "metasurface_transmission": 1.0,
+      "seconds": 550.3804726600647
+    },
+    "library_lpa": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.05484272117325952,
+      "depth_min_over_mean": 0.8023235322211588,
+      "array_efficiency": 0.8316432956888655,
+      "core_efficiency": 0.6741229364262075,
+      "cell_power_nonuniformity_rms": 0.06476889738639621,
+      "waist_mean_um": 0.8659632130138166,
+      "waist_std_um": 0.024685239196493056,
+      "position_error_rms_um": 0.09416305971820942,
+      "axis_intensity_over_mean_site_peak": 0.06888866455190121,
+      "interstitial_median": 0.015381078514592994,
+      "interstitial_p99": 0.10010837038428555,
+      "interstitial_max": 0.36356159969131696,
+      "interstitial_max_radius_um": 572.0,
+      "mean_site_offset_um": [
+        -7.296141080966882e-11,
+        7.060159922017767e-10
+      ],
+      "metasurface_transmission": 0.9712914044790266,
+      "seconds": 559.421591758728
+    }
+  },
   "feedback_history": [
     {
       "round": 2,
@@ -8,9 +53,53 @@
       "array_efficiency": 0.8570267690488959,
       "core_efficiency": 0.695444326824556,
       "axis_intensity_over_mean_site_peak": 0.10175713998099652
+    },
+    {
+      "round": 3,
+      "depth_nonuniformity_rms": 0.05961863260422572,
+      "depth_min_over_mean": 0.7474555341463872,
+      "array_efficiency": 0.8582153042770838,
+      "core_efficiency": 0.6966677724098298,
+      "axis_intensity_over_mean_site_peak": 0.14718105076569288
+    },
+    {
+      "round": 4,
+      "depth_nonuniformity_rms": 0.05466925616627145,
+      "depth_min_over_mean": 0.773215040165167,
+      "array_efficiency": 0.8594875874508413,
+      "core_efficiency": 0.6979293250636688,
+      "axis_intensity_over_mean_site_peak": 0.1615911913836245
+    },
+    {
+      "round": 5,
+      "depth_nonuniformity_rms": 0.050715093200629315,
+      "depth_min_over_mean": 0.8150191990457882,
+      "array_efficiency": 0.8600903099067402,
+      "core_efficiency": 0.6985550643456926,
+      "axis_intensity_over_mean_site_peak": 0.1722774441486164
+    },
+    {
+      "round": 6,
+      "depth_nonuniformity_rms": 0.04780169061917303,
+      "depth_min_over_mean": 0.8024969965066326,
+      "array_efficiency": 0.8609245420012407,
+      "core_efficiency": 0.699302895687793,
+      "axis_intensity_over_mean_site_peak": 0.07245769685131524
     }
   ],
   "aperture_mm": 18.42760311771506,
   "n_pixels": 1358954496,
-  "n_sites": 99856
+  "n_sites": 99856,
+  "power_budget": {
+    "ideal": {
+      "utilisation": 0.6474763814750043,
+      "depth_mK_at_50W": 0.07347498516152413,
+      "depth_mK_at_100W": 0.14694997032304827
+    },
+    "library_lpa": {
+      "utilisation": 0.6241625513608814,
+      "depth_mK_at_50W": 0.07082935457065817,
+      "depth_mK_at_100W": 0.14165870914131634
+    }
+  }
 }
