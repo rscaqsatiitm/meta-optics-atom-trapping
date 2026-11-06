@@ -198,3 +198,16 @@ def test_separable_profile_fit_recovers_product():
     knots, al, be = cc.fit_profiles({"x": X, "y": Y, "depth": D}, th, h * 1.02, 48, 1e-3)
     rec = np.exp(np.interp(xa, knots, al) + np.interp(xb, knots, be))
     assert np.std(np.log(rec / D)) < 2e-4
+
+
+def test_heating_formulas_reproduce_savard_examples():
+    """Savard, O'Hara and Thomas, PRA 56, R1095 (1997): 100 s at 10 kHz needs sqrt(S_eps(2 nu)) = 3e-6 /sqrt(Hz)
+    and, for atoms confined to 1 um, sqrt(S_x(nu)) = 3e-6 um /sqrt(Hz)."""
+    import importlib.util
+    from pathlib import Path
+
+    spec = importlib.util.spec_from_file_location("cn", Path(__file__).resolve().parents[1] / "scripts" / "cavity_noise.py")
+    cn = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cn)
+    assert np.sqrt(cn.heating_intensity_limit(10e3, 100.0)) == pytest.approx(3.2e-6, rel=0.02)
+    assert np.sqrt(cn.heating_position_limit(10e3, 100.0, 1e-12)) == pytest.approx(3.2e-12, rel=0.02)

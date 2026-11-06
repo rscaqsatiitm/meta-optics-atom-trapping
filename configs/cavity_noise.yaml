@@ -1,0 +1,13 @@
+# Noise requirements for the cavity lattice (docs/cavity_concept.md, Section 6c).
+run_id: cavity_noise
+wavelength_nm: 1075.0
+array_side_um: 3996.0
+atom_temperature_K: 10.0e-6      # [VALUE?] after cooling in the lattice
+depths_mK: [0.2, 0.86]           # equal depth; equal radial frequency with the tweezer (0.86 mK)
+heating_times_s: [10.0, 100.0]
+enhancements: [300.0, 1500.0]
+lock_noise_bandwidth_Hz: 1.0e+5  # residual laser-cavity detuning noise assumed flat over this band
+lock_offset_fraction: 0.01       # static lock offset, fraction of the linewidth
+axes:                            # in-plane ring of the layout (d0 = 70 mm) and the vertical ring (Figure 5)
+  - {name: in-plane, period_um: 4.0, L1_m: 0.580, Lrt_m: 1.160, fsr_Hz: 258.4e+6, typical_aoi_deg: 30.0}
+  - {name: vertical, period_um: 8.0, L1_m: 0.828, Lrt_m: 1.656, fsr_Hz: 181.0e+6, typical_aoi_deg: 30.0}

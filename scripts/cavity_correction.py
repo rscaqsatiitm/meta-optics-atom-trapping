@@ -167,8 +167,12 @@ def main(cfg_path):
                 # Closed loop from atom-measured depths (nominal model only).
                 if not case.get("closed_loop", False):
                     continue
-                for mnoise in cfg["closed_loop"]["measurement_noise"]:
-                    key = f"{tag}_closedloop_noise{mnoise}"
+                runs = [(mn, cfg["closed_loop"]["gain"], cfg["closed_loop"]["rounds"], "") for mn in cfg["closed_loop"]["measurement_noise"]]
+                for ex in cfg.get("closed_loop_extra", []):
+                    if ex["variant"] == vname and ex["case"] == case["name"] and ex["seed"] == seed:
+                        runs.append((ex.get("measurement_noise", 0.01), ex["gain"], ex["rounds"], f"_gain{ex['gain']}_r{ex['rounds']}"))
+                for mnoise, gain, rounds, suffix in runs:
+                    key = f"{tag}_closedloop_noise{mnoise}{suffix}"
                     if key in results:
                         continue
                     t0 = time.time()
@@ -176,21 +180,20 @@ def main(cfg_path):
                     TA, TB = F.copy(), F.copy()
                     p1, p2 = ph0.copy(), ph0.copy()
                     hist = []
-                    for rnd in range(cfg["closed_loop"]["rounds"] + 1):
+                    for rnd in range(rounds + 1):
                         ev, _, m = S.evaluate(fcfg, s, with_g(true, p1, p2))
                         hist.append({"round": rnd, "depth_rms": ev["array"]["depth_rms"], "min_over_mean": ev["array"]["depth_min_over_mean"], "g_ratio": ev["g_ratio"],
                                      "dy_affine_res_nm": ev["array"]["dy_affine_residual_rms_um"] * 1e3})
                         print(f"  {key} round {rnd}: {hist[-1]['depth_rms']*100:.3f} % G/G0 {hist[-1]['g_ratio']:.3f}", flush=True)
-                        if rnd == cfg["closed_loop"]["rounds"]:
+                        if rnd == rounds:
                             break
                         mm = dict(m)
                         mm["depth"] = m["depth"] * (1 + mnoise * mrng.standard_normal(m["depth"].shape))
                         knots, al, be = fit_profiles(mm, s["theta"], h * 1.02, cfg["closed_loop"]["n_bins"], cfg["closed_loop"]["smooth"])
-                        gain = cfg["closed_loop"]["gain"]
                         TA = TA * profile_on_grid(ring0.grid.x, knots, al, h * 1.02) ** (-gain)
                         TB = TB * profile_on_grid(ring0.grid.x, knots, be, h * 1.02) ** (-gain)
                         p1, p2 = ring0.design_phase(TA, TB, 1), ring0.design_phase(TB, TA, 2)
-                    save(key, {"history": hist, "final": hist[-1], "stroke_G1": stroke(p1, ph0, ring0, F, lam), "stroke_G2": stroke(p2, ph0, ring0, F, lam), "seconds": time.time() - t0})
+                    save(key, {"history": hist, "final": hist[-1], "gain": gain, "stroke_G1": stroke(p1, ph0, ring0, F, lam), "stroke_G2": stroke(p2, ph0, ring0, F, lam), "seconds": time.time() - t0})
                 # Closed loop from cameras that image the transmitted circulating beams (arms A and B)
                 # onto planes conjugate to the crossing; no atoms, no mirror metrology.
                 cam = cfg.get("camera")

@@ -52,6 +52,8 @@ def main(cfg_path):
             "graded mirror G": i1 * ratio_G * wz0 / vd["w_z_at_graded_m"],
         }
         geo_v = c["geometry"]["vertical"]
+        # placeholder for a mirror with 3x expansion in both directions; the adopted vertical ring is
+        # computed in scripts/cavity_vertical_mirrors.py (docs/cavity_concept.md, Section 5)
         optics_v = {"vertical ring at the atoms": i1, "vertical ring, mirror with 3x expansion": i1 / 9.0}
         row = {"match": c["match"], "depth_mK": c["depth_mK"], "I_atoms_W_cm2": i1 * 1e-4,
                "P_circ_inplane_W": pc["inplane_per_axis_W"], "P_circ_vertical_W": pc["vertical_W"],

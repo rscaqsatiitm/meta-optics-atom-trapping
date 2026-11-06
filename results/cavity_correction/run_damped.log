@@ -1,0 +1,61 @@
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 0: 4.817 % G/G0 0.941
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 1: 3.897 % G/G0 0.951
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 2: 3.223 % G/G0 0.955
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 3: 2.744 % G/G0 0.956
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 4: 2.425 % G/G0 0.956
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 5: 2.210 % G/G0 0.955
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 6: 2.070 % G/G0 0.953
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 7: 1.978 % G/G0 0.952
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 8: 1.932 % G/G0 0.950
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 9: 1.907 % G/G0 0.948
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 10: 1.895 % G/G0 0.945
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 11: 1.895 % G/G0 0.942
+  telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 round 12: 1.894 % G/G0 0.939
+telK_M0.2_fig1000_seed2_closedloop_noise0.01_gain0.25_r12 {"history": [{"round": 0, "depth_rms": 0.048173076819484656, "min_over_mean": 0.852560683143125, "g_ratio": 0.9412451298012897, "dy_affine_res_nm": 26.92608934894126}, {"round": 1, "depth_rms": 0.03897014954207491, "min_over_mean": 0.8843046734906652, "g_ratio": 0.9505034296748688, "dy_affine_res_nm
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 0: 3.589 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 1: 3.211 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 2: 2.946 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 3: 2.740 % G/G0 0.911
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 4: 2.567 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 5: 2.397 % G/G0 0.909
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 6: 2.247 % G/G0 0.907
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 7: 2.151 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 8: 2.107 % G/G0 0.898
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 9: 2.109 % G/G0 0.890
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 10: 2.128 % G/G0 0.880
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 11: 2.161 % G/G0 0.869
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 round 12: 2.251 % G/G0 0.851
+telK_M0.2_fig1000_c0.5_seed1_closedloop_noise0.01_gain0.25_r12 {"history": [{"round": 0, "depth_rms": 0.03588607871210136, "min_over_mean": 0.888237651485836, "g_ratio": 0.9096353833200872, "dy_affine_res_nm": 53.49377961059504}, {"round": 1, "depth_rms": 0.03211352250259945, "min_over_mean": 0.899113900600335, "g_ratio": 0.9099166167778435, "dy_affine_res_nm":
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 0: 21.798 % G/G0 0.479
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 1: 22.342 % G/G0 0.382
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 2: 18.594 % G/G0 0.170
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 3: 30.378 % G/G0 0.281
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 4: 26.584 % G/G0 0.170
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 5: 26.893 % G/G0 0.094
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 6: 20.598 % G/G0 0.042
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 7: 16.552 % G/G0 0.038
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 8: 15.474 % G/G0 0.024
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 9: 23.928 % G/G0 0.010
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 10: 17.108 % G/G0 0.011
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 11: 23.458 % G/G0 0.021
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 round 12: 16.352 % G/G0 0.017
+telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.25_r12 {"history": [{"round": 0, "depth_rms": 0.21798194605988194, "min_over_mean": 0.3686876801952162, "g_ratio": 0.47943720777728405, "dy_affine_res_nm": 148.6962284189841}, {"round": 1, "depth_rms": 0.22341935625553785, "min_over_mean": 0.4943682566263523, "g_ratio": 0.3821780331040611, "dy_affine_res_n
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 0: 21.798 % G/G0 0.479
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 1: 21.740 % G/G0 0.451
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 2: 21.804 % G/G0 0.405
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 3: 20.850 % G/G0 0.336
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 4: 18.852 % G/G0 0.248
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 5: 17.888 % G/G0 0.204
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 6: 23.234 % G/G0 0.298
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 7: 21.251 % G/G0 0.336
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 8: 23.068 % G/G0 0.302
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 9: 19.849 % G/G0 0.262
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 10: 16.821 % G/G0 0.278
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 11: 14.728 % G/G0 0.236
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 12: 12.493 % G/G0 0.162
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 13: 12.264 % G/G0 0.137
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 14: 11.612 % G/G0 0.107
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 15: 11.473 % G/G0 0.086
+  telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 round 16: 11.712 % G/G0 0.074
+telK_M0.2_fig300_seed2_closedloop_noise0.01_gain0.1_r16 {"history": [{"round": 0, "depth_rms": 0.21798194605988194, "min_over_mean": 0.3686876801952162, "g_ratio": 0.47943720777728405, "dy_affine_res_nm": 148.6962284189841}, {"round": 1, "depth_rms": 0.21740462376812048, "min_over_mean": 0.4510322887710325, "g_ratio": 0.45130972985312, "dy_affine_res_nm"
+done

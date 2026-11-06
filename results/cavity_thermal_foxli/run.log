@@ -1,0 +1,5 @@
+ideal {'depth_rms': 0.0023149340766849265, 'g_ratio': np.float64(0.99999736925502)}
+IBS HR, 10 ppm, fused silica {'bulge_nm': 0.03549109276440694, 'depth_rms': 0.0023242316419191545, 'g_ratio': np.float64(0.9999972544944736), 'min_over_mean': 0.9902084942131283}
+Si-rich SiN metasurface, nominal, fused silica {'bulge_nm': 2.093974473100016, 'depth_rms': 0.005329375290651598, 'g_ratio': np.float64(0.9996217880929269), 'min_over_mean': 0.9836457580079285}
+Si-rich SiN metasurface, nominal, sapphire {'bulge_nm': 0.9099260158845287, 'depth_rms': 0.0032130012180838666, 'g_ratio': np.float64(0.999925174262975), 'min_over_mean': 0.9874143347010299}
+IBS HR, 10 ppm, fused silica x10 {'bulge_nm': 0.3549109276440694, 'depth_rms': 0.002518955463276021, 'g_ratio': np.float64(0.9999862814792052), 'min_over_mean': 0.9891867560057029}

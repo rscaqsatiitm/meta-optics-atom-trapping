@@ -19,6 +19,11 @@ closed_loop:
   n_bins: 48
   smooth: 1.0
   measurement_noise: [0.0, 0.01]            # per-site multiplicative noise of the measured depth (10^4 sampled sites)
+closed_loop_extra:                          # damped gains for the runs that stalled or diverged at gain 0.5
+  - {variant: telK_M0.2, case: fig300, seed: 2, gain: 0.25, rounds: 12}
+  - {variant: telK_M0.2, case: fig300, seed: 2, gain: 0.1, rounds: 16}
+  - {variant: telK_M0.2, case: fig1000, seed: 2, gain: 0.25, rounds: 12}
+  - {variant: telK_M0.2, case: fig1000_c0.5, seed: 1, gain: 0.25, rounds: 12}
 camera:                                     # closed loop from cameras imaging the transmitted beams onto planes conjugate to the crossing
   variants: [telK_M0.2]
   pixel_um: 10.0

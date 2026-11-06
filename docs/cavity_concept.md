@@ -69,10 +69,14 @@ vertical-lattice ring, whose beam is 6.9 mm wide, is the most sensitive (3.6 to 
 telescope. All corrections are static; drift must stay below these levels between corrections.
 
 (iv) Heat is no longer a constraint; defects are. Coating absorption heats the mirrors by
-< 0.5 K (IBS, 1 to 10 ppm). Every surface near the waist sees 4.5 to 19 kW/cm^2 at 0.2 mK,
+< 0.5 K (IBS, 1 to 10 ppm). Every surface near the waist of the in-plane rings sees 4.5 to 19 kW/cm^2 at 0.2 mK,
 comparable to the test masses of gravitational-wave detectors. The largest tolerable fully
 absorbing defect falls to 0.36 to 1.5 um on fused silica, against 92 um for the 200 W
-metasurface of the present design, and to 9 to 37 um on sapphire.
+metasurface of the present design, and to 9 to 37 um on sapphire. The vertical ring, which carries
+785 of the 989 W, is worse: as folded in Figure 5 its mirrors see 14 to 170 kW/cm^2 (defects
+<= 0.04 um on fused silica, 1 um on sapphire). An added 4x to 8x vertical telescope lowers this to
+27 to 55 kW/cm^2 (0.13 to 0.19 um, or 3 to 4.4 um on sapphire), at the cost of a larger figure-error
+sensitivity of its vertical profile (Section 5).
 
 (v) Meta-optics belong outside the cavity. A pixelated metasurface as the graded mirror is too
 lossy with present fabrication: 5 nm rms width noise is 0.10 to 0.15 rad of phase noise, which
@@ -89,11 +93,18 @@ clearance for 20 mm beams, and four further lines remain for optical pumping and
 (Section 6b). A single-beam grating MOT also fits geometrically, but demonstrated Cs grating MOTs
 (7e6 atoms) are one to two orders of magnitude short of a single-shot load of 10^6 sites.
 
+(vii) Noise sets the next requirement (Section 6c). For a 10 s heating time of 10 uK atoms at
+0.2 mK, the input needs a relative intensity noise below -106 dBc/Hz at 40 kHz, the residual
+laser-cavity detuning must stay below 22 Hz/rtHz (7 kHz rms, 1.7 % of the linewidth) at G = 300 and
+five times less at G = 1500, and each ring mirror must move by less than 0.32 pm/rtHz at the 20 kHz
+trap frequency. The last calls for a monolithic ring assembly with controlled mechanical resonances.
+
 Main limitations. One-dimensional Fox-Li model of the horizontal profile with a separable
 Gaussian vertical mode, checked by one 2D case per question (ideal design, non-separable errors and
-their correction); scalar optics; static perturbations, one or two random realisations per case; no
-laser frequency noise or mechanical vibration; the vertical ring as a product of two 1D modes, without
-closed-loop correction; the layout is a first-order design.
+their correction); scalar optics; static perturbations, one or two random realisations per case;
+noise treated as requirements from analytic heating rates, without a time-dependent simulation or a
+vibration model of the mounts; the vertical ring as a product of two 1D modes; the layout is a
+first-order design.
 
 ![Power versus number of sites](../results/cavity_budget/power_scaling.png)
 
@@ -103,6 +114,30 @@ Figure 1. Laser power at the input of the trapping optics versus the number of s
 vertical axis (8 um period), flat-top x Gaussian sheets (w_z = 75 um), mode matching 0.95; cavity
 enhancement for the over-coupled design T = 3L with 10 reflections of 50 ppm per round trip, plus
 8 AR surfaces of 0.1 % (through cell) or 8 Brewster surfaces of 1e-4. Data: results/cavity_budget/budget.json.
+
+## Design summary
+
+Parameters of the adopted design for 10^6 sites at a 0.2 mK barrier per axis (1075 nm, Cs).
+Sources in the text: Sections 2, 3, 4, 4b, 5 and 6c.
+
+| Quantity | Each in-plane ring (two) | Vertical ring |
+|---|---|---|
+| Lattice period, crossing angle 2 theta | 4 um, 15.4 deg | 8 um, 7.7 deg |
+| Mode at the atoms | order-20 flat-top, 5.51 mm equivalent width, x Gaussian sheet w_z = 75 um | flat-top 6.9 mm wide, x order-10 flat-top of 0.19 mm half-height |
+| Telescope per half trip | 0.2x Keplerian, f1 = 100 mm, P1 at 70 mm, L = 100 mm | 0.15x, f1 = 160 mm, P1 at 110 mm, L = 120 mm |
+| Round trip, free spectral range, reflections | 1.16 m, 258 MHz, 10 | 1.66 m, 181 MHz, 10 |
+| Circulating power | 102 W | 785 W |
+| Input power at G = 300 (mode matching 0.95) | 0.36 W | 2.75 W |
+| Linewidth (FWHM) at G = 300 / 1500 | 413 / 82 kHz | 289 / 58 kHz |
+| Peak intensity on the mirrors | 4.5 (P1), 19.3 (P2), 17.4 (G) kW/cm^2 | 14 to 170 kW/cm^2 as folded; 27 to 37 kW/cm^2 with an 8x vertical telescope (Section 5) |
+| Trap frequency along the lattice axis | 19.8 kHz | 9.9 kHz |
+| Depth uniformity: design / lambda/1000 errors on all mirrors / after atom feedback | 0.23 % / 2.0 to 4.0 % / 0.42 to 0.75 % (70 mm ring) | 0.19 % / 5.7 to 12 % / 0.17 to 0.19 % |
+| Static figure and tilt before correction | lambda/1000 rms, < 1 urad | lambda/1000 rms |
+| Noise for a 10 s heating time at 10 uK | RIN < -106 dBc/Hz at 40 kHz; 0.32 pm/rtHz per mirror at 20 kHz | RIN < -100 dBc/Hz at 20 kHz; 0.64 pm/rtHz per mirror at 10 kHz |
+
+Total circulating power 989 W; total input 3.5 W at G = 300 (0.69 W at G = 1500), against 1.04 kW
+for the same lattice in free space and 1.40 kW for meta-hologram tweezers. Input powers per ring are
+DERIVED from the circulating powers (results/cavity_budget/budget.json) as P_circ / (0.95 G).
 
 ## 1. Why the tweezer array cannot be cavity-enhanced tenfold
 
@@ -294,8 +329,8 @@ Round-trip loss and enhancement (10 reflections of 50 ppm; per-mirror bound of N
 We take the over-coupled coupler T = 3L as the design point. It gives 0.75 of the maximum
 enhancement at half the finesse, and the enhancement then depends weakly on the exact loss.
 Section 4 shows that the depth tolerances do not depend on the finesse between 47 and 7000.
-A further reason to stay well below G_max is the cavity linewidth (88 kHz at G = 1500, about 0.5 MHz at
-G = 300; free spectral range 278 MHz). It converts laser frequency noise into intensity noise, which Norcia et al. identify as a
+A further reason to stay well below G_max is the cavity linewidth (82 kHz at G = 1500, 413 kHz at
+G = 300, for the 258 MHz free spectral range of the 70 mm ring; Section 6c). It converts laser frequency noise into intensity noise, which Norcia et al. identify as a
 heating source (190 ms time constant). We therefore recommend G ~ 300 in vacuum (3.5 W for 10^6
 sites at 0.2 mK) and use G = 1500 as the upper bound.
 
@@ -505,6 +540,13 @@ realisation). One lambda/1000 realisation stalls at 1.9 % with 0.94 of the enhan
 enhancement) diverges. Hence the feedback works when the uncorrected mode is close to the flat-top
 (starts up to ~7 % here) and fails when the mode is no longer the designed one. Per-site
 measurement noise of 1 % changes nothing, because the separable fit averages over 10^4 sampled sites.
+A lower loop gain does not help (keys *_gain0.25_r12 and *_gain0.1_r16). At gain 0.25 for 12 rounds the
+stalled lambda/1000 realisation ends at 1.89 % (1.93 % at gain 0.5), and the 0.5 mm case at 2.1 to
+2.3 % with its enhancement falling to 0.85. From the 22 % start, gain 0.25 and 0.1 still collapse the
+enhancement to 0.02 and 0.07, although at gain 0.1 the depth rms falls to 12 %. Hence the stall and the
+divergence are properties of the update rule, which redesigns with the nominal model and a phase-only
+mirror, not of its gain. A model-based update, in which the measured depths are used to estimate the
+mirror errors, is the next candidate; it is not simulated here.
 (iii-b) Cameras instead of atoms. The light transmitted by a cavity mirror carries the circulating
 profile of each beam; a camera behind an imaging relay conjugate to the crossing (assumed ideal here)
 sees |E_A|^2 and |E_B|^2 directly. With 10 um pixels, 0.5 % fresh noise per pixel and 48 bins,
@@ -589,11 +631,42 @@ radius a on a half-space heats by I a / kappa, limited to 50 K.
 | Telescope primary P1 | 4.5 kW/cm^2 | 1.5 / 37 um |
 | Telescope secondary P2 | 19.3 kW/cm^2 | 0.36 / 8.6 um |
 | Graded mirror G | 17.4 kW/cm^2 | 0.40 / 9.5 um |
-| Vertical ring, mirror with 3x beam expansion | 2.2 kW/cm^2 | 3.1 / 75 um |
+| Vertical ring, mirror with 3x beam expansion (placeholder; superseded below) | 2.2 kW/cm^2 | 3.1 / 75 um |
 
 At equal radial frequency (0.86 mK) every intensity is 4.3x higher and the defect limits 4.3x
 smaller (0.08 to 0.35 um on fused silica). For comparison, the present 18.4 mm metasurface at 200 W
-sees 75 W/cm^2 and tolerates 92 um (docs/prefab_checks_report.md). The cavity therefore trades a
+sees 75 W/cm^2 and tolerates 92 um (docs/prefab_checks_report.md).
+
+Vertical-ring mirrors (scripts/cavity_vertical_mirrors.py, configs/cavity_vertical_mirrors.yaml;
+results/cavity_vertical_mirrors/mirrors.json). The last row of the table assumed a mirror with a
+threefold beam expansion in both directions, which the adopted fold geometry (Section 2, Figure 5)
+does not provide. Its 0.15x telescope compresses the 6.9 mm horizontal width on P2 and G, and the
+0.19 mm vertical flat-top has no telescope, so it spreads only by diffraction. We compute the peak
+intensity of the beam cross-section on each mirror from the two 1D Fox-Li modes, with the 785 W that
+circulate in this ring at 0.2 mK, for the adopted design and for two variants that add a Keplerian
+telescope in the vertical (z) direction at the same mirror positions (magnification 4 or 8,
+f1z + f2z = 184 mm, i.e. P1 curved in the plane of incidence with f1z = 36.8 or 20.4 mm):
+
+| Vertical ring, 0.2 mK | P1 / P2 / G / P2 return / P1 return | Smallest defect, fused silica / sapphire | Nearest z mode (phase, loss); fundamental loss | lambda/1000 z errors: uncorrected, perfect redesign (G / G0) |
+|---|---|---|---|---|
+| Adopted, no z telescope | 32 / 170 / 145 / 112 / 14 kW/cm^2 | 0.041 / 0.97 um (P2) | 2.15 rad, 4.0e-3; 2.9e-5 | 1.5 and 0.69 % (0.58, 0.97); 0.33 and 0.33 % (0.93, 0.96) |
+| z telescope 4x | 32 / 51 / 55 / 55 / 35 kW/cm^2 | 0.13 / 3.0 um (G) | 1.67 rad, 1.1e-4; 6e-8 | 5.0 and 8.3 % (0.99, 0.98); 2.0 and 1.4 % (1.00, 1.00) |
+| z telescope 8x | 32 / 27 / 32 / 32 / 37 kW/cm^2 | 0.19 / 4.4 um (P1 return) | 2.65 rad, 4.8e-4; 5.3e-6 | 23 and 6.8 % (0.79, 0.98); 2.8 and 0.41 % (0.99, 1.00) |
+
+The ideal depth uniformity is 0.19, 0.073 and 0.16 % rms. Hence, as folded, the vertical ring puts up
+to 170 kW/cm^2 on P2, nine times the in-plane maximum, and tolerates absorbing defects only up to
+0.04 um on fused silica. This corrects the earlier placeholder row. An 8x vertical telescope brings every
+mirror to 27 to 37 kW/cm^2, i.e. 1.4 to 1.9 times the intensity at the atoms, which cannot be lowered
+on P1 without moving it further from the atoms. The surface intensity is lower than the cross-section
+value by cos AOI (0.90 on P2 and 0.85 on G at the smallest angles of the layout). The vertical
+telescope also lowers the design loss of the narrow mode and keeps its enhancement at 0.99 to 1.00 after a
+perfect-metrology redesign (0.93 to 0.96 without it), but it makes the z mode less discriminating (1.1e-4 loss for 4x)
+and the uncorrected depth more sensitive to figure error (5 to 23 % against 0.7 to 1.5 %). Our choice for
+the vertical ring is therefore a compromise. First, sapphire substrates on all its mirrors, which raise
+the defect limit 23x. Second, a vertical telescope of 4x to 8x, accepting closed-loop correction of the z
+profile as a requirement; the closed loop and the layout with the added z curvature are not simulated.
+At equal radial frequency the vertical ring circulates 1059 W instead of 785 W, and every entry scales
+by 1.35. The cavity therefore trades a
 kilowatt laser and a hot metasurface for watt-level input and mirrors at kW/cm^2. Point absorbers at
 these intensities limit the stored power of Advanced LIGO (Brooks et al., Appl. Opt. 60, 4047
 (2021), DOI 10.1364/AO.419689, abstract read in session). The fully absorbing disc model is
@@ -611,7 +684,15 @@ Thermal deformation of the graded mirror (102 W circulating, equal-area disc of 
 | Si-rich SiN metasurface (5.9e-4), sapphire | 60 mW | 1.3 K | 0.9 nm | 2.4e-4 waves |
 
 With IBS coatings the deformation is three orders of magnitude below the lambda/1000 figure
-tolerance. A Si-rich SiN film inside the cavity would reach the tolerance on its own. The cell
+tolerance. A Si-rich SiN film inside the cavity would reach the tolerance on its own. Fed into the
+Fox-Li ring (scripts/cavity_thermal_foxli.py, configs/cavity_thermal_foxli.yaml;
+results/cavity_thermal_foxli/thermal_foxli.json), with a bulge profile proportional to the intensity on G
+(sharper than the thermal profile, hence conservative) on both graded mirrors of the 70 mm ring, the
+depth rms changes from 0.231 to 0.232 % for 10 ppm IBS and to 0.252 % for 100 ppm. The Si-rich SiN film
+raises it to 0.53 % on fused silica and 0.32 % on sapphire; the enhancement changes by < 4e-4. A static
+bulge is also within reach of the closed loop of Section 4b. The vertical ring's mirrors absorb 7.7x more
+(785 W) on smaller spots; their deformation was not computed, and scaling the centre bulge with the
+absorbed power gives ~0.3 nm for 10 ppm (DERIVED, rough). The cell
 windows (through-cell variant) absorb 4 ppm per pass in bulk (0.4 mW at 102 W), which is negligible
 thermally. Their surfaces carry the defect constraint of the table above, the reason to prefer
 mirrors in vacuum.
@@ -714,6 +795,76 @@ session). A Cs grating MOT is therefore one to two orders of magnitude short of 
 with stored atoms shielded from the MOT light. We therefore recommend the tilted six-beam MOT, with
 the grating MOT as a compact fallback for smaller arrays or with iterative loading.
 
+## 6c. Noise and heating requirements
+
+Model (scripts/cavity_noise.py, configs/cavity_noise.yaml; results/cavity_noise/noise.json). We use
+the parametric-heating rates of Savard, O'Hara and Thomas, Phys. Rev. A 56, R1095 (1997) (text read
+in session): intensity noise gives an energy e-folding time 1/T_I = pi^2 nu^2 S_eps(2 nu), and
+position noise an energy-doubling time 1/T_x = pi^2 nu^2 S_x(nu) / <x^2>. Here, nu is the trap
+frequency in Hz, S_eps and S_x are one-sided power spectral densities of the fractional intensity
+and of the trap position, and <x^2> = k_B T / (m (2 pi nu)^2). The script reproduces their numerical
+examples (3.2e-6 /rtHz and 3.2e-12 m/rtHz for 100 s at 10 kHz; tests/test_cavity.py). The position
+term is a constant heating rate, dE/dt = 4 pi^4 m nu^4 S_x, independent of temperature; we quote it
+for atoms at T = 10 uK `[VALUE?: temperature after cooling in the lattice]`, so that a 10 s doubling
+time is 1 uK/s, i.e. about one vibrational quantum per second at 20 kHz. The couplings of the
+self-intersecting ring (DERIVED) follow from the site shift a dphi / (2 pi), with dphi the change of
+the phase accumulated between the two passes through the crossing, over the path L1 = L_rt / 2:
+(i) a normal displacement d of one ring mirror at incidence AOI, with the laser locked to the round
+trip, shifts the sites by a (2 d cos AOI / lambda)(1 - L1 / L_rt), i.e. by 3.2 d for the in-plane
+rings and 6.4 d for the vertical ring at AOI = 30 deg; (ii) a laser frequency change dnu that the
+lock does not remove shifts them by a L1 dnu / c (7.7e-15 and 2.2e-14 m/Hz); (iii) a change dtheta
+of the crossing half-angle changes the pitch by a cot(theta) dtheta and moves the edge sites of the
+4 mm array by (S/2) cot(theta) dtheta (14.7 and 29.7 mm/rad); (iv) a residual laser-cavity
+detuning dnu_r, with linewidth kappa (FWHM), modulates the circulating intensity by -(2 dnu_r /
+kappa)^2. For Gaussian dnu_r with a flat one-sided spectrum S_nu over a bandwidth B = 100 kHz this
+gives S_eps ~ 32 S_nu^2 B / kappa^4, and with a static lock offset delta_0 the linear term
+S_eps = 64 delta_0^2 S_nu / kappa^4. The linewidths are those of the over-coupled design point
+(T = 3L, Section 3) with the 258 MHz (in-plane) and 181 MHz (vertical) free spectral ranges.
+
+Requirements (one-sided amplitude spectral densities; position, displacement, frequency and angle at
+nu, intensity at 2 nu; lock residual flat over 100 kHz, zero offset):
+
+| Lattice, depth | nu | Heating time | RIN at 2 nu | Site position | One mirror | Laser frequency | Crossing angle (edge sites) | Lock residual G = 300 / 1500 |
+|---|---|---|---|---|---|---|---|---|
+| In-plane, 0.2 mK | 19.8 kHz | 10 s | -106 dBc/Hz | 1.0 pm/rtHz | 0.32 pm/rtHz | 132 Hz/rtHz | 0.070 nrad/rtHz | 22 / 4.4 Hz/rtHz (7.0 / 1.4 kHz rms) |
+| In-plane, 0.2 mK | 19.8 kHz | 100 s | -116 dBc/Hz | 0.32 pm/rtHz | 0.10 pm/rtHz | 42 Hz/rtHz | 0.022 nrad/rtHz | 12 / 2.5 Hz/rtHz |
+| In-plane, 0.86 mK | 41.0 kHz | 10 s | -112 dBc/Hz | 0.24 pm/rtHz | 0.074 pm/rtHz | 31 Hz/rtHz | 0.016 nrad/rtHz | 15 / 3.0 Hz/rtHz |
+| Vertical, 0.2 mK | 9.9 kHz | 10 s | -100 dBc/Hz | 4.1 pm/rtHz | 0.64 pm/rtHz | 186 Hz/rtHz | 0.14 nrad/rtHz | 22 / 4.3 Hz/rtHz |
+| Vertical, 0.86 mK | 20.5 kHz | 10 s | -106 dBc/Hz | 0.95 pm/rtHz | 0.15 pm/rtHz | 43 Hz/rtHz | 0.032 nrad/rtHz | 15 / 3.0 Hz/rtHz |
+
+What the table shows. (i) Intensity noise. The cavity passes the laser's relative intensity noise
+unchanged below kappa / 2 (206 kHz at G = 300), so the input beam itself needs -106 dBc/Hz at 40 kHz
+for 10 s at 0.2 mK, and -116 dBc/Hz for 100 s. This is a requirement on the amplifier and the intensity
+servo, not on the cavity `[VALUE?: RIN of a stabilised 1075 nm fibre amplifier at 20 to 80 kHz]`.
+(ii) Lock quality. The residual detuning must stay below 22 Hz/rtHz over 100 kHz (7.0 kHz rms, 1.7 % of
+the 413 kHz linewidth) at G = 300, and below 4.4 Hz/rtHz (1.4 kHz rms) at G = 1500. The requirement
+scales as kappa^2 in the quadratic regime, so G = 1500 is five times harder. A static offset of 1 % of
+the linewidth makes the linear conversion comparable (26 and 5.2 Hz/rtHz). This quantifies the reason
+given in Section 3 for working at G ~ 300, and is consistent with the frequency-noise heating that
+Norcia et al. identify in their cavity (190 ms). (iii) Position noise is the stricter condition. A
+site motion of 1 pm/rtHz at 20 kHz, i.e. one quantum per second, corresponds to a single-mirror
+displacement of 0.32 pm/rtHz, or 0.1 pm/rtHz for 100 s. Coating Brownian noise is far below this
+`[VALUE?: approx. 1e-17 m/rtHz at kHz, verify]`. The relevant source is the excitation of mount and
+spacer resonances in the 10 to 40 kHz band by acoustic noise, pumps and the lock actuator. Hence the
+ring should be a monolithic, low-expansion assembly (Section 7, as in Park et al.), with its lowest
+mechanical resonances either above ~50 kHz or well damped `[VALUE?: mount vibration spectrum]`.
+(iv) Laser frequency noise. With the laser locked to the ring, its frequency follows the round-trip
+length, and entry (i) already includes this through the factor (1 - L1 / L_rt). The frequency entry
+of the table applies to laser noise that the lock does not remove, i.e. above the lock bandwidth and
+below kappa / 2; a lock bandwidth above 2 nu avoids it. (v) Crossing angle. Edge sites move by
+14.7 mm per rad of crossing-angle change, so 0.07 nrad/rtHz is needed at 20 kHz. For a mirror mount
+with a 10 mm lever this is 0.7 pm of differential motion (DERIVED), comparable to (iii), not a
+separate technology. (vi) The cavity is a mode filter for input pointing jitter. The nearest transverse
+mode of the 70 mm ring lies 0.216 rad from the fundamental per round trip, i.e. 8.9 MHz, against a
+206 kHz half-linewidth at G = 300. Input misalignment therefore couples into it with ~0.02 of the
+amplitude it would have without the cavity (DERIVED, ratio of half-linewidth to offset), and the
+site positions are set by the mirrors, not by the input beam. (vii) The vertical lattice, with its
+lower trap frequency at 0.2 mK, is the least sensitive in intensity (-100 dBc/Hz at 20 kHz), but its
+larger lever (8 um period) gives a similar mirror requirement (0.64 pm/rtHz).
+
+These are requirements, not predictions: we have not simulated the time-dependent depth and site
+position, nor estimated the vibration spectrum of a real mount.
+
 ## 7. What must improve, and next steps
 
 What must improve. (i) Figure and alignment of the large telescope mirrors: lambda/1000 rms
@@ -723,18 +874,21 @@ strict tolerance applies to drift between corrections. Drift at the urad level
 calls for a monolithic, low-expansion assembly as in Park et al. (ii) Cleanliness of every surface
 near the waist at the level of point absorbers below ~0.5 um on fused silica, or sapphire substrates
 (23x more tolerant). (iii) Losses of the graded mirrors <= 1e-3 per bounce, i.e. figured surfaces
-rather than metasurfaces. (iv) The vertical lattice power, which dominates at 10^6 sites. (v)
+rather than metasurfaces. (iv) The vertical lattice, which dominates the power at 10^6 sites (785 of 989 W circulating) and,
+as folded, puts up to 170 kW/cm^2 on its mirrors; a vertical telescope lowers this to <= 37 kW/cm^2 at
+the cost of a larger error sensitivity, and sapphire substrates are advisable (Section 5). (v)
 Single-plane loading in an 8 um vertical lattice from a MOT of 10^8 to 10^9 atoms, and site-resolved
 rearrangement into the lattice; neither is simulated here (Section 6b gives the atom budget).
 
 Next simulations. (i) The vertical ring with propagation along an array side (a narrower beam) as an
-alternative to its diagonal layout. (ii) Laser frequency noise and mirror vibration: time-dependent
-depth and site position, heating rates versus finesse. (iii) Absorption-induced deformation fed back
-into Fox-Li at the circulating power (here only compared with the tolerance). (iv) A more reliable
-closed loop for large starting errors (lower gain, or a model update from the measured depths), and
-the effect of drift during a correction cycle. (v) Mounts, MOT coils and the vacuum envelope around
+alternative to its diagonal layout. (ii) A time-dependent simulation of depth and site position under laser and lock noise, and a
+vibration model of the ring mounts, against the requirements of Section 6c. (iii) Absorption-induced
+deformation of the vertical ring's mirrors at 785 W, fed into Fox-Li (done for the in-plane rings,
+Section 5). (iv) A model-based closed loop for large starting errors (a lower gain was tested and does
+not help, Section 4b), and the effect of drift during a correction cycle. (v) Mounts, MOT coils and the vacuum envelope around
 the layout of Figures 3 and 5, and the windows for the tilted MOT and pumping beams. (vi) Loading
-dynamics: accumulation of atoms in the in-plane sheets from the tilted MOT and plane selection.
+dynamics: accumulation of atoms in the in-plane sheets from the tilted MOT and plane selection. (vii) Closed-loop correction and the fold
+layout of the vertical ring with a 4x to 8x vertical telescope.
 
 ## Verification notes
 
@@ -770,6 +924,14 @@ Provenance ledger:
 | Cs 2D-MOT flux 4.02e10 atoms/s | Section 6b | SOURCE | Huang et al., Chin. Phys. B 25, 063701 (2016), arXiv:1509.07213 |
 | Rb 3D grating MOT 2.46(7)e8 atoms from a 2D grating MOT | Section 6b | SOURCE | Imhof et al., Phys. Rev. A 96, 033636 (2017), arXiv:1703.07926 |
 | Cs grating MOT 7.0e6 atoms with a 69 % retro beam; none at 24 % | Section 6b | SOURCE | Takamizawa et al., Appl. Phys. Lett. 126, 244006 (2025), arXiv:2412.11502 |
+| Noise requirements (RIN, site position, mirror, frequency, angle, lock residual) | Section 6c | DERIVED (code) | results/cavity_noise/noise.json |
+| Heating rates 1/T_I = pi^2 nu^2 S_eps(2 nu), 1/T_x = pi^2 nu^2 S_x / <x^2> and their numerical examples | Section 6c | SOURCE | Savard, O'Hara, Thomas, Phys. Rev. A 56, R1095 (1997) (text read in session) |
+| Noise couplings of the self-intersecting ring, lock-residual conversion, mode-filter ratio ~0.02 | Section 6c | DERIVED | scripts/cavity_noise.py docstring; 206 kHz / 8.9 MHz |
+| Lower-gain closed loop (gain 0.25, 0.1) | Section 4b | SIM, review before submission | results/cavity_correction/correction.json (keys *_gain*) |
+| Absorption bulge fed into Fox-Li | Section 5 | SIM, review before submission | results/cavity_thermal_foxli/thermal_foxli.json |
+| Vertical-ring mirror intensities, defect limits, z-telescope variants | Section 5, Result, Design summary | SIM, review before submission | results/cavity_vertical_mirrors/mirrors.json |
+| Vertical-ring bulge ~0.3 nm at 10 ppm | Section 5 | DERIVED (rough scaling) | 0.035 nm x 7.7 in absorbed power |
+| Input power per ring, design summary | Design summary | DERIVED | P_circ / (0.95 G), results/cavity_budget/budget.json |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |
@@ -788,7 +950,9 @@ pass]`, `[VALUE?: mode-converter coupling 0.95]`, `[CONFIRM?: cell wall 15 mm fr
 size for the layout]`, `[REF?: freeform figuring at nm rms over mm apertures]`, `[VALUE?: absolute flat-calibration
 agreement approx. 0.4 nm]`, `[VALUE?: loss and stability of an intracavity deformable mirror]`, `[CONFIRM?: objective position and
 mount, chamber windows, mounts]`, `[VALUE?: grating diffraction angle]`, `[VALUE?: ~0.5 collisional
-filling]`. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
+filling]`, `[VALUE?: atom temperature 10 uK in the lattice]`, `[VALUE?: RIN of a stabilised
+1075 nm fibre amplifier]`, `[VALUE?: coating Brownian noise approx. 1e-17 m/rtHz]`, `[VALUE?: mount vibration
+spectrum at 10 to 40 kHz]`. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
 grating-MOT atom number (seen only in a search snippet, not used).
 
 Sourcing gaps. The 12,000-finesse microstructured-mirror cavity (Dickmann et al., Commun. Phys. 2023,

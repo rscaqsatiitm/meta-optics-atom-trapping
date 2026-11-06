@@ -32,7 +32,10 @@ def build(cfg, d):
     w = LA.supergauss_w_for_flat(d["flat_half_um"], d["order"], cfg["flat_tol"])
     F = FL.flat_target(g, w, d["order"])
     t = cfg["telescope"]
-    if d["telescope"]:
+    if isinstance(d["telescope"], dict):  # own focal lengths at the same mirror positions, f1' + f2' = f1 + f2
+        f1z = (1 + t["mag"]) * t["f1_um"] / (1 + d["telescope"]["mag"])
+        els = FL.telescope_elements(g, f1z, d["telescope"]["mag"] * f1z, t["d0_um"], d["ap1_um"], d["ap2_um"])
+    elif d["telescope"]:
         f2 = t["mag"] * t["f1_um"]
         els = FL.telescope_elements(g, t["f1_um"], f2, t["d0_um"], d["ap1_um"], d["ap2_um"])
     else:  # same mirror positions, flat in this direction
