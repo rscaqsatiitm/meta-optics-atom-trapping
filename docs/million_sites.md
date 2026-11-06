@@ -305,6 +305,41 @@ degree of freedom a metasurface provides. The zero order of the lenslets reaches
 as a plane wave of relative intensity ~0.03 x (pi w^2 / 2) / a^2 ~ 2 x 10^-3 of a trap peak
 (DERIVED), which is negligible.
 
+Wave simulation of a lenslet patch (results/million/patch.json, scripts/million_patch.py,
+configs/million.yaml: patch). A 7 x 7 patch of traps at 4 um pitch is propagated through the
+25 mm meta-objective (NA 0.5, 1075 nm, air gap 10 mm) by the superposition method. Each lenslet
+fills the circular stop as a plane wave at the field angle of its site (square lenslet
+circumscribing the stop), with or without its pre-compensation -W_j. All traps come from one
+laser and add coherently with per-lenslet pistons psi_j: equal, alternating 0 / pi
+(checkerboard), or random. Peaks are taken on a 0.2 um grid; metrics are over the inner 5 x 5
+traps.
+
+| Patch centre | Correction | Pistons | Depth non-uniformity rms | Min / mean | Brightest interstitial / mean peak |
+|---|---|---|---|---|---|
+| Axis | none | equal | 5.2 % | 0.84 | 0.018 |
+| Axis | none | alternating | 4.0 % | 0.88 | 0.084 |
+| Axis | none | random | 11.1 % | 0.79 | 0.089 |
+| Axis | -W_j | equal | 5.2 % | 0.84 | 0.018 |
+| Axis | -W_j | alternating | 4.0 % | 0.88 | 0.083 |
+| Axis | -W_j | random | 13.7 % | 0.73 | 0.078 |
+| 2.83 mm | none / -W_j | all three | running | running | running |
+
+On the axis the single-trap depths are identical (< 0.01 % rms), so the whole spread is
+interference between the traps, through the overlapping Airy rings of neighbours 4 um apart
+(first dark ring at 1.3 um, rings at a few per cent beyond). The correction changes nothing
+here, as expected for an aberration-free field. The two random rows differ only by the random
+draw. Three points follow. (i) Random pistons cost 11 to 14 % rms in depth and must be avoided;
+the lenslet pistons are a fabricated, static degree of freedom and should be specified in the
+metasurface design. (ii) Equal and alternating pistons are periodic, so in the interior of a
+large array every site sees the same neighbourhood; the 4 to 5 % found here is then mostly the
+edge of the 7 x 7 patch (the inner 5 x 5 includes sites next to the outer ring, which lacks its
+own outer neighbours). Hence it bounds the boundary effect of a finite array, not the bulk
+value, which this patch is too small to give (Provisional). The same holds at the edge of the
+10^6 array, where the outermost rows will need a piston or amplitude adjustment. (iii)
+Alternating pistons lower the spread slightly but raise the brightest interstitial point from
+0.018 to 0.08 of a trap peak, so equal pistons are preferable when interstitial light matters.
+
+
 ## 5. Practical feasibility and what must improve
 
 | Element | Size for 10^6 (4 um pitch) | Status | What must improve |
@@ -377,6 +412,7 @@ Provenance ledger:
 | Image-space correction | Section 5 | SIM, review before submission | results/million/imaging_corrected.json |
 | 42 mm objective tolerances | Section 2 | SIM, review before submission | results/million/tolerances_f42.json |
 | Pupil fill | Section 4 | DERIVED (numerical) | results/million/pupil_fill.json |
+| Lenslet patch interference | Section 4 | SIM, review before submission | results/million/patch.json |
 | Lenslet pre-compensation | Section 4 | SIM, review before submission | results/million/mla.json, mla_wavecheck.json |
 | Hologram large-field depth | Section 3 | SIM | results/scaling_100k/hologram_large_field.json |
 | 10^5-site design results | Section 3 | SIM | results/fullaperture_100k |
