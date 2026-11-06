@@ -151,16 +151,30 @@ remove.
 
 Demonstrated so far. 99,856 sites (docs/scaling_100k.md): efficiency 0.83 and 7.5 % rms with
 library pillars after two feedback rounds; the residual non-uniformity is uncorrelated
-site-to-site scatter, with no field dependence.
+site-to-site scatter, with no field dependence. Re-rendering the design with an exact-accurate
+render (below) gives 7.14 % against 7.05 % (ideal pillars). Hence the render grid is not the
+cause, and the source of the residual, given 0.24 % in the pupil model, is unresolved
+(docs/scaling_100k.md).
 
 Computation at 10^6 (DERIVED from the 10^5 run). The wedge pupil grows with the field as
 (r_max)^2: ~5.2 x 10^6 samples at 4 um pitch (2.9 x 10^6 at 3 um) against 0.52 x 10^6 for
-10^5 sites. Each kernel product therefore needs ~5 x 10^12 evaluations, against 5 x 10^10. At
+10^5 sites. Each kernel product therefore needs ~5.2 x 10^12 evaluations, against 5 x 10^10. At
 the measured 7 x 10^8 evaluations/s (numba, 4 cores) this is ~2 h per product and ~4 h per WGS
 iteration, ~3 weeks for the 120 iterations of the v2 schedule. The kernel is a sum of
-independent sincos terms, an ideal GPU workload: at 10^11 to 10^12 evaluations/s
-`[VALUE?: sustained FP32 sincos throughput of a datacentre GPU]` the design takes ~0.5 to 3 days
-on one GPU, or hours on a node. Memory stays O(M + N) (~1 GB). Not run here.
+independent sincos terms, an ideal GPU workload.
+
+Status of the 10^6 pipeline (code complete, not yet run at 10^6; docs/gpu_run.md):
+(i) GPU kernels (hologram/lazy_gpu.py, numba.cuda): single-precision per-pair arithmetic with
+Kahan-compensated sums, products split into launches of ~2 x 10^9 evaluations (well under the
+2 s Windows display-driver timeout). Checked against the CPU kernels in the CUDA simulator
+(relative error 1.6 x 10^-3, set by the float32 path lengths) and in the compiled PTX, where an
+implicit int64 to float64 promotion had put sin/cos on the double-precision path (1/64 rate on
+consumer GPUs) and was removed. Expected rate on an RTX 3050: 3 to 6 x 10^10 evaluations/s
+(DERIVED from the instruction mix, not measured), i.e. 6 to 12 h for the design.
+(ii) Memory-bounded rendering and metrics (hologram/tiled.py). No 44,500^2 fine render grid and
+no full upsampled focal window are stored; the hologram field at each metasurface pixel is
+evaluated directly from the coarse pupil grid with a Kaiser-windowed sinc, and the focal field
+is upsampled and measured in 1024^2 tiles. Peak memory is a few GB (configs/fullaperture_1M.yaml).
 
 Limitation for goal (ii). A pupil-plane hologram focuses every site through the whole
 aperture. Illuminating a smaller part of it lowers the NA of all sites; it does not reduce

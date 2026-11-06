@@ -83,11 +83,20 @@ rms, and neighbouring sites are uncorrelated (correlation coefficient 0.01). The
 converges more slowly than for v2 (8.7 to 7.0 % in two rounds, against 6.3 to 5.3 %). The number of
 pupil samples per site is the same in both designs (8 x 103,459 / 20,164 = 41 for v2;
 8 x 517,262 / 99,856 = 41 here), because the pupil grid is refined in proportion to the field.
-We therefore attribute the slower convergence, provisionally, to the coarser render grid
+We first attributed the slower convergence, provisionally, to the coarser render grid
 (5 x instead of 8 x upsampling of a pupil field that now has 2.2 times finer structure per
-axis). Further feedback rounds (~1.5 h each)
-and an 8 x render on a larger-memory machine are the obvious next steps; neither has been
-run. (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
+axis). A later test rules this out. We re-rendered the final design with a render that
+evaluates the hologram field at each metasurface pixel by a windowed-sinc interpolant of the
+pupil grid, with no fine grid in memory (hologram/tiled.py). On a 16 x 16-site test this
+render matches an exact per-pixel kernel sum to 1e-4 rms in per-site depth, against 2.1 % for
+the FFT-upsampled grid (tests/test_tiled.py). With it, the round-2 design gives 7.14 % rms (ideal
+pillars; results/fullaperture_100k_tiled), against 7.05 % with the 5 x render grid. The per-site
+depths of the two renders differ by 1.7 % rms (correlation 0.97). Hence the render adds an
+uncorrelated ~1.7 % component, which does not change the total in quadrature, and the ~7 %
+residual belongs to the design itself. Its origin, given that the pupil model predicts
+0.24 %, is unresolved. Candidates are the pupil-model sampling of the aperture edge and too few
+feedback rounds. More feedback rounds (~1.5 h each on 4 cores, minutes on a GPU) are the next
+test. (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
 0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
 feedback (dark targets) would address it.
