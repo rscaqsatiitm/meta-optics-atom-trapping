@@ -106,5 +106,41 @@
     "max_position_error_um": 0.5998200966787919,
     "interstitial_max_over_mean_peak": 0.6665999489946582,
     "peak_rel_axis_single": 1.095852563526781e+17
+  },
+  "r2828:corrected:equal": {
+    "centre_um": 2828,
+    "corrected": true,
+    "pistons": "equal",
+    "depth_nonuniformity_rms_inner": 0.04832518554361752,
+    "min_over_mean_inner": 0.8533753200783273,
+    "single_trap_nonuniformity_rms_inner": 0.00015253360419794986,
+    "interference_modulation_rms": 0.04831737347089321,
+    "max_position_error_um": 0.0005737272355210899,
+    "interstitial_max_over_mean_peak": 0.018006674810943757,
+    "peak_rel_axis_single": 2.3128688922945824e+17
+  },
+  "r2828:corrected:alternating": {
+    "centre_um": 2828,
+    "corrected": true,
+    "pistons": "alternating",
+    "depth_nonuniformity_rms_inner": 0.03719003127927256,
+    "min_over_mean_inner": 0.9077154177098312,
+    "single_trap_nonuniformity_rms_inner": 0.00015253360419794986,
+    "interference_modulation_rms": 0.0371898195553171,
+    "max_position_error_um": 0.0005737272355210899,
+    "interstitial_max_over_mean_peak": 0.10359234041528088,
+    "peak_rel_axis_single": 2.3128688922945824e+17
+  },
+  "r2828:corrected:random": {
+    "centre_um": 2828,
+    "corrected": true,
+    "pistons": "random",
+    "depth_nonuniformity_rms_inner": 0.12984208286914628,
+    "min_over_mean_inner": 0.772380228204561,
+    "single_trap_nonuniformity_rms_inner": 0.00015253360419794986,
+    "interference_modulation_rms": 0.12984453381008357,
+    "max_position_error_um": 0.20018019982076432,
+    "interstitial_max_over_mean_peak": 0.09304257331403866,
+    "peak_rel_axis_single": 2.3128688922945824e+17
   }
 }
