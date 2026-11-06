@@ -5,7 +5,7 @@
       "depth_mK": 0.2,
       "I_atoms_W_cm2": 19760.912553393122,
       "P_circ_inplane_W": 102.3417807642424,
-      "P_circ_vertical_W": 637.9939337794204,
+      "P_circ_vertical_W": 784.7120754996179,
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 14597.181614299534,
         "primary P1": 6169.765009712144,
@@ -38,7 +38,7 @@
       "depth_mK": 0.2,
       "I_atoms_W_cm2": 85432.17147726097,
       "P_circ_inplane_W": 442.4532794178934,
-      "P_circ_vertical_W": 861.276094193926,
+      "P_circ_vertical_W": 1059.3419712463744,
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 63107.861005306964,
         "primary P1": 26673.688315756724,
@@ -71,7 +71,7 @@
       "depth_mK": 0.3,
       "I_atoms_W_cm2": 29641.368830089683,
       "P_circ_inplane_W": 153.51267114636357,
-      "P_circ_vertical_W": 956.9909006691306,
+      "P_circ_vertical_W": 1177.0681132494267,
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 21895.7724214493,
         "primary P1": 9254.647514568214,
@@ -104,7 +104,7 @@
       "depth_mK": 0.3,
       "I_atoms_W_cm2": 128148.25721589144,
       "P_circ_inplane_W": 663.67991912684,
-      "P_circ_vertical_W": 1291.9141412908891,
+      "P_circ_vertical_W": 1589.0129568695615,
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 94661.79150796043,
         "primary P1": 40010.53247363508,

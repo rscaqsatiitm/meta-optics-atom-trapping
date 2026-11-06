@@ -31,14 +31,14 @@ plane twice at 2 theta = 15.4 deg. For 10^6 Cs sites at a 0.2 mK barrier per axi
 |---|---|
 | Meta-hologram tweezers (NA 0.55, this repository) | 1.40 kW |
 | Lenslet-array tweezers (this repository) | 2.50 kW |
-| Lattice in free space (two in-plane axes and one vertical axis) | 0.89 kW |
-| Cavity lattice, mirrors in vacuum, over-coupled to G = 300 | 3.0 W |
-| Cavity lattice, mirrors in vacuum, G = 1500 | 0.59 W |
-| Cavity lattice through the present cell, AR 0.025 % / 0.1 % per surface (G 298 / 88) | 3.0 / 10 W |
-| Cavity lattice through Brewster-angle windows (G 570) | 1.6 W |
+| Lattice in free space (two in-plane axes and one vertical axis) | 1.04 kW |
+| Cavity lattice, mirrors in vacuum, over-coupled to G = 300 | 3.5 W |
+| Cavity lattice, mirrors in vacuum, G = 1500 | 0.69 W |
+| Cavity lattice through the present cell, AR 0.025 % / 0.1 % per surface (G 298 / 88) | 3.5 / 12 W |
+| Cavity lattice through Brewster-angle windows (G 570) | 1.8 W |
 
 At equal radial trap frequency instead of equal depth (41 kHz, which needs a 0.86 mK lattice
-barrier), the in-vacuum cavity lattice needs 1.2 W at G = 1500 and 6.2 W through good AR windows.
+barrier), the in-vacuum cavity lattice needs 1.4 W at G = 1500 and 6.9 W through good AR windows.
 
 (iii) The flat-top mode is the design problem. A Gaussian mode flat to 1 % over the array would
 need a 32 mm waist and seven times more power than a flat-top. A graded-phase mirror makes a
@@ -50,7 +50,20 @@ scrambles the depth by 31 % rms, and a 0.3 urad tilt by 6 %. A 0.2x demagnifying
 each half trip removes the degeneracy. All competing modes then lose >= 1.1 % per round trip
 against 1.4e-8 for the fundamental. The same lambda/1000 error then gives 2.7 % rms, and a
 1 urad graded-mirror tilt 0.4 %. The tightest remaining tolerances are lambda/1000 rms figure
-on the large telescope mirror (2.4 %) and sub-urad tilt stability of that mirror (1 urad: 3.7 %).
+on the large telescope mirrors (2.4 %) and sub-urad tilt stability of those mirrors (1 urad: 3.7 %).
+
+(iii-b) The residual can be corrected by re-shaping the two graded mirrors, because each axis's
+depth map is the product of the two crossing beams' profiles and each graded mirror shapes one of
+them. With independent lambda/1000 figure errors or 1 urad tilts on all ten mirrors, which give
+1.2 to 4.8 % uncorrected, closed-loop feedback on depths measured with the atoms (six rounds, no
+mirror metrology, insensitive to 1 % per-site noise) restores 0.22 to 0.54 % in four of six runs;
+the other two end at 1.9 and 2.3 % (the latter with 0.5 mm-scale errors). It needs a graded-mirror change of only 1 to 7 nm rms. A 2D
+model with non-separable errors gives the same picture (2.2 % to 0.44 % with an x-only correction).
+The feedback fails when the uncorrected mode is far from the design (a 22 % start diverged). Open-loop
+correction from measured mirror maps needs 0.1 to 0.3 nm rms metrology on every mirror. The
+vertical-lattice ring, whose beam is 6.9 mm wide, is the most sensitive (3.6 to 36 % uncorrected,
+0.08 % after a perfect-metrology redesign). Correction does not rescue the plain ring without a
+telescope. All corrections are static; drift must stay below these levels between corrections.
 
 (iv) Heat is no longer a constraint; defects are. Coating absorption heats the mirrors by
 < 0.5 K (IBS, 1 to 10 ppm). Every surface near the waist sees 6 to 20 kW/cm^2 at 0.2 mK,
@@ -66,9 +79,10 @@ kilowatts), the imaging and addressing objective (unchanged), and the loading/re
 tweezers.
 
 Main limitations. One-dimensional Fox-Li model of the horizontal profile with a separable
-Gaussian vertical mode; scalar optics; static perturbations, one or two random realisations per
-case; no laser frequency noise or mechanical vibration; the vertical lattice and the layout are
-first-order designs, not simulated through Fox-Li.
+Gaussian vertical mode, checked by one 2D case per question (ideal design, non-separable errors and
+their correction); scalar optics; static perturbations, one or two random realisations per case; no
+laser frequency noise or mechanical vibration; the vertical ring as a product of two 1D modes, without
+closed-loop correction; the layout is a first-order design.
 
 ![Power versus number of sites](../results/cavity_budget/power_scaling.png)
 
@@ -147,8 +161,9 @@ Vertical mode. A 30 mm vertical focal length on P1 and a 166 mm vertical radius 
 Vertical confinement. The in-plane sheets alone give 0.7 kHz vertically (Gaussian profile of 75 um, 0.4 mK at the site). A third ring crosses at
 2 theta_z in a vertical plane (period 8 um, theta_z = 3.85 deg), propagating along the array
 diagonal. Its beams walk off vertically by +-0.19 mm across the array, so they must be flat-topped
-vertically as well (equivalent height 0.47 mm, width 6.9 mm). This axis takes 638 W of the
-843 W circulating at 10^6 sites and 0.2 mK; Section 3 discusses alternatives.
+vertically as well (width 6.9 mm; equivalent height 0.57 mm with an order-10 edge, because an
+order-20 edge has a 4e-4 design loss at this small size, results/cavity_vertical). This axis takes
+785 W of the 989 W circulating at 10^6 sites and 0.2 mK; Section 3 discusses alternatives.
 
 Meta-optics. (i) Input mode converters, Gaussian to flat-top sheet (a Gaussian input couples
 0.918 of the power into the flat-top mode; a flat-top converter is assumed to reach 0.95, `[VALUE?]`);
@@ -172,14 +187,15 @@ Model (results/cavity_budget/budget.json). Each crossing beam needs the peak int
 I1 = U / (4 c kappa), with kappa = 2.53e-13 K per W/m^2 for Cs at 1075 nm (Steck polarisability,
 alpha = 1125 a.u.), i.e. 19.8 kW/cm^2 for U = 0.2 mK. The circulating power per in-plane axis is
 I1 x W_eq x sqrt(pi/2) w_z, independent of the number of beams per axis because one mode supplies
-both. The power scales as the array side, sqrt(N), against N for tweezers.
+both. The in-plane power scales as the array side, sqrt(N), against N for tweezers; the vertical
+axis scales close to N, because its beams must also cover the vertical walk-off.
 
 | N, barrier | Per in-plane axis | Vertical axis | Total circulating | Hologram tweezers |
 |---|---|---|---|---|
-| 10^5, 0.2 mK | 32 W | 64 W | 128 W | 140 W |
-| 10^5, 0.3 mK | 48 W | 95 W | 192 W | 210 W |
-| 10^6, 0.2 mK | 102 W | 638 W | 843 W | 1,399 W |
-| 10^6, 0.3 mK | 154 W | 957 W | 1,264 W | 2,098 W |
+| 10^5, 0.2 mK | 32 W | 78 W | 143 W | 140 W |
+| 10^5, 0.3 mK | 48 W | 117 W | 214 W | 210 W |
+| 10^6, 0.2 mK | 102 W | 785 W | 989 W | 1,399 W |
+| 10^6, 0.3 mK | 154 W | 1,177 W | 1,484 W | 2,098 W |
 
 The hologram column reproduces the 210 W of docs/scaling_100k.md for 10^5 sites at 0.3 mK.
 
@@ -199,7 +215,7 @@ enhancement at half the finesse, and the enhancement then depends weakly on the 
 Section 4 shows that the depth tolerances do not depend on the finesse between 47 and 7000.
 A further reason to stay well below G_max is the cavity linewidth (88 kHz at G = 1500, about 0.5 MHz at
 G = 300; free spectral range 278 MHz). It converts laser frequency noise into intensity noise, which Norcia et al. identify as a
-heating source (190 ms time constant). We therefore recommend G ~ 300 in vacuum (3.0 W for 10^6
+heating source (190 ms time constant). We therefore recommend G ~ 300 in vacuum (3.5 W for 10^6
 sites at 0.2 mK) and use G = 1500 as the upper bound.
 
 The vertical axis dominates at 10^6 sites because its beams must be flat over the vertical
@@ -263,11 +279,13 @@ mode loses at least 1.1 % per round trip, a million times the fundamental's loss
 
 Tolerances (median over two random realisations and correlation lengths of 0.5 and 2 mm referred to
 the crossing; figure errors as rms surface height over the beam, reflected phase 4 pi h / lambda;
-both graded mirrors perturbed independently, tilts and curvature errors on one mirror):
+both graded mirrors perturbed independently; G tilts and curvature errors on one graded mirror):
 
 Entries: barrier-depth non-uniformity over the 10^6-site array (rms, median over realisations)
 and, in parentheses, the lowest enhancement relative to the analytic value. K Keplerian, G Galilean;
-P1 is the large telescope primary. Generated by scripts/cavity_report_tables.py.
+P1 rows: the same figure error or tilt on the incoming primary of both half trips, i.e. two of the
+four large telescope mirrors carry identical errors (Section 4b treats independent errors on all ten
+mirrors). Generated by scripts/cavity_report_tables.py.
 
 | Perturbation | Plane folds, 150 mm | Plane folds, 300 mm | Telescope 0.2x K | Telescope 0.1x K | Telescope 0.2x G |
 |---|---|---|---|---|---|
@@ -290,8 +308,9 @@ P1 is the large telescope primary. Generated by scripts/cavity_report_tables.py.
 | P1 tilt, 10 urad | - | - | 33 % (0.56) | 20 % (0.61) | 24 % (0.59) |
 
 Reading the table. (i) The telescope reduces the sensitivity to graded-mirror figure 6 to 11 fold and to
-graded-mirror tilt 20 to 60 fold. (ii) The large primary P1 now carries the
-tightest tolerances. A lambda/1000 rms figure error there gives 2.4 % rms, and a 1 urad tilt 3.7 %.
+graded-mirror tilt 20 to 60 fold. (ii) The large telescope mirrors now carry the
+tightest tolerances. A lambda/1000 rms figure error on the two incoming primaries gives 2.4 % rms,
+and a 1 urad tilt of both 3.7 %.
 (iii) The 0.1x telescope halves these numbers but doubles the intensity on the small mirrors
 (Section 5). (iv) The Galilean form is 2 to 3.5 times more sensitive to figure errors than the Keplerian at
 the same magnification, though slightly less sensitive to primary tilt, because its design loss
@@ -329,6 +348,110 @@ versus the rms figure error of both graded mirrors (left, median over realisatio
 one graded mirror (right), for plane-fold rings of p = 150 and 300 mm and for telescope rings.
 Fox-Li strip model, 8192 points, G = 300, flat-top input, w_z = 75 um. Data:
 results/cavity_foxli/foxli.json.
+
+## 4b. Correcting the residual non-uniformity
+
+Question. The ideal ring gives 0.23 % rms, but realistic mirrors give a few per cent (Section 4).
+A lattice offers no per-site trim. Its depth map per axis is the product |E_A| |E_B| of the two
+crossing beams' transverse profiles, and the two graded mirrors control them: G1 shapes the half trip
+from arm A to arm B, G2 the return. We ask how much of the error this pair can remove.
+
+Method (scripts/cavity_correction.py, configs/cavity_correction.yaml;
+results/cavity_correction/correction.json). Independent smooth figure errors, random tilts, or both,
+on every mirror of the ring: 8 telescope reflections and 2 graded mirrors for the 0.2x ring, 4 folds
+and 2 graded mirrors for the plain 150 mm ring. Correlation lengths are referred to the crossing and
+scaled by the beam size on each mirror. Three corrections:
+(i) open loop: G1 and G2 redesigned through the half trips as measured, phi = arg(K_out^+ T) -
+arg(K_in T), which reduces to the conjugation design for a symmetric, unperturbed half trip
+(tests/test_cavity.py). Metrology noise is a smooth random error map of the stated surface rms on
+every mirror, plus 0.1 urad of tilt error when tilts are present;
+(ii) closed loop from the atoms, with no knowledge of the errors. Each round the barrier depth at
+101 x 101 sampled sites is measured with 0 or 1 % multiplicative noise per site. It is fitted as
+a(xi_A) b(xi_B) by log-linear least squares with a smoothness penalty. The target profiles are
+multiplied by (a, b)^-0.5 and G1, G2 redesigned with the nominal model, for six rounds;
+(iii) the stroke, the rms and peak-to-valley surface change of G relative to the nominal design.
+Enhancement G = 300, the self-consistent lock of Section 4.
+
+Telescope ring, 0.2x (depth rms over the 10^6-site array; two random realisations where shown):
+
+| Errors on every mirror | Uncorrected | Perfect metrology | 0.1 nm metrology | 0.3 nm metrology | 1 nm metrology | Closed loop, 6 rounds |
+|---|---|---|---|---|---|---|
+| lambda/1000 figure, 2 mm | 2 / 4.8 % | 0.49 / 0.54 % | 0.68 / 0.61 % | 1.3 / 1.4 % | 3.9 / 4.6 % | 0.48 / 1.9 % |
+| lambda/1000 figure, 0.5 mm | 3.6 % | 2.4 % | 2.3 % | 2.3 % | 3.9 % | 2.3 % |
+| lambda/300 figure, 2 mm | 7.1 / 22 % | 1.4 / 1.7 % | 1.5 / 2 % | 1.9 / 2.9 % | 4.1 / 7.2 % | 1.5 / 48 % |
+| tilts, 1 urad rms | 1.2 / 1.8 % | 0.43 / 0.58 % | 0.53 / 0.48 % | 1.3 / 1.3 % | 3.9 / 4.2 % | 0.22 / 0.23 % |
+| lambda/1000 + 0.3 urad tilts | 2.9 % | 0.6 % | 0.71 % | 1.4 % | 3.9 % | 0.54 % |
+
+Plain ring, plane folds, p = 150 mm:
+
+| Errors on every mirror | Uncorrected | Perfect metrology | 0.1 nm metrology | 0.3 nm metrology | 1 nm metrology | Closed loop, 6 rounds |
+|---|---|---|---|---|---|---|
+| lambda/1000 figure, 2 mm | 20 / 42 % | 0.23 / 0.23 % | 0.69 / 2.1 % | 2.2 / 6.2 % | 11 / 19 % | 3.6 / 1.6 % |
+| lambda/1000 figure, 0.5 mm | 24 % | 0.26 % | 0.7 % | 2.2 % | 11 % | 0.94 % |
+| lambda/300 figure, 2 mm | 42 / 1.3e+02 % | 0.24 / 0.25 % | 0.73 / 2 % | 2.2 / 6.2 % | 11 / 19 % | 49 / 37 % |
+| tilts, 1 urad rms | 19 / 4.8 % | 1.9 / 0.32 % | 3.1 / 1.8 % | 4.1 / 5.9 % | 13 / 19 % | 20 / 0.41 % |
+| lambda/1000 + 0.3 urad tilts | 56 % | 1.9 % | 3.1 % | 4.1 % | 13 % | 44 % |
+
+What the tables show. (i) Perfect metrology removes 64 to 92 % of the non-uniformity of the
+telescope ring: lambda/1000 errors on all ten mirrors fall from 2.0 to 4.8 % to 0.49 to 0.54 %, and
+1 urad tilts to 0.43 to 0.58 %. The floor arises because a phase error on a mirror away from G
+becomes partly an amplitude error at G and at the crossing, which a phase-only mirror cannot
+undo. In the test ring of tests/test_cavity.py, a redesign through a half trip with an error on its
+primary reduced the round-trip infidelity only fourfold, from 1.5e-3 to 3.2e-4, not to zero. Errors on a 0.5 mm scale leave 2.3 to 2.4 %.
+(ii) The open loop is only as good as the metrology. At 0.1 nm rms per mirror the gain is kept, 0.3
+nm leaves 1.3 to 1.4 %, and 1 nm (3.9 to 4.6 %) is no better than no correction. Absolute
+interferometry of every cavity mirror at 0.1 to 0.3 nm rms over millimetre apertures
+`[REF?: sub-nm absolute figure metrology]` is a demanding requirement in its own right.
+(iii) The closed loop needs no mirror metrology. Of its eight runs, six converge within four to
+five rounds to the perfect-metrology level or below: 0.48 % (lambda/1000), 0.22 and 0.23 % (tilts,
+the design floor), 0.54 % (combined), 2.3 % (0.5 mm errors) and 1.5 % (lambda/300, first
+realisation). One lambda/1000 realisation stalls at 1.9 % with 0.94 of the enhancement. The lambda/300 realisation that starts at 22 % (0.48 of the
+enhancement) diverges. Hence the feedback works when the uncorrected mode is close to the flat-top
+(starts up to ~7 % here) and fails when the mode is no longer the designed one. Per-site
+measurement noise of 1 % changes nothing, because the separable fit averages over 10^4 sampled sites.
+(iv) The stroke is 1 to 7 nm rms of graded-mirror surface in all converged cases. Hence the
+correction could be written by iterative refiguring, or applied in situ by a deformable or thermally
+actuated graded mirror. The loss and stability of an intracavity deformable mirror at kW/cm^2 is
+`[VALUE?]`.
+(v) The plain ring is fully correctable with perfect metrology (0.23 to 0.26 %), but not in practice:
+0.1 nm of metrology leaves 0.7 to 2.1 %, and the closed loop converges in only four of nine error
+sets (from starts of 4.8 to 42 %); it fails in the others, one of them starting at 19 %. Correction does not replace the telescope.
+
+Separability (scripts/cavity_2d_check.py, configs/cavity_2d_check.yaml;
+results/cavity_2d_check/check2d.json). A 2D Fox-Li of the 0.2x ring (1024 x 192 points over
+14 x 2.4 mm, vertical focal length 30 mm on the primaries, 2D conjugation design, G = 30 for speed).
+Isotropic smooth lambda/1000 errors on all ten mirrors vary across the vertical beam on the small
+mirrors, so they are non-separable:
+
+| Case (2D) | Depth rms | Enhancement / analytic |
+|---|---|---|
+| Ideal 2D design | 0.23 % | 1.000 |
+| lambda/1000 on all mirrors, uncorrected | 2.2 % | 0.998 |
+| Perfect metrology, full 2D phase on G | 1.6 % | 0.999 |
+| Perfect metrology, correction projected onto x only | 0.53 % | 0.999 |
+| Closed loop from the atoms, x-only updates, after 4 rounds | 0.44 % | 0.998 |
+
+The ideal 2D design reproduces the 1D strip model (0.232 against 0.231 %), and the vertical mode
+on G (0.648 mm) reproduces the ABCD design of Section 2 (0.65 mm). Non-separable errors do not
+prevent the correction: an x-only (cylindrical) correction recovers most of it, and the closed loop
+reaches 0.44 % in four rounds, still falling. The full 2D phase-only redesign does worse than its own
+x projection. We attribute this to the phase-only matching of the whole 2D field, which spreads the
+residual amplitude error over the vertical profile, including the atom plane (not tested further).
+
+Vertical ring (scripts/cavity_vertical.py, configs/cavity_vertical.yaml;
+results/cavity_vertical/vertical.json). The same 0.2x telescope in the horizontal direction, with
+a 6.9 mm equivalent width, and an order-10 flat-top of 0.19 mm flat half-height vertically. That is
+two 1D modes, each driven and locked separately. Ideal: depth uniform to
+0.078 % rms, lattice planes flat to 9 pm peak-to-valley. lambda/1000 errors on
+all ten mirrors in the horizontal direction give 3.6 % and 36 % for two realisations. The wider beam
+brings a competing mode to 0.14 rad with 3e-4 loss. A perfect-metrology redesign restores
+0.08 % / 0.085 %. In the vertical direction the same errors give 1.6 % / 2.8 %, corrected to
+0.66 % / 0.61 %. The lattice planes stay flat to <= 0.25 um peak-to-valley in every case, well inside the
++-1.7 um depth of focus of the imaging objective. A 0.1x telescope raises the competing mode to
+0.28 rad (2.6e-3 loss) but gives 11 % uncorrected for both realisations (exploratory run, not in the
+results file). Hence the vertical ring is the most error-sensitive of the three. It needs the
+correction, or a narrower beam, e.g. propagation along an array side (4.5 mm instead of 6.9 mm). Its
+closed loop was not simulated.
 
 ## 5. Intensities, defects and heating inside the cavity
 
@@ -407,9 +530,9 @@ yet placed.
 ## 7. What must improve, and next steps
 
 What must improve. (i) Figure and alignment of the large telescope mirrors: lambda/1000 rms
-uncompensated figure and < 1 urad tilt stability for <= 4 % depth non-uniformity. Static errors
-that are measured can be absorbed into the graded-phase design, which is computed through the actual
-propagation. Hence the tolerance applies to the unmeasured and drifting part. Drift at the urad level
+figure and < 1 urad tilt for <= 4 % depth non-uniformity before correction. Static errors of this
+size are corrected to ~0.5 % by closed-loop re-shaping of the graded mirrors (Section 4b), so the
+strict tolerance applies to drift between corrections. Drift at the urad level
 calls for a monolithic, low-expansion assembly as in Park et al. (ii) Cleanliness of every surface
 near the waist at the level of point absorbers below ~0.5 um on fused silica, or sapphire substrates
 (23x more tolerant). (iii) Losses of the graded mirrors <= 1e-3 per bounce, i.e. figured surfaces
@@ -417,13 +540,13 @@ rather than metasurfaces. (iv) The vertical lattice power, which dominates at 10
 Single-plane loading in an 8 um vertical lattice and site-resolved rearrangement into the lattice;
 neither is studied here.
 
-Next simulations. (i) Two-dimensional Fox-Li of the vertical ring (flat in both directions), and of
-the in-plane ring with a non-separable mirror error. (ii) Laser frequency noise and mirror vibration:
-time-dependent depth and site position, heating rates versus finesse. (iii) Absorption-induced
-deformation fed back into Fox-Li at the circulating power (here only compared with the tolerance).
-(iv) A tolerance budget in which static errors are measured and compensated in the design, leaving
-only metrology noise and drift. (v) The mirror layout of all three rings around the cell and the
-imaging objective.
+Next simulations. (i) Closed-loop correction of the vertical ring, and the vertical ring with
+propagation along an array side. (ii) Laser frequency noise and mirror vibration: time-dependent
+depth and site position, heating rates versus finesse. (iii) Absorption-induced deformation fed back
+into Fox-Li at the circulating power (here only compared with the tolerance). (iv) A more reliable
+closed loop for large starting errors (lower gain, or a model update from the measured depths), and
+the effect of drift during a correction cycle. (v) The mirror layout of all three rings around the
+cell and the imaging objective.
 
 ## Verification notes
 
@@ -437,6 +560,10 @@ Provenance ledger:
 | Concentric ray trace | Section 1 | SIM, review before submission | results/cavity_tweezer_bounds/bounds.json |
 | Fox-Li designs, spectra, tolerances | Sections 4, Result | SIM, review before submission | results/cavity_foxli/foxli.json (field .npz files are regenerated by the script, not versioned) |
 | Exploratory curved-fold spectra | Section 4 | SIM (exploratory, not saved) | session scratch scripts |
+| Correction study (open and closed loop, strokes) | Section 4b, Result | SIM, review before submission | results/cavity_correction/correction.json |
+| 2D separability check | Section 4b | SIM, review before submission | results/cavity_2d_check/check2d.json |
+| Vertical ring uniformity and plane flatness | Section 4b | SIM, review before submission | results/cavity_vertical/vertical.json |
+| Vertical ring at 0.1x, vertical flat-top edge orders | Section 4b, Section 2 | SIM (exploratory, not saved) | session scripts |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |
@@ -452,7 +579,8 @@ Provenance ledger:
 Open placeholders: `[VALUE?: AR loss per surface 2.5e-4 to 1e-3]`, `[VALUE?: Brewster residual loss
 1e-4]`, `[VALUE?: IBS absorption 1 ppm]`, `[VALUE?: refractive objective 0.95, ideal relay 0.995 per
 pass]`, `[VALUE?: mode-converter coupling 0.95]`, `[CONFIRM?: cell wall 15 mm from the atoms; cell
-size for the layout]`, `[REF?: freeform figuring at nm rms over mm apertures]`.
+size for the layout]`, `[REF?: freeform figuring at nm rms over mm apertures]`, `[REF?: sub-nm absolute
+figure metrology]`, `[VALUE?: loss and stability of an intracavity deformable mirror]`.
 
 Sourcing gaps. The 12,000-finesse microstructured-mirror cavity (Dickmann et al., Commun. Phys. 2023,
 DOI 10.1038/s42005-023-01131-1) and the Si3N4 photonic-crystal membrane mirror (arXiv:2401.16695,

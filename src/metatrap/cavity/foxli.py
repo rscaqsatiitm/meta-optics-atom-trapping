@@ -31,6 +31,7 @@ circulating power. Lengths in um.
 
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -106,29 +107,76 @@ class RingStrip:
             stops += [(z, t), (2 * self.p_um - z, t)]
         stops += [(z, (np.abs(x) <= hw).astype(complex)) for z, hw in self.extra_planes]
         self._stops = sorted(stops, key=lambda s: s[0])
+        # Each half trip meets its own physical mirrors: separate stop lists, initially identical.
+        self._stops_half = {1: list(self._stops), 2: list(self._stops)}
 
-    def _segment(self, u, z0, z1):
-        """Propagate from path position z0 to z1 (measured from X along the half trip),
+    def stop_positions(self):
+        """Path positions (from X) of the stops of a half trip; index i refers to a distinct mirror."""
+        return [z for z, _ in self._stops]
+
+    def perturbed(self, changes=(), g_extra=None):
+        """Copy with extra reflection phases: changes = [(which_half, stop_index, phase_array)];
+        g_extra = {which_half: phase_array} added to the graded mirrors."""
+        r = copy.copy(self)
+        r._stops_half = {w: list(s) for w, s in self._stops_half.items()}
+        for which, i, extra in changes:
+            z, t = r._stops_half[which][i]
+            r._stops_half[which][i] = (z, t * np.exp(1j * extra))
+        if g_extra:
+            r.phase_g1 = self.phase_g1 + g_extra.get(1, 0.0)
+            r.phase_g2 = self.phase_g2 + g_extra.get(2, 0.0)
+        return r
+
+    def _segment(self, u, z0, z1, which=1):
+        """Propagate from path position z0 to z1 (measured from X along half trip `which`),
         applying every element crossed on the way."""
         z = z0
-        for zs, t in self._stops:
+        for zs, t in self._stops_half[which]:
             if z0 < zs <= z1:
                 u = self.grid.prop(u, zs - z) * t
                 z = zs
         return self.grid.prop(u, z1 - z)
 
-    def to_mirror(self, u):
-        """Field arriving at the graded mirror from X."""
-        return self._segment(u, 0.0, self.p_um)
+    def _segment_adjoint(self, v, z0, z1, which=1):
+        """Adjoint of _segment(., z0, z1, which): maps a field at z1 back to z0."""
+        inside = [(zs, t) for zs, t in self._stops_half[which] if z0 < zs <= z1]
+        z = z1
+        for zs, t in reversed(inside):
+            v = self.grid.prop(v, -(z - zs)) * np.conj(t)
+            z = zs
+        return self.grid.prop(v, -(z - z0))
+
+    def to_mirror(self, u, which=1):
+        """Field arriving at the graded mirror of half trip `which` from X."""
+        return self._segment(u, 0.0, self.p_um, which)
+
+    def from_mirror_adjoint(self, v, which=1):
+        """Adjoint of the return path G -> X of half trip `which`, applied to a field at X."""
+        return self._segment_adjoint(v, self.p_um, 2 * self.p_um, which)
+
+    def design_phase(self, target_in, target_out, which=1, floor=1e-4):
+        """Phase-only graded mirror that best maps target_in (at X, start of the half trip) onto
+        target_out (at X, end of it): arg(K_out^+ T_out) - arg(K_in T_in). For a symmetric,
+        unperturbed half trip and T_in = T_out = F real this is -2 arg(K F), the exact design."""
+        a = self.to_mirror(np.asarray(target_in, dtype=complex), which)
+        b = self.from_mirror_adjoint(np.asarray(target_out, dtype=complex), which)
+        ph = np.angle(b * np.conj(a))
+        amp = np.abs(a)
+        ok = amp >= floor * amp.max()
+        ph = np.unwrap(np.where(ok, ph, 0.0))
+        idx = np.where(ok)[0]
+        ph[: idx[0]] = ph[idx[0]]
+        ph[idx[-1] + 1 :] = ph[idx[-1]]
+        return ph - ph[self.grid.n // 2]
 
     def half(self, u, which=1):
         ph = self.phase_g1 if which == 1 else self.phase_g2
         am = self.amp_g1 if which == 1 else self.amp_g2
-        u = self._segment(u, 0.0, self.p_um)
+        u = self._segment(u, 0.0, self.p_um, which)
         u = u * self._ap_g * np.exp(1j * ph)
         if am is not None:
             u = u * am
-        return self._segment(u, self.p_um, 2 * self.p_um)
+        return self._segment(u, self.p_um, 2 * self.p_um, which)
 
     def roundtrip(self, u):
         return self.half(self.half(u, 1), 2)

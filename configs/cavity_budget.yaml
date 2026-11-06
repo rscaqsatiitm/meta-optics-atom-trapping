@@ -7,6 +7,7 @@ n_sites: [1.0e+5, 1.0e+6]
 depths_mK: [0.2, 0.3]
 scaling_n_sites: [1.0e+3, 3.0e+3, 1.0e+4, 3.0e+4, 1.0e+5, 3.0e+5, 1.0e+6, 3.0e+6, 1.0e+7]
 flat_order: 20                 # super-Gaussian order of the flat-top sheets (S3 design)
+vertical_flat_order: 10        # vertical ring, vertical direction: order 20 has 4e-4 design loss at 0.19 mm (results/cavity_vertical)
 flat_tol: 0.01
 w_z_um: 75.0                   # in-plane sheet thickness (1/e^2 half), 1 % roll-off over the 10^6 array
 vertical_ratio: 1.0            # vertical barrier / in-plane barrier

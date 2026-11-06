@@ -57,5 +57,37 @@ def main():
     print("largest non-affine site displacement (nm rms) among telescope cases with depth rms < 5 %:", dict(worst))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and len(__import__("sys").argv) == 1:
     main()
+
+
+def correction_table():
+    """Markdown table of results/cavity_correction/correction.json (Section 4b): depth rms per case,
+    seeds separated by ' / '; closed loop after the last round (1 % per-site measurement noise)."""
+    r = json.loads((REPO_ROOT / "results/cavity_correction/correction.json").read_text())
+    cases = [("fig1000", "lambda/1000 figure, 2 mm"), ("fig1000_c0.5", "lambda/1000 figure, 0.5 mm"), ("fig300", "lambda/300 figure, 2 mm"),
+             ("tilt1", "tilts, 1 urad rms"), ("fig1000_tilt0.3", "lambda/1000 + 0.3 urad tilts")]
+    cols = [("uncorrected", "Uncorrected"), ("openloop_noise0.0nm", "Perfect metrology"), ("openloop_noise0.1nm", "0.1 nm metrology"),
+            ("openloop_noise0.3nm", "0.3 nm metrology"), ("openloop_noise1.0nm", "1 nm metrology"), ("closedloop_noise0.01", "Closed loop, 6 rounds")]
+    for v in ("telK_M0.2", "plane150"):
+        print(f"\n{v}\n")
+        print("| Errors on every mirror | " + " | ".join(c for _, c in cols) + " |")
+        print("|" + "---|" * (len(cols) + 1))
+        for cname, clab in cases:
+            row = [clab]
+            for ckey, _ in cols:
+                vals = []
+                for seed in (1, 2):
+                    e = r.get(f"{v}_{cname}_seed{seed}_{ckey}")
+                    if e is None:
+                        continue
+                    d = e["final"]["depth_rms"] if "final" in e else e["depth_rms"]
+                    vals.append(f"{d * 100:.2g}")
+                row.append(" / ".join(vals) + " %" if vals else "-")
+            print("| " + " | ".join(row) + " |")
+    st = [(k, e["stroke_G1"]["rms_nm"], e["stroke_G1"]["pv_nm"]) for k, e in r.items() if "stroke_G1" in e and k.startswith("telK")]
+    print("\nstroke rms nm range", min(s[1] for s in st), max(s[1] for s in st), "pv max", max(s[2] for s in st))
+
+
+if __name__ == "__main__" and len(__import__("sys").argv) > 1 and __import__("sys").argv[1] == "correction":
+    correction_table()

@@ -99,10 +99,21 @@ def site_map(field_a, field_b, x, lam, theta, side, n_side, w_z=None, n_planes=8
     B is the mirror image of its physical left-hand transverse coordinate (odd number of in-plane
     reflections between the arms). Returns per-site arrays on an n_side x n_side grid spanning the array.
     """
-    h = array_halfrange(side, theta) * 1.02
-    s_planes = np.linspace(-h, h, n_planes)
+    s_planes = map_planes(side, theta, n_planes)
     st_a = field_stack(field_a, x, lam, s_planes)
     st_b = field_stack(field_b, x, lam, s_planes)
+    return site_map_from_stacks(st_a, st_b, x, s_planes, lam, theta, side, n_side, w_z=w_z, flip_b=flip_b)
+
+
+def map_planes(side, theta, n_planes=81):
+    """Propagation planes s spanning the array (with 2 % margin), as used by site_map."""
+    h = array_halfrange(side, theta) * 1.02
+    return np.linspace(-h, h, n_planes)
+
+
+def site_map_from_stacks(st_a, st_b, x, s_planes, lam, theta, side, n_side, w_z=None, flip_b=False):
+    """site_map from precomputed field stacks st[s, x] in the atom plane (e.g. the z = 0 row of
+    2D-propagated fields, in which case w_z must be None: the vertical structure is in the field)."""
     g = np.linspace(-side / 2, side / 2, n_side)
     X, Y = np.meshgrid(g, g, indexing="xy")
     ct, sn = np.cos(theta), np.sin(theta)

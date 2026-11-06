@@ -139,3 +139,62 @@ def test_site_map_displacement_formula():
     u_a = -X * np.sin(th) + Y * np.cos(th)
     expect = -a * (k * alpha * u_a) / (2 * np.pi)
     assert np.max(np.abs(m["dy"] - expect)) < 2e-3
+
+
+def _telescope_ring():
+    lam = 1.075
+    g = FL.Grid1D(4096, 16000.0, lam)
+    F = FL.flat_target(g, 2000.0, 20)
+    els = FL.telescope_elements(g, 80e3, 16e3, 40e3, 5000.0, 2500.0)
+    p = 40e3 + 80e3 + 16e3 + 60e3
+    ring = FL.RingStrip(g, p, 0.0, np.zeros(g.n), np.zeros(g.n), ap_g_um=2500.0, elements=els)
+    return g, F, ring
+
+
+def test_return_path_adjoint_and_design_phase():
+    g, F, ring = _telescope_ring()
+    rng = np.random.default_rng(3)
+    a = rng.standard_normal(g.n) + 1j * rng.standard_normal(g.n)
+    b = rng.standard_normal(g.n) + 1j * rng.standard_normal(g.n)
+    fwd = ring._segment(a, ring.p_um, 2 * ring.p_um, 1)
+    assert abs(np.vdot(b, fwd) - np.vdot(ring.from_mirror_adjoint(b, 1), a)) < 1e-10 * abs(np.vdot(b, fwd))
+    # For the unperturbed symmetric ring the general redesign equals the conjugation design.
+    ph, ok = FL.graded_phase(g, F, ring.p_um, ring=ring)
+    d = ring.design_phase(F, F, 1)
+    assert np.max(np.abs(np.angle(np.exp(1j * (d - ph)))[ok])) < 1e-8
+
+
+def test_perturbed_halves_are_independent_and_redesign_restores():
+    g, F, ring = _telescope_ring()
+    ph = ring.design_phase(F, F, 1)
+    ring.phase_g1 = ring.phase_g2 = ph
+    err = FL.smooth_screen(g, 4 * np.pi * 0.003, 800.0, np.random.default_rng(1), 2000.0)
+    r = ring.perturbed([(1, 0, err)])
+    assert np.allclose(r.half(F, 2), ring.half(F, 2)) and not np.allclose(r.half(F, 1), ring.half(F, 1))
+    fid = lambda u: abs(np.vdot(F, u)) ** 2 / (np.vdot(F, F).real * np.vdot(u, u).real)  # noqa: E731
+    before = fid(r.roundtrip(F))
+    r.phase_g1 = r.design_phase(F, F, 1)
+    after = fid(r.roundtrip(F))
+    # A phase error away from the graded mirror becomes partly an amplitude error on it, which a
+    # phase-only redesign cannot undo: the infidelity drops but not to zero.
+    assert before < 1 - 1e-3 and (1 - after) < 0.25 * (1 - before)
+
+
+def test_separable_profile_fit_recovers_product():
+    import importlib.util
+    from pathlib import Path
+
+    spec = importlib.util.spec_from_file_location("cc", Path(__file__).resolve().parents[1] / "scripts" / "cavity_correction.py")
+    cc = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cc)
+    lam, a = 1.075, 4.0
+    th = B.crossing_half_angle(a, lam)
+    side = 3996.0
+    h = LA.array_halfrange(side, th)
+    gg = np.linspace(-side / 2, side / 2, 61)
+    X, Y = np.meshgrid(gg, gg, indexing="xy")
+    xa, xb = -X * np.sin(th) + Y * np.cos(th), -(X * np.sin(th) + Y * np.cos(th))
+    D = np.exp(0.03 * np.sin(xa / 500.0)) * np.exp(-0.02 * np.cos(xb / 700.0))
+    knots, al, be = cc.fit_profiles({"x": X, "y": Y, "depth": D}, th, h * 1.02, 48, 1e-3)
+    rec = np.exp(np.interp(xa, knots, al) + np.interp(xb, knots, be))
+    assert np.std(np.log(rec / D)) < 2e-4

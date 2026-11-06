@@ -33,8 +33,9 @@ def lattice_geometry(cfg, n_sites):
     wv = LA.supergauss_w_for_flat(hv, n, tol)
     weq_v = LA.supergauss_equivalent_width(wv, n)
     hz = hv * np.tan(thz)  # vertical walk-off of each beam's centre at the array's diagonal ends
-    wz_flat = LA.supergauss_w_for_flat(max(hz, 5.0), n, tol)
-    heq_v = LA.supergauss_equivalent_width(wz_flat, n)
+    nz = cfg.get("vertical_flat_order", n)  # vertical flat-top edge order (sharp edges diffract at this small size)
+    wz_flat = LA.supergauss_w_for_flat(max(hz, 5.0), nz, tol)
+    heq_v = LA.supergauss_equivalent_width(wz_flat, nz)
     return {"side_um": side, "theta_rad": th, "theta_z_rad": thz, "flat_halfrange_um": h, "w_um": w, "W_eq_um": weq,
             "vertical": {"flat_halfrange_um": hv, "W_eq_um": weq_v, "vertical_flat_half_um": hz, "H_eq_um": heq_v}}
 

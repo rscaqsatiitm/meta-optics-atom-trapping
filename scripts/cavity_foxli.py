@@ -59,11 +59,12 @@ def with_phases(ring, ph1, ph2):
 
 
 def with_element_phase(ring, index, extra):
-    """Copy of the ring with an extra phase on element `index`, on the first half trip only."""
-    r = copy.copy(ring)
+    """Copy of the ring with an extra phase on the incoming pass of element `index` in BOTH half
+    trips, i.e. the same error on two distinct physical mirrors (the semantics of the committed S3
+    runs). Independent errors on every mirror: RingStrip.perturbed (scripts/cavity_correction.py)."""
     zc = ring.elements[index][0]
-    r._stops = [(z, t * np.exp(1j * extra)) if abs(z - zc) < 1e-6 else (z, t) for z, t in ring._stops]
-    return r
+    i = [j for j, z in enumerate(ring.stop_positions()) if abs(z - zc) < 1e-6][0]
+    return ring.perturbed([(1, i, extra), (2, i, extra)])
 
 
 def evaluate(cfg, s, ring, e_in=None, g_target=None):
