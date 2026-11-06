@@ -90,7 +90,8 @@ evaluates the hologram field at each metasurface pixel by a windowed-sinc interp
 pupil grid, with no fine grid in memory (hologram/tiled.py). On a 16 x 16-site test this
 render matches an exact per-pixel kernel sum to 1e-4 rms in per-site depth, against 2.1 % for
 the FFT-upsampled grid (tests/test_tiled.py). With it, the round-2 design gives 7.14 % rms (ideal
-pillars; results/fullaperture_100k_tiled), against 7.05 % with the 5 x render grid. The per-site
+pillars; results/fullaperture_100k_tiled), against 7.05 % with the 5 x render grid, and 7.6 % against
+7.5 % with library pillars (efficiency 0.828 in both). The per-site
 depths of the two renders differ by 1.7 % rms (correlation 0.97). Hence the render adds an
 uncorrelated ~1.7 % component, which does not change the total in quadrature, and the ~7 %
 residual belongs to the design itself. Its origin, given that the pupil model predicts
