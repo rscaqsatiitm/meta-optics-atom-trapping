@@ -1,0 +1,32 @@
+# S1: laser-power budget of the cavity-enhanced lattice against the tweezer baselines (docs/cavity_concept.md).
+run_id: cavity_budget
+wavelength_nm: 1075.0
+period_um: 4.0                 # in-plane lattice period (Phase A reference pitch)
+vertical_period_um: 8.0        # vertical lattice period (choice; trade-off in Section 2 of the report)
+n_sites: [1.0e+5, 1.0e+6]
+depths_mK: [0.2, 0.3]
+scaling_n_sites: [1.0e+3, 3.0e+3, 1.0e+4, 3.0e+4, 1.0e+5, 3.0e+5, 1.0e+6, 3.0e+6, 1.0e+7]
+flat_order: 20                 # super-Gaussian order of the flat-top sheets (S3 design)
+flat_tol: 0.01
+w_z_um: 75.0                   # in-plane sheet thickness (1/e^2 half), 1 % roll-off over the 10^6 array
+vertical_ratio: 1.0            # vertical barrier / in-plane barrier
+tweezer_waist_um: 0.866        # SIM, results/fullaperture_100k (library pillars)
+mode_matching: 0.95            # [VALUE?] coupling of the shaped input into the fundamental (S3: Gaussian input 0.92)
+# Round-trip losses per cavity. Mirror counts: telescope ring, 5 reflections per half trip.
+reflections_per_roundtrip: 10
+mirror_loss: [2.0e-5, 5.0e-5, 1.0e-4]   # per reflection; 50 ppm bound (Norcia et al.), ~100 ppm (Park et al.)
+graded_extra_loss: [0.0, 1.0e-3, 1.0e-2] # added loss of each graded mirror: figured + IBS / good / present metasurface
+graded_per_roundtrip: 2
+through_cell:
+  ar_surfaces_per_roundtrip: 8   # 2 crossings x 2 walls x 2 faces
+  ar_loss: [2.5e-4, 1.0e-3]      # [VALUE?] per AR surface (reflectance + scatter + absorption)
+  bulk_passes_per_roundtrip: 4
+  wall_cm: 0.4
+  bulk_absorption_per_cm: 1.0e-5  # fused silica, value used in configs/damage_v2.yaml
+brewster:
+  surfaces_per_roundtrip: 8
+  loss: 1.0e-4                    # [VALUE?] residual p reflection + scatter per Brewster surface
+# Tweezer-in-cavity and retro-reflection bounds.
+hologram_efficiency: 0.83       # SIM, docs/scaling_100k.md (library pillars)
+objective_efficiency: 0.80      # SIM, docs/metalens_report.md
+refractive_objective_efficiency: 0.95   # [VALUE?] AR-coated refractive objective, per pass

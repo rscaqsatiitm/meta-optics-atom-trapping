@@ -1,0 +1,37 @@
+# S3: Fox-Li model of the self-intersecting ring with graded-phase mirrors (docs/cavity_concept.md).
+# Lengths in um. 1D strip model of the horizontal transverse profile (the vertical Gaussian is separable).
+run_id: cavity_foxli
+wavelength_um: 1.075          # same laser as the Phase A tweezer study
+period_um: 4.0
+array_side_um: 3996.0         # 1000 x 1000 sites at 4 um
+flat_tol: 0.01                # intensity >= 0.99 of the flat level over the array's transverse range
+w_z_um: 75.0                  # vertical 1/e^2 half-thickness of the sheet at the crossing (1 % roll-off, DERIVED)
+grid: {n: 8192, width_um: 24000.0}
+spectrum_grid: {n: 4096, width_um: 24000.0}
+resolution_n: [4096, 8192, 16384]
+map_sites_per_side: 101       # sampled sites per array side for the depth / registration maps
+loss_other: 3.0e-4            # lumped: 6 mirrors x 50 ppm (per-mirror bound of Norcia et al., arXiv:2401.16177)
+g_target: 300.0               # over-coupled design enhancement used for the tolerance cases
+variants:
+  plane150: {geometry: plane_fold, order: 20, p_um: 150000.0, d1_um: 75000.0, ap_g_um: 5000.0, ap_fold_um: 5000.0}
+  plane150_n10: {geometry: plane_fold, order: 10, p_um: 150000.0, d1_um: 75000.0, ap_g_um: 5000.0, ap_fold_um: 5000.0}
+  plane150_n40: {geometry: plane_fold, order: 40, p_um: 150000.0, d1_um: 75000.0, ap_g_um: 5000.0, ap_fold_um: 5000.0}
+  plane300: {geometry: plane_fold, order: 20, p_um: 300000.0, d1_um: 150000.0, ap_g_um: 5000.0, ap_fold_um: 5000.0}
+  plane600: {geometry: plane_fold, order: 20, p_um: 600000.0, d1_um: 300000.0, ap_g_um: 5000.0, ap_fold_um: 5000.0}
+  telK_M0.2: {geometry: telescope, order: 20, f1_um: 100000.0, mag: 0.2, d0_um: 50000.0, L_um: 100000.0, ap1_um: 5000.0, ap2_um: 2500.0, ap_g_um: 2500.0}
+  telK_M0.2_n40: {geometry: telescope, order: 40, f1_um: 100000.0, mag: 0.2, d0_um: 50000.0, L_um: 100000.0, ap1_um: 5000.0, ap2_um: 2500.0, ap_g_um: 2500.0}
+  telK_M0.1: {geometry: telescope, order: 20, f1_um: 100000.0, mag: 0.1, d0_um: 50000.0, L_um: 50000.0, ap1_um: 5000.0, ap2_um: 2500.0, ap_g_um: 2500.0}
+  telG_M0.2: {geometry: telescope, order: 20, f1_um: 100000.0, mag: 0.2, galilean: true, d0_um: 50000.0, L_um: 100000.0, ap1_um: 5000.0, ap2_um: 2500.0, ap_g_um: 2500.0}
+designs: [plane150, plane150_n10, plane150_n40, plane300, plane600, telK_M0.2, telK_M0.2_n40, telK_M0.1, telG_M0.2]
+tolerance_variants: [plane150, plane300, telK_M0.2, telK_M0.1, telG_M0.2]
+base_variants: [telK_M0.2, plane150]
+figure_error:                 # surface rms in waves (reflection phase 4 pi h / lambda); correlation length referred to X
+  rms_waves: [0.001, 0.003, 0.01]
+  corr_um: [500.0, 2000.0]
+  seeds: [1, 2]
+curvature_error_waves: [0.001, 0.003, 0.01]   # x^2 sag error on G1 at the beam half-width on G1
+tilt_urad: [0.3, 1.0, 3.0, 10.0]
+input_mismatch: {width_scale: [0.98, 1.02], offset_um: [20.0, 100.0]}
+metasurface: {levels: [8, 16, 32], pixel_noise_rad: [0.02, 0.05, 0.1]}
+finesse_scan: {g_target: [30.0, 100.0, 300.0, 1000.0, 3000.0], rms_waves: 0.003, corr_um: 2000.0}
+reference_plane_mirrors: true

@@ -1,0 +1,7 @@
+# S4: telescope-ring geometry and vertical Gaussian design (docs/cavity_concept.md).
+run_id: cavity_layout
+wavelength_nm: 1075.0
+period_um: 4.0
+w_z_m: 75.0e-6                 # vertical waist at the crossing (S1, S3)
+telescope: {f1_m: 0.100, mag: 0.2, d0_m: 0.050, L_m: 0.100, primary_turn_deg: 157.0}   # minimises the largest AOI (38 deg)   # S3 variant telK_M0.2
+f_z_scan_m: [0.02, 0.03, 0.04, 0.05, 0.06, 0.08, 0.1, 0.15, 0.3, 1.0e+6]   # vertical focal length of the primary (1e6 = flat); chosen 0.03

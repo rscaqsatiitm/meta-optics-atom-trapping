@@ -1,0 +1,83 @@
+{
+  "config": {
+    "run_id": "cavity_budget",
+    "wavelength_nm": 1075.0,
+    "period_um": 4.0,
+    "vertical_period_um": 8.0,
+    "n_sites": [
+      100000.0,
+      1000000.0
+    ],
+    "depths_mK": [
+      0.2,
+      0.3
+    ],
+    "scaling_n_sites": [
+      1000.0,
+      3000.0,
+      10000.0,
+      30000.0,
+      100000.0,
+      300000.0,
+      1000000.0,
+      3000000.0,
+      10000000.0
+    ],
+    "flat_order": 20,
+    "flat_tol": 0.01,
+    "w_z_um": 75.0,
+    "vertical_ratio": 1.0,
+    "tweezer_waist_um": 0.866,
+    "mode_matching": 0.95,
+    "reflections_per_roundtrip": 10,
+    "mirror_loss": [
+      2e-05,
+      5e-05,
+      0.0001
+    ],
+    "graded_extra_loss": [
+      0.0,
+      0.001,
+      0.01
+    ],
+    "graded_per_roundtrip": 2,
+    "through_cell": {
+      "ar_surfaces_per_roundtrip": 8,
+      "ar_loss": [
+        0.00025,
+        0.001
+      ],
+      "bulk_passes_per_roundtrip": 4,
+      "wall_cm": 0.4,
+      "bulk_absorption_per_cm": 1e-05
+    },
+    "brewster": {
+      "surfaces_per_roundtrip": 8,
+      "loss": 0.0001
+    },
+    "hologram_efficiency": 0.83,
+    "objective_efficiency": 0.8,
+    "refractive_objective_efficiency": 0.95,
+    "_config_path": "configs/cavity_budget.yaml"
+  },
+  "git": {
+    "commit": "a31aa819c4858a3c307aa9d08992877cba0f4b1d",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T08:30:20+00:00"
+}

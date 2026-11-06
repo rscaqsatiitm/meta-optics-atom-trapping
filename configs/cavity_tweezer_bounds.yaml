@@ -1,0 +1,11 @@
+# S6: bounds on cavity enhancement of the NA 0.5 tweezer array (docs/cavity_concept.md).
+run_id: cavity_tweezer_bounds
+wavelength_um: 1.075
+na: 0.5
+intracavity_elements:            # (per-pass efficiency, passes per round trip)
+  meta_hologram_2pass: [0.83, 2]          # SIM, docs/scaling_100k.md
+  meta_objective_pair_4pass: [0.80, 4]    # SIM, docs/metalens_report.md
+  refractive_objective_pair_4pass: [0.95, 4]   # [VALUE?]
+  ideal_AR_relay_4pass: [0.995, 4]        # [VALUE?] best-case refractive relay
+mirror_radius_mm: [30.0, 50.0]   # concentric mirrors must clear the cell [CONFIRM?]
+field_um: [0.0, 100.0, 300.0, 1000.0, 2000.0, 2830.0]

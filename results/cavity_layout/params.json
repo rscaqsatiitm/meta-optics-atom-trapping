@@ -1,0 +1,48 @@
+{
+  "config": {
+    "run_id": "cavity_layout",
+    "wavelength_nm": 1075.0,
+    "period_um": 4.0,
+    "w_z_m": 7.5e-05,
+    "telescope": {
+      "f1_m": 0.1,
+      "mag": 0.2,
+      "d0_m": 0.05,
+      "L_m": 0.1,
+      "primary_turn_deg": 157.0
+    },
+    "f_z_scan_m": [
+      0.02,
+      0.03,
+      0.04,
+      0.05,
+      0.06,
+      0.08,
+      0.1,
+      0.15,
+      0.3,
+      1000000.0
+    ],
+    "_config_path": "configs/cavity_layout.yaml"
+  },
+  "git": {
+    "commit": "a31aa819c4858a3c307aa9d08992877cba0f4b1d",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T08:33:23+00:00"
+}

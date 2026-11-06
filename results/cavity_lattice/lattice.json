@@ -1,0 +1,64 @@
+{
+  "theta_deg": 7.722480730291284,
+  "theta_z_deg": 3.852462340466307,
+  "cases": [
+    {
+      "barrier_mK": 0.2,
+      "beam_intensity_W_cm2": 19760.912553393122,
+      "trap_freq_kHz_sorted": [
+        9.886798035199133,
+        19.773589975645237,
+        19.773589975645237
+      ],
+      "analytic_inplane_kHz": 19.773598107371004,
+      "analytic_vertical_kHz": 9.886799053685502,
+      "barrier_x_mK": 0.19999999999999998,
+      "barrier_z_mK": 0.20000000000000004,
+      "cell_corner_mK": 0.4000000000000001,
+      "site_light_shift_mK": 0.6000000000000001,
+      "tweezer_radial_kHz": 41.11430255242352,
+      "tweezer_axial_kHz": 11.487317615911993
+    },
+    {
+      "barrier_mK": 0.3,
+      "beam_intensity_W_cm2": 29641.368830089683,
+      "trap_freq_kHz_sorted": [
+        12.10880518979473,
+        24.21760291252172,
+        24.21760291252172
+      ],
+      "analytic_inplane_kHz": 24.217612870961062,
+      "analytic_vertical_kHz": 12.108806435480531,
+      "barrier_x_mK": 0.30000000000000004,
+      "barrier_z_mK": 0.30000000000000004,
+      "cell_corner_mK": 0.6000000000000001,
+      "site_light_shift_mK": 0.9000000000000002,
+      "tweezer_radial_kHz": 50.354531191922824,
+      "tweezer_axial_kHz": 14.069033336134469
+    },
+    {
+      "barrier_mK": 0.86,
+      "beam_intensity_W_cm2": 84971.92397959043,
+      "trap_freq_kHz_sorted": [
+        20.501700770742634,
+        41.0033888891787,
+        41.0033888891787
+      ],
+      "analytic_inplane_kHz": 41.00340574977708,
+      "analytic_vertical_kHz": 20.50170287488854,
+      "barrier_x_mK": 0.8599999999999999,
+      "barrier_z_mK": 0.8600000000000002,
+      "cell_corner_mK": 1.7200000000000004,
+      "site_light_shift_mK": 2.58,
+      "tweezer_radial_kHz": 85.25643236613027,
+      "tweezer_axial_kHz": 23.820608804940743
+    }
+  ],
+  "registration": {
+    "array_side_um": 3996.0,
+    "site_shift_at_edge_per_urad_um": 0.014733985067073106,
+    "site_shift_at_edge_per_ppm_wavelength_um": 0.0019979999999999998,
+    "site_shift_per_nm_differential_wavefront_um": 0.0037209302325581397,
+    "laser_detuning_100MHz_ppm": 0.3585814023380134
+  }
+}

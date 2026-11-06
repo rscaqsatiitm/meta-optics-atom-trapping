@@ -1,0 +1,9 @@
+# S2: site shape and registration sensitivities of the cavity lattice (docs/cavity_concept.md).
+run_id: cavity_lattice
+wavelength_nm: 1075.0
+period_um: 4.0
+vertical_period_um: 8.0
+vertical_ratio: 1.0
+depths_mK: [0.2, 0.3, 0.86]     # 0.86 mK = equal radial frequency to a 0.2 mK tweezer (S1)
+tweezer_waist_um: 0.866
+n_sites: 1.0e+6
