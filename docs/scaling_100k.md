@@ -159,7 +159,8 @@ with the WGS-target rounds above):
 | 5 | 0.18 % | 0.99 | 0.857 | 0.107 | -0.04 |
 | 6 | 0.068 % | 0.99 | 0.857 | 0.108 | -0.04 |
 | 7 | 0.029 % | 0.99 | 0.857 | 0.108 | -0.03 |
-| 8 | running | | | | |
+| 8 | 0.015 % | 0.999 | 0.857 | 0.108 | - |
+| Library pillars after round 8 | running | | | | |
 
 One pupil-phase round removes three quarters of the residual (7.14 to 1.77 % rms, min / mean
 0.76 to 0.92) with no loss of efficiency (0.857) and no increase of the axis light (0.103),
@@ -168,7 +169,13 @@ The orbit-error slope of -0.02 means the gain of 1.2 corrected the round-2 patte
 exactly; the remaining 1.77 % is uncorrelated with it and is the error introduced by the step
 itself, which later rounds act on. Round 4 brings it to 0.53 % rms (min / mean 0.98), i.e.
 the pupil-model level is approached in two rounds. Round 5 reaches 0.18 % rms (min / mean
-0.99), below the 0.24 % of the pupil model itself.
+0.99), below the 0.24 % of the pupil model itself. Rounds 6 to 8 continue at a factor ~2 to 3 per
+round to 0.015 % rms (min / mean 0.999) with orbit-error slopes of -0.03 to -0.04, unchanged
+efficiency 0.857 and axis light 0.108. One orbit (radius 768 um) lagged at 0.9945 in round 7 and
+reached 0.9986 in round 8. Hence, with ideal pillars, the design residual of the 10^5-site
+hologram is removed by pupil-phase feedback in five to six rounds (~14 min each on 4 cores);
+the residual non-uniformity with library pillars is then set by the pillar library, not by
+the design.
 
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
