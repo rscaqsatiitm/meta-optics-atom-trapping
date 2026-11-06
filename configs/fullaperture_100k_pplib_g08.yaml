@@ -1,0 +1,53 @@
+# Lower-gain follow-up of fullaperture_100k_pplib: library pillars in the loop, gain 0.8 (the
+# orbit-error slope reached -0.45 at gain 1.2), rounds 14 to 17 from the round-13 design (0.81 %).
+# Run: python scripts/fullaperture_lazy.py configs/fullaperture_100k_pplib_g08.yaml --tiled
+# Pupil-phase feedback (feedback_mode: pupil_phase) on the fullaperture_100k design, rounds 3 to 8,
+# from the same round-2 state as fullaperture_100k_fb (WGS-target feedback), for an A/B comparison.
+# Site phases and coefficients are kept; coefficient amplitudes are scaled by the measured
+# correction and the pupil phase recomputed with one kernel product per round.
+# Gain 1.2: on a 16 x 16 test (configs/tiled_check.yaml) the phase-only projection passes ~0.7 of
+# an amplitude correction; gains 1.0 / 1.4 gave 7.0 -> 0.42 / 0.19 % in 5 rounds.
+# Run: python scripts/fullaperture_lazy.py configs/fullaperture_100k_pp.yaml --tiled Based on the
+# re-evaluation config of the final (round-2) design with the tiled render
+# (windowed-sinc hologram lookup, tests/test_tiled.py): scripts/fullaperture_lazy.py --tiled.
+# 100,000-site design: 316 x 316 = 99,856 Cs sites at 4.0 um pitch, NA 0.55, in-cell stack, 1075 nm, array 50 um beyond the lens focus (as v2), matrix-free exact kernels (scripts/fullaperture_lazy.py).
+# D4-symmetric exact design, folded propagation of the whole metasurface at the
+# meta-atom pitch, two feedback rounds with ideal pillars, then library pillars with
+# width errors (local-periodic approximation per pixel).
+run_id: fullaperture_100k_pplib_g08
+wavelength_um: 1.075
+na: 0.55
+stack: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.0
+sites: {kind: square, nx: 316, ny: 316, pitch_um: 4.0}
+pupil_guard: 1.25            # relative to the diagonal extent of the array
+wgs_iter: 60
+wgs_fix: 30
+render_upsample: 5            # memory: 2800 x 5 = 14,000^2 render grid (v2: 8)
+n_fold: 4096                 # 2.048 mm focal window
+upsample: 4
+feedback_rounds: 17
+array_defocus_um: 50.0   # array plane 50 um beyond the lens focus: undiffracted light is defocused there
+block_rows: 64
+feedback_gain: 0.8
+feedback_wgs_iter: 30
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}   # selected with the literature film estimate (library_analysis_est_1075)
+pillar_cases:
+  - {name: library_lpa}
+  - {name: library_sigma5nm, errors: {sigma_um: 0.005, seed: 1}}
+power_budget:
+  core_fraction_ideal: 0.82   # core (first-dark-ring) fraction of the aberration-free spot of this pupil [SIM: bench reference 0.817-0.82]
+  na_eff: 0.574               # SIM: ideal-spot peak per watt of the hard top-hat pupil (hologram_b1_cell20mm, after the pupil-grid fix)
+  powers_W: [50, 100]
+  extra_factors:
+    edge_vs_lpa: 0.879        # SIM: supercell factor, Si-rich, top hat (edge_factor.json); not in the per-pixel LPA
+    substrate_entrance_ar: 0.995   # [VALUE?]
+    cell_wall_ar: 0.99             # [CONFIRM?]
+    beam_shaper: 0.95              # [VALUE?]
+    vector_peak: 0.923             # SIM: vector/scalar peak ratio at NA 0.55 (vector_check)
+metrics_tile_px: 1024
+initial_state: data/designs/fullaperture_100k_pplib_round13_state.npz   # round-13 design of fullaperture_100k_pplib
+feedback_mode: pupil_phase
+feedback_pillars: library

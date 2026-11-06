@@ -193,9 +193,42 @@ than with ideal pillars. The final design is also evaluated with random pillar w
 
 | Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
 |---|---|---|---|---|---|
-| 8 (start; ideal-pillar design) | running | | | | - |
-| 9 to 13 | running | | | | |
-| Final design, sigma 5 nm width errors | running | | | | - |
+| 8 (start; ideal-pillar design) | 2.69 % | 0.91 | 0.828 | 0.122 | - |
+| 9 | 1.47 % | 0.94 | 0.827 | 0.119 | -0.10 |
+| 10 | 1.07 % | 0.95 | 0.828 | 0.113 | -0.26 |
+| 11 | 0.91 % | 0.97 | 0.827 | 0.107 | -0.37 |
+| 12 | 0.84 % | 0.97 | 0.827 | 0.109 | -0.45 |
+| 13 | 0.81 % | 0.97 | 0.827 | 0.113 | - |
+| Final design, sigma 5 nm width errors | 3.53 % | 0.85 | 0.802 | 0.127 | - |
+
+With library pillars in the loop the non-uniformity falls from 2.69 to 0.81 % rms in five rounds
+(min / mean 0.97, efficiency 0.827, 0.070 mK at 50 W). It levels off at ~0.8 % while the
+orbit-error slope grows from -0.10 to -0.45: the response of the library-pillar simulation to a
+correction strengthens as the errors shrink, so the fixed gain of 1.2 over-corrects increasingly.
+The lower-gain follow-up below separates the two. With independent pillar width errors of
+sigma 5 nm the same design gives 3.53 % (efficiency 0.802), against 8.46 % for the original
+round-2 design. Subtracting the 0.81 % in quadrature, the random width errors contribute ~3.4 %
+rms; they are now the dominant term and set the fabrication requirement on width control.
+
+Lower-gain follow-up (configs/fullaperture_100k_pplib_g08.yaml): library pillars in the loop,
+gain 0.8, from the round-13 design.
+
+| Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 13 (start, gain-1.2 design) | 0.81 % | 0.97 | 0.827 | 0.113 | - |
+| 14 | 0.56 % | 0.97 | 0.827 | 0.109 | -0.06 |
+| 15 | 0.49 % | 0.98 | 0.827 | 0.107 | -0.03 |
+| 16 | 0.46 % | 0.98 | 0.827 | 0.108 | -0.06 |
+| 17 | 0.45 % | 0.98 | 0.827 | 0.106 | - |
+| Final design, sigma 5 nm width errors | 3.47 % | 0.86 | 0.802 | 0.120 | - |
+
+At gain 0.8 the orbit-error slopes stay at -0.03 to -0.06 and the non-uniformity falls from 0.81
+to 0.45 % rms in four rounds (min / mean 0.98, efficiency 0.827), levelling off with a
+per-round factor of 0.94 at the end. Hence about half of the 0.8 % plateau at gain 1.2 was
+overshoot; the remaining ~0.45 % is the floor of this scheme with library pillars, set by the
+new error that each correction introduces through the mapping of the phase onto discrete library
+pillars (Provisional). With sigma 5 nm width errors the final design gives 3.47 %, i.e. a random
+contribution of 3.44 % in quadrature, the same as for the gain-1.2 design.
 
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
@@ -206,10 +239,13 @@ Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 
 traps with 0.83 efficiency. With pupil-phase feedback (six rounds from the round-2 design) the
 depth non-uniformity is 0.015 % rms with ideal pillars and 2.7 % with library pillars (min / mean
 0.91), against 7.5 % after the original two WGS-target rounds; four further WGS-target rounds
-reach only 4.8 % (ideal) and 5.5 % (library pillars). 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
-outside its thermal limits; use LPCVD SiN or sapphire). The design residual is no longer a
-limitation; the remaining 2.7 % is the deterministic error of the pillar library in the
-local-periodic model, which feedback with library pillars in the loop should reduce (not run).
+reach only 4.8 % (ideal) and 5.5 % (library pillars). Further pupil-phase rounds with the
+library pillars in the loop reach 0.45 % (min / mean 0.98; five rounds at gain 1.2, then four at
+0.8), and 3.5 % with random width errors of sigma 5 nm. 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
+outside its thermal limits; use LPCVD SiN or sapphire). The design residual and the deterministic
+library error are no longer limitations; the remaining non-uniformity is set by random pillar
+width errors (~3.4 % rms at sigma 5 nm), i.e. by fabrication, and by the local-periodic model
+used for the pillars, which a full-wave check of the metasurface would have to confirm.
 
 ## Discussion
 
