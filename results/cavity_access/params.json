@@ -1,0 +1,49 @@
+{
+  "config": {
+    "run_id": "cavity_access",
+    "inplane_layout_json": "results/cavity_layout/layout.json",
+    "vertical_layout_json": "results/cavity_vertical_layout/vertical_layout.json",
+    "vertical_layout_config": "configs/cavity_vertical_layout.yaml",
+    "mount_margin_mm": 5.0,
+    "beam_length_mm": 250.0,
+    "beam_radii_mm": {
+      "mot": 10.0,
+      "pumping_raman": 5.0
+    },
+    "objective": {
+      "z0_mm": 38.0,
+      "radius_mm": 26.0
+    },
+    "n_extra_lines": 4,
+    "min_sep_deg": 15.0,
+    "grating_mot": {
+      "chip_z_mm": -8.0,
+      "chip_half_mm": 11.0,
+      "n_beams": 3,
+      "azimuth0_deg": 0.0,
+      "diffraction_deg": 45.0,
+      "diffracted_half_width_mm": 8.0
+    },
+    "_config_path": "configs/cavity_access.yaml"
+  },
+  "git": {
+    "commit": "353927578b5edf731d38f285b1325f2c6953cbcf",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T18:03:21+00:00"
+}

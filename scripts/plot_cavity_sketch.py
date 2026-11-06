@@ -72,8 +72,19 @@ def top_view(ax, lay):
     # Diagonal corridors for the vertical-lattice ring.
     for sgn in (1, -1):
         ax.plot([-150, 150], [-150 * sgn, 150 * sgn], ls=(0, (4, 3)), color=AQUA, lw=0.9)
-    ax.annotate("vertical-lattice ring\n(vertical plane, along a diagonal;\nfold geometry not designed)", (118, -118), xytext=(30, -142), fontsize=6.5, color=INK,
-                arrowprops=dict(arrowstyle="-", color=INK2, lw=0.5))
+    vl_path = OUT.parent / "cavity_vertical_layout" / "vertical_layout.json"
+    if vl_path.exists():
+        ch = json.loads(vl_path.read_text())["chosen"]
+        d = np.array([1, 1]) / np.sqrt(2)
+        sv = [p[0] for p in ch["mirrors_V_mm"].values()]
+        for sv_ in sv:
+            q = sv_ * d
+            ax.plot([q[0] - 6 * d[1] * -1, q[0] + 6 * d[1] * -1], [q[1] - 6 * d[0], q[1] + 6 * d[0]], "-", color=AQUA, lw=2.0)
+        ax.annotate("vertical-lattice ring: vertical plane on this\ndiagonal, folded below the atom plane (Figure 5)", (min(sv) * d), xytext=(-140, -142),
+                    fontsize=6.5, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.5))
+    else:
+        ax.annotate("vertical-lattice ring\n(vertical plane, along a diagonal)", (118, -118), xytext=(30, -142), fontsize=6.5, color=INK,
+                    arrowprops=dict(arrowstyle="-", color=INK2, lw=0.5))
     ax.add_patch(Rectangle((-15, -15), 30, 30, fill=False, ec=INK2, lw=0.8, ls="--"))
     ax.annotate("cell, 30 mm [CONFIRM?]", (15, -15), xytext=(22, -26), fontsize=6.5, color=INK2, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.5))
     ax.add_patch(Rectangle((-2, -2), 4, 4, fc=VIOLET, ec="none"))
@@ -238,6 +249,55 @@ def chain(ax, bud):
     ax.set_title("(b) Optics and control chain", fontsize=8, color=INK, loc="left")
 
 
+def vertical_ring(ax_full, ax_zoom, vl):
+    ch = vl["chosen"]
+    mv = {k: np.array(v) for k, v in ch["mirrors_V_mm"].items()}
+    paths = {1: ["X", "P1", "P2", "G1", "P2'", "P1'", "X"], 2: ["X", "P3", "P4", "G2", "P4'", "P3'", "X"]}
+    cols = {1: AQUA, 2: GREEN}
+
+    def pt(k):
+        return np.zeros(2) if k == "X" else mv[k]
+
+    for ax in (ax_full, ax_zoom):
+        style(ax)
+        for h, seq in paths.items():
+            arr = np.array([pt(k) for k in seq])
+            ax.plot(arr[:, 0], arr[:, 1], "-", color=cols[h], lw=1.1, label=f"half trip {h}" if ax is ax_full else None)
+            for i in range(1, 6):
+                a_, p_, b_ = pt(seq[i - 1]), pt(seq[i]), pt(seq[i + 1])
+                n = (b_ - p_) / np.linalg.norm(b_ - p_) - (p_ - a_) / np.linalg.norm(p_ - a_)
+                n = n / np.linalg.norm(n)
+                t = np.array([-n[1], n[0]]) * 2.0
+                ax.plot([p_[0] - t[0], p_[0] + t[0]], [p_[1] - t[1], p_[1] + t[1]], "-", color=INK, lw=2.2, solid_capstyle="butt")
+        ax.add_patch(Rectangle((-21.2, -15), 42.4, 30, fill=False, ec=INK2, lw=0.8, ls="--"))
+        ax.axhline(0, color=BLUE, lw=0.6, alpha=0.5)
+        ax.plot(0, 0, "s", color=VIOLET, ms=4)
+        ax.set_aspect("equal")
+        ax.set_xlabel("s, along the array diagonal (mm)", fontsize=7, color=INK)
+        ax.set_ylabel("z (mm)", fontsize=7, color=INK)
+    for k, p_ in mv.items():
+        off = (5, 4) if p_[0] >= 0 else (-22, 4)
+        ax_full.annotate(k, p_, xytext=off, textcoords="offset points", fontsize=6.5, color=INK)
+    # Objective as in configs/cavity_access.yaml: 42 mm plates + mount (radius 26 mm) from 38 mm up [CONFIRM?];
+    # NA 0.5 light cone from the field corners.
+    ax_full.add_patch(Polygon(np.array([[-2.83, 0], [2.83, 0], [24.8, 38], [-24.8, 38]]), closed=True, fc=YELLOW, alpha=0.25, ec="none"))
+    ax_full.add_patch(Rectangle((-26, 38), 52, 30, fc=YELLOW, alpha=0.45, ec="none"))
+    ax_full.text(0, 52, "42 mm meta-objective + mount", fontsize=6.5, color=INK, ha="center")
+    ax_full.text(-60, 2.5, "plane of the in-plane rings", fontsize=6.5, color=BLUE, ha="center")
+    ax_full.text(23, -14, "cell, 30 mm [CONFIRM?]", fontsize=6.5, color=INK2)
+    ax_full.set_xlim(-125, 125)
+    ax_full.set_ylim(-max(110, -min(p[1] for p in mv.values()) + 12), 72)
+    ax_full.legend(fontsize=6.5, frameon=False, loc="lower center")
+    ax_full.set_title(f"(a) Vertical-lattice ring in its own vertical plane, to scale (f1 {ch['f1_mm']:.0f} mm, {ch['f2_mm'] / ch['f1_mm']:.2f}x, "
+                      f"P1 at {ch['d0_mm']:.0f} mm, G at {ch['half1']['L_mm']:.0f} mm from P2)", fontsize=8, color=INK, loc="left")
+    d0 = ch["d0_mm"]
+    ax_zoom.set_xlim(d0 - 30, d0 + 12)
+    ax_zoom.set_ylim(-16, 16)
+    ax_zoom.set_title("(b) Exit and return mirrors near P1, P3 (to scale)", fontsize=8, color=INK, loc="left")
+    for k in ("P1", "P3"):
+        ax_zoom.annotate(k, mv[k], xytext=(6, 0), textcoords="offset points", fontsize=7, color=INK)
+
+
 def main():
     lay = json.loads((OUT / "layout.json").read_text())["layout"]
     fox = json.loads((REPO_ROOT / "results/cavity_foxli/foxli.json").read_text())["design_telK_M0.2_d70"]
@@ -251,6 +311,15 @@ def main():
     side_view(fig.add_subplot(gs[1, 1]))
     fig.tight_layout()
     fig.savefig(OUT / "sketch_layout.png", dpi=170, facecolor=SURFACE)
+
+    vl_path = OUT.parent / "cavity_vertical_layout" / "vertical_layout.json"
+    if vl_path.exists():
+        vl = json.loads(vl_path.read_text())
+        fig = plt.figure(figsize=(11.0, 5.0), facecolor=SURFACE)
+        gs5 = fig.add_gridspec(1, 2, width_ratios=[2.6, 1.0])
+        vertical_ring(fig.add_subplot(gs5[0, 0]), fig.add_subplot(gs5[0, 1]), vl)
+        fig.tight_layout()
+        fig.savefig(OUT / "sketch_vertical.png", dpi=170, facecolor=SURFACE)
 
     fig = plt.figure(figsize=(11.0, 6.4), facecolor=SURFACE)
     gs = fig.add_gridspec(2, 2, width_ratios=[2.2, 1.0], height_ratios=[1.0, 0.95])

@@ -81,6 +81,14 @@ freeform surfaces under an IBS coating. The meta-optics carry the input mode con
 kilowatts), the imaging and addressing objective (unchanged), and the loading/rearrangement
 tweezers.
 
+(vi) The arrangement fits around the atoms (Figures 3 and 5). The two in-plane rings lie in the
+atom plane, the vertical-lattice ring in a vertical plane on one diagonal, folded entirely below the
+atoms, and the space above the atoms stays free for the NA 0.5 imaging objective. A standard MOT is
+blocked, but a six-beam MOT with its axes tilted about 55 deg from vertical fits with >= 15.9 mm
+clearance for 20 mm beams, and four further lines remain for optical pumping and Raman beams
+(Section 6b). A single-beam grating MOT also fits geometrically, but demonstrated Cs grating MOTs
+(7e6 atoms) are one to two orders of magnitude short of a single-shot load of 10^6 sites.
+
 Main limitations. One-dimensional Fox-Li model of the horizontal profile with a separable
 Gaussian vertical mode, checked by one 2D case per question (ideal design, non-separable errors and
 their correction); scalar optics; static perturbations, one or two random realisations per case; no
@@ -177,6 +185,30 @@ vertically as well (width 6.9 mm; equivalent height 0.57 mm with an order-10 edg
 order-20 edge has a 4e-4 design loss at this small size, results/cavity_vertical). This axis takes
 785 W of the 989 W circulating at 10^6 sites and 0.2 mK; Section 3 discusses alternatives.
 
+Vertical ring, fold geometry (Figure 5; scripts/cavity_vertical_layout.py,
+configs/cavity_vertical_layout.yaml; results/cavity_vertical_layout/vertical_layout.json). The ring is
+planar, in the vertical plane through the atoms that contains the array diagonal. A planar ring has
+no image or polarisation rotation, so the 6.9 mm flat-top axis and the polarisation stay horizontal,
+perpendicular to the ring plane (s-polarised at every mirror), and the cylindrical telescope mirrors
+curve perpendicular to their plane of incidence, where a parabolic cylinder is an exact cylindrical
+lens of focal length R / (2 cos AOI). Each half trip is symmetric about its graded mirror on the
+vertical axis. Both half trips fold below the atom plane: nothing of the ring rises above 9.4 mm,
+which leaves the space above the atoms to the objective. Because the crossing half-angle is small,
+the exit mirrors of the two half trips sit close together (P1 and P3, 14.8 mm apart vertically at
+110 mm), and with an angle of incidence of at most 45 deg every fold must turn the beam by at least
+90 deg. With the in-plane telescope (f = 100 mm, 0.2x) the best layouts found needed a 60 mm
+graded-mirror distance, which leaves a competing mode 0.07 rad away with 1e-5 loss and gives 7.7 to
+69 % for lambda/1000 errors (exploratory Fox-Li check, not in the results files). A search over primary focal length,
+demagnification, distances and fold directions, with all clearances checked in 3D against the in-plane
+rings, selects: primary f = 160 mm, secondary f = 24 mm (0.15x), primary 110 mm from the atoms, G 120 mm
+behind the secondary, half trip 414 mm, round trip 1.66 m, free spectral range 181 MHz. Half trip 1
+folds back under the atoms (its folded beam passes 30.6 mm from them) to G1 158 mm below the atoms;
+half trip 2 folds steeply down to 190 mm depth and back up to G2, 104 mm below the atoms. Clearances:
+11.4 mm between mirror faces (strip mirrors 4 mm tall in the ring plane), 11.1 mm between beams and
+foreign mirrors, 37.8 mm to the in-plane rings' mirrors and 35.8 mm to their beams; angles of
+incidence 8 to 45 deg. The effective propagation behind the telescope, L / M^2 = 5.3 m, is twice that
+of the in-plane rings (2.5 m), which partly compensates the wider beam (Section 4b).
+
 Meta-optics. (i) Input mode converters, Gaussian to flat-top sheet (a Gaussian input couples
 0.918 of the power into the flat-top mode; a flat-top converter is assumed to reach 0.95, `[VALUE?]`);
 (ii) the 852 nm imaging and addressing objective (docs/metalens_report.md, docs/million_sites.md);
@@ -206,6 +238,18 @@ line focus between P1 and P2, and is shaped back by G1. Right: the profiles at t
 mode matching 0.95): 0.36 W into each in-plane ring (102 W circulating), 2.8 W into the vertical ring
 (785 W circulating). The graded-mirror correction of Section 4b closes the loop from the mode cameras
 and the atom depth maps.
+
+![Vertical ring](../results/cavity_layout/sketch_vertical.png)
+
+Figure 5. The vertical-lattice ring in its vertical plane through the array diagonal, to scale
+(s along the diagonal, z up). Half trip 1 (light green) leaves the crossing on the upper arm, folds at
+P1 back under the atoms to P2, the graded mirror G1 on the vertical axis 158 mm below the atoms, P2'
+and P1', and returns on the lower-left arm; half trip 2 (dark green) leaves on the lower arm and
+folds via P3, P4, G2 (104 mm below), P4', P3'. Black bars: mirror faces (4 mm strips in the ring
+plane; widths along the horizontal flat-top axis are 12 and 5 mm). Telescope f1 = 160 mm,
+f2 = 24 mm. Yellow: the 42 mm imaging objective and its mount [CONFIRM?] and the NA 0.5 light cone.
+(b) The exit and return mirrors near P1, P3. Geometry from results/cavity_vertical_layout; drawn by
+scripts/plot_cavity_sketch.py.
 
 Precedents. A two-cavity Sr lattice reached finesse 5025 and power enhancement 1132 at 914 nm,
 489 um waists, 80 mW per arm and ~92 W circulating, in a monolithic ULE assembly in vacuum, with
@@ -513,9 +557,23 @@ brings a competing mode to 0.14 rad with 3e-4 loss. A perfect-metrology redesign
 0.66 % / 0.61 %. The lattice planes stay flat to <= 0.25 um peak-to-valley in every case, well inside the
 +-1.7 um depth of focus of the imaging objective. A 0.1x telescope raises the competing mode to
 0.28 rad (2.6e-3 loss) but gives 11 % uncorrected for both realisations (exploratory run, not in the
-results file). Hence the vertical ring is the most error-sensitive of the three. It needs the
-correction, or a narrower beam, e.g. propagation along an array side (4.5 mm instead of 6.9 mm). Its
-closed loop was not simulated.
+results file). Hence the vertical ring is the most error-sensitive of the three.
+
+The adopted fold geometry (Section 2, Figure 5: 0.15x, f1 = 160 mm, P1 at 110 mm, L = 120 mm;
+configs/cavity_vertical_chosen.yaml, results/cavity_vertical_chosen/vertical.json) gives: in the
+wide direction a fundamental loss of 3.6e-7 per round trip and a nearest competing mode at 0.30 rad
+with 7.8e-3 loss (against 0.14 rad and 3.1e-4 for the unconstrained 0.2x design); ideal depth
+uniform to 0.19 % rms (min / mean 0.988); lambda/1000 errors on all ten mirrors in the
+horizontal direction 5.7 % and 12 % uncorrected (against 3.6 % and 36 % for the unconstrained 0.2x
+design), 0.19 and 0.20 % after a perfect-metrology redesign; in the vertical direction 1.5 and 0.7 %,
+0.33 % after redesign. Atom feedback, with errors in both directions at once and the depth map fitted
+as a product of a function of the horizontal transverse coordinate (the product of the two beams'
+profiles) and a function of position along the diagonal (the vertical flat-tops at
+zeta = s sin(theta_z)), reaches 0.17 and 0.19 % in six rounds from 5.9 and 12 %. For this ring the
+fit is exact, so the loop converges to the design value. The narrow vertical flat-top is the weaker
+direction for power: its design loss rises to 2.9e-5 on the longer path, and the vertical errors
+reduce its enhancement to 0.80 to 0.90 of the ideal even after correction, i.e. 10 to 25 % more input
+power for this ring. The lattice planes stay flat to <= 0.5 um peak-to-valley.
 
 ## 5. Intensities, defects and heating inside the cavity
 
@@ -591,10 +649,70 @@ Layout (Figure 3; results/cavity_layout/layout.json, scripts/cavity_layout.py). 
 within +-150 mm. Their mirrors and beams keep at least 15.5 mm from each other (mirror apertures and
 a 3 mm beam allowance included), the folded beams stay at least 35.8 mm from the atoms, and both
 array diagonals stay clear by 8.2 mm beyond 40 mm radius, the corridor left for the vertical ring.
-The first sketch, with the primary at 50 mm, overlapped by 4.2 mm. The vertical ring's fold geometry,
-the NA 0.5 objective above the cell, and mounts are not designed; with the same telescope folded in
-its vertical plane, its graded mirror would sit above the atoms in the objective's path, so its fold
-must turn sideways.
+The first sketch, with the primary at 50 mm, overlapped by 4.2 mm. The vertical ring (Section 2,
+Figure 5) occupies the vertical plane on one diagonal, below the atom plane, and keeps 37.8 mm from
+the in-plane rings' mirrors. Mounts, coils and the vacuum envelope are not designed.
+
+## 6b. Optical access, MOT and loading
+
+Model (scripts/cavity_access.py, configs/cavity_access.yaml; results/cavity_access/access.json,
+access.png). For every line through the atoms we compute the clearance of a beam of given radius
+(250 mm each way) from all twenty mirrors of the three rings, each with a 5 mm mount allowance, and
+from the imaging objective above the atoms. The objective is the 42 mm aplanatic doublet that images
+10^6 sites (docs/million_sites.md), with its first plate 38 mm above the atoms and a 26 mm radius
+including the mount [CONFIRM?]. Ring beams are light only and may be crossed; windows are assumed
+wherever needed [CONFIRM?: chamber].
+
+| Beam set | Result |
+|---|---|
+| Standard MOT, axes x, y, z (20 mm beams) | blocked: horizontal beams hit in-plane mirrors (-17.5 mm), the vertical beam hits the objective (-36 mm) |
+| Standard MOT on the diagonals + z | blocked (-14, -6.8, -36 mm) |
+| Orthogonal MOT triad, axes tilted 54 to 55 deg from vertical (azimuths 15, 75, 135 deg) | free, clearance >= 15.9 mm for 20 mm beams |
+| Lines free for 20 mm / 10 mm beams | 34 % / 45 % of all lines through the atoms |
+| Four further lines for optical pumping and Raman beams (56.5 deg from vertical; azimuths 117, 155, 297, 333 deg), >= 15 deg from the MOT axes | clearance 26.9 mm for 10 mm beams, 21.9 mm even for 20 mm beams |
+| Imaging and addressing | the objective's own port above the atoms (NA 0.5; the free band starts at 43 deg from vertical) |
+
+The free band of directions lies between about 43 and 75 deg from vertical at all azimuths, except
+near the vertical ring's plane: the objective closes the cone above, and the ring mirrors the
+horizontal. A six-beam MOT with its three axes along the body diagonals of a cube standing on a
+corner (each axis about 55 deg from vertical) fits with margin, and leaves room for pumping and Raman
+beams. Global qubit rotations can also use microwaves (9.2 GHz, no optical access), with single-site
+addressing through the objective.
+
+![Access](../results/cavity_access/access.png)
+
+Figure 6. Clearance of a beam through the atoms versus its direction (angle of the line from the
+vertical, azimuth from +x; the vertical ring's plane is at 45 and 225 deg), for 20 mm (left) and
+10 mm (right) beams; black contour: zero clearance. Stars: the axes of the tilted six-beam MOT and
+their opposite ends; circles: the four pumping / Raman lines. Obstacles: all ring mirrors with a 5 mm
+mount allowance and the 42 mm objective from 38 mm above the atoms [CONFIRM?]. scripts/cavity_access.py.
+
+How many atoms does loading need (DERIVED)? A lattice site is 4 x 4 x 8 um^3 = 1.3e-10 cm^3. With
+the usual collisional loading of about one atom in two sites `[VALUE?: ~0.5 filling, light-assisted
+collisions]`, each site of the loaded plane must first see about two atoms, i.e. a density of
+~1.6e10 cm^-3 across the 4 mm array. A MOT cloud that keeps this density at the array corners
+(2.83 mm) with a peak three to five times higher holds ~5e9 atoms, because most of its atoms lie in
+other planes. Accumulating atoms in the in-plane sheets first (the sheets span ~19 of the 8 um planes)
+reduces the need to ~4e7 atoms delivered into the sheets, i.e. a MOT of 10^8 to 10^9 atoms of at
+least 6 mm extent. Demonstrated Cs numbers: 1.1(1)e9 atoms captured in an optical molasses from a
+~10^10 atoms/s source (Donley, Heavner and Jefferts, NIST, www.nist.gov/node/735766, read in session);
+2D-MOT fluxes of 4.02e10 atoms/s (Huang et al., Chin. Phys. B 25, 063701 (2016), arXiv:1509.07213,
+abstract read in session). A tilted six-beam MOT loaded from a 2D MOT can therefore supply the atoms.
+
+Grating MOT. A single-beam grating MOT fits geometrically: a 22 mm chip 8 mm below the atoms clears
+every ring beam by >= 6.9 mm, its three 45 deg diffracted beams clear all mirrors and the objective by
+6.7 mm `[VALUE?: diffraction angle, set by the grating period]`, and the vertical axis below it is free
+for 96 mm (to G2) for a retro-reflector. Its single input beam must come from above, along the
+objective axis: through the objective, injected as a focus in its back focal plane, or through a
+dichroic before it; the MOT light (852 nm) is the imaging wavelength. However, demonstrated grating MOTs
+are small for this purpose: 2.46(7)e8 Rb atoms when loaded from a 2D grating MOT (Imhof et al., Phys.
+Rev. A 96, 033636 (2017), arXiv:1703.07926, abstract read in session), and for Cs only 7.0e6 atoms, and
+only with an additional retro-reflected beam of 69 % of the input intensity; at 24 % no atoms were
+trapped (Takamizawa et al., Appl. Phys. Lett. 126, 244006 (2025), arXiv:2412.11502, abstract read in
+session). A Cs grating MOT is therefore one to two orders of magnitude short of a single-shot load of
+10^6 sites, and would need iterative accumulation, as in the Atom Computing scheme (Norcia et al.),
+with stored atoms shielded from the MOT light. We therefore recommend the tilted six-beam MOT, with
+the grating MOT as a compact fallback for smaller arrays or with iterative loading.
 
 ## 7. What must improve, and next steps
 
@@ -606,16 +724,17 @@ calls for a monolithic, low-expansion assembly as in Park et al. (ii) Cleanlines
 near the waist at the level of point absorbers below ~0.5 um on fused silica, or sapphire substrates
 (23x more tolerant). (iii) Losses of the graded mirrors <= 1e-3 per bounce, i.e. figured surfaces
 rather than metasurfaces. (iv) The vertical lattice power, which dominates at 10^6 sites. (v)
-Single-plane loading in an 8 um vertical lattice and site-resolved rearrangement into the lattice;
-neither is studied here.
+Single-plane loading in an 8 um vertical lattice from a MOT of 10^8 to 10^9 atoms, and site-resolved
+rearrangement into the lattice; neither is simulated here (Section 6b gives the atom budget).
 
-Next simulations. (i) Closed-loop correction of the vertical ring, and the vertical ring with
-propagation along an array side. (ii) Laser frequency noise and mirror vibration: time-dependent
+Next simulations. (i) The vertical ring with propagation along an array side (a narrower beam) as an
+alternative to its diagonal layout. (ii) Laser frequency noise and mirror vibration: time-dependent
 depth and site position, heating rates versus finesse. (iii) Absorption-induced deformation fed back
 into Fox-Li at the circulating power (here only compared with the tolerance). (iv) A more reliable
 closed loop for large starting errors (lower gain, or a model update from the measured depths), and
-the effect of drift during a correction cycle. (v) The mirror layout of all three rings around the
-cell and the imaging objective.
+the effect of drift during a correction cycle. (v) Mounts, MOT coils and the vacuum envelope around
+the layout of Figures 3 and 5, and the windows for the tilted MOT and pumping beams. (vi) Loading
+dynamics: accumulation of atoms in the in-plane sheets from the tilted MOT and plane selection.
 
 ## Verification notes
 
@@ -642,6 +761,15 @@ Provenance ledger:
 | 70 mm ring: design, spectrum, correction check | Section 2, Figure 4 | SIM, review before submission | results/cavity_foxli/foxli.json (design_telK_M0.2_d70), results/cavity_correction_d70/correction.json |
 | Two-ring layout clearances, angles, vertical design at 70 mm | Sections 2, 6, Figure 3 | DERIVED (code) | results/cavity_layout/layout.json |
 | Design sketches | Figures 3, 4 | DERIVED / SIM | scripts/plot_cavity_sketch.py |
+| Vertical-ring fold geometry and clearances | Section 2, Figure 5 | DERIVED (code) | results/cavity_vertical_layout/vertical_layout.json |
+| Vertical ring, adopted geometry: uniformity, tolerances, closed loop | Section 4b | SIM, review before submission | results/cavity_vertical_chosen/vertical.json |
+| Vertical ring with the in-plane telescope at 60 mm (0.07 rad, 1e-5; 7.7 to 69 %) | Section 2 | SIM (exploratory, not saved) | session scripts |
+| Optical access map, MOT triad, pumping / Raman lines, grating-MOT checks | Section 6b, Result | DERIVED (code) | results/cavity_access/access.json, access.png |
+| Atom budget for loading (1.6e10 cm^-3, ~5e9, ~4e7) | Section 6b | DERIVED | site volume, Gaussian cloud, 19 planes in the sheets |
+| Cs molasses 1.1(1)e9 atoms, ~1e10 atoms/s source | Section 6b | SOURCE | NIST, www.nist.gov/node/735766 (Donley, Heavner, Jefferts) |
+| Cs 2D-MOT flux 4.02e10 atoms/s | Section 6b | SOURCE | Huang et al., Chin. Phys. B 25, 063701 (2016), arXiv:1509.07213 |
+| Rb 3D grating MOT 2.46(7)e8 atoms from a 2D grating MOT | Section 6b | SOURCE | Imhof et al., Phys. Rev. A 96, 033636 (2017), arXiv:1703.07926 |
+| Cs grating MOT 7.0e6 atoms with a 69 % retro beam; none at 24 % | Section 6b | SOURCE | Takamizawa et al., Appl. Phys. Lett. 126, 244006 (2025), arXiv:2412.11502 |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |
@@ -658,7 +786,10 @@ Open placeholders: `[VALUE?: AR loss per surface 2.5e-4 to 1e-3]`, `[VALUE?: Bre
 1e-4]`, `[VALUE?: IBS absorption 1 ppm]`, `[VALUE?: refractive objective 0.95, ideal relay 0.995 per
 pass]`, `[VALUE?: mode-converter coupling 0.95]`, `[CONFIRM?: cell wall 15 mm from the atoms; cell
 size for the layout]`, `[REF?: freeform figuring at nm rms over mm apertures]`, `[VALUE?: absolute flat-calibration
-agreement approx. 0.4 nm]`, `[VALUE?: loss and stability of an intracavity deformable mirror]`.
+agreement approx. 0.4 nm]`, `[VALUE?: loss and stability of an intracavity deformable mirror]`, `[CONFIRM?: objective position and
+mount, chamber windows, mounts]`, `[VALUE?: grating diffraction angle]`, `[VALUE?: ~0.5 collisional
+filling]`. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
+grating-MOT atom number (seen only in a search snippet, not used).
 
 Sourcing gaps. The 12,000-finesse microstructured-mirror cavity (Dickmann et al., Commun. Phys. 2023,
 DOI 10.1038/s42005-023-01131-1) and the Si3N4 photonic-crystal membrane mirror (arXiv:2401.16695,

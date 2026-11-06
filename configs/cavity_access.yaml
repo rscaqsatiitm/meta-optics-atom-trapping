@@ -1,0 +1,20 @@
+# Optical access for MOT, imaging, optical pumping / Raman beams, and a grating MOT (docs/cavity_concept.md, Section 6b).
+run_id: cavity_access
+inplane_layout_json: results/cavity_layout/layout.json
+vertical_layout_json: results/cavity_vertical_layout/vertical_layout.json
+vertical_layout_config: configs/cavity_vertical_layout.yaml
+mount_margin_mm: 5.0            # mount allowance around every mirror aperture [CONFIRM?]
+beam_length_mm: 250.0           # each way from the atoms
+beam_radii_mm: {mot: 10.0, pumping_raman: 5.0}   # 20 mm MOT beams; 10 mm pumping / Raman beams
+objective:                      # 852 nm imaging / addressing meta-objective above the atoms [CONFIRM?]
+  z0_mm: 38.0                   # 42 mm aplanatic doublet, air gap 25 mm + 4 mm wall + 9 mm vacuum (docs/million_sites.md)
+  radius_mm: 26.0               # 42 mm plates plus a 5 mm mount
+n_extra_lines: 4                # pumping / Raman lines besides the three MOT axes
+min_sep_deg: 15.0
+grating_mot:                    # chip below the atoms, input beam along -z through the objective [assumption]
+  chip_z_mm: -8.0
+  chip_half_mm: 11.0            # 22 mm square chip
+  n_beams: 3                    # tri-grating
+  azimuth0_deg: 0.0
+  diffraction_deg: 45.0         # [VALUE?] set by the grating period
+  diffracted_half_width_mm: 8.0

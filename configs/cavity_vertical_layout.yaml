@@ -1,0 +1,22 @@
+# Fold geometry of the vertical-lattice ring (docs/cavity_concept.md, Section 2 and Figure 5).
+run_id: cavity_vertical_layout
+wavelength_nm: 1075.0
+vertical_period_um: 8.0
+inplane_layout_json: results/cavity_layout/layout.json
+f1_mm: 100.0                    # telescope primary (curved along u); secondary f2 = mag x f1
+mag: 0.15                       # 0.15x: compensates the short graded-mirror distance (see Section 2)
+equal_L: true                   # both half trips with the same path (one graded-mirror design per ring)
+mirror_half_height_mm: {primary: 2.0, small: 2.0}   # in the ring plane: rectangular strip mirrors (beam narrow axis <~ 1 mm)
+mirror_half_width_u_mm: {primary: 6.0, small: 2.5}  # along u: the 6.9 mm flat-top on P1, compressed 5x on P2 and G
+beam_half_in_plane_mm: 1.0
+limits:
+  max_aoi_deg: 45.0
+  cell_keepout_mm: 30.0         # folded beams at least this far from the atoms [CONFIRM?: cell size]
+  z_top_max_mm: 10.0            # nothing of the vertical ring above this height (objective space)
+  max_depth_mm: 300.0
+min_clearance_mm: 5.0           # selection: longest L among layouts with at least this clearance
+search:
+  f1_mm: [80.0, 100.0, 130.0, 160.0]
+  d0_mm: [90.0, 110.0, 130.0, 150.0]
+  L_mm: [60.0, 80.0, 100.0, 120.0]
+  alpha_deg: [-180.0, 180.0, 2.0]
