@@ -13,7 +13,16 @@ from metatrap.hologram.wgs import PupilGrid
 from metatrap.propagation.layers import LayerStack
 
 
-@pytest.mark.skipif(os.environ.get("NUMBA_ENABLE_CUDASIM") != "1" and not __import__("numba").cuda.is_available(),
+def _has_cuda():
+    try:
+        from numba import cuda
+
+        return cuda.is_available()
+    except Exception:
+        return False
+
+
+@pytest.mark.skipif(os.environ.get("NUMBA_ENABLE_CUDASIM") != "1" and not _has_cuda(),
                     reason="needs a CUDA GPU or NUMBA_ENABLE_CUDASIM=1")
 def test_gpu_kernels_match_dense():
     from metatrap.hologram.lazy_gpu import LazyKGGPU
