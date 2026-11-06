@@ -217,7 +217,7 @@ gain 0.8, from the round-13 design.
 | Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
 |---|---|---|---|---|---|
 | 13 (start, gain-1.2 design) | 0.81 % | 0.97 | 0.827 | 0.113 | - |
-| 14 | 0.56 % | 0.97 | 0.827 | 0.109 | (pending) |
+| 14 | 0.56 % | 0.97 | 0.827 | 0.109 | -0.06 |
 | 15 to 17 | running | | | | |
 | Final design, sigma 5 nm width errors | running | | | | - |
 
