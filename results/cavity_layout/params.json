@@ -7,9 +7,10 @@
     "telescope": {
       "f1_m": 0.1,
       "mag": 0.2,
-      "d0_m": 0.05,
+      "d0_m": 0.07,
       "L_m": 0.1,
-      "primary_turn_deg": 157.0
+      "ap1_mm": 5.0,
+      "ap2_mm": 2.5
     },
     "f_z_scan_m": [
       0.02,
@@ -23,10 +24,22 @@
       0.3,
       1000000.0
     ],
+    "rings": {
+      "y_lattice": {
+        "turn_deg": 157.0,
+        "rotation_deg": 0.0
+      },
+      "x_lattice": {
+        "turn_deg": 157.0,
+        "rotation_deg": 90.0
+      }
+    },
+    "beam_margin_mm": 3.0,
+    "diagonal_min_radius_mm": 40.0,
     "_config_path": "configs/cavity_layout.yaml"
   },
   "git": {
-    "commit": "a31aa819c4858a3c307aa9d08992877cba0f4b1d",
+    "commit": "1a5da5c5fad5198ecced7d193f93781b097c8495",
     "dirty": "True"
   },
   "versions": {
@@ -44,5 +57,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-06T08:33:23+00:00"
+  "utc": "2026-11-06T16:04:30+00:00"
 }

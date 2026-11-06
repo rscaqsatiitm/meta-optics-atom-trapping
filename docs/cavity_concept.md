@@ -69,10 +69,10 @@ vertical-lattice ring, whose beam is 6.9 mm wide, is the most sensitive (3.6 to 
 telescope. All corrections are static; drift must stay below these levels between corrections.
 
 (iv) Heat is no longer a constraint; defects are. Coating absorption heats the mirrors by
-< 0.5 K (IBS, 1 to 10 ppm). Every surface near the waist sees 6 to 20 kW/cm^2 at 0.2 mK,
+< 0.5 K (IBS, 1 to 10 ppm). Every surface near the waist sees 4.5 to 19 kW/cm^2 at 0.2 mK,
 comparable to the test masses of gravitational-wave detectors. The largest tolerable fully
-absorbing defect falls to 0.36 to 1.1 um on fused silica, against 92 um for the 200 W
-metasurface of the present design, and to 9 to 27 um on sapphire.
+absorbing defect falls to 0.36 to 1.5 um on fused silica, against 92 um for the 200 W
+metasurface of the present design, and to 9 to 37 um on sapphire.
 
 (v) Meta-optics belong outside the cavity. A pixelated metasurface as the graded mirror is too
 lossy with present fabrication: 5 nm rms width noise is 0.10 to 0.15 rad of phase noise, which
@@ -154,12 +154,21 @@ symmetric half trip (the graded-phase resonator of Belanger and Pare, Opt. Lett.
 DOI 10.1364/OL.16.001057, abstract read in session). The design adopted in Section 4 puts a
 0.2x Keplerian telescope of cylindrical mirrors in each half trip: primary P1 (f = 100 mm) 50 mm
 from the crossing, secondary P2 (f = 20 mm) 120 mm further, and G 100 mm beyond P2. Half trip
-270 mm, round trip 1.08 m, free spectral range 278 MHz. The round trip has 10 reflections, all
-mirrors near 0 to 38 deg incidence (results/cavity_layout/layout.json).
+270 mm, round trip 1.08 m, free spectral range 278 MHz, 10 reflections per round trip. The
+layout of Figure 3 moves the primary to 70 mm from the crossing, because at 50 mm the mirrors of
+the two in-plane rings overlap by 4.2 mm: half trip 290 mm, round trip 1.16 m, free spectral range
+258 MHz, angles of incidence 15 deg (P1), 44 deg (P2) and 24 deg (G). The 70 mm ring is equivalent
+in the Fox-Li model: depth uniform to 0.23 % rms, fundamental loss 1.6e-8 per round trip, nearest
+competitor 3.3e-3 (against 1.1e-2 at 50 mm), and lambda/1000 errors on all ten mirrors give 2.0 and
+4.0 % uncorrected, 0.42 and 0.75 % after six rounds of atom feedback (results/cavity_foxli,
+design_telK_M0.2_d70; results/cavity_correction_d70). The other Fox-Li results of Sections 4 and 4b
+are for the 50 mm ring.
 
-Vertical mode. A 30 mm vertical focal length on P1 and a 166 mm vertical radius on G give the
-75 um waist with a half-trip stability parameter m = 0.07, a round-trip Gouy phase of -0.29 rad
-(mod 2 pi), 0.24 mm on P1 and 0.65 mm on G, and a 0.4 % waist change per 0.1 % radius error.
+Vertical mode. For the 50 mm ring, a 30 mm vertical focal length on P1 and a 166 mm vertical
+radius on G give the 75 um waist with a half-trip stability parameter m = 0.07, a round-trip Gouy
+phase of -0.29 rad (mod 2 pi), 0.24 mm on P1 and 0.65 mm on G, and a 0.4 % waist change per 0.1 %
+radius error. For the 70 mm ring of the layout, 40 mm and 143 mm give m = -0.24, a Gouy phase of
+-0.99 rad, 0.33 mm on P1 and 0.55 mm on G, and 0.32 % per 0.1 % (results/cavity_layout/layout.json).
 
 Vertical confinement. The in-plane sheets alone give 0.7 kHz vertically (Gaussian profile of 75 um, 0.4 mK at the site). A third ring crosses at
 2 theta_z in a vertical plane (period 8 um, theta_z = 3.85 deg), propagating along the array
@@ -172,6 +181,31 @@ Meta-optics. (i) Input mode converters, Gaussian to flat-top sheet (a Gaussian i
 0.918 of the power into the flat-top mode; a flat-top converter is assumed to reach 0.95, `[VALUE?]`);
 (ii) the 852 nm imaging and addressing objective (docs/metalens_report.md, docs/million_sites.md);
 (iii) tweezers for loading and rearrangement. None of them sees the circulating power.
+
+![Layout](../results/cavity_layout/sketch_layout.png)
+
+Figure 3. Arrangement. (a) Top view to scale: the y-lattice ring (blue) and the x-lattice ring
+(orange), each a self-intersecting ring with a 0.2x cylindrical telescope (primary P1, f = 100 mm,
+70 mm from the crossing; secondary P2, f = 20 mm) and two graded mirrors G1, G2; circles are the
+mirror apertures (10 and 5 mm). Dashed diagonals: corridor for the vertical-lattice ring, whose
+fold geometry is not designed. The input (green) is the flat-top sheet from an extracavity meta-optic
+converter; the light leaked by a fold mirror (pink) goes to the mode camera. (b) The crossing of one
+axis to scale: the two flat-top sheets (equivalent width 5.5 mm, 2 theta = 15.4 deg) cover the 4 mm
+array; inset, the computed intensity of the two incoherent in-plane axes (plane waves, 4 um pitch).
+(c) Side view, schematic, not to scale: in-plane sheets, the two vertical-lattice beams (+-3.85 deg,
+8 um planes), and the 852 nm NA 0.5 meta-objective above the cell. Geometry from
+results/cavity_layout/layout.json; scripts/plot_cavity_sketch.py.
+
+![Ring and control chain](../results/cavity_layout/sketch_ring.png)
+
+Figure 4. (a) The beam along one unfolded half trip of the 70 mm ring, from the crossing on arm A
+through P1, P2, G1, P2', P1' to the crossing on arm B (Fox-Li, design telK_M0.2_d70, 8192 points;
+intensity normalised in each plane). The flat-top is compressed fivefold by the telescope, passes a
+line focus between P1 and P2, and is shaped back by G1. Right: the profiles at the crossing and on G.
+(b) Optics and control chain for 10^6 sites at 0.2 mK with G = 300 (results/cavity_budget/budget.json,
+mode matching 0.95): 0.36 W into each in-plane ring (102 W circulating), 2.8 W into the vertical ring
+(785 W circulating). The graded-mirror correction of Section 4b closes the loop from the mode cameras
+and the atom depth maps.
 
 Precedents. A two-cavity Sr lattice reached finesse 5025 and power enhancement 1132 at 914 nm,
 489 um waists, 80 mW per arm and ~92 W circulating, in a monolithic ULE assembly in vacuum, with
@@ -488,35 +522,35 @@ closed loop was not simulated.
 Model (scripts/cavity_thermal.py; results/cavity_thermal/thermal.json). Each beam's peak intensity
 at the atoms is I1, set by the barrier depth. On a mirror it is I1 times the one-dimensional peak
 ratio from Fox-Li (5.7 on P2 and 6.5 on G for the 0.2x design), times the vertical size ratio
-from Section 2. The defect criterion is that of thermal/damage.py: a fully absorbing disc of
+from Section 2 (70 mm ring of the layout). The defect criterion is that of thermal/damage.py: a fully absorbing disc of
 radius a on a half-space heats by I a / kappa, limited to 50 K.
 
 | Surface (0.2 mK, 10^6 sites) | Peak intensity | Largest absorbing defect, fused silica / sapphire |
 |---|---|---|
 | Cell wall, 15 mm from the atoms `[CONFIRM?]` (through-cell variant) | 14.6 kW/cm^2 | 0.47 / 11 um |
-| Telescope primary P1 | 6.2 kW/cm^2 | 1.1 / 27 um |
-| Telescope secondary P2 | 19.1 kW/cm^2 | 0.36 / 8.6 um |
-| Graded mirror G | 14.8 kW/cm^2 | 0.47 / 11 um |
+| Telescope primary P1 | 4.5 kW/cm^2 | 1.5 / 37 um |
+| Telescope secondary P2 | 19.3 kW/cm^2 | 0.36 / 8.6 um |
+| Graded mirror G | 17.4 kW/cm^2 | 0.40 / 9.5 um |
 | Vertical ring, mirror with 3x beam expansion | 2.2 kW/cm^2 | 3.1 / 75 um |
 
 At equal radial frequency (0.86 mK) every intensity is 4.3x higher and the defect limits 4.3x
-smaller (0.08 to 0.26 um on fused silica). For comparison, the present 18.4 mm metasurface at 200 W
+smaller (0.08 to 0.35 um on fused silica). For comparison, the present 18.4 mm metasurface at 200 W
 sees 75 W/cm^2 and tolerates 92 um (docs/prefab_checks_report.md). The cavity therefore trades a
 kilowatt laser and a hot metasurface for watt-level input and mirrors at kW/cm^2. Point absorbers at
 these intensities limit the stored power of Advanced LIGO (Brooks et al., Appl. Opt. 60, 4047
 (2021), DOI 10.1364/AO.419689, abstract read in session). The fully absorbing disc model is
 pessimistic for sub-micron particles, whose absorption cross-section is below the geometric one.
 
-Thermal deformation of the graded mirror (102 W circulating, equal-area disc of 0.47 mm radius on a
+Thermal deformation of the graded mirror (102 W circulating, equal-area disc of 0.43 mm radius on a
 1 inch, 6.35 mm fused-silica or sapphire mirror, surface bulge (1 + nu) alpha int T dz):
 
 | Absorber on G | Absorbed power | Surface temperature rise | Bulge, centre to edge | Bulge rms over the spot |
 |---|---|---|---|---|
 | IBS HR, 1 ppm `[VALUE?]` | 0.1 mW | 0.05 K | 0.004 nm | 1e-6 waves |
 | IBS HR, 10 ppm | 1 mW | 0.5 K | 0.035 nm | 1e-5 waves |
-| LPCVD SiN metasurface (3.5e-6) | 0.36 mW | 0.17 K | 0.012 nm | 3e-6 waves |
-| Si-rich SiN metasurface (5.9e-4), fused silica | 60 mW | 29 K | 2.1 nm | 5.6e-4 waves |
-| Si-rich SiN metasurface (5.9e-4), sapphire | 60 mW | 1.2 K | 0.9 nm | 2.4e-4 waves |
+| LPCVD SiN metasurface (3.5e-6) | 0.36 mW | 0.19 K | 0.012 nm | 3e-6 waves |
+| Si-rich SiN metasurface (5.9e-4), fused silica | 60 mW | 32 K | 2.1 nm | 5.6e-4 waves |
+| Si-rich SiN metasurface (5.9e-4), sapphire | 60 mW | 1.3 K | 0.9 nm | 2.4e-4 waves |
 
 With IBS coatings the deformation is three orders of magnitude below the lambda/1000 figure
 tolerance. A Si-rich SiN film inside the cavity would reach the tolerance on its own. The cell
@@ -552,10 +586,15 @@ for every telescope case with depth non-uniformity below 5 %. Hence site positio
 small fraction of the 4 um pitch, provided the crossing angle is held to ~1 urad. The rearrangement
 and addressing optics must be registered to the lattice, as in the Atom Computing scheme.
 
-Layout (results/cavity_layout/layout.png). The two in-plane rings fit within about 270 mm. In this
-first sketch the secondary mirrors of the two rings come within ~10 mm of each other, so one ring
-must be scaled or folded differently. The vertical ring and the vertical NA 0.5 objective are not
-yet placed.
+Layout (Figure 3; results/cavity_layout/layout.json, scripts/cavity_layout.py). With the primary
+70 mm from the crossing and the same fold angle (157 deg) for both rings, the two in-plane rings fit
+within +-150 mm. Their mirrors and beams keep at least 15.5 mm from each other (mirror apertures and
+a 3 mm beam allowance included), the folded beams stay at least 35.8 mm from the atoms, and both
+array diagonals stay clear by 8.2 mm beyond 40 mm radius, the corridor left for the vertical ring.
+The first sketch, with the primary at 50 mm, overlapped by 4.2 mm. The vertical ring's fold geometry,
+the NA 0.5 objective above the cell, and mounts are not designed; with the same telescope folded in
+its vertical plane, its graded mirror would sit above the atoms in the objective's path, so its fold
+must turn sideways.
 
 ## 7. What must improve, and next steps
 
@@ -600,6 +639,9 @@ Provenance ledger:
 | LIGO metrology interferometer repeatability < 0.15 nm rms required, 0.1 nm goal | Section 4b | SOURCE | LIGO-E080508-v2 (PDF text read in session) |
 | LIGO ETM polishing spec < 0.3 nm rms over 160 mm, piston/tilt/power removed | Section 4b (via arXiv table) | SOURCE | LIGO-E080512-v5 (PDF text read in session) |
 | Zeiss EUV metrology 27 pm repeatability, 46 pm reproducibility; M6 figure 0.10 nm rms | Section 4b | SOURCE | Kurz et al., EUVL Symposium 2004, euvlsymposium.lbl.gov/pdf/2004/presentations/day3/To03_Kurz.pdf (PDF text read in session) |
+| 70 mm ring: design, spectrum, correction check | Section 2, Figure 4 | SIM, review before submission | results/cavity_foxli/foxli.json (design_telK_M0.2_d70), results/cavity_correction_d70/correction.json |
+| Two-ring layout clearances, angles, vertical design at 70 mm | Sections 2, 6, Figure 3 | DERIVED (code) | results/cavity_layout/layout.json |
+| Design sketches | Figures 3, 4 | DERIVED / SIM | scripts/plot_cavity_sketch.py |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |

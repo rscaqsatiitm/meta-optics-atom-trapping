@@ -5,8 +5,8 @@
     "foxli_json": "results/cavity_foxli/foxli.json",
     "layout_json": "results/cavity_layout/layout.json",
     "budget_json": "results/cavity_budget/budget.json",
-    "design_key": "design_telK_M0.2",
-    "vertical_f_z_m": 0.03,
+    "design_key": "design_telK_M0.2_d70",
+    "vertical_f_z_m": 0.04,
     "w_z_m": 7.5e-05,
     "n_sites": 1000000.0,
     "depths_mK": [
@@ -47,7 +47,7 @@
     "_config_path": "configs/cavity_thermal.yaml"
   },
   "git": {
-    "commit": "46c8289387b614710f5b09123e4c4862d1e5f45c",
+    "commit": "1a5da5c5fad5198ecced7d193f93781b097c8495",
     "dirty": "True"
   },
   "versions": {
@@ -65,5 +65,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-06T13:36:32+00:00"
+  "utc": "2026-11-06T16:05:44+00:00"
 }

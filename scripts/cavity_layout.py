@@ -12,6 +12,7 @@ Ring layout in the atom plane: arms cross at X at +-theta; the telescope folds o
 graded mirrors sit on the bisector normal. Writes layout.json and layout.png.
 """
 
+import json
 import sys
 
 import numpy as np
@@ -88,58 +89,105 @@ def main(cfg_path):
         w2, _ = waist_from_half(half2, lam)
         rows.append({"f_z_m": f_z, "R_z_m": R, "w0_m": w, "half_trip_m": m, "gouy_roundtrip_rad": gouy_rt,
                      "w_z_at_primary_m": wz(q_p1), "w_z_at_graded_m": wz(q_g), "waist_change_per_1e-3_dR": float((w2 - w) / w)})
-    # Ring layout in the atom plane (mm): X at origin, arms at +-theta.
+    # Ring layout in the atom plane: X at origin; each ring's arms cross at +-theta about its axis.
     th = B.crossing_half_angle(cfg["period_um"], cfg["wavelength_nm"] * 1e-3)
-    P1 = d0 * np.array([np.cos(th), np.sin(th)])
-    P1b = d0 * np.array([-np.cos(th), np.sin(th)])
-    turn = np.radians(t["primary_turn_deg"])  # outgoing direction from P1, measured from +x
-    P2 = P1 + (f1 + f2) * np.array([np.cos(turn), np.sin(turn)])
-    yG = P2[1] + np.sqrt(max(L**2 - P2[0] ** 2, 0.0))
-    G = np.array([0.0, yG])
-    P2b = np.array([-P2[0], P2[1]])
-
-    def aoi(prev, here, nxt):
-        a, b = prev - here, nxt - here
-        return float(np.degrees(0.5 * np.arccos(np.dot(a, b) / np.linalg.norm(a) / np.linalg.norm(b))))
-
-    layout = {"theta_deg": float(np.degrees(th)), "X": [0, 0], "P1": P1.tolist(), "P2": P2.tolist(), "G1": G.tolist(),
-              "P2b": P2b.tolist(), "P1b": P1b.tolist(),
-              "aoi_deg": {"P1": aoi(np.zeros(2), P1, P2), "P2": aoi(P1, P2, G), "G1": aoi(P2, G, P2b)},
-              "half_trip_path_m": float(d0 + D), "round_trip_m": float(4 * (d0 + D)),
-              "fsr_MHz": float(299792458.0 / (4 * (d0 + D)) / 1e6)}
-    rep = {"vertical_designs": rows, "layout_m": layout}
+    rings = {name: ring_geometry(th, d0, f1, f2, L, np.radians(r["turn_deg"]), np.radians(r["rotation_deg"]), t["ap1_mm"], t["ap2_mm"])
+             for name, r in cfg["rings"].items()}
+    names = list(rings)
+    layout = {"theta_deg": float(np.degrees(th)), "half_trip_path_m": float(d0 + D), "round_trip_m": float(4 * (d0 + D)),
+              "fsr_MHz": float(299792458.0 / (4 * (d0 + D)) / 1e6), "rings": {}}
+    for name, rg in rings.items():
+        layout["rings"][name] = {"turn_deg": cfg["rings"][name]["turn_deg"], "rotation_deg": cfg["rings"][name]["rotation_deg"],
+                                 "aoi_deg": rg["aoi_deg"], "mirrors_mm": {k: v.tolist() for k, v in rg["mirrors"].items()},
+                                 "diagonal_clearance_mm": diagonal_clearance(rg, cfg["diagonal_min_radius_mm"])}
+    layout["ring_clearance_mm"] = clearance(rings[names[0]], rings[names[1]], cfg["beam_margin_mm"])
+    rep = {"vertical_designs": rows, "layout": layout}
     write_json(out / "layout.json", rep)
     for r in rows:
         print(r)
-    print(layout)
+    print(json.dumps(layout, indent=1)[:1500])
     try:
         import matplotlib
 
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
 
-        fig, ax = plt.subplots(figsize=(6.5, 5.0))
-        # Ring for the y-lattice, and its mirror image (lower half) for the second half trip (G2).
-        pts_up = np.array([np.zeros(2), P1, P2, G, P2b, P1b, np.zeros(2)]) * 1e3
-        pts_dn = pts_up * np.array([1, -1])
-        for pts, c in ((pts_up, "C0"), (pts_dn, "C0")):
-            ax.plot(pts[:, 0], pts[:, 1], "-", color=c, lw=1)
-        rot = np.array([[0, -1], [1, 0]])
-        for pts in (pts_up, pts_dn):
-            q = pts @ rot.T
-            ax.plot(q[:, 0], q[:, 1], "-", color="C1", lw=1)
-        for name, p in (("P1", P1), ("P2", P2), ("G1", G)):
-            ax.plot(*(p * 1e3), "ks", ms=4)
-            ax.annotate(name, p * 1e3, textcoords="offset points", xytext=(4, 4), fontsize=8)
+        fig, ax = plt.subplots(figsize=(6.5, 6.0))
+        for (name, rg), col in zip(rings.items(), ("#2a78d6", "#eb6834")):
+            for path in rg["paths"]:
+                ax.plot(path[:, 0], path[:, 1], "-", color=col, lw=1, label=name if path is rg["paths"][0] else None)
+            for k, (p_, hw) in rg["mirror_sizes"].items():
+                ax.add_patch(plt.Circle(p_, hw, fill=False, ec=col, lw=0.8))
         ax.add_patch(plt.Rectangle((-15, -15), 30, 30, fill=False, ec="0.4", lw=1))
         ax.set_aspect("equal")
         ax.set_xlabel("x (mm)")
         ax.set_ylabel("y (mm)")
-        ax.set_title("In-plane rings (y-lattice blue, x-lattice orange); cell outline 30 mm [CONFIRM?]", fontsize=8)
+        ax.legend(fontsize=8, frameon=False)
+        ax.set_title(f"In-plane rings, clearance {layout['ring_clearance_mm']:.1f} mm; cell outline 30 mm [CONFIRM?]", fontsize=8)
         fig.tight_layout()
         fig.savefig(out / "layout.png", dpi=150)
     except Exception as exc:  # plotting is optional
         print("plot failed", exc)
+
+
+def ring_geometry(th, d0, f1, f2, L, turn, rot, ap1_mm, ap2_mm):
+    """Mirror positions (mm) of a self-intersecting telescope ring: arms cross at X at +-theta; the
+    primary P1 at d0 turns the beam by `turn` (direction of the outgoing ray from +x) towards the
+    secondary P2 (f1 + f2 further); the graded mirror G lies on the ring's mirror axis at L from P2.
+    The second half trip (G2) is the mirror image across the ring axis; `rot` rotates the ring."""
+    P1 = d0 * np.array([np.cos(th), np.sin(th)])
+    P2 = P1 + (f1 + f2) * np.array([np.cos(turn), np.sin(turn)])
+    G = np.array([0.0, P2[1] + np.sqrt(max(L**2 - P2[0] ** 2, 0.0))])
+    up = [np.zeros(2), P1, P2, G, P2 * [-1, 1], P1 * [-1, 1], np.zeros(2)]
+    dn = [p * [1, -1] for p in up]
+    R = np.array([[np.cos(rot), -np.sin(rot)], [np.sin(rot), np.cos(rot)]])
+
+    def aoi(prev, here, nxt):
+        a, b = prev - here, nxt - here
+        return float(np.degrees(0.5 * np.arccos(np.dot(a, b) / np.linalg.norm(a) / np.linalg.norm(b))))
+
+    names = ["P1", "P2", "G1", "P2'", "P1'"]
+    mirrors, sizes = {}, {}
+    for half, pts in (("", up), ("_lower", dn)):
+        for i, n in enumerate(names):
+            key = (n.replace("G1", "G2") if half else n) + half
+            mirrors[key] = R @ pts[i + 1] * 1e3
+            sizes[key] = (mirrors[key], ap1_mm if n.startswith("P1") else ap2_mm)
+    paths = [np.array([R @ p * 1e3 for p in pts]) for pts in (up, dn)]
+    return {"mirrors": mirrors, "mirror_sizes": sizes, "paths": paths,
+            "aoi_deg": {"P1": aoi(np.zeros(2), P1, P2), "P2": aoi(P1, P2, G), "G": aoi(P2, G, P2 * [-1, 1])}}
+
+
+def _segdist(p, a, b):
+    t = np.clip(np.dot(p - a, b - a) / np.dot(b - a, b - a), 0, 1)
+    return float(np.linalg.norm(a + t * (b - a) - p))
+
+
+def clearance(r1, r2, margin):
+    """Smallest gap (mm) between mirrors of two rings, or between a mirror and the other ring's beam
+    path (beam half-width plus `margin` taken as 3 mm), using the mirror apertures as radii."""
+    c = np.inf
+    for p, h in r1["mirror_sizes"].values():
+        for q, k in r2["mirror_sizes"].values():
+            c = min(c, np.linalg.norm(p - q) - h - k)
+    for ra, rb in ((r1, r2), (r2, r1)):
+        for p, h in rb["mirror_sizes"].values():
+            for path in ra["paths"]:
+                for a, b in zip(path[:-1], path[1:]):
+                    c = min(c, _segdist(p, a, b) - h - margin)
+    return float(c)
+
+
+def diagonal_clearance(rg, r_min):
+    """Smallest distance (mm) of the ring's mirrors from the two array diagonals beyond radius r_min,
+    the corridor reserved for the vertical-lattice ring."""
+    c = np.inf
+    for p, h in rg["mirror_sizes"].values():
+        if np.linalg.norm(p) < r_min:
+            continue
+        for d in (np.array([1, 1]) / np.sqrt(2), np.array([1, -1]) / np.sqrt(2)):
+            c = min(c, abs(d[0] * p[1] - d[1] * p[0]) - h)
+    return float(c)
 
 
 if __name__ == "__main__":

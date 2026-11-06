@@ -4,8 +4,8 @@ wavelength_nm: 1075.0
 foxli_json: results/cavity_foxli/foxli.json
 layout_json: results/cavity_layout/layout.json
 budget_json: results/cavity_budget/budget.json
-design_key: design_telK_M0.2
-vertical_f_z_m: 0.03
+design_key: design_telK_M0.2_d70   # adopted layout (d0 = 70 mm)
+vertical_f_z_m: 0.04
 w_z_m: 75.0e-6
 n_sites: 1.0e+6
 depths_mK: [0.2, 0.3]

@@ -6865,5 +6865,127 @@
       "dy_affine_residual_pv_um": 0.0334847689193627
     },
     "roundtrip_loss_of_target": 0.01625724591968003
+  },
+  "design_telK_M0.2_d70": {
+    "t_in": 0.012647552475468726,
+    "enhancement": 299.99921077649714,
+    "enhancement_analytic": 299.99999999999113,
+    "g_ratio": 0.99999736925502,
+    "linewidth_rad": 0.013028281643493783,
+    "flat_A": {
+      "rms": 0.001493025951068018,
+      "min_over_mean": 0.9906425411456695,
+      "max_over_mean": 1.0005266194975375
+    },
+    "flat_B": {
+      "rms": 0.0014930289647700967,
+      "min_over_mean": 0.9906429010522291,
+      "max_over_mean": 1.000526898816721
+    },
+    "array": {
+      "depth_rms": 0.0023149340766849265,
+      "depth_min_over_mean": 0.9903220958529353,
+      "depth_max_over_mean": 1.002644852137402,
+      "dy_rms_um": 0.006031916908998161,
+      "dy_pv_um": 0.020835610306653634,
+      "dy_affine_residual_rms_um": 3.0262902383716188e-05,
+      "dy_affine_residual_pv_um": 0.00030078152222738457
+    },
+    "roundtrip_loss_of_target": 1.6123023693914718e-08,
+    "variant": {
+      "geometry": "telescope",
+      "order": 20,
+      "f1_um": 100000.0,
+      "mag": 0.2,
+      "d0_um": 70000.0,
+      "L_um": 100000.0,
+      "ap1_um": 5000.0,
+      "ap2_um": 2500.0,
+      "ap_g_um": 2500.0
+    },
+    "p_um": 290000.0,
+    "w_um": 2929.6006047601963,
+    "flat_halfrange_um": 2248.360493387949,
+    "equivalent_width_um": 5509.6596425714815,
+    "fresnel_number_plain": 27.530263683757205,
+    "graded_mirror": {
+      "pv_rad": 23.909598600308072,
+      "max_deflection": 0.0135076855332486
+    },
+    "graded_mirror_peak_over_flat_intensity": 6.459545667451782,
+    "graded_mirror_rms_halfwidth_um": 322.5651208182654,
+    "elements": {
+      "element0_z70mm": {
+        "peak_over_flat_intensity": 1.0000000019231599,
+        "rms_halfwidth_um": 1599.5041064453794,
+        "half_width_um": 5000.0
+      },
+      "element1_z190mm": {
+        "peak_over_flat_intensity": 5.70216615521965,
+        "rms_halfwidth_um": 320.6660947140082,
+        "half_width_um": 2500.0
+      }
+    },
+    "spectrum": {
+      "fundamental_loss": 1.637383972852291e-08,
+      "fundamental_overlap": 0.9999999961601759,
+      "modes": [
+        {
+          "dphase_rad": -0.2157640337029461,
+          "loss": 0.0033293462554466746
+        }
+      ],
+      "lowest_loss_modes": [
+        {
+          "dphase_rad": -0.2157640337029461,
+          "loss": 0.0033293462554466746
+        },
+        {
+          "dphase_rad": -2.045309616240079,
+          "loss": 0.013550707214900037
+        },
+        {
+          "dphase_rad": 2.8625869309244374,
+          "loss": 0.013558798472501077
+        },
+        {
+          "dphase_rad": -1.061087295985984,
+          "loss": 0.039858780611966904
+        },
+        {
+          "dphase_rad": -0.957939719267298,
+          "loss": 0.049810909436779016
+        },
+        {
+          "dphase_rad": 1.1723077928451813,
+          "loss": 0.08088060290764332
+        },
+        {
+          "dphase_rad": 3.1257349833874373,
+          "loss": 0.0939947930887467
+        },
+        {
+          "dphase_rad": -0.12413149880481751,
+          "loss": 0.10154146205961045
+        },
+        {
+          "dphase_rad": 1.5818531664580944,
+          "loss": 0.101633270534216
+        },
+        {
+          "dphase_rad": -1.9891933156182506,
+          "loss": 0.11206130377700363
+        },
+        {
+          "dphase_rad": 2.09321855726714,
+          "loss": 0.11725805439380765
+        },
+        {
+          "dphase_rad": -0.39886609243383014,
+          "loss": 0.14538781768680886
+        }
+      ]
+    },
+    "seconds": 76.71650075912476
   }
 }
