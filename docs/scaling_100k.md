@@ -198,7 +198,7 @@ than with ideal pillars. The final design is also evaluated with random pillar w
 | 10 | 1.07 % | 0.95 | 0.828 | 0.113 | -0.26 |
 | 11 | 0.91 % | 0.97 | 0.827 | 0.107 | -0.37 |
 | 12 | 0.84 % | 0.97 | 0.827 | 0.109 | -0.45 |
-| 13 | running | | | | |
+| 13 | 0.81 % | 0.97 | 0.827 | 0.113 | - |
 | Final design, sigma 5 nm width errors | running | | | | - |
 
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
