@@ -1,0 +1,1299 @@
+{
+  "sweeps": [
+    {
+      "case": {
+        "name": "ours_fs_0.5mm_tophat",
+        "substrate": "fused_silica",
+        "thickness_mm": 0.5,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "top_hat"
+        },
+        "powers_W": [
+          1,
+          10,
+          30,
+          50,
+          100
+        ],
+        "a_film": [
+          1e-05,
+          0.0001,
+          0.001
+        ]
+      },
+      "rows": [
+        {
+          "dz_um": -1.843579706059914e-05,
+          "strehl_refocused": 0.9999999999997473,
+          "strehl_fixed_plane": 0.999999999973671,
+          "rms_residual_waves": 8.001147988895957e-08,
+          "pv_opl_um": 3.0418298149617917e-06,
+          "P_W": 1,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.0010180070796423017,
+          "dT_mean_beam_K": 0.0007250448220389359,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.0003770233074602467
+        },
+        {
+          "dz_um": -0.00018435797060614077,
+          "strehl_refocused": 0.9999999999747267,
+          "strehl_fixed_plane": 0.9999999973671155,
+          "rms_residual_waves": 8.001147988895912e-07,
+          "pv_opl_um": 3.0418298149617905e-05,
+          "P_W": 1,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.010180070796423024,
+          "dT_mean_beam_K": 0.007250448220389361,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.003770233074602468
+        },
+        {
+          "dz_um": -0.0018435797060595163,
+          "strehl_refocused": 0.9999999974726562,
+          "strehl_fixed_plane": 0.9999997367115637,
+          "rms_residual_waves": 8.001147988895918e-06,
+          "pv_opl_um": 0.0003041829814961792,
+          "P_W": 1,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.10180070796423023,
+          "dT_mean_beam_K": 0.0725044822038936,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.03770233074602467
+        },
+        {
+          "dz_um": -0.00018435797060614077,
+          "strehl_refocused": 0.9999999999747267,
+          "strehl_fixed_plane": 0.9999999973671155,
+          "rms_residual_waves": 8.001147988895912e-07,
+          "pv_opl_um": 3.0418298149617905e-05,
+          "P_W": 10,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.010180070796423024,
+          "dT_mean_beam_K": 0.007250448220389361,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.003770233074602468
+        },
+        {
+          "dz_um": -0.0018435797060595163,
+          "strehl_refocused": 0.9999999974726562,
+          "strehl_fixed_plane": 0.9999997367115637,
+          "rms_residual_waves": 8.001147988895918e-06,
+          "pv_opl_um": 0.0003041829814961792,
+          "P_W": 10,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.10180070796423023,
+          "dT_mean_beam_K": 0.0725044822038936,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.03770233074602467
+        },
+        {
+          "dz_um": -0.01843579706058359,
+          "strehl_refocused": 0.9999997472656362,
+          "strehl_fixed_plane": 0.9999736714314802,
+          "rms_residual_waves": 8.00114798889594e-05,
+          "pv_opl_um": 0.0030418298149617884,
+          "P_W": 10,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 1.0180070796423013,
+          "dT_mean_beam_K": 0.7250448220389357,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.3770233074602466
+        },
+        {
+          "dz_um": -0.0005530739118184117,
+          "strehl_refocused": 0.9999999997725391,
+          "strehl_fixed_plane": 0.9999999763040386,
+          "rms_residual_waves": 2.4003443966687717e-06,
+          "pv_opl_um": 9.12548944488537e-05,
+          "P_W": 30,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.03054021238926906,
+          "dT_mean_beam_K": 0.021751344661168084,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.011310699223807404
+        },
+        {
+          "dz_um": -0.0055307391181758135,
+          "strehl_refocused": 0.999999977253905,
+          "strehl_fixed_plane": 0.9999976304060751,
+          "rms_residual_waves": 2.400344396668772e-05,
+          "pv_opl_um": 0.0009125489444885375,
+          "P_W": 30,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.3054021238926907,
+          "dT_mean_beam_K": 0.21751344661168082,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.11310699223807402
+        },
+        {
+          "dz_um": -0.05530739118181201,
+          "strehl_refocused": 0.9999977253926997,
+          "strehl_fixed_plane": 0.9997630628893951,
+          "rms_residual_waves": 0.00024003443966687726,
+          "pv_opl_um": 0.009125489444885377,
+          "P_W": 30,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 3.054021238926906,
+          "dT_mean_beam_K": 2.175134466116807,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 1.1310699223807397
+        },
+        {
+          "dz_um": -0.0009217898530297582,
+          "strehl_refocused": 0.9999999993681639,
+          "strehl_fixed_plane": 0.9999999341778857,
+          "rms_residual_waves": 4.000573994447959e-06,
+          "pv_opl_um": 0.0001520914907480896,
+          "P_W": 50,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.050900353982115114,
+          "dT_mean_beam_K": 0.0362522411019468,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.018851165373012336
+        },
+        {
+          "dz_um": -0.009217898530291795,
+          "strehl_refocused": 0.9999999368164039,
+          "strehl_fixed_plane": 0.9999934178057682,
+          "rms_residual_waves": 4.00057399444797e-05,
+          "pv_opl_um": 0.0015209149074808942,
+          "P_W": 50,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.5090035398211507,
+          "dT_mean_beam_K": 0.36252241101946786,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.1885116537301233
+        },
+        {
+          "dz_um": -0.09217898530301992,
+          "strehl_refocused": 0.9999936816573513,
+          "strehl_fixed_plane": 0.9993419524892118,
+          "rms_residual_waves": 0.0004000573994447935,
+          "pv_opl_um": 0.015209149074808977,
+          "P_W": 50,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 5.090035398211509,
+          "dT_mean_beam_K": 3.6252241101946794,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 1.8851165373012333
+        },
+        {
+          "dz_um": -0.0018435797060595163,
+          "strehl_refocused": 0.9999999974726562,
+          "strehl_fixed_plane": 0.9999997367115637,
+          "rms_residual_waves": 8.001147988895918e-06,
+          "pv_opl_um": 0.0003041829814961792,
+          "P_W": 100,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.10180070796423023,
+          "dT_mean_beam_K": 0.0725044822038936,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.03770233074602467
+        },
+        {
+          "dz_um": -0.01843579706058359,
+          "strehl_refocused": 0.9999997472656362,
+          "strehl_fixed_plane": 0.9999736714314802,
+          "rms_residual_waves": 8.00114798889594e-05,
+          "pv_opl_um": 0.0030418298149617884,
+          "P_W": 100,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 1.0180070796423013,
+          "dT_mean_beam_K": 0.7250448220389357,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.3770233074602466
+        },
+        {
+          "dz_um": -0.18435797060603984,
+          "strehl_refocused": 0.9999747268349526,
+          "strehl_fixed_plane": 0.9973698925686278,
+          "rms_residual_waves": 0.000800114798889587,
+          "pv_opl_um": 0.030418298149617953,
+          "P_W": 100,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 10.180070796423019,
+          "dT_mean_beam_K": 7.250448220389359,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 3.7702330746024666
+        }
+      ],
+      "a_film_for_1um_shift_at_Pmax": 0.005424240334426911
+    },
+    {
+      "case": {
+        "name": "ours_fs_1mm_tophat",
+        "substrate": "fused_silica",
+        "thickness_mm": 1.0,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "top_hat"
+        },
+        "powers_W": [
+          1,
+          10,
+          30,
+          50,
+          100
+        ],
+        "a_film": [
+          1e-05,
+          0.0001,
+          0.001
+        ]
+      },
+      "rows": [
+        {
+          "dz_um": -2.419879612813679e-05,
+          "strehl_refocused": 0.9999999999997131,
+          "strehl_fixed_plane": 0.9999999999547857,
+          "rms_residual_waves": 8.526432709036224e-08,
+          "pv_opl_um": 3.985372529156456e-06,
+          "P_W": 1,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.0006657298533261181,
+          "dT_mean_beam_K": 0.0004689498904566819,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.0002438539430374746
+        },
+        {
+          "dz_um": -0.00024198796128086015,
+          "strehl_refocused": 0.9999999999712991,
+          "strehl_fixed_plane": 0.9999999954786084,
+          "rms_residual_waves": 8.526432709036286e-07,
+          "pv_opl_um": 3.985372529156449e-05,
+          "P_W": 1,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.006657298533261175,
+          "dT_mean_beam_K": 0.004689498904566816,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.002438539430374744
+        },
+        {
+          "dz_um": -0.002419879612809392,
+          "strehl_refocused": 0.9999999971299168,
+          "strehl_fixed_plane": 0.9999995478609278,
+          "rms_residual_waves": 8.526432709036231e-06,
+          "pv_opl_um": 0.00039853725291564526,
+          "P_W": 1,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.06657298533261179,
+          "dT_mean_beam_K": 0.04689498904566819,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.024385394303747455
+        },
+        {
+          "dz_um": -0.00024198796128086015,
+          "strehl_refocused": 0.9999999999712991,
+          "strehl_fixed_plane": 0.9999999954786084,
+          "rms_residual_waves": 8.526432709036286e-07,
+          "pv_opl_um": 3.985372529156449e-05,
+          "P_W": 10,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.006657298533261175,
+          "dT_mean_beam_K": 0.004689498904566816,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.002438539430374744
+        },
+        {
+          "dz_um": -0.002419879612809392,
+          "strehl_refocused": 0.9999999971299168,
+          "strehl_fixed_plane": 0.9999995478609278,
+          "rms_residual_waves": 8.526432709036231e-06,
+          "pv_opl_um": 0.00039853725291564526,
+          "P_W": 10,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.06657298533261179,
+          "dT_mean_beam_K": 0.04689498904566819,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.024385394303747455
+        },
+        {
+          "dz_um": -0.024198796128112137,
+          "strehl_refocused": 0.9999997129917235,
+          "strehl_fixed_plane": 0.9999547869027514,
+          "rms_residual_waves": 8.526432709036257e-05,
+          "pv_opl_um": 0.003985372529156449,
+          "P_W": 10,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.6657298533261171,
+          "dT_mean_beam_K": 0.4689498904566817,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.24385394303747446
+        },
+        {
+          "dz_um": -0.000725963883842788,
+          "strehl_refocused": 0.9999999997416924,
+          "strehl_fixed_plane": 0.9999999593074769,
+          "rms_residual_waves": 2.557929812710872e-06,
+          "pv_opl_um": 0.00011956117587469368,
+          "P_W": 30,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.019971895599783546,
+          "dT_mean_beam_K": 0.014068496713700458,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.007315618291124238
+        },
+        {
+          "dz_um": -0.007259638838439571,
+          "strehl_refocused": 0.9999999741692522,
+          "strehl_fixed_plane": 0.9999959307542395,
+          "rms_residual_waves": 2.557929812710871e-05,
+          "pv_opl_um": 0.0011956117587469351,
+          "P_W": 30,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.1997189559978353,
+          "dT_mean_beam_K": 0.14068496713700449,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.07315618291124233
+        },
+        {
+          "dz_um": -0.07259638838430282,
+          "strehl_refocused": 0.999997416928052,
+          "strehl_fixed_plane": 0.9995931410278225,
+          "rms_residual_waves": 0.0002557929812710906,
+          "pv_opl_um": 0.011956117587469341,
+          "P_W": 30,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 1.997189559978352,
+          "dT_mean_beam_K": 1.4068496713700454,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.7315618291124235
+        },
+        {
+          "dz_um": -0.001209939806404696,
+          "strehl_refocused": 0.9999999992824793,
+          "strehl_fixed_plane": 0.9999998869652167,
+          "rms_residual_waves": 4.263216354518116e-06,
+          "pv_opl_um": 0.00019926862645782263,
+          "P_W": 50,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.03328649266630589,
+          "dT_mean_beam_K": 0.023447494522834095,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.012192697151873728
+        },
+        {
+          "dz_um": -0.012099398064056069,
+          "strehl_refocused": 0.9999999282479242,
+          "strehl_fixed_plane": 0.9999886965722816,
+          "rms_residual_waves": 4.2632163545181285e-05,
+          "pv_opl_um": 0.0019926862645782244,
+          "P_W": 50,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.33286492666305856,
+          "dT_mean_beam_K": 0.23447494522834084,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.12192697151873723
+        },
+        {
+          "dz_um": -0.12099398064065006,
+          "strehl_refocused": 0.9999928248142733,
+          "strehl_fixed_plane": 0.9988701633514987,
+          "rms_residual_waves": 0.0004263216354518137,
+          "pv_opl_um": 0.01992686264578225,
+          "P_W": 50,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 3.3286492666305865,
+          "dT_mean_beam_K": 2.3447494522834083,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 1.2192697151873721
+        },
+        {
+          "dz_um": -0.002419879612809392,
+          "strehl_refocused": 0.9999999971299168,
+          "strehl_fixed_plane": 0.9999995478609278,
+          "rms_residual_waves": 8.526432709036231e-06,
+          "pv_opl_um": 0.00039853725291564526,
+          "P_W": 100,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.06657298533261179,
+          "dT_mean_beam_K": 0.04689498904566819,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.024385394303747455
+        },
+        {
+          "dz_um": -0.024198796128112137,
+          "strehl_refocused": 0.9999997129917235,
+          "strehl_fixed_plane": 0.9999547869027514,
+          "rms_residual_waves": 8.526432709036257e-05,
+          "pv_opl_um": 0.003985372529156449,
+          "P_W": 100,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.6657298533261171,
+          "dT_mean_beam_K": 0.4689498904566817,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.24385394303747446
+        },
+        {
+          "dz_um": -0.24198796128130012,
+          "strehl_refocused": 0.9999712995220003,
+          "strehl_fixed_plane": 0.9954867823055259,
+          "rms_residual_waves": 0.0008526432709036274,
+          "pv_opl_um": 0.0398537252915645,
+          "P_W": 100,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 6.657298533261173,
+          "dT_mean_beam_K": 4.6894989045668165,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 2.4385394303747443
+        }
+      ],
+      "a_film_for_1um_shift_at_Pmax": 0.004134014924151366
+    },
+    {
+      "case": {
+        "name": "ours_sapphire_0.5mm_tophat",
+        "substrate": "sapphire",
+        "thickness_mm": 0.5,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "top_hat"
+        },
+        "powers_W": [
+          1,
+          10,
+          30,
+          50,
+          100
+        ],
+        "a_film": [
+          1e-05,
+          0.0001,
+          0.001
+        ]
+      },
+      "rows": [
+        {
+          "dz_um": -2.519552651577848e-06,
+          "strehl_refocused": 0.9999999999999983,
+          "strehl_fixed_plane": 0.9999999999995111,
+          "rms_residual_waves": 6.908099524437076e-09,
+          "pv_opl_um": 4.14404447094157e-07,
+          "P_W": 1,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 7.528302001296942e-05,
+          "dT_mean_beam_K": 5.2035597733034095e-05,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.0002601779886651705
+        },
+        {
+          "dz_um": -2.5195526515760185e-05,
+          "strehl_refocused": 0.9999999999998117,
+          "strehl_fixed_plane": 0.9999999999511074,
+          "rms_residual_waves": 6.908099524437171e-08,
+          "pv_opl_um": 4.144044470941567e-06,
+          "P_W": 1,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.000752830200129694,
+          "dT_mean_beam_K": 0.000520355977330341,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.0026017798866517054
+        },
+        {
+          "dz_um": -0.0002519552651577947,
+          "strehl_refocused": 0.9999999999811601,
+          "strehl_fixed_plane": 0.9999999951107464,
+          "rms_residual_waves": 6.908099524437116e-07,
+          "pv_opl_um": 4.144044470941569e-05,
+          "P_W": 1,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.007528302001296942,
+          "dT_mean_beam_K": 0.005203559773303412,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.02601779886651706
+        },
+        {
+          "dz_um": -2.5195526515760185e-05,
+          "strehl_refocused": 0.9999999999998117,
+          "strehl_fixed_plane": 0.9999999999511074,
+          "rms_residual_waves": 6.908099524437171e-08,
+          "pv_opl_um": 4.144044470941567e-06,
+          "P_W": 10,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.000752830200129694,
+          "dT_mean_beam_K": 0.000520355977330341,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.0026017798866517054
+        },
+        {
+          "dz_um": -0.0002519552651577947,
+          "strehl_refocused": 0.9999999999811601,
+          "strehl_fixed_plane": 0.9999999951107464,
+          "rms_residual_waves": 6.908099524437116e-07,
+          "pv_opl_um": 4.144044470941569e-05,
+          "P_W": 10,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.007528302001296942,
+          "dT_mean_beam_K": 0.005203559773303412,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.02601779886651706
+        },
+        {
+          "dz_um": -0.002519552651576619,
+          "strehl_refocused": 0.9999999981160171,
+          "strehl_fixed_plane": 0.9999995110747154,
+          "rms_residual_waves": 6.90809952443713e-06,
+          "pv_opl_um": 0.0004144044470941565,
+          "P_W": 10,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.07528302001296938,
+          "dT_mean_beam_K": 0.052035597733034095,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.26017798866517045
+        },
+        {
+          "dz_um": -7.558657954733004e-05,
+          "strehl_refocused": 0.9999999999983047,
+          "strehl_fixed_plane": 0.9999999995599671,
+          "rms_residual_waves": 2.0724298573311408e-07,
+          "pv_opl_um": 1.2432133412824701e-05,
+          "P_W": 30,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.0022584906003890824,
+          "dT_mean_beam_K": 0.0015610679319910234,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.007805339659955118
+        },
+        {
+          "dz_um": -0.0007558657954728756,
+          "strehl_refocused": 0.9999999998304414,
+          "strehl_fixed_plane": 0.9999999559967165,
+          "rms_residual_waves": 2.072429857331144e-06,
+          "pv_opl_um": 0.0001243213341282471,
+          "P_W": 30,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.022584906003890837,
+          "dT_mean_beam_K": 0.01561067931991023,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.07805339659955116
+        },
+        {
+          "dz_um": -0.0075586579547334805,
+          "strehl_refocused": 0.9999999830441559,
+          "strehl_fixed_plane": 0.9999955996793243,
+          "rms_residual_waves": 2.072429857331143e-05,
+          "pv_opl_um": 0.0012432133412824701,
+          "P_W": 30,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.22584906003890817,
+          "dT_mean_beam_K": 0.1561067931991023,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.7805339659955116
+        },
+        {
+          "dz_um": -0.00012597763257889735,
+          "strehl_refocused": 0.9999999999952902,
+          "strehl_fixed_plane": 0.9999999987776866,
+          "rms_residual_waves": 3.454049762218558e-07,
+          "pv_opl_um": 2.0720222354707846e-05,
+          "P_W": 50,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.003764151000648471,
+          "dT_mean_beam_K": 0.002601779886651706,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.01300889943325853
+        },
+        {
+          "dz_um": -0.0012597763257883095,
+          "strehl_refocused": 0.9999999995290043,
+          "strehl_fixed_plane": 0.9999998777686611,
+          "rms_residual_waves": 3.454049762218565e-06,
+          "pv_opl_um": 0.00020720222354707825,
+          "P_W": 50,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.03764151000648469,
+          "dT_mean_beam_K": 0.026017798866517047,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.13008899433258522
+        },
+        {
+          "dz_um": -0.012597763257900534,
+          "strehl_refocused": 0.9999999529004335,
+          "strehl_fixed_plane": 0.9999877769252594,
+          "rms_residual_waves": 3.454049762218564e-05,
+          "pv_opl_um": 0.0020720222354707806,
+          "P_W": 50,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.3764151000648468,
+          "dT_mean_beam_K": 0.2601779886651705,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 1.3008899433258527
+        },
+        {
+          "dz_um": -0.0002519552651577947,
+          "strehl_refocused": 0.9999999999811601,
+          "strehl_fixed_plane": 0.9999999951107464,
+          "rms_residual_waves": 6.908099524437116e-07,
+          "pv_opl_um": 4.144044470941569e-05,
+          "P_W": 100,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.007528302001296942,
+          "dT_mean_beam_K": 0.005203559773303412,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.02601779886651706
+        },
+        {
+          "dz_um": -0.002519552651576619,
+          "strehl_refocused": 0.9999999981160171,
+          "strehl_fixed_plane": 0.9999995110747154,
+          "rms_residual_waves": 6.90809952443713e-06,
+          "pv_opl_um": 0.0004144044470941565,
+          "P_W": 100,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.07528302001296938,
+          "dT_mean_beam_K": 0.052035597733034095,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.26017798866517045
+        },
+        {
+          "dz_um": -0.025195526515801068,
+          "strehl_refocused": 0.9999998116017462,
+          "strehl_fixed_plane": 0.999951108418174,
+          "rms_residual_waves": 6.908099524437129e-05,
+          "pv_opl_um": 0.004144044470941561,
+          "P_W": 100,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.7528302001296936,
+          "dT_mean_beam_K": 0.520355977330341,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 2.6017798866517055
+        }
+      ],
+      "a_film_for_1um_shift_at_Pmax": 0.039689661905559045
+    },
+    {
+      "case": {
+        "name": "ours_fs_0.5mm_gauss_w1R",
+        "substrate": "fused_silica",
+        "thickness_mm": 0.5,
+        "substrate_radius_mm": 12.5,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            4000,
+            "fused_silica"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 1.075,
+        "na": 0.55,
+        "beam": {
+          "kind": "gaussian",
+          "waist_over_radius": 1.0
+        },
+        "powers_W": [
+          1,
+          10,
+          30,
+          50,
+          100
+        ],
+        "a_film": [
+          1e-05,
+          0.0001,
+          0.001
+        ]
+      },
+      "rows": [
+        {
+          "dz_um": -3.321526080307559e-05,
+          "strehl_refocused": 0.9999999999995767,
+          "strehl_fixed_plane": 0.9999999999194382,
+          "rms_residual_waves": 9.65690582315539e-08,
+          "pv_opl_um": 5.351364948363918e-06,
+          "P_W": 1,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.001458614163799616,
+          "dT_mean_beam_K": 0.0008204760619502761,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.00042664755221414355
+        },
+        {
+          "dz_um": -0.00033215260803105953,
+          "strehl_refocused": 0.9999999999577256,
+          "strehl_fixed_plane": 0.9999999919438696,
+          "rms_residual_waves": 9.656905823155412e-07,
+          "pv_opl_um": 5.351364948363921e-05,
+          "P_W": 1,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.014586141637996165,
+          "dT_mean_beam_K": 0.008204760619502764,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.004266475522141437
+        },
+        {
+          "dz_um": -0.003321526080307962,
+          "strehl_refocused": 0.9999999957725967,
+          "strehl_fixed_plane": 0.9999991943872627,
+          "rms_residual_waves": 9.65690582315534e-06,
+          "pv_opl_um": 0.0005351364948363918,
+          "P_W": 1,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.14586141637996164,
+          "dT_mean_beam_K": 0.08204760619502761,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.04266475522141436
+        },
+        {
+          "dz_um": -0.00033215260803105953,
+          "strehl_refocused": 0.9999999999577256,
+          "strehl_fixed_plane": 0.9999999919438696,
+          "rms_residual_waves": 9.656905823155412e-07,
+          "pv_opl_um": 5.351364948363921e-05,
+          "P_W": 10,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.014586141637996165,
+          "dT_mean_beam_K": 0.008204760619502764,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.004266475522141437
+        },
+        {
+          "dz_um": -0.003321526080307962,
+          "strehl_refocused": 0.9999999957725967,
+          "strehl_fixed_plane": 0.9999991943872627,
+          "rms_residual_waves": 9.65690582315534e-06,
+          "pv_opl_um": 0.0005351364948363918,
+          "P_W": 10,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.14586141637996164,
+          "dT_mean_beam_K": 0.08204760619502761,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.04266475522141436
+        },
+        {
+          "dz_um": -0.03321526080303355,
+          "strehl_refocused": 0.9999995772597694,
+          "strehl_fixed_plane": 0.9999194413027291,
+          "rms_residual_waves": 9.656905823155397e-05,
+          "pv_opl_um": 0.005351364948363923,
+          "P_W": 10,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 1.4586141637996168,
+          "dT_mean_beam_K": 0.8204760619502763,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.4266475522141437
+        },
+        {
+          "dz_um": -0.0009964578240941164,
+          "strehl_refocused": 0.9999999996195331,
+          "strehl_fixed_plane": 0.9999999274948324,
+          "rms_residual_waves": 2.8970717469466122e-06,
+          "pv_opl_um": 0.00016054094845091753,
+          "P_W": 30,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.04375842491398847,
+          "dT_mean_beam_K": 0.024614281858508294,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.012799426566424313
+        },
+        {
+          "dz_um": -0.009964578240925627,
+          "strehl_refocused": 0.9999999619533722,
+          "strehl_fixed_plane": 0.9999927495041053,
+          "rms_residual_waves": 2.897071746946629e-05,
+          "pv_opl_um": 0.001605409484509177,
+          "P_W": 30,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.43758424913988514,
+          "dT_mean_beam_K": 0.24614281858508288,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.1279942656642431
+        },
+        {
+          "dz_um": -0.09964578240919139,
+          "strehl_refocused": 0.9999961953440021,
+          "strehl_fixed_plane": 0.9992751590716487,
+          "rms_residual_waves": 0.00028970717469466254,
+          "pv_opl_um": 0.016054094845091765,
+          "P_W": 30,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 4.37584249139885,
+          "dT_mean_beam_K": 2.4614281858508282,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 1.2799426566424306
+        },
+        {
+          "dz_um": -0.001660763040153981,
+          "strehl_refocused": 0.9999999989431491,
+          "strehl_fixed_plane": 0.9999997985967666,
+          "rms_residual_waves": 4.82845291157767e-06,
+          "pv_opl_um": 0.0002675682474181959,
+          "P_W": 50,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.07293070818998082,
+          "dT_mean_beam_K": 0.04102380309751381,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.02133237761070718
+        },
+        {
+          "dz_um": -0.016607630401516776,
+          "strehl_refocused": 0.9999998943149259,
+          "strehl_fixed_plane": 0.9999798598377251,
+          "rms_residual_waves": 4.8284529115776984e-05,
+          "pv_opl_um": 0.0026756824741819615,
+          "P_W": 50,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.7293070818998084,
+          "dT_mean_beam_K": 0.41023803097513817,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.21332377610707184
+        },
+        {
+          "dz_um": -0.16607630401536685,
+          "strehl_refocused": 0.9999894315448696,
+          "strehl_fixed_plane": 0.9979875933605477,
+          "rms_residual_waves": 0.00048284529115777153,
+          "pv_opl_um": 0.026756824741819615,
+          "P_W": 50,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 7.293070818998085,
+          "dT_mean_beam_K": 4.102380309751383,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 2.133237761070719
+        },
+        {
+          "dz_um": -0.003321526080307962,
+          "strehl_refocused": 0.9999999957725967,
+          "strehl_fixed_plane": 0.9999991943872627,
+          "rms_residual_waves": 9.65690582315534e-06,
+          "pv_opl_um": 0.0005351364948363918,
+          "P_W": 100,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.14586141637996164,
+          "dT_mean_beam_K": 0.08204760619502761,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.04266475522141436
+        },
+        {
+          "dz_um": -0.03321526080303355,
+          "strehl_refocused": 0.9999995772597694,
+          "strehl_fixed_plane": 0.9999194413027291,
+          "rms_residual_waves": 9.656905823155397e-05,
+          "pv_opl_um": 0.005351364948363923,
+          "P_W": 100,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 1.4586141637996168,
+          "dT_mean_beam_K": 0.8204760619502763,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 0.4266475522141437
+        },
+        {
+          "dz_um": -0.3321526080307337,
+          "strehl_refocused": 0.9999577268123452,
+          "strehl_fixed_plane": 0.9919698498592702,
+          "rms_residual_waves": 0.0009656905823155431,
+          "pv_opl_um": 0.05351364948363923,
+          "P_W": 100,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 14.58614163799617,
+          "dT_mean_beam_K": 8.204760619502766,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 4.266475522141438
+        }
+      ],
+      "a_film_for_1um_shift_at_Pmax": 0.003010392915213419
+    },
+    {
+      "case": {
+        "name": "ref4_like",
+        "substrate": "fused_silica",
+        "thickness_mm": 1.0,
+        "substrate_radius_mm": 12.7,
+        "stack": [
+          [
+            2500,
+            "air"
+          ],
+          [
+            3500,
+            "pyrex"
+          ],
+          [
+            9000,
+            "air"
+          ]
+        ],
+        "wavelength_um": 0.85,
+        "na": 0.58,
+        "beam": {
+          "kind": "gaussian",
+          "waist_over_radius": 1.0
+        },
+        "powers_W": [
+          28.5
+        ],
+        "a_film": [
+          1e-05,
+          0.0001,
+          0.001
+        ]
+      },
+      "rows": [
+        {
+          "dz_um": -0.0010107745415597186,
+          "strehl_refocused": 0.9999999995779186,
+          "strehl_fixed_plane": 0.9999998475852081,
+          "rms_residual_waves": 3.0449773233094614e-06,
+          "pv_opl_um": 0.0001842174328119823,
+          "P_W": 28.5,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.02524612223161477,
+          "dT_mean_beam_K": 0.014181227531067231,
+          "aperture_diameter_mm": 19.38156295763963,
+          "pitch_scale_ppm": 0.00737423831615496
+        },
+        {
+          "dz_um": -0.010107745415603669,
+          "strehl_refocused": 0.9999999577918747,
+          "strehl_fixed_plane": 0.9999847586130918,
+          "rms_residual_waves": 3.0449773233094906e-05,
+          "pv_opl_um": 0.0018421743281198237,
+          "P_W": 28.5,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.2524612223161478,
+          "dT_mean_beam_K": 0.14181227531067228,
+          "aperture_diameter_mm": 19.38156295763963,
+          "pitch_scale_ppm": 0.07374238316154959
+        },
+        {
+          "dz_um": -0.10107745415603561,
+          "strehl_refocused": 0.999995779195822,
+          "strehl_fixed_plane": 0.9984767836029117,
+          "rms_residual_waves": 0.00030449773233094684,
+          "pv_opl_um": 0.018421743281198236,
+          "P_W": 28.5,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 2.5246122231614785,
+          "dT_mean_beam_K": 1.4181227531067229,
+          "aperture_diameter_mm": 19.38156295763963,
+          "pitch_scale_ppm": 0.737423831615496
+        }
+      ],
+      "a_film_for_1um_shift_at_Pmax": 0.009891370112370408
+    },
+    {
+      "case": {
+        "name": "ref14_like",
+        "substrate": "fused_silica",
+        "thickness_mm": 0.5,
+        "substrate_radius_mm": 12.7,
+        "stack": [
+          [
+            4330,
+            "air"
+          ]
+        ],
+        "wavelength_um": 0.852,
+        "na": 0.5,
+        "beam": {
+          "kind": "gaussian",
+          "waist_over_radius": 1.44
+        },
+        "powers_W": [
+          2.5
+        ],
+        "a_film": [
+          1e-05,
+          0.0001,
+          0.001
+        ]
+      },
+      "rows": [
+        {
+          "dz_um": -0.00011914209208705617,
+          "strehl_refocused": 0.999999999999969,
+          "strehl_fixed_plane": 0.9999999988525687,
+          "rms_residual_waves": 2.717376817203079e-08,
+          "pv_opl_um": 1.5931900018724892e-05,
+          "P_W": 2.5,
+          "a_film": 1e-05,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.00946647242215766,
+          "dT_mean_beam_K": 0.007639103140143779,
+          "aperture_diameter_mm": 4.99985333118216,
+          "pitch_scale_ppm": 0.003972333632874765
+        },
+        {
+          "dz_um": -0.001191420920868599,
+          "strehl_refocused": 0.9999999999968889,
+          "strehl_fixed_plane": 0.9999998852569162,
+          "rms_residual_waves": 2.7173768172035417e-07,
+          "pv_opl_um": 0.00015931900018724903,
+          "P_W": 2.5,
+          "a_film": 0.0001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.09466472422157661,
+          "dT_mean_beam_K": 0.07639103140143778,
+          "aperture_diameter_mm": 4.99985333118216,
+          "pitch_scale_ppm": 0.039723336328747645
+        },
+        {
+          "dz_um": -0.01191420920868783,
+          "strehl_refocused": 0.9999999996888683,
+          "strehl_fixed_plane": 0.9999885257438036,
+          "rms_residual_waves": 2.717376817203844e-06,
+          "pv_opl_um": 0.00159319000187249,
+          "P_W": 2.5,
+          "a_film": 0.001,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 0.9466472422157665,
+          "dT_mean_beam_K": 0.7639103140143778,
+          "aperture_diameter_mm": 4.99985333118216,
+          "pitch_scale_ppm": 0.39723336328747644
+        }
+      ],
+      "a_film_for_1um_shift_at_Pmax": 0.0839336315492686
+    }
+  ],
+  "inversions": [
+    {
+      "spec": {
+        "case": "ref4_like",
+        "P_W": 28.5,
+        "metric": "strehl_refocused",
+        "target": 0.81,
+        "then_evaluate": [
+          {
+            "case": "ref14_like",
+            "P_W": 2.5
+          },
+          {
+            "case": "ours_fs_0.5mm_tophat",
+            "P_W": 50
+          },
+          {
+            "case": "ours_sapphire_0.5mm_tophat",
+            "P_W": 50
+          }
+        ]
+      },
+      "a_film": 0.22300324323748044,
+      "at_target": {
+        "dz_um": -22.540600094960276,
+        "strehl_refocused": 0.8098409841306986,
+        "strehl_fixed_plane": 0.0010424671756777272,
+        "rms_residual_waves": 0.06790398186825962,
+        "pv_opl_um": 4.108108497795473,
+        "P_W": 28.5,
+        "a_film": 0.22300324323748044,
+        "alpha_bulk_per_m": 0.0,
+        "dT_max_K": 562.9967136819953,
+        "dT_mean_beam_K": 316.24597325166394,
+        "aperture_diameter_mm": 19.38156295763963,
+        "pitch_scale_ppm": 164.44790609086525
+      },
+      "consequences": [
+        {
+          "dz_um": -2.6569072941539456,
+          "strehl_refocused": 0.999984527409048,
+          "strehl_fixed_plane": 0.5448960869256704,
+          "rms_residual_waves": 0.0006059838433347524,
+          "pv_opl_um": 0.3552865375110924,
+          "P_W": 2.5,
+          "a_film": 0.22300324323748044,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 211.10540521593256,
+          "dT_mean_beam_K": 170.35447756776836,
+          "aperture_diameter_mm": 4.99985333118216,
+          "pitch_scale_ppm": 88.58432833523955,
+          "case": "ref14_like"
+        },
+        {
+          "dz_um": -20.556212680921735,
+          "strehl_refocused": 0.725277028690375,
+          "strehl_fixed_plane": 0.0025040412881509565,
+          "rms_residual_waves": 0.08921409755734197,
+          "pv_opl_um": 3.391689570564721,
+          "P_W": 50,
+          "a_film": 0.22300324323748044,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 1135.0944019947467,
+          "dT_mean_beam_K": 808.4367340361229,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 420.38710169878385,
+          "case": "ours_fs_0.5mm_tophat"
+        },
+        {
+          "dz_um": -2.80934206404742,
+          "strehl_refocused": 0.9976600688479186,
+          "strehl_fixed_plane": 0.5221626322955588,
+          "rms_residual_waves": 0.007702642992783907,
+          "pv_opl_um": 0.4620676785701589,
+          "P_W": 50,
+          "a_film": 0.22300324323748044,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 83.94178811802162,
+          "dT_mean_beam_K": 58.02053529133744,
+          "aperture_diameter_mm": 18.42760311771506,
+          "pitch_scale_ppm": 290.1026764566872,
+          "case": "ours_sapphire_0.5mm_tophat"
+        }
+      ]
+    },
+    {
+      "spec": {
+        "case": "ref4_like",
+        "P_W": 28.5,
+        "metric": "strehl_fixed_plane",
+        "target": 0.81,
+        "then_evaluate": [
+          {
+            "case": "ref14_like",
+            "P_W": 2.5
+          }
+        ]
+      },
+      "a_film": 0.01163375058276572,
+      "at_target": {
+        "dz_um": -1.1759098911919468,
+        "strehl_refocused": 0.9994288923064006,
+        "strehl_fixed_plane": 0.8100478531499493,
+        "rms_residual_waves": 0.0035424506709560025,
+        "pv_opl_um": 0.21431396663320026,
+        "P_W": 28.5,
+        "a_film": 0.01163375058276572,
+        "alpha_bulk_per_m": 0.0,
+        "dT_max_K": 29.370708922462285,
+        "dT_mean_beam_K": 16.49808640538866,
+        "aperture_diameter_mm": 19.38156295763963,
+        "pitch_scale_ppm": 8.579004930802103
+      },
+      "consequences": [
+        {
+          "dz_um": -0.13860693832450868,
+          "strehl_refocused": 0.9999999578901845,
+          "strehl_fixed_plane": 0.9984479843075668,
+          "rms_residual_waves": 3.16132841307332e-05,
+          "pv_opl_um": 0.01853477511274062,
+          "P_W": 2.5,
+          "a_film": 0.01163375058276572,
+          "alpha_bulk_per_m": 0.0,
+          "dT_max_K": 11.013057905801235,
+          "dT_mean_beam_K": 8.887142060845513,
+          "aperture_diameter_mm": 4.99985333118216,
+          "pitch_scale_ppm": 4.621313871639667,
+          "case": "ref14_like"
+        }
+      ]
+    }
+  ]
+}

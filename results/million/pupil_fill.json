@@ -1,0 +1,24 @@
+{
+  "square_circumscribed": {
+    "peak_per_W": 0.7850463463518467,
+    "transmitted": 0.7850260277157773
+  },
+  "square_inscribed": {
+    "peak_per_W": 0.6370094673175108,
+    "transmitted": 1.0
+  },
+  "square_optimum": {
+    "peak_per_W": 0.8310609807665267,
+    "half_width": 0.91,
+    "transmitted": 0.8875442131143734
+  },
+  "hex_circumscribed": {
+    "peak_per_W": 0.9067961558601827,
+    "transmitted": 0.9067726860852253
+  },
+  "hex_optimum": {
+    "peak_per_W": 0.9285265386190201,
+    "inradius": 0.96,
+    "transmitted": 0.9557979436521756
+  }
+}

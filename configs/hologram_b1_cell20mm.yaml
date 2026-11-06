@@ -1,0 +1,24 @@
+# Static B1 meta-hologram, in-cell geometry, 48 x 48 Cs sites at 4.5 um pitch, 1075 nm.
+run_id: hologram_b1_cell20mm
+wavelength_um: 1.075
+na: 0.55
+stack: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?: 2.5 mm air, 4 mm fused-silica wall, 9 mm to atoms]
+site_pitch_um: 4.5                                        # [CONFIRM?: array pitch]
+sites: {kind: square, nx: 48, ny: 48, pitch_um: 4.5}
+illuminations:
+  - {kind: top_hat}
+  - {kind: top_hat, edge_frac: 0.1}                        # raised-cosine edge, suppresses the edge zero order
+  - {kind: gaussian, waist_over_radius: 1.0}               # ref. 4-like: 1/e^2 diameter = aperture (13.5 % clipped)
+pupil_oversample: 4
+pupil_guard: 2.0
+wgs_iter: 60
+wgs_fix: 30
+laser_powers_W: [10, 50, 100]
+# Multiplicative efficiency factors outside the scalar pupil model; see docs/model_notes.md.
+# Meta-atom family: Si-rich SiN, p = 0.50 um, h = 1.5 um (results/library_analysis_1075).
+efficiency_chain:
+  metasurface_lpa: 0.960       # SIM: 16-level LPA efficiency incl. exit Fresnel loss (selection.json, eta)
+  edge_vs_lpa: 0.886           # SIM: supercell/LPA ratio, aperture-averaged, soft-edge top hat (edge_factor.json); Provisional below 13 deg
+  substrate_entrance_ar: 0.995 # [VALUE?: AR-coated entrance face]
+  cell_wall_ar: 0.99           # [CONFIRM?: AR coating on both cell-wall faces]
+  beam_shaper: 0.95            # [VALUE?: top-hat shaper throughput]

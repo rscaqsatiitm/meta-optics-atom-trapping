@@ -1,0 +1,110 @@
+{
+  "r0:uncorrected:equal": {
+    "centre_um": 0,
+    "corrected": false,
+    "pistons": "equal",
+    "depth_nonuniformity_rms_inner": 0.05189443200288425,
+    "min_over_mean_inner": 0.8426599264644794,
+    "single_trap_nonuniformity_rms_inner": 7.419204305136386e-08,
+    "interference_modulation_rms": 0.05189440868021474,
+    "max_position_error_um": 6.06511078668654e-08,
+    "interstitial_max_over_mean_peak": 0.018346233647102368,
+    "peak_rel_axis_single": 2.3476025951078e+17
+  },
+  "r0:uncorrected:alternating": {
+    "centre_um": 0,
+    "corrected": false,
+    "pistons": "alternating",
+    "depth_nonuniformity_rms_inner": 0.04002916714585646,
+    "min_over_mean_inner": 0.8831943655946602,
+    "single_trap_nonuniformity_rms_inner": 7.419204305136386e-08,
+    "interference_modulation_rms": 0.04002912472858141,
+    "max_position_error_um": 6.06511078668654e-08,
+    "interstitial_max_over_mean_peak": 0.08375640337421443,
+    "peak_rel_axis_single": 2.3476025951078e+17
+  },
+  "r0:uncorrected:random": {
+    "centre_um": 0,
+    "corrected": false,
+    "pistons": "random",
+    "depth_nonuniformity_rms_inner": 0.11063271285236222,
+    "min_over_mean_inner": 0.7917311955630819,
+    "single_trap_nonuniformity_rms_inner": 7.419204305136386e-08,
+    "interference_modulation_rms": 0.11063271868133442,
+    "max_position_error_um": 0.200000030933755,
+    "interstitial_max_over_mean_peak": 0.08925631758906585,
+    "peak_rel_axis_single": 2.3476025951078e+17
+  },
+  "r0:corrected:equal": {
+    "centre_um": 0,
+    "corrected": true,
+    "pistons": "equal",
+    "depth_nonuniformity_rms_inner": 0.052124910384313695,
+    "min_over_mean_inner": 0.8418226456467558,
+    "single_trap_nonuniformity_rms_inner": 2.1077452907488117e-09,
+    "interference_modulation_rms": 0.05212490972213038,
+    "max_position_error_um": 6.06511078668654e-08,
+    "interstitial_max_over_mean_peak": 0.018126688360078146,
+    "peak_rel_axis_single": 2.3553609365202634e+17
+  },
+  "r0:corrected:alternating": {
+    "centre_um": 0,
+    "corrected": true,
+    "pistons": "alternating",
+    "depth_nonuniformity_rms_inner": 0.040060574120269386,
+    "min_over_mean_inner": 0.8830991830697398,
+    "single_trap_nonuniformity_rms_inner": 2.1077452907488117e-09,
+    "interference_modulation_rms": 0.04006057291403506,
+    "max_position_error_um": 6.06511078668654e-08,
+    "interstitial_max_over_mean_peak": 0.08313396055609654,
+    "peak_rel_axis_single": 2.3553609365202634e+17
+  },
+  "r0:corrected:random": {
+    "centre_um": 0,
+    "corrected": true,
+    "pistons": "random",
+    "depth_nonuniformity_rms_inner": 0.13685293128818324,
+    "min_over_mean_inner": 0.7330636389491852,
+    "single_trap_nonuniformity_rms_inner": 2.1077452907488117e-09,
+    "interference_modulation_rms": 0.1368529311340862,
+    "max_position_error_um": 0.20000003163823418,
+    "interstitial_max_over_mean_peak": 0.07777892543659616,
+    "peak_rel_axis_single": 2.3553609365202634e+17
+  },
+  "r2828:uncorrected:equal": {
+    "centre_um": 2828,
+    "corrected": false,
+    "pistons": "equal",
+    "depth_nonuniformity_rms_inner": 0.06762406843153172,
+    "min_over_mean_inner": 0.9179464309338603,
+    "single_trap_nonuniformity_rms_inner": 0.009023236657842793,
+    "interference_modulation_rms": 0.06971131688084242,
+    "max_position_error_um": 0.5998201796210196,
+    "interstitial_max_over_mean_peak": 0.11792659473187453,
+    "peak_rel_axis_single": 1.095852563526781e+17
+  },
+  "r2828:uncorrected:alternating": {
+    "centre_um": 2828,
+    "corrected": false,
+    "pistons": "alternating",
+    "depth_nonuniformity_rms_inner": 0.08077747098645029,
+    "min_over_mean_inner": 0.8507180409943077,
+    "single_trap_nonuniformity_rms_inner": 0.009023236657842793,
+    "interference_modulation_rms": 0.07869740324193873,
+    "max_position_error_um": 0.0005737272355210899,
+    "interstitial_max_over_mean_peak": 0.3320994795816234,
+    "peak_rel_axis_single": 1.095852563526781e+17
+  },
+  "r2828:uncorrected:random": {
+    "centre_um": 2828,
+    "corrected": false,
+    "pistons": "random",
+    "depth_nonuniformity_rms_inner": 0.28150572225785925,
+    "min_over_mean_inner": 0.5144953535951905,
+    "single_trap_nonuniformity_rms_inner": 0.009023236657842793,
+    "interference_modulation_rms": 0.28265721839540814,
+    "max_position_error_um": 0.5998200966787919,
+    "interstitial_max_over_mean_peak": 0.6665999489946582,
+    "peak_rel_axis_single": 1.095852563526781e+17
+  }
+}

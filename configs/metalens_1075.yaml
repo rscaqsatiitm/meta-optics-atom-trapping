@@ -1,0 +1,23 @@
+# Lens A: single-wavelength air-spaced aplanatic metasurface doublet at 1075 nm, NA 0.55 (as the
+# side-A hologram), through the same cell stack.
+run_id: metalens_1075
+na: 0.55
+cell: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?]
+spacer: [[17000, air]]
+wavelengths_um: [1.075]
+field_heights_um: [0, 80, 160, 240, 320, 400]
+headroom_heights_um: [0, 400, 600, 800, 1000, 1300]
+spacing_scan_um: [15000, 16000, 17000, 17500, 18000, 19000]
+chromatic:
+  detunings_nm: [0.1, 1.0, 2.0]
+  v_max_per_um: 5.0e-5
+tolerance_heights_um: [-400, 0, 400]
+tolerances:
+  - {name: nominal}
+  - {name: spacer +50um, spacer_delta_um: 50}
+  - {name: wall +50um, wall_delta_um: 50}
+  - {name: decentre 2um, m2_decentre_um: 2}
+  - {name: decentre 5um, m2_decentre_um: 5}
+  - {name: plate tilt 0.1deg compensated, m2_tilt_rad: 0.0017453, compensate: true}
+  - {name: cell tilt 0.1deg, cell_tilt_rad: 0.0017453}
+wave_axial: {r_max_um: 10000.0, v_max_over_k: 0.75, edge_um: 5.0}

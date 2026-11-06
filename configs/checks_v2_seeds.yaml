@@ -1,0 +1,12 @@
+# Seed ensemble for the two most damaging fabrication cases on v2 (checks_v2: one seed each).
+run_id: checks_v2_seeds
+fabrication:
+  base: configs/fullaperture_v2_dz50.yaml
+  cases:
+    - {name: smooth5nm_L50um_s21, errors: {corr_sigma_um: 0.005, corr_length_um: 50.0, seed: 21}}
+    - {name: stitch50nm_s22, errors: {field_um: 100.0, stitch_sigma_um: 0.050, seed: 22}}
+    - {name: smooth5nm_L50um_s23, errors: {corr_sigma_um: 0.005, corr_length_um: 50.0, seed: 23}}
+    - {name: stitch50nm_s24, errors: {field_um: 100.0, stitch_sigma_um: 0.050, seed: 24}}
+    - {name: smooth5nm_L50um_s25, errors: {corr_sigma_um: 0.005, corr_length_um: 50.0, seed: 25}}
+    - {name: stitch50nm_s26, errors: {field_um: 100.0, stitch_sigma_um: 0.050, seed: 26}}
+    - {name: smooth5nm_L500um_s27, errors: {corr_sigma_um: 0.005, corr_length_um: 500.0, seed: 27}}

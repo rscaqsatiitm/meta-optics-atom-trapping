@@ -1,0 +1,18 @@
+# Finer geometry grid (0.01 um) for crystalline Si: its phase varies steeply with width.
+# Crystalline Si on sapphire, full numerics (197 terms, 256 grid; checked against 289). Two-wavelength (852 / 1064 nm) screen for other films: ALD TiO2 on fused silica, GaN on
+# sapphire and crystalline Si on sapphire. Same families, rules and numerics as dual_library.
+# Pitch on sapphire is 0.45 um: below lambda / n_sapphire = 0.484 um at 852 nm (no diffraction
+# into the substrate at normal incidence).
+run_id: dual_library_si_fine
+output_dir: data/dual_library_si_fine
+wavelengths_um: [0.852, 1.0644]
+materials:
+  - {name: si_crystalline, substrate: sapphire_o, pitch_um: [0.45], height_um: [1.0, 1.2]}  # silicon on sapphire [CONFIRM?: film thickness]
+families:
+  ring: {step_um: 0.01}
+  duo: {step_um: 0.01}
+rules: {min_feature_um: 0.10, max_aspect: 15.0}
+n_terms: 197
+n_grid: 256
+batch: 24
+

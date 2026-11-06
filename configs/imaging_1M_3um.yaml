@@ -1,0 +1,17 @@
+# Wave-optics imaging check of the 10^6-site array at 3 um pitch (scripts/million_imaging.py):
+# 3.0 mm square, corner at 2121 um; 3 um box; one common plane chosen over 0 to 2121 um.
+# (The 4 um-pitch case, corner 2828 um, is in results/million/imaging_ee.json, whose plane was
+# already chosen over 0 to 2828 um.) Aplanatic doublets at NA 0.5, 852.3 nm, construction to 1.6 R1.
+imaging:
+  wavelength_um: 0.8523
+  na: 0.5
+  pitch_um: 3.0
+  ext: 1.6
+  n_pupil: 220
+  n_grid: 81
+  field_um: [0, 1060, 1500, 2121]
+  output: results/million/imaging_ee_3um.json
+  designs:
+    - {name: f16_a3, air_gap_um: 2500}
+    - {name: f25_a3, air_gap_um: 10000}
+    - {name: f42_a3, air_gap_um: 25000}

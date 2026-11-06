@@ -1,0 +1,36 @@
+{
+  "config": {
+    "run_id": "library_analysis_est_1075",
+    "library": "data/library_est_1075.h5",
+    "design_wavelength_um": 1.075,
+    "fab_limits": {
+      "min_feature_um": 0.1,
+      "min_gap_um": 0.1,
+      "max_aspect": 10.0
+    },
+    "n_plot": 5,
+    "tie_tol": 0.003,
+    "run_sensitivity": false,
+    "_config_path": "configs/library_analysis_est.yaml"
+  },
+  "git": {
+    "commit": "f5a228f70bd43fe5431a4c59618a3f2a3ebd79d1",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-01T08:35:56+00:00"
+}

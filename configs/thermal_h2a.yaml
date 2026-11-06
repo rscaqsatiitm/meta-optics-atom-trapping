@@ -1,0 +1,83 @@
+# Thermal campaign for hypothesis H2a. Absorbed film fraction a_film is the free parameter
+# (unknown for our films); substrate bulk absorption is set to zero in the baseline.
+run_id: thermal_h2a
+cell_stack: &cell [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?: cell wall 4 mm fused silica, 9 mm to atoms]
+cases:
+  - name: ours_fs_0.5mm_tophat
+    substrate: fused_silica
+    thickness_mm: 0.5            # [CONFIRM?: 2-inch fused-silica wafer thickness]
+    substrate_radius_mm: 12.5    # 25 mm die held at its rim
+    stack: *cell
+    wavelength_um: 1.075
+    na: 0.55
+    beam: {kind: top_hat}
+    powers_W: [1, 10, 30, 50, 100]
+    a_film: [1.0e-5, 1.0e-4, 1.0e-3]
+  - name: ours_fs_1mm_tophat
+    substrate: fused_silica
+    thickness_mm: 1.0
+    substrate_radius_mm: 12.5
+    stack: *cell
+    wavelength_um: 1.075
+    na: 0.55
+    beam: {kind: top_hat}
+    powers_W: [1, 10, 30, 50, 100]
+    a_film: [1.0e-5, 1.0e-4, 1.0e-3]
+  - name: ours_sapphire_0.5mm_tophat
+    substrate: sapphire
+    thickness_mm: 0.5
+    substrate_radius_mm: 12.5
+    stack: *cell
+    wavelength_um: 1.075
+    na: 0.55
+    beam: {kind: top_hat}
+    powers_W: [1, 10, 30, 50, 100]
+    a_film: [1.0e-5, 1.0e-4, 1.0e-3]
+  - name: ours_fs_0.5mm_gauss_w1R
+    substrate: fused_silica
+    thickness_mm: 0.5
+    substrate_radius_mm: 12.5
+    stack: *cell
+    wavelength_um: 1.075
+    na: 0.55
+    beam: {kind: gaussian, waist_over_radius: 1.0}
+    powers_W: [1, 10, 30, 50, 100]
+    a_film: [1.0e-5, 1.0e-4, 1.0e-3]
+  # Literature cases (substrate material and thickness not reported: assumed).
+  - name: ref4_like
+    substrate: fused_silica      # [VALUE?: ref. 4 substrate not reported]
+    thickness_mm: 1.0            # [VALUE?: assumed]
+    substrate_radius_mm: 12.7
+    stack: [[2500, air], [3500, pyrex], [9000, air]]   # ref. 4: 2.5 mm air, 3.5 mm Pyrex, 9 mm vacuum
+    wavelength_um: 0.85
+    na: 0.58
+    beam: {kind: gaussian, waist_over_radius: 1.0}     # ref. 4: 1/e^2 beam diameter ~ metasurface diameter (86.5 % transmitted)
+    powers_W: [28.5]
+    a_film: [1.0e-5, 1.0e-4, 1.0e-3]
+  - name: ref14_like
+    substrate: fused_silica      # [VALUE?: assumed]
+    thickness_mm: 0.5            # [VALUE?: assumed]
+    substrate_radius_mm: 12.7
+    stack: [[4330, air]]          # [VALUE?: ref. 14 geometry not retrieved; NA 0.5 assumed, 5 mm aperture -> 4.33 mm WD]
+    wavelength_um: 0.852
+    na: 0.5
+    beam: {kind: gaussian, waist_over_radius: 1.44}    # 7.2 mm beam (taken as 1/e^2 diameter) on 5 mm aperture
+    powers_W: [2.5]
+    a_film: [1.0e-5, 1.0e-4, 1.0e-3]
+inversions:
+  # Film absorption that would by itself explain ref. 4's 19 % deficit as a Strehl loss
+  # (atoms at the refocused trap), and what the same absorption does to ref. 14 and to us.
+  - case: ref4_like
+    P_W: 28.5
+    metric: strehl_refocused
+    target: 0.81
+    then_evaluate:
+      - {case: ref14_like, P_W: 2.5}
+      - {case: ours_fs_0.5mm_tophat, P_W: 50}
+      - {case: ours_sapphire_0.5mm_tophat, P_W: 50}
+  - case: ref4_like
+    P_W: 28.5
+    metric: strehl_fixed_plane
+    target: 0.81
+    then_evaluate:
+      - {case: ref14_like, P_W: 2.5}

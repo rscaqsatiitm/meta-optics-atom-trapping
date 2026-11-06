@@ -1,0 +1,59 @@
+{
+  "config": {
+    "run_id": "library_main",
+    "output": "data/library_main.h5",
+    "materials": [
+      "sin_lpcvd",
+      "sin_si_rich"
+    ],
+    "substrate": "fused_silica",
+    "shape": "square",
+    "pitch_um": [
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6
+    ],
+    "height_um": {
+      "min": 0.8,
+      "max": 2.0,
+      "step": 0.1
+    },
+    "wavelength_um": [
+      1.075,
+      1.0644,
+      0.895,
+      0.852
+    ],
+    "width_frac": {
+      "min": 0.12,
+      "max": 0.9,
+      "n": 40
+    },
+    "n_terms": 197,
+    "n_grid": 256,
+    "formulation": "jones_direct_fourier",
+    "_config_path": "configs/library_main.yaml"
+  },
+  "git": {
+    "commit": "42ce64978391cf9b0acebe3ff72712d37d0e73bc",
+    "dirty": "False"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-01T04:03:19+00:00"
+}

@@ -1,0 +1,68 @@
+{
+  "f16:1770": {
+    "ray_strehl_uncorrected": 0.11222093960362726,
+    "uncorrected": {
+      "ensquared_energy": 0.7072544974792033,
+      "max_neighbour": 0.0876768417472406
+    },
+    "corrected": {
+      "ensquared_energy": 0.9277282408955074,
+      "max_neighbour": 0.014982453301587062
+    }
+  },
+  "f16:2121": {
+    "ray_strehl_uncorrected": 0.09093105164335405,
+    "uncorrected": {
+      "ensquared_energy": 0.6661157573635044,
+      "max_neighbour": 0.08190058384960738
+    },
+    "corrected": {
+      "ensquared_energy": 0.9280291227719699,
+      "max_neighbour": 0.014913454678327984
+    }
+  },
+  "f16:2828": {
+    "ray_strehl_uncorrected": 0.08252337371897371,
+    "uncorrected": {
+      "ensquared_energy": 0.3919942219130907,
+      "max_neighbour": 0.21616670276125644
+    },
+    "corrected": {
+      "ensquared_energy": 0.9280293972889428,
+      "max_neighbour": 0.014928299916264156
+    }
+  },
+  "f25:1770": {
+    "ray_strehl_uncorrected": 0.9211100195053266,
+    "uncorrected": {
+      "ensquared_energy": 0.9158774083140501,
+      "max_neighbour": 0.02524571499469875
+    },
+    "corrected": {
+      "ensquared_energy": 0.9280781404669847,
+      "max_neighbour": 0.014998472125330016
+    }
+  },
+  "f25:2121": {
+    "ray_strehl_uncorrected": 0.7962261246368276,
+    "uncorrected": {
+      "ensquared_energy": 0.887607749404655,
+      "max_neighbour": 0.04458378479343658
+    },
+    "corrected": {
+      "ensquared_energy": 0.9280135386952536,
+      "max_neighbour": 0.015026315905988817
+    }
+  },
+  "f25:2828": {
+    "ray_strehl_uncorrected": 0.3060734568960922,
+    "uncorrected": {
+      "ensquared_energy": 0.726678789412625,
+      "max_neighbour": 0.08387155629301811
+    },
+    "corrected": {
+      "ensquared_energy": 0.9275268898755928,
+      "max_neighbour": 0.015058410698401494
+    }
+  }
+}

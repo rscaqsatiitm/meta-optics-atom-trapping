@@ -1,0 +1,21 @@
+{
+  "n_full": 10240,
+  "n_fold": 2048,
+  "window_um": 1024.0,
+  "rel_l2_error_window": 0.01594020473041097,
+  "t_full_s": 62.168519496917725,
+  "t_fold_s": 32.876983404159546,
+  "full": {
+    "depth_nonuniformity_rms": 0.0767430456244429,
+    "depth_min_over_mean": 0.7523286106631599,
+    "array_efficiency": 0.8829688328699231,
+    "core_efficiency": 0.7554949291227173
+  },
+  "folded": {
+    "depth_nonuniformity_rms": 0.0771391295797849,
+    "depth_min_over_mean": 0.7442114994729719,
+    "array_efficiency": 0.882980667710308,
+    "core_efficiency": 0.7554755883883933
+  },
+  "peak_rel_diff_max": 0.02529428791725441
+}

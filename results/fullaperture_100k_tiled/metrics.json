@@ -1,0 +1,73 @@
+{
+  "runs": {
+    "ideal": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.07142079075061623,
+      "depth_min_over_mean": 0.7575603328258644,
+      "array_efficiency": 0.8570269897301749,
+      "core_efficiency": 0.6954444964418995,
+      "cell_power_nonuniformity_rms": 0.07836883245636989,
+      "waist_mean_um": 0.8667051980838698,
+      "waist_std_um": 0.021906614942925985,
+      "position_error_rms_um": 0.09375380438195899,
+      "axis_intensity_over_mean_site_peak": 0.10175711549850282,
+      "interstitial_median": 0.015406613722255859,
+      "interstitial_p99": 0.09810504617314,
+      "interstitial_max": 0.2506836183435447,
+      "interstitial_max_radius_um": 572.0,
+      "mean_site_offset_um": [
+        -9.053431413876382e-07,
+        1.5174040037604597e-07
+      ],
+      "metasurface_transmission": 1.0,
+      "seconds": 689.9275305271149
+    },
+    "library_lpa": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.07598862196569789,
+      "depth_min_over_mean": 0.7442796877389672,
+      "array_efficiency": 0.8279664610699058,
+      "core_efficiency": 0.6704728840985783,
+      "cell_power_nonuniformity_rms": 0.07950335147699679,
+      "waist_mean_um": 0.866265837087012,
+      "waist_std_um": 0.02497355877915113,
+      "position_error_rms_um": 0.09493040487640113,
+      "axis_intensity_over_mean_site_peak": 0.09537499196822435,
+      "interstitial_median": 0.015661493318119078,
+      "interstitial_p99": 0.10182655477986771,
+      "interstitial_max": 0.261032406329969,
+      "interstitial_max_radius_um": 572.0,
+      "mean_site_offset_um": [
+        -1.3869894390726063e-10,
+        -1.863487763428853e-09
+      ],
+      "metasurface_transmission": 0.9712933450971494,
+      "seconds": 655.408941745758
+    }
+  },
+  "feedback_history": [
+    {
+      "round": 2,
+      "depth_nonuniformity_rms": 0.07142079075061623,
+      "depth_min_over_mean": 0.7575603328258644,
+      "array_efficiency": 0.8570269897301749,
+      "core_efficiency": 0.6954444964418995,
+      "axis_intensity_over_mean_site_peak": 0.10175711549850282
+    }
+  ],
+  "aperture_mm": 18.42760311771506,
+  "n_pixels": 1358954496,
+  "n_sites": 99856,
+  "power_budget": {
+    "ideal": {
+      "utilisation": 0.6439039346891807,
+      "depth_mK_at_50W": 0.07306958740171587,
+      "depth_mK_at_100W": 0.14613917480343175
+    },
+    "library_lpa": {
+      "utilisation": 0.6207830105526551,
+      "depth_mK_at_50W": 0.07044584759211554,
+      "depth_mK_at_100W": 0.14089169518423109
+    }
+  }
+}

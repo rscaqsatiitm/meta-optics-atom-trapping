@@ -1,0 +1,71 @@
+{
+  "config": {
+    "run_id": "rcwa_convergence",
+    "wavelength_um": 1.075,
+    "substrate": "fused_silica",
+    "shape": "square",
+    "n_grid": 256,
+    "formulations": [
+      "jones_direct_fourier",
+      "pol_fourier",
+      "fft"
+    ],
+    "n_terms": [
+      49,
+      101,
+      197,
+      317,
+      441
+    ],
+    "n_terms_grcwa": [
+      49,
+      101,
+      197,
+      317,
+      441
+    ],
+    "cases": [
+      {
+        "material": "sin_lpcvd",
+        "pitch_um": 0.5,
+        "height_um": 1.5,
+        "ref_width_um": 0.1,
+        "widths_um": [
+          0.3,
+          0.45
+        ]
+      },
+      {
+        "material": "sin_si_rich",
+        "pitch_um": 0.5,
+        "height_um": 1.4,
+        "ref_width_um": 0.1,
+        "widths_um": [
+          0.3,
+          0.45
+        ]
+      }
+    ],
+    "_config_path": "configs/rcwa_convergence.yaml"
+  },
+  "git": {
+    "commit": "810b0563d49629e070fed5948d1212a392766b08",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-10-31T21:45:38+00:00"
+}

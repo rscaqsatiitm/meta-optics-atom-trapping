@@ -1,0 +1,25 @@
+# One shared metasurface doublet for several wavelengths with per-wavelength aplanatic
+# pre-correctors (src/metatrap/metalens/multiwave.py). Atom part: scripts/multiwave_atoms.py.
+run_id: multiwave
+na: 0.5
+cell: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?]
+spacer: [[16000, air]]
+design_um: [0.96, 0.99]
+operating_um: [0.8523, 0.8946, 1.0644, 1.075]
+precorrector_L_um: [3000, 5000, 10000]
+field_heights_um: [0, 100, 200, 300, 400]
+# Atom screen (single square pillars on fused silica; pitch <= 0.55 um keeps 852 nm free of
+# substrate diffraction).
+fab_limits: {min_feature_um: 0.10, min_gap_um: 0.10, max_aspect: 10.0}   # [CONFIRM?: CNNP etch limits]
+width_frac: {min: 0.12, max: 0.90, n: 40}
+n_terms: 197
+n_grid: 256
+families:
+  - {material: sin_lpcvd, pitch_um: 0.50, height_um: 1.6}
+  - {material: sin_lpcvd, pitch_um: 0.55, height_um: 1.7}
+  - {material: sin_lpcvd, pitch_um: 0.55, height_um: 1.9}
+  - {material: sin_si_rich, pitch_um: 0.45, height_um: 1.3}
+  - {material: sin_si_rich, pitch_um: 0.50, height_um: 1.5}
+  - {material: sin_si_rich, pitch_um: 0.55, height_um: 1.6}
+supercell: {material: sin_lpcvd, pitch_um: 0.50, height_um: 1.6, design_um: 0.99, n_cells: [3, 4, 6], grid_per_cell: 48, terms_per_cell: 80}
+wavecheck: {design_um: 0.99, L_um: 5000, wavelengths_um: [0.8523, 0.8946, 1.0644, 1.075], heights_um: [0, 400], n_pupil: 300}

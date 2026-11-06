@@ -1,0 +1,9 @@
+# Vector focusing at NA 0.55, in-cell stack, soft-edge top hat, 1075 nm.
+run_id: vector_check
+wavelength_um: 1.075
+na: 0.55
+stack: [[2500, air], [4000, fused_silica], [9000, air]]
+illumination: {kind: top_hat, edge_frac: 0.1}
+pupil_n: 360
+grid_half_um: 2.0
+grid_step_um: 0.05

@@ -1,0 +1,16 @@
+# Wave-optics imaging check of the 100,000-site array (scripts/million_imaging.py):
+# 16 mm aplanatic meta-doublet (air gap 2.5 mm, NA 0.5, 852.3 nm, construction to 1.6 R1,
+# plate spacing = f), one common focal plane chosen over the 100k field only.
+# 316 x 316 sites: corner at 891 um (4 um pitch) or 670 um (3 um pitch).
+imaging:
+  wavelength_um: 0.8523
+  na: 0.5
+  pitch_um: 4.0
+  ext: 1.6
+  n_pupil: 220
+  n_grid: 81
+  field_um: [0]
+  output: results/scaling_100k/imaging_ee_100k.json
+  designs:
+    - {name: f16_a4, air_gap_um: 2500, pitch_um: 4.0, field_um: [0, 445, 630, 891]}
+    - {name: f16_a3, air_gap_um: 2500, pitch_um: 3.0, field_um: [0, 335, 474, 670]}

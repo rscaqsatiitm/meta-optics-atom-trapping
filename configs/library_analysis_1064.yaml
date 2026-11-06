@@ -1,0 +1,9 @@
+run_id: library_analysis_1064
+library: data/library_main.h5
+design_wavelength_um: 1.0644
+fab_limits: {min_feature_um: 0.10, min_gap_um: 0.10, max_aspect: 10.0}   # [CONFIRM?: CNNP etch limits]
+n_plot: 5
+supercell_n: [3, 4, 5, 6, 8]
+tie_tol: 0.003
+supercell_grid: 48
+supercell_terms_per_cell: 80

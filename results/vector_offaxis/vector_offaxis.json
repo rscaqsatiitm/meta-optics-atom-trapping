@@ -1,0 +1,86 @@
+{
+  "0,0": {
+    "peak_over_scalar": 0.9171608539790196,
+    "scalar_peak_over_onaxis_scalar": 1.0,
+    "waist_x_um": 0.9092600231113037,
+    "waist_y_um": 0.8437510926609118,
+    "Ez2_max_over_peak": 0.04394277834068573,
+    "Cy_max_core": 0.5265713332585608,
+    "Cx_max_core": 0.009343258324550529,
+    "B_fict_max_core_G_per_mK": 0.6284522715167201,
+    "vector_minus_scalar_peak_shift_um": [
+      0.0,
+      0.0
+    ]
+  },
+  "200,0": {
+    "peak_over_scalar": 0.9171675603642573,
+    "scalar_peak_over_onaxis_scalar": 1.0,
+    "waist_x_um": 0.9094076704831331,
+    "waist_y_um": 0.8438106480230574,
+    "Ez2_max_over_peak": 0.04398178550541623,
+    "Cy_max_core": 0.5263997151630461,
+    "Cx_max_core": 0.009375887056633893,
+    "B_fict_max_core_G_per_mK": 0.6282474487792343,
+    "vector_minus_scalar_peak_shift_um": [
+      0.0,
+      0.0
+    ]
+  },
+  "282,0": {
+    "peak_over_scalar": 0.9171741838443839,
+    "scalar_peak_over_onaxis_scalar": 1.0,
+    "waist_x_um": 0.9095535808827636,
+    "waist_y_um": 0.8438694934626225,
+    "Ez2_max_over_peak": 0.04402034765216761,
+    "Cy_max_core": 0.5262302170314851,
+    "Cx_max_core": 0.00940811481582902,
+    "B_fict_max_core_G_per_mK": 0.6280451561759927,
+    "vector_minus_scalar_peak_shift_um": [
+      0.0,
+      0.0
+    ]
+  },
+  "0,282": {
+    "peak_over_scalar": 0.917180884616454,
+    "scalar_peak_over_onaxis_scalar": 1.0,
+    "waist_x_um": 0.9093532221681194,
+    "waist_y_um": 0.844053590455359,
+    "Ez2_max_over_peak": 0.0439179149761363,
+    "Cy_max_core": 0.5263707825475152,
+    "Cx_max_core": 0.009332531000719365,
+    "B_fict_max_core_G_per_mK": 0.6282129182858276,
+    "vector_minus_scalar_peak_shift_um": [
+      0.0,
+      0.0
+    ]
+  },
+  "200,200": {
+    "peak_over_scalar": 0.917177635826766,
+    "scalar_peak_over_onaxis_scalar": 1.0,
+    "waist_x_um": 0.9094545417480113,
+    "waist_y_um": 0.8439627862653005,
+    "Ez2_max_over_peak": 0.043969271174387536,
+    "Cy_max_core": 0.526298890793792,
+    "Cx_max_core": 0.009375206984360621,
+    "B_fict_max_core_G_per_mK": 0.6281271169504158,
+    "vector_minus_scalar_peak_shift_um": [
+      0.0,
+      0.0
+    ]
+  },
+  "282,282": {
+    "peak_over_scalar": 0.9171942114781438,
+    "scalar_peak_over_onaxis_scalar": 1.0,
+    "waist_x_um": 0.9096467514047286,
+    "waist_y_um": 0.8441719678501913,
+    "Ez2_max_over_peak": 0.04399545939542975,
+    "Cy_max_core": 0.5260299172031967,
+    "Cx_max_core": 0.009406748824988933,
+    "B_fict_max_core_G_per_mK": 0.6278061024614505,
+    "vector_minus_scalar_peak_shift_um": [
+      0.0,
+      0.0
+    ]
+  }
+}

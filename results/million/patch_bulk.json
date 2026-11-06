@@ -1,0 +1,182 @@
+{
+  "method": "shift-invariant convolution of the exact on-axis PSF",
+  "kernel_radius_um": 60.0,
+  "pitch_um": 4.0,
+  "psf_first_zero_um": 2.31,
+  "validation_7x7": {
+    "equal": 0.04688260875751083,
+    "alternating": 0.03998934269724935,
+    "random_draw1": 0.10849694685978711,
+    "random_draw2": 0.13418937971677464
+  },
+  "patches": {
+    "equal:7": {
+      "core7_nonuniformity_rms": 0.1078212636925525,
+      "core_depth_over_single": 0.6741794286114944,
+      "inner_nonuniformity_rms": 0.04706217718335122,
+      "ring_depth_over_core": [
+        1.11449282370567,
+        0.9127173115994589,
+        0.9319407659495239,
+        0.7727506740343288
+      ],
+      "core_interstitial_max_over_peak": 0.06777492642377993
+    },
+    "alternating:7": {
+      "core7_nonuniformity_rms": 0.047255811324274644,
+      "core_depth_over_single": 1.2015716590331555,
+      "inner_nonuniformity_rms": 0.039989342697249346,
+      "ring_depth_over_core": [
+        0.9636063923734379,
+        1.0421386632633942,
+        1.0318757388885522,
+        0.9232890382222927
+      ],
+      "core_interstitial_max_over_peak": 0.10976579465650169
+    },
+    "random:7": {
+      "core_nonuniformity_rms": 0.12004907240945356,
+      "core_depth_over_single": 1.0150076462545445,
+      "core_min_over_mean": 0.7428476925647799,
+      "n_seeds": 4
+    },
+    "equal:15": {
+      "core7_nonuniformity_rms": 0.02063856681908023,
+      "core_depth_over_single": 0.6111011818103358,
+      "inner_nonuniformity_rms": 0.03190756737552642,
+      "ring_depth_over_core": [
+        1.2078700293785984,
+        1.025967098590036,
+        1.032985975808634,
+        0.960831058529882,
+        0.9838923237051928,
+        1.0002845067078343,
+        1.0247259635593813,
+        1.052877891681254
+      ],
+      "core_interstitial_max_over_peak": 0.019369262940881822
+    },
+    "alternating:15": {
+      "core7_nonuniformity_rms": 0.017053316833625314,
+      "core_depth_over_single": 1.1687573065964487,
+      "inner_nonuniformity_rms": 0.02851667499897328,
+      "ring_depth_over_core": [
+        0.992254872626533,
+        1.0315778500681354,
+        1.0436687777561588,
+        0.9791104723458215,
+        1.0077088154726506,
+        1.0103011949645861,
+        0.9719198790654848,
+        0.9626263040195218
+      ],
+      "core_interstitial_max_over_peak": 0.08627854638779704
+    },
+    "random:15": {
+      "core_nonuniformity_rms": 0.1330285160176309,
+      "core_depth_over_single": 1.0084518807279257,
+      "core_min_over_mean": 0.6903715111649433,
+      "n_seeds": 4
+    },
+    "equal:31": {
+      "core7_nonuniformity_rms": 0.01749452775756146,
+      "core_depth_over_single": 0.6437192895999275,
+      "inner_nonuniformity_rms": 0.024709790889512397,
+      "ring_depth_over_core": [
+        1.14617517680268,
+        1.0025972964717147,
+        1.0345035920339978,
+        0.9622849455746382,
+        0.9896727978384556,
+        0.9783023656740306,
+        1.0071255787715525,
+        1.0006759094068527
+      ],
+      "core_interstitial_max_over_peak": 0.012214101940157153
+    },
+    "alternating:31": {
+      "core7_nonuniformity_rms": 0.0033022380689703428,
+      "core_depth_over_single": 1.1692109531063117,
+      "inner_nonuniformity_rms": 0.02599926977202638,
+      "ring_depth_over_core": [
+        0.9920424567376479,
+        1.0337364782715863,
+        1.0445233360794273,
+        0.9747880016445871,
+        1.0202224350244122,
+        1.0153895481845445,
+        0.9649696594908986,
+        0.9936893553094618
+      ],
+      "core_interstitial_max_over_peak": 0.08111545379662183
+    },
+    "random:31": {
+      "core_nonuniformity_rms": 0.14304448069076262,
+      "core_depth_over_single": 1.029500519421518,
+      "core_min_over_mean": 0.6453435520545613,
+      "n_seeds": 4
+    },
+    "equal:51": {
+      "core7_nonuniformity_rms": 3.6116051927807605e-16,
+      "core_depth_over_single": 0.6587235346870032,
+      "inner_nonuniformity_rms": 0.02176002358454073,
+      "ring_depth_over_core": [
+        1.1204034126599356,
+        0.985064967533495,
+        1.0191000226356592,
+        0.9499346299658091,
+        0.9748675529752925,
+        0.9642200592787011,
+        0.9919732465218187,
+        0.9873637313781295
+      ],
+      "core_interstitial_max_over_peak": 0.011935892085220466
+    },
+    "alternating:51": {
+      "core7_nonuniformity_rms": 2.7719234844076095e-16,
+      "core_depth_over_single": 1.172615409641129,
+      "inner_nonuniformity_rms": 0.02078979631081095,
+      "ring_depth_over_core": [
+        0.9888029473923612,
+        1.0301143316968069,
+        1.042406866313354,
+        0.9731437062541105,
+        1.0185026560740644,
+        1.0132959070775251,
+        0.962388905933721,
+        0.993007061881727
+      ],
+      "core_interstitial_max_over_peak": 0.07961391504796402
+    },
+    "random:51": {
+      "core_nonuniformity_rms": 0.13755265073662953,
+      "core_depth_over_single": 1.051400172879231,
+      "core_min_over_mean": 0.6773901772263808,
+      "n_seeds": 2
+    },
+    "truncation_core_depth_over_single_equal_51": {
+      "30.0": 0.652347827623827,
+      "45.0": 0.5904220476616633,
+      "60.0": 0.6587235346870032
+    }
+  },
+  "shift_invariance": {
+    "0.0": {
+      "x_img_um": 0.0,
+      "overlap_abs": 0.9999967180489033,
+      "piston_rad": -1.906500769727205
+    },
+    "50.0": {
+      "x_img_um": 50.000000023921885,
+      "overlap_abs": 0.9999967159033827,
+      "piston_rad": -1.9066162490203498
+    },
+    "100.0": {
+      "x_img_um": 100.00000141901222,
+      "overlap_abs": 0.999996672860558,
+      "piston_rad": -1.906966251708071
+    },
+    "quadratic_piston_rad_per_um2": -4.6548198086604485e-08,
+    "neighbour_phase_step_at_100um_rad": -3.7238558469283586e-05
+  }
+}

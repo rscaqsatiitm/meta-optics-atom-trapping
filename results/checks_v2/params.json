@@ -1,0 +1,130 @@
+{
+  "config": {
+    "run_id": "checks_v2",
+    "axis_light": {
+      "bases": [
+        "configs/fullaperture_v2.yaml",
+        "configs/fullaperture_v2_dz50.yaml"
+      ]
+    },
+    "cell": {
+      "base": "configs/fullaperture_v2_dz50.yaml",
+      "wall_layer": 1,
+      "cases": [
+        {
+          "name": "nominal"
+        },
+        {
+          "name": "thick+50um",
+          "dthick_um": 50
+        },
+        {
+          "name": "thick-50um",
+          "dthick_um": -50
+        },
+        {
+          "name": "thick+100um",
+          "dthick_um": 100
+        },
+        {
+          "name": "thick+200um",
+          "dthick_um": 200
+        },
+        {
+          "name": "tilt0.1deg",
+          "tilt_deg": 0.1
+        },
+        {
+          "name": "tilt0.25deg",
+          "tilt_deg": 0.25
+        },
+        {
+          "name": "tilt0.5deg",
+          "tilt_deg": 0.5
+        },
+        {
+          "name": "tilt1deg",
+          "tilt_deg": 1.0
+        }
+      ]
+    },
+    "fabrication": {
+      "base": "configs/fullaperture_v2_dz50.yaml",
+      "cases": [
+        {
+          "name": "stitch20nm",
+          "errors": {
+            "field_um": 100.0,
+            "stitch_sigma_um": 0.02,
+            "seed": 11
+          }
+        },
+        {
+          "name": "stitch50nm",
+          "errors": {
+            "field_um": 100.0,
+            "stitch_sigma_um": 0.05,
+            "seed": 12
+          }
+        },
+        {
+          "name": "fieldbias3nm",
+          "errors": {
+            "field_um": 100.0,
+            "field_bias_sigma_um": 0.003,
+            "seed": 13
+          }
+        },
+        {
+          "name": "smooth5nm_L5um",
+          "errors": {
+            "corr_sigma_um": 0.005,
+            "corr_length_um": 5.0,
+            "seed": 14
+          }
+        },
+        {
+          "name": "smooth5nm_L50um",
+          "errors": {
+            "corr_sigma_um": 0.005,
+            "corr_length_um": 50.0,
+            "seed": 15
+          }
+        },
+        {
+          "name": "combined",
+          "errors": {
+            "field_um": 100.0,
+            "stitch_sigma_um": 0.02,
+            "field_bias_sigma_um": 0.002,
+            "corr_sigma_um": 0.003,
+            "corr_length_um": 5.0,
+            "sigma_um": 0.003,
+            "seed": 16
+          }
+        }
+      ]
+    },
+    "_config_path": "configs/checks_v2.yaml"
+  },
+  "git": {
+    "commit": "b61140248ab7230bf5b53d1bbd0070188693eadd",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-01T21:13:21+00:00"
+}

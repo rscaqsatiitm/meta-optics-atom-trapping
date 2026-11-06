@@ -1,0 +1,12 @@
+# Convergence study for the 1075 nm library (worst cases: widest pillars, highest index).
+run_id: rcwa_convergence
+wavelength_um: 1.075
+substrate: fused_silica
+shape: square
+n_grid: 256
+formulations: [jones_direct_fourier, pol_fourier, fft]
+n_terms: [49, 101, 197, 317, 441]
+n_terms_grcwa: [49, 101, 197, 317, 441]
+cases:
+  - {material: sin_lpcvd, pitch_um: 0.5, height_um: 1.5, ref_width_um: 0.1, widths_um: [0.3, 0.45]}
+  - {material: sin_si_rich, pitch_um: 0.5, height_um: 1.4, ref_width_um: 0.1, widths_um: [0.3, 0.45]}

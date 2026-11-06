@@ -1,0 +1,87 @@
+{
+  "config": {
+    "run_id": "checks_v2_seeds",
+    "fabrication": {
+      "base": "configs/fullaperture_v2_dz50.yaml",
+      "cases": [
+        {
+          "name": "smooth5nm_L50um_s21",
+          "errors": {
+            "corr_sigma_um": 0.005,
+            "corr_length_um": 50.0,
+            "seed": 21
+          }
+        },
+        {
+          "name": "stitch50nm_s22",
+          "errors": {
+            "field_um": 100.0,
+            "stitch_sigma_um": 0.05,
+            "seed": 22
+          }
+        },
+        {
+          "name": "smooth5nm_L50um_s23",
+          "errors": {
+            "corr_sigma_um": 0.005,
+            "corr_length_um": 50.0,
+            "seed": 23
+          }
+        },
+        {
+          "name": "stitch50nm_s24",
+          "errors": {
+            "field_um": 100.0,
+            "stitch_sigma_um": 0.05,
+            "seed": 24
+          }
+        },
+        {
+          "name": "smooth5nm_L50um_s25",
+          "errors": {
+            "corr_sigma_um": 0.005,
+            "corr_length_um": 50.0,
+            "seed": 25
+          }
+        },
+        {
+          "name": "stitch50nm_s26",
+          "errors": {
+            "field_um": 100.0,
+            "stitch_sigma_um": 0.05,
+            "seed": 26
+          }
+        },
+        {
+          "name": "smooth5nm_L500um_s27",
+          "errors": {
+            "corr_sigma_um": 0.005,
+            "corr_length_um": 500.0,
+            "seed": 27
+          }
+        }
+      ]
+    },
+    "_config_path": "configs/checks_v2_seeds.yaml"
+  },
+  "git": {
+    "commit": "1dbcf7381e77a3f02907bc4df479f40d59406584",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-02T05:58:14+00:00"
+}
