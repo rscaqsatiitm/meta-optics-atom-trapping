@@ -156,7 +156,8 @@ with the WGS-target rounds above):
 | 2 (start) | 7.14 % | 0.76 | 0.857 | 0.102 | - |
 | 3 | 1.77 % | 0.92 | 0.857 | 0.103 | -0.02 |
 | 4 | 0.53 % | 0.98 | 0.857 | 0.106 | -0.04 |
-| 5 to 8 | running | | | | |
+| 5 | 0.18 % | 0.99 | 0.857 | 0.107 | (pending) |
+| 6 to 8 | running | | | | |
 
 One pupil-phase round removes three quarters of the residual (7.14 to 1.77 % rms, min / mean
 0.76 to 0.92) with no loss of efficiency (0.857) and no increase of the axis light (0.103),
@@ -164,7 +165,8 @@ where one WGS-target round from the same state gave 5.96 % and raised the axis l
 The orbit-error slope of -0.02 means the gain of 1.2 corrected the round-2 pattern almost
 exactly; the remaining 1.77 % is uncorrelated with it and is the error introduced by the step
 itself, which later rounds act on. Round 4 brings it to 0.53 % rms (min / mean 0.98), i.e.
-the pupil-model level is approached in two rounds.
+the pupil-model level is approached in two rounds. Round 5 reaches 0.18 % rms (min / mean
+0.99), below the 0.24 % of the pupil model itself.
 
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
