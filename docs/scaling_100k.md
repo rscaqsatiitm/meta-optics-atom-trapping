@@ -220,7 +220,7 @@ gain 0.8, from the round-13 design.
 | 14 | 0.56 % | 0.97 | 0.827 | 0.109 | -0.06 |
 | 15 | 0.49 % | 0.98 | 0.827 | 0.107 | -0.03 |
 | 16 | 0.46 % | 0.98 | 0.827 | 0.108 | -0.06 |
-| 17 | running | | | | |
+| 17 | 0.45 % | 0.98 | 0.827 | 0.106 | - |
 | Final design, sigma 5 nm width errors | running | | | | - |
 
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
