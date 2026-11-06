@@ -121,7 +121,7 @@ and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the tabl
 
 | Objective f | 0 mm | 1.06 mm | 1.50 mm | 2.12 mm |
 |---|---|---|---|---|
-| 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | running |
+| 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | 0.631 / 0.115 (S 0.33) |
 | 25 mm | running | running | running | running |
 | 42 mm | running | running | running | running |
 
@@ -130,7 +130,8 @@ the field. When the field edge cannot reach a useful Strehl ratio in any plane, 
 trades the whole inner field for a marginal gain at the edge. For the 16 mm objective over
 0 to 2.83 mm it put the plane 4.24 um from focus: the on-axis Strehl ratio fell to 0.17 (EE 0.79)
 for a corner Strehl ratio of 0.08. Over 0 to 2.12 mm the same lens keeps its plane within
-0.04 um of focus and images to 1.5 mm with EE >= 0.88. Hence the 16 mm row of the 4 um table
+0.04 um of focus and images to 1.5 mm with EE >= 0.88; its 2.12 mm corner (EE 0.63, 11.5 %
+in a neighbour box) is beyond its field. Hence the 16 mm row of the 4 um table
 reflects a poorly posed plane choice as much as the lens; an EE-based plane criterion would
 raise its inner-field values (not recomputed). The 25 and 42 mm rows are not affected: their
 corners stay above S 0.3 and 0.8, and their planes are within 0.3 um of focus.
