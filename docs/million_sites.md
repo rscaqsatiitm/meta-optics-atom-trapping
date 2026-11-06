@@ -123,7 +123,7 @@ and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the tabl
 |---|---|---|---|---|
 | 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | 0.631 / 0.115 (S 0.33) |
 | 25 mm | 0.914 / 0.016 (S 0.99) | 0.911 / 0.020 (S 0.99) | 0.908 / 0.025 (S 0.97) | 0.858 / 0.051 (S 0.80) |
-| 42 mm | running | running | running | running |
+| 42 mm | 0.914 / 0.016 (S 1.00) | running | running | running |
 
 Choice of the common plane. The plane is chosen to maximise the minimum ray Strehl ratio over
 the field. When the field edge cannot reach a useful Strehl ratio in any plane, this criterion
