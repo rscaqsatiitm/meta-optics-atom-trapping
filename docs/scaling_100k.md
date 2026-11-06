@@ -182,6 +182,21 @@ amplitude error under the local-periodic approximation. It is deterministic, so 
 the library pillars in the loop (the same scheme, simulated with library_lpa) should remove most
 of it; this has not been run. Random width errors (sigma 5 nm) are not correctable this way.
 
+Feedback with library pillars in the loop (feedback_pillars: library;
+configs/fullaperture_100k_pplib.yaml). The same pupil-phase feedback, gain 1.2, but each round
+simulates the metasurface with the library pillars (local-periodic model) instead of ideal
+phase pixels, so the deterministic library error is corrected together with the design
+residual. It starts from the round-8 pupil-phase design. On the 16 x 16 check case it converges
+from 6.9 to 0.50 % rms in four rounds (orbit-error slopes 0.14 to 0.62), somewhat more slowly
+than with ideal pillars. The final design is also evaluated with random pillar width errors
+(sigma 5 nm, uncorrelated per pixel), which feedback cannot remove.
+
+| Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 8 (start; ideal-pillar design) | running | | | | - |
+| 9 to 13 | running | | | | |
+| Final design, sigma 5 nm width errors | running | | | | - |
+
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
 0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
