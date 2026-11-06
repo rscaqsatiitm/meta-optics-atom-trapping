@@ -1,0 +1,193 @@
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 0: 2.048 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 1: 1.138 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 2: 0.726 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 3: 0.560 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 4: 0.504 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 5: 0.490 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct round 6: 0.485 % G/G0 0.998
+telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.020482862290330025, "min_over_mean": 0.9608566802573635, "g_ratio": 0.9977690318383412, "dy_affine_res_nm": 5.983538804909209}, {"round": 1, "depth_rms": 0.011380446567221883, "min_over_mean": 0.9721277850379764, "g_ratio": 0.998103677298784, "dy_affine_res_n
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 0: 2.048 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 1: 1.153 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 2: 0.749 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 3: 0.589 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 4: 0.536 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 5: 0.525 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct round 6: 0.521 % G/G0 0.998
+telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.020482862290330025, "min_over_mean": 0.9608566802573635, "g_ratio": 0.9977690318383412, "dy_affine_res_nm": 5.983538804909209}, {"round": 1, "depth_rms": 0.011525213901430631, "min_over_mean": 0.9718601134470253, "g_ratio": 0.9980909081021129, "dy_affine_res_
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 0: 2.048 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 1: 1.256 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 2: 0.893 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 3: 0.723 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 4: 0.652 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 5: 0.628 % G/G0 0.998
+  telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct round 6: 0.607 % G/G0 0.998
+telK_M0.2_fig1000_seed1_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.020482862290330025, "min_over_mean": 0.9608566802573635, "g_ratio": 0.9977690318383412, "dy_affine_res_nm": 5.983538804909209}, {"round": 1, "depth_rms": 0.012564782147298411, "min_over_mean": 0.9702741333580527, "g_ratio": 0.9981058628086409, "dy_affine_res_
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 0: 4.817 % G/G0 0.941
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 1: 2.721 % G/G0 0.942
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 2: 2.095 % G/G0 0.943
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 3: 1.688 % G/G0 0.944
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 4: 1.327 % G/G0 0.942
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 5: 1.258 % G/G0 0.939
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct round 6: 1.261 % G/G0 0.937
+telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.048173076819484656, "min_over_mean": 0.852560683143125, "g_ratio": 0.9412451298012897, "dy_affine_res_nm": 26.92608934894126}, {"round": 1, "depth_rms": 0.027212731773812626, "min_over_mean": 0.9247995368438686, "g_ratio": 0.9422727198966407, "dy_affine_res_n
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 0: 4.817 % G/G0 0.941
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 1: 2.718 % G/G0 0.943
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 2: 2.126 % G/G0 0.944
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 3: 1.740 % G/G0 0.946
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 4: 1.340 % G/G0 0.943
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 5: 1.264 % G/G0 0.940
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct round 6: 1.269 % G/G0 0.940
+telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.048173076819484656, "min_over_mean": 0.852560683143125, "g_ratio": 0.9412451298012897, "dy_affine_res_nm": 26.92608934894126}, {"round": 1, "depth_rms": 0.027180630362180398, "min_over_mean": 0.9266639899319594, "g_ratio": 0.9428798569604463, "dy_affine_res_n
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 0: 4.817 % G/G0 0.941
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 1: 2.702 % G/G0 0.942
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 2: 2.227 % G/G0 0.942
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 3: 1.635 % G/G0 0.944
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 4: 1.334 % G/G0 0.943
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 5: 1.280 % G/G0 0.942
+  telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct round 6: 1.304 % G/G0 0.942
+telK_M0.2_fig1000_seed2_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.048173076819484656, "min_over_mean": 0.852560683143125, "g_ratio": 0.9412451298012897, "dy_affine_res_nm": 26.92608934894126}, {"round": 1, "depth_rms": 0.027020915420832896, "min_over_mean": 0.9250032033255663, "g_ratio": 0.9418616569783215, "dy_affine_res_n
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 0: 3.589 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 1: 3.187 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 2: 3.009 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 3: 2.726 % G/G0 0.905
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 4: 2.599 % G/G0 0.900
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 5: 2.496 % G/G0 0.886
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct round 6: 2.787 % G/G0 0.856
+telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.03588607871210136, "min_over_mean": 0.888237651485836, "g_ratio": 0.9096353833200872, "dy_affine_res_nm": 53.49377961059504}, {"round": 1, "depth_rms": 0.03186908114757624, "min_over_mean": 0.908277751678755, "g_ratio": 0.904474851857962, "dy_affine_res_nm": 
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 0: 3.589 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 1: 3.208 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 2: 3.044 % G/G0 0.903
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 3: 2.775 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 4: 2.675 % G/G0 0.898
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 5: 2.649 % G/G0 0.882
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct round 6: 2.823 % G/G0 0.855
+telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.03588607871210136, "min_over_mean": 0.888237651485836, "g_ratio": 0.9096353833200872, "dy_affine_res_nm": 53.49377961059504}, {"round": 1, "depth_rms": 0.03207515356585155, "min_over_mean": 0.9082606218822847, "g_ratio": 0.9039114177974955, "dy_affine_res_nm"
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 0: 3.589 % G/G0 0.910
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 1: 3.227 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 2: 3.053 % G/G0 0.903
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 3: 2.787 % G/G0 0.904
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 4: 2.669 % G/G0 0.898
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 5: 2.560 % G/G0 0.884
+  telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct round 6: 2.962 % G/G0 0.850
+telK_M0.2_fig1000_c0.5_seed1_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.03588607871210136, "min_over_mean": 0.888237651485836, "g_ratio": 0.9096353833200872, "dy_affine_res_nm": 53.49377961059504}, {"round": 1, "depth_rms": 0.03226983931133942, "min_over_mean": 0.9078095147959071, "g_ratio": 0.9039072795135388, "dy_affine_res_nm"
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 0: 7.096 % G/G0 0.968
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 1: 3.710 % G/G0 0.975
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 2: 2.282 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 3: 1.751 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 4: 1.583 % G/G0 0.977
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 5: 1.546 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct round 6: 1.561 % G/G0 0.975
+telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.07096294532449346, "min_over_mean": 0.8797308366285638, "g_ratio": 0.9684408699002671, "dy_affine_res_nm": 26.63186659308117}, {"round": 1, "depth_rms": 0.037096783848731975, "min_over_mean": 0.9178090696995981, "g_ratio": 0.9751557108521604, "dy_affine_res_n
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 0: 7.096 % G/G0 0.968
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 1: 3.724 % G/G0 0.975
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 2: 2.299 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 3: 1.764 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 4: 1.588 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 5: 1.548 % G/G0 0.975
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct round 6: 1.558 % G/G0 0.974
+telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.07096294532449346, "min_over_mean": 0.8797308366285638, "g_ratio": 0.9684408699002671, "dy_affine_res_nm": 26.63186659308117}, {"round": 1, "depth_rms": 0.03724480428380282, "min_over_mean": 0.917520762331861, "g_ratio": 0.9750620516584352, "dy_affine_res_nm"
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 0: 7.096 % G/G0 0.968
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 1: 3.833 % G/G0 0.975
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 2: 2.448 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 3: 1.886 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 4: 1.686 % G/G0 0.977
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 5: 1.632 % G/G0 0.976
+  telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct round 6: 1.611 % G/G0 0.975
+telK_M0.2_fig300_seed1_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.07096294532449346, "min_over_mean": 0.8797308366285638, "g_ratio": 0.9684408699002671, "dy_affine_res_nm": 26.63186659308117}, {"round": 1, "depth_rms": 0.038328502924589586, "min_over_mean": 0.9157498728003793, "g_ratio": 0.9751060835890978, "dy_affine_res_n
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 0: 21.798 % G/G0 0.479
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 1: 17.853 % G/G0 0.338
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 2: 16.001 % G/G0 0.385
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 3: 11.640 % G/G0 0.473
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 4: 9.734 % G/G0 0.398
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 5: 6.839 % G/G0 0.482
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct round 6: 6.729 % G/G0 0.542
+telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.21798194605988194, "min_over_mean": 0.3686876801952162, "g_ratio": 0.47943720777728405, "dy_affine_res_nm": 148.6962284189841}, {"round": 1, "depth_rms": 0.17852847710265293, "min_over_mean": 0.6902359681369014, "g_ratio": 0.33826266979551056, "dy_affine_res_
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 0: 21.798 % G/G0 0.479
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 1: 17.850 % G/G0 0.341
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 2: 16.094 % G/G0 0.381
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 3: 11.721 % G/G0 0.464
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 4: 9.801 % G/G0 0.394
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 5: 6.913 % G/G0 0.480
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct round 6: 6.830 % G/G0 0.539
+telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.21798194605988194, "min_over_mean": 0.3686876801952162, "g_ratio": 0.47943720777728405, "dy_affine_res_nm": 148.6962284189841}, {"round": 1, "depth_rms": 0.1785022406886957, "min_over_mean": 0.6883700548522378, "g_ratio": 0.3405067923573511, "dy_affine_res_nm
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 0: 21.798 % G/G0 0.479
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 1: 17.959 % G/G0 0.336
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 2: 16.157 % G/G0 0.382
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 3: 11.832 % G/G0 0.461
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 4: 10.002 % G/G0 0.388
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 5: 6.978 % G/G0 0.475
+  telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct round 6: 6.945 % G/G0 0.533
+telK_M0.2_fig300_seed2_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.21798194605988194, "min_over_mean": 0.3686876801952162, "g_ratio": 0.47943720777728405, "dy_affine_res_nm": 148.6962284189841}, {"round": 1, "depth_rms": 0.17958925095129416, "min_over_mean": 0.6892359067707569, "g_ratio": 0.33642128325206055, "dy_affine_res_
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 0: 1.171 % G/G0 0.997
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 1: 0.607 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 2: 0.370 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 3: 0.306 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 4: 0.317 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 5: 0.346 % G/G0 0.998
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct round 6: 0.372 % G/G0 0.998
+telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.011706961503221154, "min_over_mean": 0.9683863140066638, "g_ratio": 0.9967894444239953, "dy_affine_res_nm": 1.2035259006596901}, {"round": 1, "depth_rms": 0.006068962666849784, "min_over_mean": 0.9628435270685145, "g_ratio": 0.9985553580677049, "dy_affine_res
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 0: 1.171 % G/G0 0.997
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 1: 0.620 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 2: 0.399 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 3: 0.344 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 4: 0.356 % G/G0 0.998
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 5: 0.387 % G/G0 0.998
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct round 6: 0.409 % G/G0 0.998
+telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.011706961503221154, "min_over_mean": 0.9683863140066638, "g_ratio": 0.9967894444239953, "dy_affine_res_nm": 1.2035259006596901}, {"round": 1, "depth_rms": 0.006202815433078492, "min_over_mean": 0.9628963472412346, "g_ratio": 0.9985443418562765, "dy_affine_res
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 0: 1.171 % G/G0 0.997
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 1: 0.605 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 2: 0.445 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 3: 0.432 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 4: 0.457 % G/G0 0.999
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 5: 0.495 % G/G0 0.998
+  telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct round 6: 0.514 % G/G0 0.998
+telK_M0.2_tilt1_seed1_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.011706961503221154, "min_over_mean": 0.9683863140066638, "g_ratio": 0.9967894444239953, "dy_affine_res_nm": 1.2035259006596901}, {"round": 1, "depth_rms": 0.006045091894216073, "min_over_mean": 0.961600410424626, "g_ratio": 0.9986099831798767, "dy_affine_res_
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 0: 1.814 % G/G0 0.992
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 1: 0.895 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 2: 0.523 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 3: 0.414 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 4: 0.426 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 5: 0.473 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct round 6: 0.518 % G/G0 0.996
+telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.018140878061694336, "min_over_mean": 0.9515461194631152, "g_ratio": 0.9920932188139318, "dy_affine_res_nm": 2.1793395956047656}, {"round": 1, "depth_rms": 0.008954676068765117, "min_over_mean": 0.9479651881740606, "g_ratio": 0.9965324233217225, "dy_affine_res
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 0: 1.814 % G/G0 0.992
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 1: 0.895 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 2: 0.535 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 3: 0.444 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 4: 0.466 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 5: 0.516 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct round 6: 0.562 % G/G0 0.996
+telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.018140878061694336, "min_over_mean": 0.9515461194631152, "g_ratio": 0.9920932188139318, "dy_affine_res_nm": 2.1793395956047656}, {"round": 1, "depth_rms": 0.008949456316675703, "min_over_mean": 0.948085617654507, "g_ratio": 0.9965647399430517, "dy_affine_res_
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 0: 1.814 % G/G0 0.992
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 1: 0.886 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 2: 0.559 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 3: 0.500 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 4: 0.528 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 5: 0.585 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 6: 0.634 % G/G0 0.996
+telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.018140878061694336, "min_over_mean": 0.9515461194631152, "g_ratio": 0.9920932188139318, "dy_affine_res_nm": 2.1793395956047656}, {"round": 1, "depth_rms": 0.008856429195760846, "min_over_mean": 0.948272538759813, "g_ratio": 0.9965419475697357, "dy_affine_res_
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 0: 2.871 % G/G0 0.993
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 1: 1.536 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 2: 0.919 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 3: 0.675 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 4: 0.606 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 5: 0.602 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 6: 0.607 % G/G0 0.997
+telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.028706601593154323, "min_over_mean": 0.9333900187099989, "g_ratio": 0.9925113488317481, "dy_affine_res_nm": 5.181751501757501}, {"round": 1, "depth_rms": 0.01535908911576452, "min_over_mean": 0.9584183322128121, "g_ratio": 0.9966942016227321, "dy_affine_res_n
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 0: 2.871 % G/G0 0.993
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 1: 1.554 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 2: 0.947 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 3: 0.705 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 4: 0.635 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 5: 0.631 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 6: 0.636 % G/G0 0.997
+telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.028706601593154323, "min_over_mean": 0.9333900187099989, "g_ratio": 0.9925113488317481, "dy_affine_res_nm": 5.181751501757501}, {"round": 1, "depth_rms": 0.015537478631469528, "min_over_mean": 0.9579863647554714, "g_ratio": 0.9966736598405548, "dy_affine_res_
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 0: 2.871 % G/G0 0.993
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 1: 1.644 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 2: 1.082 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 3: 0.836 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 4: 0.747 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 5: 0.727 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 6: 0.717 % G/G0 0.997
+telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.028706601593154323, "min_over_mean": 0.9333900187099989, "g_ratio": 0.9925113488317481, "dy_affine_res_nm": 5.181751501757501}, {"round": 1, "depth_rms": 0.016441860353334878, "min_over_mean": 0.9567631971210293, "g_ratio": 0.9967308265929617, "dy_affine_res_
+done

@@ -19,3 +19,13 @@ closed_loop:
   n_bins: 48
   smooth: 1.0
   measurement_noise: [0.0, 0.01]            # per-site multiplicative noise of the measured depth (10^4 sampled sites)
+camera:                                     # closed loop from cameras imaging the transmitted beams onto planes conjugate to the crossing
+  variants: [telK_M0.2]
+  pixel_um: 10.0
+  n_bins: 48
+  rounds: 6
+  gain: 0.5
+  noise:                                    # random: fresh per frame; fixed_white: per-pixel response (PRNU); fixed_smooth: flat-field error, rms
+    - {name: rand0.5pct, random: 0.005}
+    - {name: rand0.5pct_prnu1pct, random: 0.005, fixed_white: 0.01}
+    - {name: rand0.5pct_flat1pct, random: 0.005, fixed_smooth: 0.01, smooth_corr_um: 1000.0}

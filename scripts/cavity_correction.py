@@ -191,7 +191,58 @@ def main(cfg_path):
                         TB = TB * profile_on_grid(ring0.grid.x, knots, be, h * 1.02) ** (-gain)
                         p1, p2 = ring0.design_phase(TA, TB, 1), ring0.design_phase(TB, TA, 2)
                     save(key, {"history": hist, "final": hist[-1], "stroke_G1": stroke(p1, ph0, ring0, F, lam), "stroke_G2": stroke(p2, ph0, ring0, F, lam), "seconds": time.time() - t0})
+                # Closed loop from cameras that image the transmitted circulating beams (arms A and B)
+                # onto planes conjugate to the crossing; no atoms, no mirror metrology.
+                cam = cfg.get("camera")
+                if not cam or vname not in cam["variants"]:
+                    continue
+                for cn in cam["noise"]:
+                    key = f"{tag}_closedloop_camera_{cn['name']}"
+                    if key in results:
+                        continue
+                    t0 = time.time()
+                    crng = np.random.default_rng(3000 + seed)
+                    px = np.arange(-h * 1.02, h * 1.02, cam["pixel_um"])
+                    pats = [fixed_pattern(px, cn, crng, ring0.grid) for _ in range(2)]  # one camera per arm
+                    TA, TB = F.copy(), F.copy()
+                    p1, p2 = ph0.copy(), ph0.copy()
+                    hist = []
+                    for rnd in range(cam["rounds"] + 1):
+                        r = with_g(true, p1, p2)
+                        ev, e, _ = S.evaluate(fcfg, s, r)
+                        hist.append({"round": rnd, "depth_rms": ev["array"]["depth_rms"], "min_over_mean": ev["array"]["depth_min_over_mean"], "g_ratio": ev["g_ratio"],
+                                     "dy_affine_res_nm": ev["array"]["dy_affine_residual_rms_um"] * 1e3})
+                        print(f"  {key} round {rnd}: {hist[-1]['depth_rms']*100:.3f} % G/G0 {hist[-1]['g_ratio']:.3f}", flush=True)
+                        if rnd == cam["rounds"]:
+                            break
+                        eb = r.half(e, 1)
+                        knots = np.linspace(-h * 1.02, h * 1.02, cam["n_bins"])
+                        va = camera_profile(e, ring0.grid.x, px, knots, pats[0], cn["random"], crng)
+                        vb = camera_profile(eb, ring0.grid.x, px, knots, pats[1], cn["random"], crng)
+                        TA = TA * profile_on_grid(ring0.grid.x, knots, va, h * 1.02) ** (-cam["gain"])
+                        TB = TB * profile_on_grid(ring0.grid.x, knots, vb, h * 1.02) ** (-cam["gain"])
+                        p1, p2 = ring0.design_phase(TA, TB, 1), ring0.design_phase(TB, TA, 2)
+                    save(key, {"history": hist, "final": hist[-1], "camera": cn, "stroke_G1": stroke(p1, ph0, ring0, F, lam), "seconds": time.time() - t0})
     print("done", flush=True)
+
+
+def fixed_pattern(px, cn, rng, grid):
+    """Static camera response error on the pixel grid: white per-pixel (PRNU) and smooth (flat field)."""
+    pat = 1.0 + cn.get("fixed_white", 0.0) * rng.standard_normal(len(px))
+    if cn.get("fixed_smooth", 0.0):
+        sm = FL.smooth_screen(grid, cn["fixed_smooth"], cn.get("smooth_corr_um", 1000.0), rng, px.max())
+        pat = pat * (1.0 + np.interp(px, grid.x, sm))
+    return pat
+
+
+def camera_profile(e, x, px, knots, pattern, random, rng):
+    """Log-amplitude profile (on the knots) of a beam's intensity seen by a camera: sampled on pixels,
+    multiplied by the static pattern and by fresh random noise, then averaged into bins."""
+    ip = np.interp(px, x, np.abs(e) ** 2) * pattern * (1.0 + random * rng.standard_normal(len(px)))
+    idx = np.clip(np.searchsorted(knots, px) - 1, 0, len(knots) - 1)
+    mean = np.array([ip[idx == i].mean() if np.any(idx == i) else np.nan for i in range(len(knots))])
+    mean = np.where(np.isfinite(mean), mean, np.nanmean(mean))
+    return 0.5 * np.log(np.clip(mean, 1e-12, None))
 
 
 if __name__ == "__main__":

@@ -59,8 +59,11 @@ them. With independent lambda/1000 figure errors or 1 urad tilts on all ten mirr
 mirror metrology, insensitive to 1 % per-site noise) restores 0.22 to 0.54 % in four of six runs;
 the other two end at 1.9 and 2.3 % (the latter with 0.5 mm-scale errors). It needs a graded-mirror change of only 1 to 7 nm rms. A 2D
 model with non-separable errors gives the same picture (2.2 % to 0.44 % with an x-only correction).
-The feedback fails when the uncorrected mode is far from the design (a 22 % start diverged). Open-loop
-correction from measured mirror maps needs 0.1 to 0.3 nm rms metrology on every mirror. The
+The feedback fails when the uncorrected mode is far from the design (a 22 % start diverged). A camera on the
+transmitted beams does as well (0.49 to 1.3 % for lambda/1000) and does not diverge where the atom
+loop did. Open-loop correction from measured mirror maps needs 0.1 to 0.3 nm rms metrology on every
+mirror, after coating and as mounted, which is beyond what LIGO- or EUV-class interferometry provides in
+situ; such metrology serves fabrication, not correction. The
 vertical-lattice ring, whose beam is 6.9 mm wide, is the most sensitive (3.6 to 36 % uncorrected,
 0.08 % after a perfect-metrology redesign). Correction does not rescue the plain ring without a
 telescope. All corrections are static; drift must stay below these levels between corrections.
@@ -374,17 +377,17 @@ Enhancement G = 300, the self-consistent lock of Section 4.
 
 Telescope ring, 0.2x (depth rms over the 10^6-site array; two random realisations where shown):
 
-| Errors on every mirror | Uncorrected | Perfect metrology | 0.1 nm metrology | 0.3 nm metrology | 1 nm metrology | Closed loop, 6 rounds |
-|---|---|---|---|---|---|---|
-| lambda/1000 figure, 2 mm | 2 / 4.8 % | 0.49 / 0.54 % | 0.68 / 0.61 % | 1.3 / 1.4 % | 3.9 / 4.6 % | 0.48 / 1.9 % |
-| lambda/1000 figure, 0.5 mm | 3.6 % | 2.4 % | 2.3 % | 2.3 % | 3.9 % | 2.3 % |
-| lambda/300 figure, 2 mm | 7.1 / 22 % | 1.4 / 1.7 % | 1.5 / 2 % | 1.9 / 2.9 % | 4.1 / 7.2 % | 1.5 / 48 % |
-| tilts, 1 urad rms | 1.2 / 1.8 % | 0.43 / 0.58 % | 0.53 / 0.48 % | 1.3 / 1.3 % | 3.9 / 4.2 % | 0.22 / 0.23 % |
-| lambda/1000 + 0.3 urad tilts | 2.9 % | 0.6 % | 0.71 % | 1.4 % | 3.9 % | 0.54 % |
+| Errors on every mirror | Uncorrected | Perfect metrology | 0.1 nm metrology | 0.3 nm metrology | 1 nm metrology | Atom loop, 6 rounds | Camera loop, 0.5 % noise | + 1 % pixel response | + 1 % flat field |
+|---|---|---|---|---|---|---|---|---|---|
+| lambda/1000 figure, 2 mm | 2 / 4.8 % | 0.49 / 0.54 % | 0.68 / 0.61 % | 1.3 / 1.4 % | 3.9 / 4.6 % | 0.48 / 1.9 % | 0.49 / 1.3 % | 0.52 / 1.3 % | 0.61 / 1.3 % |
+| lambda/1000 figure, 0.5 mm | 3.6 % | 2.4 % | 2.3 % | 2.3 % | 3.9 % | 2.3 % | 2.8 % | 2.8 % | 3 % |
+| lambda/300 figure, 2 mm | 7.1 / 22 % | 1.4 / 1.7 % | 1.5 / 2 % | 1.9 / 2.9 % | 4.1 / 7.2 % | 1.5 / 48 % | 1.6 / 6.7 % | 1.6 / 6.8 % | 1.6 / 6.9 % |
+| tilts, 1 urad rms | 1.2 / 1.8 % | 0.43 / 0.58 % | 0.53 / 0.48 % | 1.3 / 1.3 % | 3.9 / 4.2 % | 0.22 / 0.23 % | 0.37 / 0.52 % | 0.41 / 0.56 % | 0.51 / 0.63 % |
+| lambda/1000 + 0.3 urad tilts | 2.9 % | 0.6 % | 0.71 % | 1.4 % | 3.9 % | 0.54 % | 0.61 % | 0.64 % | 0.72 % |
 
 Plain ring, plane folds, p = 150 mm:
 
-| Errors on every mirror | Uncorrected | Perfect metrology | 0.1 nm metrology | 0.3 nm metrology | 1 nm metrology | Closed loop, 6 rounds |
+| Errors on every mirror | Uncorrected | Perfect metrology | 0.1 nm metrology | 0.3 nm metrology | 1 nm metrology | Atom loop, 6 rounds |
 |---|---|---|---|---|---|---|
 | lambda/1000 figure, 2 mm | 20 / 42 % | 0.23 / 0.23 % | 0.69 / 2.1 % | 2.2 / 6.2 % | 11 / 19 % | 3.6 / 1.6 % |
 | lambda/1000 figure, 0.5 mm | 24 % | 0.26 % | 0.7 % | 2.2 % | 11 % | 0.94 % |
@@ -399,9 +402,24 @@ becomes partly an amplitude error at G and at the crossing, which a phase-only m
 undo. In the test ring of tests/test_cavity.py, a redesign through a half trip with an error on its
 primary reduced the round-trip infidelity only fourfold, from 1.5e-3 to 3.2e-4, not to zero. Errors on a 0.5 mm scale leave 2.3 to 2.4 %.
 (ii) The open loop is only as good as the metrology. At 0.1 nm rms per mirror the gain is kept, 0.3
-nm leaves 1.3 to 1.4 %, and 1 nm (3.9 to 4.6 %) is no better than no correction. Absolute
-interferometry of every cavity mirror at 0.1 to 0.3 nm rms over millimetre apertures
-`[REF?: sub-nm absolute figure metrology]` is a demanding requirement in its own right.
+nm leaves 1.3 to 1.4 %, and 1 nm (3.9 to 4.6 %) is no better than no correction. Is 0.1 to
+0.3 nm achievable? The best large-optics programmes reach it on the instrument.
+Advanced LIGO test-mass substrates were ion-beam figured to 0.08 to 0.23 nm rms over the central
+160 mm (specification < 0.3 nm, power and astigmatism removed; LIGO Scientific Collaboration, Class.
+Quantum Grav. 32, 074001 (2015), DOI 10.1088/0264-9381/32/7/074001, arXiv:1411.4547, Table 4). The metrology interferometer was specified for a
+repeatability below 0.15 nm rms, with 0.1 nm as the goal (LIGO-E080508-v2).
+For EUV projection optics, mirrors were measured with 27 pm rms repeatability and 46 pm reproducibility,
+and an alpha-tool mirror reached 0.10 nm rms figure (Kurz et al., Carl Zeiss SMT, EUVL Symposium 2004).
+Three differences make our requirement harder than these. First, it is absolute, per mirror, and
+must hold after coating. Coating raised the LIGO end test mass from 0.18 to 0.69 nm rms and the input
+test mass from 0.15 to 0.31 nm (arXiv:1411.4547), more than our whole tolerance. Repeatability is
+not absolute accuracy: independent absolute calibrations of reference flats agree only to
+`[VALUE?: approx. 0.4 nm rms, from a search snippet, verify]`. Second, our mirrors are off-axis
+cylindrical or freeform surfaces used at 15 to 38 deg incidence, each needing its own null test.
+Third, the map must describe the mirror as mounted, in vacuum and at the circulating power, and
+must be registered to the beam to a fraction of the error correlation length (sub-0.1 mm on the
+small mirrors). Hence such metrology belongs to fabrication, to bring each mirror to
+lambda/1000, and not to in-situ correction, which must be closed-loop.
 (iii) The closed loop needs no mirror metrology. Of its eight runs, six converge within four to
 five rounds to the perfect-metrology level or below: 0.48 % (lambda/1000), 0.22 and 0.23 % (tilts,
 the design floor), 0.54 % (combined), 2.3 % (0.5 mm errors) and 1.5 % (lambda/300, first
@@ -409,6 +427,18 @@ realisation). One lambda/1000 realisation stalls at 1.9 % with 0.94 of the enhan
 enhancement) diverges. Hence the feedback works when the uncorrected mode is close to the flat-top
 (starts up to ~7 % here) and fails when the mode is no longer the designed one. Per-site
 measurement noise of 1 % changes nothing, because the separable fit averages over 10^4 sampled sites.
+(iii-b) Cameras instead of atoms. The light transmitted by a cavity mirror carries the circulating
+profile of each beam; a camera behind an imaging relay conjugate to the crossing (assumed ideal here)
+sees |E_A|^2 and |E_B|^2 directly. With 10 um pixels, 0.5 % fresh noise per pixel and 48 bins,
+the same update rule converges as well as the atom loop and more reliably: 0.49 and 1.3 % for
+lambda/1000 errors (atom loop 0.48 and 1.9 %), and 6.7 % from the 22 % lambda/300 start that made
+the atom loop diverge. It is slightly worse for tilts (0.37 to 0.52 %, against 0.22 to 0.23 %),
+because it sees only the crossing plane and not the propagation of each beam across the array. A
+1 % static per-pixel response error changes nothing (the bins average it). A 1 % rms smooth
+flat-field error, which the loop cannot distinguish from a real profile error, adds at most 0.14
+percentage points. A 50 ppm mirror leaks ~5 mW of a 100 W circulating beam (DERIVED), ample for a
+camera. Hence a camera loop can run continuously against drift, with the atoms as the occasional
+absolute calibration of the camera's flat field and of the relay.
 (iv) The stroke is 1 to 7 nm rms of graded-mirror surface in all converged cases. Hence the
 correction could be written by iterative refiguring, or applied in situ by a deformable or thermally
 actuated graded mirror. The loss and stability of an intracavity deformable mirror at kW/cm^2 is
@@ -561,9 +591,15 @@ Provenance ledger:
 | Fox-Li designs, spectra, tolerances | Sections 4, Result | SIM, review before submission | results/cavity_foxli/foxli.json (field .npz files are regenerated by the script, not versioned) |
 | Exploratory curved-fold spectra | Section 4 | SIM (exploratory, not saved) | session scratch scripts |
 | Correction study (open and closed loop, strokes) | Section 4b, Result | SIM, review before submission | results/cavity_correction/correction.json |
+| Camera-loop correction | Section 4b, Result | SIM, review before submission | results/cavity_correction/correction.json (keys *_closedloop_camera_*) |
+| Transmitted power ~5 mW for 50 ppm at 100 W | Section 4b | DERIVED | 5e-5 x 100 W |
 | 2D separability check | Section 4b | SIM, review before submission | results/cavity_2d_check/check2d.json |
 | Vertical ring uniformity and plane flatness | Section 4b | SIM, review before submission | results/cavity_vertical/vertical.json |
 | Vertical ring at 0.1x, vertical flat-top edge orders | Section 4b, Section 2 | SIM (exploratory, not saved) | session scripts |
+| Advanced LIGO substrate figure 0.08 to 0.23 nm rms (spec < 0.3 nm, 160 mm); coated 0.18 to 0.69 / 0.15 to 0.31 nm | Section 4b | SOURCE | arXiv:1411.4547, Table 4 and Section 4 text (PDF text read in session) |
+| LIGO metrology interferometer repeatability < 0.15 nm rms required, 0.1 nm goal | Section 4b | SOURCE | LIGO-E080508-v2 (PDF text read in session) |
+| LIGO ETM polishing spec < 0.3 nm rms over 160 mm, piston/tilt/power removed | Section 4b (via arXiv table) | SOURCE | LIGO-E080512-v5 (PDF text read in session) |
+| Zeiss EUV metrology 27 pm repeatability, 46 pm reproducibility; M6 figure 0.10 nm rms | Section 4b | SOURCE | Kurz et al., EUVL Symposium 2004, euvlsymposium.lbl.gov/pdf/2004/presentations/day3/To03_Kurz.pdf (PDF text read in session) |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |
@@ -579,8 +615,8 @@ Provenance ledger:
 Open placeholders: `[VALUE?: AR loss per surface 2.5e-4 to 1e-3]`, `[VALUE?: Brewster residual loss
 1e-4]`, `[VALUE?: IBS absorption 1 ppm]`, `[VALUE?: refractive objective 0.95, ideal relay 0.995 per
 pass]`, `[VALUE?: mode-converter coupling 0.95]`, `[CONFIRM?: cell wall 15 mm from the atoms; cell
-size for the layout]`, `[REF?: freeform figuring at nm rms over mm apertures]`, `[REF?: sub-nm absolute
-figure metrology]`, `[VALUE?: loss and stability of an intracavity deformable mirror]`.
+size for the layout]`, `[REF?: freeform figuring at nm rms over mm apertures]`, `[VALUE?: absolute flat-calibration
+agreement approx. 0.4 nm]`, `[VALUE?: loss and stability of an intracavity deformable mirror]`.
 
 Sourcing gaps. The 12,000-finesse microstructured-mirror cavity (Dickmann et al., Commun. Phys. 2023,
 DOI 10.1038/s42005-023-01131-1) and the Si3N4 photonic-crystal membrane mirror (arXiv:2401.16695,

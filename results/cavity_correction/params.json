@@ -76,10 +76,36 @@
         0.01
       ]
     },
+    "camera": {
+      "variants": [
+        "telK_M0.2"
+      ],
+      "pixel_um": 10.0,
+      "n_bins": 48,
+      "rounds": 6,
+      "gain": 0.5,
+      "noise": [
+        {
+          "name": "rand0.5pct",
+          "random": 0.005
+        },
+        {
+          "name": "rand0.5pct_prnu1pct",
+          "random": 0.005,
+          "fixed_white": 0.01
+        },
+        {
+          "name": "rand0.5pct_flat1pct",
+          "random": 0.005,
+          "fixed_smooth": 0.01,
+          "smooth_corr_um": 1000.0
+        }
+      ]
+    },
     "_config_path": "configs/cavity_correction.yaml"
   },
   "git": {
-    "commit": "46c8289387b614710f5b09123e4c4862d1e5f45c",
+    "commit": "49add7dc9a3c13c18a2d220798d93e9c7401a7c9",
     "dirty": "True"
   },
   "versions": {
@@ -97,5 +123,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-06T12:30:00+00:00"
+  "utc": "2026-11-06T15:42:20+00:00"
 }

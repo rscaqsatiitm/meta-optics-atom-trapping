@@ -68,7 +68,9 @@ def correction_table():
     cases = [("fig1000", "lambda/1000 figure, 2 mm"), ("fig1000_c0.5", "lambda/1000 figure, 0.5 mm"), ("fig300", "lambda/300 figure, 2 mm"),
              ("tilt1", "tilts, 1 urad rms"), ("fig1000_tilt0.3", "lambda/1000 + 0.3 urad tilts")]
     cols = [("uncorrected", "Uncorrected"), ("openloop_noise0.0nm", "Perfect metrology"), ("openloop_noise0.1nm", "0.1 nm metrology"),
-            ("openloop_noise0.3nm", "0.3 nm metrology"), ("openloop_noise1.0nm", "1 nm metrology"), ("closedloop_noise0.01", "Closed loop, 6 rounds")]
+            ("openloop_noise0.3nm", "0.3 nm metrology"), ("openloop_noise1.0nm", "1 nm metrology"), ("closedloop_noise0.01", "Atom loop, 6 rounds"),
+            ("closedloop_camera_rand0.5pct", "Camera loop, 0.5 % noise"), ("closedloop_camera_rand0.5pct_prnu1pct", "+ 1 % pixel response"),
+            ("closedloop_camera_rand0.5pct_flat1pct", "+ 1 % flat field")]
     for v in ("telK_M0.2", "plane150"):
         print(f"\n{v}\n")
         print("| Errors on every mirror | " + " | ".join(c for _, c in cols) + " |")
