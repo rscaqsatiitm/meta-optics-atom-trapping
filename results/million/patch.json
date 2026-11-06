@@ -34,5 +34,41 @@
     "max_position_error_um": 0.200000030933755,
     "interstitial_max_over_mean_peak": 0.08925631758906585,
     "peak_rel_axis_single": 2.3476025951078e+17
+  },
+  "r0:corrected:equal": {
+    "centre_um": 0,
+    "corrected": true,
+    "pistons": "equal",
+    "depth_nonuniformity_rms_inner": 0.052124910384313695,
+    "min_over_mean_inner": 0.8418226456467558,
+    "single_trap_nonuniformity_rms_inner": 2.1077452907488117e-09,
+    "interference_modulation_rms": 0.05212490972213038,
+    "max_position_error_um": 6.06511078668654e-08,
+    "interstitial_max_over_mean_peak": 0.018126688360078146,
+    "peak_rel_axis_single": 2.3553609365202634e+17
+  },
+  "r0:corrected:alternating": {
+    "centre_um": 0,
+    "corrected": true,
+    "pistons": "alternating",
+    "depth_nonuniformity_rms_inner": 0.040060574120269386,
+    "min_over_mean_inner": 0.8830991830697398,
+    "single_trap_nonuniformity_rms_inner": 2.1077452907488117e-09,
+    "interference_modulation_rms": 0.04006057291403506,
+    "max_position_error_um": 6.06511078668654e-08,
+    "interstitial_max_over_mean_peak": 0.08313396055609654,
+    "peak_rel_axis_single": 2.3553609365202634e+17
+  },
+  "r0:corrected:random": {
+    "centre_um": 0,
+    "corrected": true,
+    "pistons": "random",
+    "depth_nonuniformity_rms_inner": 0.13685293128818324,
+    "min_over_mean_inner": 0.7330636389491852,
+    "single_trap_nonuniformity_rms_inner": 2.1077452907488117e-09,
+    "interference_modulation_rms": 0.1368529311340862,
+    "max_position_error_um": 0.20000003163823418,
+    "interstitial_max_over_mean_peak": 0.07777892543659616,
+    "peak_rel_axis_single": 2.3553609365202634e+17
   }
 }
