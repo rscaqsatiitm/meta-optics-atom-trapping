@@ -110,7 +110,8 @@ from the round-2 state). All of the residual is orbit-to-orbit: the scatter with
 | 3 | 5.96 % | 0.75 | 0.858 | 0.147 |
 | 4 | 5.47 % | 0.77 | 0.859 | 0.162 |
 | 5 | 5.07 % | 0.82 | 0.860 | 0.172 |
-| 6 | running | | | |
+| 6 | 4.78 % | 0.80 | 0.861 | 0.072 |
+| Library pillars after round 6 | running | | | |
 
 Convergence diagnostic (per-site depths saved every round). The per-orbit depth errors of
 rounds 2 and 3 are nearly uncorrelated (correlation -0.13, regression slope -0.11). A linear,
