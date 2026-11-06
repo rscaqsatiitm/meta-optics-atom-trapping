@@ -158,7 +158,8 @@ with the WGS-target rounds above):
 | 4 | 0.53 % | 0.98 | 0.857 | 0.106 | -0.04 |
 | 5 | 0.18 % | 0.99 | 0.857 | 0.107 | -0.04 |
 | 6 | 0.068 % | 0.99 | 0.857 | 0.108 | -0.04 |
-| 7 to 8 | running | | | | |
+| 7 | 0.029 % | 0.99 | 0.857 | 0.108 | (pending) |
+| 8 | running | | | | |
 
 One pupil-phase round removes three quarters of the residual (7.14 to 1.77 % rms, min / mean
 0.76 to 0.92) with no loss of efficiency (0.857) and no increase of the axis light (0.103),
