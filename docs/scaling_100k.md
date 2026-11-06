@@ -111,7 +111,7 @@ from the round-2 state). All of the residual is orbit-to-orbit: the scatter with
 | 4 | 5.47 % | 0.77 | 0.859 | 0.162 |
 | 5 | 5.07 % | 0.82 | 0.860 | 0.172 |
 | 6 | 4.78 % | 0.80 | 0.861 | 0.072 |
-| Library pillars after round 6 | running | | | |
+| Library pillars after round 6 | 5.48 % | 0.80 | 0.832 | 0.069 |
 
 Convergence diagnostic (per-site depths saved every round). The per-orbit depth errors of
 rounds 2 and 3 are nearly uncorrelated (correlation -0.13, regression slope -0.11). A linear,
@@ -188,11 +188,13 @@ of it; this has not been run. Random width errors (sigma 5 nm) are not correctab
 feedback (dark targets) would address it.
 
 Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 99,856
-traps with 0.83 efficiency and 7.5 % rms depth non-uniformity with library pillars, after two
-feedback rounds. 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
-outside its thermal limits; use LPCVD SiN or sapphire). The main limitation is the
-convergence of the depth uniformity, which is set by the design iterations and not by the
-optics.
+traps with 0.83 efficiency. With pupil-phase feedback (six rounds from the round-2 design) the
+depth non-uniformity is 0.015 % rms with ideal pillars and 2.7 % with library pillars (min / mean
+0.91), against 7.5 % after the original two WGS-target rounds; four further WGS-target rounds
+reach only 4.8 % (ideal) and 5.5 % (library pillars). 0.3 mK traps need ~213 W of 1075 nm (Si-rich SiN on fused silica is then
+outside its thermal limits; use LPCVD SiN or sapphire). The design residual is no longer a
+limitation; the remaining 2.7 % is the deterministic error of the pillar library in the
+local-periodic model, which feedback with library pillars in the loop should reduce (not run).
 
 ## Discussion
 
