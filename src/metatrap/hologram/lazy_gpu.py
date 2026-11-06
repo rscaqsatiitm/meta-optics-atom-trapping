@@ -4,7 +4,10 @@ LazyKGGPU has the interface of lazy.LazyKG (K @ x, conj(v) @ K, .shape) and can 
 the D4-symmetric weighted GS (scripts/fullaperture_lazy.py --gpu). Design choices for consumer
 GPUs, whose double precision runs at 1/32 to 1/64 of single precision:
 
-* All per-pair arithmetic is single precision. The optical-path table and the reference paths
+* All per-pair arithmetic is single precision. Integer results (int(), math.floor) are cast
+  back to float32 explicitly: numba types them int64, and int64 op float32 promotes to
+  float64, which compiled sin/cos to the double-precision path (checked in the PTX with
+  numba.cuda.compile_ptx, scripts/check_gpu_ptx.py). The optical-path table and the reference paths
   OPL0 are stored relative to a common offset C = OPL(0), so the values are <= ~10^4 um and the
   float32 rounding of a path difference is <~ 1e-3 um (phase error <~ 6e-3 rad at 1.075 um,
   DERIVED). The phase is reduced to [-pi, pi] before __sinf/__cosf-class evaluation (here
@@ -54,10 +57,10 @@ def _matvec_kernel(rx, ry, opl0, gx, gy, xr, xi, tab, inv_h, k0, j0, j1, outr, o
             t = int(u)
             if t > ntab - 2:
                 t = ntab - 2
-            f = u - t
+            f = u - np.float32(t)  # int64 - float32 would promote to float64
             opl = tab[t] + f * (tab[t + 1] - tab[t])
             ph = -k0 * (opl - o0)
-            ph = ph - TWO_PI * math.floor(ph * INV_TWO_PI + np.float32(0.5))
+            ph = ph - TWO_PI * np.float32(math.floor(ph * INV_TWO_PI + np.float32(0.5)))
             c = math.cos(ph)
             s = math.sin(ph)
             yr = c * xr[j] - s * xi[j] - cr_
@@ -92,10 +95,10 @@ def _rmatvec_kernel(rx, ry, opl0, gx, gy, ur, ui, tab, inv_h, k0, i0, i1, outr, 
             t = int(u)
             if t > ntab - 2:
                 t = ntab - 2
-            f = u - t
+            f = u - np.float32(t)  # int64 - float32 would promote to float64
             opl = tab[t] + f * (tab[t + 1] - tab[t])
             ph = -k0 * (opl - opl0[i])
-            ph = ph - TWO_PI * math.floor(ph * INV_TWO_PI + np.float32(0.5))
+            ph = ph - TWO_PI * np.float32(math.floor(ph * INV_TWO_PI + np.float32(0.5)))
             c = math.cos(ph)
             s = math.sin(ph)
             yr = ur[i] * c + ui[i] * s - cr_

@@ -22,7 +22,7 @@ from __future__ import annotations
 import numpy as np
 import scipy.fft as sfft
 
-from .angular_spectrum import WORKERS, transfer_function
+from .angular_spectrum import WORKERS, propagate, transfer_function
 from .layers import LayerStack
 
 
@@ -54,8 +54,13 @@ def fold_blocks(blocks, n: int, n_fold: int):
     return F, power
 
 
-def propagate_folded(F: np.ndarray, dx: float, lam_um: float, stack: LayerStack, fresnel: bool = False) -> np.ndarray:
-    """Focal field from a folded metasurface field; returned with the axis at index N//2."""
+def propagate_folded(F: np.ndarray, dx: float, lam_um: float, stack: LayerStack, fresnel: bool = False, low_memory: bool = False) -> np.ndarray:
+    """Focal field from a folded metasurface field; returned with the axis at index N//2.
+
+    low_memory: single precision with the transfer function applied in row blocks
+    (angular_spectrum.propagate); about 3 copies of N^2 complex64 instead of ~6 of complex128."""
+    if low_memory:
+        return np.fft.fftshift(propagate(F.astype(np.complex64), dx, lam_um, stack, fresnel=fresnel))
     n = F.shape[0]
     spec = sfft.fft2(F, workers=WORKERS)
     h = transfer_function(n, dx, lam_um, stack, fresnel=fresnel).astype(np.complex128)

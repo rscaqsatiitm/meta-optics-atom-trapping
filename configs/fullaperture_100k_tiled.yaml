@@ -37,3 +37,4 @@ power_budget:
     beam_shaper: 0.95              # [VALUE?]
     vector_peak: 0.923             # SIM: vector/scalar peak ratio at NA 0.55 (vector_check)
 metrics_tile_px: 1024
+initial_state: data/designs/fullaperture_100k_round2_state.npz   # psi, coeffs and targets after feedback round 2 of fullaperture_100k

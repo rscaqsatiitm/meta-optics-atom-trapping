@@ -184,7 +184,7 @@ def _site_metrics(I, origin_ij, dxu, sites, pitch, lam, na, out, idx):
 def focal_metrics_tiled(cfg, F, dx, lam, na, sites, p_in, H=None, stack_eval=None, site_shift=(0.0, 0.0), tile_px: int = 1024):
     """Tiled counterpart of fullaperture.focal_metrics (same keys; I is returned as None)."""
     nf = F.shape[0]
-    foc = propagate_folded(F, dx, lam, stack_eval) if H is None else np.fft.fftshift(np.fft.ifft2(np.fft.fft2(F) * H))
+    foc = propagate_folded(F, dx, lam, stack_eval, low_memory=True) if H is None else np.fft.fftshift(np.fft.ifft2(np.fft.fft2(F) * H))
     up = cfg.get("upsample", 4)
     dxu = dx / up
     pitch = cfg["site_pitch_um"]

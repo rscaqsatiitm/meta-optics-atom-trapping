@@ -144,6 +144,8 @@ def main(cfg_path):
     results.setdefault("feedback_history", [])
     n_rounds = cfg.get("feedback_rounds", 0)
     state = dict(np.load(state_path)) if state_path.exists() else None
+    if state is None and cfg.get("initial_state"):  # start from a saved design (e.g. to re-evaluate it)
+        state = dict(np.load(REPO_ROOT / cfg["initial_state"]))
     feedback_done = bool(state is not None and int(state["next_round"]) > n_rounds)
 
     wp = K = None

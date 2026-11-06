@@ -16,10 +16,13 @@ dependencies = [
     "jax[cpu]>=0.4.30",
     "fmmax>=1.7",
     "grcwa>=0.1.2",
+    "numba>=0.60",
 ]
 
 [project.optional-dependencies]
 test = ["pytest>=8"]
+# CUDA kernels (hologram/lazy_gpu.py). numba-cuda 0.30.4 imports np.row_stack, removed in numpy 2.4.
+gpu = ["numba-cuda[cu13]>=0.30", "numpy<2.4"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

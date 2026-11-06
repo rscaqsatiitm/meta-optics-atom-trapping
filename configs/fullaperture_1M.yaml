@@ -1,0 +1,30 @@
+# 10^6-site direct-projection design: 1000 x 1000 Cs sites at 4.0 um pitch (4.0 mm array),
+# NA 0.55, in-cell stack, 1075 nm, array 50 um beyond the lens focus (as fullaperture_100k).
+# Run: python scripts/fullaperture_lazy.py configs/fullaperture_1M.yaml --gpu --tiled
+# Size (DERIVED, PupilGrid.for_sites): pupil grid 8910^2, ~5.2 M wedge samples, 125,000
+# fundamental sites, 5.2e12 kernel evaluations per product (100x fullaperture_100k).
+# Memory: no fine render grid (tiled), fold buffer 10240^2 complex128 (1.7 GB) and a
+# complex64 focal field (0.84 GB); the peak is a few GB.
+run_id: fullaperture_1M
+wavelength_um: 1.075
+na: 0.55
+stack: [[2500, air], [4000, fused_silica], [9000, air]]   # [CONFIRM?]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.0
+sites: {kind: square, nx: 1000, ny: 1000, pitch_um: 4.0}
+pupil_guard: 1.25
+wgs_iter: 60
+wgs_fix: 30
+render_upsample: 5            # defines the fine coordinates only (tiled render evaluates on demand)
+n_fold: 10240                # 5.12 mm focal window for a 4.0 mm array
+upsample: 4
+metrics_tile_px: 1024
+feedback_rounds: 2
+array_defocus_um: 50.0
+block_rows: 64
+feedback_gain: 0.5
+feedback_wgs_iter: 30
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}
+pillar_cases:
+  - {name: library_lpa}
