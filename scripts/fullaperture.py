@@ -194,6 +194,7 @@ def main(cfg_path):
                 write_json(metrics_path, results)
                 break
             pk = per["peak"]
+            np.savez_compressed(out / f"per_site_round{rnd}.npz", sites=sites, peak=pk, tgt=tgt)  # convergence diagnostics
             orbit_mean = np.bincount(inv, weights=pk) / np.bincount(inv)
             tgt = tgt * (pk.mean() / orbit_mean) ** cfg.get("feedback_gain", 0.5)
             save_state(rnd + 1, pending_tgt=tgt)
