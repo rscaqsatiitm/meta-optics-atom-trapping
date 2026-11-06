@@ -113,6 +113,28 @@ Entries: ensquared energy in the 4 um box / largest neighbour-box fraction (ray 
 
 Hence the 42 mm objective images the 10^6-site array at 4 um pitch with >= 0.90 of the light in the site box and <= 3.6 % in any neighbour, the 25 mm objective does so to 2.12 mm (0.89 / 0.043; the 3 um-pitch corner, where the box is smaller and the EE correspondingly lower) and degrades to 0.73 / 0.082 at 2.83 mm, and the 16 mm objective, whose single plane is a compromise over the whole field, keeps 0.66 / 0.073 at 2.12 mm and fails at 2.83 mm (0.37 / 0.24).
 
+3 um pitch, plane chosen for that field (results/million/imaging_ee_3um.json,
+configs/imaging_1M_3um.yaml). The 3.0 mm array (corner 2.12 mm) is evaluated with a 3 um box
+and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the table above used a
+4 um box and the plane of the 2.83 mm field. Entries as above; the diffraction limit for the
+3 um box is 0.916 / 0.016 (docs/scaling_100k.md).
+
+| Objective f | 0 mm | 1.06 mm | 1.50 mm | 2.12 mm |
+|---|---|---|---|---|
+| 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | running |
+| 25 mm | running | running | running | running |
+| 42 mm | running | running | running | running |
+
+Choice of the common plane. The plane is chosen to maximise the minimum ray Strehl ratio over
+the field. When the field edge cannot reach a useful Strehl ratio in any plane, this criterion
+trades the whole inner field for a marginal gain at the edge. For the 16 mm objective over
+0 to 2.83 mm it put the plane 4.24 um from focus: the on-axis Strehl ratio fell to 0.17 (EE 0.79)
+for a corner Strehl ratio of 0.08. Over 0 to 2.12 mm the same lens keeps its plane within
+0.04 um of focus and images to 1.5 mm with EE >= 0.88. Hence the 16 mm row of the 4 um table
+reflects a poorly posed plane choice as much as the lens; an EE-based plane criterion would
+raise its inner-field values (not recomputed). The 25 and 42 mm rows are not affected: their
+corners stay above S 0.3 and 0.8, and their planes are within 0.3 um of focus.
+
 Tolerances of the 42 mm imaging objective (ray model, common plane re-optimised per case,
 field points -2.83 / 0 / +2.83 mm; results/million/tolerances_f42.json,
 scripts/million_tolerances.py):
@@ -343,6 +365,10 @@ Provenance ledger:
 |---|---|---|---|
 | Field radii vs f and NA | Section 2 | SIM, review before submission | results/million/objective_field.json |
 | Ensquared energies | Section 2 | SIM, review before submission | results/million/imaging_ee.json |
+| Ensquared energies, 3 um pitch | Section 2 | SIM, review before submission | results/million/imaging_ee_3um.json |
+| Image-space correction | Section 5 | SIM, review before submission | results/million/imaging_corrected.json |
+| 42 mm objective tolerances | Section 2 | SIM, review before submission | results/million/tolerances_f42.json |
+| Pupil fill | Section 4 | DERIVED (numerical) | results/million/pupil_fill.json |
 | Lenslet pre-compensation | Section 4 | SIM, review before submission | results/million/mla.json, mla_wavecheck.json |
 | Hologram large-field depth | Section 3 | SIM | results/scaling_100k/hologram_large_field.json |
 | 10^5-site design results | Section 3 | SIM | results/fullaperture_100k |
