@@ -27,7 +27,8 @@ extra deflections: <= 0.15 with a 25 mm objective and 10x demagnification.
 (ii) Imaging. For one common focal plane with Strehl >= 0.8 out to the 4 um-pitch corner, the
 aplanatic meta-doublet needs f ~ 42 mm at NA 0.5 (42 mm plates). In wave optics it then puts
 >= 0.90 of each atom's light in its 4 um box with <= 3.6 % in any neighbour, across the whole
-10^6-site array. At 3 um pitch f ~ 25 mm suffices (field radius 2.11 mm). Higher NA costs
+10^6-site array. At 3 um pitch f ~ 25 mm suffices: EE >= 0.86 and <= 5.1 % in a neighbour at
+the 2.12 mm corner (42 mm: 0.905 / 2.6 %). Higher NA costs
 field quickly: NA 0.6 needs f ~ 77 mm (92 mm plates) for the same field, and NA 0.7 does not
 reach it below 120 mm. The 16 mm doublet images to ~2.1 mm radius (66 % of the light in the
 site box) and fails at 2.83 mm (37 %).
@@ -123,7 +124,13 @@ and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the tabl
 |---|---|---|---|---|
 | 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | 0.631 / 0.115 (S 0.33) |
 | 25 mm | 0.914 / 0.016 (S 0.99) | 0.911 / 0.020 (S 0.99) | 0.908 / 0.025 (S 0.97) | 0.858 / 0.051 (S 0.80) |
-| 42 mm | 0.914 / 0.016 (S 1.00) | 0.914 / 0.017 (S 1.00) | 0.910 / 0.020 (S 0.99) | running |
+| 42 mm | 0.914 / 0.016 (S 1.00) | 0.914 / 0.017 (S 1.00) | 0.910 / 0.020 (S 0.99) | 0.905 / 0.026 (S 0.96) |
+
+Hence at 3 um pitch the 42 mm objective images the whole 10^6-site array within 0.01 of the
+diffraction-limited ensquared energy (0.905 / 0.026 at the corner), and the 25 mm objective does
+so with 0.86 / 0.051 at the corner, i.e. it is adequate for the 3 um-pitch array with a modest
+crosstalk penalty at the outermost sites. The 16 mm objective covers ~1.5 mm radius (about half
+of the 3 um-pitch array) with EE >= 0.88.
 
 Choice of the common plane. The plane is chosen to maximise the minimum ray Strehl ratio over
 the field. When the field edge cannot reach a useful Strehl ratio in any plane, this criterion
