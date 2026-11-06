@@ -24,6 +24,14 @@
       "array_efficiency": 0.8275047011123975,
       "core_efficiency": 0.6699678152701409,
       "axis_intensity_over_mean_site_peak": 0.11265104630020374
+    },
+    {
+      "round": 11,
+      "depth_nonuniformity_rms": 0.00909303498068647,
+      "depth_min_over_mean": 0.9670348640529396,
+      "array_efficiency": 0.8274786663090944,
+      "core_efficiency": 0.6699166508114516,
+      "axis_intensity_over_mean_site_peak": 0.10651510923327505
     }
   ],
   "aperture_mm": 18.42760311771506,
