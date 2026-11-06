@@ -1,0 +1,16 @@
+{
+  "runs": {},
+  "feedback_history": [
+    {
+      "round": 13,
+      "depth_nonuniformity_rms": 0.008083476677279747,
+      "depth_min_over_mean": 0.9674227653245796,
+      "array_efficiency": 0.8274949525372303,
+      "core_efficiency": 0.6699439285839761,
+      "axis_intensity_over_mean_site_peak": 0.1128216810506397
+    }
+  ],
+  "aperture_mm": 18.42760311771506,
+  "n_pixels": 1358954496,
+  "n_sites": 99856
+}

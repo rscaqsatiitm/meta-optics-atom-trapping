@@ -211,6 +211,16 @@ sigma 5 nm the same design gives 3.53 % (efficiency 0.802), against 8.46 % for t
 round-2 design. Subtracting the 0.81 % in quadrature, the random width errors contribute ~3.4 %
 rms; they are now the dominant term and set the fabrication requirement on width control.
 
+Lower-gain follow-up (configs/fullaperture_100k_pplib_g08.yaml): library pillars in the loop,
+gain 0.8, from the round-13 design.
+
+| Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 13 (start, gain-1.2 design) | 0.81 % | 0.97 | 0.827 | 0.113 | - |
+| 14 | 0.56 % | 0.97 | 0.827 | 0.109 | (pending) |
+| 15 to 17 | running | | | | |
+| Final design, sigma 5 nm width errors | running | | | | - |
+
 (iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
 (v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
 0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
