@@ -420,14 +420,15 @@ ensquared energy in the 4 um box / largest neighbour-box fraction:
 
 | Objective | Field radius | Uncorrected | Corrected |
 |---|---|---|---|
-| f = 16 mm | 1.77 mm | 0.71 / 0.088 | 0.928 / 0.015 |
-| f = 16 mm | 2.12 mm | 0.67 / 0.082 | 0.928 / 0.015 |
-| f = 16 mm | 2.83 mm | 0.39 / 0.216 | 0.928 / 0.015 |
-| f = 25 mm | 1.77 mm | 0.92 / 0.025 | 0.928 / 0.015 |
-| f = 25 mm | 2.12 mm | 0.89 / 0.045 | 0.928 / 0.015 |
-| f = 25 mm | 2.83 mm | 0.73 / 0.084 | 0.928 / 0.015 |
+| f = 16 mm | 1.77 mm | 0.67 / 0.083 | 0.893 / 0.014 |
+| f = 16 mm | 2.12 mm | 0.61 / 0.075 | 0.893 / 0.014 |
+| f = 16 mm | 2.83 mm | 0.31 / 0.168 | 0.892 / 0.014 |
+| f = 25 mm | 1.77 mm | 0.89 / 0.024 | 0.898 / 0.015 |
+| f = 25 mm | 2.12 mm | 0.86 / 0.043 | 0.897 / 0.015 |
+| f = 25 mm | 2.83 mm | 0.68 / 0.079 | 0.893 / 0.014 |
 
-The diffraction-limited values on this grid are 0.93 / 0.014. Hence, with an ideal per-atom
+The diffraction-limited values are 0.90 / 0.013 (on-axis spot of the same aplanatic pupil; all
+fractions relative to the total PSF power, see Section 2). Hence, with an ideal per-atom
 corrector, even the present 16 mm objective images the full 10^6-site field at 4 um pitch. The
 model leaves out the corrector array itself (its fill factor and the overlap of neighbouring
 beams at its plane), the second relay, and the alignment of the array to the field. The

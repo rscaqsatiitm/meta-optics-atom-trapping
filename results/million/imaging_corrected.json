@@ -53,5 +53,16 @@
       "ensquared_energy": 0.8968802794115233,
       "max_neighbour": 0.01452220883246689
     }
+  },
+  "f25:2828": {
+    "ray_strehl_uncorrected": 0.3060734568960922,
+    "uncorrected": {
+      "ensquared_energy": 0.6841568194221601,
+      "max_neighbour": 0.07896377055369852
+    },
+    "corrected": {
+      "ensquared_energy": 0.8930819162977105,
+      "max_neighbour": 0.01449919612005012
+    }
   }
 }
