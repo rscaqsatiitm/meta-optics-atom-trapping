@@ -330,18 +330,22 @@ Wave-optics check at the 100k corner (superposition method, Section 4b of
 docs/metalens_report.md; 16 mm doublet with construction to 1.6 R1 and plate spacing f, NA 0.5,
 852.3 nm; one common plane chosen over the 100k field; results/scaling_100k/imaging_ee_100k.json,
 configs/imaging_100k.yaml). Entries: ensquared energy in the pitch box / largest neighbour-box
-fraction (ray Strehl ratio in the common plane):
+fraction, both relative to the total PSF power (ray Strehl ratio in the common plane). (A first
+version normalised to the power inside the +/-1.5 pitch evaluation window, which holds only 0.968
+(4 um) and 0.956 (3 um) of it; its values were 0.03 to 0.04 too high.)
 
 | Pitch | 0 | ~0.5 corner | ~0.7 corner | Corner |
 |---|---|---|---|---|
-| 4 um (corner 891 um) | 0.930 / 0.014 (0.9995) | 0.930 / 0.014 at 445 um | 0.929 / 0.015 at 630 um | 0.927 / 0.018 (0.993) |
-| 3 um (corner 670 um) | 0.916 / 0.016 (0.9998) | 0.916 / 0.016 at 335 um | 0.916 / 0.016 at 474 um | 0.915 / 0.018 (0.9985) |
+| 4 um (corner 891 um) | 0.900 / 0.013 (0.9995) | 0.900 / 0.014 at 445 um | 0.900 / 0.014 at 630 um | 0.897 / 0.017 (0.993) |
+| 3 um (corner 670 um) | 0.876 / 0.015 (0.9998) | 0.876 / 0.015 at 335 um | 0.876 / 0.016 at 474 um | 0.875 / 0.017 (0.9985) |
 
-The on-axis values are the diffraction limit for each box (the 3 um box is smaller, so its EE is
-lower). Hence the present 16 mm meta-doublet images the whole 100,000-site array, at either pitch,
-in one focal plane with at most 0.003 loss of ensquared energy and at most 0.4 percentage points
-more neighbour light than on axis. The poorer 16 mm values of docs/million_sites.md (0.79 on
-axis) come from a plane chosen over a 2.83 mm field, not from the lens.
+The on-axis values are the diffraction limit of this pupil for each box (below the 0.920 of a
+uniformly filled Airy pupil in the 4 um box, because the aplanatic pupil carries more power in
+its outer zones; the 3 um box is smaller, so its EE is lower). Hence the present 16 mm meta-doublet
+images the whole 100,000-site array, at either pitch, in one focal plane with at most 0.003 loss
+of ensquared energy and at most 0.4 percentage points more neighbour light than on axis. The
+poorer 16 mm values of docs/million_sites.md (0.76 on axis) come from a plane chosen over a
+2.83 mm field, not from the lens.
 
 Camera and photons (Provisional). Ref. [Manetsch et al., arXiv:2403.12021] images 6,100 atoms
 at 7.2 um spacing on a qCMOS camera with magnification 5.1, 80 ms exposure and a 7 x 7 pixel box
