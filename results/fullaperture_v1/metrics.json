@@ -106,29 +106,40 @@
   "n_sites": 2304,
   "power_budget": {
     "ideal": {
-      "utilisation": 0.6730199880871899,
-      "depth_mK_at_50W": 3.3100551453966705,
-      "depth_mK_at_100W": 6.620110290793341
+      "utilisation": 0.7002412448748826,
+      "depth_mK_at_50W": 3.44393506380794,
+      "depth_mK_at_100W": 6.88787012761588
     },
     "library_lpa": {
-      "utilisation": 0.647999102158556,
-      "depth_mK_at_50W": 3.186997117884227,
-      "depth_mK_at_100W": 6.373994235768454
+      "utilisation": 0.6742083533996457,
+      "depth_mK_at_50W": 3.315899778225905,
+      "depth_mK_at_100W": 6.63179955645181
     },
     "library_sigma5nm": {
-      "utilisation": 0.6229637338776359,
-      "depth_mK_at_50W": 3.0638678630894582,
-      "depth_mK_at_100W": 6.1277357261789165
+      "utilisation": 0.6481603938126542,
+      "depth_mK_at_50W": 3.187790384472155,
+      "depth_mK_at_100W": 6.37558076894431
     },
     "library_sigma10nm": {
-      "utilisation": 0.580929602823534,
-      "depth_mK_at_50W": 2.8571350851026573,
-      "depth_mK_at_100W": 5.714270170205315
+      "utilisation": 0.6044261321598708,
+      "depth_mK_at_50W": 2.972696003359709,
+      "depth_mK_at_100W": 5.945392006719418
     },
     "library_bias+10nm": {
-      "utilisation": 0.6450665092862001,
-      "depth_mK_at_50W": 3.1725740037147894,
-      "depth_mK_at_100W": 6.345148007429579
+      "utilisation": 0.671157147610816,
+      "depth_mK_at_50W": 3.300893300558452,
+      "depth_mK_at_100W": 6.601786601116904
+    }
+  },
+  "power_budget_inputs": {
+    "core_fraction_ideal": 0.783,
+    "na_eff": 0.574,
+    "extra_factors": {
+      "edge_vs_lpa": 0.879,
+      "substrate_entrance_ar": 0.995,
+      "cell_wall_ar": 0.99,
+      "beam_shaper": 0.95,
+      "vector_peak": 0.917
     }
   }
 }

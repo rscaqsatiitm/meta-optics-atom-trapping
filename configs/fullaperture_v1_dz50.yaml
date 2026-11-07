@@ -25,7 +25,7 @@ pillar_cases:
   - {name: library_lpa}
   - {name: library_sigma5nm, errors: {sigma_um: 0.005, seed: 1}}
 power_budget:
-  core_fraction_ideal: 0.82   # core (first-dark-ring) fraction of the aberration-free spot of this pupil [SIM: bench reference 0.817-0.82]
+  core_fraction_ideal: 0.783  # core fraction of the aberration-free spot, NA 0.55 in-cell hard top hat [SIM: results/ideal_core_fraction.json; was 0.82, the soft-edge bench value]
   na_eff: 0.574               # SIM: ideal-spot peak per watt of the hard top-hat pupil (hologram_b1_cell20mm, after the pupil-grid fix)
   powers_W: [50, 100]
   extra_factors:
@@ -33,4 +33,4 @@ power_budget:
     substrate_entrance_ar: 0.995   # [VALUE?]
     cell_wall_ar: 0.99             # [CONFIRM?]
     beam_shaper: 0.95              # [VALUE?]
-    vector_peak: 0.923             # SIM: vector/scalar peak ratio at NA 0.55 (vector_check)
+    vector_peak: 0.917             # SIM: vector/scalar peak ratio at NA 0.55, hard top hat (vector_offaxis; 0.923 is the soft-edge value)

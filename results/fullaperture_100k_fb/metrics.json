@@ -92,14 +92,25 @@
   "n_sites": 99856,
   "power_budget": {
     "ideal": {
-      "utilisation": 0.6474763814750043,
-      "depth_mK_at_50W": 0.07347498516152413,
-      "depth_mK_at_100W": 0.14694997032304827
+      "utilisation": 0.6736644905298186,
+      "depth_mK_at_50W": 0.07644678610942504,
+      "depth_mK_at_100W": 0.15289357221885008
     },
     "library_lpa": {
-      "utilisation": 0.6241625513608814,
-      "depth_mK_at_50W": 0.07082935457065817,
-      "depth_mK_at_100W": 0.14165870914131634
+      "utilisation": 0.6494076991850124,
+      "depth_mK_at_50W": 0.07369414920232169,
+      "depth_mK_at_100W": 0.14738829840464338
+    }
+  },
+  "power_budget_inputs": {
+    "core_fraction_ideal": 0.783,
+    "na_eff": 0.574,
+    "extra_factors": {
+      "edge_vs_lpa": 0.879,
+      "substrate_entrance_ar": 0.995,
+      "cell_wall_ar": 0.99,
+      "beam_shaper": 0.95,
+      "vector_peak": 0.917
     }
   }
 }

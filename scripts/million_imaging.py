@@ -10,7 +10,10 @@ in the neighbouring boxes (crosstalk), not the Strehl ratio. For each meta-objec
 point-spread function of a site at field radius r is computed by the superposition method of
 docs/metalens_report.md Section 4b (rays to the focusing plate, exact point-to-point paths
 through the cell), in one common focal plane chosen for the whole field, on a grid spanning
-+/-1.5 pitch around the ray image. A design entry may override the pitch (pitch_um) and the
++/-1.5 pitch around the ray image. The ensquared energy and the neighbour-box fractions are
+normalised to the total PSF power (wave_offaxis.total_focal_power: disc of 40 um radius at
+Nyquist sampling plus the Airy tail), not to the power inside the evaluation window, which
+missed the 2 to 3 % of the power beyond +/-1.5 pitch (more for aberrated spots). A design entry may override the pitch (pitch_um) and the
 field points (field_um); the common plane is chosen over 0 to the largest field point of the
 design. Output: results/million/imaging_ee.json, or the config's imaging.output.
 """
@@ -57,13 +60,14 @@ def main(cfg_path):
             # Centre the box on the intensity centroid (distortion is calibrated in practice).
             cx = np.sum(I * GX) / I.sum() - q["x_um"]
             cy = np.sum(I * GY) / I.sum()
+            ptot = WO.total_focal_power(fs, pf, pf["amp"], q["x_um"] + cx, cy, dz, na) / (g[1] - g[0]) ** 2
             inbox = (np.abs(GX - q["x_um"] - cx) <= a / 2) & (np.abs(GY - cy) <= a / 2)
             nb = {}
             for (ix, iy) in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 m = (np.abs(GX - q["x_um"] - cx - ix * a) <= a / 2) & (np.abs(GY - cy - iy * a) <= a / 2)
-                nb[f"{ix},{iy}"] = float(I[m].sum() / I.sum())
+                nb[f"{ix},{iy}"] = float(I[m].sum() / ptot)
             res[key] = {"design": name, "pitch_um": a, "f_um": f, "field_um": r, "ray_strehl_common_plane": q["strehl"], "dz_common_um": dz,
-                        "ensquared_energy": float(I[inbox].sum() / I.sum()), "neighbour_fraction": nb,
+                        "ensquared_energy": float(I[inbox].sum() / ptot), "window_fraction": float(I.sum() / ptot), "neighbour_fraction": nb,
                         "max_neighbour": max(nb.values()), "peak_rel": float(I.max())}
             print(key, {k: (round(v, 4) if isinstance(v, float) else v) for k, v in res[key].items() if k != "neighbour_fraction"}, flush=True)
             write_json(path, res)

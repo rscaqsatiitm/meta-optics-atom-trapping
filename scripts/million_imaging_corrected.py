@@ -8,7 +8,8 @@ reciprocity this is the time-reverse of per-lenslet pre-compensation in the trap
 the corrected point-spread function equals the one obtained by applying -W at the stop. For
 the compact objectives (16 and 25 mm, NA 0.5, 852.3 nm) we compute, in wave optics
 (superposition method), the ensquared energy in the 4 um site box and the largest
-neighbour-box fraction, with and without correction, at the 10^6-site field radii.
+neighbour-box fraction (both normalised to the total PSF power, wave_offaxis.total_focal_power),
+with and without correction, at the 10^6-site field radii.
 Output: results/million/imaging_corrected.json.
 """
 
@@ -26,18 +27,20 @@ from metatrap.propagation.layers import LayerStack
 from metatrap.runio import REPO_ROOT, load_config, write_json
 
 
-def ee(fs, pf, amp, x0, dz, a, n=61):
+def ee(fs, pf, amp, x0, dz, a, na, n=61):
+    """Ensquared energy and largest neighbour-box fraction, normalised to the total PSF power."""
     g = np.linspace(-1.5 * a, 1.5 * a, n)
     GX, GY = np.meshgrid(x0 + g, g, indexing="ij")
     I = np.abs(fs.field(pf, amp, np.column_stack([GX.ravel(), GY.ravel()]), dz)).reshape(GX.shape) ** 2
     cx = np.sum(I * GX) / I.sum() - x0
     cy = np.sum(I * GY) / I.sum()
+    ptot = WO.total_focal_power(fs, pf, amp, x0 + cx, cy, dz, na) / (g[1] - g[0]) ** 2
     box = (np.abs(GX - x0 - cx) <= a / 2) & (np.abs(GY - cy) <= a / 2)
     nb = []
     for ix, iy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
         m = (np.abs(GX - x0 - cx - ix * a) <= a / 2) & (np.abs(GY - cy - iy * a) <= a / 2)
-        nb.append(I[m].sum() / I.sum())
-    return float(I[box].sum() / I.sum()), float(max(nb))
+        nb.append(I[m].sum() / ptot)
+    return float(I[box].sum() / ptot), float(max(nb))
 
 
 def main(cfg_path):
@@ -71,7 +74,7 @@ def main(cfg_path):
             out = {"ray_strehl_uncorrected": q["strehl"]}
             for tag, extra in (("uncorrected", None), ("corrected", lambda x, y: -interp(np.column_stack([np.ravel(x), np.ravel(y)])).reshape(np.shape(x)))):
                 pf = WO.plate_field(d, lam, th, 220, extra_opl=extra)
-                e, nbm = ee(fs, pf, pf["amp"], q["x_um"], dz, a)
+                e, nbm = ee(fs, pf, pf["amp"], q["x_um"], dz, a, na)
                 out[tag] = {"ensquared_energy": e, "max_neighbour": nbm}
             res[key] = out
             print(key, out, flush=True)

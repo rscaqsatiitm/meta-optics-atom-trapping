@@ -92,6 +92,27 @@ class FocalSum:
         return out
 
 
+def total_focal_power(fs, pf, amp, x0: float, y0: float, dz: float, na: float, r_um: float = 40.0, h_um: float | None = None) -> float:
+    """Total power of the focal field (same units as |fs.field|^2 x um^2), for normalising
+    ensquared energies.
+
+    FocalSum.field is not normalised in absolute terms, so the power is integrated over a disc of
+    radius r_um around (x0, y0). The field is band-limited to NA / lambda in the (vacuum) atom
+    plane, so sampling at h < lambda / (2 NA) makes the Riemann sum exact (Parseval); the power
+    outside the disc is added with the Airy asymptote 1 - EE(v) = 2 / (pi v), v = 2 pi NA r / lambda,
+    which holds for the diffraction tail of any pupil with a sharp circular edge. Checked on the
+    25 mm doublet on axis (852.3 nm): r = 40 / 60 / 80 um give powers within 0.15 %."""
+    lam = fs.lam
+    h = 0.8 * lam / (2 * na) if h_um is None else h_um
+    g = np.arange(-r_um, r_um + h / 2, h)
+    GX, GY = np.meshgrid(g, g, indexing="ij")
+    m = np.hypot(GX, GY) <= r_um
+    P = np.column_stack([x0 + GX[m], y0 + GY[m]])
+    p_disc = float(np.sum(np.abs(fs.field(pf, amp, P, dz, block=256)) ** 2) * h * h)
+    v = 2 * np.pi * na * r_um / lam
+    return p_disc / (1.0 - 2.0 / (np.pi * v))
+
+
 def strehl_offaxis(d, lam_um: float, theta: float, x_ray: float, dz_ray: float, eta=None, n_pupil: int = 400,
                    span_um: float = 0.5, dz_span_um: float = 1.0):
     """Best-focus Strehl ratio and spot widths of field angle theta (ray image at (x_ray, 0, dz_ray)).

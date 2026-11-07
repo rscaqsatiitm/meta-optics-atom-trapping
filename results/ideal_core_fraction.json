@@ -1,0 +1,13 @@
+{
+  "bench_na0.5_top_hat": {
+    "pupil_model": 0.7941783539779788,
+    "full_pixel": 0.7926
+  },
+  "bench_na0.5_soft_edge_250um": {
+    "pupil_model": 0.8171342825197906,
+    "full_pixel": 0.8171
+  },
+  "cell_na0.55_top_hat": {
+    "pupil_model": 0.783415788892518
+  }
+}

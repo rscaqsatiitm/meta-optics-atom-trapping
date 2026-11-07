@@ -241,16 +241,22 @@ def main(cfg_path):
         write_json(metrics_path, results)
 
     # Power budget from the simulated efficiency (ideal or library pillars), with stated extra factors.
-    pb_cfg = cfg.get("power_budget")
-    if pb_cfg:
-        rows = {}
-        for name, m in results["runs"].items():
-            util = m["core_efficiency"] / pb_cfg["core_fraction_ideal"] * np.prod(list(pb_cfg["extra_factors"].values()))
-            pb = PowerBudget(lam_nm=lam * 1e3, utilisation=util, na_eff=pb_cfg["na_eff"])
-            rows[name] = {"utilisation": util, **{f"depth_mK_at_{p}W": float(pb.depth_K(p, len(sites)) * 1e3) for p in pb_cfg["powers_W"]}}
-        results["power_budget"] = rows
-        print("power budget", rows, flush=True)
+    if cfg.get("power_budget"):
+        results["power_budget"], results["power_budget_inputs"] = power_budget(cfg["power_budget"], results["runs"], len(sites), lam)
+        print("power budget", results["power_budget"], flush=True)
     write_json(metrics_path, results)
+
+
+def power_budget(pb_cfg, runs, n_sites, lam):
+    """Utilisation and trap depth per run: core_efficiency / core_fraction_ideal x extra factors."""
+    rows = {}
+    extra = float(np.prod(list(pb_cfg["extra_factors"].values())))
+    for name, m in runs.items():
+        util = m["core_efficiency"] / pb_cfg["core_fraction_ideal"] * extra
+        pb = PowerBudget(lam_nm=lam * 1e3, utilisation=util, na_eff=pb_cfg["na_eff"])
+        rows[name] = {"utilisation": float(util), **{f"depth_mK_at_{p}W": float(pb.depth_K(p, n_sites) * 1e3) for p in pb_cfg["powers_W"]}}
+    inputs = {"core_fraction_ideal": pb_cfg["core_fraction_ideal"], "na_eff": pb_cfg["na_eff"], "extra_factors": dict(pb_cfg["extra_factors"])}
+    return rows, inputs
 
 
 if __name__ == "__main__":
