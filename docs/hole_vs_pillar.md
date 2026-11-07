@@ -39,8 +39,9 @@ Holes: circular air holes through a film of thickness h (film continuous around 
 square pillars of height h, as in the existing library. Pitches 0.40 to 0.60 um, heights 0.8 to
 3.0 um, 40 widths or diameters from 0.06 um to p - 0.06 um (results/hole_vs_pillar/sweep.json;
 configs/hole_vs_pillar.yaml; scripts/hole_vs_pillar.py). Both families are computed with fmmax in
-the pol_fourier formulation, which shows no spurious cross-polarisation for C4v cells (t_cross
-<= 1.5e-3 over the whole sweep; tests/test_rcwa.py), at 197 Fourier terms on a 256 grid. For holes
+the pol_fourier formulation, which shows no spurious cross-polarisation for C4v cells
+(tests/test_rcwa.py): t_cross <= 8e-4 for the selected families and <= 9e-3 over the whole sweep
+(largest at resonant holes, p 0.55, h 2.6 um), at 197 Fourier terms on a 256 grid. For holes
 at p 0.50, h 1.6 um this agrees with 317 terms to <= 0.02 rad. Fabrication limits: minimum
 feature and gap (wall between holes) 100 nm, aspect ratio (depth over smallest hole diameter, or
 height over smallest pillar width) <= 10, or 15 as a relaxed case. Ranking:
