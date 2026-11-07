@@ -112,8 +112,11 @@ def main(cfg_path):
                 if best is None or min(cl) > best[0]:
                     best = (min(cl), Rm, cl)
     Rm = best[1]
+    # Each axis is a line (+-e): fold it to the upper hemisphere before taking polar angle and azimuth.
+    up = [Rm[:, i] * (1.0 if Rm[2, i] >= 0 else -1.0) for i in range(3)]
     rep["mot_best_triad"] = {"min_clearance_mm": best[0], "clearance_mm": best[2],
-                             "axes": [{"theta_deg": float(np.degrees(np.arccos(abs(Rm[2, i])))), "phi_deg": float(np.degrees(np.arctan2(Rm[1, i], Rm[0, i]) % (2 * np.pi)))} for i in range(3)]}
+                             "axes": [{"theta_deg": float(np.degrees(np.arccos(e[2]))), "phi_deg": float(np.degrees(np.arctan2(e[1], e[0]) % (2 * np.pi)))} for e in up],
+                             "pairwise_dot": [float(abs(up[i] @ up[j])) for i, j in ((0, 1), (0, 2), (1, 2))]}
     # Extra pumping / Raman lines: greedy choice of the clearest lines at least min_sep_deg from the
     # MOT axes and from each other (lines, i.e. +-e).
     m = maps["pumping_raman"]
@@ -185,9 +188,8 @@ def main(cfg_path):
         for ax, (k, m) in zip(np.atleast_1d(axs), maps.items()):
             im = ax.imshow(np.clip(m, -30, 30), extent=[0, 360, 90, 0], aspect="auto", cmap="RdBu", vmin=-30, vmax=30)
             ax.contour(np.degrees(ph), np.degrees(th), m, levels=[0.0], colors="k", linewidths=0.8)
-            for ax_ in rep["mot_best_triad"]["axes"]:
-                for dphi in (0.0, 180.0):
-                    ax.plot((ax_["phi_deg"] + dphi) % 360, ax_["theta_deg"], "k*", ms=9)
+            for ax_ in rep["mot_best_triad"]["axes"]:  # each line through the atoms appears once on this map
+                ax.plot(ax_["phi_deg"], ax_["theta_deg"], "k*", ms=9)
             if k == "pumping_raman":
                 for ex in rep["extra_lines_pumping_raman"]:
                     ax.plot(ex["phi_deg"], ex["theta_deg"], "o", mfc="none", mec="k", ms=7)

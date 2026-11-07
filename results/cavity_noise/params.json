@@ -33,13 +33,14 @@
         "L1_m": 0.828,
         "Lrt_m": 1.656,
         "fsr_Hz": 181000000.0,
-        "typical_aoi_deg": 30.0
+        "typical_aoi_deg": 30.0,
+        "angle_lever": "plane_tilt"
       }
     ],
     "_config_path": "configs/cavity_noise.yaml"
   },
   "git": {
-    "commit": "1dc3d7acf28fb60e3905ffd10b347b50203c1e4a",
+    "commit": "188001ea926b7058d21489b8b19723680fbd57e8",
     "dirty": "True"
   },
   "versions": {
@@ -57,5 +58,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-06T18:23:24+00:00"
+  "utc": "2026-11-07T15:09:52+00:00"
 }

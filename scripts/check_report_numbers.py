@@ -27,7 +27,7 @@ def values(text):
             v = float(m.group(0))
         except ValueError:
             continue
-        out.setdefault(f"{abs(v):.10g}", m.group(0))
+        out.setdefault(f"{v:.10g}", m.group(0))  # signed: a dropped minus sign is a mismatch
     return out
 
 

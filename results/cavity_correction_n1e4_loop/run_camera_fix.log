@@ -1,0 +1,17 @@
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 0: 2.026 % G/G0 0.963
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 1: 1.579 % G/G0 0.965
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 2: 1.404 % G/G0 0.966
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 3: 1.298 % G/G0 0.966
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 4: 1.387 % G/G0 0.965
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 5: 1.592 % G/G0 0.965
+  plane150_fig1000_seed1_closedloop_camera_rand0.5pct round 6: 2.088 % G/G0 0.964
+plane150_fig1000_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.020256077945728822, "min_over_mean": 0.9551629825590209, "g_ratio": 0.9626657511075261, "dy_affine_res_nm": 19.280298824620083}, {"round": 1, "depth_rms": 0.01579425525759716, "min_over_mean": 0.965804417588933, "g_ratio": 0.9651620034248666, "dy_affine_res_n
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 0: 3.020 % G/G0 0.923
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 1: 1.971 % G/G0 0.927
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 2: 1.887 % G/G0 0.922
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 3: 1.946 % G/G0 0.920
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 4: 2.041 % G/G0 0.915
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 5: 2.213 % G/G0 0.904
+  plane150_fig1000_seed2_closedloop_camera_rand0.5pct round 6: 2.168 % G/G0 0.890
+plane150_fig1000_seed2_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.030201605995067497, "min_over_mean": 0.9337976748333511, "g_ratio": 0.9232532779816328, "dy_affine_res_nm": 21.55473448901953}, {"round": 1, "depth_rms": 0.019709672352209974, "min_over_mean": 0.9489409592305023, "g_ratio": 0.9265282956223951, "dy_affine_res_
+done

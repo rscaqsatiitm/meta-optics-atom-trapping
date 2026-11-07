@@ -140,11 +140,11 @@
       "site_position_pm_per_rtHz": 4.099251257850467,
       "mirror_displacement_pm_per_rtHz": 0.6360516508713926,
       "laser_frequency_Hz_per_rtHz": 185.52605835606636,
-      "crossing_angle_nrad_per_rtHz_edge_sites": 0.13815925823835107,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 2.901509872085636,
       "levers": {
         "site_shift_per_mirror_displacement": 6.444840214209775,
         "site_shift_m_per_Hz": 2.209528566592559e-14,
-        "edge_shift_m_per_rad": 0.029670478186691454
+        "edge_shift_m_per_rad": 0.0014127993488107218
       },
       "G300": {
         "linewidth_kHz": 288.97519428558223,
@@ -171,11 +171,11 @@
       "site_position_pm_per_rtHz": 1.2962970676117662,
       "mirror_displacement_pm_per_rtHz": 0.20113719262638224,
       "laser_frequency_Hz_per_rtHz": 58.66849097184838,
-      "crossing_angle_nrad_per_rtHz_edge_sites": 0.043689793587257185,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.917537984925442,
       "levers": {
         "site_shift_per_mirror_displacement": 6.444840214209775,
         "site_shift_m_per_Hz": 2.209528566592559e-14,
-        "edge_shift_m_per_rad": 0.029670478186691454
+        "edge_shift_m_per_rad": 0.0014127993488107218
       },
       "G300": {
         "linewidth_kHz": 288.97519428558223,
@@ -202,11 +202,11 @@
       "site_position_pm_per_rtHz": 0.9533142460117371,
       "mirror_displacement_pm_per_rtHz": 0.14791898857474253,
       "laser_frequency_Hz_per_rtHz": 43.14559496652708,
-      "crossing_angle_nrad_per_rtHz_edge_sites": 0.0321300600554305,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.6747697376943343,
       "levers": {
         "site_shift_per_mirror_displacement": 6.444840214209775,
         "site_shift_m_per_Hz": 2.209528566592559e-14,
-        "edge_shift_m_per_rad": 0.029670478186691454
+        "edge_shift_m_per_rad": 0.0014127993488107218
       },
       "G300": {
         "linewidth_kHz": 288.97519428558223,
@@ -233,11 +233,11 @@
       "site_position_pm_per_rtHz": 0.3014644343283179,
       "mirror_displacement_pm_per_rtHz": 0.04677609130846101,
       "laser_frequency_Hz_per_rtHz": 13.643835109732185,
-      "crossing_angle_nrad_per_rtHz_edge_sites": 0.010160417113315627,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.21338092672684705,
       "levers": {
         "site_shift_per_mirror_displacement": 6.444840214209775,
         "site_shift_m_per_Hz": 2.209528566592559e-14,
-        "edge_shift_m_per_rad": 0.029670478186691454
+        "edge_shift_m_per_rad": 0.0014127993488107218
       },
       "G300": {
         "linewidth_kHz": 288.97519428558223,

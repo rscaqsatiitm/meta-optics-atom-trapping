@@ -48,7 +48,7 @@ def main(cfg_path):
         optics = {
             "cell wall (through-cell variant)": i1 * wz0 / wz_wall,
             "primary P1": i1 * wz0 / vd["w_z_at_primary_m"],
-            "secondary P2": i1 * ratio_S * wz0 / (0.5 * (vd["w_z_at_primary_m"] + vd["w_z_at_graded_m"])),
+            "secondary P2": i1 * ratio_S * wz0 / vd["w_z_at_secondary_m"],
             "graded mirror G": i1 * ratio_G * wz0 / vd["w_z_at_graded_m"],
         }
         geo_v = c["geometry"]["vertical"]

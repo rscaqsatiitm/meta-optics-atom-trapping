@@ -211,3 +211,44 @@ def test_heating_formulas_reproduce_savard_examples():
     spec.loader.exec_module(cn)
     assert np.sqrt(cn.heating_intensity_limit(10e3, 100.0)) == pytest.approx(3.2e-6, rel=0.02)
     assert np.sqrt(cn.heating_position_limit(10e3, 100.0, 1e-12)) == pytest.approx(3.2e-12, rel=0.02)
+
+
+def _load_script(name):
+    import importlib.util
+    from pathlib import Path
+
+    spec = importlib.util.spec_from_file_location(name, Path(__file__).resolve().parents[1] / "scripts" / f"{name}.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_layout_vertical_design_mode_spacing_and_secondary_size():
+    """Transverse-mode spacing per round trip is arccos(trace / 2) of the round-trip matrix (not twice it),
+    and the beam size on P2 follows from free propagation behind the primary (P2 has no vertical power)."""
+    cl = _load_script("cavity_layout")
+    lam, d0, f1, f2, L = 1.075e-6, 0.070, 0.100, 0.020, 0.100
+    row = cl.vertical_designs(lam, d0, f1, f2, L, [0.04], 75e-6)[0]
+    rt, _ = cl.vertical_roundtrip(d0, f1 + f2 + L, 0.04, row["R_z_m"])
+    assert row["mode_spacing_roundtrip_rad"] == pytest.approx(np.arccos((rt[0, 0] + rt[1, 1]) / 2), abs=1e-12)
+    # Gaussian check with complex q, independent of the script's helpers.
+    zr = np.pi * row["w0_m"] ** 2 / lam
+    q = 1j * zr + d0
+    q = 1 / (1 / q - 1 / 0.04) + (f1 + f2)
+    w_p2 = np.sqrt(-lam / (np.pi * np.imag(1 / q)))
+    assert row["w_z_at_secondary_m"] == pytest.approx(w_p2, rel=1e-9)
+    # The earlier estimate (mean of P1 and G) overstated it 2.5x: P2 sits near the vertical waist.
+    assert row["w_z_at_secondary_m"] < min(row["w_z_at_primary_m"], row["w_z_at_graded_m"])
+    assert row["w_z_at_secondary_m"] < 0.5 * 0.5 * (row["w_z_at_primary_m"] + row["w_z_at_graded_m"])
+
+
+def test_camera_profile_bins_are_centred_on_the_knots():
+    """A linear intensity ramp binned by the camera model must return the ramp's value at each knot."""
+    cc = _load_script("cavity_correction")
+    x = np.linspace(-2000.0, 2000.0, 8001)
+    e = np.sqrt(1.0 + 1e-4 * x)  # intensity 1 + 1e-4 x
+    knots = np.linspace(-1500.0, 1500.0, 31)
+    px = np.arange(-1530.0, 1530.0, 10.0)
+    v = cc.camera_profile(e, x, px, knots, np.ones(len(px)), 0.0, np.random.default_rng(0))
+    inner = slice(1, -1)
+    assert np.allclose(np.exp(2 * v[inner]), 1.0 + 1e-4 * knots[inner], rtol=2e-4)

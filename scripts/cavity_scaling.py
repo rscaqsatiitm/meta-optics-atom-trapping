@@ -125,7 +125,7 @@ def main(cfg_path):
             els = d["elements"]
             if label == "telescope":
                 r_p2 = [v for k, v in els.items() if k.startswith("element1")][0]["peak_over_flat_intensity"]
-                inten = {"P1": i1 * wz0 / vd["w_z_at_primary_m"], "P2": i1 * r_p2 * wz0 / (0.5 * (vd["w_z_at_primary_m"] + vd["w_z_at_graded_m"])),
+                inten = {"P1": i1 * wz0 / vd["w_z_at_primary_m"], "P2": i1 * r_p2 * wz0 / vd["w_z_at_secondary_m"],
                          "G": i1 * r_g * wz0 / vd["w_z_at_graded_m"]}
             else:
                 p_m = d["p_um"] * 1e-6

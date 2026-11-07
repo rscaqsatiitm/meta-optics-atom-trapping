@@ -40,11 +40,11 @@
           "graded_mirror_pv_rad": 1262.1442762529205,
           "peak_intensity_kW_cm2": {
             "P1": 4.51853990678208,
-            "P2": 9.3030181125966,
+            "P2": 23.24026114847375,
             "G": 2.0327370112627787
           },
-          "max_defect_um_fused_silica": 0.741694782971256,
-          "max_defect_um_sapphire": 17.736179592790908,
+          "max_defect_um_fused_silica": 0.29689855703076473,
+          "max_defect_um_sapphire": 7.099748102909592,
           "errors": {
             "fig1000_uncorrected": [
               {
@@ -371,11 +371,11 @@
           "graded_mirror_pv_rad": 99.44948720897082,
           "peak_intensity_kW_cm2": {
             "P1": 4.51853990678208,
-            "P2": 24.802995683244646,
+            "P2": 61.961407574018324,
             "G": 18.010157355070422
           },
-          "max_defect_um_fused_silica": 0.2781922025919316,
-          "max_defect_um_sapphire": 6.652422235894018,
+          "max_defect_um_fused_silica": 0.1113596393328758,
+          "max_defect_um_sapphire": 2.6629478970905085,
           "errors": {
             "fig1000_uncorrected": [
               {
@@ -800,11 +800,11 @@
           "graded_mirror_pv_rad": 23.909598600308072,
           "peak_intensity_kW_cm2": {
             "P1": 4.51853990678208,
-            "P2": 19.265834811745655,
+            "P2": 48.12879291958665,
             "G": 17.428297628688497
           },
-          "max_defect_um_fused_silica": 0.3581469511922385,
-          "max_defect_um_sapphire": 8.564383615466571,
+          "max_defect_um_fused_silica": 0.143365324194365,
+          "max_defect_um_sapphire": 3.428301230734816,
           "errors": {
             "fig1000_uncorrected": [
               {

@@ -9,7 +9,7 @@
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 14597.181614299534,
         "primary P1": 4518.539906782081,
-        "secondary P2": 19265.834811745655,
+        "secondary P2": 48128.79291958665,
         "graded mirror G": 17428.2976286885,
         "vertical ring at the atoms": 19760.912553393122,
         "vertical ring, mirror with 3x expansion": 2195.656950377014
@@ -18,7 +18,7 @@
         "fused_silica": {
           "cell wall (through-cell variant)": 0.4726939886286471,
           "primary P1": 1.5270419521234013,
-          "secondary P2": 0.3581469511922385,
+          "secondary P2": 0.143365324194365,
           "graded mirror G": 0.3959078589891647,
           "vertical ring at the atoms": 0.3491741578915701,
           "vertical ring, mirror with 3x expansion": 3.1425674210241312
@@ -26,7 +26,7 @@
         "sapphire": {
           "cell wall (through-cell variant)": 11.303551901989387,
           "primary P1": 36.51622059425525,
-          "secondary P2": 8.564383615466571,
+          "secondary P2": 3.428301230734816,
           "graded mirror G": 9.46736184539307,
           "vertical ring at the atoms": 8.349816819146243,
           "vertical ring, mirror with 3x expansion": 75.14835137231617
@@ -42,7 +42,7 @@
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 63107.861005306964,
         "primary P1": 19534.96201655773,
-        "secondary P2": 83291.80643062049,
+        "secondary P2": 208074.76773099162,
         "graded mirror G": 75347.5988291438,
         "vertical ring at the atoms": 85432.17147726097,
         "vertical ring, mirror with 3x expansion": 9492.463497473442
@@ -51,7 +51,7 @@
         "fused_silica": {
           "cell wall (through-cell variant)": 0.10933661654955719,
           "primary P1": 0.3532128700404739,
-          "secondary P2": 0.08284128170215023,
+          "secondary P2": 0.03316115680552209,
           "graded mirror G": 0.09157557914547823,
           "vertical ring at the atoms": 0.08076582721342318,
           "vertical ring, mirror with 3x expansion": 0.7268924449208086
@@ -59,7 +59,7 @@
         "sapphire": {
           "cell wall (through-cell variant)": 2.6145712653154978,
           "primary P1": 8.446394718359159,
-          "secondary P2": 1.980987171138375,
+          "secondary P2": 0.7929841844798761,
           "graded mirror G": 2.1898508056527404,
           "vertical ring at the atoms": 1.9313567377122935,
           "vertical ring, mirror with 3x expansion": 17.38221063941064
@@ -75,7 +75,7 @@
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 21895.7724214493,
         "primary P1": 6777.80986017312,
-        "secondary P2": 28898.75221761848,
+        "secondary P2": 72193.18937937997,
         "graded mirror G": 26142.44644303275,
         "vertical ring at the atoms": 29641.368830089683,
         "vertical ring, mirror with 3x expansion": 3293.4854255655205
@@ -84,7 +84,7 @@
         "fused_silica": {
           "cell wall (through-cell variant)": 0.3151293257524314,
           "primary P1": 1.0180279680822677,
-          "secondary P2": 0.23876463412815901,
+          "secondary P2": 0.09557688279624336,
           "graded mirror G": 0.26393857265944315,
           "vertical ring at the atoms": 0.2327827719277134,
           "vertical ring, mirror with 3x expansion": 2.0950449473494204
@@ -92,7 +92,7 @@
         "sapphire": {
           "cell wall (through-cell variant)": 7.535701267992925,
           "primary P1": 24.344147062836836,
-          "secondary P2": 5.709589076977716,
+          "secondary P2": 2.2855341538232112,
           "graded mirror G": 6.3115745635953795,
           "vertical ring at the atoms": 5.566544546097495,
           "vertical ring, mirror with 3x expansion": 50.09890091487745
@@ -108,7 +108,7 @@
       "intensity_W_cm2": {
         "cell wall (through-cell variant)": 94661.79150796043,
         "primary P1": 29302.44302483659,
-        "secondary P2": 124937.70964593072,
+        "secondary P2": 312112.1515964874,
         "graded mirror G": 113021.39824371565,
         "vertical ring at the atoms": 128148.25721589144,
         "vertical ring, mirror with 3x expansion": 14238.695246210158
@@ -117,7 +117,7 @@
         "fused_silica": {
           "cell wall (through-cell variant)": 0.0728910776997048,
           "primary P1": 0.23547524669364933,
-          "secondary P2": 0.055227521134766824,
+          "secondary P2": 0.022107437870348058,
           "graded mirror G": 0.061050386096985515,
           "vertical ring at the atoms": 0.0538438848089488,
           "vertical ring, mirror with 3x expansion": 0.48459496328053925
@@ -125,7 +125,7 @@
         "sapphire": {
           "cell wall (through-cell variant)": 1.7430475102103322,
           "primary P1": 5.630929812239441,
-          "secondary P2": 1.3206581140922502,
+          "secondary P2": 0.528656122986584,
           "graded mirror G": 1.4599005371018274,
           "vertical ring at the atoms": 1.2875711584748626,
           "vertical ring, mirror with 3x expansion": 11.588140426273764
