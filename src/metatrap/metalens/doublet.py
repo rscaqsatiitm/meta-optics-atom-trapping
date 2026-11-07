@@ -75,13 +75,15 @@ def system(d: Doublet, lam_um: float, pert: Perturbation | None = None, m1=None,
         cell[pert.wall_index][0] = float(cell[pert.wall_index][0]) + pert.wall_delta_um
     el = [m1 or d.m1] + _media(spacer, lam_um)
     n_sp = el[-1].n
+    cell_media = _media(cell, lam_um)
+    n_after = cell_media[0].n  # medium after the focusing plate (first cell layer; air in all present designs)
     if pert.m2_decentre_um or pert.m2_tilt_rad:
-        el += [Frame(pert.m2_tilt_rad, pert.m2_decentre_um, 0.0, n_sp), m2 or d.m2, Frame(-pert.m2_tilt_rad, -pert.m2_decentre_um, 0.0, 1.0)]
+        el += [Frame(pert.m2_tilt_rad, pert.m2_decentre_um, 0.0, n_sp), m2 or d.m2, Frame(-pert.m2_tilt_rad, -pert.m2_decentre_um, 0.0, n_after)]
     else:
         el += [m2 or d.m2]
     if pert.cell_tilt_rad:
-        el += [Frame(pert.cell_tilt_rad, 0.0, 0.0, 1.0)]
-    el += _media(cell, lam_um)
+        el += [Frame(pert.cell_tilt_rad, 0.0, 0.0, n_after)]
+    el += cell_media
     return System(el)
 
 

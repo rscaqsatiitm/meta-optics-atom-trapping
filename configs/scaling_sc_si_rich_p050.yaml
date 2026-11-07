@@ -1,0 +1,8 @@
+# Steep-deflection supercells at 1075 nm for the selected Si-rich family (p 0.50, h 1.5 um; library_analysis_1075/selection.json), extending its supercell curve (s 0.27 to 0.54) to s = 0.72 for the 100,000-site scaling study.
+run_id: scaling_100k_sc_si_rich_p050
+operating_um: [1.075]
+fab_limits: {min_feature_um: 0.10, min_gap_um: 0.10, max_aspect: 10.0}
+width_frac: {min: 0.12, max: 0.90, n: 40}
+n_terms: 197
+n_grid: 256
+supercell: {material: sin_si_rich, pitch_um: 0.50, height_um: 1.5, design_um: 1.075, n_cells: [3, 4], grid_per_cell: 48, terms_per_cell: 80}

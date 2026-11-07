@@ -68,7 +68,7 @@ def build(arch: str, params: np.ndarray, geom: Geometry, lam_um: float, R: float
         m1 = CompositeMeta(extra["base1"], _c(params[:n_terms], R), geom.lam_design_um, "corrector")
         m2 = CompositeMeta(extra["base2"], _c(params[n_terms : 2 * n_terms], extra["lens_R"]), geom.lam_design_um, "focusing")
         sub = extra.get("spacer_medium") or Medium(ns, extra["doublet_substrate_um"], "substrate")
-        el += [m1, sub, m2]
+        el += [m1, *(sub if isinstance(sub, (list, tuple)) else [sub]), m2]  # a layered spacer is a list of Media
         stop = {"index": 0, "radius_um": R}
     elif arch == "doublet":
         t_d = extra["doublet_substrate_um"]

@@ -105,12 +105,17 @@ def main(cfg_path):
         for rr in mc["field_um"]:
             key = f"{des['name']}:{rr:.0f}"
             if key in res:
-                continue
-            th = D.theta_for_height(s, R1, lam, rr, f)
-            out = corrected(s, R1, lam, th, dz)
+                out = res[key]
+            else:
+                th = D.theta_for_height(s, R1, lam, rr, f)
+                out = corrected(s, R1, lam, th, dz)
+            # Extra lenslet deflection for each demagnification and site pitch (lenslet pitch M a);
+            # earlier versions keyed it by M only, evaluated at the last pitch of the list.
+            out.pop("extra_lenslet_deflection_note", None)
             for M in mc["demag"]:
-                p = M * mc["pitch_um"][-1]
-                out[f"extra_lenslet_deflection_M{M}"] = out["max_grad_W"] * 2 * R1 / p
+                out.pop(f"extra_lenslet_deflection_M{M}", None)
+                for a in mc["pitch_um"]:
+                    out[f"extra_lenslet_deflection_M{M}_a{a:g}"] = out["max_grad_W"] * 2 * R1 / (M * a)
             out |= {"f_um": f, "R1_um": R1, "field_um": rr, "dz_common_um": dz}
             res[key] = out
             print(key, {k: (round(v, 4) if isinstance(v, float) else v) for k, v in out.items()}, flush=True)

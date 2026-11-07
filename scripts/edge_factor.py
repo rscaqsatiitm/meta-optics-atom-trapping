@@ -14,6 +14,7 @@ the aperture.
 
 import json
 import sys
+from pathlib import Path
 
 import numpy as np
 
@@ -50,7 +51,7 @@ def main(sc_path, cfg_path):
             res[tag] = float(np.sum(w * f) / np.sum(w))
         out[mat] = res
         print(mat, {k: v for k, v in res.items() if not isinstance(v, np.ndarray)}, "ratios", np.round(ratio, 3), "at s", ss)
-    write_json(REPO_ROOT / "results" / "library_analysis_1075" / "edge_factor.json", out)
+    write_json(Path(sc_path).resolve().parent / "edge_factor.json", out)  # next to the supercell file
 
 
 if __name__ == "__main__":

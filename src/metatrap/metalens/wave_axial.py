@@ -91,9 +91,9 @@ def on_axis_focus(d, lam_um: float, r_max_um: float = 9000.0, v_max_over_k: floa
     w = 1.0 / (np.pi * q.R**2 * q.J1**2)  # Fourier-Bessel weights: f(r) = sum F(nu_m) w_m J0(2 pi nu_m r)
     c = (F * H * w)[prop]
     kzp = kz_v[prop].real
-    # Fraction of the spectrum (power) beyond NA 0.5 + 10 % (stray, mis-directed light).
+    # Fraction of the spectrum (power) beyond 1.1 x the design NA (stray, mis-directed light).
     pw = np.abs(F) ** 2 * w
-    frac_high = float(pw[np.abs(lam_um * nu) > 1.1 * 0.5].sum() / pw.sum())
+    frac_high = float(pw[np.abs(lam_um * nu) > 1.1 * d.spec.na].sum() / pw.sum())
 
     def strehl(z):
         return float(np.abs(np.sum(c * np.exp(1j * kzp * z))) ** 2 / np.sum(np.abs(c)) ** 2)

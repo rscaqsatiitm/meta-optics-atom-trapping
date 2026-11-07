@@ -14,6 +14,12 @@ Conventions (verified in tests/test_rcwa.py against Fresnel and thin-film result
 * Zeroth-order power transmittance at normal incidence is T0 = (n_exit/n_in) |t|^2.
 * ``T`` and ``R`` are the total transmitted and reflected power fractions summed over
   all propagating orders, from the Poynting flux.
+
+Known artefact: with the default ``jones_direct_fourier`` formulation a square (C4v) pillar
+shows a cross-polarised zeroth-order amplitude ``t_cross`` of order 1e-2 (e.g. 0.014 / 0.007
+for widths 0.2 / 0.3 um, p 0.5, h 1.5 um, n 2.3, 121 terms), which must vanish by symmetry;
+``pol_fourier`` gives < 1e-4 and the same co-polarised t to ~0.01. Library filters on
+``t_cross`` therefore reject some pillars for a numerical reason (tests/test_rcwa.py).
 """
 
 from __future__ import annotations

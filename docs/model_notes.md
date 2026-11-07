@@ -89,7 +89,7 @@ P/(sqrt(2 pi) kappa w) (5 %).
 | Fused silica dn/dT 9.6 ppm/K (1064 nm), alpha 0.52 ppm/K | axisym_fd.py | SOURCE | Corning 7980 sheet |
 | Sapphire kappa 33.0 W/m/K (perp. c), alpha 5.0 ppm/K | axisym_fd.py | SOURCE | Alkor sapphire data sheet |
 | Sapphire dn/dT 13 ppm/K | axisym_fd.py | `[VALUE?]` | vendor value at 0.546 um, verify at 1075 nm |
-| Poisson ratios 0.17 (FS), 0.27 (sapphire) | axisym_fd.py | `[VALUE?]` | from memory |
+| Poisson ratios 0.16 (FS), 0.25 (sapphire) | axisym_fd.py | `[VALUE?]` | from memory |
 | Si-rich SiN dn/dT up to 1.65e-4 /K | report | SOURCE | Nejadriahi et al., Opt. Express (2020), DOI 10.1364/OE.396969 (abstract) |
 | Ref. 4: 850 nm, 18,225 sites (135 x 135), 4.30(7) um pitch, 33 W in, 12.2 W effective, 15.0 W predicted, 67.5 % diffraction efficiency, 13.2 % rms power non-uniformity, dark radius 1.11(6) um, 0.305(17) mK, 3.5 mm Pyrex + 2.5 mm air + 9 mm vacuum, 19.8 mm, NA 0.58 | power_budget.py, configs | SOURCE | arXiv:2606.02715 (HTML), retrieved 2026-10-31 |
 | Cell: 2.5 mm air, 4 mm fused silica, 9 mm vacuum | configs | `[CONFIRM?]` | default modelled on ref. 4 |

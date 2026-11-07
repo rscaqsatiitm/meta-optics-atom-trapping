@@ -186,18 +186,19 @@ Apodisation by the meta-atom efficiency (Section 6 curves):
 
 | Wavelength, film | Transmitted fraction, axis / 400 um | Peak relative to lossless uniform pupil, axis / 400 um | Half-width, axis |
 |---|---|---|---|
-| 852.3 nm, LPCVD | 0.789 / 0.788 | 0.792 / 0.791 | 0.70 um (unchanged) |
-| 852.3 nm, Si-rich | 0.812 / 0.812 | 0.815 / 0.814 | 0.70 um (unchanged) |
-| 1064.4 nm, LPCVD | 0.802 / 0.801 | 0.804 / 0.803 | 0.88 um (+0.02) |
-| 1064.4 nm, Si-rich | 0.823 / 0.822 | 0.825 / 0.824 | 0.88 um (+0.02) |
+| 852.3 nm, LPCVD | 0.798 / 0.797 | 0.792 / 0.791 | 0.70 um (unchanged) |
+| 852.3 nm, Si-rich | 0.820 / 0.820 | 0.815 / 0.814 | 0.70 um (unchanged) |
+| 1064.4 nm, LPCVD | 0.807 / 0.807 | 0.804 / 0.803 | 0.88 um (+0.02) |
+| 1064.4 nm, Si-rich | 0.828 / 0.828 | 0.825 / 0.824 | 0.88 um (+0.02) |
 
-Hence the weaker outer zones cost the peak intensity only through the transmitted power
-(the ratio of peak to transmitted fraction is 1.00). Within the 0.02 um sampling of the
-profiles, they broaden the spot by at most one step at 1064 nm and not at all at 852 nm. A
-site at the array corner receives the same peak as one on the axis. The ray-path weighting
-here gives transmitted fractions 0.01 below the area averages of Section 6 (0.789 against
-0.798 at 852 nm, LPCVD), because it follows each ray from its zone on the corrector to its
-zone on the focusing plate.
+Hence the weaker outer zones cost the peak intensity mainly through the transmitted power: the
+ratio of peak to transmitted fraction is 0.993 to 0.996, so the apodisation itself costs at
+most 0.7 % of the peak. Within the 0.02 um sampling of the profiles, they broaden the spot by at
+most one step at 1064 nm and not at all at 852 nm. A site at the array corner receives the same
+peak as one on the axis. The transmitted fractions equal the area averages of Section 6 (0.798
+at 852 nm, LPCVD). (An earlier version of this table listed fractions 0.005 to 0.009 lower and
+attributed the difference to the ray-path weighting; it was a J-weighted mean, corrected in
+wave_offaxis.transmitted_fraction and recomputed by scripts/metalens_transmission.py.)
 
 ## 5. Chromatic behaviour and the multi-wavelength requirement
 

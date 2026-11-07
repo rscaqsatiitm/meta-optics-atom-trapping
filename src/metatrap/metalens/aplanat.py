@@ -110,5 +110,5 @@ def design(lam_um: float, na: float, cell: list, substrate: str = "fused_silica"
             "max_deflection_corrector": float(np.max(np.abs(p[: i_R + 1]))),
             "max_deflection_focusing": float(np.max(np.abs(s_f + p)[: i_R + 1])),
             "max_deflection_focusing_ext": float(np.max(np.abs(s_f + p)))}
-    sub = sp_media[0] if len(sp_media) == 1 else sp_media
+    sub = sp_media[0] if len(sp_media) == 1 else sp_media  # one Medium, or a list of Media for a layered spacer
     return m1, sub, m2, media, info

@@ -68,13 +68,16 @@
     "W_rms_waves": 0.20282525062197643,
     "max_grad_W": 0.00018745285928550766,
     "x_um": -2.361322305813389e-12,
-    "extra_lenslet_deflection_M5": 0.15201566031072328,
-    "extra_lenslet_deflection_M10": 0.07600783015536164,
-    "extra_lenslet_deflection_M20": 0.03800391507768082,
     "f_um": 16219.08152163096,
     "R1_um": 8109.54076081548,
     "field_um": 0,
-    "dz_common_um": -5.621448352989175
+    "dz_common_um": -5.621448352989175,
+    "extra_lenslet_deflection_M5_a3": 0.2026875470809644,
+    "extra_lenslet_deflection_M5_a4": 0.15201566031072328,
+    "extra_lenslet_deflection_M10_a3": 0.1013437735404822,
+    "extra_lenslet_deflection_M10_a4": 0.07600783015536164,
+    "extra_lenslet_deflection_M20_a3": 0.0506718867702411,
+    "extra_lenslet_deflection_M20_a4": 0.03800391507768082
   },
   "f16:1000": {
     "strehl_before": 0.11953916001381293,
@@ -83,13 +86,16 @@
     "W_rms_waves": 0.20690387140699285,
     "max_grad_W": 0.0002247779648992992,
     "x_um": 1000.0054369890773,
-    "extra_lenslet_deflection_M5": 0.1822846068484018,
-    "extra_lenslet_deflection_M10": 0.0911423034242009,
-    "extra_lenslet_deflection_M20": 0.04557115171210045,
     "f_um": 16219.08152163096,
     "R1_um": 8109.54076081548,
     "field_um": 1000,
-    "dz_common_um": -5.621448352989175
+    "dz_common_um": -5.621448352989175,
+    "extra_lenslet_deflection_M5_a3": 0.24304614246453574,
+    "extra_lenslet_deflection_M5_a4": 0.1822846068484018,
+    "extra_lenslet_deflection_M10_a3": 0.12152307123226787,
+    "extra_lenslet_deflection_M10_a4": 0.0911423034242009,
+    "extra_lenslet_deflection_M20_a3": 0.060761535616133934,
+    "extra_lenslet_deflection_M20_a4": 0.04557115171210045
   },
   "f16:1770": {
     "strehl_before": 0.09330468014541213,
@@ -98,13 +104,16 @@
     "W_rms_waves": 0.22719860078432194,
     "max_grad_W": 0.00039069953412482,
     "x_um": 1770.0299460136296,
-    "extra_lenslet_deflection_M5": 0.31683937972168463,
-    "extra_lenslet_deflection_M10": 0.15841968986084232,
-    "extra_lenslet_deflection_M20": 0.07920984493042116,
     "f_um": 16219.08152163096,
     "R1_um": 8109.54076081548,
     "field_um": 1770,
-    "dz_common_um": -5.621448352989175
+    "dz_common_um": -5.621448352989175,
+    "extra_lenslet_deflection_M5_a3": 0.4224525062955795,
+    "extra_lenslet_deflection_M5_a4": 0.31683937972168463,
+    "extra_lenslet_deflection_M10_a3": 0.21122625314778976,
+    "extra_lenslet_deflection_M10_a4": 0.15841968986084232,
+    "extra_lenslet_deflection_M20_a3": 0.10561312657389488,
+    "extra_lenslet_deflection_M20_a4": 0.07920984493042116
   },
   "f16:2121": {
     "strehl_before": 0.08127591220814794,
@@ -113,13 +122,16 @@
     "W_rms_waves": 0.2546443860563633,
     "max_grad_W": 0.0005335026110286304,
     "x_um": 2121.051711222012,
-    "extra_lenslet_deflection_M5": 0.4326461170138165,
-    "extra_lenslet_deflection_M10": 0.21632305850690825,
-    "extra_lenslet_deflection_M20": 0.10816152925345413,
     "f_um": 16219.08152163096,
     "R1_um": 8109.54076081548,
     "field_um": 2121,
-    "dz_common_um": -5.621448352989175
+    "dz_common_um": -5.621448352989175,
+    "extra_lenslet_deflection_M5_a3": 0.5768614893517553,
+    "extra_lenslet_deflection_M5_a4": 0.4326461170138165,
+    "extra_lenslet_deflection_M10_a3": 0.28843074467587765,
+    "extra_lenslet_deflection_M10_a4": 0.21632305850690825,
+    "extra_lenslet_deflection_M20_a3": 0.14421537233793882,
+    "extra_lenslet_deflection_M20_a4": 0.10816152925345413
   },
   "f16:2828": {
     "strehl_before": 0.07913710602951539,
@@ -128,13 +140,16 @@
     "W_rms_waves": 0.3839605770626831,
     "max_grad_W": 0.0009971128934293538,
     "x_um": 2828.123977180965,
-    "extra_lenslet_deflection_M5": 0.8086127652400007,
-    "extra_lenslet_deflection_M10": 0.40430638262000035,
-    "extra_lenslet_deflection_M20": 0.20215319131000017,
     "f_um": 16219.08152163096,
     "R1_um": 8109.54076081548,
     "field_um": 2828,
-    "dz_common_um": -5.621448352989175
+    "dz_common_um": -5.621448352989175,
+    "extra_lenslet_deflection_M5_a3": 1.0781503536533343,
+    "extra_lenslet_deflection_M5_a4": 0.8086127652400007,
+    "extra_lenslet_deflection_M10_a3": 0.5390751768266672,
+    "extra_lenslet_deflection_M10_a4": 0.40430638262000035,
+    "extra_lenslet_deflection_M20_a3": 0.2695375884133336,
+    "extra_lenslet_deflection_M20_a4": 0.20215319131000017
   },
   "f25:0": {
     "strehl_before": 0.9966118918144694,
@@ -143,13 +158,16 @@
     "W_rms_waves": 0.009270297337117574,
     "max_grad_W": 5.57949293769691e-06,
     "x_um": -5.287644682083143e-12,
-    "extra_lenslet_deflection_M5": 0.006940703852434215,
-    "extra_lenslet_deflection_M10": 0.0034703519262171073,
-    "extra_lenslet_deflection_M20": 0.0017351759631085537,
     "f_um": 24879.335559475345,
     "R1_um": 12439.667779737672,
     "field_um": 0,
-    "dz_common_um": 0.2580326263654379
+    "dz_common_um": 0.2580326263654379,
+    "extra_lenslet_deflection_M5_a3": 0.009254271803245619,
+    "extra_lenslet_deflection_M5_a4": 0.006940703852434215,
+    "extra_lenslet_deflection_M10_a3": 0.0046271359016228095,
+    "extra_lenslet_deflection_M10_a4": 0.0034703519262171073,
+    "extra_lenslet_deflection_M20_a3": 0.0023135679508114048,
+    "extra_lenslet_deflection_M20_a4": 0.0017351759631085537
   },
   "f25:1000": {
     "strehl_before": 0.9960227752921521,
@@ -158,13 +176,16 @@
     "W_rms_waves": 0.010046779747754874,
     "max_grad_W": 1.0513588568689875e-05,
     "x_um": 1000.0016456692964,
-    "extra_lenslet_deflection_M5": 0.013078554896734975,
-    "extra_lenslet_deflection_M10": 0.006539277448367488,
-    "extra_lenslet_deflection_M20": 0.003269638724183744,
     "f_um": 24879.335559475345,
     "R1_um": 12439.667779737672,
     "field_um": 1000,
-    "dz_common_um": 0.2580326263654379
+    "dz_common_um": 0.2580326263654379,
+    "extra_lenslet_deflection_M5_a3": 0.017438073195646633,
+    "extra_lenslet_deflection_M5_a4": 0.013078554896734975,
+    "extra_lenslet_deflection_M10_a3": 0.008719036597823316,
+    "extra_lenslet_deflection_M10_a4": 0.006539277448367488,
+    "extra_lenslet_deflection_M20_a3": 0.004359518298911658,
+    "extra_lenslet_deflection_M20_a4": 0.003269638724183744
   },
   "f25:1770": {
     "strehl_before": 0.9511246821082253,
@@ -173,13 +194,16 @@
     "W_rms_waves": 0.03561571871184701,
     "max_grad_W": 5.858333295792713e-05,
     "x_um": 1770.0111948133483,
-    "extra_lenslet_deflection_M5": 0.07287571994263702,
-    "extra_lenslet_deflection_M10": 0.03643785997131851,
-    "extra_lenslet_deflection_M20": 0.018218929985659254,
     "f_um": 24879.335559475345,
     "R1_um": 12439.667779737672,
     "field_um": 1770,
-    "dz_common_um": 0.2580326263654379
+    "dz_common_um": 0.2580326263654379,
+    "extra_lenslet_deflection_M5_a3": 0.09716762659018269,
+    "extra_lenslet_deflection_M5_a4": 0.07287571994263702,
+    "extra_lenslet_deflection_M10_a3": 0.048583813295091344,
+    "extra_lenslet_deflection_M10_a4": 0.03643785997131851,
+    "extra_lenslet_deflection_M20_a3": 0.024291906647545672,
+    "extra_lenslet_deflection_M20_a4": 0.018218929985659254
   },
   "f25:2121": {
     "strehl_before": 0.8682536610795674,
@@ -188,13 +212,16 @@
     "W_rms_waves": 0.05980443946454148,
     "max_grad_W": 0.00010083074369897577,
     "x_um": 2121.0193219353996,
-    "extra_lenslet_deflection_M5": 0.12543009535991362,
-    "extra_lenslet_deflection_M10": 0.06271504767995681,
-    "extra_lenslet_deflection_M20": 0.031357523839978405,
     "f_um": 24879.335559475345,
     "R1_um": 12439.667779737672,
     "field_um": 2121,
-    "dz_common_um": 0.2580326263654379
+    "dz_common_um": 0.2580326263654379,
+    "extra_lenslet_deflection_M5_a3": 0.1672401271465515,
+    "extra_lenslet_deflection_M5_a4": 0.12543009535991362,
+    "extra_lenslet_deflection_M10_a3": 0.08362006357327575,
+    "extra_lenslet_deflection_M10_a4": 0.06271504767995681,
+    "extra_lenslet_deflection_M20_a3": 0.04181003178663788,
+    "extra_lenslet_deflection_M20_a4": 0.031357523839978405
   },
   "f25:2828": {
     "strehl_before": 0.4677169239706386,
@@ -203,12 +230,15 @@
     "W_rms_waves": 0.13868891481427234,
     "max_grad_W": 0.00023693255626769234,
     "x_um": 2828.046141557725,
-    "extra_lenslet_deflection_M5": 0.29473622861740956,
-    "extra_lenslet_deflection_M10": 0.14736811430870478,
-    "extra_lenslet_deflection_M20": 0.07368405715435239,
     "f_um": 24879.335559475345,
     "R1_um": 12439.667779737672,
     "field_um": 2828,
-    "dz_common_um": 0.2580326263654379
+    "dz_common_um": 0.2580326263654379,
+    "extra_lenslet_deflection_M5_a3": 0.3929816381565461,
+    "extra_lenslet_deflection_M5_a4": 0.29473622861740956,
+    "extra_lenslet_deflection_M10_a3": 0.19649081907827304,
+    "extra_lenslet_deflection_M10_a4": 0.14736811430870478,
+    "extra_lenslet_deflection_M20_a3": 0.09824540953913652,
+    "extra_lenslet_deflection_M20_a4": 0.07368405715435239
   }
 }

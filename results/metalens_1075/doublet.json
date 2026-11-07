@@ -449,7 +449,7 @@
       "best_focus_um": -6.157412449012134e-05,
       "strehl_at_nominal_plane": 0.9973594703952798,
       "spill_fraction": 2.1153707193382233e-05,
-      "spectrum_fraction_beyond_1.1NA": 0.00019712875766124651,
+      "spectrum_fraction_beyond_1.1NA": 7.902848888608117e-06,
       "waist_1e2_um": 0.81,
       "profile_r_um": [
         0.0,

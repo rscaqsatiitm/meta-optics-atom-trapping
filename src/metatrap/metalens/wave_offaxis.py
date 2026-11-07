@@ -164,7 +164,18 @@ def strehl_offaxis(d, lam_um: float, theta: float, x_ray: float, dz_ray: float, 
     ref0 = np.sum(pf["amp"])
     return {"strehl": float(best[0] / ref**2), "peak_rel_uniform_lossless": float(best[0] / ref0**2), "x_um": float(p0[0]), "y_um": float(p0[1]), "dz_um": float(dz0),
             "w_x_um": half_width(Ix), "w_y_um": half_width(Iy), "n_samples": int(len(amp)),
-            "transmitted_weight": float(np.sum(amp**2) / np.sum(pf["amp"] ** 2))}
+            "transmitted_weight": transmitted_fraction(pf["amp"], amp)}
+
+
+def transmitted_fraction(amp0, amp) -> float:
+    """Power fraction transmitted by the apodised pupil.
+
+    Each stop sample carries the same power (uniform illumination of the stop grid); amp0 =
+    sqrt(J) dA1 includes the area magnification J from stop to plate, which weights the field sum
+    but not the power, so the fraction is the plain mean of (amp / amp0)^2 = eta1 eta2 over the
+    stop samples. (Before this fix sum(amp^2) / sum(amp0^2), a J-weighted mean, was returned; J
+    grows towards the stop edge where eta is lowest, which biased the fraction low by ~0.01.)"""
+    return float(np.mean((amp / amp0) ** 2))
 
 
 def plate_field_front(d, lam_um: float, theta: float, front: list, stop_index: int, stop_radius: float, launch_radius: float, n_pupil: int = 300):

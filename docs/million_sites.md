@@ -242,7 +242,7 @@ the objective pupil, with p/2 corresponding to R1. This is the lenslet-array cou
 the hologram's exact kernels, and it removes the objective's field limit for the trapping path.
 Ray model at 1075 nm, NA 0.5, one common atom plane over 0 to 2.83 mm:
 
-| Objective | Field | Strehl before / after | Correction W, PV / rms | Extra lenslet deflection, M = 5 / 10 / 20 |
+| Objective | Field | Strehl before / after | Correction W, PV / rms | Extra lenslet deflection at a = 4 um, M = 5 / 10 / 20 |
 |---|---|---|---|---|
 | f = 16 mm | 0 / 1.77 / 2.83 mm | 0.13 / 0.09 / 0.08 -> 1.000 | 0.7 / 1.0 / 2.1 waves PV | up to 0.81 / 0.40 / 0.20 |
 | f = 25 mm | 0 / 1.77 / 2.83 mm | 1.00 / 0.95 / 0.47 -> 1.000 | 0.03 / 0.19 / 0.77 waves PV | up to 0.30 / 0.15 / 0.07 |

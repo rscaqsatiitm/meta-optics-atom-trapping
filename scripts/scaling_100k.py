@@ -36,6 +36,10 @@ from metatrap.runio import REPO_ROOT, load_config, run_dir, write_json, write_pa
 
 
 def eta_curve(cfg):
+    """Meta-atom deflection efficiency versus sin(theta) for ONE pillar family (cfg supercell_family
+    and the supercell files of that family), anchored at s = 0 by its LPA efficiency eta_lpa.
+    (An earlier version concatenated two families, p 0.50 / h 1.5 um and p 0.45 / h 1.3 um, and gave
+    a non-monotonic curve.)"""
     pts = {}
     for path in cfg["supercell_files"]:
         p = REPO_ROOT / path
@@ -102,13 +106,32 @@ def spot(WD, R, r_site, lam, n_ap, eta_s=None):
         lft = c0 - int(np.argmax(I[: c0 + 1][::-1] < np.exp(-2)))
         return float(0.5 * (rr[rgt] - rr[lft]))
 
-    w_ap = z_weight = (WD / Lj**2)
-    out = {"peak": float(I0), "dz_um": float(dz0), "x_um": float(p0[0]), "w_radial_um": hw(Ix), "w_tangential_um": hw(Iy),
-           "s_max": float(s_loc.max()), "s_mean": float(np.sum(w_ap * s_loc) / np.sum(w_ap)),
-           "frac_s_above_0.6": float(np.sum(w_ap * (s_loc > 0.6)) / np.sum(w_ap))}
+    out = {"peak": float(I0), "dz_um": float(dz0), "x_um": float(p0[0]), "w_radial_um": hw(Ix), "w_tangential_um": hw(Iy)}
+    out |= site_efficiency(WD, R, r_site, n_ap, eta_s)
+    return out
+
+
+def site_efficiency(WD, R, r_site, n_ap, eta_s=None):
+    """Deflection statistics and meta-atom efficiency factors of the aperture for one site.
+
+    w = z / L^2 is the field weight of each aperture element at the focus (uniform illumination).
+    eta_site: peak-intensity factor (sum w sqrt(eta) / sum w)^2, the factor on the trap depth;
+    eta_site_power: transmitted-power fraction, the plain area mean of eta. (An earlier version
+    returned the w-weighted mean of eta as eta_site.)"""
+    c = (np.arange(n_ap) + 0.5) / n_ap * 2 * R - R
+    X, Y = np.meshgrid(c, c, indexing="ij")
+    m = np.hypot(X, Y) <= R
+    x, y = X[m], Y[m]
+    Lj = np.sqrt((x - r_site) ** 2 + y**2 + WD**2)
+    s_loc = np.hypot(x - r_site, y) / Lj
+    w = WD / Lj**2
+    out = {"s_max": float(s_loc.max()), "s_mean": float(np.sum(w * s_loc) / np.sum(w)),
+           "frac_s_above_0.6": float(np.sum(w * (s_loc > 0.6)) / np.sum(w))}
     if eta_s is not None:
         S, E = eta_s
-        out["eta_site"] = float(np.sum(w_ap * np.interp(s_loc, S, E)) / np.sum(w_ap))
+        eta = np.interp(s_loc, S, E)
+        out["eta_site"] = float((np.sum(w * np.sqrt(eta)) / np.sum(w)) ** 2)
+        out["eta_site_power"] = float(np.mean(eta))
     return out
 
 
@@ -155,6 +178,8 @@ def main(cfg_path):
         for r_site in cfg["site_radii_um"]:
             k = f"{r_site:.0f}"
             if k in g["sites"]:
+                g["sites"][k] |= site_efficiency(WD, R, r_site, cfg["n_aperture"], eta_s)  # cheap; follows eta_curve changes
+                res[key] = g
                 continue
             t0 = time.time()
             g["sites"][k] = spot(WD, R, r_site, lam, cfg["n_aperture"], eta_s)
@@ -162,6 +187,7 @@ def main(cfg_path):
             print(key, k, {a: (round(b, 4) if isinstance(b, float) else b) for a, b in g["sites"][k].items()}, flush=True)
             res[key] = g
             write_json(path, res)
+        write_json(path, res)
         if "lens" not in g and cfg.get("lens", True):
             g["lens"] = lens_field_radius(WD, cfg["lens_na"], cfg["lens_wavelength_um"], WD / np.sqrt(1 - cfg["lens_na"] ** 2))
             print(key, "lens field radius (Strehl >= 0.8):", round(g["lens"]["field_radius_strehl08_um"]), "um", flush=True)
