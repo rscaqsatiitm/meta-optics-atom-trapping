@@ -15,7 +15,7 @@ limits:
 films:
   si_rich_pecvd: {biaxial_modulus_GPa: 125, nu: 0.25, alpha: 2.6e-6}   # biaxial modulus and CTE (300 C deposition) from search snippets; nu [VALUE?]
   lpcvd: {biaxial_modulus_GPa: 356, nu: 0.27, alpha: 3.3e-6}           # E 260 GPa (MRS 2001) / (1 - nu); nu and alpha [VALUE?]
-tpa: {beta_cm_per_GW: 1.5, enhancement: 20, alpha_linear_per_cm: 8.0}   # bulk-Si beta at 1.06 um as an upper bound; enhancement assumed
+tpa: {beta_cm_per_GW: 1.5, enhancement: 20, alpha_linear_per_cm: 8.0}   # bulk-Si beta at 1.06 um as an upper bound; enhancement = local intensity enhancement, assumed
 cases:
   - {name: fs0.5_sirich_nominal, substrate: fused_silica, thickness_mm: 0.5, film: si_rich_pecvd, a_film: 5.9e-4}
   - {name: fs0.5_sirich_upper, substrate: fused_silica, thickness_mm: 0.5, film: si_rich_pecvd, a_film: 2.7e-3}

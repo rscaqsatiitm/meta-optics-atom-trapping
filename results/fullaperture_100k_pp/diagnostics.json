@@ -1,0 +1,56 @@
+{
+  "final": {
+    "ideal": {
+      "rms": 0.0001470893426645074,
+      "orbit_rms": 0.00014708923537723128,
+      "within_orbit_rms": 1.7765573324175368e-07,
+      "radial_bin_mean_min": 0.9999805563923995,
+      "radial_bin_mean_max": 1.0000087077005981,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.001621788121235449,
+      "neighbour_correlation": 0.017068522427151737
+    },
+    "library_lpa": {
+      "rms": 0.02686145115669518,
+      "orbit_rms": 0.02686144952006336,
+      "within_orbit_rms": 9.317091398496751e-06,
+      "radial_bin_mean_min": 0.9983225955821282,
+      "radial_bin_mean_max": 1.0008322219915746,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.00020067457716550053,
+      "neighbour_correlation": -0.02193616680366141
+    }
+  },
+  "feedback": [
+    {
+      "from_round": 2,
+      "to_round": 3,
+      "slope": -0.017979578140025796,
+      "correlation": -0.07261928454419357
+    },
+    {
+      "from_round": 3,
+      "to_round": 4,
+      "slope": -0.037627644461626315,
+      "correlation": -0.12586401483330759
+    },
+    {
+      "from_round": 4,
+      "to_round": 5,
+      "slope": -0.04394964802537299,
+      "correlation": -0.12967812311667912
+    },
+    {
+      "from_round": 5,
+      "to_round": 6,
+      "slope": -0.04185416182638242,
+      "correlation": -0.10945609362582913
+    },
+    {
+      "from_round": 6,
+      "to_round": 7,
+      "slope": -0.028144906272129303,
+      "correlation": -0.06540925924138237
+    }
+  ]
+}

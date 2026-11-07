@@ -1,0 +1,17 @@
+aperture 18.43 mm, metasurface 36864^2 = 1.36 Gpx, 99856 sites (12561 fundamental), pupil n=2800 ds=4.80e-04 s_max=0.671
+K_G (517262, 12561) 0.00 GB in 6s
+pupil model {'mode_efficiency_sum': 0.8544072539043555, 'nonuniformity_rms': 0.002416186496201578}
+ideal pillars, round 0 {'round': 0, 'depth_nonuniformity_rms': 0.08706508853498306, 'depth_min_over_mean': 0.6603356761430185, 'array_efficiency': 0.8518095159850441, 'core_efficiency': 0.6893623828134186, 'axis_intensity_over_mean_site_peak': 0.020106202803040773} 442s
+aperture 18.43 mm, metasurface 36864^2 = 1.36 Gpx, 99856 sites (12561 fundamental), pupil n=2800 ds=4.80e-04 s_max=0.671
+K_G (517262, 12561) 0.00 GB in 6s
+pupil model {'mode_efficiency_sum': 0.8544072539043555, 'nonuniformity_rms': 0.002416186496201578}
+ideal pillars, round 0 {'round': 0, 'depth_nonuniformity_rms': 0.08706508853498306, 'depth_min_over_mean': 0.6603356761430185, 'array_efficiency': 0.8518095159850441, 'core_efficiency': 0.6893623828134186, 'axis_intensity_over_mean_site_peak': 0.020106202803040773} 341s
+aperture 18.43 mm, metasurface 36864^2 = 1.36 Gpx, 99856 sites (12561 fundamental), pupil n=2800 ds=4.80e-04 s_max=0.671
+K_G (517262, 12561) 0.00 GB in 5s
+resumed from checkpoint at round 1
+finished pending feedback WGS
+ideal pillars, round 1 {'round': 1, 'depth_nonuniformity_rms': 0.08521302621405051, 'depth_min_over_mean': 0.6897347383968491, 'array_efficiency': 0.8552552373865037, 'core_efficiency': 0.6931804026285892, 'axis_intensity_over_mean_site_peak': 0.1103665740251963} 327s
+ideal pillars, round 2 {'round': 2, 'depth_nonuniformity_rms': 0.07049788946261461, 'depth_min_over_mean': 0.7567303411999343, 'array_efficiency': 0.8572995091559173, 'core_efficiency': 0.6953345354726519, 'axis_intensity_over_mean_site_peak': 0.1094472567965345} 345s
+library_lpa {'depth_nonuniformity_rms': 0.075, 'depth_min_over_mean': 0.7549, 'array_efficiency': 0.8282, 'core_efficiency': 0.6703, 'cell_power_nonuniformity_rms': 0.0791, 'waist_mean_um': 0.8661, 'waist_std_um': 0.0248, 'position_error_rms_um': 0.095, 'axis_intensity_over_mean_site_peak': 0.104, 'interstitial_median': 0.0157, 'interstitial_p99': 0.1009, 'interstitial_max': 0.257, 'interstitial_max_radius_um': 572.0, 'metasurface_transmission': 0.9713, 'seconds': 355.395}
+library_sigma5nm {'depth_nonuniformity_rms': 0.0846, 'depth_min_over_mean': 0.6999, 'array_efficiency': 0.8025, 'core_efficiency': 0.6466, 'cell_power_nonuniformity_rms': 0.0814, 'waist_mean_um': 0.8648, 'waist_std_um': 0.0316, 'position_error_rms_um': 0.0982, 'axis_intensity_over_mean_site_peak': 0.1162, 'interstitial_median': 0.0162, 'interstitial_p99': 0.1049, 'interstitial_max': 0.2813, 'interstitial_max_radius_um': 463.2062, 'metasurface_transmission': 0.9563, 'seconds': 540.2282}
+power budget {'ideal': {'utilisation': np.float64(0.643802123112379), 'depth_mK_at_50W': 0.07305803392376858, 'depth_mK_at_100W': 0.14611606784753717}, 'library_lpa': {'utilisation': np.float64(0.6206370023744111), 'depth_mK_at_50W': 0.07042927872715479, 'depth_mK_at_100W': 0.14085855745430959}, 'library_sigma5nm': {'utilisation': np.float64(0.5986885521919354), 'depth_mK_at_50W': 0.06793859011268816, 'depth_mK_at_100W': 0.13587718022537632}}

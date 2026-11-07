@@ -1,0 +1,44 @@
+{
+  "final": {
+    "library_lpa": {
+      "rms": 0.004481498259914225,
+      "orbit_rms": 0.004481483854273452,
+      "within_orbit_rms": 1.1360955844310916e-05,
+      "radial_bin_mean_min": 0.9996604679728138,
+      "radial_bin_mean_max": 1.0001217535327895,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 5.610536213409791e-05,
+      "neighbour_correlation": 0.0005044343801669418
+    },
+    "library_sigma5nm": {
+      "rms": 0.03468615972079596,
+      "orbit_rms": 0.016310313915151996,
+      "within_orbit_rms": 0.030610741491721397,
+      "radial_bin_mean_min": 0.9991905517342102,
+      "radial_bin_mean_max": 1.0005317161112306,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 2.6228678516174307e-05,
+      "neighbour_correlation": -0.0009234318298666639
+    }
+  },
+  "feedback": [
+    {
+      "from_round": 13,
+      "to_round": 14,
+      "slope": -0.05545312019947781,
+      "correlation": -0.07980353469795412
+    },
+    {
+      "from_round": 14,
+      "to_round": 15,
+      "slope": -0.03368443758539998,
+      "correlation": -0.03871912525575393
+    },
+    {
+      "from_round": 15,
+      "to_round": 16,
+      "slope": -0.058835476214968416,
+      "correlation": -0.06263620229034218
+    }
+  ]
+}

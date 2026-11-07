@@ -1,0 +1,35 @@
+{
+  "final": {
+    "ideal": {
+      "rms": 0.07049788946261461,
+      "orbit_rms": 0.07049748882551372,
+      "within_orbit_rms": 0.00023790241953805207,
+      "radial_bin_mean_min": 0.9933395840208706,
+      "radial_bin_mean_max": 1.0019252976618804,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 9.231251026985788e-05,
+      "neighbour_correlation": 0.007825573368611064
+    },
+    "library_lpa": {
+      "rms": 0.07504142592723825,
+      "orbit_rms": 0.07502681804661557,
+      "within_orbit_rms": 0.0014847274457760393,
+      "radial_bin_mean_min": 0.9929765282742622,
+      "radial_bin_mean_max": 1.002277800584314,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.0001376623337959062,
+      "neighbour_correlation": 0.005157205665583933
+    },
+    "library_sigma5nm": {
+      "rms": 0.08461580961975451,
+      "orbit_rms": 0.07881903985792087,
+      "within_orbit_rms": 0.030862563988194334,
+      "radial_bin_mean_min": 0.993284418413226,
+      "radial_bin_mean_max": 1.0018375406313633,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.00015071181315622016,
+      "neighbour_correlation": 0.003785334804258212
+    }
+  },
+  "feedback": []
+}

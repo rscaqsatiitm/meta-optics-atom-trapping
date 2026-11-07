@@ -1,0 +1,25 @@
+{
+  "final": {
+    "ideal": {
+      "rms": 0.07142079075061625,
+      "orbit_rms": 0.07142079075055657,
+      "within_orbit_rms": 9.234458394326022e-08,
+      "radial_bin_mean_min": 0.9823150731599133,
+      "radial_bin_mean_max": 1.0201664376633268,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.009779451825441427,
+      "neighbour_correlation": 0.017089408103468227
+    },
+    "library_lpa": {
+      "rms": 0.07598862196569789,
+      "orbit_rms": 0.07598862169324279,
+      "within_orbit_rms": 6.4653440583691735e-06,
+      "radial_bin_mean_min": 0.9833778177956991,
+      "radial_bin_mean_max": 1.019467617502312,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.008792330876501317,
+      "neighbour_correlation": 0.0128768766732017
+    }
+  },
+  "feedback": []
+}

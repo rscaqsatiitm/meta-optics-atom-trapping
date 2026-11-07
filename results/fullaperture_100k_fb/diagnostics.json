@@ -1,0 +1,44 @@
+{
+  "final": {
+    "ideal": {
+      "rms": 0.047801690619173026,
+      "orbit_rms": 0.04780169061884577,
+      "within_orbit_rms": 1.7690416852985726e-07,
+      "radial_bin_mean_min": 0.9953910254202396,
+      "radial_bin_mean_max": 1.005023326517524,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 1.3254895161679827e-05,
+      "neighbour_correlation": 0.013865446444799631
+    },
+    "library_lpa": {
+      "rms": 0.05484272117325952,
+      "orbit_rms": 0.05484271572684798,
+      "within_orbit_rms": 2.387238578609904e-05,
+      "radial_bin_mean_min": 0.9963034913871918,
+      "radial_bin_mean_max": 1.0035568526813263,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 0.00010822857595096741,
+      "neighbour_correlation": 0.0036941216088728674
+    }
+  },
+  "feedback": [
+    {
+      "from_round": 2,
+      "to_round": 3,
+      "slope": -0.10744300830311293,
+      "correlation": -0.12858408734167698
+    },
+    {
+      "from_round": 3,
+      "to_round": 4,
+      "slope": -0.04287268826150422,
+      "correlation": -0.04679842187200043
+    },
+    {
+      "from_round": 4,
+      "to_round": 5,
+      "slope": -0.007245815788976812,
+      "correlation": -0.007812175806096738
+    }
+  ]
+}

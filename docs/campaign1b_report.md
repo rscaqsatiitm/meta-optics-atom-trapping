@@ -27,12 +27,12 @@ should be along the tweezer polarisation (Section 3).
 the lens focus, 2.0 to 2.1 % rms (weakest site 0.94 of the mean) after two feedback rounds,
 with ideal phase, library pillars or 5 nm rms width noise (8.0 % with the array in the lens
 focus). Pillar errors cost efficiency, not uniformity: 0.88 (ideal), 0.85 (library), 0.82
-(5 nm noise), 0.75 (10 nm noise, in-focus run). 2,304 sites at 50 W reach 3.1 to 3.4 mK
+(5 nm noise), 0.75 (10 nm noise, in-focus run). 2,304 sites at 50 W reach 3.2 to 3.5 mK
 (Section 4).
 
 (v) v2, 20,164 sites at 4.0 um pitch from the same 18.4 mm metasurface: 5.3 to 5.7 % rms
 (weakest site 0.81 to 0.84 of the mean) after two feedback rounds, with library pillars and
-5 nm noise, inside the 10 % target; 0.34 to 0.37 mK at 50 W and 0.68 to 0.74 mK at 100 W. The exact-kernel design is mandatory (the standard design keeps a Strehl
+5 nm noise, inside the 10 % target; 0.36 to 0.39 mK at 50 W and 0.71 to 0.77 mK at 100 W. The exact-kernel design is mandatory (the standard design keeps a Strehl
 ratio of 0.02 at the corners). Designing the array 50 um beyond the lens focus removes the
 undiffracted light from the array plane and raises the weakest site from 0.78 to 0.84 of the
 mean (Section 5).
@@ -58,7 +58,8 @@ cover the NA. Rerun results (configs unchanged except pupil_guard 2.0):
 In-cell pupil model (18.4 mm, NA 0.55, top hat; results/hologram_b1_cell20mm): mode
 efficiency 0.933 (exact) and 0.911 (Debye), non-uniformity 0.05 % and 5.0 %. The ideal spot
 of the unclipped pupil has the peak intensity per watt of a uniformly filled NA 0.574
-(previously 0.538 from the clipped pupil). The "edge-generated zero order" and the need for
+(previously 0.538 for the top hat and 0.531 for the soft edge, both from the clipped pupil;
+campaign1 quoted the soft-edge value). The "edge-generated zero order" and the need for
 a soft illumination edge are withdrawn: a hard-edged top hat performs as well as a soft
 edge (4.7 % against 4.0 % rms after feedback, efficiency 0.879 against 0.889).
 
@@ -119,7 +120,7 @@ aplanatic lens; projection of x onto the plane transverse to each ray), which ag
 
 | Quantity | Value |
 |---|---|
-| Peak intensity, vector / scalar | 0.923 |
+| Peak intensity, vector / scalar | 0.923 (this soft-edged pupil; 0.917 for the hard top hat, results/vector_offaxis) |
 | 1/e^2 waist along / across the polarisation (scalar 0.886 um) | 0.944 / 0.880 um |
 | Peak \|E_z\|^2 relative to the central intensity | 0.04 |
 | Circularity Im(E* x E)/\|E\|^2 within the half-maximum core | up to 0.48, along y |
@@ -132,9 +133,10 @@ budget), the spots are 7 % elliptical, and the longitudinal field in quadrature 
 local circular polarisation off-centre. For Cs F = 4 this acts as a fictitious magnetic
 field along y with a 1 G/um-per-mK gradient. With the bias field along the polarisation axis
 x, the fictitious field is perpendicular to it and shifts the levels only in second order,
-by ~B_fict^2 / (2 B_0): for an atom at 10 % of the depth in a 1 mK trap (position spread
-~0.07 um) and B_0 = 3 G, about 0.07^2 / 6 G ~ 1 mG (DERIVED). A bias along y would instead
-give first-order shifts of ~0.07 G. The bias direction for the static array should therefore
+by ~B_fict^2 / (2 B_0): for an atom with kT = 0.1 U0 in a 1 mK trap the rms position spread
+is w sqrt(kT / 4 U0) = 0.14 um, so B_fict ~ 1.07 G/um x 0.14 um = 0.15 G and, with B_0 = 3 G,
+the shift is about 0.15^2 / 6 G ~ 4 mG (DERIVED; an earlier version used a 0.07 um spread and
+quoted 1 mG). A bias along y would instead give first-order shifts of ~0.15 G. The bias direction for the static array should therefore
 be along the tweezer polarisation.
 
 ## 4. v1 at full aperture: 48 x 48 sites, 18.4 mm, with pillar errors
@@ -166,16 +168,21 @@ pillar errors cost efficiency, not uniformity: 10 nm rms random width noise remo
 the light (into a diffuse background), and a uniform 10 nm bias only 0.5 %. Third, the
 on-axis zero order is 3.9 to 5 % of a site peak, i.e. ~2e-5 of the power, harmless.
 
-Power budget. Utilisation = core efficiency / 0.82 (core fraction of the ideal spot) x
-supercell edge factor 0.879 x AR-coated substrate 0.995 `[VALUE?]` x AR-coated cell 0.99
-`[CONFIRM?]` x top-hat shaper 0.95 `[VALUE?]` x vector peak factor 0.923, with NA_eff = 0.574:
+Power budget. Utilisation = core efficiency / 0.783 (core fraction of the ideal spot of the
+hard top-hat pupil at NA 0.55 in the cell; results/ideal_core_fraction.json) x supercell edge
+factor 0.879 x AR-coated substrate 0.995 `[VALUE?]` x AR-coated cell 0.99 `[CONFIRM?]` x top-hat
+shaper 0.95 `[VALUE?]` x vector peak factor 0.917 (top hat, results/vector_offaxis), with
+NA_eff = 0.574 (top hat). (An earlier version used 0.82, the soft-edge bench core fraction, and
+0.923, the soft-edge vector factor, for these top-hat runs; together they understated the depths
+by 4.0 %. The edge factor 0.879 is for the n = 2.30, h = 1.5 um family, applied here to the
+n = 2.277, h = 1.6 um estimate family; the difference is expected below 1 % but was not computed.)
 
 | Case | Utilisation | Mean depth, 2,304 sites, 50 W | 100 W |
 |---|---|---|---|
-| Ideal phase | 0.673 | 3.31 mK | 6.62 mK |
-| Library pillars | 0.648 | 3.19 mK | 6.37 mK |
-| + 5 nm noise | 0.623 | 3.06 mK | 6.13 mK |
-| + 10 nm noise | 0.581 | 2.86 mK | 5.71 mK |
+| Ideal phase | 0.700 | 3.44 mK | 6.89 mK |
+| Library pillars | 0.674 | 3.32 mK | 6.63 mK |
+| + 5 nm noise | 0.648 | 3.19 mK | 6.38 mK |
+| + 10 nm noise | 0.604 | 2.97 mK | 5.95 mK |
 
 v1 with the array 50 um beyond the lens focus (results/fullaperture_v1_dz50;
 configs/fullaperture_v1_dz50.yaml; see Section 5 for the method):
@@ -184,9 +191,9 @@ configs/fullaperture_v1_dz50.yaml; see Section 5 for the method):
 |---|---|---|---|---|---|
 | Ideal phase, no feedback | 4.7 % | 0.87 | 0.876 | 0.013 | - |
 | Ideal phase, 1 round | 3.4 % | 0.91 | 0.881 | 0.008 | - |
-| Ideal phase, 2 rounds | 2.0 % | 0.94 | 0.882 | 0.007 | 3.37 mK |
-| Library pillars (LPA) | 2.1 % | 0.94 | 0.849 | 0.008 | 3.24 mK |
-| + 5 nm rms width noise | 2.1 % | 0.94 | 0.817 | 0.008 | 3.12 mK |
+| Ideal phase, 2 rounds | 2.0 % | 0.94 | 0.882 | 0.007 | 3.50 mK |
+| Library pillars (LPA) | 2.1 % | 0.94 | 0.849 | 0.008 | 3.37 mK |
+| + 5 nm rms width noise | 2.1 % | 0.94 | 0.817 | 0.008 | 3.24 mK |
 
 The array defocus reduces the non-uniformity of v1 from 12.9 % to 4.7 % before feedback and
 from 8.0 % to 2.0 % after two rounds, and raises the efficiency by ~1.5 %. Most of the
@@ -207,8 +214,8 @@ beams; ref. 4 used 4.30 um.
 Field of view. The Debye design is unusable at this size: its Strehl ratio is 0.82 at
 200 um, 0.44 at 282 um (the array edge) and 0.02 at the corners (399 um), with up to 9 um of
 field curvature (hologram/field_model.py). The exact-kernel design is therefore required,
-not merely preferable. Without symmetry the exact problem needs a ~1.7 x 10^6 x 20,164
-kernel (~270 GB); the D4 reduction (hologram/symmetric.py) needs 103,459 x 2,556 complex64
+not merely preferable. Without symmetry the exact problem needs a 8 x 103,459 = 8.3 x 10^5 x
+20,164 kernel (complex64, ~133 GB); the D4 reduction (hologram/symmetric.py) needs 103,459 x 2,556 complex64
 entries (2.1 GB, built in 7 min on 4 cores). The reduction is exact (tests/test_hologram.py).
 
 Full-aperture results (1.36 x 10^9 pixels, folded into a 2.048 mm window):
@@ -225,11 +232,11 @@ Power budget (same factors as Section 4, NA_eff = 0.574):
 
 | Case | Utilisation | Mean depth, 20,164 sites, 50 W | 100 W |
 |---|---|---|---|
-| Ideal phase | 0.655 | 0.37 mK | 0.74 mK |
-| Library pillars | 0.631 | 0.35 mK | 0.71 mK |
-| + 5 nm noise | 0.607 | 0.34 mK | 0.68 mK |
+| Ideal phase | 0.682 | 0.38 mK | 0.77 mK |
+| Library pillars | 0.656 | 0.37 mK | 0.74 mK |
+| + 5 nm noise | 0.631 | 0.36 mK | 0.71 mK |
 
-Hence 20,000 Cs traps at 0.34 to 0.37 mK need 50 W at 1075 nm, and 100 W gives 0.7 mK, inside
+Hence 20,000 Cs traps at 0.36 to 0.38 mK need 50 W at 1075 nm, and 100 W gives 0.7 mK, inside
 the 0.3 to 1 mK range the proposal considers for loading and imaging. The array is uniform
 to 5 to 6 % rms after two feedback rounds, better than v1 at the same stage (8.0 %); we have
 not established why.
@@ -239,15 +246,16 @@ site peak in v2 (0.05 in v1), since its power is fixed while each site's power s
 1/N. It is a weak extra trap at ~40 % of the site depth, 2.8 um from four sites, and must be
 removed. We attribute it to the residual difference between the sampled pupil model and
 the continuous metasurface (Provisional): a 24 x 24 array on the 5 mm bench designed with
-coarse pupil sampling (guard 1.25) shows 0.14 of a site peak on the axis, whereas a 24 x 24
-array on a 2 mm aperture designed with fine sampling (guard 3, array off axis) shows 4e-4.
+coarse pupil sampling (guard 1.25) showed 0.14 of a site peak on the axis (exploratory run,
+not stored), whereas a 24 x 24 array on a 2 mm aperture designed with fine sampling (guard 3,
+array off axis) shows 4e-4 (results/fullpixel_zeroorder_2mm_edge0).
 The remedy we adopt
 is to design the array in a plane displaced from the lens focus: the exact kernels focus
 the sites at the shifted plane, while undiffracted light still focuses at the original
 plane, ~45 Rayleigh ranges away for a 50 um shift. On the 5 mm bench (24 x 24 sites) this
-reduces the on-axis intensity from 0.10 to 0.010 of a site peak and, because the central
+reduced the on-axis intensity from 0.10 to 0.010 of a site peak and, because the central
 sites no longer interfere with it, the non-uniformity after one feedback round from 9.8 % to
-4.4 %.
+4.4 % (exploratory bench runs, not stored; the full-aperture dz50 results below are stored).
 
 v2 with the array 50 um beyond the lens focus (results/fullaperture_v2_dz50;
 configs/fullaperture_v2_dz50.yaml):
@@ -262,9 +270,9 @@ configs/fullaperture_v2_dz50.yaml):
 
 | Case | Utilisation | Mean depth, 20,164 sites, 50 W | 100 W |
 |---|---|---|---|
-| Ideal phase | 0.658 | 0.37 mK | 0.74 mK |
-| Library pillars | 0.633 | 0.36 mK | 0.71 mK |
-| + 5 nm noise | 0.609 | 0.34 mK | 0.68 mK |
+| Ideal phase | 0.685 | 0.39 mK | 0.77 mK |
+| Library pillars | 0.659 | 0.37 mK | 0.74 mK |
+| + 5 nm noise | 0.634 | 0.36 mK | 0.71 mK |
 
 The array defocus raises the weakest site from 0.78 to 0.84 of the mean at equal rms
 non-uniformity and costs no efficiency. The on-axis intensity drops from 0.21 to 0.026 before
@@ -312,7 +320,9 @@ All values below are SIM (review before submission) unless marked.
 | k = 1.8e-7 (LPCVD), 6.7e-5 (Si-rich), band 3e-5 to 3e-4 | 2 | SOURCE: Kumar et al. 2025 (DOI 10.1021/acsphotonics.5c01886); Steinlechner et al. 2017; band is an assumption |
 | Selected families, absorption 5.9e-4 / <1e-5 | 2 | results/library_analysis_est_1075 |
 | Thermal focal shifts with estimated absorption | 2 | results/thermal_film_estimates |
-| Vector factors (0.923, waists, circularity, fictitious field) | 3 | results/vector_check |
+| Vector factors (0.923 soft edge, waists, circularity, fictitious field) | 3 | results/vector_check |
+| Vector peak factor 0.917 (hard top hat), used in the power budgets | 4, 5 | results/vector_offaxis |
+| Core fraction of the ideal spot 0.783 (hard top hat, NA 0.55, cell) | 4, 5 | results/ideal_core_fraction.json |
 | v1 full-aperture metrics and power budget | 4 | results/fullaperture_v1, fullaperture_v1_dz50 |
 | v2 full-aperture metrics and power budget | 5 | results/fullaperture_v2, fullaperture_v2_dz50 |
 | Debye-design aberration at v2 radii | 5 | hologram/field_model.py (command in session log; reproduce with spot_aberrations) |

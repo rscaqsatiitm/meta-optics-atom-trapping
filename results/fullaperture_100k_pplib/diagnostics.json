@@ -1,0 +1,50 @@
+{
+  "final": {
+    "library_lpa": {
+      "rms": 0.008083476677279747,
+      "orbit_rms": 0.008083435808612588,
+      "within_orbit_rms": 2.5663369541015957e-05,
+      "radial_bin_mean_min": 0.9993181263340818,
+      "radial_bin_mean_max": 1.000378684499178,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 2.0964797502688357e-05,
+      "neighbour_correlation": 0.0020364306737558745
+    },
+    "library_sigma5nm": {
+      "rms": 0.035289348400880056,
+      "orbit_rms": 0.017553303584641997,
+      "within_orbit_rms": 0.030613942443004066,
+      "radial_bin_mean_min": 0.9986247490853981,
+      "radial_bin_mean_max": 1.0006295245112056,
+      "radial_bin_um": 100,
+      "radial_fit_variance_fraction": 3.0301059293754738e-05,
+      "neighbour_correlation": -0.001277283919629427
+    }
+  },
+  "feedback": [
+    {
+      "from_round": 8,
+      "to_round": 9,
+      "slope": -0.10012267748202673,
+      "correlation": -0.18267377936753235
+    },
+    {
+      "from_round": 9,
+      "to_round": 10,
+      "slope": -0.25971007950826824,
+      "correlation": -0.3570661566772473
+    },
+    {
+      "from_round": 10,
+      "to_round": 11,
+      "slope": -0.37431465572678235,
+      "correlation": -0.4405350900343587
+    },
+    {
+      "from_round": 11,
+      "to_round": 12,
+      "slope": -0.44911773043000813,
+      "correlation": -0.4851689255433091
+    }
+  ]
+}

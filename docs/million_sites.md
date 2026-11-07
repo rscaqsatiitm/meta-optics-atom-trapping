@@ -16,7 +16,7 @@ trap-generating metasurface but a single objective that sees the whole array. Th
 3 um pitch (corner 2.12 mm).
 
 (i) Trap generation, two routes. A direct hologram on the present 18.4 mm chip already covers
-this field: an exact-kernel site at 2.83 mm keeps ~0.95 of the axial depth, and spots stay
+this field: an exact-kernel site at 2.83 mm keeps ~0.96 of the axial depth, and spots stay
 <= 0.82 um (SIM, single-site kernels). Its design, however, needs ~3 weeks on the present
 4-core machine, or ~1 GPU-day (DERIVED). A metasurface lenslet array relayed by the
 meta-objective scales by construction. With per-lenslet aberration pre-compensation it
@@ -37,7 +37,7 @@ site box) and fails at 2.83 mm (37 %).
 Shrinking the beam on it reduces the NA, not the number of sites. The lenslet-array
 architecture does it naturally: each illuminated lenslet makes one trap, so a flat-top beam of
 side sqrt(N) p sets N at constant depth per trap. For 10x demagnification and 4 um pitch the
-beam side runs from 0.13 mm (N = 10) to 40 mm (N = 10^6), at a constant 0.16 kW/cm^2 on the
+beam side runs from 0.13 mm (N = 10) to 40 mm (N = 10^6), at a constant 0.14 kW/cm^2 on the
 lenslet array for 0.2 mK.
 
 What must improve: wafer-scale (40 to 50 mm) metasurface fabrication, which needs DUV
@@ -172,19 +172,19 @@ recomputed per case).
 ## 3. Trap generation route A: one direct hologram
 
 Field. Exact per-site kernels have no field aberration. At the present cell geometry (15.5 mm
-vacuum model) a single site keeps a relative depth of 0.983 at 1.6 mm, 0.968 at 2.3 mm, 0.940 at
-3.2 mm and 0.887 at 4.5 mm, with spot half-widths <= 0.84 um. The largest meta-atom deflection
-is 0.61 to 0.69, where the Si-rich supercells give eta ~ 0.66 to 0.70
+vacuum model) a single site keeps a relative depth of 0.986 at 1.6 mm, 0.971 at 2.3 mm, 0.945 at
+3.2 mm and 0.893 at 4.5 mm, with spot half-widths <= 0.84 um. The largest meta-atom deflection
+is 0.61 to 0.69, where the Si-rich supercells (p 0.50, h 1.5 um) give eta ~ 0.71 to 0.75
 (results/scaling_100k/hologram_large_field.json). Hence the 18.4 mm chip covers the
-10^6-site field at 4 um pitch with ~5 % depth roll-off at the corners, which the design weights
+10^6-site field at 4 um pitch with ~4 % depth roll-off at the corners, which the design weights
 remove.
 
-Demonstrated so far. 99,856 sites (docs/scaling_100k.md): efficiency 0.83 and 7.5 % rms with
-library pillars after two feedback rounds; the residual non-uniformity is uncorrelated
-site-to-site scatter, with no field dependence. Re-rendering the design with an exact-accurate
-render (below) gives 7.14 % against 7.05 % (ideal pillars). Hence the render grid is not the
-cause, and the source of the residual, given 0.24 % in the pupil model, is unresolved
-(docs/scaling_100k.md).
+Demonstrated so far. 99,856 sites (docs/scaling_100k.md): efficiency 0.83. After the original
+two WGS-target feedback rounds the depth non-uniformity was 7.5 % rms with library pillars,
+uncorrelated site-to-site scatter with no field dependence; re-rendering with an exact-accurate
+render (below) showed that the render grid was not its cause. Pupil-phase feedback, which keeps
+the design and corrects it by small steps, then removed it: 0.015 % with ideal pillars, and
+0.45 % with the library pillars in the feedback loop (3.5 % with random 5 nm width errors).
 
 Computation at 10^6 (DERIVED from the 10^5 run). The wedge pupil grows with the field as
 (r_max)^2: ~5.2 x 10^6 samples at 4 um pitch (2.9 x 10^6 at 3 um) against 0.52 x 10^6 for
@@ -280,17 +280,19 @@ under-filled (0.831). Light outside the stop is lost there, not scattered toward
 
 Power scaling at constant depth. Efficiency chain (Provisional): lenslet ~0.95 (eta at
 s <= 0.1 from the supercell curve); pupil fill 0.785 (square) or 0.929 (hexagon, optimum);
-tube lens ~0.98 `[VALUE?]`; meta-objective ~0.80; total ~0.57 (square) or ~0.67 (hexagon).
+tube lens ~0.98 `[VALUE?]`; meta-objective ~0.80; total 0.585 (square) or 0.692 (hexagon).
 Relative to the direct hologram (0.83), and with NA 0.5 instead of 0.55, the depth per watt per
-site is ~80 mK x site/W (square) or ~95 mK x site/W (hexagon), against the hologram's
-140.6 mK x site/W. For 0.2 mK traps (square lenslets):
+site is ~87 mK x site/W (square) or ~102 mK x site/W (hexagon), against the hologram's
+148.7 mK x site/W (the v2 library-pillar design, with the corrected power budget; DERIVED:
+148.7 x (eta / 0.83) x (0.5 / 0.55)^2). These treat the traps as independent; the bulk
+interference factors below multiply them. For 0.2 mK traps (square lenslets):
 
 | N | Flat-top side on the MLA (M = 10, a = 4 um) | Power (pi/4 fill) | Intensity on the MLA |
 |---|---|---|---|
-| 10 | 0.13 mm | 25 mW | 0.16 kW/cm^2 |
-| 10^3 | 1.3 mm | 2.5 W | 0.16 kW/cm^2 |
-| 10^5 | 12.6 mm | 250 W | 0.16 kW/cm^2 |
-| 10^6 | 40 mm | 2.5 kW | 0.16 kW/cm^2 |
+| 10 | 0.13 mm | 23 mW | 0.14 kW/cm^2 |
+| 10^3 | 1.3 mm | 2.3 W | 0.14 kW/cm^2 |
+| 10^5 | 12.6 mm | 231 W | 0.14 kW/cm^2 |
+| 10^6 | 40 mm | 2.3 kW | 0.14 kW/cm^2 |
 
 The depth per trap stays fixed because the intensity on the MLA stays fixed; only the beam
 size changes. A zoom range of 300 is impractical in one telescope. Two to three exchangeable
@@ -451,9 +453,13 @@ size at constant depth.
 at 3 um pitch, with a >= 16 Mpx camera.
 (iii) Keep the direct hologram as the high-efficiency option for a fixed N (0.83 against ~0.6),
 once GPU design is available.
-Next logical steps: a wave-optics simulation of a lenslet patch through the relay with the
-correction; the square-to-circle lenslet design; a GPU port of the lazy kernels; and the imaging
-corrector-array concept.
+Done since the first version: the lenslet-patch wave simulation with and without correction
+and the bulk interference values (Section 4); the GPU and tiled versions of the design code
+(docs/gpu_run.md; not yet run on a GPU). Withdrawn: the square-to-circle lenslet (a phase cannot
+reshape the imaged aperture). Next logical steps: run the 10^6-site hologram design on a GPU;
+choose the lenslet piston pattern and pitch together (bulk depth factors 0.69 / 1.22) and design
+the edge-row correction; simulate the imaging corrector array itself (fill factor, overlap of
+neighbouring beams); and a full-wave check of a metasurface section.
 
 ## Verification notes
 

@@ -51,7 +51,7 @@ component, whereas the undiffracted lens light, which the defocus removes, focus
 away (Provisional).
 
 Consequence. The spurious-trap level of the array is set by the interstitial maxima, about
-0.1 of the site depth everywhere, not by the axis alone. At 50 W (site depth 0.36 mK) this is
+0.1 of the site depth everywhere, not by the axis alone. At 50 W (site depth 0.37 mK) this is
 ~40 uK, comparable to the temperature of laser-cooled Cs, so loading into interstitial
 maxima is possible in principle. Two remedies are available: feedback that includes the
 interstitial points as dark targets (camera-based weighted GS with noise suppression), and a
@@ -82,9 +82,12 @@ fit to the found peaks, and without repeating the feedback (results/checks_v2, c
 
 The array follows the focus: a wall thicker by dt moves it by -dt cos(t)/sqrt(n^2 - sin^2 t)
 ~ -0.66 dt (rms ray), which the atoms follow, and a tilted wall shifts it laterally by
-d sin(b)[1 - cos(b)/sqrt(n^2 - sin^2 b)]. The cost in uniformity comes from the
+roughly d sin(b)[1 - cos(b)/sqrt(n^2 - sin^2 b)] (the collimated-plate formula; it reproduces
+the fitted array shift at 1 deg, 21.7 against 22.2 um, but is 12 to 14 % below it at 0.1 to
+0.5 deg, so it is only an approximation for the converging beam). The cost in uniformity comes from the
 field-dependent part of the path through the wall, which the exact design pre-compensates
-for the nominal wall only. Thickness errors of +/-50 um add < 1 % rms and +/-100 um ~2.3 %, so a
+for the nominal wall only. Thickness errors of +/-50 um add < 1 % rms and +100 um ~2.3 % (only
+the positive 100 um and 200 um cases were run), so a
 standard cell-wall tolerance is acceptable (`[VALUE?: thickness tolerance of the purchased
 cell]`). Tilt is the critical tolerance: the relative tilt between the metasurface and the wall
 must be kept to <= 0.1 deg (1.7 mrad) to stay within ~2 % of the nominal non-uniformity. This is
@@ -220,8 +223,10 @@ dT = I a / kappa. For dT <= 50 K:
 | 200 W | 75 W/cm^2 | 92 um | 2.2 mm |
 
 Nonlinear absorption. With the bulk-silicon two-photon coefficient (1.5 cm/GW at 1.06 um, an
-upper bound for the wider-gap nitrides) and a local field enhancement of 20 inside the pillars,
-two-photon absorption is 10^-7 of the linear absorption of Si-rich SiN at 300 W. Field
+upper bound for the wider-gap nitrides) and a local intensity enhancement of 20 inside the
+pillars, two-photon absorption is 4e-7 of the linear absorption of Si-rich SiN at 300 W
+(results/damage_v2/damage.json; an earlier version said 1e-7 and called the factor a field
+enhancement; a field enhancement of 20, i.e. 400 in intensity, would give 8e-6). Field
 enhancement inside the pillars therefore matters only through linear absorption, which the
 RCWA absorption values already include.
 

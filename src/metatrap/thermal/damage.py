@@ -18,8 +18,9 @@ temperature field of axisym_fd.solve:
 3. Local hot spots from fully absorbing defects or contamination of radius a: the centre
    temperature rise of a uniform disc source q = I on a half-space, dT = I a / kappa.
 4. Two-photon absorption bound: alpha_2 = beta I_local; with the bulk-silicon value
-   beta = 1.5 cm/GW at 1.06 um (an upper bound for the wider-gap nitrides) and a local field
-   enhancement factor, compared with the linear absorption coefficient.
+   beta = 1.5 cm/GW at 1.06 um (an upper bound for the wider-gap nitrides) and a local
+   INTENSITY enhancement factor (the square of a field enhancement), compared with the linear
+   absorption coefficient.
 """
 
 from __future__ import annotations
