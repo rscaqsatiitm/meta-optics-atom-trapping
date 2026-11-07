@@ -1,0 +1,61 @@
+{
+  "config": {
+    "run_id": "cavity_noise",
+    "wavelength_nm": 1075.0,
+    "array_side_um": 3996.0,
+    "atom_temperature_K": 1e-05,
+    "depths_mK": [
+      0.2,
+      0.86
+    ],
+    "heating_times_s": [
+      10.0,
+      100.0
+    ],
+    "enhancements": [
+      300.0,
+      1500.0
+    ],
+    "lock_noise_bandwidth_Hz": 100000.0,
+    "lock_offset_fraction": 0.01,
+    "axes": [
+      {
+        "name": "in-plane",
+        "period_um": 4.0,
+        "L1_m": 0.58,
+        "Lrt_m": 1.16,
+        "fsr_Hz": 258400000.0,
+        "typical_aoi_deg": 30.0
+      },
+      {
+        "name": "vertical",
+        "period_um": 8.0,
+        "L1_m": 0.828,
+        "Lrt_m": 1.656,
+        "fsr_Hz": 181000000.0,
+        "typical_aoi_deg": 30.0
+      }
+    ],
+    "_config_path": "configs/cavity_noise.yaml"
+  },
+  "git": {
+    "commit": "1dc3d7acf28fb60e3905ffd10b347b50203c1e4a",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T18:23:24+00:00"
+}

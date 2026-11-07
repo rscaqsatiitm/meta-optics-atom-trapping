@@ -1,0 +1,73 @@
+{
+  "config": {
+    "run_id": "cavity_vertical_layout",
+    "wavelength_nm": 1075.0,
+    "vertical_period_um": 8.0,
+    "inplane_layout_json": "results/cavity_layout/layout.json",
+    "f1_mm": 100.0,
+    "mag": 0.15,
+    "equal_L": true,
+    "mirror_half_height_mm": {
+      "primary": 2.0,
+      "small": 2.0
+    },
+    "mirror_half_width_u_mm": {
+      "primary": 6.0,
+      "small": 2.5
+    },
+    "beam_half_in_plane_mm": 1.0,
+    "limits": {
+      "max_aoi_deg": 45.0,
+      "cell_keepout_mm": 30.0,
+      "z_top_max_mm": 10.0,
+      "max_depth_mm": 300.0
+    },
+    "min_clearance_mm": 5.0,
+    "search": {
+      "f1_mm": [
+        80.0,
+        100.0,
+        130.0,
+        160.0
+      ],
+      "d0_mm": [
+        90.0,
+        110.0,
+        130.0,
+        150.0
+      ],
+      "L_mm": [
+        60.0,
+        80.0,
+        100.0,
+        120.0
+      ],
+      "alpha_deg": [
+        -180.0,
+        180.0,
+        2.0
+      ]
+    },
+    "_config_path": "configs/cavity_vertical_layout.yaml"
+  },
+  "git": {
+    "commit": "353927578b5edf731d38f285b1325f2c6953cbcf",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T17:36:10+00:00"
+}

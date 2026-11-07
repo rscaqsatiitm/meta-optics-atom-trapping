@@ -1,0 +1,2163 @@
+{
+  "constants": {
+    "depth_per_intensity_K_per_W_m2": 2.5302475209534066e-13,
+    "theta_deg": 7.722480730291284,
+    "equal_omega_factor_inplane": 4.323290801800118,
+    "equal_omega_factor_vertical": 1.349975365896979
+  },
+  "losses": {
+    "vacuum_m2e-05_g0": {
+      "placement": "in_vacuum",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.0,
+      "L": 0.00019998200096016383,
+      "G_max": 5000.450016495229,
+      "G_design_T3L": 3749.9623904645355,
+      "finesse_T3L": 7852.724728234857
+    },
+    "cell_m2e-05_g0_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.0,
+      "ar_loss": 0.00025,
+      "L": 0.002213798000357259,
+      "G_max": 451.7123964510862,
+      "G_design_T3L": 338.4079429987966,
+      "finesse_T3L": 707.5814063832214
+    },
+    "cell_m2e-05_g0_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.0,
+      "ar_loss": 0.001,
+      "L": 0.008186312841005572,
+      "G_max": 122.15511664677162,
+      "G_design_T3L": 91.2362755434543,
+      "finesse_T3L": 189.90510234729325
+    },
+    "brewster_m2e-05_g0": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.0,
+      "L": 0.0010155260387583187,
+      "G_max": 984.7113336677193,
+      "G_design_T3L": 738.1578803005463,
+      "finesse_T3L": 1544.8159526258776
+    },
+    "vacuum_m2e-05_g0.001": {
+      "placement": "in_vacuum",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.001,
+      "L": 0.0021985822369402497,
+      "G_max": 454.83856969193585,
+      "G_design_T3L": 340.75258227439394,
+      "finesse_T3L": 712.492010388175
+    },
+    "cell_m2e-05_g0.001_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.001,
+      "ar_loss": 0.00025,
+      "L": 0.004208372618154543,
+      "G_max": 237.62154417745458,
+      "G_design_T3L": 177.8385744062697,
+      "finesse_T3L": 371.28531525561647
+    },
+    "cell_m2e-05_g0.001_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.001,
+      "ar_loss": 0.001,
+      "L": 0.010168948401636402,
+      "G_max": 98.33858531911505,
+      "G_design_T3L": 73.37262857529286,
+      "finesse_T3L": 152.49117740307213
+    },
+    "brewster_m2e-05_g0.001": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.001,
+      "L": 0.003012496002206766,
+      "G_max": 331.9506479900596,
+      "G_design_T3L": 248.58614041168798,
+      "finesse_T3L": 519.4589060289662
+    },
+    "vacuum_m2e-05_g0.01": {
+      "placement": "in_vacuum",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.01,
+      "L": 0.020096002359141107,
+      "G_max": 49.76114065517753,
+      "G_design_T3L": 36.93315654917333,
+      "finesse_T3L": 76.17056850388181
+    },
+    "cell_m2e-05_g0.01_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.01,
+      "ar_loss": 0.00025,
+      "L": 0.022069743420150112,
+      "G_max": 45.31090284842099,
+      "G_design_T3L": 33.594179927019425,
+      "finesse_T3L": 69.17704239623404
+    },
+    "cell_m2e-05_g0.01_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.01,
+      "ar_loss": 0.001,
+      "L": 0.027923405215469543,
+      "G_max": 35.812251130675165,
+      "G_design_T3L": 26.4662840204139,
+      "finesse_T3L": 54.24725453871774
+    },
+    "brewster_m2e-05_g0.01": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 2e-05,
+      "graded_extra": 0.01,
+      "L": 0.020895317070587005,
+      "G_max": 47.857613101628196,
+      "G_design_T3L": 35.504986265240724,
+      "finesse_T3L": 73.1792578163031
+    },
+    "vacuum_m5e-05_g0": {
+      "placement": "in_vacuum",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.0,
+      "L": 0.0004998875149986315,
+      "G_max": 2000.4500412512555,
+      "G_design_T3L": 1499.9622260498656,
+      "finesse_T3L": 3140.3353446096617
+    },
+    "cell_m5e-05_g0_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.0,
+      "ar_loss": 0.00025,
+      "L": 0.0025130994390690775,
+      "G_max": 397.91501460460637,
+      "G_design_T3L": 298.05972269136004,
+      "finesse_T3L": 623.0762325782381
+    },
+    "cell_m5e-05_g0_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.0,
+      "ar_loss": 0.001,
+      "L": 0.008483822731306434,
+      "G_max": 117.87139261053476,
+      "G_design_T3L": 88.02329574272503,
+      "finesse_T3L": 183.17579464595758
+    },
+    "brewster_m5e-05_g0": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.0,
+      "L": 0.0013151869177202569,
+      "G_max": 760.3481957784362,
+      "G_design_T3L": 569.8853435222518,
+      "finesse_T3L": 1192.3867168745721
+    },
+    "vacuum_m5e-05_g0.001": {
+      "placement": "in_vacuum",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.001,
+      "L": 0.002497888239856083,
+      "G_max": 400.3381672742954,
+      "G_design_T3L": 299.8770965457198,
+      "finesse_T3L": 626.8825344666384
+    },
+    "cell_m5e-05_g0.001_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.001,
+      "ar_loss": 0.00025,
+      "L": 0.004507075753290346,
+      "G_max": 221.87335086834517,
+      "G_design_T3L": 166.02724455980578,
+      "finesse_T3L": 346.54766515700857
+    },
+    "cell_m5e-05_g0.001_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.001,
+      "ar_loss": 0.001,
+      "L": 0.0104658635696665,
+      "G_max": 95.5487326338103,
+      "G_design_T3L": 71.28005132103011,
+      "finesse_T3L": 148.10843539312827
+    },
+    "brewster_m5e-05_g0.001": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.001,
+      "L": 0.0033115578590716677,
+      "G_max": 301.9726794930079,
+      "G_design_T3L": 226.10247974028266,
+      "finesse_T3L": 472.36917846714556
+    },
+    "vacuum_m5e-05_g0.01": {
+      "placement": "in_vacuum",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.01,
+      "L": 0.02038993975345016,
+      "G_max": 49.04379375769323,
+      "G_design_T3L": 36.394953635225804,
+      "finesse_T3L": 75.04330091796513
+    },
+    "cell_m5e-05_g0.01_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.01,
+      "ar_loss": 0.00025,
+      "L": 0.02236308876023163,
+      "G_max": 44.716542098527285,
+      "G_design_T3L": 33.148215596454044,
+      "finesse_T3L": 68.24295892875291
+    },
+    "cell_m5e-05_g0.01_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.01,
+      "ar_loss": 0.001,
+      "L": 0.028214994658953496,
+      "G_max": 35.442147414430536,
+      "G_design_T3L": 26.18850935044339,
+      "finesse_T3L": 53.66542690869349
+    },
+    "brewster_m5e-05_g0.01": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 5e-05,
+      "graded_extra": 0.01,
+      "L": 0.021189014698057562,
+      "G_max": 47.1942661917013,
+      "G_design_T3L": 35.007282927289346,
+      "finesse_T3L": 72.13681237695393
+    },
+    "vacuum_m0.0001_g0": {
+      "placement": "in_vacuum",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.0,
+      "L": 0.0009995501199788759,
+      "G_max": 1000.4500825042506,
+      "G_design_T3L": 749.9619516980878,
+      "finesse_T3L": 1569.538345086837
+    },
+    "cell_m0.0001_g0_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.0,
+      "ar_loss": 0.00025,
+      "L": 0.00301175561423328,
+      "G_max": 332.0322523096137,
+      "G_design_T3L": 248.6473441073797,
+      "finesse_T3L": 519.5870908949556
+    },
+    "cell_m0.0001_g0_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.0,
+      "ar_loss": 0.001,
+      "L": 0.008979494067232974,
+      "G_max": 111.36484890046255,
+      "G_design_T3L": 83.14307633744426,
+      "finesse_T3L": 172.9545894785656
+    },
+    "brewster_m0.0001_g0": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.0,
+      "L": 0.0018144419443336668,
+      "G_max": 551.1336436654294,
+      "G_design_T3L": 412.9741235116912,
+      "finesse_T3L": 863.7525281068203
+    },
+    "vacuum_m0.0001_g0.001": {
+      "placement": "in_vacuum",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.001,
+      "L": 0.002996552019289056,
+      "G_max": 333.7168831253108,
+      "G_design_T3L": 249.91082658318402,
+      "finesse_T3L": 522.2333253917354
+    },
+    "cell_m0.0001_g0.001_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.001,
+      "ar_loss": 0.00025,
+      "L": 0.005004735114760406,
+      "G_max": 199.81077461037086,
+      "G_design_T3L": 149.48000393075208,
+      "finesse_T3L": 311.8911075914253
+    },
+    "cell_m0.0001_g0.001_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.001,
+      "ar_loss": 0.001,
+      "L": 0.010960544058592592,
+      "G_max": 91.23634690524722,
+      "G_design_T3L": 68.04544878779565,
+      "finesse_T3L": 141.333802285006
+    },
+    "brewster_m0.0001_g0.001": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.001,
+      "L": 0.003809814874886963,
+      "G_max": 262.479945309592,
+      "G_design_T3L": 196.48262161215916,
+      "finesse_T3L": 410.33339474895314
+    },
+    "vacuum_m0.0001_g0.01": {
+      "placement": "in_vacuum",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.01,
+      "L": 0.020879659072591372,
+      "G_max": 47.893502308794645,
+      "G_design_T3L": 35.53191346246504,
+      "finesse_T3L": 73.23565709862932
+    },
+    "cell_m0.0001_g0.01_ar0.00025": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.01,
+      "ar_loss": 0.00025,
+      "L": 0.022851821677510098,
+      "G_max": 43.76018744204373,
+      "G_design_T3L": 32.43062630268973,
+      "finesse_T3L": 66.7399468529781
+    },
+    "cell_m0.0001_g0.01_ar0.001": {
+      "placement": "through_cell_AR",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.01,
+      "ar_loss": 0.001,
+      "L": 0.028700802135295134,
+      "G_max": 34.84223177059706,
+      "G_design_T3L": 25.73824411551715,
+      "finesse_T3L": 52.72229742494289
+    },
+    "brewster_m0.0001_g0.01": {
+      "placement": "through_cell_brewster",
+      "mirror_loss": 0.0001,
+      "graded_extra": 0.01,
+      "L": 0.02167833454964152,
+      "G_max": 46.129004869358674,
+      "G_design_T3L": 34.20801465706368,
+      "finesse_T3L": 70.46273217276043
+    }
+  },
+  "cases": [
+    {
+      "n_sites": 100000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 1260.9110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 709.4551106418406,
+        "w_um": 924.4158698299641,
+        "W_eq_um": 1738.5362368778158,
+        "vertical": {
+          "flat_halfrange_um": 891.5987638751697,
+          "W_eq_um": 2184.883492276351,
+          "vertical_flat_half_um": 60.039960226243785,
+          "H_eq_um": 180.96434199197927
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 32.29326418468181,
+        "vertical_W": 78.13188240175504,
+        "total_circulating_W": 142.71841077111867,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 139.86013986013987,
+      "tweezer_lenslet_W": 250.0,
+      "free_space_lattice_W": 150.22990607486176,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.10015579290319236
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 4.127767480639345
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 1.7067062168855227
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.504026188840095
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.26808389754278156
+        }
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 1260.9110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 709.4551106418406,
+        "w_um": 924.4158698299641,
+        "W_eq_um": 1738.5362368778158,
+        "vertical": {
+          "flat_halfrange_um": 891.5987638751697,
+          "W_eq_um": 2184.883492276351,
+          "vertical_flat_half_um": 60.039960226243785,
+          "H_eq_um": 180.96434199197927
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 139.61317200973605,
+        "vertical_W": 105.476116533529,
+        "total_circulating_W": 384.70246055300106,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 139.86013986013987,
+      "tweezer_lenslet_W": 250.0,
+      "free_space_lattice_W": 404.9499584768432,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.2699734376266758
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 11.126541402841681
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 4.600486212882021
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 1.3586201947056353
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.7299049787633611
+        }
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 1260.9110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 709.4551106418406,
+        "w_um": 924.4158698299641,
+        "W_eq_um": 1738.5362368778158,
+        "vertical": {
+          "flat_halfrange_um": 891.5987638751697,
+          "W_eq_um": 2184.883492276351,
+          "vertical_flat_half_um": 60.039960226243785,
+          "H_eq_um": 180.96434199197927
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 48.43989627702271,
+        "vertical_W": 117.19782360263255,
+        "total_circulating_W": 214.07761615667798,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 209.7902097902098,
+      "tweezer_lenslet_W": 375.0,
+      "free_space_lattice_W": 225.34485911229262,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.15023368935478854
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 6.191651220959016
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 2.5600593253282837
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.7560392832601424
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.4021258463141723
+        }
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 1260.9110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 709.4551106418406,
+        "w_um": 924.4158698299641,
+        "W_eq_um": 1738.5362368778158,
+        "vertical": {
+          "flat_halfrange_um": 891.5987638751697,
+          "W_eq_um": 2184.883492276351,
+          "vertical_flat_half_um": 60.039960226243785,
+          "H_eq_um": 180.96434199197927
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 209.41975801460404,
+        "vertical_W": 158.21417480029348,
+        "total_circulating_W": 577.0536908295015,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 209.7902097902098,
+      "tweezer_lenslet_W": 375.0,
+      "free_space_lattice_W": 607.4249377152648,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.4049601564400137
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 16.68981210426252
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 6.900729319323032
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 2.0379302920584528
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 1.0948574681450416
+        }
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 3996.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 2248.360493387949,
+        "w_um": 2929.6006047601963,
+        "W_eq_um": 5509.6596425714815,
+        "vertical": {
+          "flat_halfrange_um": 2825.5986976214435,
+          "W_eq_um": 6924.195277479096,
+          "vertical_flat_half_um": 190.27486386720673,
+          "H_eq_um": 573.5008052568907
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 102.3417807642424,
+        "vertical_W": 784.7120754996179,
+        "total_circulating_W": 989.3956370281027,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 1398.6013986013986,
+      "tweezer_lenslet_W": 2500.0,
+      "free_space_lattice_W": 1041.4690916085292,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.6943302128022428
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 28.61575541617166
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 11.831743890305367
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 3.4941624524255745
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 1.8416712408452403
+        }
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 3996.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 2248.360493387949,
+        "w_um": 2929.6006047601963,
+        "W_eq_um": 5509.6596425714815,
+        "vertical": {
+          "flat_halfrange_um": 2825.5986976214435,
+          "W_eq_um": 6924.195277479096,
+          "vertical_flat_half_um": 190.27486386720673,
+          "H_eq_um": 573.5008052568907
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 442.4532794178934,
+        "vertical_W": 1059.3419712463744,
+        "total_circulating_W": 1944.2485300821613,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 1398.6013986013986,
+      "tweezer_lenslet_W": 2500.0,
+      "free_space_lattice_W": 2046.5774000864858,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 1.3644192930618828
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 56.23244971263413
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 23.250406415913275
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 6.866333302623752
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 3.65244792970388
+        }
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 3996.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 2248.360493387949,
+        "w_um": 2929.6006047601963,
+        "W_eq_um": 5509.6596425714815,
+        "vertical": {
+          "flat_halfrange_um": 2825.5986976214435,
+          "W_eq_um": 6924.195277479096,
+          "vertical_flat_half_um": 190.27486386720673,
+          "H_eq_um": 573.5008052568907
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 153.51267114636357,
+        "vertical_W": 1177.0681132494267,
+        "total_circulating_W": 1484.0934555421538,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 2097.902097902098,
+      "tweezer_lenslet_W": 3750.0,
+      "free_space_lattice_W": 1562.2036374127936,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 1.0414953192033642
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 42.923633124257485
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 17.747615835458046
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 5.241243678638361
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 2.7625068612678603
+        }
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 3996.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 2248.360493387949,
+        "w_um": 2929.6006047601963,
+        "W_eq_um": 5509.6596425714815,
+        "vertical": {
+          "flat_halfrange_um": 2825.5986976214435,
+          "W_eq_um": 6924.195277479096,
+          "vertical_flat_half_um": 190.27486386720673,
+          "H_eq_um": 573.5008052568907
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 663.67991912684,
+        "vertical_W": 1589.0129568695615,
+        "total_circulating_W": 2916.3727951232413,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 2097.902097902098,
+      "tweezer_lenslet_W": 3750.0,
+      "free_space_lattice_W": 3069.866100129728,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 2.0466289395928237
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 84.34867456895118
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 34.875609623869906
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 10.299499953935626
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 5.478671894555819
+        }
+      }
+    },
+    {
+      "n_sites": 1000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 122.49110640673517,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 68.91996107014086,
+        "w_um": 89.80230715888811,
+        "W_eq_um": 168.8899663521316,
+        "vertical": {
+          "flat_halfrange_um": 86.6142919752454,
+          "W_eq_um": 212.25033546414045,
+          "vertical_flat_half_um": 5.832577226347616,
+          "H_eq_um": 17.579766807074602
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 3.1371266159778726,
+        "vertical_W": 0.7373411832801586,
+        "total_circulating_W": 7.011594415235904,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 1.3986013986013985,
+      "tweezer_lenslet_W": 2.5,
+      "free_space_lattice_W": 7.38062570024832,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.004920541045680276
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 0.20279255674349286
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.08384854984094726
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.024762237693856198
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.013385273355331613
+        }
+      }
+    },
+    {
+      "n_sites": 1000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 122.49110640673517,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 68.91996107014086,
+        "w_um": 89.80230715888811,
+        "W_eq_um": 168.8899663521316,
+        "vertical": {
+          "flat_halfrange_um": 86.6142919752454,
+          "W_eq_um": 212.25033546414045,
+          "vertical_flat_half_um": 5.832577226347616,
+          "H_eq_um": 17.579766807074602
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 13.562710642939466,
+        "vertical_W": 0.9953924336895436,
+        "total_circulating_W": 28.120813719568474,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 1.3986013986013985,
+      "tweezer_lenslet_W": 2.5,
+      "free_space_lattice_W": 29.600856546914184,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.019734401328803938
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 0.8133231008780356
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.3362843471963573
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.09931183012461495
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.05381895732988251
+        }
+      }
+    },
+    {
+      "n_sites": 1000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 122.49110640673517,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 68.91996107014086,
+        "w_um": 89.80230715888811,
+        "W_eq_um": 168.8899663521316,
+        "vertical": {
+          "flat_halfrange_um": 86.6142919752454,
+          "W_eq_um": 212.25033546414045,
+          "vertical_flat_half_um": 5.832577226347616,
+          "H_eq_um": 17.579766807074602
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 4.705689923966808,
+        "vertical_W": 1.1060117749202376,
+        "total_circulating_W": 10.517391622853854,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 2.097902097902098,
+      "tweezer_lenslet_W": 3.75,
+      "free_space_lattice_W": 11.070938550372478,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.007380811568520412
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 0.3041888351152392
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.12577282476142088
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.03714335654078429
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.02007791003299741
+        }
+      }
+    },
+    {
+      "n_sites": 1000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 122.49110640673517,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 68.91996107014086,
+        "w_um": 89.80230715888811,
+        "W_eq_um": 168.8899663521316,
+        "vertical": {
+          "flat_halfrange_um": 86.6142919752454,
+          "W_eq_um": 212.25033546414045,
+          "vertical_flat_half_um": 5.832577226347616,
+          "H_eq_um": 17.579766807074602
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 20.344065964409197,
+        "vertical_W": 1.4930886505343153,
+        "total_circulating_W": 42.18122057935271,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 2.097902097902098,
+      "tweezer_lenslet_W": 3.75,
+      "free_space_lattice_W": 44.40128482037128,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.029601601993205908
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 1.2199846513170534
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.504426520794536
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.14896774518692243
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.08072843599482375
+        }
+      }
+    },
+    {
+      "n_sites": 3000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 215.08902300206645,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 121.02043590572023,
+        "w_um": 157.68892188792134,
+        "W_eq_um": 296.56339078944313,
+        "vertical": {
+          "flat_halfrange_um": 152.0909067235505,
+          "W_eq_um": 372.70230162875407,
+          "vertical_flat_half_um": 10.24175039315533,
+          "H_eq_um": 30.869301274675426
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 5.508657066284428,
+        "vertical_W": 2.2735047736372866,
+        "total_circulating_W": 13.290818906206143,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 4.195804195804196,
+      "tweezer_lenslet_W": 7.5,
+      "free_space_lattice_W": 13.99033569074331,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.009327125342073918
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 0.3844031738840408
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.15893901236820693
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.04693802827304601
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.025311826592212414
+        }
+      }
+    },
+    {
+      "n_sites": 3000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 215.08902300206645,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 121.02043590572023,
+        "w_um": 157.68892188792134,
+        "W_eq_um": 296.56339078944313,
+        "vertical": {
+          "flat_halfrange_um": 152.0909067235505,
+          "W_eq_um": 372.70230162875407,
+          "vertical_flat_half_um": 10.24175039315533,
+          "H_eq_um": 30.869301274675426
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 23.815526424938692,
+        "vertical_W": 3.069175438659525,
+        "total_circulating_W": 50.70022828853691,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 4.195804195804196,
+      "tweezer_lenslet_W": 7.5,
+      "free_space_lattice_W": 53.36866135635465,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.03558000356909016
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 1.466375308270771
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.6063015580823157
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.17905358320291315
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.09694431715597587
+        }
+      }
+    },
+    {
+      "n_sites": 3000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 215.08902300206645,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 121.02043590572023,
+        "w_um": 157.68892188792134,
+        "W_eq_um": 296.56339078944313,
+        "vertical": {
+          "flat_halfrange_um": 152.0909067235505,
+          "W_eq_um": 372.70230162875407,
+          "vertical_flat_half_um": 10.24175039315533,
+          "H_eq_um": 30.869301274675426
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 8.262985599426642,
+        "vertical_W": 3.4102571604559304,
+        "total_circulating_W": 19.936228359309215,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 6.293706293706293,
+      "tweezer_lenslet_W": 11.25,
+      "free_space_lattice_W": 20.985503536114965,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.013990688013110876
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 0.5766047608260613
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.2384085185523104
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.07040704240956902
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.03796773988831861
+        }
+      }
+    },
+    {
+      "n_sites": 3000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 215.08902300206645,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 121.02043590572023,
+        "w_um": 157.68892188792134,
+        "W_eq_um": 296.56339078944313,
+        "vertical": {
+          "flat_halfrange_um": 152.0909067235505,
+          "W_eq_um": 372.70230162875407,
+          "vertical_flat_half_um": 10.24175039315533,
+          "H_eq_um": 30.869301274675426
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 35.72328963740803,
+        "vertical_W": 4.603763157989287,
+        "total_circulating_W": 76.05034243280535,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 6.293706293706293,
+      "tweezer_lenslet_W": 11.25,
+      "free_space_lattice_W": 80.05299203453195,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.05337000535363523
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 2.199562962406156
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.9094523371234733
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.26858037480436964
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.14541647573396377
+        }
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 396.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 222.81049934475172,
+        "w_um": 290.3207806519113,
+        "W_eq_um": 546.0023069214982,
+        "vertical": {
+          "flat_halfrange_um": 280.0142853498728,
+          "W_eq_um": 686.181513984415,
+          "vertical_flat_half_um": 18.856067590443914,
+          "H_eq_um": 56.83341313356575
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 10.141978273933931,
+        "vertical_W": 7.706368081767209,
+        "total_circulating_W": 27.990324629635072,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 13.986013986013987,
+      "tweezer_lenslet_W": 25.0,
+      "free_space_lattice_W": 29.463499610142183,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.019642827731558274
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 0.8095490354361976
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.33472388600693004
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.09885099316371421
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.05310447649651965
+        }
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 396.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 222.81049934475172,
+        "w_um": 290.3207806519113,
+        "W_eq_um": 546.0023069214982,
+        "vertical": {
+          "flat_halfrange_um": 280.0142853498728,
+          "W_eq_um": 686.181513984415,
+          "vertical_flat_half_um": 18.856067590443914,
+          "H_eq_um": 56.83341313356575
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 43.8467213837552,
+        "vertical_W": 10.403407070920489,
+        "total_circulating_W": 98.0968498384309,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 13.986013986013987,
+      "tweezer_lenslet_W": 25.0,
+      "free_space_lattice_W": 103.25984193519042,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.06884162823694841
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 2.8372021838557226
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 1.173096747445118
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.34644010603913666
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.18726278326303697
+        }
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 396.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 222.81049934475172,
+        "w_um": 290.3207806519113,
+        "W_eq_um": 546.0023069214982,
+        "vertical": {
+          "flat_halfrange_um": 280.0142853498728,
+          "W_eq_um": 686.181513984415,
+          "vertical_flat_half_um": 18.856067590443914,
+          "H_eq_um": 56.83341313356575
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 15.212967410900896,
+        "vertical_W": 11.55955212265081,
+        "total_circulating_W": 41.9854869444526,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 20.97902097902098,
+      "tweezer_lenslet_W": 37.5,
+      "free_space_lattice_W": 44.19524941521327,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.029464241597337407
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 1.2143235531542962
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.502085829010395
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.1482764897455713
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.07965671474477945
+        }
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 396.0,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 222.81049934475172,
+        "w_um": 290.3207806519113,
+        "W_eq_um": 546.0023069214982,
+        "vertical": {
+          "flat_halfrange_um": 280.0142853498728,
+          "W_eq_um": 686.181513984415,
+          "vertical_flat_half_um": 18.856067590443914,
+          "H_eq_um": 56.83341313356575
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 65.7700820756328,
+        "vertical_W": 15.60511060638073,
+        "total_circulating_W": 147.14527475764632,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 20.97902097902098,
+      "tweezer_lenslet_W": 37.5,
+      "free_space_lattice_W": 154.8897629027856,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.10326244235542259
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 4.255803275783584
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 1.7596451211676765
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.5196601590587049
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.28089417489455537
+        }
+      }
+    },
+    {
+      "n_sites": 30000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 688.8203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 387.56666700146917,
+        "w_um": 504.9971058339907,
+        "W_eq_um": 949.741124816804,
+        "vertical": {
+          "flat_halfrange_um": 487.06952143188937,
+          "W_eq_um": 1193.5751821168653,
+          "vertical_flat_half_um": 32.79909739565381,
+          "H_eq_um": 98.85861109449752
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 17.64141603734741,
+        "vertical_W": 23.316925273870876,
+        "total_circulating_W": 58.59975734856569,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 41.95804195804196,
+      "tweezer_lenslet_W": 75.0,
+      "free_space_lattice_W": 61.68395510375336,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.041123672338201064
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 1.6948491189737618
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 0.7007685247782992
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.20695166239427432
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.11068094319880407
+        }
+      }
+    },
+    {
+      "n_sites": 30000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 688.8203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 387.56666700146917,
+        "w_um": 504.9971058339907,
+        "W_eq_um": 949.741124816804,
+        "vertical": {
+          "flat_halfrange_um": 487.06952143188937,
+          "W_eq_um": 1193.5751821168653,
+          "vertical_flat_half_um": 32.79909739565381,
+          "H_eq_um": 98.85861109449752
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 76.26897168499313,
+        "vertical_W": 31.47727472818636,
+        "total_circulating_W": 184.01521809817262,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 41.95804195804196,
+      "tweezer_lenslet_W": 75.0,
+      "free_space_lattice_W": 193.70022957702383,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.1291367383878268
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 5.322172725329317
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 2.200556431597062
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.6498705287248753
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.35044953764215087
+        }
+      }
+    },
+    {
+      "n_sites": 30000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 688.8203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 387.56666700146917,
+        "w_um": 504.9971058339907,
+        "W_eq_um": 949.741124816804,
+        "vertical": {
+          "flat_halfrange_um": 487.06952143188937,
+          "W_eq_um": 1193.5751821168653,
+          "vertical_flat_half_um": 32.79909739565381,
+          "H_eq_um": 98.85861109449752
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 26.46212405602111,
+        "vertical_W": 34.97538791080631,
+        "total_circulating_W": 87.89963602284854,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 62.93706293706294,
+      "tweezer_lenslet_W": 112.5,
+      "free_space_lattice_W": 92.52593265563004,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.061685508507301604
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 2.542273678460643
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 1.0511527871674489
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.3104274935914115
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.16602141479820606
+        }
+      }
+    },
+    {
+      "n_sites": 30000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 688.8203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 387.56666700146917,
+        "w_um": 504.9971058339907,
+        "W_eq_um": 949.741124816804,
+        "vertical": {
+          "flat_halfrange_um": 487.06952143188937,
+          "W_eq_um": 1193.5751821168653,
+          "vertical_flat_half_um": 32.79909739565381,
+          "H_eq_um": 98.85861109449752
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 114.40345752748968,
+        "vertical_W": 47.21591209227953,
+        "total_circulating_W": 276.0228271472589,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 62.93706293706294,
+      "tweezer_lenslet_W": 112.5,
+      "free_space_lattice_W": 290.5503443655357,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.19370510758174017
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 7.983259087993974
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 3.3008346473955923
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 0.9748057930873127
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.5256743064632262
+        }
+      }
+    },
+    {
+      "n_sites": 300000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 2186.8902300206646,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 1230.4598589976345,
+        "w_um": 1603.2820171202964,
+        "W_eq_um": 3015.2704812509314,
+        "vertical": {
+          "flat_halfrange_um": 1546.3649113582205,
+          "W_eq_um": 3789.4031539224875,
+          "vertical_flat_half_um": 104.13169189432092,
+          "H_eq_um": 313.85968666798755
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 56.00856868774738,
+        "vertical_W": 235.024612552658,
+        "total_circulating_W": 347.04174992815274,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 419.5804195804196,
+      "tweezer_lenslet_W": 750.0,
+      "free_space_lattice_W": 365.3071051875292,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.24354420320941117
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 10.037301018401552
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 4.150118466993679
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 1.2256171410513044
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.6487706103317182
+        }
+      }
+    },
+    {
+      "n_sites": 300000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 2186.8902300206646,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 1230.4598589976345,
+        "w_um": 1603.2820171202964,
+        "W_eq_um": 3015.2704812509314,
+        "vertical": {
+          "flat_halfrange_um": 1546.3649113582205,
+          "W_eq_um": 3789.4031539224875,
+          "vertical_flat_half_um": 104.13169189432092,
+          "H_eq_um": 313.85968666798755
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 242.14132982972836,
+        "vertical_W": 317.27743732557025,
+        "total_circulating_W": 801.560096985027,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 419.5804195804196,
+      "tweezer_lenslet_W": 750.0,
+      "free_space_lattice_W": 843.7474705105548,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.5625124792192632
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 23.18308958343917
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 9.585501921862418
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 2.8308000252159293
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 1.5140707307151784
+        }
+      }
+    },
+    {
+      "n_sites": 300000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 2186.8902300206646,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 1230.4598589976345,
+        "w_um": 1603.2820171202964,
+        "W_eq_um": 3015.2704812509314,
+        "vertical": {
+          "flat_halfrange_um": 1546.3649113582205,
+          "W_eq_um": 3789.4031539224875,
+          "vertical_flat_half_um": 104.13169189432092,
+          "H_eq_um": 313.85968666798755
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 84.01285303162106,
+        "vertical_W": 352.536918828987,
+        "total_circulating_W": 520.5626248922291,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 629.3706293706293,
+      "tweezer_lenslet_W": 1125.0,
+      "free_space_lattice_W": 547.9606577812938,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.36531630481411675
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 15.055951527602328
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 6.225177700490518
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 1.8384257115769564
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 0.9731559154975773
+        }
+      }
+    },
+    {
+      "n_sites": 300000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 2186.8902300206646,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 1230.4598589976345,
+        "w_um": 1603.2820171202964,
+        "W_eq_um": 3015.2704812509314,
+        "vertical": {
+          "flat_halfrange_um": 1546.3649113582205,
+          "W_eq_um": 3789.4031539224875,
+          "vertical_flat_half_um": 104.13169189432092,
+          "H_eq_um": 313.85968666798755
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 363.21199474459246,
+        "vertical_W": 475.91615598835534,
+        "total_circulating_W": 1202.3401454775403,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 629.3706293706293,
+      "tweezer_lenslet_W": 1125.0,
+      "free_space_lattice_W": 1265.621205765832,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 0.8437687188288946
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 34.77463437515875
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 14.378252882793625
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 4.246200037823893
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 2.271106096072767
+        }
+      }
+    },
+    {
+      "n_sites": 3000000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 6924.203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 3895.9221699551235,
+        "w_um": 5076.36385658099,
+        "W_eq_um": 9547.047821524538,
+        "vertical": {
+          "flat_halfrange_um": 4896.151058441609,
+          "W_eq_um": 11998.131958803597,
+          "vertical_flat_half_um": 329.70516191930574,
+          "H_eq_um": 993.7527848662083
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 177.33615839837714,
+        "vertical_W": 2356.1285898939705,
+        "total_circulating_W": 2710.800906690725,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 4195.804195804196,
+      "tweezer_lenslet_W": 7500.0,
+      "free_space_lattice_W": 2853.4746386218158,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 1.9023643322914938
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 78.40302991511454
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 32.41726652637465
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 9.573499608924283
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 5.031647712069369
+        }
+      }
+    },
+    {
+      "n_sites": 3000000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 6924.203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 3895.9221699551235,
+        "w_um": 5076.36385658099,
+        "W_eq_um": 9547.047821524538,
+        "vertical": {
+          "flat_halfrange_um": 4896.151058441609,
+          "W_eq_um": 11998.131958803597,
+          "vertical_flat_half_um": 329.70516191930574,
+          "H_eq_um": 993.7527848662083
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 766.6757824302726,
+        "vertical_W": 3180.7155552424465,
+        "total_circulating_W": 4714.067120102992,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 4195.804195804196,
+      "tweezer_lenslet_W": 7500.0,
+      "free_space_lattice_W": 4962.175915897887,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 3.308200586467916
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 136.34241619407135
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 56.37343925864082
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 16.64826052675425
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 8.81343701040385
+        }
+      }
+    },
+    {
+      "n_sites": 3000000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 6924.203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 3895.9221699551235,
+        "w_um": 5076.36385658099,
+        "W_eq_um": 9547.047821524538,
+        "vertical": {
+          "flat_halfrange_um": 4896.151058441609,
+          "W_eq_um": 11998.131958803597,
+          "vertical_flat_half_um": 329.70516191930574,
+          "H_eq_um": 993.7527848662083
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 266.0042375975657,
+        "vertical_W": 3534.1928848409557,
+        "total_circulating_W": 4066.201360036087,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 6293.706293706294,
+      "tweezer_lenslet_W": 11250.0,
+      "free_space_lattice_W": 4280.211957932724,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 2.8535464984372405
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 117.60454487267182
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 48.62589978956196
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 14.360249413386425
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 7.547471568104053
+        }
+      }
+    },
+    {
+      "n_sites": 3000000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 6924.203230275509,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 3895.9221699551235,
+        "w_um": 5076.36385658099,
+        "W_eq_um": 9547.047821524538,
+        "vertical": {
+          "flat_halfrange_um": 4896.151058441609,
+          "W_eq_um": 11998.131958803597,
+          "vertical_flat_half_um": 329.70516191930574,
+          "H_eq_um": 993.7527848662083
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 1150.0136736454087,
+        "vertical_W": 4771.073332863669,
+        "total_circulating_W": 7071.100680154486,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 6293.706293706294,
+      "tweezer_lenslet_W": 11250.0,
+      "free_space_lattice_W": 7443.263873846828,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 4.962300879701873
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 204.513624291107
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 84.56015888796121
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 24.972390790131367
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 13.220155515605773
+        }
+      }
+    },
+    {
+      "n_sites": 10000000.0,
+      "depth_mK": 0.2,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 12645.110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 7114.806606358838,
+        "w_um": 9270.551496540724,
+        "W_eq_um": 17434.998942134658,
+        "vertical": {
+          "flat_halfrange_um": 8941.443482874412,
+          "W_eq_um": 21911.21506039846,
+          "vertical_flat_half_um": 602.1137902252055,
+          "H_eq_um": 1814.8100938410264
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 323.8546398717212,
+        "vertical_W": 7857.866459829424,
+        "total_circulating_W": 8505.575739572865,
+        "beam_intensity_W_cm2": 19760.912553393122
+      },
+      "tweezer_hologram_W": 13986.013986013986,
+      "tweezer_lenslet_W": 25000.0,
+      "free_space_lattice_W": 8953.237620603017,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 5.968975394921292
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 246.0021713542559
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 101.71441031669148
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 30.038401498058388
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 15.755418570213653
+        }
+      }
+    },
+    {
+      "n_sites": 10000000.0,
+      "depth_mK": 0.2,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 12645.110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 7114.806606358838,
+        "w_um": 9270.551496540724,
+        "W_eq_um": 17434.998942134658,
+        "vertical": {
+          "flat_halfrange_um": 8941.443482874412,
+          "W_eq_um": 21911.21506039846,
+          "vertical_flat_half_um": 602.1137902252055,
+          "H_eq_um": 1814.8100938410264
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 1400.117785677702,
+        "vertical_W": 10607.926149277826,
+        "total_circulating_W": 13408.16172063323,
+        "beam_intensity_W_cm2": 85432.17147726097
+      },
+      "tweezer_hologram_W": 13986.013986013986,
+      "tweezer_lenslet_W": 25000.0,
+      "free_space_lattice_W": 14113.854442771823,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 9.409473250496784
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 387.79701670264967
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 160.34226307571888
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 47.35243767701776
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 24.95991680079688
+        }
+      }
+    },
+    {
+      "n_sites": 10000000.0,
+      "depth_mK": 0.3,
+      "match": "equal_depth",
+      "geometry": {
+        "side_um": 12645.110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 7114.806606358838,
+        "w_um": 9270.551496540724,
+        "W_eq_um": 17434.998942134658,
+        "vertical": {
+          "flat_halfrange_um": 8941.443482874412,
+          "W_eq_um": 21911.21506039846,
+          "vertical_flat_half_um": 602.1137902252055,
+          "H_eq_um": 1814.8100938410264
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 485.78195980758176,
+        "vertical_W": 11786.799689744134,
+        "total_circulating_W": 12758.363609359298,
+        "beam_intensity_W_cm2": 29641.368830089683
+      },
+      "tweezer_hologram_W": 20979.020979020977,
+      "tweezer_lenslet_W": 37500.0,
+      "free_space_lattice_W": 13429.856430904525,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 8.953463092381936
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 369.00325703138384
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 152.57161547503722
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 45.05760224708758
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 23.633127855320474
+        }
+      }
+    },
+    {
+      "n_sites": 10000000.0,
+      "depth_mK": 0.3,
+      "match": "equal_omega",
+      "geometry": {
+        "side_um": 12645.110640673518,
+        "theta_rad": 0.1347827151653991,
+        "theta_z_rad": 0.06723815215022384,
+        "flat_halfrange_um": 7114.806606358838,
+        "w_um": 9270.551496540724,
+        "W_eq_um": 17434.998942134658,
+        "vertical": {
+          "flat_halfrange_um": 8941.443482874412,
+          "W_eq_um": 21911.21506039846,
+          "vertical_flat_half_um": 602.1137902252055,
+          "H_eq_um": 1814.8100938410264
+        }
+      },
+      "circulating": {
+        "inplane_per_axis_W": 2100.176678516553,
+        "vertical_W": 15911.889223916736,
+        "total_circulating_W": 20112.24258094984,
+        "beam_intensity_W_cm2": 128148.25721589144
+      },
+      "tweezer_hologram_W": 20979.020979020977,
+      "tweezer_lenslet_W": 37500.0,
+      "free_space_lattice_W": 21170.78166415773,
+      "cavity_input_W": {
+        "vacuum": {
+          "G": 1499.9622260498656,
+          "P_in_W": 14.114209875745173
+        },
+        "vacuum_meta": {
+          "G": 36.394953635225804,
+          "P_in_W": 581.6955250539744
+        },
+        "cell_AR": {
+          "G": 88.02329574272503,
+          "P_in_W": 240.51339461357827
+        },
+        "cell_AR_good": {
+          "G": 298.05972269136004,
+          "P_in_W": 71.02865651552663
+        },
+        "brewster": {
+          "G": 569.8853435222518,
+          "P_in_W": 37.43987520119531
+        }
+      }
+    }
+  ],
+  "tweezer_bounds": {
+    "cavity_G_max_hologram_2pass": 3.214400514304082,
+    "cavity_G_max_hologram_plus_meta_objective_4pass": 1.7885760073260075,
+    "cavity_G_max_meta_objective_pair_4pass": 1.693766937669377,
+    "cavity_G_max_refractive_pair_4pass": 5.391017217561235,
+    "retro_gain_meta_objective": 3.225579899370592,
+    "retro_gain_refractive_objective": 3.783951130502578,
+    "retro_gain_limit": 4.0
+  }
+}

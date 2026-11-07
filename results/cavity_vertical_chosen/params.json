@@ -1,0 +1,74 @@
+{
+  "config": {
+    "run_id": "cavity_vertical_chosen",
+    "wavelength_um": 1.075,
+    "array_side_um": 3996.0,
+    "vertical_period_um": 8.0,
+    "flat_tol": 0.01,
+    "g_target": 300.0,
+    "loss_other": 0.0003,
+    "map_sites_per_side": 101,
+    "telescope": {
+      "f1_um": 160000.0,
+      "mag": 0.15,
+      "d0_um": 110000.0,
+      "L_um": 120000.0
+    },
+    "x": {
+      "order": 20,
+      "flat_half_um": 2825.6,
+      "telescope": true,
+      "ap1_um": 6000.0,
+      "ap2_um": 2500.0,
+      "ap_g_um": 2500.0,
+      "grid_n": 8192,
+      "grid_width_um": 28000.0
+    },
+    "z": {
+      "order": 10,
+      "flat_half_um": 190.27,
+      "telescope": false,
+      "ap1_um": 5000.0,
+      "ap2_um": 5000.0,
+      "ap_g_um": 5000.0,
+      "grid_n": 4096,
+      "grid_width_um": 12000.0
+    },
+    "fig_waves": 0.001,
+    "corr_um": 2000.0,
+    "seeds": [
+      1,
+      2
+    ],
+    "closed_loop": {
+      "seeds": [
+        1,
+        2
+      ],
+      "rounds": 6,
+      "gain": 0.5,
+      "n_bins": 48
+    },
+    "_config_path": "configs/cavity_vertical_chosen.yaml"
+  },
+  "git": {
+    "commit": "353927578b5edf731d38f285b1325f2c6953cbcf",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T17:48:35+00:00"
+}

@@ -1,0 +1,418 @@
+{
+ "figure_plane150_rms0.001_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.9435407300141602,
+  "depth_rms_before_relock": 0.3265460501649412
+ },
+ "figure_plane150_rms0.001_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.707005091636129,
+  "depth_rms_before_relock": 0.2989257504291921
+ },
+ "figure_plane150_rms0.001_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.8961208077384445,
+  "depth_rms_before_relock": 0.26874721605014357
+ },
+ "figure_plane150_rms0.001_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.6092393051272018,
+  "depth_rms_before_relock": 0.36594465835463635
+ },
+ "figure_plane150_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.11488501870720058,
+  "depth_rms_before_relock": 0.23710797409890186
+ },
+ "figure_plane150_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.46197406419307907,
+  "depth_rms_before_relock": 0.3853323755436566
+ },
+ "figure_plane150_rms0.003_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.8192905738654025,
+  "depth_rms_before_relock": 0.5596483269804992
+ },
+ "figure_plane150_rms0.003_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.419772923982982,
+  "depth_rms_before_relock": 0.41133429513117026
+ },
+ "figure_plane150_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.21812218190319427,
+  "depth_rms_before_relock": 0.5549601871127039
+ },
+ "figure_plane150_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.35813657972161267,
+  "depth_rms_before_relock": 0.6218458913644307
+ },
+ "figure_plane150_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.09654923946823017,
+  "depth_rms_before_relock": 0.4121558800189705
+ },
+ "figure_plane150_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.28656414451416573,
+  "depth_rms_before_relock": 1.0494506887398118
+ },
+ "curvature_plane150_sag0.01": {
+  "g_ratio_before_relock": 0.861477802708592,
+  "depth_rms_before_relock": 0.6121727857716807
+ },
+ "tilt_plane150_0.3urad": {
+  "g_ratio_before_relock": 0.9217453121070162,
+  "depth_rms_before_relock": 0.05720934504487638
+ },
+ "tilt_plane150_1.0urad": {
+  "g_ratio_before_relock": 0.6764687570903352,
+  "depth_rms_before_relock": 0.15232846214500292
+ },
+ "tilt_plane150_3.0urad": {
+  "g_ratio_before_relock": 0.39389625189722866,
+  "depth_rms_before_relock": 0.669300780800423
+ },
+ "tilt_plane150_10.0urad": {
+  "g_ratio_before_relock": 0.2588948396640781,
+  "depth_rms_before_relock": 0.7991960873910742
+ },
+ "figure_plane300_rms0.001_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.9051895548879684,
+  "depth_rms_before_relock": 0.1444034188970481
+ },
+ "figure_plane300_rms0.001_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.9444009571455174,
+  "depth_rms_before_relock": 0.1556981032346326
+ },
+ "figure_plane300_rms0.001_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.8398840509818649,
+  "depth_rms_before_relock": 0.17806638110365125
+ },
+ "figure_plane300_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.851645405376654,
+  "depth_rms_before_relock": 0.4961682306302699
+ },
+ "figure_plane300_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.4054120322532493,
+  "depth_rms_before_relock": 0.4781751508718337
+ },
+ "figure_plane300_rms0.003_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.8643795374078621,
+  "depth_rms_before_relock": 0.36838092623594565
+ },
+ "figure_plane300_rms0.003_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.43185775064796034,
+  "depth_rms_before_relock": 0.4086816594532475
+ },
+ "figure_plane300_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.18862350711262915,
+  "depth_rms_before_relock": 0.5636935601398217
+ },
+ "figure_plane300_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.4205727749915106,
+  "depth_rms_before_relock": 0.39071490709244083
+ },
+ "figure_plane300_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.025495077908205974,
+  "depth_rms_before_relock": 0.5232198930208102
+ },
+ "figure_plane300_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.35814686361389514,
+  "depth_rms_before_relock": 0.583746718411284
+ },
+ "tilt_plane300_1.0urad": {
+  "g_ratio_before_relock": 0.8268135765032485,
+  "depth_rms_before_relock": 0.10792902249725557
+ },
+ "tilt_plane300_3.0urad": {
+  "g_ratio_before_relock": 0.2757544069748911,
+  "depth_rms_before_relock": 0.3473490945631611
+ },
+ "tilt_plane300_10.0urad": {
+  "g_ratio_before_relock": 0.3286010459743567,
+  "depth_rms_before_relock": 0.7264822505694788
+ },
+ "figure_primary_telK_M0.2_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.9044475261419253,
+  "depth_rms_before_relock": 0.06913097783858917
+ },
+ "figure_telK_M0.2_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.7819160128886087,
+  "depth_rms_before_relock": 0.09403710077406753
+ },
+ "figure_primary_telK_M0.2_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.9087038396975909,
+  "depth_rms_before_relock": 0.07677990725817511
+ },
+ "figure_primary_telK_M0.2_rms0.003_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.9055096976279309,
+  "depth_rms_before_relock": 0.07135745501940499
+ },
+ "figure_primary_telK_M0.2_rms0.003_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.9064753912921129,
+  "depth_rms_before_relock": 0.08235644059154443
+ },
+ "figure_telK_M0.2_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.6939850758230253,
+  "depth_rms_before_relock": 0.15876904480188433
+ },
+ "figure_primary_telK_M0.2_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.13610768811989638,
+  "depth_rms_before_relock": 0.31526368254528
+ },
+ "figure_telK_M0.2_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.33902967225221603,
+  "depth_rms_before_relock": 0.24475077428187092
+ },
+ "figure_primary_telK_M0.2_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.03529475398107456,
+  "depth_rms_before_relock": 0.29895352966070493
+ },
+ "figure_telK_M0.2_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.06707952802690258,
+  "depth_rms_before_relock": 0.2015886082460923
+ },
+ "figure_primary_telK_M0.2_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.0018108516927845244,
+  "depth_rms_before_relock": 0.9083746338075939
+ },
+ "figure_telK_M0.2_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.05489143570894315,
+  "depth_rms_before_relock": 0.34674644880930805
+ },
+ "figure_primary_telK_M0.2_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.002353536042545648,
+  "depth_rms_before_relock": 0.5489734708655926
+ },
+ "curvature_telK_M0.2_sag0.01": {
+  "g_ratio_before_relock": 0.6962444497024005,
+  "depth_rms_before_relock": 0.11828074064458657
+ },
+ "tilt_primary_telK_M0.2_3.0urad": {
+  "g_ratio_before_relock": 0.31925311588960964,
+  "depth_rms_before_relock": 0.12087259225678684
+ },
+ "tilt_primary_telK_M0.2_10.0urad": {
+  "g_ratio_before_relock": 0.0004646940086858095,
+  "depth_rms_before_relock": 0.8371448954695139
+ },
+ "figure_telK_M0.1_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.8187563298146779,
+  "depth_rms_before_relock": 0.03607008144358536
+ },
+ "figure_primary_telK_M0.1_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.7321120493584602,
+  "depth_rms_before_relock": 0.035036813517703144
+ },
+ "figure_telK_M0.1_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.8970953694009977,
+  "depth_rms_before_relock": 0.0534269063027812
+ },
+ "figure_primary_telK_M0.1_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.8300989113234145,
+  "depth_rms_before_relock": 0.04320025301185424
+ },
+ "figure_telK_M0.1_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.2078360761465227,
+  "depth_rms_before_relock": 0.13878923839394341
+ },
+ "figure_primary_telK_M0.1_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.1347052741645928,
+  "depth_rms_before_relock": 0.11749804658313207
+ },
+ "figure_telK_M0.1_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.4283483498570989,
+  "depth_rms_before_relock": 0.17932542976515306
+ },
+ "figure_primary_telK_M0.1_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.03990638803831303,
+  "depth_rms_before_relock": 0.21337904835010021
+ },
+ "figure_telK_M0.1_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.8387532015747429,
+  "depth_rms_before_relock": 0.1225728822942429
+ },
+ "figure_primary_telK_M0.1_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.015659914457232523,
+  "depth_rms_before_relock": 0.12703869972280013
+ },
+ "figure_telK_M0.1_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.8936956053742825,
+  "depth_rms_before_relock": 0.13312739849398522
+ },
+ "figure_primary_telK_M0.1_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.010129245564074046,
+  "depth_rms_before_relock": 0.20859237584785684
+ },
+ "curvature_telK_M0.1_sag0.01": {
+  "g_ratio_before_relock": 0.9041090295408636,
+  "depth_rms_before_relock": 0.020492868509982328
+ },
+ "tilt_primary_telK_M0.1_3.0urad": {
+  "g_ratio_before_relock": 0.9278891294934472,
+  "depth_rms_before_relock": 0.05787414261176279
+ },
+ "tilt_primary_telK_M0.1_10.0urad": {
+  "g_ratio_before_relock": 0.001249053016210359,
+  "depth_rms_before_relock": 0.5034177319191355
+ },
+ "figure_primary_telG_M0.2_rms0.001_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.8977068508857855,
+  "depth_rms_before_relock": 0.15102074804089605
+ },
+ "figure_telG_M0.2_rms0.001_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.936695926044428,
+  "depth_rms_before_relock": 0.12763629339548913
+ },
+ "figure_primary_telG_M0.2_rms0.001_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.9288434184742067,
+  "depth_rms_before_relock": 0.18853195360017666
+ },
+ "figure_telG_M0.2_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.712237604303976,
+  "depth_rms_before_relock": 0.2194153095731499
+ },
+ "figure_primary_telG_M0.2_rms0.003_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.4052068124672113,
+  "depth_rms_before_relock": 0.4538389760189124
+ },
+ "figure_telG_M0.2_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.5949707607308677,
+  "depth_rms_before_relock": 0.35080162480877924
+ },
+ "figure_primary_telG_M0.2_rms0.003_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.6135926319961312,
+  "depth_rms_before_relock": 0.5497915732462851
+ },
+ "figure_telG_M0.2_rms0.003_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.9186460232976305,
+  "depth_rms_before_relock": 0.1453449223637688
+ },
+ "figure_telG_M0.2_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.6718567198721052,
+  "depth_rms_before_relock": 0.18008495434710448
+ },
+ "figure_primary_telG_M0.2_rms0.01_corr0.5mm_seed1": {
+  "g_ratio_before_relock": 0.007960871688837462,
+  "depth_rms_before_relock": 1.2175645229325216
+ },
+ "figure_telG_M0.2_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.03581072064650741,
+  "depth_rms_before_relock": 0.8315675697416838
+ },
+ "figure_primary_telG_M0.2_rms0.01_corr0.5mm_seed2": {
+  "g_ratio_before_relock": 0.0056074596586371634,
+  "depth_rms_before_relock": 0.7868199622038404
+ },
+ "figure_telG_M0.2_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.48806272070104323,
+  "depth_rms_before_relock": 0.12282936420074844
+ },
+ "figure_primary_telG_M0.2_rms0.01_corr2.0mm_seed1": {
+  "g_ratio_before_relock": 0.0052474140523401155,
+  "depth_rms_before_relock": 0.5137259506280251
+ },
+ "figure_telG_M0.2_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.568785884107782,
+  "depth_rms_before_relock": 0.3044134288678747
+ },
+ "figure_primary_telG_M0.2_rms0.01_corr2.0mm_seed2": {
+  "g_ratio_before_relock": 0.004838570065822984,
+  "depth_rms_before_relock": 0.28208443278212586
+ },
+ "curvature_telG_M0.2_sag0.01": {
+  "g_ratio_before_relock": 0.7770539911523763,
+  "depth_rms_before_relock": 0.05491674818908293
+ },
+ "tilt_primary_telG_M0.2_3.0urad": {
+  "g_ratio_before_relock": 0.9055768772106884,
+  "depth_rms_before_relock": 0.08060327413264384
+ },
+ "tilt_primary_telG_M0.2_10.0urad": {
+  "g_ratio_before_relock": 0.0007411520817619627,
+  "depth_rms_before_relock": 0.5542019994405392
+ },
+ "input_telK_M0.2_gaussian_best": {
+  "g_ratio_before_relock": 0.9180196061192643,
+  "depth_rms_before_relock": 0.004211672118837308
+ },
+ "meta_telK_M0.2_levels8": {
+  "g_ratio_before_relock": 0.1423761218320392,
+  "depth_rms_before_relock": 0.19347652080896866
+ },
+ "meta_telK_M0.2_levels16": {
+  "g_ratio_before_relock": 0.22930780835483044,
+  "depth_rms_before_relock": 0.11828784614584843
+ },
+ "meta_telK_M0.2_levels32": {
+  "g_ratio_before_relock": 0.5236337661876019,
+  "depth_rms_before_relock": 0.04453082888727139
+ },
+ "meta_telK_M0.2_noise0.02rad": {
+  "g_ratio_before_relock": 0.8860076461501207,
+  "depth_rms_before_relock": 0.015240537549219803
+ },
+ "meta_telK_M0.2_noise0.05rad": {
+  "g_ratio_before_relock": 0.517293975602214,
+  "depth_rms_before_relock": 0.03762052021206542
+ },
+ "meta_telK_M0.2_noise0.1rad": {
+  "g_ratio_before_relock": 0.15280723770896276,
+  "depth_rms_before_relock": 0.07407806040086082
+ },
+ "finesse_telK_M0.2_G1000_figure": {
+  "g_ratio_before_relock": 0.9490604798573704,
+  "depth_rms_before_relock": 0.05737969021355824
+ },
+ "finesse_telK_M0.2_G3000_figure": {
+  "g_ratio_before_relock": 0.007066289222531491,
+  "depth_rms_before_relock": 0.05870064417683763
+ },
+ "reference_telK_M0.2_plane_mirrors": {
+  "g_ratio_before_relock": 0.8710372772422668,
+  "depth_rms_before_relock": 0.2224803152334035
+ },
+ "input_plane150_gaussian_best": {
+  "g_ratio_before_relock": 0.918402093721405,
+  "depth_rms_before_relock": 0.005541012255992025
+ },
+ "meta_plane150_levels8": {
+  "g_ratio_before_relock": 0.8823161760600808,
+  "depth_rms_before_relock": 0.31546668402129857
+ },
+ "meta_plane150_levels16": {
+  "g_ratio_before_relock": 0.8374535049619403,
+  "depth_rms_before_relock": 0.17226951256009873
+ },
+ "meta_plane150_levels32": {
+  "g_ratio_before_relock": 0.9469362657352557,
+  "depth_rms_before_relock": 0.13744905348866182
+ },
+ "meta_plane150_noise0.02rad": {
+  "g_ratio_before_relock": 0.8916957554453996,
+  "depth_rms_before_relock": 0.017018840641857054
+ },
+ "meta_plane150_noise0.05rad": {
+  "g_ratio_before_relock": 0.5342755552228193,
+  "depth_rms_before_relock": 0.04112467634383666
+ },
+ "meta_plane150_noise0.1rad": {
+  "g_ratio_before_relock": 0.16452429880105468,
+  "depth_rms_before_relock": 0.07687579349699857
+ },
+ "finesse_plane150_G30_figure": {
+  "g_ratio_before_relock": 0.8556100622125927,
+  "depth_rms_before_relock": 0.398877253415541
+ },
+ "finesse_plane150_G100_figure": {
+  "g_ratio_before_relock": 0.8230684453152505,
+  "depth_rms_before_relock": 0.5358076517227238
+ },
+ "finesse_plane150_G300_figure": {
+  "g_ratio_before_relock": 0.8192905738654025,
+  "depth_rms_before_relock": 0.5596483269804992
+ },
+ "finesse_plane150_G1000_figure": {
+  "g_ratio_before_relock": 0.012606009810052913,
+  "depth_rms_before_relock": 0.6461440679853074
+ },
+ "finesse_plane150_G3000_figure": {
+  "g_ratio_before_relock": 0.00029923192984406975,
+  "depth_rms_before_relock": 0.7138582302889076
+ },
+ "reference_plane150_plane_mirrors": {
+  "g_ratio_before_relock": 0.8631890757413189,
+  "depth_rms_before_relock": 0.12137188022863069
+ }
+}

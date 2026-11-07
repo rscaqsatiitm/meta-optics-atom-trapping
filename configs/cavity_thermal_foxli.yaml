@@ -1,0 +1,10 @@
+# Absorption bulge on the graded mirrors fed into the Fox-Li ring (docs/cavity_concept.md, Section 5).
+run_id: cavity_thermal_foxli
+foxli_config: configs/cavity_foxli.yaml
+variant: telK_M0.2_d70
+thermal_json: results/cavity_thermal/thermal.json
+# Bulge shape across the strip: proportional to the intensity on G (sharper than the real thermal
+# profile, hence conservative), scaled to the centre-to-edge bulge of each thermal case, applied
+# on G1 and G2 with the normal-incidence reflection phase 4 pi h / lambda (conservative).
+cases: ["IBS HR, 10 ppm, fused silica", "Si-rich SiN metasurface, nominal, fused silica", "Si-rich SiN metasurface, nominal, sapphire"]
+extra_scales: [10.0]          # also run the 10 ppm case at 10x (100 ppm)

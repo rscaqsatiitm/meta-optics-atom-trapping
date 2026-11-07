@@ -1,0 +1,73 @@
+{
+  "config": {
+    "run_id": "cavity_correction_n1e4_loop",
+    "foxli_config": "configs/cavity_foxli_n1e4.yaml",
+    "g_target": 300.0,
+    "map_sites_per_side": 101,
+    "variants": [
+      "plane150"
+    ],
+    "cases": [
+      {
+        "name": "fig1000",
+        "fig_waves": 0.001,
+        "corr_um": 198.2,
+        "seeds": [
+          1,
+          2
+        ],
+        "closed_loop": true
+      }
+    ],
+    "metrology_noise_nm": [
+      0.0
+    ],
+    "metrology_corr_um": 1000.0,
+    "metrology_tilt_urad": 0.1,
+    "closed_loop": {
+      "rounds": 6,
+      "gain": 0.5,
+      "n_bins": 24,
+      "smooth": 1.0,
+      "measurement_noise": [
+        0.01
+      ]
+    },
+    "camera": {
+      "variants": [
+        "plane150"
+      ],
+      "pixel_um": 5.0,
+      "n_bins": 24,
+      "rounds": 6,
+      "gain": 0.5,
+      "noise": [
+        {
+          "name": "rand0.5pct",
+          "random": 0.005
+        }
+      ]
+    },
+    "_config_path": "configs/cavity_correction_n1e4_loop.yaml"
+  },
+  "git": {
+    "commit": "1edd95ccb7b0fbaafaf7e9baa1bcd1c6d4b49cec",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-07T11:12:43+00:00"
+}

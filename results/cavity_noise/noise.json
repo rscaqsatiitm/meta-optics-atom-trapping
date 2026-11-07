@@ -1,0 +1,256 @@
+{
+  "savard_check": {
+    "intensity_sqrtS_for_100s_10kHz": 3.1830988618379067e-06,
+    "position_sqrtS_um_for_100s_10kHz_1um": 3.1830988618379067e-06
+  },
+  "rows": [
+    {
+      "axis": "in-plane",
+      "depth_mK": 0.2,
+      "trap_freq_kHz": 19.773598107371004,
+      "x_rms_um": 0.20131684841794814,
+      "heating_time_s": 10.0,
+      "heating_rate_uK_per_s": 1.0000000000000002,
+      "heating_rate_quanta_per_s": 1.053759614723853,
+      "RIN_at_2nu_dBc_per_Hz": -105.86471151389915,
+      "site_position_pm_per_rtHz": 1.0248128144626167,
+      "mirror_displacement_pm_per_rtHz": 0.3180258254356963,
+      "laser_frequency_Hz_per_rtHz": 132.42722096450254,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.06955435408665003,
+      "levers": {
+        "site_shift_per_mirror_displacement": 3.2224201071048877,
+        "site_shift_m_per_Hz": 7.738687008597126e-15,
+        "edge_shift_m_per_rad": 0.014733985067073106
+      },
+      "G300": {
+        "linewidth_kHz": 412.54801217345,
+        "lock_residual_Hz_per_rtHz_zero_offset": 22.00742428741059,
+        "lock_residual_rms_kHz_zero_offset": 6.959358618192552,
+        "lock_residual_Hz_per_rtHz_with_offset": 26.251186424465363
+      },
+      "G1500": {
+        "linewidth_kHz": 82.3027331027446,
+        "lock_residual_Hz_per_rtHz_zero_offset": 4.390449387607495,
+        "lock_residual_rms_kHz_zero_offset": 1.3883820016531123,
+        "lock_residual_Hz_per_rtHz_with_offset": 5.237073810004916
+      }
+    },
+    {
+      "axis": "in-plane",
+      "depth_mK": 0.2,
+      "trap_freq_kHz": 19.773598107371004,
+      "x_rms_um": 0.20131684841794814,
+      "heating_time_s": 100.0,
+      "heating_rate_uK_per_s": 0.1,
+      "heating_rate_quanta_per_s": 0.10537596147238529,
+      "RIN_at_2nu_dBc_per_Hz": -115.86471151389915,
+      "site_position_pm_per_rtHz": 0.32407426690294155,
+      "mirror_displacement_pm_per_rtHz": 0.10056859631319112,
+      "laser_frequency_Hz_per_rtHz": 41.87716424542281,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.021995018009565465,
+      "levers": {
+        "site_shift_per_mirror_displacement": 3.2224201071048877,
+        "site_shift_m_per_Hz": 7.738687008597126e-15,
+        "edge_shift_m_per_rad": 0.014733985067073106
+      },
+      "G300": {
+        "linewidth_kHz": 412.54801217345,
+        "lock_residual_Hz_per_rtHz_zero_offset": 12.375684137808745,
+        "lock_residual_rms_kHz_zero_offset": 3.9135349478292762,
+        "lock_residual_Hz_per_rtHz_with_offset": 8.301354038300225
+      },
+      "G1500": {
+        "linewidth_kHz": 82.3027331027446,
+        "lock_residual_Hz_per_rtHz_zero_offset": 2.4689311268083554,
+        "lock_residual_rms_kHz_zero_offset": 0.7807445746800407,
+        "lock_residual_Hz_per_rtHz_with_offset": 1.6561081514031448
+      }
+    },
+    {
+      "axis": "in-plane",
+      "depth_mK": 0.86,
+      "trap_freq_kHz": 41.00340574977708,
+      "x_rms_um": 0.09708360513152439,
+      "heating_time_s": 10.0,
+      "heating_rate_uK_per_s": 1.0000000000000002,
+      "heating_rate_quanta_per_s": 0.508168010493637,
+      "RIN_at_2nu_dBc_per_Hz": -112.19939606969503,
+      "site_position_pm_per_rtHz": 0.23832856150293427,
+      "mirror_displacement_pm_per_rtHz": 0.07395949428737127,
+      "laser_frequency_Hz_per_rtHz": 30.797028131279678,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.016175431182941877,
+      "levers": {
+        "site_shift_per_mirror_displacement": 3.2224201071048877,
+        "site_shift_m_per_Hz": 7.738687008597126e-15,
+        "edge_shift_m_per_rad": 0.014733985067073106
+      },
+      "G300": {
+        "linewidth_kHz": 412.54801217345,
+        "lock_residual_Hz_per_rtHz_zero_offset": 15.282770891481633,
+        "lock_residual_rms_kHz_zero_offset": 4.832836497560395,
+        "lock_residual_Hz_per_rtHz_with_offset": 12.659446226655788
+      },
+      "G1500": {
+        "linewidth_kHz": 82.3027331027446,
+        "lock_residual_Hz_per_rtHz_zero_offset": 3.0488907391054814,
+        "lock_residual_rms_kHz_zero_offset": 0.9641439072567521,
+        "lock_residual_Hz_per_rtHz_with_offset": 2.5255412540515243
+      }
+    },
+    {
+      "axis": "in-plane",
+      "depth_mK": 0.86,
+      "trap_freq_kHz": 41.00340574977708,
+      "x_rms_um": 0.09708360513152439,
+      "heating_time_s": 100.0,
+      "heating_rate_uK_per_s": 0.1,
+      "heating_rate_quanta_per_s": 0.0508168010493637,
+      "RIN_at_2nu_dBc_per_Hz": -122.19939606969503,
+      "site_position_pm_per_rtHz": 0.07536610858207947,
+      "mirror_displacement_pm_per_rtHz": 0.023388045654230506,
+      "laser_frequency_Hz_per_rtHz": 9.738875405912285,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.0051151204673408075,
+      "levers": {
+        "site_shift_per_mirror_displacement": 3.2224201071048877,
+        "site_shift_m_per_Hz": 7.738687008597126e-15,
+        "edge_shift_m_per_rad": 0.014733985067073106
+      },
+      "G300": {
+        "linewidth_kHz": 412.54801217345,
+        "lock_residual_Hz_per_rtHz_zero_offset": 8.594133635696275,
+        "lock_residual_rms_kHz_zero_offset": 2.717703680466398,
+        "lock_residual_Hz_per_rtHz_with_offset": 4.003268399265648
+      },
+      "G1500": {
+        "linewidth_kHz": 82.3027331027446,
+        "lock_residual_Hz_per_rtHz_zero_offset": 1.714517258589159,
+        "lock_residual_rms_kHz_zero_offset": 0.5421779624809631,
+        "lock_residual_Hz_per_rtHz_with_offset": 0.7986462687520768
+      }
+    },
+    {
+      "axis": "vertical",
+      "depth_mK": 0.2,
+      "trap_freq_kHz": 9.886799053685502,
+      "x_rms_um": 0.4026336968358963,
+      "heating_time_s": 10.0,
+      "heating_rate_uK_per_s": 1.0000000000000002,
+      "heating_rate_quanta_per_s": 2.107519229447706,
+      "RIN_at_2nu_dBc_per_Hz": -99.84411160061953,
+      "site_position_pm_per_rtHz": 4.099251257850467,
+      "mirror_displacement_pm_per_rtHz": 0.6360516508713926,
+      "laser_frequency_Hz_per_rtHz": 185.52605835606636,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.13815925823835107,
+      "levers": {
+        "site_shift_per_mirror_displacement": 6.444840214209775,
+        "site_shift_m_per_Hz": 2.209528566592559e-14,
+        "edge_shift_m_per_rad": 0.029670478186691454
+      },
+      "G300": {
+        "linewidth_kHz": 288.97519428558223,
+        "lock_residual_Hz_per_rtHz_zero_offset": 21.800692027585427,
+        "lock_residual_rms_kHz_zero_offset": 6.893984137504429,
+        "lock_residual_Hz_per_rtHz_with_offset": 36.77604290114729
+      },
+      "G1500": {
+        "linewidth_kHz": 57.65013425540546,
+        "lock_residual_Hz_per_rtHz_zero_offset": 4.349206600096585,
+        "lock_residual_rms_kHz_zero_offset": 1.3753398870942304,
+        "lock_residual_Hz_per_rtHz_with_offset": 7.336767489248374
+      }
+    },
+    {
+      "axis": "vertical",
+      "depth_mK": 0.2,
+      "trap_freq_kHz": 9.886799053685502,
+      "x_rms_um": 0.4026336968358963,
+      "heating_time_s": 100.0,
+      "heating_rate_uK_per_s": 0.1,
+      "heating_rate_quanta_per_s": 0.21075192294477058,
+      "RIN_at_2nu_dBc_per_Hz": -109.84411160061953,
+      "site_position_pm_per_rtHz": 1.2962970676117662,
+      "mirror_displacement_pm_per_rtHz": 0.20113719262638224,
+      "laser_frequency_Hz_per_rtHz": 58.66849097184838,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.043689793587257185,
+      "levers": {
+        "site_shift_per_mirror_displacement": 6.444840214209775,
+        "site_shift_m_per_Hz": 2.209528566592559e-14,
+        "edge_shift_m_per_rad": 0.029670478186691454
+      },
+      "G300": {
+        "linewidth_kHz": 288.97519428558223,
+        "lock_residual_Hz_per_rtHz_zero_offset": 12.259430044859068,
+        "lock_residual_rms_kHz_zero_offset": 3.8767721757254856,
+        "lock_residual_Hz_per_rtHz_with_offset": 11.6296058895692
+      },
+      "G1500": {
+        "linewidth_kHz": 57.65013425540546,
+        "lock_residual_Hz_per_rtHz_zero_offset": 2.445738603024927,
+        "lock_residual_rms_kHz_zero_offset": 0.7734104546957146,
+        "lock_residual_Hz_per_rtHz_with_offset": 2.3200895929099787
+      }
+    },
+    {
+      "axis": "vertical",
+      "depth_mK": 0.86,
+      "trap_freq_kHz": 20.50170287488854,
+      "x_rms_um": 0.19416721026304878,
+      "heating_time_s": 10.0,
+      "heating_rate_uK_per_s": 1.0000000000000002,
+      "heating_rate_quanta_per_s": 1.016336020987274,
+      "RIN_at_2nu_dBc_per_Hz": -106.1787961564154,
+      "site_position_pm_per_rtHz": 0.9533142460117371,
+      "mirror_displacement_pm_per_rtHz": 0.14791898857474253,
+      "laser_frequency_Hz_per_rtHz": 43.14559496652708,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.0321300600554305,
+      "levers": {
+        "site_shift_per_mirror_displacement": 6.444840214209775,
+        "site_shift_m_per_Hz": 2.209528566592559e-14,
+        "edge_shift_m_per_rad": 0.029670478186691454
+      },
+      "G300": {
+        "linewidth_kHz": 288.97519428558223,
+        "lock_residual_Hz_per_rtHz_zero_offset": 15.139208349971785,
+        "lock_residual_rms_kHz_zero_offset": 4.787438035775037,
+        "lock_residual_Hz_per_rtHz_with_offset": 17.734982716909425
+      },
+      "G1500": {
+        "linewidth_kHz": 57.65013425540546,
+        "lock_residual_Hz_per_rtHz_zero_offset": 3.0202502192416523,
+        "lock_residual_rms_kHz_zero_offset": 0.9550869796426528,
+        "lock_residual_Hz_per_rtHz_with_offset": 3.5381034596232652
+      }
+    },
+    {
+      "axis": "vertical",
+      "depth_mK": 0.86,
+      "trap_freq_kHz": 20.50170287488854,
+      "x_rms_um": 0.19416721026304878,
+      "heating_time_s": 100.0,
+      "heating_rate_uK_per_s": 0.1,
+      "heating_rate_quanta_per_s": 0.1016336020987274,
+      "RIN_at_2nu_dBc_per_Hz": -116.1787961564154,
+      "site_position_pm_per_rtHz": 0.3014644343283179,
+      "mirror_displacement_pm_per_rtHz": 0.04677609130846101,
+      "laser_frequency_Hz_per_rtHz": 13.643835109732185,
+      "crossing_angle_nrad_per_rtHz_edge_sites": 0.010160417113315627,
+      "levers": {
+        "site_shift_per_mirror_displacement": 6.444840214209775,
+        "site_shift_m_per_Hz": 2.209528566592559e-14,
+        "edge_shift_m_per_rad": 0.029670478186691454
+      },
+      "G300": {
+        "linewidth_kHz": 288.97519428558223,
+        "lock_residual_Hz_per_rtHz_zero_offset": 8.51340248585593,
+        "lock_residual_rms_kHz_zero_offset": 2.692174249304416,
+        "lock_residual_Hz_per_rtHz_with_offset": 5.6082939649154975
+      },
+      "G1500": {
+        "linewidth_kHz": 57.65013425540546,
+        "lock_residual_Hz_per_rtHz_zero_offset": 1.698411510694793,
+        "lock_residual_rms_kHz_zero_offset": 0.5370848778042974,
+        "lock_residual_Hz_per_rtHz_with_offset": 1.1188465529731106
+      }
+    }
+  ]
+}

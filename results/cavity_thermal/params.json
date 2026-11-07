@@ -1,0 +1,69 @@
+{
+  "config": {
+    "run_id": "cavity_thermal",
+    "wavelength_nm": 1075.0,
+    "foxli_json": "results/cavity_foxli/foxli.json",
+    "layout_json": "results/cavity_layout/layout.json",
+    "budget_json": "results/cavity_budget/budget.json",
+    "design_key": "design_telK_M0.2_d70",
+    "vertical_f_z_m": 0.04,
+    "w_z_m": 7.5e-05,
+    "n_sites": 1000000.0,
+    "depths_mK": [
+      0.2,
+      0.3
+    ],
+    "wall_distance_m": 0.015,
+    "defect_dT_K": 50.0,
+    "mirror_radius_m": 0.0127,
+    "mirror_thickness_m": 0.00635,
+    "deformation_cases": [
+      {
+        "name": "IBS HR, 1 ppm, fused silica",
+        "substrate": "fused_silica",
+        "absorption": 1e-06
+      },
+      {
+        "name": "IBS HR, 10 ppm, fused silica",
+        "substrate": "fused_silica",
+        "absorption": 1e-05
+      },
+      {
+        "name": "LPCVD SiN metasurface on HR, fused silica",
+        "substrate": "fused_silica",
+        "absorption": 3.5e-06
+      },
+      {
+        "name": "Si-rich SiN metasurface, nominal, fused silica",
+        "substrate": "fused_silica",
+        "absorption": 0.00059
+      },
+      {
+        "name": "Si-rich SiN metasurface, nominal, sapphire",
+        "substrate": "sapphire",
+        "absorption": 0.00059
+      }
+    ],
+    "_config_path": "configs/cavity_thermal.yaml"
+  },
+  "git": {
+    "commit": "1a5da5c5fad5198ecced7d193f93781b097c8495",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T16:05:44+00:00"
+}

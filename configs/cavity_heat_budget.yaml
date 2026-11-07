@@ -1,0 +1,26 @@
+# Heat budget and cooling of the cavity lattice (docs/cavity_concept.md, Section 5b).
+run_id: cavity_heat_budget
+wavelength_nm: 1075.0
+scaling_json: results/cavity_scaling/scaling.json   # circulating powers of the adopted design at 1e4, 1e5, 1e6 sites
+mode_matching: 0.95
+reflections: 10
+mirror_loss: 5.0e-5               # per reflection (Norcia et al. bound, Section 3)
+enhancements:
+  - {G: 300, graded_extra_loss: 1.0e-3}   # design point: L = 2.5e-3
+  - {G: 1500, graded_extra_loss: 0.0}     # L = 5e-4
+absorption_cases:                 # [VALUE?] coating absorption; graded-mirror loss is mostly scatter (figure), fraction absorbed unknown
+  - {name: "IBS 1 ppm", alpha_per_reflection: 1.0e-6, graded_loss_absorbed_fraction: 0.0}
+  - {name: "IBS 10 ppm", alpha_per_reflection: 1.0e-5, graded_loss_absorbed_fraction: 0.0}
+  - {name: "10 ppm + graded loss absorbed", alpha_per_reflection: 1.0e-5, graded_loss_absorbed_fraction: 1.0}   # worst case
+emissivity: 0.9                   # [VALUE?] faces and rim, radiative coupling to the chamber
+chamber_K: 295.0
+mirrors:                          # the hottest mirror of each ring (graded mirror: smallest spot)
+  inplane_graded: {substrate: fused_silica, radius_m: 0.0127, thickness_m: 0.00635, spot_radius_m: 0.00043,
+                   density_kg_m3: 2201.0, heat_capacity_J_kgK: 740.0}   # 1 inch; spot from results/cavity_thermal; rho, c [VALUE?]
+  vertical_graded: {substrate: sapphire, radius_m: 0.0044, thickness_m: 0.006, spot_radius_m: 0.00094,
+                    density_kg_m3: 3980.0, heat_capacity_J_kgK: 760.0}  # 12 x 5 mm strip as an equal-area disc [CONFIRM?]; spot 2 sqrt(sigma_x sigma_z) (results/cavity_vertical_beam_heights, 4x); rho, c [VALUE?]
+stability:                        # [VALUE?] expansion coefficients, approximate, verify against data sheets
+  cte_per_K: {ULE glass: 3.0e-8, Invar 36: 1.3e-6, stainless steel 304: 1.7e-5, aluminium 6061: 2.3e-5}
+  tilt_tolerance_rad: 1.0e-6      # Sections 4, 6: < 1 urad on the large telescope mirrors
+  plate_thickness_m: 0.025        # [CONFIRM?] base plate carrying the ring
+  lever_m: 0.15                   # mirror-to-mirror distance over which a through-thickness gradient bends the plate

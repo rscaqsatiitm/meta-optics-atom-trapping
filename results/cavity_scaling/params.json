@@ -1,0 +1,95 @@
+{
+  "config": {
+    "run_id": "cavity_scaling",
+    "wavelength_nm": 1075.0,
+    "period_um": 4.0,
+    "vertical_period_um": 8.0,
+    "depth_mK": 0.2,
+    "mode_matching": 0.95,
+    "w_z_um": 75.0,
+    "reference_side_um": 3996.0,
+    "budget_json": "results/cavity_budget/budget.json",
+    "noise_json": "results/cavity_noise/noise.json",
+    "layout_json": "results/cavity_layout/layout.json",
+    "vertical_f_z_m": 0.04,
+    "defect_dT_K": 50.0,
+    "atoms_per_site_needed": 2.0,
+    "cloud_peak_over_needed": [
+      3.0,
+      5.0
+    ],
+    "cases": [
+      "fig1000",
+      "fig1000_c0.5",
+      "tilt1"
+    ],
+    "sizes": [
+      {
+        "n_sites": 10000.0,
+        "foxli_json": "results/cavity_foxli_n1e4/foxli.json",
+        "correction_json": "results/cavity_correction_n1e4/correction.json",
+        "vertical_json": "results/cavity_vertical_gauss_n1e4/vertical.json",
+        "vertical_mirrors_json": "results/cavity_vertical_mirrors_gauss_n1e4/mirrors.json",
+        "adopted_vertical_variant": "no_z_telescope",
+        "scale_vertical_power_to_profile": true,
+        "vertical_flat_top_json": "results/cavity_vertical_plain_n1e4/vertical.json",
+        "vertical_scaled_design_json": "results/cavity_vertical_n1e4/vertical.json",
+        "adopted_inplane": "plain",
+        "variant_keys": {
+          "telescope": "telK_M0.2_d70",
+          "plain": "plane150"
+        }
+      },
+      {
+        "n_sites": 100000.0,
+        "foxli_json": "results/cavity_foxli_n1e5/foxli.json",
+        "correction_json": "results/cavity_correction_n1e5/correction.json",
+        "vertical_json": "results/cavity_vertical_plain_n1e5/vertical.json",
+        "vertical_mirrors_json": "results/cavity_vertical_mirrors_plain_n1e5/mirrors.json",
+        "vertical_scaled_design_json": "results/cavity_vertical_n1e5/vertical.json",
+        "adopted_vertical_variant": "no_z_telescope",
+        "adopted_inplane": "plain",
+        "variant_keys": {
+          "telescope": "telK_M0.2_d70",
+          "plain": "plane150"
+        }
+      },
+      {
+        "n_sites": 1000000.0,
+        "foxli_json": "results/cavity_foxli/foxli.json",
+        "correction_json": "results/cavity_correction_d70/correction.json",
+        "correction_plain_json": "results/cavity_correction/correction.json",
+        "vertical_json": "results/cavity_vertical_ztel4/vertical.json",
+        "vertical_no_ztel_json": "results/cavity_vertical_chosen/vertical.json",
+        "adopted_vertical_variant": "z_expand_4x",
+        "vertical_mirrors_json": "results/cavity_vertical_mirrors/mirrors.json",
+        "adopted_inplane": "telescope",
+        "variant_keys": {
+          "telescope": "telK_M0.2_d70",
+          "plain": "plane150"
+        }
+      }
+    ],
+    "_config_path": "configs/cavity_scaling.yaml"
+  },
+  "git": {
+    "commit": "aba9c5af22f5e88d63f396156ef9ac76bb6239a0",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-07T11:32:59+00:00"
+}

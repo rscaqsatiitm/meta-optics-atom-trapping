@@ -1,0 +1,37 @@
+{
+  "config": {
+    "run_id": "cavity_thermal_foxli",
+    "foxli_config": "configs/cavity_foxli.yaml",
+    "variant": "telK_M0.2_d70",
+    "thermal_json": "results/cavity_thermal/thermal.json",
+    "cases": [
+      "IBS HR, 10 ppm, fused silica",
+      "Si-rich SiN metasurface, nominal, fused silica",
+      "Si-rich SiN metasurface, nominal, sapphire"
+    ],
+    "extra_scales": [
+      10.0
+    ],
+    "_config_path": "configs/cavity_thermal_foxli.yaml"
+  },
+  "git": {
+    "commit": "1dc3d7acf28fb60e3905ffd10b347b50203c1e4a",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T18:25:10+00:00"
+}

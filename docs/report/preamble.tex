@@ -1,0 +1,43 @@
+% Shared preamble of docs/report/*.tex (single-column article, A4, 11 pt).
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{upgreek}
+\usepackage[per-mode=symbol]{siunitx}
+\usepackage{longtable,booktabs,array,tabularx,multirow,makecell}
+\usepackage{calc}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\graphicspath{{../../results/}}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+% Images: scale down to the text width if needed (as in pandoc's template).
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Pandoc output helpers (faithful edition).
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\AtBeginEnvironment{longtable}{\footnotesize}
+\AtBeginEnvironment{tabularx}{\footnotesize}
+
+% Notation.
+\newcommand{\placeholder}[1]{{\color{red!55!black}\ttfamily\small #1}}
+\newcommand{\rtHz}{\ensuremath{/\sqrt{\mathrm{Hz}}}}
+\DeclareSIUnit\dBc{dBc}
+\DeclareSIUnit\ppm{ppm}
+\sisetup{range-phrase={\text{ to }},range-units=single,list-units=single}
+\setlength{\parskip}{0.4ex}

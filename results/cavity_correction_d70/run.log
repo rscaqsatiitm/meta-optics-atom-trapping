@@ -1,0 +1,31 @@
+telK_M0.2_d70_fig1000_seed1_uncorrected {"depth_rms": 0.020049428987828622, "min_over_mean": 0.9637521207963744, "g_ratio": 0.9984591558675786, "dy_affine_res_nm": 2.9078299395271934}
+telK_M0.2_d70_fig1000_seed1_openloop_noise0.0nm {"depth_rms": 0.004108202389615206, "min_over_mean": 0.9855812287979157, "g_ratio": 0.9996371863012926, "dy_affine_res_nm": 2.265582864012163, "stroke_G1": {"rms_nm": 2.085625635587877, "pv_nm": 9.530142182486722}, "stroke_G2": {"rms_nm": 1.8206991021011176, "pv_nm": 5.745435314230122}}
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 0: 2.005 % G/G0 0.998
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 1: 1.060 % G/G0 0.999
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 2: 0.634 % G/G0 0.999
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 3: 0.478 % G/G0 0.999
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 4: 0.434 % G/G0 0.999
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 5: 0.420 % G/G0 0.999
+  telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 round 6: 0.417 % G/G0 0.999
+telK_M0.2_d70_fig1000_seed1_closedloop_noise0.01 {"history": [{"round": 0, "depth_rms": 0.020049428987828622, "min_over_mean": 0.9637521207963744, "g_ratio": 0.9984591558675786, "dy_affine_res_nm": 2.9078299395271934}, {"round": 1, "depth_rms": 0.010598571700044032, "min_over_mean": 0.974794458387229, "g_ratio": 0.9987767409488759, "dy_affine_res_
+telK_M0.2_d70_fig1000_seed2_uncorrected {"depth_rms": 0.04007287715574719, "min_over_mean": 0.8893925540539854, "g_ratio": 0.9644475887245916, "dy_affine_res_nm": 19.665703628280216}
+telK_M0.2_d70_fig1000_seed2_openloop_noise0.0nm {"depth_rms": 0.004866767865706851, "min_over_mean": 0.9836917551713298, "g_ratio": 0.9991347452640641, "dy_affine_res_nm": 3.4299394760523487, "stroke_G1": {"rms_nm": 2.0373714317410667, "pv_nm": 8.134067242670207}, "stroke_G2": {"rms_nm": 2.5412133090122326, "pv_nm": 6.621330538600031}}
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 0: 4.007 % G/G0 0.964
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 1: 2.430 % G/G0 0.982
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 2: 1.538 % G/G0 0.985
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 3: 1.060 % G/G0 0.985
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 4: 0.867 % G/G0 0.985
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 5: 0.782 % G/G0 0.984
+  telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 round 6: 0.749 % G/G0 0.984
+telK_M0.2_d70_fig1000_seed2_closedloop_noise0.01 {"history": [{"round": 0, "depth_rms": 0.04007287715574719, "min_over_mean": 0.8893925540539854, "g_ratio": 0.9644475887245916, "dy_affine_res_nm": 19.665703628280216}, {"round": 1, "depth_rms": 0.02430152143586647, "min_over_mean": 0.93612118320438, "g_ratio": 0.9820158411025082, "dy_affine_res_nm"
+telK_M0.2_d70_tilt1_seed1_uncorrected {"depth_rms": 0.011235557355562897, "min_over_mean": 0.9712704488765335, "g_ratio": 0.9971126626842891, "dy_affine_res_nm": 0.594706262733481}
+telK_M0.2_d70_tilt1_seed1_openloop_noise0.0nm {"depth_rms": 0.004172909235787872, "min_over_mean": 0.9859966734604235, "g_ratio": 0.9996443059164885, "dy_affine_res_nm": 0.19605130670647264, "stroke_G1": {"rms_nm": 1.7502540868667904, "pv_nm": 7.169980579180652}, "stroke_G2": {"rms_nm": 1.072100452869136, "pv_nm": 3.7897254751445795}}
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 0: 1.124 % G/G0 0.997
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 1: 0.596 % G/G0 0.999
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 2: 0.357 % G/G0 1.000
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 3: 0.261 % G/G0 1.000
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 4: 0.230 % G/G0 1.000
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 5: 0.220 % G/G0 1.000
+  telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 round 6: 0.218 % G/G0 1.000
+telK_M0.2_d70_tilt1_seed1_closedloop_noise0.01 {"history": [{"round": 0, "depth_rms": 0.011235557355562897, "min_over_mean": 0.9712704488765335, "g_ratio": 0.9971126626842891, "dy_affine_res_nm": 0.594706262733481}, {"round": 1, "depth_rms": 0.00595737845454159, "min_over_mean": 0.9821341340855954, "g_ratio": 0.9991859478362312, "dy_affine_res_n
+done

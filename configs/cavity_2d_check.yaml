@@ -1,0 +1,18 @@
+# 2D Fox-Li check of the in-plane telescope ring (docs/cavity_concept.md, Section 4b).
+run_id: cavity_2d_check
+wavelength_um: 1.075
+period_um: 4.0
+array_side_um: 3996.0
+order: 20
+flat_tol: 0.01
+w_z_um: 75.0
+f_z_um: 30000.0                # vertical focal length of the primary (S4)
+telescope: {f1_um: 100000.0, mag: 0.2, d0_um: 50000.0, L_um: 100000.0, ap1_um: 5000.0, ap2_um: 2500.0, ap_g_um: 2500.0}
+grid: {nx: 1024, width_x_um: 14000.0, nz: 192, width_z_um: 2400.0}
+g_target: 30.0                 # low enhancement for speed; the tolerances barely depend on it (S3 finesse scan: 5.2 % at G = 30, 5.7 % at 300)
+loss_other: 3.0e-4
+map_sites_per_side: 101
+fig_waves: 0.001
+corr_um: 2000.0
+seeds: [1]
+closed_loop_rounds: 4

@@ -1,0 +1,36 @@
+# Correction of the cavity-lattice depth non-uniformity by re-shaping G1, G2 (docs/cavity_concept.md, Section 4b).
+run_id: cavity_correction
+foxli_config: configs/cavity_foxli.yaml   # grid, losses, variants, lattice geometry
+g_target: 300.0
+map_sites_per_side: 101
+variants: [telK_M0.2, plane150]
+cases:                     # errors on every mirror of the ring (10 for the telescope ring, 4 for plane folds)
+  - {name: fig1000, fig_waves: 0.001, corr_um: 2000.0, seeds: [1, 2], closed_loop: true}
+  - {name: fig1000_c0.5, fig_waves: 0.001, corr_um: 500.0, seeds: [1], closed_loop: true}
+  - {name: fig300, fig_waves: 0.00333, corr_um: 2000.0, seeds: [1, 2], closed_loop: true}
+  - {name: tilt1, tilt_urad: 1.0, seeds: [1, 2], closed_loop: true}
+  - {name: fig1000_tilt0.3, fig_waves: 0.001, corr_um: 2000.0, tilt_urad: 0.3, seeds: [1], closed_loop: true}
+metrology_noise_nm: [0.0, 0.1, 0.3, 1.0]   # surface rms of the error-map measurement on every mirror
+metrology_corr_um: 1000.0
+metrology_tilt_urad: 0.1                    # tilt measurement error, when tilts are present
+closed_loop:
+  rounds: 6
+  gain: 0.5
+  n_bins: 48
+  smooth: 1.0
+  measurement_noise: [0.0, 0.01]            # per-site multiplicative noise of the measured depth (10^4 sampled sites)
+closed_loop_extra:                          # damped gains for the runs that stalled or diverged at gain 0.5
+  - {variant: telK_M0.2, case: fig300, seed: 2, gain: 0.25, rounds: 12}
+  - {variant: telK_M0.2, case: fig300, seed: 2, gain: 0.1, rounds: 16}
+  - {variant: telK_M0.2, case: fig1000, seed: 2, gain: 0.25, rounds: 12}
+  - {variant: telK_M0.2, case: fig1000_c0.5, seed: 1, gain: 0.25, rounds: 12}
+camera:                                     # closed loop from cameras imaging the transmitted beams onto planes conjugate to the crossing
+  variants: [telK_M0.2]
+  pixel_um: 10.0
+  n_bins: 48
+  rounds: 6
+  gain: 0.5
+  noise:                                    # random: fresh per frame; fixed_white: per-pixel response (PRNU); fixed_smooth: flat-field error, rms
+    - {name: rand0.5pct, random: 0.005}
+    - {name: rand0.5pct_prnu1pct, random: 0.005, fixed_white: 0.01}
+    - {name: rand0.5pct_flat1pct, random: 0.005, fixed_smooth: 0.01, smooth_corr_um: 1000.0}

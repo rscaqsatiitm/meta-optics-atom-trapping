@@ -1,0 +1,8 @@
+# Beam extent on the mirrors of the adopted 10^6 vertical ring, with and without a vertical telescope.
+run_id: cavity_vertical_beam_heights
+vertical_config: configs/cavity_vertical_chosen.yaml
+clip: 1.0e-4                    # enclosed half-width contains 1 - clip of the power (hard-aperture loss scale)
+z_variants:
+  - {name: no_z_telescope, telescope: false}
+  - {name: z_expand_4x, telescope: {mag: 4.0}, grid_n: 16384, grid_width_um: 40000.0, ap1_um: 5000.0, ap2_um: 8000.0, ap_g_um: 8000.0}
+  - {name: z_expand_8x, telescope: {mag: 8.0}, grid_n: 16384, grid_width_um: 40000.0, ap1_um: 5000.0, ap2_um: 12000.0, ap_g_um: 12000.0}

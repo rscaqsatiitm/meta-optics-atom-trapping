@@ -1,0 +1,15 @@
+# Intensities on the vertical ring's mirrors for the adopted fold geometry, and a vertical (z)
+# expanding telescope that lowers them (docs/cavity_concept.md, Section 5).
+run_id: cavity_vertical_mirrors
+vertical_config: configs/cavity_vertical_chosen.yaml
+layout_json: results/cavity_vertical_layout/vertical_layout.json
+budget_json: results/cavity_budget/budget.json
+thermal_config: configs/cavity_thermal.yaml      # defect criterion (dT limit) and substrates
+n_sites: 1000000.0
+depths_mK: [0.2, 0.86]
+spectrum_grid_n: 2048
+error_seeds: [1, 2]            # lambda/1000 figure errors on all ten mirrors, z direction
+z_variants:                    # P1, P2 positions fixed; Keplerian in z with magnification mag (f1z + f2z = 184 mm)
+  - {name: no_z_telescope, telescope: false}
+  - {name: z_expand_4x, telescope: {mag: 4.0}, grid_n: 8192, grid_width_um: 24000.0, ap1_um: 5000.0, ap2_um: 8000.0, ap_g_um: 8000.0}
+  - {name: z_expand_8x, telescope: {mag: 8.0}, grid_n: 16384, grid_width_um: 40000.0, ap1_um: 5000.0, ap2_um: 12000.0, ap_g_um: 12000.0}

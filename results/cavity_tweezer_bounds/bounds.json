@@ -1,0 +1,122 @@
+{
+  "loss_bound": {
+    "meta_hologram_2pass": {
+      "eta": 0.83,
+      "passes": 2,
+      "G_max": 3.214400514304082
+    },
+    "meta_objective_pair_4pass": {
+      "eta": 0.8,
+      "passes": 4,
+      "G_max": 1.693766937669377
+    },
+    "refractive_objective_pair_4pass": {
+      "eta": 0.95,
+      "passes": 4,
+      "G_max": 5.391017217561235
+    },
+    "ideal_AR_relay_4pass": {
+      "eta": 0.995,
+      "passes": 4,
+      "G_max": 50.37656640816863
+    }
+  },
+  "concentric": [
+    {
+      "R_mm": 30.0,
+      "field_um": 0.0,
+      "rms_one_reflection_waves": 9.625002770828307e-12,
+      "rms_roundtrip_waves": 1.9250005541656613e-11,
+      "strehl_roundtrip": 1.0,
+      "max_finesse_for_rms_below_linewidth_over_10": 5194803699.334116
+    },
+    {
+      "R_mm": 30.0,
+      "field_um": 100.0,
+      "rms_one_reflection_waves": 0.015732088889565187,
+      "rms_roundtrip_waves": 0.031464177779130374,
+      "strehl_roundtrip": 0.9616704874429124,
+      "max_finesse_for_rms_below_linewidth_over_10": 3.1782174859922203
+    },
+    {
+      "R_mm": 30.0,
+      "field_um": 300.0,
+      "rms_one_reflection_waves": 0.14158400508824523,
+      "rms_roundtrip_waves": 0.28316801017649046,
+      "strehl_roundtrip": 0.04219125727195793,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.3531472355852374
+    },
+    {
+      "R_mm": 30.0,
+      "field_um": 1000.0,
+      "rms_one_reflection_waves": 1.572511518806722,
+      "rms_roundtrip_waves": 3.145023037613444,
+      "strehl_roundtrip": 2.5901858245775886e-170,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.03179626947212558
+    },
+    {
+      "R_mm": 30.0,
+      "field_um": 2000.0,
+      "rms_one_reflection_waves": 6.281201050503554,
+      "rms_roundtrip_waves": 12.562402101007107,
+      "strehl_roundtrip": 0.0,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.007960261038928468
+    },
+    {
+      "R_mm": 30.0,
+      "field_um": 2830.0,
+      "rms_one_reflection_waves": 12.551514900642907,
+      "rms_roundtrip_waves": 25.103029801285814,
+      "strehl_roundtrip": 0.0,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.003983582889858094
+    },
+    {
+      "R_mm": 50.0,
+      "field_um": 0.0,
+      "rms_one_reflection_waves": 2.2107971649036657e-11,
+      "rms_roundtrip_waves": 4.421594329807331e-11,
+      "strehl_roundtrip": 1.0,
+      "max_finesse_for_rms_below_linewidth_over_10": 2261627651.49822
+    },
+    {
+      "R_mm": 50.0,
+      "field_um": 100.0,
+      "rms_one_reflection_waves": 0.009439275838997977,
+      "rms_roundtrip_waves": 0.018878551677995955,
+      "strehl_roundtrip": 0.9860284244800018,
+      "max_finesse_for_rms_below_linewidth_over_10": 5.297016514066372
+    },
+    {
+      "R_mm": 50.0,
+      "field_um": 300.0,
+      "rms_one_reflection_waves": 0.08495250226701834,
+      "rms_roundtrip_waves": 0.16990500453403667,
+      "strehl_roundtrip": 0.31993048761297077,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.5885641819336006
+    },
+    {
+      "R_mm": 50.0,
+      "field_um": 1000.0,
+      "rms_one_reflection_waves": 0.9437804189398676,
+      "rms_roundtrip_waves": 1.8875608378797353,
+      "strehl_roundtrip": 8.192160575225912e-62,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.052978424850310145
+    },
+    {
+      "R_mm": 50.0,
+      "field_um": 2000.0,
+      "rms_one_reflection_waves": 3.773265771266926,
+      "rms_roundtrip_waves": 7.546531542533852,
+      "strehl_roundtrip": 0.0,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.01325112065541352
+    },
+    {
+      "R_mm": 50.0,
+      "field_um": 2830.0,
+      "rms_one_reflection_waves": 7.549840595774829,
+      "rms_roundtrip_waves": 15.099681191549658,
+      "strehl_roundtrip": 0.0,
+      "max_finesse_for_rms_below_linewidth_over_10": 0.0066226563813786814
+    }
+  ]
+}

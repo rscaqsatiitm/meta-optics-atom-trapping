@@ -1,0 +1,37 @@
+{
+  "config": {
+    "run_id": "cavity_lattice",
+    "wavelength_nm": 1075.0,
+    "period_um": 4.0,
+    "vertical_period_um": 8.0,
+    "vertical_ratio": 1.0,
+    "depths_mK": [
+      0.2,
+      0.3,
+      0.86
+    ],
+    "tweezer_waist_um": 0.866,
+    "n_sites": 1000000.0,
+    "_config_path": "configs/cavity_lattice.yaml"
+  },
+  "git": {
+    "commit": "a31aa819c4858a3c307aa9d08992877cba0f4b1d",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-06T08:31:03+00:00"
+}

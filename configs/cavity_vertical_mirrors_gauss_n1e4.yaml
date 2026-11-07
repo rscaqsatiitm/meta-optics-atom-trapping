@@ -1,0 +1,12 @@
+# 10^4 follow-up: mirror intensities of the vertical ring with a Gaussian vertical profile.
+run_id: cavity_vertical_mirrors_gauss_n1e4
+vertical_config: configs/cavity_vertical_gauss_n1e4.yaml
+layout_json: results/cavity_vertical_layout/vertical_layout.json
+budget_json: results/cavity_budget/budget.json
+thermal_config: configs/cavity_thermal.yaml
+n_sites: 10000.0
+depths_mK: [0.2]
+spectrum_grid_n: 2048
+error_seeds: [1]
+z_variants:
+  - {name: no_z_telescope, telescope: false}

@@ -1,0 +1,95 @@
+f1 80.0: feasible halves 0 4
+f1 100.0: feasible halves 17 43
+f1 130.0: feasible halves 93 214
+f1 160.0: feasible halves 160 353
+{
+ "f1_mm": 160.0,
+ "f2_mm": 24.0,
+ "d0_mm": 110.0,
+ "half1": {
+  "L_mm": 120.0,
+  "alpha_deg": -160.0,
+  "G_side": -1
+ },
+ "half2": {
+  "L_mm": 120.0,
+  "alpha_deg": -98.0,
+  "G_side": 1
+ },
+ "ok": true,
+ "score": 11.050777079718562,
+ "mirror_mirror_mm": 11.395370170034958,
+ "beam_mirror_mm": 11.050777079718562,
+ "cell_keepout_mm": 30.5926062776526,
+ "z_top_mm": 9.390625,
+ "inplane_mirror_mm": 37.83412158347072,
+ "inplane_beam_mm": 35.84003275515061,
+ "aoi_max_deg": 44.523084916149486,
+ "depth_mm": -189.59994964844896,
+ "aoi_deg": {
+  "P1": 8.07376882976684,
+  "P2": 39.123222561094295,
+  "G1": 31.753554877811418,
+  "P2'": 39.123222561094295,
+  "P1'": 8.07376882976684,
+  "P3": 42.92623117023316,
+  "P4": 26.26154245807474,
+  "G2": 44.523084916149486,
+  "P4'": 26.26154245807474,
+  "P3'": 42.92623117023316
+ },
+ "half_trip_paths_mm": [
+  414.0,
+  414.0
+ ],
+ "round_trip_mm": 1656.0,
+ "fsr_MHz": 181.03409299516906,
+ "mirrors_V_mm": {
+  "P1": [
+   109.7514403646229,
+   7.390625
+  ],
+  "P2": [
+   -63.152001859984225,
+   -55.54108137192307
+  ],
+  "G1": [
+   0.0,
+   -157.57943034463307
+  ],
+  "P2'": [
+   63.152001859984225,
+   -55.54108137192307
+  ],
+  "P1'": [
+   -109.7514403646229,
+   7.390625
+  ],
+  "P3": [
+   109.7514403646229,
+   -7.390625
+  ],
+  "P4": [
+   84.14358978797087,
+   -189.59994964844896
+  ],
+  "G2": [
+   0.0,
+   -104.04379091283434
+  ],
+  "P4'": [
+   -84.14358978797087,
+   -189.59994964844896
+  ],
+  "P3'": [
+   -109.7514403646229,
+   -7.390625
+  ]
+ }
+}
+{'score_mm': 11.1, 'd0_mm': 110.0, 'half1': {'L_mm': 120.0, 'alpha_deg': -160.0, 'G_side': -1}, 'half2': {'L_mm': 120.0, 'alpha_deg': -98.0, 'G_side': 1}, 'ok': True, 'score': 11.1, 'mirror_mirror_mm': 11.4, 'beam_mirror_mm': 11.1, 'cell_keepout_mm': 30.6, 'z_top_mm': 9.4, 'inplane_mirror_mm': 37.8, 'inplane_beam_mm': 35.8, 'aoi_max_deg': 44.5, 'depth_mm': -189.6, 'f1_mm': 160.0}
+{'score_mm': 11.0, 'd0_mm': 110.0, 'half1': {'L_mm': 120.0, 'alpha_deg': -160.0, 'G_side': -1}, 'half2': {'L_mm': 120.0, 'alpha_deg': -100.0, 'G_side': 1}, 'ok': True, 'score': 11.0, 'mirror_mirror_mm': 11.4, 'beam_mirror_mm': 11.0, 'cell_keepout_mm': 30.6, 'z_top_mm': 9.4, 'inplane_mirror_mm': 37.9, 'inplane_beam_mm': 35.9, 'aoi_max_deg': 41.9, 'depth_mm': -188.6, 'f1_mm': 160.0}
+{'score_mm': 11.0, 'd0_mm': 110.0, 'half1': {'L_mm': 120.0, 'alpha_deg': -160.0, 'G_side': -1}, 'half2': {'L_mm': 120.0, 'alpha_deg': -102.0, 'G_side': 1}, 'ok': True, 'score': 11.0, 'mirror_mirror_mm': 11.3, 'beam_mirror_mm': 11.0, 'cell_keepout_mm': 30.6, 'z_top_mm': 9.4, 'inplane_mirror_mm': 37.9, 'inplane_beam_mm': 35.9, 'aoi_max_deg': 40.9, 'depth_mm': -187.4, 'f1_mm': 160.0}
+{'score_mm': 11.0, 'd0_mm': 110.0, 'half1': {'L_mm': 120.0, 'alpha_deg': -160.0, 'G_side': -1}, 'half2': {'L_mm': 120.0, 'alpha_deg': -104.0, 'G_side': 1}, 'ok': True, 'score': 11.0, 'mirror_mirror_mm': 11.3, 'beam_mirror_mm': 11.0, 'cell_keepout_mm': 30.6, 'z_top_mm': 9.4, 'inplane_mirror_mm': 37.9, 'inplane_beam_mm': 35.9, 'aoi_max_deg': 39.9, 'depth_mm': -185.9, 'f1_mm': 160.0}
+{'score_mm': 11.0, 'd0_mm': 110.0, 'half1': {'L_mm': 120.0, 'alpha_deg': -160.0, 'G_side': -1}, 'half2': {'L_mm': 120.0, 'alpha_deg': -106.0, 'G_side': 1}, 'ok': True, 'score': 11.0, 'mirror_mirror_mm': 11.3, 'beam_mirror_mm': 11.0, 'cell_keepout_mm': 30.6, 'z_top_mm': 9.4, 'inplane_mirror_mm': 37.9, 'inplane_beam_mm': 35.9, 'aoi_max_deg': 39.1, 'depth_mm': -184.3, 'f1_mm': 160.0}
+{'score_mm': 11.0, 'd0_mm': 110.0, 'half1': {'L_mm': 120.0, 'alpha_deg': -160.0, 'G_side': -1}, 'half2': {'L_mm': 120.0, 'alpha_deg': -108.0, 'G_side': 1}, 'ok': True, 'score': 11.0, 'mirror_mirror_mm': 11.3, 'beam_mirror_mm': 11.0, 'cell_keepout_mm': 30.6, 'z_top_mm': 9.4, 'inplane_mirror_mm': 38.0, 'inplane_beam_mm': 36.0, 'aoi_max_deg': 39.1, 'depth_mm': -182.4, 'f1_mm': 160.0}

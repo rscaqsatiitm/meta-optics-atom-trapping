@@ -1,0 +1,81 @@
+N=1e+04 G=300              IBS 1 ppm: in 0.230 W, dumped 0.066, absorbed in vacuum 0.7 mW, scattered 0.163 W
+    in-plane (each of two)   hottest mirror    0.01 mW: clamped dT 0.005 K, bulge 0.000 nm; free dT 0.01 K
+    vertical                 hottest mirror    0.05 mW: clamped dT 0.000 K, bulge 0.001 nm; free dT 0.03 K
+N=1e+04 G=300             IBS 10 ppm: in 0.230 W, dumped 0.066, absorbed in vacuum 6.5 mW, scattered 0.157 W
+    in-plane (each of two)   hottest mirror    0.10 mW: clamped dT 0.054 K, bulge 0.004 nm; free dT 0.07 K
+    vertical                 hottest mirror    0.45 mW: clamped dT 0.004 K, bulge 0.007 nm; free dT 0.30 K
+N=1e+04 G=300 10 ppm + graded loss absorbed: in 0.230 W, dumped 0.066, absorbed in vacuum 137.5 mW, scattered 0.026 W
+    in-plane (each of two)   hottest mirror   10.24 mW: clamped dT 5.463 K, bulge 0.356 nm; free dT 6.64 K
+    vertical                 hottest mirror   45.67 mW: clamped dT 0.426 K, bulge 0.688 nm; free dT 30.72 K
+N=1e+04 G=1500              IBS 1 ppm: in 0.046 W, dumped 0.013, absorbed in vacuum 0.7 mW, scattered 0.032 W
+    in-plane (each of two)   hottest mirror    0.01 mW: clamped dT 0.005 K, bulge 0.000 nm; free dT 0.01 K
+    vertical                 hottest mirror    0.05 mW: clamped dT 0.000 K, bulge 0.001 nm; free dT 0.03 K
+N=1e+04 G=1500             IBS 10 ppm: in 0.046 W, dumped 0.013, absorbed in vacuum 6.5 mW, scattered 0.026 W
+    in-plane (each of two)   hottest mirror    0.10 mW: clamped dT 0.054 K, bulge 0.004 nm; free dT 0.07 K
+    vertical                 hottest mirror    0.45 mW: clamped dT 0.004 K, bulge 0.007 nm; free dT 0.30 K
+N=1e+04 G=1500 10 ppm + graded loss absorbed: in 0.046 W, dumped 0.013, absorbed in vacuum 6.5 mW, scattered 0.026 W
+    in-plane (each of two)   hottest mirror    0.10 mW: clamped dT 0.054 K, bulge 0.004 nm; free dT 0.07 K
+    vertical                 hottest mirror    0.45 mW: clamped dT 0.004 K, bulge 0.007 nm; free dT 0.30 K
+N=1e+05 G=300              IBS 1 ppm: in 0.501 W, dumped 0.144, absorbed in vacuum 1.4 mW, scattered 0.355 W
+    in-plane (each of two)   hottest mirror    0.03 mW: clamped dT 0.017 K, bulge 0.001 nm; free dT 0.02 K
+    vertical                 hottest mirror    0.08 mW: clamped dT 0.001 K, bulge 0.001 nm; free dT 0.05 K
+N=1e+05 G=300             IBS 10 ppm: in 0.501 W, dumped 0.144, absorbed in vacuum 14.3 mW, scattered 0.343 W
+    in-plane (each of two)   hottest mirror    0.32 mW: clamped dT 0.172 K, bulge 0.011 nm; free dT 0.21 K
+    vertical                 hottest mirror    0.78 mW: clamped dT 0.007 K, bulge 0.012 nm; free dT 0.53 K
+N=1e+05 G=300 10 ppm + graded loss absorbed: in 0.501 W, dumped 0.144, absorbed in vacuum 299.7 mW, scattered 0.057 W
+    in-plane (each of two)   hottest mirror   32.62 mW: clamped dT 17.396 K, bulge 1.133 nm; free dT 21.16 K
+    vertical                 hottest mirror   78.91 mW: clamped dT 0.735 K, bulge 1.189 nm; free dT 53.08 K
+N=1e+05 G=1500              IBS 1 ppm: in 0.100 W, dumped 0.029, absorbed in vacuum 1.4 mW, scattered 0.070 W
+    in-plane (each of two)   hottest mirror    0.03 mW: clamped dT 0.017 K, bulge 0.001 nm; free dT 0.02 K
+    vertical                 hottest mirror    0.08 mW: clamped dT 0.001 K, bulge 0.001 nm; free dT 0.05 K
+N=1e+05 G=1500             IBS 10 ppm: in 0.100 W, dumped 0.029, absorbed in vacuum 14.3 mW, scattered 0.057 W
+    in-plane (each of two)   hottest mirror    0.32 mW: clamped dT 0.172 K, bulge 0.011 nm; free dT 0.21 K
+    vertical                 hottest mirror    0.78 mW: clamped dT 0.007 K, bulge 0.012 nm; free dT 0.53 K
+N=1e+05 G=1500 10 ppm + graded loss absorbed: in 0.100 W, dumped 0.029, absorbed in vacuum 14.3 mW, scattered 0.057 W
+    in-plane (each of two)   hottest mirror    0.32 mW: clamped dT 0.172 K, bulge 0.011 nm; free dT 0.21 K
+    vertical                 hottest mirror    0.78 mW: clamped dT 0.007 K, bulge 0.012 nm; free dT 0.53 K
+N=1e+06 G=300              IBS 1 ppm: in 3.472 W, dumped 0.998, absorbed in vacuum 9.9 mW, scattered 2.464 W
+    in-plane (each of two)   hottest mirror    0.10 mW: clamped dT 0.055 K, bulge 0.004 nm; free dT 0.07 K
+    vertical                 hottest mirror    0.78 mW: clamped dT 0.007 K, bulge 0.012 nm; free dT 0.53 K
+N=1e+06 G=300             IBS 10 ppm: in 3.472 W, dumped 0.998, absorbed in vacuum 98.9 mW, scattered 2.375 W
+    in-plane (each of two)   hottest mirror    1.02 mW: clamped dT 0.546 K, bulge 0.036 nm; free dT 0.66 K
+    vertical                 hottest mirror    7.85 mW: clamped dT 0.073 K, bulge 0.118 nm; free dT 5.28 K
+N=1e+06 G=300 10 ppm + graded loss absorbed: in 3.472 W, dumped 0.998, absorbed in vacuum 2077.7 mW, scattered 0.396 W
+    in-plane (each of two)   hottest mirror  103.37 mW: clamped dT 55.130 K, bulge 3.590 nm; free dT 67.05 K
+    vertical                 hottest mirror  792.56 mW: clamped dT 7.386 K, bulge 11.944 nm; free dT 533.11 K
+N=1e+06 G=1500              IBS 1 ppm: in 0.694 W, dumped 0.200, absorbed in vacuum 9.9 mW, scattered 0.485 W
+    in-plane (each of two)   hottest mirror    0.10 mW: clamped dT 0.055 K, bulge 0.004 nm; free dT 0.07 K
+    vertical                 hottest mirror    0.78 mW: clamped dT 0.007 K, bulge 0.012 nm; free dT 0.53 K
+N=1e+06 G=1500             IBS 10 ppm: in 0.694 W, dumped 0.200, absorbed in vacuum 98.9 mW, scattered 0.396 W
+    in-plane (each of two)   hottest mirror    1.02 mW: clamped dT 0.546 K, bulge 0.036 nm; free dT 0.66 K
+    vertical                 hottest mirror    7.85 mW: clamped dT 0.073 K, bulge 0.118 nm; free dT 5.28 K
+N=1e+06 G=1500 10 ppm + graded loss absorbed: in 0.694 W, dumped 0.200, absorbed in vacuum 98.9 mW, scattered 0.396 W
+    in-plane (each of two)   hottest mirror    1.02 mW: clamped dT 0.546 K, bulge 0.036 nm; free dT 0.66 K
+    vertical                 hottest mirror    7.85 mW: clamped dT 0.073 K, bulge 0.118 nm; free dT 5.28 K
+{
+ "ULE glass": {
+  "cte_per_K": 3e-08,
+  "resonance_shift_MHz_per_K": 8.366301153488372,
+  "gradient_K_for_tilt_tolerance": 5.555555555555555,
+  "uniform_K_for_100MHz_detuning_change": 11.952713411267116
+ },
+ "Invar 36": {
+  "cte_per_K": 1.3e-06,
+  "resonance_shift_MHz_per_K": 362.5397166511628,
+  "gradient_K_for_tilt_tolerance": 0.1282051282051282,
+  "uniform_K_for_100MHz_detuning_change": 0.275831847952318
+ },
+ "stainless steel 304": {
+  "cte_per_K": 1.7e-05,
+  "resonance_shift_MHz_per_K": 4740.903986976744,
+  "gradient_K_for_tilt_tolerance": 0.00980392156862745,
+  "uniform_K_for_100MHz_detuning_change": 0.02109302366694197
+ },
+ "aluminium 6061": {
+  "cte_per_K": 2.3e-05,
+  "resonance_shift_MHz_per_K": 6414.164217674418,
+  "gradient_K_for_tilt_tolerance": 0.007246376811594203,
+  "uniform_K_for_100MHz_detuning_change": 0.015590495753826672
+ }
+}
+{'inplane_graded': 657.8455595153714, 'vertical_graded': 732.5832269424197}
