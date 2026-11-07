@@ -26,5 +26,6 @@ check_chosen:
   cases:                        # strip half-heights in the ring plane (round-trip aperture loss of the vertical mode, Fox-Li)
     - {name: as_laid_out, mirror_half_height_mm: {primary: 2.0, small: 2.0}, beam_half_in_plane_mm: 1.0}          # 1.2e-2 loss without z telescope
     - {name: no_z_telescope_5mm, mirror_half_height_mm: {primary: 5.0, small: 5.0}, beam_half_in_plane_mm: 1.3}   # 4.7e-5
+    - {name: no_z_telescope_2_8mm, mirror_half_height_mm: {primary: 2.0, small: 8.0}, beam_half_in_plane_mm: 1.3}   # 2.4e-6
     - {name: z_telescope_4x, mirror_half_height_mm: {primary: 2.0, small: 6.0}, beam_half_in_plane_mm: 1.5}       # 2.6e-6
     - {name: z_telescope_8x, mirror_half_height_mm: {primary: 3.0, small: 12.0}, beam_half_in_plane_mm: 3.0}      # 1.2e-5

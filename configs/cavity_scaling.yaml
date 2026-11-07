@@ -20,8 +20,11 @@ sizes:
   - n_sites: 1.0e+4
     foxli_json: results/cavity_foxli_n1e4/foxli.json
     correction_json: results/cavity_correction_n1e4/correction.json
-    vertical_json: results/cavity_vertical_plain_n1e4/vertical.json            # adopted at this size: no horizontal telescope
-    vertical_mirrors_json: results/cavity_vertical_mirrors_plain_n1e4/mirrors.json
+    vertical_json: results/cavity_vertical_gauss_n1e4/vertical.json            # adopted at this size: no telescope, Gaussian vertical profile
+    vertical_mirrors_json: results/cavity_vertical_mirrors_gauss_n1e4/mirrors.json
+    adopted_vertical_variant: no_z_telescope
+    scale_vertical_power_to_profile: true                                       # budget assumes the flat-top; Gaussian needs 5.9x
+    vertical_flat_top_json: results/cavity_vertical_plain_n1e4/vertical.json   # the 19 um flat-top, for comparison
     vertical_scaled_design_json: results/cavity_vertical_n1e4/vertical.json   # the 10^6 design (0.15x telescope), where run
     adopted_inplane: plain
     variant_keys: {telescope: telK_M0.2_d70, plain: plane150}
@@ -31,13 +34,16 @@ sizes:
     vertical_json: results/cavity_vertical_plain_n1e5/vertical.json            # adopted at this size: no horizontal telescope
     vertical_mirrors_json: results/cavity_vertical_mirrors_plain_n1e5/mirrors.json
     vertical_scaled_design_json: results/cavity_vertical_n1e5/vertical.json   # the 10^6 design (0.15x telescope), where run
+    adopted_vertical_variant: no_z_telescope
     adopted_inplane: plain
     variant_keys: {telescope: telK_M0.2_d70, plain: plane150}
   - n_sites: 1.0e+6            # main study: 70 mm telescope ring checked in cavity_correction_d70, plain ring in cavity_correction
     foxli_json: results/cavity_foxli/foxli.json
     correction_json: results/cavity_correction_d70/correction.json
     correction_plain_json: results/cavity_correction/correction.json
-    vertical_json: results/cavity_vertical_chosen/vertical.json
+    vertical_json: results/cavity_vertical_ztel4/vertical.json             # adopted: 4x vertical telescope
+    vertical_no_ztel_json: results/cavity_vertical_chosen/vertical.json      # as first folded, no vertical telescope
+    adopted_vertical_variant: z_expand_4x
     vertical_mirrors_json: results/cavity_vertical_mirrors/mirrors.json
     adopted_inplane: telescope
     variant_keys: {telescope: telK_M0.2_d70, plain: plane150}

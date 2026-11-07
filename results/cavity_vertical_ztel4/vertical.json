@@ -1,0 +1,301 @@
+{
+  "x_design": {
+    "w_um": 3681.7403139551084,
+    "W_eq_um": 6924.198468988016
+  },
+  "z_design": {
+    "w_um": 323.0392254225408,
+    "H_eq_um": 573.4861452450372
+  },
+  "spectrum_z": {
+    "fundamental_loss": 2.086817519231232e-06,
+    "fundamental_overlap": 0.9999990648228297,
+    "modes": [
+      {
+        "dphase_rad": -0.07779131155464059,
+        "loss": 0.0006825325673534
+      },
+      {
+        "dphase_rad": -0.07788674017551475,
+        "loss": 0.0007771219100952687
+      },
+      {
+        "dphase_rad": -0.7597995667190927,
+        "loss": 0.007425880108408389
+      },
+      {
+        "dphase_rad": -0.8428312962677176,
+        "loss": 0.008001498060995815
+      }
+    ],
+    "lowest_loss_modes": [
+      {
+        "dphase_rad": -1.8862408955299048,
+        "loss": 0.0003617073078516775
+      },
+      {
+        "dphase_rad": -1.8862423486654813,
+        "loss": 0.00046166893843513357
+      },
+      {
+        "dphase_rad": -1.8863389420899055,
+        "loss": 0.0005806037389887164
+      },
+      {
+        "dphase_rad": -0.07779131155464059,
+        "loss": 0.0006825325673534
+      }
+    ]
+  },
+  "spectrum_x": {
+    "fundamental_loss": 3.6050067853121703e-07,
+    "fundamental_overlap": 0.9999999159559928,
+    "modes": [
+      {
+        "dphase_rad": -0.3002935784071238,
+        "loss": 0.007780764124961204
+      }
+    ],
+    "lowest_loss_modes": [
+      {
+        "dphase_rad": -0.3002935784071238,
+        "loss": 0.007780764124961204
+      },
+      {
+        "dphase_rad": -2.8279259990811836,
+        "loss": 0.014445247692035368
+      },
+      {
+        "dphase_rad": -1.2534069540020938,
+        "loss": 0.01752843093304368
+      },
+      {
+        "dphase_rad": 1.830833321997229,
+        "loss": 0.025386714518778608
+      }
+    ]
+  },
+  "cases": {
+    "ideal": {
+      "depth_rms": 0.0007251060603693108,
+      "min_over_mean": 0.9903447262728571,
+      "plane_dz_rms_um": 5.458975832404576e-07,
+      "plane_dz_pv_um": 2.7920855214876574e-06,
+      "plane_dz_affine_res_rms_um": 5.458450807860331e-07,
+      "g_ratio_x": 0.9999454187681128,
+      "g_ratio_z": 0.9999980571393985
+    },
+    "fig0.001_x_seed1_uncorrected": {
+      "depth_rms": 0.05717538475097305,
+      "min_over_mean": 0.9248233023618971,
+      "plane_dz_rms_um": 0.013181995321122433,
+      "plane_dz_pv_um": 0.1031641051914012,
+      "plane_dz_affine_res_rms_um": 0.006821602389916946,
+      "g_ratio": 0.9892613324837451
+    },
+    "fig0.001_x_seed1_openloop_perfect": {
+      "depth_rms": 0.0007538218776826319,
+      "min_over_mean": 0.9897597886208,
+      "plane_dz_rms_um": 0.0014565222199939335,
+      "plane_dz_pv_um": 0.006924175269107647,
+      "plane_dz_affine_res_rms_um": 0.0014485258798988142,
+      "g_ratio": 0.9997289316558452
+    },
+    "fig0.001_x_seed2_uncorrected": {
+      "depth_rms": 0.12378845560032184,
+      "min_over_mean": 0.7701344385614233,
+      "plane_dz_rms_um": 0.020932767495871016,
+      "plane_dz_pv_um": 0.10220300504879784,
+      "plane_dz_affine_res_rms_um": 0.017916433869412145,
+      "g_ratio": 0.9744998341290343
+    },
+    "fig0.001_x_seed2_openloop_perfect": {
+      "depth_rms": 0.0009738632540920679,
+      "min_over_mean": 0.9901366571904083,
+      "plane_dz_rms_um": 0.0024068608108593413,
+      "plane_dz_pv_um": 0.01459502805186889,
+      "plane_dz_affine_res_rms_um": 0.0023811142164386493,
+      "g_ratio": 0.9992733546834639
+    },
+    "fig0.001_z_seed1_uncorrected": {
+      "depth_rms": 0.0536347392682288,
+      "min_over_mean": 0.9309992733383622,
+      "plane_dz_rms_um": 0.05364744391011138,
+      "plane_dz_pv_um": 0.22148485992799982,
+      "plane_dz_affine_res_rms_um": 0.05364210636163948,
+      "g_ratio": 0.9908277656243148
+    },
+    "fig0.001_z_seed1_openloop_perfect": {
+      "depth_rms": 0.00982293357523472,
+      "min_over_mean": 0.9733748309748719,
+      "plane_dz_rms_um": 0.0057319312083227636,
+      "plane_dz_pv_um": 0.02180750908574387,
+      "plane_dz_affine_res_rms_um": 0.0057026782250091486,
+      "g_ratio": 0.9991353595496847
+    },
+    "fig0.001_z_seed2_uncorrected": {
+      "depth_rms": 0.07306856358282604,
+      "min_over_mean": 0.7990977677237308,
+      "plane_dz_rms_um": 0.044916758646836835,
+      "plane_dz_pv_um": 0.1970452292042123,
+      "plane_dz_affine_res_rms_um": 0.04319692670179545,
+      "g_ratio": 0.9881444394055712
+    },
+    "fig0.001_z_seed2_openloop_perfect": {
+      "depth_rms": 0.008906571625411704,
+      "min_over_mean": 0.9831111863113666,
+      "plane_dz_rms_um": 0.02834605913387208,
+      "plane_dz_pv_um": 0.12063063157777867,
+      "plane_dz_affine_res_rms_um": 0.02833930371502218,
+      "g_ratio": 0.9947455177359972
+    },
+    "fig0.001_both_seed1_closedloop": {
+      "history": [
+        {
+          "depth_rms": 0.07697291983695553,
+          "min_over_mean": 0.8209090773528323,
+          "plane_dz_rms_um": 0.041421265644857846,
+          "plane_dz_pv_um": 0.19568192368014292,
+          "plane_dz_affine_res_rms_um": 0.03949822993034736,
+          "round": 0,
+          "g_ratio_x": 0.9892613324837451,
+          "g_ratio_z": 0.9853027360978768
+        },
+        {
+          "depth_rms": 0.05017332597647675,
+          "min_over_mean": 0.8696358941726294,
+          "plane_dz_rms_um": 0.05064076856587013,
+          "plane_dz_pv_um": 0.2375361581239834,
+          "plane_dz_affine_res_rms_um": 0.049153650063644694,
+          "round": 1,
+          "g_ratio_x": 0.990233088697162,
+          "g_ratio_z": 0.9523498965426109
+        },
+        {
+          "depth_rms": 0.029107936591574853,
+          "min_over_mean": 0.9106328033906546,
+          "plane_dz_rms_um": 0.03197756681636359,
+          "plane_dz_pv_um": 0.14634364291523982,
+          "plane_dz_affine_res_rms_um": 0.029127198588993437,
+          "round": 2,
+          "g_ratio_x": 0.9904131925700503,
+          "g_ratio_z": 0.9638715236896652
+        },
+        {
+          "depth_rms": 0.023510168137972534,
+          "min_over_mean": 0.9375209026882462,
+          "plane_dz_rms_um": 0.030695637306452483,
+          "plane_dz_pv_um": 0.1394584416486437,
+          "plane_dz_affine_res_rms_um": 0.027702336161119546,
+          "round": 3,
+          "g_ratio_x": 0.9904227803645279,
+          "g_ratio_z": 0.9632772901100694
+        },
+        {
+          "depth_rms": 0.013130380744242687,
+          "min_over_mean": 0.9425563080220251,
+          "plane_dz_rms_um": 0.029405259406524737,
+          "plane_dz_pv_um": 0.14523171180942224,
+          "plane_dz_affine_res_rms_um": 0.02620248739606597,
+          "round": 4,
+          "g_ratio_x": 0.990404070208261,
+          "g_ratio_z": 0.9693165900767633
+        },
+        {
+          "depth_rms": 0.010624219232637238,
+          "min_over_mean": 0.9574275455329541,
+          "plane_dz_rms_um": 0.030343260194529372,
+          "plane_dz_pv_um": 0.14473861098627827,
+          "plane_dz_affine_res_rms_um": 0.02736417304164921,
+          "round": 5,
+          "g_ratio_x": 0.9903875891019183,
+          "g_ratio_z": 0.9681699772793196
+        },
+        {
+          "depth_rms": 0.01482700434719857,
+          "min_over_mean": 0.9629416151631794,
+          "plane_dz_rms_um": 0.02984481599746721,
+          "plane_dz_pv_um": 0.1387975493937541,
+          "plane_dz_affine_res_rms_um": 0.02682757900104011,
+          "round": 6,
+          "g_ratio_x": 0.9903752977451782,
+          "g_ratio_z": 0.9721583168603941
+        }
+      ]
+    },
+    "fig0.001_both_seed2_closedloop": {
+      "history": [
+        {
+          "depth_rms": 0.12974461028509165,
+          "min_over_mean": 0.7619594072930341,
+          "plane_dz_rms_um": 0.05270791051932254,
+          "plane_dz_pv_um": 0.28969595161575623,
+          "plane_dz_affine_res_rms_um": 0.05065556165307569,
+          "round": 0,
+          "g_ratio_x": 0.9744998341290343,
+          "g_ratio_z": 0.9911442092923948
+        },
+        {
+          "depth_rms": 0.06645227839115568,
+          "min_over_mean": 0.8849227118222638,
+          "plane_dz_rms_um": 0.04614173997716697,
+          "plane_dz_pv_um": 0.23942980699884825,
+          "plane_dz_affine_res_rms_um": 0.044141933143520454,
+          "round": 1,
+          "g_ratio_x": 0.9779857621410623,
+          "g_ratio_z": 0.9729711431027457
+        },
+        {
+          "depth_rms": 0.03443734913727932,
+          "min_over_mean": 0.9343671606958053,
+          "plane_dz_rms_um": 0.04630783137477102,
+          "plane_dz_pv_um": 0.2294857609780241,
+          "plane_dz_affine_res_rms_um": 0.044412083087464846,
+          "round": 2,
+          "g_ratio_x": 0.9781110597217504,
+          "g_ratio_z": 0.9587407606650492
+        },
+        {
+          "depth_rms": 0.025774782872669134,
+          "min_over_mean": 0.9439056858661848,
+          "plane_dz_rms_um": 0.04388386183453661,
+          "plane_dz_pv_um": 0.22274549139513322,
+          "plane_dz_affine_res_rms_um": 0.041889731623883084,
+          "round": 3,
+          "g_ratio_x": 0.9777403588435981,
+          "g_ratio_z": 0.9561935302526456
+        },
+        {
+          "depth_rms": 0.025615962275811862,
+          "min_over_mean": 0.953365481199203,
+          "plane_dz_rms_um": 0.03463384936777354,
+          "plane_dz_pv_um": 0.1926007824186605,
+          "plane_dz_affine_res_rms_um": 0.03230281251898463,
+          "round": 4,
+          "g_ratio_x": 0.9774357914281064,
+          "g_ratio_z": 0.9762180665037132
+        },
+        {
+          "depth_rms": 0.013105359060460241,
+          "min_over_mean": 0.9715915126351942,
+          "plane_dz_rms_um": 0.06957731346067315,
+          "plane_dz_pv_um": 0.3367941417052164,
+          "plane_dz_affine_res_rms_um": 0.06832608717463426,
+          "round": 5,
+          "g_ratio_x": 0.9772421976429182,
+          "g_ratio_z": 0.9372430231870397
+        },
+        {
+          "depth_rms": 0.009546547007469179,
+          "min_over_mean": 0.9752995674187207,
+          "plane_dz_rms_um": 0.06509469300532895,
+          "plane_dz_pv_um": 0.30285165092219474,
+          "plane_dz_affine_res_rms_um": 0.06380113355235079,
+          "round": 6,
+          "g_ratio_x": 0.9771236266753933,
+          "g_ratio_z": 0.9416251289602011
+        }
+      ]
+    }
+  }
+}

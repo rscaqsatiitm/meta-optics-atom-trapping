@@ -68,6 +68,14 @@
           "beam_half_in_plane_mm": 1.3
         },
         {
+          "name": "no_z_telescope_2_8mm",
+          "mirror_half_height_mm": {
+            "primary": 2.0,
+            "small": 8.0
+          },
+          "beam_half_in_plane_mm": 1.3
+        },
+        {
           "name": "z_telescope_4x",
           "mirror_half_height_mm": {
             "primary": 2.0,
@@ -88,7 +96,7 @@
     "_config_path": "configs/cavity_vertical_layout_check.yaml"
   },
   "git": {
-    "commit": "1edd95ccb7b0fbaafaf7e9baa1bcd1c6d4b49cec",
+    "commit": "aba9c5af22f5e88d63f396156ef9ac76bb6239a0",
     "dirty": "True"
   },
   "versions": {
@@ -106,5 +114,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-07T11:13:56+00:00"
+  "utc": "2026-11-07T11:21:30+00:00"
 }

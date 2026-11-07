@@ -101,10 +101,11 @@ telescope. All corrections are static; drift must stay below these levels betwee
   comparable to the test masses of gravitational-wave detectors. The largest tolerable fully
   absorbing defect falls to 0.36 to 1.5 \(\upmu\mathrm{m}\) on fused silica, against 92 \(\upmu\mathrm{m}\) for the 200 W
   metasurface of the present design, and to 9 to 37 \(\upmu\mathrm{m}\) on sapphire. The vertical ring, which carries
-  785 of the 989 W, is worse: as folded in Figure 5 its mirrors see 14 to 170 kW/cm\(^{2}\) (defects
-  \(\leq\) 0.04 \(\upmu\mathrm{m}\) on fused silica, 1 \(\upmu\mathrm{m}\) on sapphire). An added 4\(\times\) to 8\(\times\) vertical telescope lowers this to
-  27 to 55 kW/cm\(^{2}\) (0.13 to 0.19 \(\upmu\mathrm{m}\), or 3 to 4.4 \(\upmu\mathrm{m}\) on sapphire), at the cost of a larger figure-error
-  sensitivity of its vertical profile (Section 5).
+  785 of the 989 W, is worse: as first folded in Figure 5 its mirrors see 14 to 170 kW/cm\(^{2}\) (defects
+  \(\leq\) 0.04 \(\upmu\mathrm{m}\) on fused silica, 1 \(\upmu\mathrm{m}\) on sapphire), and its 4 mm strip mirrors clip the narrow vertical
+  flat-top (\(1.2\times10^{-2}\) per round trip). The adopted design adds a 4\(\times\) vertical telescope: 32 to 55 kW/cm\(^{2}\)
+  (3.0 \(\upmu\mathrm{m}\) on sapphire), strips of \(\pm2\) mm (P1) and \(\pm6\) mm (P2, G), which fit the fold, and atom feedback
+  to about 1 \% from 7.7 and 13 \% (Section 5).
 \item
   Meta-optics belong outside the cavity. A pixelated metasurface as the graded mirror is too
   lossy with present fabrication: 5 nm rms width noise is 0.10 to 0.15 rad of phase noise, which
@@ -129,11 +130,11 @@ telescope. All corrections are static; drift must stay below these levels betwee
 \item
   The large step is from \(10^{5}\) to \(10^{6}\) sites (Section 6d). The same models at \(10^{4}\) and \(10^{5}\) show
   that a plain ring without telescope is non-degenerate there (nearest mode 0.78 and 0.17 rad away, with
-  \(2.4\times10^{-2}\) and \(2.5\times10^{-4}\) loss), needs 0.098 and 0.50 W of input at G = 300 (tweezers: 14 and 140 W), gives 1.6
+  \(2.4\times10^{-2}\) and \(2.5\times10^{-4}\) loss), needs 0.23 and 0.50 W of input at G = 300 (tweezers: 14 and 140 W), gives 1.6
   to 3.0 \% for \(\lambda\)/1000 errors on every mirror (the atom loop corrects \(10^{5}\) to 0.20 to 0.49 \%), and
-  keeps its mirrors at or below 7.4 kW/cm\(^{2}\) (defects up to 1.6 \(\upmu\mathrm{m}\) on fused silica). The \(10^{6}\) telescope
+  keeps the in-plane mirrors at 4.2 kW/cm\(^{2}\) (defects up to 1.6 \(\upmu\mathrm{m}\) on fused silica). The \(10^{6}\) telescope
   design does not scale down (4.4 \% ideal at \(10^{4}\)). At \(10^{6}\) the degeneracy brings the telescope, a 0.36 \(\upmu\mathrm{m}\)
-  defect limit, up to 170 kW/cm\(^{2}\) on the vertical ring, a threefold tighter angle stability than at \(10^{5}\),
+  defect limit, up to 55 kW/cm\(^{2}\) on the vertical ring with its vertical telescope, a threefold tighter angle stability than at \(10^{5}\),
   and a \(10^{9}\)-atom MOT.
 \end{enumerate}
 
@@ -182,9 +183,10 @@ Round trip, free spectral range, reflections & 1.16 m, 258 MHz, 10 & 1.66 m, 181
 Circulating power & 102 W & 785 W \\
 Input power at G = 300 (mode matching 0.95) & 0.36 W & 2.75 W \\
 Linewidth (FWHM) at G = 300 / 1500 & 413 / 82 kHz & 289 / 58 kHz \\
-Peak intensity on the mirrors & 4.5 (P1), 19.3 (P2), 17.4 (G) kW/cm\(^{2}\) & 14 to 170 kW/cm\(^{2}\) as folded; 27 to 37 kW/cm\(^{2}\) with an 8\(\times\) vertical telescope (Section 5) \\
+Peak intensity on the mirrors & 4.5 (P1), 19.3 (P2), 17.4 (G) kW/cm\(^{2}\) & 32 to 55 kW/cm\(^{2}\) with the adopted 4\(\times\) vertical telescope (170 kW/cm\(^{2}\) without it; Section 5) \\
+Vertical telescope, strip half-heights in the ring plane & none & 4\(\times\) Keplerian (\(f_{1z}\) = 36.8 mm); \(\pm2\) mm on P1, P3, \(\pm6\) mm on the other mirrors; sapphire substrates \\
 Trap frequency along the lattice axis & 19.8 kHz & 9.9 kHz \\
-Depth uniformity: design / \(\lambda\)/1000 errors on all mirrors / after atom feedback & 0.23 \% / 2.0 to 4.0 \% / 0.42 to 0.75 \% (70 mm ring) & 0.19 \% / 5.7 to 12 \% / 0.17 to 0.19 \% \\
+Depth uniformity: design / \(\lambda\)/1000 errors on all mirrors / after atom feedback & 0.23 \% / 2.0 to 4.0 \% / 0.42 to 0.75 \% (70 mm ring) & 0.073 \% / 5.4 to 12 \% / 0.96 to 1.06 \% (best round) \\
 Static figure and tilt before correction & \(\lambda\)/1000 rms, \textless{} 1 \(\upmu\mathrm{rad}\) & \(\lambda\)/1000 rms \\
 Noise for a 10 s heating time at 10 \(\upmu\mathrm{K}\) & RIN \textless{} -106 dBc/Hz at 40 kHz; 0.32 pm/\(\sqrt{\mathrm{Hz}}\) per mirror at 20 kHz & RIN \textless{} -100 dBc/Hz at 20 kHz; 0.64 pm/\(\sqrt{\mathrm{Hz}}\) per mirror at 10 kHz \\
 \end{longtable}
@@ -310,8 +312,8 @@ rings, selects: primary f = 160 mm, secondary f = 24 mm (0.15\(\times\)), primar
 behind the secondary, half trip 414 mm, round trip 1.66 m, free spectral range 181 MHz. Half trip 1
 folds back under the atoms (its folded beam passes 30.6 mm from them) to G1 158 mm below the atoms;
 half trip 2 folds steeply down to 190 mm depth and back up to G2, 104 mm below the atoms. Clearances:
-11.4 mm between mirror faces (strip mirrors 4 mm tall in the ring plane), 11.1 mm between beams and
-foreign mirrors, 37.8 mm to the in-plane rings' mirrors and 35.8 mm to their beams; angles of
+11.4 mm between mirror faces (strip mirrors 4 mm tall in the ring plane; Section 5 shows that P2, G
+and the return mirrors must be taller, which still fits), 11.1 mm between beams and foreign mirrors, 37.8 mm to the in-plane rings' mirrors and 35.8 mm to their beams; angles of
 incidence 8 to 45 deg. The effective propagation behind the telescope, L / M\(^{2}\) = 5.3 m, is twice that
 of the in-plane rings (2.5 m), which partly compensates the wider beam (Section 4b).
 
@@ -352,7 +354,8 @@ Figure 5. The vertical-lattice ring in its vertical plane through the array diag
 P1 back under the atoms to P2, the graded mirror G1 on the vertical axis 158 mm below the atoms, P2'
 and P1', and returns on the lower-left arm; half trip 2 (dark green) leaves on the lower arm and
 folds via P3, P4, G2 (104 mm below), P4', P3'. Black bars: mirror faces (4 mm strips in the ring
-plane; widths along the horizontal flat-top axis are 12 and 5 mm). Telescope f1 = 160 mm,
+plane as first laid out; the adopted design with a 4\(\times\) vertical telescope needs \(\pm2\) mm on P1, P3 and
+\(\pm6\) mm on the other mirrors, Section 5; widths along the horizontal flat-top axis are 12 and 5 mm). Telescope f1 = 160 mm,
 f2 = 24 mm. Yellow: the 42 mm imaging objective and its mount \placeholder{[CONFIRM?]} and the NA 0.5 light cone.
 (b) The exit and return mirrors near P1, P3. Geometry from \nolinkurl{results/cavity_vertical_layout}; drawn by
 \nolinkurl{scripts/plot_cavity_sketch.py.}
@@ -852,6 +855,19 @@ direction for power: its design loss rises to \(2.9\times10^{-5}\) on the longer
 reduce its enhancement to 0.80 to 0.90 of the ideal even after correction, i.e.~10 to 25 \% more input
 power for this ring. The lattice planes stay flat to \(\leq\) 0.5 \(\upmu\mathrm{m}\) peak-to-valley.
 
+With the 4\(\times\) vertical telescope adopted in Section 5 (\nolinkurl{configs/cavity_vertical_ztel4.yaml},
+\nolinkurl{results/cavity_vertical_ztel4/vertical.json}; a Keplerian telescope in the ring plane at the same mirror
+positions, P1 curved with \(f_{1z}\) = 36.8 mm), the ideal depth is uniform to 0.073 \% rms and the vertical mode
+loses \(2.1\times10^{-6}\) per round trip (nearest mode 1.9 rad away, \(3.6\times10^{-4}\) loss). \(\lambda\)/1000 errors on all ten
+mirrors give 5.7 and 12 \% (horizontal) and 5.4 and 7.3 \% (vertical) uncorrected; a perfect-metrology
+redesign restores 0.08 and 0.10 \% horizontally but only 0.98 and 0.89 \% vertically, the phase-only floor
+of this ring. Atom feedback with errors in both directions reaches its best value, 1.06 and 0.96 \%, after
+five and six rounds (from 7.7 and 13 \%), with the enhancement at 0.99 / 0.97 and 0.98 / 0.94 (horizontal
+/ vertical mode) and the lattice planes flat to \(\leq\) 0.3 \(\upmu\mathrm{m}\) peak-to-valley. Continued to 12 rounds, the same
+update rule drifts back to 2.3 to 2.7 \% (\nolinkurl{results/cavity_vertical_ztel4_r12}), so the loop must stop at its
+best round. An 8\(\times\) telescope behaves the same way (0.98 and 1.06 \% after six rounds,
+\nolinkurl{results/cavity_vertical_ztel8}) but does not fit the layout (below).
+
 \hypertarget{intensities-defects-and-heating-inside-the-cavity}{%
 \section{5. Intensities, defects and heating inside the cavity}\label{intensities-defects-and-heating-inside-the-cavity}}
 
@@ -933,10 +949,31 @@ on P1 without moving it further from the atoms. The surface intensity is lower t
 value by cos AOI (0.90 on P2 and 0.85 on G at the smallest angles of the layout). The vertical
 telescope also lowers the design loss of the narrow mode and keeps its enhancement at 0.99 to 1.00 after a
 perfect-metrology redesign (0.93 to 0.96 without it), but it makes the z mode less discriminating (\(1.1\times10^{-4}\) loss for 4\(\times\))
-and the uncorrected depth more sensitive to figure error (5 to 23 \% against 0.7 to 1.5 \%). Our choice for
-the vertical ring is therefore a compromise. First, sapphire substrates on all its mirrors, which raise
-the defect limit 23\(\times\). Second, a vertical telescope of 4\(\times\) to 8\(\times\), accepting closed-loop correction of the z
-profile as a requirement; the closed loop and the layout with the added z curvature are not simulated.
+and the uncorrected depth more sensitive to figure error (5 to 23 \% against 0.7 to 1.5 \%).
+
+Mirror heights and layout (\nolinkurl{scripts/cavity_vertical_beam_heights.py}, \nolinkurl{results/cavity_vertical_beam_heights};
+\nolinkurl{scripts/cavity_vertical_layout.py} in check mode, \nolinkurl{configs/cavity_vertical_layout_check.yaml},
+\nolinkurl{results/cavity_vertical_layout_check/check.json}). The fold layout of Section 2 assumed 4 mm strip
+mirrors in the ring plane, while the Fox-Li model above used \(\pm5\) mm apertures. The narrow vertical
+flat-top diffracts: its rms half-height grows from 0.20 mm on P1 to 0.66 mm on the returning P1', and its
+far wings set the loss. Without a vertical telescope the vertical mode loses \(1.2\times10^{-2}\) per round trip with
+\(\pm2\) mm strips, \(2.1\times10^{-3}\) with \(\pm3\) mm, \(2.6\times10^{-4}\) with \(\pm4\) mm and \(4.7\times10^{-5}\) with \(\pm5\) mm; the first is five times the
+whole loss budget at G = 300, so the ring as first laid out would not reach its enhancement. Enlarging
+only P2, G and the return mirrors suffices: \(\pm2\) mm on P1 and \(\pm8\) mm elsewhere gives \(2.4\times10^{-6}\). With the 4\(\times\)
+vertical telescope, \(\pm2\) mm on P1 and \(\pm6\) mm elsewhere gives \(2.6\times10^{-6}\); the 8\(\times\) telescope needs \(\pm3\) and
+\(\pm12\) mm (\(1.2\times10^{-5}\)). Re-evaluated in 3D against the in-plane rings, the chosen fold keeps 10.8 mm (no vertical
+telescope, 2 / 8 mm strips) and 10.6 mm (4\(\times\), 2 / 6 mm) of clearance with nothing above 9.4 mm. Uniform
+\(\pm5\) mm strips and the 8\(\times\) telescope both rise above the 10 mm limit under the objective (12.4 and 10.4 mm).
+
+Adopted vertical ring. Two designs fit: no vertical telescope with taller strips (0.17 to 0.19 \% after
+atom feedback, enhancement 0.80 to 0.90, 170 kW/cm\(^{2}\) on P2, defects \(\leq\) 0.97 \(\upmu\mathrm{m}\) on sapphire), and a 4\(\times\)
+vertical telescope (about 1 \% after feedback, enhancement 0.94 to 0.99, at most 55 kW/cm\(^{2}\), defects \(\leq\)
+3.0 \(\upmu\mathrm{m}\) on sapphire). Our choice is the 4\(\times\) telescope on sapphire substrates, for two reasons. First, the
+threefold lower intensity relaxes the cleanliness requirement on the vertical ring to that of the
+in-plane rings on fused silica scaled by 23, and the enhancement stays within 6 \% of the design. Second,
+about 1 \% rms in the vertical barrier depth acts on the vertical confinement only
+\placeholder{[VALUE?:\ tolerable\ vertical\ depth\ non-uniformity]}. If the vertical lattice must be uniform to better
+than 0.5 \%, the untelescoped ring with taller strips is the alternative.
 At equal radial frequency the vertical ring circulates 1059 W instead of 785 W, and every entry scales
 by 1.35. The cavity therefore trades a
 kilowatt laser and a hot metasurface for watt-level input and mirrors at kW/cm\(^{2}\). Point absorbers at
@@ -1270,10 +1307,11 @@ vertical ring loses \(1.6\times10^{-3}\) and \(2.0\times10^{-2}\) per round trip
 \endlastfoot
 Array side; in-plane flat-top equivalent width & 0.40 mm; 0.55 mm & 1.26 mm; 1.74 mm & 4.00 mm; 5.51 mm \\
 Hologram tweezers, input & 14 W & 140 W & 1399 W \\
-Lattice in free space, input & 29 W & 150 W & 1041 W \\
-Cavity lattice, input at G = 300 / 1500 & 0.098 / 0.020 W & 0.50 / 0.10 W & 3.5 / 0.69 W \\
-Tweezer power / cavity input at G = 300 & 142 & 279 & 403 \\
-Vertical ring share of the circulating power & 28 \% & 55 \% & 79 \% \\
+Lattice in free space, input & 69 W & 150 W & 1041 W \\
+Cavity lattice, input at G = 300 / 1500 & 0.23 / 0.046 W & 0.50 / 0.10 W & 3.5 / 0.69 W \\
+Tweezer power / cavity input at G = 300 & 61 & 279 & 403 \\
+Vertical ring share of the circulating power & 69 \% & 55 \% & 79 \% \\
+Adopted vertical ring & plain, Gaussian vertical profile (w = 266 \(\upmu\mathrm{m}\)) & plain, order-10 vertical flat-top & 0.15\(\times\) horizontal, 4\(\times\) vertical telescope \\
 Adopted in-plane ring & plain, p = 150 mm & plain, p = 150 mm & 0.2\(\times\) telescope \\
 Fresnel number of the plain ring; its nearest mode (phase, loss) & 0.52; 0.78 rad, \(2.4\times10^{-2}\) & 5.3; 0.17 rad, \(2.5\times10^{-4}\) & 53; 0.017 rad, \(2\times10^{-9}\) \\
 Ideal depth non-uniformity, in-plane & 0.059 \% & 0.053 \% & 0.23 \% \\
@@ -1283,26 +1321,32 @@ The same, 0.5 mm-scale errors (scaled) & 4.2 \%; 2.4 \%; 5.8 \% & 6.6 \%; 2.2 \%
 The plain ring at this size, \(\lambda\)/1000, uncorrected & 2.0, 3.0 \% & 1.6, 2.6 \% & 20, 42 \% \\
 Peak intensity on the hottest in-plane mirror & 4.2 kW/cm\(^{2}\) (fold) & 4.2 kW/cm\(^{2}\) (fold) & 19.3 kW/cm\(^{2}\) (P2) \\
 Largest absorbing defect, in-plane, fused silica / sapphire & 1.6 / 39 \(\upmu\mathrm{m}\) & 1.6 / 39 \(\upmu\mathrm{m}\) & 0.36 / 8.6 \(\upmu\mathrm{m}\) \\
-Vertical ring: ideal; \(\lambda\)/1000 uncorrected (h, v); after atom loop & 3.2 \%; 4.1, 5.1 \% (h), 5.8, 7.4 \% (v), G/G0 down to 0.10; loop not run & 0.20 \%; 10, 12 \% (h), 1.6, 4.1 \% (v); 1.4 \% (one run) & 0.19 \%; 5.7, 12 \% (h), 1.5, 0.7 \% (v); 0.17, 0.19 \% \\
-Vertical ring, hottest mirror & 0.9 kW/cm\(^{2}\) (P1) & 7.4 kW/cm\(^{2}\) (P1) & 170 kW/cm\(^{2}\) (P2) \\
+Vertical ring: ideal; \(\lambda\)/1000 uncorrected (h, v); after atom loop & 0.24 \%; 2.9, 3.4 \% (h), 0.28, 0.24 \% (v); 0.43 \% (one run) & 0.20 \%; 10, 12 \% (h), 1.6, 4.1 \% (v); 1.4 \% (one run) & 0.073 \%; 5.7, 12 \% (h), 5.4, 7.3 \% (v); 1.06, 0.96 \% (best round) \\
+Vertical ring, hottest mirror & 25 kW/cm\(^{2}\) (P1) & 7.4 kW/cm\(^{2}\) (P1) & 55 kW/cm\(^{2}\) (G, P2') \\
 Edge-site crossing-angle requirement, 10 s at 10 \(\upmu\mathrm{K}\) & 0.70 \(\mathrm{nrad}\)/\(\sqrt{\mathrm{Hz}}\) & 0.22 \(\mathrm{nrad}\)/\(\sqrt{\mathrm{Hz}}\) & 0.070 \(\mathrm{nrad}\)/\(\sqrt{\mathrm{Hz}}\) \\
 MOT atoms needed (cloud matched at the corners; into the sheets) & \(4.7\times10^{6}\) to \(5.0\times10^{6}\); \(3.7\times10^{5}\) & \(1.5\times10^{8}\) to \(1.6\times10^{8}\); \(3.7\times10^{6}\) & \(4.8\times10^{9}\) to \(5.1\times10^{9}\); \(3.7\times10^{7}\) \\
 \end{longtable}
 
 What the comparison shows. (i) Power. Laser power is not a constraint at \(10^{4}\) (14 W of tweezers), and
 a lattice in free space needs more than tweezers below about \(10^{5}\), because its in-plane power scales
-as the array side and the tweezer power as the number of sites. The cavity reduces the input 142, 279 and 403 times against tweezers
+as the array side and the tweezer power as the number of sites. The cavity reduces the input 61, 279 and 403 times against tweezers
 at \(10^{4}\), \(10^{5}\) and \(10^{6}\). Hence the cavity is a convenience at \(10^{4}\), a large saving at \(10^{5}\) (0.50 W
-against 140 W) and necessary at \(10^{6}\). The vertical ring's share grows from 28 to 79 \%, because its
-vertical flat-top must cover a walk-off that grows with the array side. A sheet thickness \(w_z\) scaled as
+against 140 W) and necessary at \(10^{6}\). The vertical ring takes 55 \% of the power at \(10^{5}\) and 79 \% at
+\(10^{6}\), because its vertical flat-top must cover a walk-off that grows with the array side; at \(10^{4}\) its
+share is 69 \% because the adopted Gaussian profile (item (iv)) is wider than a flat-top would be. A sheet thickness \(w_z\) scaled as
 sqrt(side), which keeps the same 1 \% roll-off per array length, would lower the \(10^{4}\) input to 0.049 W
 and the \(10^{5}\) input to 0.40 W (DERIVED; \(w_z\) = 24 and 42 \(\upmu\mathrm{m}\)). (ii) Mode control. The plain ring is
 non-degenerate at \(10^{4}\) and \(10^{5}\) (nearest mode 0.78 and 0.17 rad away with \(2.4\times10^{-2}\) and \(2.5\times10^{-4}\) loss),
 so no telescope is needed. The same \(\lambda\)/1000 errors that give 20 to 42 \% in the plain \(10^{6}\) ring give
 1.6 to 3.0 \% at \(10^{4}\) and \(10^{5}\), and tilts become nearly harmless (0.08 to 0.10 \% at \(10^{4}\)). The atom loop
 corrects \(10^{5}\) to 0.20 to 0.49 \%, but not \(10^{4}\) (2.8 to 3.0 \%), where a perfect-metrology redesign still
-reaches 0.77 to 1.3 \%. We have not established why the loop fails at \(10^{4}\); the fit uses 48 bins over
-100 sites per side, so finer bins or the camera loop are the next test. (iii) Defects and heat. The
+reaches 0.77 to 1.3 \%. A follow-up run (\nolinkurl{configs/cavity_correction_n1e4_loop.yaml}) shows two causes. First,
+the 48-bin fit over 100 sites per side overfits: with 24 bins the loop reaches 1.1 and 2.2 \% at its best
+round (the first or second). Second, the phase-only floor is itself 0.77 to 1.3 \% at this size, and the loop drifts above it
+after its best round (to 1.9 and 4.2 \% after six). A camera loop on the transmitted beams (5 \(\upmu\mathrm{m}\) pixels,
+24 bins) is steadier, 1.17 \% after six rounds for one realisation, but drifts for the other (best 1.76 \%,
+final 2.7 \%). Hence correction at \(10^{4}\) is limited to about 1 \% by the phase-only graded mirrors, and the
+loop needs a stopping rule. (iii) Defects and heat. The
 intensity at the atoms is set by the depth, 19.8 kW/cm\(^{2}\) per beam at every size. Without the telescope
 the in-plane mirrors see at most 4.2 kW/cm\(^{2}\), so the defect limit is 1.6 \(\upmu\mathrm{m}\) on fused silica (39 \(\upmu\mathrm{m}\) on
 sapphire) at \(10^{4}\) and \(10^{5}\), against 0.36 \(\upmu\mathrm{m}\) at \(10^{6}\). The \(10^{5}\) vertical ring needs no vertical
@@ -1310,9 +1354,13 @@ telescope: its hottest mirror sees 7.4 kW/cm\(^{2}\), against 170 kW/cm\(^{2}\) 
 Vertical ring at \(10^{4}\). Its vertical flat-top is only 19 \(\upmu\mathrm{m}\) high (0.057 mm equivalent height) and
 diffracts strongly over the 414 mm half trip: even with \(\pm25\) mm mirror height in the ring plane the
 ideal non-uniformity is 3.2 \% and \(\lambda\)/1000 errors reduce the enhancement to as little as 0.10. A
-Gaussian vertical profile is the better choice at this size: a 266 \(\upmu\mathrm{m}\) waist keeps the intensity within
-1 \% over the \(\pm19\) \(\upmu\mathrm{m}\) walk-off, has a 207 mm Rayleigh range, and raises the vertical power 5.9 times,
-to 45 W circulating and 0.23 W of total input at G = 300 (DERIVED, not simulated). (v) Noise. Only the
+Gaussian vertical profile is the better choice at this size, and we adopt it: a 266 \(\upmu\mathrm{m}\) waist keeps the
+intensity within 1 \% over the \(\pm19\) \(\upmu\mathrm{m}\) walk-off and has a 207 mm Rayleigh range. Simulated
+(\nolinkurl{configs/cavity_vertical_gauss_n1e4.yaml}), it gives 0.24 \% ideal non-uniformity, vertical-direction
+\(\lambda\)/1000 errors are nearly harmless (0.24 and 0.28 \%), horizontal ones give 2.9 and 3.4 \%, and atom
+feedback reaches 0.43 \% (one run, enhancement 0.86 / 0.97). The price is 5.9 times the vertical power, 45
+W circulating, and 0.23 W of total input at G = 300; its hottest mirror (P1) sees 25 kW/cm\(^{2}\), the
+intensity at the atoms scaled by the beam size on P1. (v) Noise. Only the
 crossing-angle requirement depends on size (0.70, 0.22 and 0.070 \(\mathrm{nrad}\)/\(\sqrt{\mathrm{Hz}}\)); the intensity, lock and
 mirror-displacement requirements of Section 6c are the same at every size, because the trap frequency
 is. (vi) Loading. A MOT of about \(5\times10^{6}\) atoms suffices for a single-shot load at \(10^{4}\), which the
@@ -1322,7 +1370,8 @@ the atoms are accumulated in the sheets (\(3.7\times10^{6}\) needed there), and 
 Hence the step from \(10^{5}\) to \(10^{6}\) is the large one. Up to \(10^{5}\) the design is a plain ring with mirrors of
 modest quality: 0.5 W of input, \(\lambda\)/1000 errors at the per-cent level that the atom loop corrects,
 micron-scale defect tolerance, no telescope and, at \(10^{4}\), a grating MOT. At \(10^{6}\) the mode becomes
-degenerate, which brings the telescope, the 0.4 \(\upmu\mathrm{m}\) defect limit, the 170 kW/cm\(^{2}\) vertical-ring mirror,
+degenerate, which brings the telescope, the 0.4 \(\upmu\mathrm{m}\) defect limit, a vertical ring that needs its own
+vertical telescope and sapphire mirrors (55 kW/cm\(^{2}\)),
 the 0.07 \(\mathrm{nrad}\)/\(\sqrt{\mathrm{Hz}}\) angle stability and a \(10^{9}\)-atom MOT.
 
 \hypertarget{what-must-improve-and-next-steps}{%
@@ -1335,9 +1384,9 @@ strict tolerance applies to drift between corrections. Drift at the \(\upmu\math
 calls for a monolithic, low-expansion assembly as in Park et al.~(ii) Cleanliness of every surface
 near the waist at the level of point absorbers below \(\sim0.5\) \(\upmu\mathrm{m}\) on fused silica, or sapphire substrates
 (23\(\times\) more tolerant). (iii) Losses of the graded mirrors \(\leq\) \(1\times10^{-3}\) per bounce, i.e.~figured surfaces
-rather than metasurfaces. (iv) The vertical lattice, which dominates the power at \(10^{6}\) sites (785 of 989 W circulating) and,
-as folded, puts up to 170 kW/cm\(^{2}\) on its mirrors; a vertical telescope lowers this to \(\leq\) 37 kW/cm\(^{2}\) at
-the cost of a larger error sensitivity, and sapphire substrates are advisable (Section 5). (v)
+rather than metasurfaces. (iv) The vertical lattice, which dominates the power at \(10^{6}\) sites (785 of 989 W circulating); the
+adopted 4\(\times\) vertical telescope keeps its mirrors at \(\leq\) 55 kW/cm\(^{2}\) on sapphire, at about 1 \% depth
+non-uniformity after feedback (Section 5). (v)
 Single-plane loading in an 8 \(\upmu\mathrm{m}\) vertical lattice from a MOT of \(10^{8}\) to \(10^{9}\) atoms, and site-resolved
 rearrangement into the lattice; neither is simulated here (Section 6b gives the atom budget).
 
@@ -1348,8 +1397,8 @@ deformation of the vertical ring's mirrors at 785 W, fed into Fox-Li (done for t
 Section 5). (iv) A model-based closed loop for large starting errors (a lower gain was tested and does
 not help, Section 4b), and the effect of drift during a correction cycle. (v) Mounts, MOT coils and the vacuum envelope around
 the layout of Figures 3 and 5, and the windows for the tilted MOT and pumping beams. (vi) Loading
-dynamics: accumulation of atoms in the in-plane sheets from the tilted MOT and plane selection. (vii) Closed-loop correction and the fold
-layout of the vertical ring with a 4\(\times\) to 8\(\times\) vertical telescope.
+dynamics: accumulation of atoms in the in-plane sheets from the tilted MOT and plane selection. (vii) A stopping rule or a model-based
+update for the vertical-ring loop, which drifts after its best round (Section 4b).
 
 \hypertarget{verification-notes}{%
 \section{Verification notes}\label{verification-notes}}
@@ -1414,6 +1463,9 @@ Input power per ring, design summary & Design summary & DERIVED & \(P_\mathrm{ci
 Scaling study at \(10^{4}\) and \(10^{5}\): designs, spectra, errors, correction, vertical ring, mirror intensities & Section 6d, Result (viii) & SIM, review before submission & \nolinkurl{results/cavity_foxli_n1e4}, \nolinkurl{_n1e5}; \nolinkurl{results/cavity_correction_n1e4}, \nolinkurl{_n1e5}; \nolinkurl{results/cavity_vertical_plain_n1e4}, \nolinkurl{_n1e5}; \nolinkurl{results/cavity_vertical_mirrors_plain_n1e4}, \nolinkurl{_n1e5}; \nolinkurl{results/cavity_vertical_n1e5} \\
 Scaling comparison: powers, defect limits, angle requirement, MOT atom numbers & Section 6d & DERIVED (code) & \nolinkurl{results/cavity_scaling/scaling.json} \\
 Gaussian vertical profile at \(10^{4}\) (266 \(\upmu\mathrm{m}\), 5.9\(\times\), 0.23 W) & Section 6d & DERIVED & w = \nolinkurl{h_z} / sqrt(-ln 0.99 / 2); sqrt(\(\pi\)/2) w / \(H_\mathrm{eq}\) \\
+Vertical ring with 4\(\times\) / 8\(\times\) vertical telescope: errors, closed loop (6 and 12 rounds) & Sections 4b, 5, Design summary & SIM, review before submission & \nolinkurl{results/cavity_vertical_ztel4}, \nolinkurl{_ztel8}, \nolinkurl{_ztel4_r12} /vertical.json \\
+Vertical-ring strip heights: aperture loss, beam extents, layout check & Sections 2, 5 & SIM / DERIVED (code) & \nolinkurl{results/cavity_vertical_beam_heights/heights.json}, \nolinkurl{results/cavity_vertical_layout_check/check.json}; aperture losses from session runs of the build() function of \nolinkurl{scripts/cavity_vertical.py} \\
+\(10^{4}\) loop diagnosis (24 bins, camera); Gaussian vertical ring at \(10^{4}\) & Section 6d & SIM, review before submission & \nolinkurl{results/cavity_correction_n1e4_loop}, \nolinkurl{results/cavity_vertical_gauss_n1e4}, \nolinkurl{results/cavity_vertical_mirrors_gauss_n1e4} (intensities scaled by the power ratio 5.87 in \nolinkurl{scripts/cavity_scaling.py}) \\
 Lock correction & Section 4 & SIM & 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in \nolinkurl{results/cavity_foxli/relock_before.json} \\
 SiN phase slope vs width & Section 4 & DATA (analysis of library) & \nolinkurl{data/library_main.h5}, \nolinkurl{data/library_est_1075.h5} \\
 Vertical Gaussian design, layout & Section 2, 6 & DERIVED (code) & \nolinkurl{results/cavity_layout/layout.json} \\
@@ -1427,7 +1479,7 @@ Belanger and Pare graded-phase resonator & Section 2 & SOURCE (abstract) & DOI 1
 LIGO point absorbers & Section 5 & SOURCE (abstract) & DOI 10.1364/AO.419689, arXiv:2101.05828 \\
 \end{longtable}
 
-Open placeholders: \placeholder{[VALUE?:\ AR\ loss\ per\ surface\ 2.5e-4\ to\ 1e-3]}, \placeholder{[VALUE?:\ Brewster\ residual\ loss\ 1e-4]}, \placeholder{[VALUE?:\ IBS\ absorption\ 1\ ppm]}, \placeholder{[VALUE?:\ refractive\ objective\ 0.95,\ ideal\ relay\ 0.995\ per\ pass]}, \placeholder{[VALUE?:\ mode-converter\ coupling\ 0.95]}, \placeholder{[CONFIRM?:\ cell\ wall\ 15\ mm\ from\ the\ atoms;\ cell\ size\ for\ the\ layout]}, \placeholder{[REF?:\ freeform\ figuring\ at\ nm\ rms\ over\ mm\ apertures]}, \placeholder{[VALUE?:\ absolute\ flat-calibration\ agreement\ approx.\ 0.4\ nm]}, \placeholder{[VALUE?:\ loss\ and\ stability\ of\ an\ intracavity\ deformable\ mirror]}, \placeholder{[CONFIRM?:\ objective\ position\ and\ mount,\ chamber\ windows,\ mounts]}, \placeholder{[VALUE?:\ grating\ diffraction\ angle]}, \placeholder{[VALUE?:\ \textasciitilde{}0.5\ collisional\ filling]}, \placeholder{[VALUE?:\ atom\ temperature\ 10\ uK\ in\ the\ lattice]}, \placeholder{[VALUE?:\ RIN\ of\ a\ stabilised\ 1075\ nm\ fibre\ amplifier]}, \placeholder{[VALUE?:\ coating\ Brownian\ noise\ approx.\ 1e-17\ m/rtHz]}, \placeholder{[VALUE?:\ mount\ vibration\ spectrum\ at\ 10\ to\ 40\ kHz]}. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
+Open placeholders: \placeholder{[VALUE?:\ AR\ loss\ per\ surface\ 2.5e-4\ to\ 1e-3]}, \placeholder{[VALUE?:\ Brewster\ residual\ loss\ 1e-4]}, \placeholder{[VALUE?:\ IBS\ absorption\ 1\ ppm]}, \placeholder{[VALUE?:\ refractive\ objective\ 0.95,\ ideal\ relay\ 0.995\ per\ pass]}, \placeholder{[VALUE?:\ mode-converter\ coupling\ 0.95]}, \placeholder{[CONFIRM?:\ cell\ wall\ 15\ mm\ from\ the\ atoms;\ cell\ size\ for\ the\ layout]}, \placeholder{[REF?:\ freeform\ figuring\ at\ nm\ rms\ over\ mm\ apertures]}, \placeholder{[VALUE?:\ absolute\ flat-calibration\ agreement\ approx.\ 0.4\ nm]}, \placeholder{[VALUE?:\ loss\ and\ stability\ of\ an\ intracavity\ deformable\ mirror]}, \placeholder{[CONFIRM?:\ objective\ position\ and\ mount,\ chamber\ windows,\ mounts]}, \placeholder{[VALUE?:\ grating\ diffraction\ angle]}, \placeholder{[VALUE?:\ \textasciitilde{}0.5\ collisional\ filling]}, \placeholder{[VALUE?:\ atom\ temperature\ 10\ uK\ in\ the\ lattice]}, \placeholder{[VALUE?:\ RIN\ of\ a\ stabilised\ 1075\ nm\ fibre\ amplifier]}, \placeholder{[VALUE?:\ coating\ Brownian\ noise\ approx.\ 1e-17\ m/rtHz]}, \placeholder{[VALUE?:\ mount\ vibration\ spectrum\ at\ 10\ to\ 40\ kHz]}, \placeholder{[VALUE?:\ tolerable\ vertical\ depth\ non-uniformity]}. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
 grating-MOT atom number (seen only in a search snippet, not used).
 
 Sourcing gaps. The 12,000-finesse microstructured-mirror cavity (Dickmann et al., Commun. Phys. 2023,

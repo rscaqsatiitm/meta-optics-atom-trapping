@@ -81,7 +81,15 @@ def main(cfg_path):
         n = sz["n_sites"]
         row = {"n_sites": n}
         case = [c for c in bud["cases"] if c["n_sites"] == n and c["depth_mK"] == cfg["depth_mK"] and c["match"] == "equal_depth"][0]
-        geo, pc = case["geometry"], case["circulating"]
+        geo, pc = case["geometry"], dict(case["circulating"])
+        # A vertical profile other than the budget's flat-top (e.g. a Gaussian at 10^4): same peak intensity
+        # at the atoms, circulating power scaled by the ratio of equivalent heights.
+        vfac = 1.0
+        if sz.get("scale_vertical_power_to_profile"):
+            vfac = jload(sz["vertical_json"])["z_design"]["H_eq_um"] / geo["vertical"]["H_eq_um"]
+            pc["vertical_W"] *= vfac
+            pc["total_circulating_W"] = 2 * pc["inplane_per_axis_W"] + pc["vertical_W"]
+        row["vertical_power_factor"] = vfac
         side = geo["side_um"]
         mm = cfg["mode_matching"]
         wz_scaled = wz0 * np.sqrt(side / side0)
@@ -92,7 +100,7 @@ def main(cfg_path):
         tot = pc["total_circulating_W"]
         row["power"] = {
             "tweezer_hologram_W": case["tweezer_hologram_W"], "tweezer_lenslet_W": case["tweezer_lenslet_W"],
-            "free_space_lattice_W": case["free_space_lattice_W"],
+            "free_space_lattice_W": tot / mm,  # = budget value when the vertical profile is the flat-top
             "circulating_inplane_per_axis_W": pc["inplane_per_axis_W"], "circulating_vertical_W": pc["vertical_W"], "circulating_total_W": tot,
             "vertical_share": pc["vertical_W"] / tot,
             "input_total_G300_W": tot / (300 * mm), "input_total_G1500_W": tot / (1500 * mm),
@@ -139,6 +147,7 @@ def main(cfg_path):
         row["inplane_rings"] = rings
         # Vertical ring.
         row["adopted_inplane"] = sz["adopted_inplane"]
+        row["adopted_vertical_variant"] = sz["adopted_vertical_variant"]
         vs = jload(sz["vertical_scaled_design_json"]) if sz.get("vertical_scaled_design_json") else None
         if vs:
             c = vs["cases"]
@@ -163,10 +172,10 @@ def main(cfg_path):
         if vm:
             dk = str(cfg["depth_mK"])
             mir = lambda d: {m: x for m, x in d.items() if not m.startswith("atoms")}  # mirrors only, not the crossing
-            row["vertical_mirrors"] = {name: {"peak_kW_cm2_max": max(x[dk] for x in mir(v["peak_intensity_kW_cm2"]).values()),
-                                              "peak_kW_cm2": {m: x[str(cfg["depth_mK"])] for m, x in v["peak_intensity_kW_cm2"].items()},
-                                              "min_defect_um_fused_silica": min(x[dk] for x in mir(v["max_defect_radius_um"]["fused_silica"]).values()),
-                                              "min_defect_um_sapphire": min(x[dk] for x in mir(v["max_defect_radius_um"]["sapphire"]).values()),
+            row["vertical_mirrors"] = {name: {"peak_kW_cm2_max": vfac * max(x[dk] for x in mir(v["peak_intensity_kW_cm2"]).values()),
+                                              "peak_kW_cm2": {m: vfac * x[str(cfg["depth_mK"])] for m, x in v["peak_intensity_kW_cm2"].items()},
+                                              "min_defect_um_fused_silica": min(x[dk] for x in mir(v["max_defect_radius_um"]["fused_silica"]).values()) / vfac,
+                                              "min_defect_um_sapphire": min(x[dk] for x in mir(v["max_defect_radius_um"]["sapphire"]).values()) / vfac,
                                               "ideal_depth_rms": v["ideal"]["depth_rms"], "g_ratio_z": v["ideal"]["g_ratio_z"],
                                               "z_uncorrected": [v[k]["depth_rms"] for k in v if k.endswith("uncorrected")],
                                               "z_perfect": [v[k]["depth_rms"] for k in v if k.endswith("openloop_perfect")],
@@ -242,10 +251,10 @@ def plot(rep, path):
     ax[1].set_yscale("log")
     ax[1].set_ylabel("Depth non-uniformity, rms (%)", color=INK2)
     ax[1].set_title("(b) $\\lambda$/1000 figure error on every mirror", color=INK, loc="left")
-    for (lab, getter, mk), c in zip([("In-plane, 0.2x telescope ring (10^6 design)", lambda r: max(r["inplane_rings"]["telescope"]["peak_intensity_kW_cm2"].values()), "^"),
+    for (lab, getter, mk), c in zip([("In-plane, 0.2x telescope ring (the 10^6 design)", lambda r: max(r["inplane_rings"]["telescope"]["peak_intensity_kW_cm2"].values()), "^"),
                                      ("In-plane, plain ring", lambda r: max(r["inplane_rings"]["plain"]["peak_intensity_kW_cm2"].values()), "s"),
-                                     ("Vertical ring, adopted design", lambda r: r["vertical_mirrors"]["no_z_telescope"]["peak_kW_cm2_max"], "o"),
-                                     ("Vertical ring, adopted + 8x vertical telescope", lambda r: r["vertical_mirrors"]["z_expand_8x"]["peak_kW_cm2_max"], "D")], SERIES):
+                                     ("Vertical ring, adopted design", lambda r: r["vertical_mirrors"][r["adopted_vertical_variant"]]["peak_kW_cm2_max"], "o"),
+                                     ("Vertical ring without vertical telescope", lambda r: r["vertical_mirrors"]["no_z_telescope"]["peak_kW_cm2_max"], "D")], SERIES):
         xs, ys = [], []
         for x, k in zip(n, keys):
             try:
@@ -253,7 +262,7 @@ def plot(rep, path):
                 xs.append(x)
             except (KeyError, TypeError):
                 pass
-        ax[2].plot(xs, ys, color=c, lw=2, marker=mk, ms=8, label=lab)
+        ax[2].plot(xs, ys, color=c, lw=2, marker=mk, ms=8, label=lab, zorder=4 if "adopted" in lab else 2)
     ax[2].set_yscale("log")
     ax[2].set_ylabel("Peak intensity on the hottest mirror (kW/cm$^2$)", color=INK2)
     ax[2].set_title("(c) Mirror intensity, 0.2 mK", color=INK, loc="left")

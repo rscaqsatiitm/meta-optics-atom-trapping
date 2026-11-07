@@ -28,8 +28,11 @@
         "n_sites": 10000.0,
         "foxli_json": "results/cavity_foxli_n1e4/foxli.json",
         "correction_json": "results/cavity_correction_n1e4/correction.json",
-        "vertical_json": "results/cavity_vertical_plain_n1e4/vertical.json",
-        "vertical_mirrors_json": "results/cavity_vertical_mirrors_plain_n1e4/mirrors.json",
+        "vertical_json": "results/cavity_vertical_gauss_n1e4/vertical.json",
+        "vertical_mirrors_json": "results/cavity_vertical_mirrors_gauss_n1e4/mirrors.json",
+        "adopted_vertical_variant": "no_z_telescope",
+        "scale_vertical_power_to_profile": true,
+        "vertical_flat_top_json": "results/cavity_vertical_plain_n1e4/vertical.json",
         "vertical_scaled_design_json": "results/cavity_vertical_n1e4/vertical.json",
         "adopted_inplane": "plain",
         "variant_keys": {
@@ -44,6 +47,7 @@
         "vertical_json": "results/cavity_vertical_plain_n1e5/vertical.json",
         "vertical_mirrors_json": "results/cavity_vertical_mirrors_plain_n1e5/mirrors.json",
         "vertical_scaled_design_json": "results/cavity_vertical_n1e5/vertical.json",
+        "adopted_vertical_variant": "no_z_telescope",
         "adopted_inplane": "plain",
         "variant_keys": {
           "telescope": "telK_M0.2_d70",
@@ -55,7 +59,9 @@
         "foxli_json": "results/cavity_foxli/foxli.json",
         "correction_json": "results/cavity_correction_d70/correction.json",
         "correction_plain_json": "results/cavity_correction/correction.json",
-        "vertical_json": "results/cavity_vertical_chosen/vertical.json",
+        "vertical_json": "results/cavity_vertical_ztel4/vertical.json",
+        "vertical_no_ztel_json": "results/cavity_vertical_chosen/vertical.json",
+        "adopted_vertical_variant": "z_expand_4x",
         "vertical_mirrors_json": "results/cavity_vertical_mirrors/mirrors.json",
         "adopted_inplane": "telescope",
         "variant_keys": {
@@ -67,7 +73,7 @@
     "_config_path": "configs/cavity_scaling.yaml"
   },
   "git": {
-    "commit": "adc646b1aa312f4b05706080f5b3c1357f7b0fe7",
+    "commit": "aba9c5af22f5e88d63f396156ef9ac76bb6239a0",
     "dirty": "True"
   },
   "versions": {
@@ -85,5 +91,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-07T06:09:39+00:00"
+  "utc": "2026-11-07T11:32:59+00:00"
 }

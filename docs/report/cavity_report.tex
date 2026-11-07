@@ -26,11 +26,11 @@ $10^{6}$ sites, and the three rings need \SI{3.5}{\watt} of input at an enhancem
 Mirror figure errors of $\lambda/1000$ rms on every mirror give 2.0 to \SI{4.8}{\percent} before
 correction; feedback on depths measured with the atoms restores 0.22 to \SI{0.54}{\percent} in four of
 six runs. The constraints move to mirror figure, alignment stability, surface cleanliness at 4.5 to
-\SI{19}{\kilo\watt\per\centi\metre\squared} (up to \SI{170}{\kilo\watt\per\centi\metre\squared} on
-the vertical ring as folded), and mirror vibration below \SI{0.32}{\pico\metre}\rtHz{} at the
+\SI{19}{\kilo\watt\per\centi\metre\squared} (up to \SI{55}{\kilo\watt\per\centi\metre\squared} on the
+vertical ring, which needs its own vertical telescope and sapphire mirrors), and mirror vibration below \SI{0.32}{\pico\metre}\rtHz{} at the
 \SI{20}{\kilo\hertz} trap frequency. The same models at $10^{4}$ and $10^{5}$ sites show that the step to
 $10^{6}$ is the large one: below it a plain ring without telescope is non-degenerate, needs \SI{0.5}{\watt}
-or less, and keeps its mirrors below \SI{8}{\kilo\watt\per\centi\metre\squared}.
+or less, and keeps its in-plane mirrors at \SI{4.2}{\kilo\watt\per\centi\metre\squared}.
 \end{abstract}
 
 \tableofcontents
@@ -251,7 +251,8 @@ $f = \SI{160}{\milli\metre}$, a secondary of $f = \SI{24}{\milli\metre}$ ($0.15\
 Half trip 1 folds back under the atoms (its folded beam passes \SI{30.6}{\milli\metre} from them) to
 G1, \SI{158}{\milli\metre} below the atoms; half trip 2 folds down to \SI{190}{\milli\metre} depth and
 back up to G2, \SI{104}{\milli\metre} below the atoms. The clearances are \SI{11.4}{\milli\metre}
-between mirror faces, \SI{11.1}{\milli\metre} between beams and foreign mirrors, and
+between mirror faces (for \SI{4}{\milli\metre} strips; Section~\ref{sec:defects} shows that P2, G and the
+return mirrors must be taller, which still fits), \SI{11.1}{\milli\metre} between beams and foreign mirrors, and
 \SI{37.8}{\milli\metre} and \SI{35.8}{\milli\metre} to the in-plane rings' mirrors and beams; the
 angles of incidence are \ang{8} to \ang{45}. The effective propagation behind the telescope,
 $L/M^{2} = \SI{5.3}{\metre}$, is twice that of the in-plane rings (\SI{2.5}{\metre}), which partly
@@ -265,7 +266,8 @@ along the diagonal, $z$ up). Half trip 1 (light green) leaves the crossing on th
 P1 back under the atoms to P2, the graded mirror G1 on the vertical axis \SI{158}{\milli\metre} below
 the atoms, P2$'$ and P1$'$, and returns on the lower arm; half trip 2 (dark green) folds via P3, P4, G2
 (\SI{104}{\milli\metre} below), P4$'$, P3$'$. Black bars: mirror faces (\SI{4}{\milli\metre} strips in
-the ring plane; widths along the horizontal flat-top axis 12 and \SI{5}{\milli\metre}). Telescope
+the ring plane as first laid out; the adopted design needs $\pm\SI{2}{\milli\metre}$ on P1, P3 and
+$\pm\SI{6}{\milli\metre}$ on the other mirrors, Section~\ref{sec:defects}; widths along the horizontal flat-top axis 12 and \SI{5}{\milli\metre}). Telescope
 $f_1 = \SI{160}{\milli\metre}$, $f_2 = \SI{24}{\milli\metre}$. Yellow: the \SI{42}{\milli\metre}
 imaging objective with its mount \placeholder{[CONFIRM?]} and the NA 0.5 light cone. (b) The exit and
 return mirrors near P1, P3.}
@@ -679,6 +681,19 @@ narrow vertical flat-top is the weaker direction for power: its design loss rise
 on the longer path, and the vertical errors reduce its enhancement to 0.80 to 0.90 of the ideal even
 after correction, i.e.\ 10 to \SI{25}{\percent} more input power for this ring.
 
+With the $4\times$ vertical telescope adopted in Section~\ref{sec:defects} (a Keplerian telescope in the
+ring plane at the same mirror positions, P1 curved with $f_{1z} = \SI{36.8}{\milli\metre}$), the ideal depth
+is uniform to \SI{0.073}{\percent} rms and the vertical mode loses $2.1\times10^{-6}$ per round trip (nearest
+mode \SI{1.9}{\radian} away, $3.6\times10^{-4}$ loss). $\lambda/1000$ errors on all ten mirrors give 5.7 and
+\SI{12}{\percent} (horizontal) and 5.4 and \SI{7.3}{\percent} (vertical) uncorrected. A perfect-metrology
+redesign restores 0.08 and \SI{0.10}{\percent} horizontally but only 0.98 and \SI{0.89}{\percent} vertically,
+the phase-only floor of this ring. Atom feedback with errors in both directions reaches its best value,
+1.06 and \SI{0.96}{\percent}, after five and six rounds (from 7.7 and \SI{13}{\percent}), with the
+enhancement at 0.99 / 0.97 and 0.98 / 0.94 (horizontal / vertical mode) and the lattice planes flat to
+\SI{0.3}{\micro\metre} peak to valley. Continued to 12 rounds, the same update rule drifts back to 2.3 to
+\SI{2.7}{\percent}, so the loop must stop at its best round. An $8\times$ telescope behaves the same way
+(0.98 and \SI{1.06}{\percent} after six rounds) but does not fit the layout.
+
 %======================================================================
 \section{Intensities, defects and heating on the mirrors}
 \label{sec:defects}
@@ -759,11 +774,36 @@ and 0.85 on G at the smallest angles of the layout). The vertical telescope also
 of the narrow mode and keeps its enhancement at 0.99 to 1.00 after a perfect-metrology redesign (0.93 to
 0.96 without it). However, it makes the vertical mode less discriminating ($1.1\times10^{-4}$ loss for
 $4\times$) and the uncorrected depth more sensitive to figure error (5 to \SI{23}{\percent} against 0.7
-to \SI{1.5}{\percent}). Our choice for the vertical ring is therefore a compromise. First, sapphire
-substrates on all its mirrors, which raise the defect limit 23 times. Second, a vertical telescope of
-$4\times$ to $8\times$, with closed-loop correction of the vertical profile as a requirement; the closed
-loop and the layout with the added vertical curvature are not simulated. At equal radial frequency this
-ring circulates \SI{1059}{\watt} instead of \SI{785}{\watt}, and every intensity scales by 1.35.
+to \SI{1.5}{\percent}). At equal radial frequency this ring circulates \SI{1059}{\watt} instead of
+\SI{785}{\watt}, and every intensity scales by 1.35.
+
+The fold layout of Section~\ref{sec:architecture} assumed \SI{4}{\milli\metre} strip mirrors in the ring
+plane, while the Fox--Li model used $\pm\SI{5}{\milli\metre}$ apertures. The narrow vertical flat-top
+diffracts: its rms half-height grows from \SI{0.20}{\milli\metre} on P1 to \SI{0.66}{\milli\metre} on the
+returning P1$'$, and its far wings set the aperture loss. Without a vertical telescope the vertical mode
+loses $1.2\times10^{-2}$ per round trip with $\pm\SI{2}{\milli\metre}$ strips, $2.1\times10^{-3}$ with
+$\pm\SI{3}{\milli\metre}$, $2.6\times10^{-4}$ with $\pm\SI{4}{\milli\metre}$ and $4.7\times10^{-5}$ with
+$\pm\SI{5}{\milli\metre}$. The first is five times the whole loss budget at $G = 300$, so the ring as first
+laid out would not reach its enhancement. Enlarging only P2, G and the return mirrors suffices:
+$\pm\SI{2}{\milli\metre}$ on P1 and $\pm\SI{8}{\milli\metre}$ elsewhere gives $2.4\times10^{-6}$. With the
+$4\times$ vertical telescope, $\pm\SI{2}{\milli\metre}$ on P1 and $\pm\SI{6}{\milli\metre}$ elsewhere gives
+$2.6\times10^{-6}$; the $8\times$ telescope needs $\pm3$ and $\pm\SI{12}{\milli\metre}$ ($1.2\times10^{-5}$).
+Re-evaluated in three dimensions against the in-plane rings, the chosen fold keeps \SI{10.8}{\milli\metre}
+(no vertical telescope) and \SI{10.6}{\milli\metre} ($4\times$) of clearance with nothing above
+\SI{9.4}{\milli\metre}. Uniform $\pm\SI{5}{\milli\metre}$ strips and the $8\times$ telescope both rise above the
+\SI{10}{\milli\metre} limit under the objective (12.4 and \SI{10.4}{\milli\metre}).
+
+Two designs therefore fit. Without a vertical telescope, with taller strips, the ring reaches 0.17 to
+\SI{0.19}{\percent} after atom feedback at 0.80 to 0.90 of the enhancement, with
+\SI{170}{\kilo\watt\per\centi\metre\squared} on P2 and defects of at most \SI{0.97}{\micro\metre} on sapphire.
+With a $4\times$ vertical telescope it reaches about \SI{1}{\percent} at 0.94 to 0.99 of the enhancement, with
+at most \SI{55}{\kilo\watt\per\centi\metre\squared} and \SI{3.0}{\micro\metre} on sapphire. Our choice is the
+$4\times$ telescope on sapphire substrates, a compromise between two considerations. First, the threefold
+lower intensity relaxes the cleanliness requirement and the enhancement stays within \SI{6}{\percent} of the
+design. However, the vertical barrier is uniform only to about \SI{1}{\percent}, which acts on the vertical
+confinement alone \placeholder{[VALUE?: tolerable vertical depth non-uniformity]}. If the vertical lattice
+must be uniform to better than \SI{0.5}{\percent}, the untelescoped ring with taller strips is the
+alternative.
 
 \subsection{Thermal deformation of the graded mirror}
 
@@ -1076,10 +1116,11 @@ horizontal and vertical direction of the vertical ring.}
 \midrule
 Array side; in-plane flat-top equivalent width & 0.40; \SI{0.55}{\milli\metre} & 1.26; \SI{1.74}{\milli\metre} & 4.00; \SI{5.51}{\milli\metre} \\
 Hologram tweezers, input & \SI{14}{\watt} & \SI{140}{\watt} & \SI{1399}{\watt} \\
-Lattice in free space, input & \SI{29}{\watt} & \SI{150}{\watt} & \SI{1041}{\watt} \\
-Cavity lattice, input at $G = 300$ / 1500 & 0.098 / \SI{0.020}{\watt} & 0.50 / \SI{0.10}{\watt} & 3.5 / \SI{0.69}{\watt} \\
-Tweezer power over cavity input ($G = 300$) & 142 & 279 & 403 \\
-Vertical ring share of circulating power & \SI{28}{\percent} & \SI{55}{\percent} & \SI{79}{\percent} \\
+Lattice in free space, input & \SI{69}{\watt} & \SI{150}{\watt} & \SI{1041}{\watt} \\
+Cavity lattice, input at $G = 300$ / 1500 & 0.23 / \SI{0.046}{\watt} & 0.50 / \SI{0.10}{\watt} & 3.5 / \SI{0.69}{\watt} \\
+Tweezer power over cavity input ($G = 300$) & 61 & 279 & 403 \\
+Vertical ring share of circulating power & \SI{69}{\percent} & \SI{55}{\percent} & \SI{79}{\percent} \\
+Adopted vertical ring & plain, Gaussian vertical profile ($w = \SI{266}{\micro\metre}$) & plain, order-10 vertical flat-top & $0.15\times$ horizontal, $4\times$ vertical telescope \\
 Adopted in-plane ring & plain, $p = \SI{150}{\milli\metre}$ & plain, $p = \SI{150}{\milli\metre}$ & $0.2\times$ telescope \\
 Plain ring: Fresnel number; nearest mode (phase, loss) & 0.52; \SI{0.78}{\radian}, $2.4\times10^{-2}$ & 5.3; \SI{0.17}{\radian}, $2.5\times10^{-4}$ & 53; \SI{0.017}{\radian}, $2\times10^{-9}$ \\
 Ideal non-uniformity, in-plane & \SI{0.059}{\percent} & \SI{0.053}{\percent} & \SI{0.23}{\percent} \\
@@ -1089,8 +1130,8 @@ The same, \SI{0.5}{\milli\metre}-scale errors (scaled) & 4.2\%; 2.4\%; 5.8\% & 6
 Plain ring at this size, $\lambda/1000$, uncorrected & 2.0, 3.0\% & 1.6, 2.6\% & 20, 42\% \\
 Hottest in-plane mirror & \SI{4.2}{\kilo\watt\per\centi\metre\squared} (fold) & \SI{4.2}{\kilo\watt\per\centi\metre\squared} (fold) & \SI{19.3}{\kilo\watt\per\centi\metre\squared} (P2) \\
 Largest absorbing defect, in-plane, silica / sapphire & 1.6 / \SI{39}{\micro\metre} & 1.6 / \SI{39}{\micro\metre} & 0.36 / \SI{8.6}{\micro\metre} \\
-Vertical ring: ideal; $\lambda/1000$ uncorrected; after atom loop & 3.2\%; 4.1, 5.1\% (h), 5.8, 7.4\% (v), $G/G_0$ down to 0.10; loop not run & 0.20\%; 10, 12\% (h), 1.6, 4.1\% (v); 1.4\% (one run) & 0.19\%; 5.7, 12\% (h), 1.5, 0.7\% (v); 0.17, 0.19\% \\
-Vertical ring, hottest mirror & \SI{0.9}{\kilo\watt\per\centi\metre\squared} (P1) & \SI{7.4}{\kilo\watt\per\centi\metre\squared} (P1) & \SI{170}{\kilo\watt\per\centi\metre\squared} (P2) \\
+Vertical ring: ideal; $\lambda/1000$ uncorrected; after atom loop & 0.24\%; 2.9, 3.4\% (h), 0.28, 0.24\% (v); 0.43\% (one run) & 0.20\%; 10, 12\% (h), 1.6, 4.1\% (v); 1.4\% (one run) & 0.073\%; 5.7, 12\% (h), 5.4, 7.3\% (v); 1.06, 0.96\% (best round) \\
+Vertical ring, hottest mirror & \SI{25}{\kilo\watt\per\centi\metre\squared} (P1) & \SI{7.4}{\kilo\watt\per\centi\metre\squared} (P1) & \SI{55}{\kilo\watt\per\centi\metre\squared} (G, P2$'$) \\
 Edge-site crossing-angle requirement, \SI{10}{\second} at \SI{10}{\micro\kelvin} & 0.70\,nrad\rtHz & 0.22\,nrad\rtHz & 0.070\,nrad\rtHz \\
 MOT atoms needed: cloud matched at the corners; into the sheets & $4.7$ to $5.0\times10^{6}$; $3.7\times10^{5}$ & $1.5$ to $1.6\times10^{8}$; $3.7\times10^{6}$ & $4.8$ to $5.1\times10^{9}$; $3.7\times10^{7}$ \\
 \bottomrule
@@ -1112,30 +1153,38 @@ the hottest mirror. Fox--Li strip models, 8192 points, $G = 300$.}
 
 Six results follow. (i) Laser power is not a constraint at $10^{4}$ (\SI{14}{\watt} of tweezers), and a
 lattice in free space needs more than tweezers below about $10^{5}$, because its in-plane power scales as
-the array side and the tweezer power as the number of sites. The cavity reduces the input 142, 279 and
+the array side and the tweezer power as the number of sites. The cavity reduces the input 61, 279 and
 403 times against tweezers. Thus the cavity is a convenience at $10^{4}$, a large saving at $10^{5}$
-(\SI{0.50}{\watt} against \SI{140}{\watt}) and necessary at $10^{6}$. The vertical ring's share grows from 28
-to \SI{79}{\percent}, because its vertical flat-top must cover a walk-off that grows with the array
-side. A sheet thickness scaled as the square root of the side, which keeps the same \SI{1}{\percent}
+(\SI{0.50}{\watt} against \SI{140}{\watt}) and necessary at $10^{6}$. The vertical ring takes 55 and
+\SI{79}{\percent} of the power at $10^{5}$ and $10^{6}$, because its vertical flat-top must cover a walk-off
+that grows with the array side; at $10^{4}$ it takes \SI{69}{\percent}, because the adopted Gaussian profile
+(item (iv)) is wider than a flat-top would be. A sheet thickness scaled as the square root of the side, which keeps the same \SI{1}{\percent}
 roll-off per array length, would lower the inputs to \SI{0.049}{\watt} and \SI{0.40}{\watt}
 ($w_z = 24$ and \SI{42}{\micro\metre}). (ii) The plain ring is non-degenerate at $10^{4}$ and $10^{5}$, so
 no telescope is needed. The same $\lambda/1000$ errors that give 20 to \SI{42}{\percent} in the plain
 $10^{6}$ ring give 1.6 to \SI{3.0}{\percent} at the smaller sizes, and tilts become nearly harmless. The
 atom loop corrects $10^{5}$ to 0.20 to \SI{0.49}{\percent}, but not $10^{4}$ (2.8 to \SI{3.0}{\percent}),
-where a perfect-metrology redesign still reaches 0.77 to \SI{1.3}{\percent}. We have not established why
-the loop fails at $10^{4}$; its fit uses 48 bins over 100 sites per side, so finer bins or the camera loop
-are the next test. (iii) The intensity at the atoms is set by the depth, so it is the same at every size.
+where a perfect-metrology redesign still reaches 0.77 to \SI{1.3}{\percent}. A follow-up run shows two
+causes. First, the 48-bin fit over 100 sites per side overfits: with 24 bins the loop reaches 1.1 and
+\SI{2.2}{\percent} at its best round. Second, the phase-only floor is itself 0.77 to \SI{1.3}{\percent} at this
+size, and the loop drifts above it after its best round (to 1.9 and \SI{4.2}{\percent} after six). A camera loop
+on the transmitted beams is steadier for one realisation (\SI{1.17}{\percent}) but drifts for the other (best
+\SI{1.76}{\percent}). Correction at $10^{4}$ is therefore limited to about \SI{1}{\percent} by the phase-only
+graded mirrors, and the loop needs a stopping rule. (iii) The intensity at the atoms is set by the depth, so it is the same at every size.
 Without the telescope the in-plane mirrors see at most \SI{4.2}{\kilo\watt\per\centi\metre\squared}, and the
 defect limit is \SI{1.6}{\micro\metre} on fused silica at $10^{4}$ and $10^{5}$, against
 \SI{0.36}{\micro\metre} at $10^{6}$. The $10^{5}$ vertical ring needs no vertical telescope: its hottest mirror
-sees \SI{7.4}{\kilo\watt\per\centi\metre\squared}, against \SI{170}{\kilo\watt\per\centi\metre\squared} at
-$10^{6}$ as folded. (iv) At $10^{4}$ the vertical flat-top is only \SI{19}{\micro\metre} high and diffracts
+sees \SI{7.4}{\kilo\watt\per\centi\metre\squared}, against \SI{55}{\kilo\watt\per\centi\metre\squared} at
+$10^{6}$ with its vertical telescope (\SI{170}{\kilo\watt\per\centi\metre\squared} without). (iv) At $10^{4}$ the vertical flat-top is only \SI{19}{\micro\metre} high and diffracts
 strongly over the \SI{414}{\milli\metre} half trip. Even with $\pm\SI{25}{\milli\metre}$ of mirror height in
 the ring plane the ideal non-uniformity is \SI{3.2}{\percent}, and $\lambda/1000$ errors reduce the
-enhancement to as little as 0.10. A Gaussian vertical profile is the better choice at this size: a
+enhancement to as little as 0.10. A Gaussian vertical profile is the better choice at this size, and we adopt it: a
 \SI{266}{\micro\metre} waist keeps the intensity within \SI{1}{\percent} over the $\pm\SI{19}{\micro\metre}$
-walk-off, has a \SI{207}{\milli\metre} Rayleigh range, and raises the vertical power 5.9 times, to
-\SI{45}{\watt} circulating and \SI{0.23}{\watt} of total input at $G = 300$ (an estimate; not simulated).
+walk-off and has a \SI{207}{\milli\metre} Rayleigh range. Simulated, it gives \SI{0.24}{\percent} ideal
+non-uniformity; vertical-direction $\lambda/1000$ errors are nearly harmless (0.24 and \SI{0.28}{\percent}),
+horizontal ones give 2.9 and \SI{3.4}{\percent}, and atom feedback reaches \SI{0.43}{\percent} (one run). The
+price is 5.9 times the vertical power, \SI{45}{\watt} circulating and \SI{0.23}{\watt} of total input at
+$G = 300$; its hottest mirror sees \SI{25}{\kilo\watt\per\centi\metre\squared}.
 (v) Only the crossing-angle requirement depends on size; the intensity, lock and mirror requirements of
 Section~\ref{sec:noise} are the same, because the trap frequency is. (vi) A MOT of about
 $5\times10^{6}$ atoms suffices for a single-shot load at $10^{4}$, which the demonstrated Cs grating MOT
@@ -1145,8 +1194,8 @@ if the atoms are accumulated in the sheets, and at $10^{6}$ it does not.
 Thus the large step is from $10^{5}$ to $10^{6}$. Up to $10^{5}$ the design is a plain ring with mirrors of
 modest quality: \SI{0.5}{\watt} of input, $\lambda/1000$ errors at the per-cent level that the atom loop
 corrects, micrometre-scale defect tolerance and no telescope. At $10^{6}$ the mode becomes degenerate,
-which brings the telescope, the \SI{0.36}{\micro\metre} defect limit, the
-\SI{170}{\kilo\watt\per\centi\metre\squared} vertical-ring mirror, a threefold tighter angle stability and a
+which brings the telescope, the \SI{0.36}{\micro\metre} defect limit, a vertical ring that needs its own
+vertical telescope and sapphire mirrors, a threefold tighter angle stability and a
 $10^{9}$-atom MOT.
 
 %======================================================================
@@ -1170,8 +1219,8 @@ time-dependent simulation. The layout is a first-order design without mounts, co
 envelope.
 
 What is extrapolated is the following. The intensities of 4.5 to \SI{19}{\kilo\watt\per\centi\metre\squared}
-in the in-plane rings, and 27 to \SI{55}{\kilo\watt\per\centi\metre\squared} in the vertical ring with a
-vertical telescope (up to \SI{170}{\kilo\watt\per\centi\metre\squared} without it), are comparable to those
+in the in-plane rings, and 32 to \SI{55}{\kilo\watt\per\centi\metre\squared} in the vertical ring with its
+$4\times$ vertical telescope (up to \SI{170}{\kilo\watt\per\centi\metre\squared} without it), are comparable to those
 on the test masses of gravitational-wave detectors, where point absorbers limit the stored
 power~\cite{Brooks2021}. Their consequence for a cold-atom apparatus, in which the mirrors sit close to
 alkali vapour, has not been tested.
@@ -1179,9 +1228,10 @@ alkali vapour, has not been tested.
 The main limitation is therefore no longer laser power or metasurface heating but the mirrors: figure
 and alignment stability at the $\lambda/1000$ and \SI{1}{\micro\radian} level between corrections,
 absorbing defects no larger than \SI{0.36}{\micro\metre} on the fused-silica mirrors of the in-plane
-rings and 3 to \SI{4.4}{\micro\metre} on sapphire mirrors of the vertical ring with its telescope, and vibration below \SI{0.3}{\pico\metre}\rtHz{} at the trap frequency. The next steps are
-(i) a model-based closed loop for large starting errors, and the closed loop and layout of the vertical
-ring with a vertical telescope; (ii) a time-dependent simulation of depth and site position under laser
+rings and \SI{3.0}{\micro\metre} on the sapphire mirrors of the vertical ring with its $4\times$
+vertical telescope, and vibration below \SI{0.3}{\pico\metre}\rtHz{} at the trap frequency. The next steps
+are (i) a model-based closed loop, with a stopping rule, for large starting errors and for the vertical
+ring, whose loop drifts after its best round; (ii) a time-dependent simulation of depth and site position under laser
 and lock noise, with a vibration model of the ring mounts; and (iii) the absorption-induced deformation
 of the vertical ring's mirrors, and the loading of a single plane of the vertical lattice from the
 tilted MOT.
@@ -1211,9 +1261,10 @@ Round trip, free spectral range, reflections & \SI{1.16}{\metre}, \SI{258}{\mega
 Circulating power & \SI{102}{\watt} & \SI{785}{\watt} \\
 Input power at $G = 300$ (mode matching 0.95) & \SI{0.36}{\watt} & \SI{2.75}{\watt} \\
 Linewidth (FWHM) at $G = 300$ / 1500 & 413 / \SI{82}{\kilo\hertz} & 289 / \SI{58}{\kilo\hertz} \\
-Peak intensity on the mirrors & 4.5 (P1), 19.3 (P2), 17.4 (G) \si{\kilo\watt\per\centi\metre\squared} & 14 to \SI{170}{\kilo\watt\per\centi\metre\squared} as folded; 27 to \SI{37}{\kilo\watt\per\centi\metre\squared} with an $8\times$ vertical telescope \\
+Peak intensity on the mirrors & 4.5 (P1), 19.3 (P2), 17.4 (G) \si{\kilo\watt\per\centi\metre\squared} & 32 to \SI{55}{\kilo\watt\per\centi\metre\squared} with the adopted $4\times$ vertical telescope \\
+Vertical telescope; strip half-heights in the ring plane & none & $4\times$ Keplerian ($f_{1z} = \SI{36.8}{\milli\metre}$); $\pm\SI{2}{\milli\metre}$ on P1, P3, $\pm\SI{6}{\milli\metre}$ elsewhere; sapphire \\
 Trap frequency along the lattice axis & \SI{19.8}{\kilo\hertz} & \SI{9.9}{\kilo\hertz} \\
-Depth uniformity: design / $\lambda/1000$ errors / after atom feedback & 0.23 / 2.0 to 4.0 / 0.42 to 0.75\,\% & 0.19 / 5.7 to 12 / 0.17 to 0.19\,\% \\
+Depth uniformity: design / $\lambda/1000$ errors / after atom feedback & 0.23 / 2.0 to 4.0 / 0.42 to 0.75\,\% & 0.073 / 5.4 to 12 / 0.96 to 1.06\,\% (best round) \\
 Static figure and tilt before correction & $\lambda/1000$ rms, below \SI{1}{\micro\radian} & $\lambda/1000$ rms \\
 Noise for a \SI{10}{\second} heating time at \SI{10}{\micro\kelvin} & RIN below \SI{-106}{\dBc\per\hertz} at \SI{40}{\kilo\hertz}; \SI{0.32}{\pico\metre}\rtHz{} per mirror at \SI{20}{\kilo\hertz} & RIN below \SI{-100}{\dBc\per\hertz} at \SI{20}{\kilo\hertz}; \SI{0.64}{\pico\metre}\rtHz{} per mirror at \SI{10}{\kilo\hertz} \\
 \bottomrule

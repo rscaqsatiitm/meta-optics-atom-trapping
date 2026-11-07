@@ -1,4 +1,4 @@
-1e+04 {'tweezer': 14.0, 'free': 29.5, 'G300': 0.098, 'vert_share': 0.28}
+1e+04 {'tweezer': 14.0, 'free': 68.9, 'G300': 0.23, 'vert_share': 0.69}
    telescope {'F': 0.27, 'ideal': 4.442, 'loss': 0.0021997245648682773, 'mode': {'dphase_rad': 0.3898957728838174, 'loss': 0.05089751397863662}, 'I': {'P1': 4.5, 'P2': 9.3, 'G': 2.0}, 'err': {'fig1000_uncorrected': [23.0, 9.9], 'fig1000_perfect_metrology': [3.0, 6.49], 'fig1000_atom_loop': [28.58, 4.14], 'fig1000_c0.5_uncorrected': [14.29], 'fig1000_c0.5_perfect_metrology': [7.18]}}
    plain {'F': 0.52, 'ideal': 0.059, 'loss': 3.2839365844417046e-06, 'mode': {'dphase_rad': 0.7751245124887768, 'loss': 0.02444757217211857}, 'I': {'fold': np.float64(4.2), 'G': np.float64(3.4)}, 'err': {'fig1000_uncorrected': [2.03, 3.02], 'fig1000_perfect_metrology': [1.28, 0.77], 'fig1000_atom_loop': [3.04, 2.81], 'fig1000_c0.5_uncorrected': [4.16], 'fig1000_c0.5_perfect_metrology': [2.42], 'fig1000_c0.5_atom_loop': [5.77], 'tilt1_uncorrected': [0.08, 0.1], 'tilt1_perfect_metrology': [0.06, 0.06], 'tilt1_atom_loop': [0.06, 0.09]}}
 1e+05 {'tweezer': 139.9, 'free': 150.2, 'G300': 0.501, 'vert_share': 0.55}
