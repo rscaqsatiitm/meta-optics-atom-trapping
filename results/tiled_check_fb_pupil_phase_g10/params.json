@@ -1,0 +1,66 @@
+{
+  "config": {
+    "run_id": "tiled_check_fb_pupil_phase_g10",
+    "wavelength_um": 1.075,
+    "na": 0.55,
+    "stack": [
+      [
+        300,
+        "air"
+      ],
+      [
+        500,
+        "fused_silica"
+      ],
+      [
+        800,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.0,
+    "sites": {
+      "kind": "square",
+      "nx": 16,
+      "ny": 16,
+      "pitch_um": 4.0
+    },
+    "pupil_guard": 1.25,
+    "wgs_iter": 40,
+    "wgs_fix": 20,
+    "render_upsample": 5,
+    "n_fold": 512,
+    "upsample": 4,
+    "feedback_rounds": 5,
+    "feedback_gain": 1.0,
+    "feedback_wgs_iter": 20,
+    "array_defocus_um": 50.0,
+    "block_rows": 64,
+    "metrics_tile_px": 32,
+    "feedback_mode": "pupil_phase",
+    "_config_path": "configs/tiled_check_fb_pupil_phase_g10.yaml"
+  },
+  "git": {
+    "commit": "8082c29648d14df5b8fa40ba4a1006f08e3564b4",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-07T12:36:28+00:00"
+}

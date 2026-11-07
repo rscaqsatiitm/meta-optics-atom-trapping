@@ -106,7 +106,7 @@ relative transmission phase converges to 0.003 rad at 197 Fourier terms. The
 permittivity grid adds 0.01 to 0.03 rad between 256 and 1024 points, largest for
 gaps below 60 nm, which the fabrication limits exclude. The plain-FFT formulation
 converges about ten times more slowly (0.07 rad error at 317 terms), and grcwa, which
-uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms. This is an independent check of
+uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms (441 requested; fmmax keeps 437). This is an independent check of
 the solver wrapper and its phase convention. The library (data/library_main.h5,
 configs/library_main.yaml) covers 5 pitches (0.40 to 0.60 um), 13 heights (0.8 to
 2.0 um), 40 widths and 4 wavelengths for LPCVD SiN (Luke et al. dispersion) and Si-rich

@@ -147,7 +147,8 @@ product. The design then moves by a small step, so the measured error map stays 
 round costs one simulation plus one product.
 
 Test on the 16 x 16-site check case (configs/tiled_check.yaml, short stack, array 50 um beyond
-focus, ideal pillars; depth non-uniformity rms, rounds 0 to 5):
+focus, ideal pillars; depth non-uniformity rms, rounds 0 to 5; configs/tiled_check_fb_*.yaml,
+results/tiled_check_fb_*):
 
 | Feedback | Round 0 | 1 | 2 | 3 | 4 | 5 |
 |---|---|---|---|---|---|---|
