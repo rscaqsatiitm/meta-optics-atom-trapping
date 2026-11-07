@@ -103,8 +103,11 @@ and 7.5 mW). (`tests/test_atoms.py`)
 
 Numerics (results/rcwa_convergence, SIM). With the Jones-direct-Fourier formulation the
 relative transmission phase converges to 0.003 rad at 197 Fourier terms. The
-permittivity grid adds 0.01 to 0.03 rad between 256 and 1024 points, largest for
-gaps below 60 nm, which the fabrication limits exclude. The plain-FFT formulation
+permittivity grid changes the phase by at most 0.016 rad (LPCVD) and 0.027 rad (Si-rich) between
+256 and 1024 points for the selected families within their fabricable widths, and by up to
+0.14 rad at a 60 nm gap, which the fabrication limits exclude (results/rcwa_grid_convergence.json,
+scripts/rcwa_grid_convergence.py; computed in the 2026-11 review, the original statement having
+come from an unstored run). The plain-FFT formulation
 converges about ten times more slowly (0.07 rad error at 317 terms), and grcwa, which
 uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms (441 requested; fmmax keeps 437). This is an independent check of
 the solver wrapper and its phase convention. The library (data/library_main.h5,
