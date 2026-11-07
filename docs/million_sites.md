@@ -26,12 +26,12 @@ extra deflections: <= 0.15 with a 25 mm objective and 10x demagnification.
 
 (ii) Imaging. For one common focal plane with Strehl >= 0.8 out to the 4 um-pitch corner, the
 aplanatic meta-doublet needs f ~ 42 mm at NA 0.5 (42 mm plates). In wave optics it then puts
->= 0.90 of each atom's light in its 4 um box with <= 3.6 % in any neighbour, across the whole
-10^6-site array. At 3 um pitch f ~ 25 mm suffices: EE >= 0.82 and <= 4.9 % in a neighbour at
+>= 0.87 of each atom's light in its 4 um box with <= 3.4 % in any neighbour, across the whole
+10^6-site array (diffraction limit of this pupil 0.90 / 1.3 %). At 3 um pitch f ~ 25 mm suffices: EE >= 0.82 and <= 4.9 % in a neighbour at
 the 2.12 mm corner (42 mm: 0.864 / 2.5 %; diffraction limit 0.876 / 1.5 %). Higher NA costs
 field quickly: NA 0.6 needs f ~ 77 mm (92 mm plates) for the same field, and NA 0.7 does not
-reach it below 120 mm. The 16 mm doublet images to ~2.1 mm radius (66 % of the light in the
-site box) and fails at 2.83 mm (37 %).
+reach it below 120 mm. The 16 mm doublet images to ~2.1 mm radius (61 % of the light in the
+site box, with a plane fitted over 0 to 2.83 mm) and fails at 2.83 mm (29 %).
 
 (iii) One optic for 10 to 10^6 traps. A direct (pupil-plane) hologram cannot do this.
 Shrinking the beam on it reduces the NA, not the number of sites. The lenslet-array
@@ -51,7 +51,7 @@ Figure 1. Left: field radius with a minimum common-plane Strehl ratio >= 0.8 for
 aplanatic meta-objective (852.3 nm, cell stack with air gap 2.5 to 50 mm, construction to 1.6 R1)
 versus focal length, at NA 0.5, 0.6 and 0.7; the dotted lines mark the 10^6-site corners. Right:
 ensquared energy in the 4 um site box (wave optics, one common plane over 0 to 2.83 mm) for the
-16, 25 and 42 mm objectives at NA 0.5; a diffraction-limited spot gives 0.93.
+16, 25 and 42 mm objectives at NA 0.5, relative to the total PSF power; the diffraction limit of this pupil is 0.90.
 
 ## 1. Requirements
 
@@ -104,15 +104,15 @@ compute the ensquared energy (EE) in the 4 um box and the largest neighbour-box 
 from the wave-optics PSF (superposition method, Section 4b of the metalens report), in one
 common plane over the whole field (results/million/imaging_ee.json).
 
-Entries: ensquared energy in the 4 um box / largest neighbour-box fraction (ray Strehl in the common plane). A diffraction-limited NA 0.5 spot gives 0.93 / 0.014 on this grid.
+Entries: ensquared energy in the 4 um box / largest neighbour-box fraction, both relative to the total PSF power (wave_offaxis.total_focal_power), with the ray Strehl ratio in the common plane. The diffraction limit of this aplanatic pupil is 0.90 / 0.013 (a uniformly filled Airy pupil gives 0.92). (A first version normalised to the power inside the +/-1.5 pitch evaluation window, which holds only 0.94 to 0.97 of it, and quoted values 0.03 to 0.08 higher.)
 
 | Objective f | 0 mm | 1 mm | 1.77 mm | 2.121 mm | 2.828 mm |
 |---|---|---|---|---|---|
-| 16 mm (gap 2.5 mm) | 0.79 / 0.045 (S 0.17) | 0.75 / 0.063 (S 0.15) | 0.71 / 0.087 (S 0.11) | 0.66 / 0.073 (S 0.09) | 0.37 / 0.242 (S 0.08) |
-| 25 mm (gap 10 mm) | 0.93 / 0.014 (S 1.00) | 0.93 / 0.016 (S 1.00) | 0.91 / 0.030 (S 0.92) | 0.89 / 0.043 (S 0.79) | 0.73 / 0.082 (S 0.30) |
-| 42 mm (gap 25 mm) | 0.93 / 0.014 (S 0.99) | 0.93 / 0.015 (S 0.99) | 0.93 / 0.019 (S 0.98) | 0.92 / 0.021 (S 0.96) | 0.90 / 0.036 (S 0.84) |
+| 16 mm (gap 2.5 mm) | 0.76 / 0.043 (S 0.17) | 0.73 / 0.060 (S 0.15) | 0.67 / 0.083 (S 0.11) | 0.61 / 0.067 (S 0.09) | 0.29 / 0.188 (S 0.08) |
+| 25 mm (gap 10 mm) | 0.90 / 0.013 (S 1.00) | 0.90 / 0.016 (S 1.00) | 0.88 / 0.029 (S 0.92) | 0.86 / 0.042 (S 0.79) | 0.68 / 0.077 (S 0.30) |
+| 42 mm (gap 25 mm) | 0.90 / 0.013 (S 0.99) | 0.90 / 0.014 (S 0.99) | 0.90 / 0.019 (S 0.98) | 0.89 / 0.020 (S 0.96) | 0.87 / 0.034 (S 0.84) |
 
-Hence the 42 mm objective images the 10^6-site array at 4 um pitch with >= 0.90 of the light in the site box and <= 3.6 % in any neighbour, the 25 mm objective does so to 2.12 mm (0.89 / 0.043; the 3 um-pitch corner, where the box is smaller and the EE correspondingly lower) and degrades to 0.73 / 0.082 at 2.83 mm, and the 16 mm objective, whose single plane is a compromise over the whole field, keeps 0.66 / 0.073 at 2.12 mm and fails at 2.83 mm (0.37 / 0.24).
+Hence the 42 mm objective images the 10^6-site array at 4 um pitch with >= 0.87 of the light in the site box and <= 3.4 % in any neighbour (within 0.03 of the diffraction limit), the 25 mm objective does so to 2.12 mm (0.86 / 0.042) and degrades to 0.68 / 0.077 at 2.83 mm, and the 16 mm objective, whose single plane is a compromise over the whole field, keeps 0.61 / 0.067 at 2.12 mm and fails at 2.83 mm (0.29 / 0.19).
 
 3 um pitch, plane chosen for that field (results/million/imaging_ee_3um.json,
 configs/imaging_1M_3um.yaml). The 3.0 mm array (corner 2.12 mm) is evaluated with a 3 um box
