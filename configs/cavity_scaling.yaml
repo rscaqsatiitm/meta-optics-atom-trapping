@@ -20,14 +20,18 @@ sizes:
   - n_sites: 1.0e+4
     foxli_json: results/cavity_foxli_n1e4/foxli.json
     correction_json: results/cavity_correction_n1e4/correction.json
-    vertical_json: results/cavity_vertical_n1e4/vertical.json
-    vertical_mirrors_json: results/cavity_vertical_mirrors_n1e4/mirrors.json
+    vertical_json: results/cavity_vertical_plain_n1e4/vertical.json            # adopted at this size: no horizontal telescope
+    vertical_mirrors_json: results/cavity_vertical_mirrors_plain_n1e4/mirrors.json
+    vertical_scaled_design_json: results/cavity_vertical_n1e4/vertical.json   # the 10^6 design (0.15x telescope), where run
+    adopted_inplane: plain
     variant_keys: {telescope: telK_M0.2_d70, plain: plane150}
   - n_sites: 1.0e+5
     foxli_json: results/cavity_foxli_n1e5/foxli.json
     correction_json: results/cavity_correction_n1e5/correction.json
-    vertical_json: results/cavity_vertical_n1e5/vertical.json
-    vertical_mirrors_json: results/cavity_vertical_mirrors_n1e5/mirrors.json
+    vertical_json: results/cavity_vertical_plain_n1e5/vertical.json            # adopted at this size: no horizontal telescope
+    vertical_mirrors_json: results/cavity_vertical_mirrors_plain_n1e5/mirrors.json
+    vertical_scaled_design_json: results/cavity_vertical_n1e5/vertical.json   # the 10^6 design (0.15x telescope), where run
+    adopted_inplane: plain
     variant_keys: {telescope: telK_M0.2_d70, plain: plane150}
   - n_sites: 1.0e+6            # main study: 70 mm telescope ring checked in cavity_correction_d70, plain ring in cavity_correction
     foxli_json: results/cavity_foxli/foxli.json
@@ -35,4 +39,5 @@ sizes:
     correction_plain_json: results/cavity_correction/correction.json
     vertical_json: results/cavity_vertical_chosen/vertical.json
     vertical_mirrors_json: results/cavity_vertical_mirrors/mirrors.json
+    adopted_inplane: telescope
     variant_keys: {telescope: telK_M0.2_d70, plain: plane150}

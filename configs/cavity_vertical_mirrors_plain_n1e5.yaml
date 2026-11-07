@@ -10,5 +10,5 @@ spectrum_grid_n: 2048
 error_seeds: [1, 2]
 z_variants:
   - {name: no_z_telescope, telescope: false}
-  - {name: z_expand_4x, telescope: {mag: 4.0}, grid_n: 8192, grid_width_um: 24000.0, ap1_um: 5000.0, ap2_um: 8000.0, ap_g_um: 8000.0}
-  - {name: z_expand_8x, telescope: {mag: 8.0}, grid_n: 16384, grid_width_um: 40000.0, ap1_um: 5000.0, ap2_um: 12000.0, ap_g_um: 12000.0}
+  - {name: z_expand_4x, telescope: {mag: 4.0}, grid_n: 16384, grid_width_um: 40000.0, ap1_um: 15000.0, ap2_um: 15000.0, ap_g_um: 15000.0}
+  - {name: z_expand_8x, telescope: {mag: 8.0}, grid_n: 16384, grid_width_um: 40000.0, ap1_um: 15000.0, ap2_um: 15000.0, ap_g_um: 15000.0}

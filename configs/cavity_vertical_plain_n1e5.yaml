@@ -1,4 +1,5 @@
-# Scaling study: the vertical ring at 1e5 sites without the horizontal telescope (flat folds at the same positions).
+# Scaling study: the vertical ring at 1e5 sites without the horizontal telescope (flat folds at the same positions);
+# apertures widened: the small flat-tops diffract beyond the 10^6 mirror sizes (x 2.5 mm, z 5 mm half-widths clip).
 run_id: cavity_vertical_plain_n1e5
 wavelength_um: 1.075
 array_side_um: 1260.9
@@ -8,8 +9,8 @@ g_target: 300.0
 loss_other: 3.0e-4
 map_sites_per_side: 101
 telescope: {f1_um: 160000.0, mag: 0.15, d0_um: 110000.0, L_um: 120000.0}   # from results/cavity_vertical_layout/vertical_layout.json (chosen)
-x: {order: 20, flat_half_um: 891.6, telescope: false, ap1_um: 6000.0, ap2_um: 2500.0, ap_g_um: 2500.0, grid_n: 8192, grid_width_um: 28000.0}
-z: {order: 10, flat_half_um: 60.04, telescope: false, ap1_um: 5000.0, ap2_um: 5000.0, ap_g_um: 5000.0, grid_n: 4096, grid_width_um: 12000.0}
+x: {order: 20, flat_half_um: 891.6, telescope: false, ap1_um: 8000.0, ap2_um: 8000.0, ap_g_um: 8000.0, grid_n: 8192, grid_width_um: 40000.0}
+z: {order: 10, flat_half_um: 60.04, telescope: false, ap1_um: 15000.0, ap2_um: 15000.0, ap_g_um: 15000.0, grid_n: 8192, grid_width_um: 40000.0}
 fig_waves: 0.001
 corr_um: 631.1
 seeds: [1, 2]

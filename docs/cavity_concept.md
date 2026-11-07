@@ -101,6 +101,15 @@ laser-cavity detuning must stay below 22 Hz/rtHz (7 kHz rms, 1.7 % of the linewi
 five times less at G = 1500, and each ring mirror must move by less than 0.32 pm/rtHz at the 20 kHz
 trap frequency. The last calls for a monolithic ring assembly with controlled mechanical resonances.
 
+(viii) The large step is from 10^5 to 10^6 sites (Section 6d). The same models at 10^4 and 10^5 show
+that a plain ring without telescope is non-degenerate there (nearest mode 0.78 and 0.17 rad away, with
+2.4e-2 and 2.5e-4 loss), needs 0.098 and 0.50 W of input at G = 300 (tweezers: 14 and 140 W), gives 1.6
+to 3.0 % for lambda/1000 errors on every mirror (the atom loop corrects 10^5 to 0.20 to 0.49 %), and
+keeps its mirrors at or below 7.4 kW/cm^2 (defects up to 1.6 um on fused silica). The 10^6 telescope
+design does not scale down (4.4 % ideal at 10^4). At 10^6 the degeneracy brings the telescope, a 0.36 um
+defect limit, up to 170 kW/cm^2 on the vertical ring, a threefold tighter angle stability than at 10^5,
+and a 10^9-atom MOT.
+
 Main limitations. One-dimensional Fox-Li model of the horizontal profile with a separable
 Gaussian vertical mode, checked by one 2D case per question (ideal design, non-separable errors and
 their correction); scalar optics; static perturbations, one or two random realisations per case;
@@ -867,6 +876,90 @@ larger lever (8 um period) gives a similar mirror requirement (0.64 pm/rtHz).
 These are requirements, not predictions: we have not simulated the time-dependent depth and site
 position, nor estimated the vibration spectrum of a real mount.
 
+## 6d. How large a step is 10^6 sites? The same analysis at 10^4 and 10^5
+
+Method (scripts/cavity_scaling.py, configs/cavity_scaling.yaml; results/cavity_scaling/scaling.json,
+scaling.png). We ran the models of Sections 3 to 6c at 10^4 (100 x 100 sites, 0.40 mm side) and
+10^5 (316 x 316, 1.26 mm side) with the same pitch, barrier depth (0.2 mK per axis), sheet thickness
+(w_z = 75 um), losses and G = 300: Fox-Li designs and spectra (configs/cavity_foxli_n1e4.yaml,
+_n1e5.yaml; depth rms converged to 0.3 % of its value between 4096 and 16384 points), lambda/1000
+figure errors and 1 urad tilts on every mirror with a perfect-metrology redesign and the atom loop
+(configs/cavity_correction_n1e4.yaml, _n1e5.yaml; correlation lengths scaled with the array side, so
+the relative error structure is that of the 0.5 and 2 mm cases at 10^6), the vertical ring
+(configs/cavity_vertical_plain_n1e4.yaml, _n1e5.yaml) and its mirror intensities
+(configs/cavity_vertical_mirrors_plain_n1e4.yaml, _n1e5.yaml). At each size we also ran the 10^6
+design unchanged.
+
+The 10^6 design does not scale down. Its 0.2x telescope exists to break the degeneracy of a 5.5 mm
+flat mode (Fresnel number 53 in the plain ring). A smaller mode is already non-degenerate, and the
+telescope then compresses it towards a focus on G. At 10^4 the telescope ring has an ideal depth
+non-uniformity of 4.4 % at 0.73 of the enhancement and a graded-mirror phase of 1262 rad peak to
+valley; lambda/1000 errors give 9.9 and 23 %, and the atom loop fails (28.6 %, G/G0 0.09). At 10^5 the
+ideal is 0.31 %, and errors give 6.6 and 8.4 %. The vertical ring's 0.15x telescope fails in the same
+way (ideal 9.8 % at 10^5, results/cavity_vertical_n1e5). Hence the adopted design at 10^4 and 10^5 is
+the plain ring: plane folds, graded mirrors 150 mm from the crossing, no telescope, in-plane and
+vertical. Its mirrors must be larger than the 10^6 strips in the direction of the small flat-tops,
+which diffract: with the 10^6 apertures (2.5 mm horizontal, 5 mm vertical half-widths) the 10^5
+vertical ring loses 1.6e-3 and 2.0e-2 per round trip; with 8 and 15 mm it loses 2.9e-8 and 1.6e-6.
+
+| | 10^4 sites | 10^5 sites | 10^6 sites |
+|---|---|---|---|
+| Array side; in-plane flat-top equivalent width | 0.40 mm; 0.55 mm | 1.26 mm; 1.74 mm | 4.00 mm; 5.51 mm |
+| Hologram tweezers, input | 14 W | 140 W | 1399 W |
+| Lattice in free space, input | 29 W | 150 W | 1041 W |
+| Cavity lattice, input at G = 300 / 1500 | 0.098 / 0.020 W | 0.50 / 0.10 W | 3.5 / 0.69 W |
+| Tweezer power / cavity input at G = 300 | 142 | 279 | 403 |
+| Vertical ring share of the circulating power | 28 % | 55 % | 79 % |
+| Adopted in-plane ring | plain, p = 150 mm | plain, p = 150 mm | 0.2x telescope |
+| Fresnel number of the plain ring; its nearest mode (phase, loss) | 0.52; 0.78 rad, 2.4e-2 | 5.3; 0.17 rad, 2.5e-4 | 53; 0.017 rad, 2e-9 |
+| Ideal depth non-uniformity, in-plane | 0.059 % | 0.053 % | 0.23 % |
+| lambda/1000 on every mirror: uncorrected; perfect redesign; atom loop | 2.0, 3.0 %; 1.3, 0.77 %; 3.0, 2.8 % | 1.6, 2.6 %; 0.16, 0.17 %; 0.20, 0.49 % | 2.0, 4.0 %; 0.41, 0.49 %; 0.42, 0.75 % |
+| The same, 0.5 mm-scale errors (scaled) | 4.2 %; 2.4 %; 5.8 % | 6.6 %; 2.2 %; 2.0 % | 3.6 %; 2.4 %; 2.3 % (50 mm ring) |
+| 1 urad tilts on every mirror, uncorrected | 0.08, 0.10 % | 1.1, 0.19 % | 1.1 % |
+| The plain ring at this size, lambda/1000, uncorrected | 2.0, 3.0 % | 1.6, 2.6 % | 20, 42 % |
+| Peak intensity on the hottest in-plane mirror | 4.2 kW/cm^2 (fold) | 4.2 kW/cm^2 (fold) | 19.3 kW/cm^2 (P2) |
+| Largest absorbing defect, in-plane, fused silica / sapphire | 1.6 / 39 um | 1.6 / 39 um | 0.36 / 8.6 um |
+| Vertical ring: ideal; lambda/1000 uncorrected (h, v); after atom loop | 3.2 %; 4.1, 5.1 % (h), 5.8, 7.4 % (v), G/G0 down to 0.10; loop not run | 0.20 %; 10, 12 % (h), 1.6, 4.1 % (v); 1.4 % (one run) | 0.19 %; 5.7, 12 % (h), 1.5, 0.7 % (v); 0.17, 0.19 % |
+| Vertical ring, hottest mirror | 0.9 kW/cm^2 (P1) | 7.4 kW/cm^2 (P1) | 170 kW/cm^2 (P2) |
+| Edge-site crossing-angle requirement, 10 s at 10 uK | 0.70 nrad/rtHz | 0.22 nrad/rtHz | 0.070 nrad/rtHz |
+| MOT atoms needed (cloud matched at the corners; into the sheets) | 4.7e6 to 5.0e6; 3.7e5 | 1.5e8 to 1.6e8; 3.7e6 | 4.8e9 to 5.1e9; 3.7e7 |
+
+What the comparison shows. (i) Power. Laser power is not a constraint at 10^4 (14 W of tweezers), and
+a lattice in free space needs more than tweezers below about 10^5, because its in-plane power scales
+as the array side and the tweezer power as the number of sites. The cavity reduces the input 142, 279 and 403 times against tweezers
+at 10^4, 10^5 and 10^6. Hence the cavity is a convenience at 10^4, a large saving at 10^5 (0.50 W
+against 140 W) and necessary at 10^6. The vertical ring's share grows from 28 to 79 %, because its
+vertical flat-top must cover a walk-off that grows with the array side. A sheet thickness w_z scaled as
+sqrt(side), which keeps the same 1 % roll-off per array length, would lower the 10^4 input to 0.049 W
+and the 10^5 input to 0.40 W (DERIVED; w_z = 24 and 42 um). (ii) Mode control. The plain ring is
+non-degenerate at 10^4 and 10^5 (nearest mode 0.78 and 0.17 rad away with 2.4e-2 and 2.5e-4 loss),
+so no telescope is needed. The same lambda/1000 errors that give 20 to 42 % in the plain 10^6 ring give
+1.6 to 3.0 % at 10^4 and 10^5, and tilts become nearly harmless (0.08 to 0.10 % at 10^4). The atom loop
+corrects 10^5 to 0.20 to 0.49 %, but not 10^4 (2.8 to 3.0 %), where a perfect-metrology redesign still
+reaches 0.77 to 1.3 %. We have not established why the loop fails at 10^4; the fit uses 48 bins over
+100 sites per side, so finer bins or the camera loop are the next test. (iii) Defects and heat. The
+intensity at the atoms is set by the depth, 19.8 kW/cm^2 per beam at every size. Without the telescope
+the in-plane mirrors see at most 4.2 kW/cm^2, so the defect limit is 1.6 um on fused silica (39 um on
+sapphire) at 10^4 and 10^5, against 0.36 um at 10^6. The 10^5 vertical ring needs no vertical
+telescope: its hottest mirror sees 7.4 kW/cm^2, against 170 kW/cm^2 for the 10^6 ring as folded. (iv)
+Vertical ring at 10^4. Its vertical flat-top is only 19 um high (0.057 mm equivalent height) and
+diffracts strongly over the 414 mm half trip: even with +-25 mm mirror height in the ring plane the
+ideal non-uniformity is 3.2 % and lambda/1000 errors reduce the enhancement to as little as 0.10. A
+Gaussian vertical profile is the better choice at this size: a 266 um waist keeps the intensity within
+1 % over the +-19 um walk-off, has a 207 mm Rayleigh range, and raises the vertical power 5.9 times,
+to 45 W circulating and 0.23 W of total input at G = 300 (DERIVED, not simulated). (v) Noise. Only the
+crossing-angle requirement depends on size (0.70, 0.22 and 0.070 nrad/rtHz); the intensity, lock and
+mirror-displacement requirements of Section 6c are the same at every size, because the trap frequency
+is. (vi) Loading. A MOT of about 5e6 atoms suffices for a single-shot load at 10^4, which the
+demonstrated Cs grating MOT reaches (7.0e6 atoms, with an added retro-reflected beam, Section 6b); at 10^5 a grating MOT suffices only if
+the atoms are accumulated in the sheets (3.7e6 needed there), and at 10^6 it does not.
+
+Hence the step from 10^5 to 10^6 is the large one. Up to 10^5 the design is a plain ring with mirrors of
+modest quality: 0.5 W of input, lambda/1000 errors at the per-cent level that the atom loop corrects,
+micron-scale defect tolerance, no telescope and, at 10^4, a grating MOT. At 10^6 the mode becomes
+degenerate, which brings the telescope, the 0.4 um defect limit, the 170 kW/cm^2 vertical-ring mirror,
+the 0.07 nrad/rtHz angle stability and a 10^9-atom MOT.
+
 ## 7. What must improve, and next steps
 
 What must improve. (i) Figure and alignment of the large telescope mirrors: lambda/1000 rms
@@ -934,6 +1027,9 @@ Provenance ledger:
 | Vertical-ring mirror intensities, defect limits, z-telescope variants | Section 5, Result, Design summary | SIM, review before submission | results/cavity_vertical_mirrors/mirrors.json |
 | Vertical-ring bulge ~0.3 nm at 10 ppm | Section 5 | DERIVED (rough scaling) | 0.035 nm x 7.7 in absorbed power |
 | Input power per ring, design summary | Design summary | DERIVED | P_circ / (0.95 G), results/cavity_budget/budget.json |
+| Scaling study at 10^4 and 10^5: designs, spectra, errors, correction, vertical ring, mirror intensities | Section 6d, Result (viii) | SIM, review before submission | results/cavity_foxli_n1e4, _n1e5; results/cavity_correction_n1e4, _n1e5; results/cavity_vertical_plain_n1e4, _n1e5; results/cavity_vertical_mirrors_plain_n1e4, _n1e5; results/cavity_vertical_n1e5 |
+| Scaling comparison: powers, defect limits, angle requirement, MOT atom numbers | Section 6d | DERIVED (code) | results/cavity_scaling/scaling.json |
+| Gaussian vertical profile at 10^4 (266 um, 5.9x, 0.23 W) | Section 6d | DERIVED | w = h_z / sqrt(-ln 0.99 / 2); sqrt(pi/2) w / H_eq |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |

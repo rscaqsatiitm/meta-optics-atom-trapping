@@ -1,0 +1,1143 @@
+{
+  "sizes": {
+    "1e+04": {
+      "n_sites": 10000.0,
+      "geometry": {
+        "side_mm": 0.396,
+        "W_eq_mm": 0.5460023069214982,
+        "vertical_W_eq_mm": 0.6861815139844151,
+        "vertical_H_eq_um": 56.83341313356575,
+        "vertical_flat_half_um": 18.856067590443914,
+        "w_z_scaled_um": 23.610007040075875
+      },
+      "power": {
+        "tweezer_hologram_W": 13.986013986013987,
+        "tweezer_lenslet_W": 25.0,
+        "free_space_lattice_W": 29.463499610142183,
+        "circulating_inplane_per_axis_W": 10.141978273933931,
+        "circulating_vertical_W": 7.706368081767209,
+        "circulating_total_W": 27.990324629635072,
+        "vertical_share": 0.2753225689139741,
+        "input_total_G300_W": 0.0982116653671406,
+        "input_total_G1500_W": 0.019642333073428123,
+        "input_inplane_ring_G300_W": 0.03558588868046993,
+        "input_vertical_ring_G300_W": 0.027039888006200736,
+        "inplane_per_axis_scaled_wz_W": 3.1926957126383564,
+        "input_total_G300_scaled_wz_W": 0.04944477020015411,
+        "tweezer_over_cavity_G300": 142.4068508942461
+      },
+      "inplane_rings": {
+        "telescope": {
+          "fresnel_number_plain": 0.27036457314622364,
+          "ideal_depth_rms": 0.04442249033020011,
+          "fundamental_loss": 0.0021997245648682773,
+          "nearest_mode": {
+            "dphase_rad": 0.3898957728838174,
+            "loss": 0.05089751397863662
+          },
+          "graded_mirror_peak_over_flat": 0.7534044824066652,
+          "graded_mirror_pv_rad": 1262.1442762529205,
+          "peak_intensity_kW_cm2": {
+            "P1": 4.51853990678208,
+            "P2": 9.3030181125966,
+            "G": 2.0327370112627787
+          },
+          "max_defect_um_fused_silica": 0.741694782971256,
+          "max_defect_um_sapphire": 17.736179592790908,
+          "errors": {
+            "fig1000_uncorrected": [
+              {
+                "depth_rms": 0.23004237694747348,
+                "g_ratio": 0.36406528652720943
+              },
+              {
+                "depth_rms": 0.09903613756471276,
+                "g_ratio": 0.5841710456701591
+              }
+            ],
+            "fig1000_perfect_metrology": [
+              {
+                "depth_rms": 0.029985826257515318,
+                "g_ratio": 0.7129215025323172
+              },
+              {
+                "depth_rms": 0.06492182194212989,
+                "g_ratio": 0.7338316445016817
+              }
+            ],
+            "fig1000_atom_loop": [
+              {
+                "depth_rms": 0.28582265957683906,
+                "g_ratio": 0.08994481613473596
+              },
+              {
+                "depth_rms": 0.041366632928873576,
+                "g_ratio": 0.16710510326899047
+              }
+            ],
+            "fig1000_c0.5_uncorrected": [
+              {
+                "depth_rms": 0.14294478000088764,
+                "g_ratio": 0.5124594583429504
+              }
+            ],
+            "fig1000_c0.5_perfect_metrology": [
+              {
+                "depth_rms": 0.07175562662440049,
+                "g_ratio": 0.6312140118077206
+              }
+            ]
+          }
+        },
+        "plain": {
+          "fresnel_number_plain": 0.5227048414160324,
+          "ideal_depth_rms": 0.0005862696300027428,
+          "fundamental_loss": 3.2839365844417046e-06,
+          "nearest_mode": {
+            "dphase_rad": 0.7751245124887768,
+            "loss": 0.02444757217211857
+          },
+          "graded_mirror_peak_over_flat": 1.5750550949667725,
+          "graded_mirror_pv_rad": 71.7953126375678,
+          "peak_intensity_kW_cm2": {
+            "fold": 4.230782362480138,
+            "G": 3.390650347142648
+          },
+          "max_defect_um_fused_silica": 1.6309040288130379,
+          "max_defect_um_sapphire": 38.999878949876994,
+          "errors": {
+            "fig1000_uncorrected": [
+              {
+                "depth_rms": 0.020256077945728822,
+                "g_ratio": 0.9626657511075261
+              },
+              {
+                "depth_rms": 0.030201605995067497,
+                "g_ratio": 0.9232532779816328
+              }
+            ],
+            "fig1000_perfect_metrology": [
+              {
+                "depth_rms": 0.012819147378735076,
+                "g_ratio": 0.983984659438121
+              },
+              {
+                "depth_rms": 0.007669536164631283,
+                "g_ratio": 0.9962729591398897
+              }
+            ],
+            "fig1000_atom_loop": [
+              {
+                "depth_rms": 0.03038879917569899,
+                "g_ratio": 0.9443684012789919
+              },
+              {
+                "depth_rms": 0.028115516403685238,
+                "g_ratio": 0.7159857149383572
+              }
+            ],
+            "fig1000_c0.5_uncorrected": [
+              {
+                "depth_rms": 0.04162385619524741,
+                "g_ratio": 0.9026680095522904
+              }
+            ],
+            "fig1000_c0.5_perfect_metrology": [
+              {
+                "depth_rms": 0.024158914436771126,
+                "g_ratio": 0.9451994514273212
+              }
+            ],
+            "fig1000_c0.5_atom_loop": [
+              {
+                "depth_rms": 0.05768731171232397,
+                "g_ratio": 0.7276376284663822
+              }
+            ],
+            "tilt1_uncorrected": [
+              {
+                "depth_rms": 0.0008445834671909029,
+                "g_ratio": 0.9993454736364962
+              },
+              {
+                "depth_rms": 0.0009604645958611497,
+                "g_ratio": 0.9988145390830286
+              }
+            ],
+            "tilt1_perfect_metrology": [
+              {
+                "depth_rms": 0.0005877538024678823,
+                "g_ratio": 0.9995187555854578
+              },
+              {
+                "depth_rms": 0.0005871185675701047,
+                "g_ratio": 0.9995158668951583
+              }
+            ],
+            "tilt1_atom_loop": [
+              {
+                "depth_rms": 0.000648959558302703,
+                "g_ratio": 0.9993931709002173
+              },
+              {
+                "depth_rms": 0.0008989118428510675,
+                "g_ratio": 0.9986986339721058
+              }
+            ]
+          }
+        }
+      },
+      "adopted_inplane": "plain",
+      "vertical_ring": {
+        "ideal": {
+          "depth_rms": 0.03152702517569525,
+          "min_over_mean": 0.9412365067106111,
+          "plane_dz_rms_um": 8.913248409960884e-05,
+          "plane_dz_pv_um": 0.0005577219372561651,
+          "plane_dz_affine_res_rms_um": 8.907048412600579e-05,
+          "g_ratio_x": 0.9973539528047346,
+          "g_ratio_z": 0.9907817906428427
+        },
+        "spectrum_x": {
+          "fundamental_loss": 1.7361464116794068e-05,
+          "fundamental_overlap": 0.9999426483693705,
+          "modes": [],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": 2.9531470125898522,
+              "loss": 0.02916788053183783
+            },
+            {
+              "dphase_rad": -1.4399868189669476,
+              "loss": 0.0345054043235099
+            },
+            {
+              "dphase_rad": -1.4915752463659833,
+              "loss": 0.04892093999263192
+            },
+            {
+              "dphase_rad": 1.104241596866689,
+              "loss": 0.05093316855611085
+            }
+          ]
+        },
+        "spectrum_z": {
+          "fundamental_loss": 2.4309526914789714e-06,
+          "fundamental_overlap": 0.9999986385600202,
+          "modes": [
+            {
+              "dphase_rad": 0.035297678287980125,
+              "loss": 0.002206993943102753
+            },
+            {
+              "dphase_rad": 0.653989329116493,
+              "loss": 0.0059177927236767625
+            },
+            {
+              "dphase_rad": 0.6539946134766289,
+              "loss": 0.005943497326483582
+            },
+            {
+              "dphase_rad": 0.7957158397195139,
+              "loss": 0.00229436930613125
+            }
+          ],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": 1.6898927536662387,
+              "loss": 6.101177785211576e-09
+            },
+            {
+              "dphase_rad": 1.6898927536577997,
+              "loss": 6.108640260293896e-09
+            },
+            {
+              "dphase_rad": 1.626615922395075,
+              "loss": 9.444908388722695e-08
+            },
+            {
+              "dphase_rad": 1.6266159223013308,
+              "loss": 9.470968542757419e-08
+            }
+          ]
+        },
+        "x_uncorrected": [
+          0.040800967391866096,
+          0.05100232957488464
+        ],
+        "x_perfect": [
+          0.032178184500908716,
+          0.04978918109695179
+        ],
+        "z_uncorrected": [
+          0.058121807224292346,
+          0.07359744354506724
+        ],
+        "z_perfect": [
+          0.03252702440255725,
+          0.03081792918940406
+        ],
+        "closed_loop": []
+      },
+      "vertical_mirrors": {
+        "no_z_telescope": {
+          "peak_kW_cm2_max": 0.8849205569517768,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.758133663336885,
+            "P1": 0.8849205569517768,
+            "P2": 0.31937161032764094,
+            "G": 0.17389342178716316,
+            "P2 (return)": 0.10741364483751302,
+            "P1 (return)": 0.062337090181110485
+          },
+          "min_defect_um_fused_silica": 7.797310104048143,
+          "min_defect_um_sapphire": 186.45741553158604,
+          "ideal_depth_rms": 0.03152702517569525,
+          "g_ratio_z": 0.9907817906428427,
+          "z_uncorrected": [
+            0.058121807224292346
+          ],
+          "z_perfect": [
+            0.03252702440255725
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": 2.2232311086886996,
+            "loss": 4.0510148108796606e-05
+          }
+        }
+      },
+      "noise_10s_0p2mK": {
+        "RIN_dBc_per_Hz": -105.86471151389915,
+        "mirror_pm_per_rtHz": 0.3180258254356963,
+        "crossing_angle_nrad_per_rtHz": 0.7018666639652867,
+        "edge_lever_mm_per_rad": 1.4601246462865243
+      },
+      "loading": {
+        "density_needed_cm3": 15625000000.0,
+        "mot_atoms_cloud": {
+          "peak_3x": 4976682.9639516445,
+          "peak_5x": 4677825.989379149
+        },
+        "atoms_into_sheets": 367537.50000000006,
+        "planes_in_sheets": 18.75
+      }
+    },
+    "1e+05": {
+      "n_sites": 100000.0,
+      "geometry": {
+        "side_mm": 1.2609110640673518,
+        "W_eq_mm": 1.7385362368778159,
+        "vertical_W_eq_mm": 2.184883492276351,
+        "vertical_H_eq_um": 180.96434199197927,
+        "vertical_flat_half_um": 60.039960226243785,
+        "w_z_scaled_um": 42.12993134292617
+      },
+      "power": {
+        "tweezer_hologram_W": 139.86013986013987,
+        "tweezer_lenslet_W": 250.0,
+        "free_space_lattice_W": 150.22990607486176,
+        "circulating_inplane_per_axis_W": 32.29326418468181,
+        "circulating_vertical_W": 78.13188240175504,
+        "circulating_total_W": 142.71841077111867,
+        "vertical_share": 0.5474548236601179,
+        "input_total_G300_W": 0.5007663535828726,
+        "input_total_G1500_W": 0.10015327071657451,
+        "input_inplane_ring_G300_W": 0.11330969889362039,
+        "input_vertical_ring_G300_W": 0.2741469557956317,
+        "inplane_per_axis_scaled_wz_W": 18.140173372528285,
+        "input_total_G300_scaled_wz_W": 0.40144641805898806,
+        "tweezer_over_cavity_G300": 279.2922065539577
+      },
+      "inplane_rings": {
+        "telescope": {
+          "fresnel_number_plain": 2.741073628801554,
+          "ideal_depth_rms": 0.00313058653702581,
+          "fundamental_loss": 0.00018032400494749634,
+          "nearest_mode": {
+            "dphase_rad": 1.3515065873258179,
+            "loss": 0.0299765632147605
+          },
+          "graded_mirror_peak_over_flat": 6.675203533451738,
+          "graded_mirror_pv_rad": 99.44948720897082,
+          "peak_intensity_kW_cm2": {
+            "P1": 4.51853990678208,
+            "P2": 24.802995683244646,
+            "G": 18.010157355070422
+          },
+          "max_defect_um_fused_silica": 0.2781922025919316,
+          "max_defect_um_sapphire": 6.652422235894018,
+          "errors": {
+            "fig1000_uncorrected": [
+              {
+                "depth_rms": 0.08371657996660332,
+                "g_ratio": 0.5447029545893386
+              },
+              {
+                "depth_rms": 0.06594987806511138,
+                "g_ratio": 0.34547994834710927
+              }
+            ],
+            "fig1000_perfect_metrology": [
+              {
+                "depth_rms": 0.06570733127478907,
+                "g_ratio": 0.8895587614608791
+              },
+              {
+                "depth_rms": 0.04258281722303137,
+                "g_ratio": 0.5446470362260882
+              }
+            ],
+            "fig1000_atom_loop": [
+              {
+                "depth_rms": 0.020871237446999934,
+                "g_ratio": 0.7294650720421588
+              },
+              {
+                "depth_rms": 0.040464412609563294,
+                "g_ratio": 0.30697102892121125
+              }
+            ],
+            "fig1000_c0.5_uncorrected": [
+              {
+                "depth_rms": 0.05865135600819885,
+                "g_ratio": 0.6287899403182317
+              }
+            ]
+          }
+        },
+        "plain": {
+          "fresnel_number_plain": 5.299409015683005,
+          "ideal_depth_rms": 0.0005348365094052781,
+          "fundamental_loss": 9.216028606928717e-09,
+          "nearest_mode": {
+            "dphase_rad": -0.16790139767360335,
+            "loss": 0.0002467648084140128
+          },
+          "graded_mirror_peak_over_flat": 1.2671768281810165,
+          "graded_mirror_pv_rad": 21.318519983403803,
+          "peak_intensity_kW_cm2": {
+            "fold": 4.230782362480138,
+            "G": 2.7278750858259486
+          },
+          "max_defect_um_fused_silica": 1.6309040288130379,
+          "max_defect_um_sapphire": 38.999878949876994,
+          "errors": {
+            "fig1000_uncorrected": [
+              {
+                "depth_rms": 0.0155019915017053,
+                "g_ratio": 0.9973991199811274
+              },
+              {
+                "depth_rms": 0.025790932545073093,
+                "g_ratio": 0.9865489014558075
+              }
+            ],
+            "fig1000_perfect_metrology": [
+              {
+                "depth_rms": 0.0015847246375405755,
+                "g_ratio": 0.9999812244965428
+              },
+              {
+                "depth_rms": 0.0017273792379702275,
+                "g_ratio": 0.9999680851917194
+              }
+            ],
+            "fig1000_atom_loop": [
+              {
+                "depth_rms": 0.001966654656859237,
+                "g_ratio": 0.9995941196726286
+              },
+              {
+                "depth_rms": 0.004904426198022311,
+                "g_ratio": 0.9979374989267701
+              }
+            ],
+            "fig1000_c0.5_uncorrected": [
+              {
+                "depth_rms": 0.06633542575319266,
+                "g_ratio": 0.972662630883672
+              }
+            ],
+            "fig1000_c0.5_perfect_metrology": [
+              {
+                "depth_rms": 0.022013207861684515,
+                "g_ratio": 0.9946823566914532
+              }
+            ],
+            "fig1000_c0.5_atom_loop": [
+              {
+                "depth_rms": 0.020267600555739826,
+                "g_ratio": 0.9574920886459193
+              }
+            ],
+            "tilt1_uncorrected": [
+              {
+                "depth_rms": 0.011127873804186762,
+                "g_ratio": 0.9970875329832104
+              },
+              {
+                "depth_rms": 0.0018762854981534084,
+                "g_ratio": 0.9998965804670414
+              }
+            ],
+            "tilt1_perfect_metrology": [
+              {
+                "depth_rms": 0.000869096296607294,
+                "g_ratio": 0.9999830876107317
+              },
+              {
+                "depth_rms": 0.0005408562296445795,
+                "g_ratio": 0.9999916853244641
+              }
+            ],
+            "tilt1_atom_loop": [
+              {
+                "depth_rms": 0.0011062954888910815,
+                "g_ratio": 0.999925453958784
+              },
+              {
+                "depth_rms": 0.000524076342419246,
+                "g_ratio": 0.9999592154737414
+              }
+            ]
+          }
+        }
+      },
+      "adopted_inplane": "plain",
+      "vertical_ring_scaled_10to6_design": {
+        "ideal": {
+          "depth_rms": 0.09761036590398457,
+          "min_over_mean": 0.8704936698383425,
+          "plane_dz_rms_um": 9.764669205824343e-05,
+          "plane_dz_pv_um": 0.0007092938334425133,
+          "plane_dz_affine_res_rms_um": 8.232421744763495e-05,
+          "g_ratio_x": 0.9529321004419756,
+          "g_ratio_z": 0.7761946302405862
+        },
+        "spectrum_x": {
+          "fundamental_loss": 0.00032063647590752087,
+          "fundamental_overlap": 0.9991046066824997,
+          "modes": [],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": 2.978485137220243,
+              "loss": 0.05212838646460516
+            },
+            {
+              "dphase_rad": 1.0179937919757671,
+              "loss": 0.06778921778885161
+            },
+            {
+              "dphase_rad": 0.18899273962873908,
+              "loss": 0.08168192202485092
+            },
+            {
+              "dphase_rad": 2.9381053367122227,
+              "loss": 0.08301153334461497
+            }
+          ]
+        },
+        "x_uncorrected": [
+          0.09464631761457346,
+          0.10061912937583807
+        ],
+        "x_perfect": [
+          0.09842505528585893,
+          0.09577594372026349
+        ],
+        "closed_loop": [
+          {
+            "start": 0.1373215989695121,
+            "final": 0.06454556225318304
+          }
+        ]
+      },
+      "vertical_ring": {
+        "ideal": {
+          "depth_rms": 0.0020119860331132985,
+          "min_over_mean": 0.9938151703981019,
+          "plane_dz_rms_um": 9.034544554466285e-06,
+          "plane_dz_pv_um": 5.420223190435662e-05,
+          "plane_dz_affine_res_rms_um": 9.034544541887283e-06,
+          "g_ratio_x": 0.9999955967472925,
+          "g_ratio_z": 0.999636094167235
+        },
+        "spectrum_x": {
+          "fundamental_loss": 2.8701068188752288e-08,
+          "fundamental_overlap": 0.9999999771548561,
+          "modes": [
+            {
+              "dphase_rad": -0.009135030326944476,
+              "loss": 0.0032171369120616022
+            },
+            {
+              "dphase_rad": -0.2914501567060237,
+              "loss": 0.0021672362707392256
+            },
+            {
+              "dphase_rad": -1.087296233133198,
+              "loss": 0.0022951084491954488
+            },
+            {
+              "dphase_rad": 1.9504146691073276,
+              "loss": 0.0015080971180461145
+            }
+          ],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": 1.9504146691073276,
+              "loss": 0.0015080971180461145
+            },
+            {
+              "dphase_rad": -2.7688025556550917,
+              "loss": 0.0021135588846462605
+            },
+            {
+              "dphase_rad": -0.2914501567060237,
+              "loss": 0.0021672362707392256
+            },
+            {
+              "dphase_rad": -1.087296233133198,
+              "loss": 0.0022951084491954488
+            }
+          ]
+        },
+        "spectrum_z": {
+          "fundamental_loss": 1.6027469369461755e-06,
+          "fundamental_overlap": 0.9999993423710398,
+          "modes": [],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": 0.24367537120351707,
+              "loss": 0.029771371799883872
+            },
+            {
+              "dphase_rad": 2.602165712635012,
+              "loss": 0.03096011769549889
+            },
+            {
+              "dphase_rad": 2.6023799184909837,
+              "loss": 0.03124079661296153
+            },
+            {
+              "dphase_rad": -0.10648158524108875,
+              "loss": 0.045588103662070556
+            }
+          ]
+        },
+        "x_uncorrected": [
+          0.11902688712341247,
+          0.101434551970366
+        ],
+        "x_perfect": [
+          0.002210701673112816,
+          0.0038810265988319845
+        ],
+        "z_uncorrected": [
+          0.015586120283520284,
+          0.04051052592822997
+        ],
+        "z_perfect": [
+          0.0020014558466582674,
+          0.0021853882407805074
+        ],
+        "closed_loop": [
+          {
+            "start": 0.1339568792684988,
+            "final": 0.014056451957163282,
+            "g_x": 0.993548536994113,
+            "g_z": 0.8970474041802441
+          }
+        ]
+      },
+      "vertical_mirrors": {
+        "no_z_telescope": {
+          "peak_kW_cm2_max": 7.413775021327481,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.76087206595959,
+            "P1": 7.413775021327481,
+            "P2": 3.048202805219261,
+            "G": 2.2551106624533306,
+            "P2 (return)": 1.8172706987363834,
+            "P1 (return)": 1.4265616650710082
+          },
+          "min_defect_um_fused_silica": 0.9306999443806313,
+          "min_defect_um_sapphire": 22.25586823518901,
+          "ideal_depth_rms": 0.0020119860331132985,
+          "g_ratio_z": 0.999636094167235,
+          "z_uncorrected": [
+            0.015586120283520284,
+            0.04051052592822997
+          ],
+          "z_perfect": [
+            0.0020014558466582674,
+            0.0021853882407805074
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": 0.24367537120351707,
+            "loss": 0.029771371799883872
+          }
+        },
+        "z_expand_4x": {
+          "peak_kW_cm2_max": 28.813705386649694,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.760872065945875,
+            "P1": 7.413775003984336,
+            "P2": 3.4356248531510105,
+            "G": 3.214799456452317,
+            "P2 (return)": 3.0324031823171773,
+            "P1 (return)": 28.813705386649694
+          },
+          "min_defect_um_fused_silica": 0.23946937429286652,
+          "min_defect_um_sapphire": 5.7264415591772435,
+          "ideal_depth_rms": 0.0006774550986894629,
+          "g_ratio_z": 0.9999060586139905,
+          "z_uncorrected": [
+            0.005803815036541912,
+            0.009768617498968605
+          ],
+          "z_perfect": [
+            0.0010391275624425842,
+            0.0013881646015673507
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": -1.6545699170433799,
+            "loss": 0.0003855980009243032
+          }
+        },
+        "z_expand_8x": {
+          "peak_kW_cm2_max": 14.862864006431918,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.760872065945875,
+            "P1": 7.413775003984336,
+            "P2": 1.2759455477065722,
+            "G": 1.3016506021265983,
+            "P2 (return)": 1.3252848821802594,
+            "P1 (return)": 14.862864006431918
+          },
+          "min_defect_um_fused_silica": 0.46424430695282,
+          "min_defect_um_sapphire": 11.10149429669787,
+          "ideal_depth_rms": 0.01754324741368575,
+          "g_ratio_z": 0.9086802608741285,
+          "z_uncorrected": [
+            0.02130176670815948,
+            0.016271703440823137
+          ],
+          "z_perfect": [
+            0.01763429428535897,
+            0.017491013398057472
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": 1.5515779193055055,
+            "loss": 0.00819648830473918
+          }
+        }
+      },
+      "noise_10s_0p2mK": {
+        "RIN_dBc_per_Hz": -105.86471151389915,
+        "mirror_pm_per_rtHz": 0.3180258254356963,
+        "crossing_angle_nrad_per_rtHz": 0.22042728218570645,
+        "edge_lever_mm_per_rad": 4.649210407626533
+      },
+      "loading": {
+        "density_needed_cm3": 15625000000.0,
+        "mot_atoms_cloud": {
+          "peak_3x": 160660007.911569,
+          "peak_5x": 151012143.20991248
+        },
+        "atoms_into_sheets": 3726320.417548737,
+        "planes_in_sheets": 18.75
+      }
+    },
+    "1e+06": {
+      "n_sites": 1000000.0,
+      "geometry": {
+        "side_mm": 3.996,
+        "W_eq_mm": 5.509659642571481,
+        "vertical_W_eq_mm": 6.924195277479097,
+        "vertical_H_eq_um": 573.5008052568907,
+        "vertical_flat_half_um": 190.27486386720673,
+        "w_z_scaled_um": 75.0
+      },
+      "power": {
+        "tweezer_hologram_W": 1398.6013986013986,
+        "tweezer_lenslet_W": 2500.0,
+        "free_space_lattice_W": 1041.4690916085292,
+        "circulating_inplane_per_axis_W": 102.3417807642424,
+        "circulating_vertical_W": 784.7120754996179,
+        "circulating_total_W": 989.3956370281027,
+        "vertical_share": 0.7931226358109855,
+        "input_total_G300_W": 3.471563638695097,
+        "input_total_G1500_W": 0.6943127277390194,
+        "input_inplane_ring_G300_W": 0.359093967593833,
+        "input_vertical_ring_G300_W": 2.753375703507431,
+        "inplane_per_axis_scaled_wz_W": 102.3417807642424,
+        "input_total_G300_scaled_wz_W": 3.471563638695097,
+        "tweezer_over_cavity_G300": 402.873616664308
+      },
+      "inplane_rings": {
+        "telescope": {
+          "fresnel_number_plain": 27.530263683757205,
+          "ideal_depth_rms": 0.0023149340766849265,
+          "fundamental_loss": 1.637383972852291e-08,
+          "nearest_mode": {
+            "dphase_rad": -0.2157640337029461,
+            "loss": 0.0033293462554466746
+          },
+          "graded_mirror_peak_over_flat": 6.459545667451782,
+          "graded_mirror_pv_rad": 23.909598600308072,
+          "peak_intensity_kW_cm2": {
+            "P1": 4.51853990678208,
+            "P2": 19.265834811745655,
+            "G": 17.428297628688497
+          },
+          "max_defect_um_fused_silica": 0.3581469511922385,
+          "max_defect_um_sapphire": 8.564383615466571,
+          "errors": {
+            "fig1000_uncorrected": [
+              {
+                "depth_rms": 0.020049428987828622,
+                "g_ratio": 0.9984591558675786
+              },
+              {
+                "depth_rms": 0.04007287715574719,
+                "g_ratio": 0.9644475887245916
+              }
+            ],
+            "fig1000_perfect_metrology": [
+              {
+                "depth_rms": 0.004108202389615206,
+                "g_ratio": 0.9996371863012926
+              },
+              {
+                "depth_rms": 0.004866767865706851,
+                "g_ratio": 0.9991347452640641
+              }
+            ],
+            "fig1000_atom_loop": [
+              {
+                "depth_rms": 0.0041735854657344255,
+                "g_ratio": 0.9988885565001502
+              },
+              {
+                "depth_rms": 0.007488362248881067,
+                "g_ratio": 0.98410594465742
+              }
+            ],
+            "tilt1_uncorrected": [
+              {
+                "depth_rms": 0.011235557355562897,
+                "g_ratio": 0.9971126626842891
+              }
+            ],
+            "tilt1_perfect_metrology": [
+              {
+                "depth_rms": 0.004172909235787872,
+                "g_ratio": 0.9996443059164885
+              }
+            ],
+            "tilt1_atom_loop": [
+              {
+                "depth_rms": 0.0021756128202401748,
+                "g_ratio": 0.9998306154012604
+              }
+            ]
+          }
+        },
+        "plain": {
+          "fresnel_number_plain": 53.225176455263934,
+          "ideal_depth_rms": 0.0023145925952734844,
+          "fundamental_loss": 8.318783439875688e-10,
+          "nearest_mode": {
+            "dphase_rad": -0.01666585283371436,
+            "loss": 2.260777787199686e-09
+          },
+          "graded_mirror_peak_over_flat": 1.000003938877727,
+          "graded_mirror_pv_rad": 5.920802914327908,
+          "peak_intensity_kW_cm2": {
+            "fold": 4.230782362480138,
+            "G": 2.152727046396628
+          },
+          "max_defect_um_fused_silica": 1.6309040288130379,
+          "max_defect_um_sapphire": 38.999878949876994,
+          "errors": {
+            "fig1000_uncorrected": [
+              {
+                "depth_rms": 0.19614765711436938,
+                "g_ratio": 0.6129908353570821
+              },
+              {
+                "depth_rms": 0.42400836399774045,
+                "g_ratio": 0.6780283443986597
+              }
+            ],
+            "fig1000_perfect_metrology": [
+              {
+                "depth_rms": 0.0023003381222502857,
+                "g_ratio": 0.9999942570702469
+              },
+              {
+                "depth_rms": 0.002305864148868934,
+                "g_ratio": 0.9999922109148192
+              }
+            ],
+            "fig1000_atom_loop": [
+              {
+                "depth_rms": 0.0355320915213333,
+                "g_ratio": 0.9989906152123788
+              },
+              {
+                "depth_rms": 0.01613627788780817,
+                "g_ratio": 0.9986227111593956
+              }
+            ],
+            "fig1000_c0.5_uncorrected": [
+              {
+                "depth_rms": 0.23504872983015793,
+                "g_ratio": 0.6641010188963296
+              }
+            ],
+            "fig1000_c0.5_perfect_metrology": [
+              {
+                "depth_rms": 0.0025848893171794536,
+                "g_ratio": 0.9999891464359143
+              }
+            ],
+            "fig1000_c0.5_atom_loop": [
+              {
+                "depth_rms": 0.009352534966473895,
+                "g_ratio": 0.9991704958523496
+              }
+            ],
+            "tilt1_uncorrected": [
+              {
+                "depth_rms": 0.19199949720533455,
+                "g_ratio": 0.5808612937695153
+              },
+              {
+                "depth_rms": 0.04812122437539807,
+                "g_ratio": 0.9443972220440982
+              }
+            ],
+            "tilt1_perfect_metrology": [
+              {
+                "depth_rms": 0.018829949298155405,
+                "g_ratio": 0.9899640073442988
+              },
+              {
+                "depth_rms": 0.0031996074159433728,
+                "g_ratio": 0.9997313248832811
+              }
+            ],
+            "tilt1_atom_loop": [
+              {
+                "depth_rms": 0.19722128065667938,
+                "g_ratio": 0.9591961979089887
+              },
+              {
+                "depth_rms": 0.004143392322981489,
+                "g_ratio": 0.9997340400794956
+              }
+            ]
+          }
+        }
+      },
+      "adopted_inplane": "telescope",
+      "vertical_ring": {
+        "ideal": {
+          "depth_rms": 0.0019136184194358385,
+          "min_over_mean": 0.9879474291269531,
+          "plane_dz_rms_um": 7.902551013573371e-06,
+          "plane_dz_pv_um": 3.739882405735357e-05,
+          "plane_dz_affine_res_rms_um": 7.902538494444097e-06,
+          "g_ratio_x": 0.9999454187681128,
+          "g_ratio_z": 0.9955973930286464
+        },
+        "spectrum_x": {
+          "fundamental_loss": 3.605006814177969e-07,
+          "fundamental_overlap": 0.9999999159559926,
+          "modes": [
+            {
+              "dphase_rad": -0.30029357840712373,
+              "loss": 0.007780764124958983
+            }
+          ],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": -0.30029357840712373,
+              "loss": 0.007780764124958983
+            },
+            {
+              "dphase_rad": -2.827925999081182,
+              "loss": 0.014445247692036478
+            },
+            {
+              "dphase_rad": -1.2534069540020951,
+              "loss": 0.017528430933046346
+            },
+            {
+              "dphase_rad": 1.8308333219972315,
+              "loss": 0.02538671451877539
+            }
+          ]
+        },
+        "spectrum_z": {
+          "fundamental_loss": 2.9043858496891062e-05,
+          "fundamental_overlap": 0.9999408961263996,
+          "modes": [
+            {
+              "dphase_rad": 2.1460628696276585,
+              "loss": 0.0040161222491437165
+            }
+          ],
+          "lowest_loss_modes": [
+            {
+              "dphase_rad": 2.1460628696276585,
+              "loss": 0.0040161222491437165
+            },
+            {
+              "dphase_rad": 0.5727441250610448,
+              "loss": 0.010358823777469883
+            },
+            {
+              "dphase_rad": 0.5720971035646625,
+              "loss": 0.010618157423141539
+            },
+            {
+              "dphase_rad": 2.1650389129471215,
+              "loss": 0.013524974917363153
+            }
+          ]
+        },
+        "x_uncorrected": [
+          0.057121095439876944,
+          0.12373292060023257
+        ],
+        "x_perfect": [
+          0.0019348460661281193,
+          0.0019892515346508276
+        ],
+        "z_uncorrected": [
+          0.015141680341605356,
+          0.006876979019238704
+        ],
+        "z_perfect": [
+          0.0032612522788249155,
+          0.0033467895513313883
+        ],
+        "closed_loop": [
+          {
+            "start": 0.05911243772381844,
+            "final": 0.0016793490767269628,
+            "g_x": 0.99037074088784,
+            "g_z": 0.8038454126582364
+          },
+          {
+            "start": 0.12419331075496282,
+            "final": 0.0018979454970777653,
+            "g_x": 0.9770874100768385,
+            "g_z": 0.9026553112831768
+          }
+        ]
+      },
+      "vertical_mirrors": {
+        "no_z_telescope": {
+          "peak_kW_cm2_max": 169.67843799407572,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.76140859264821,
+            "P1": 32.29354022999515,
+            "P2": 169.67843799407572,
+            "G": 144.679721305621,
+            "P2 (return)": 111.74215495194217,
+            "P1 (return)": 14.133982927143029
+          },
+          "min_defect_um_fused_silica": 0.040665155110874554,
+          "min_defect_um_sapphire": 0.9724276222165654,
+          "ideal_depth_rms": 0.0019136184194358385,
+          "g_ratio_z": 0.9955973930286464,
+          "z_uncorrected": [
+            0.015141680341605356,
+            0.006876979019238704
+          ],
+          "z_perfect": [
+            0.0032612522788249155,
+            0.0033467895513313883
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": 2.1460628696276585,
+            "loss": 0.0040161222491437165
+          }
+        },
+        "z_expand_4x": {
+          "peak_kW_cm2_max": 55.08322087458541,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.76140859264821,
+            "P1": 32.29354023002927,
+            "P2": 51.05398856409307,
+            "G": 54.737026932290235,
+            "P2 (return)": 55.08322087458541,
+            "P1 (return)": 35.05655767007938
+          },
+          "min_defect_um_fused_silica": 0.125265006120649,
+          "min_defect_um_sapphire": 2.995467537667693,
+          "ideal_depth_rms": 0.0007254764144944212,
+          "g_ratio_z": 0.9999980561082399,
+          "z_uncorrected": [
+            0.04995776785855479,
+            0.08327355344947845
+          ],
+          "z_perfect": [
+            0.019486798469975575,
+            0.014356722336322769
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": -1.6747679785098908,
+            "loss": 0.00010682883608226224
+          }
+        },
+        "z_expand_8x": {
+          "peak_kW_cm2_max": 37.32475856004668,
+          "peak_kW_cm2": {
+            "atoms (X)": 19.761408592648205,
+            "P1": 32.29354023005087,
+            "P2": 27.406501304299955,
+            "G": 32.05155068294606,
+            "P2 (return)": 31.91713107719951,
+            "P1 (return)": 37.32475856004668
+          },
+          "min_defect_um_fused_silica": 0.18486388837317022,
+          "min_defect_um_sapphire": 4.420658200227984,
+          "ideal_depth_rms": 0.0015802857326995472,
+          "g_ratio_z": 0.9975023578804668,
+          "z_uncorrected": [
+            0.23268155187670445,
+            0.06754722990963208
+          ],
+          "z_perfect": [
+            0.02751815123306339,
+            0.004124326412795216
+          ],
+          "z_nearest_mode": {
+            "dphase_rad": 2.6512027805620035,
+            "loss": 0.0004839802460537834
+          }
+        }
+      },
+      "noise_10s_0p2mK": {
+        "RIN_dBc_per_Hz": -105.86471151389915,
+        "mirror_pm_per_rtHz": 0.3180258254356963,
+        "crossing_angle_nrad_per_rtHz": 0.06955435408665003,
+        "edge_lever_mm_per_rad": 14.733985067073107
+      },
+      "loading": {
+        "density_needed_cm3": 15625000000.0,
+        "mot_atoms_cloud": {
+          "peak_3x": 5113648308.544065,
+          "peak_5x": 4806566367.904277
+        },
+        "atoms_into_sheets": 37425037.50000001,
+        "planes_in_sheets": 18.75
+      }
+    }
+  }
+}

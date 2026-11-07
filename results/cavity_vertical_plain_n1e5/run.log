@@ -1,0 +1,16 @@
+ideal {'depth_rms': 0.0020119860331132985, 'min_over_mean': 0.9938151703981019, 'plane_dz_rms_um': 9.034544554466285e-06, 'plane_dz_pv_um': 5.420223190435662e-05, 'plane_dz_affine_res_rms_um': 9.034544541887283e-06, 'g_ratio_x': np.float64(0.9999955967472925), 'g_ratio_z': np.float64(0.999636094167235)}
+fig0.001_x_seed1_uncorrected {'depth_rms': 0.11902688712341247, 'min_over_mean': 0.8161974862991351, 'plane_dz_rms_um': 0.02814035998349587, 'plane_dz_pv_um': 0.12374267649995527, 'plane_dz_affine_res_rms_um': 0.022980563402274307, 'g_ratio': np.float64(0.9835818270156244)}
+fig0.001_x_seed1_openloop_perfect {'depth_rms': 0.002210701673112816, 'min_over_mean': 0.992805344981949, 'plane_dz_rms_um': 0.0026291043016495865, 'plane_dz_pv_um': 0.012777995444882891, 'plane_dz_affine_res_rms_um': 0.002626462073817065, 'g_ratio': np.float64(0.9998668563632265)}
+fig0.001_x_seed2_uncorrected {'depth_rms': 0.101434551970366, 'min_over_mean': 0.8135811874379836, 'plane_dz_rms_um': 0.023691947180631927, 'plane_dz_pv_um': 0.11757596794376188, 'plane_dz_affine_res_rms_um': 0.02368503696142396, 'g_ratio': np.float64(0.9926719960493312)}
+fig0.001_x_seed2_openloop_perfect {'depth_rms': 0.0038810265988319845, 'min_over_mean': 0.9875888939062559, 'plane_dz_rms_um': 0.0032297714709362624, 'plane_dz_pv_um': 0.01813716977346144, 'plane_dz_affine_res_rms_um': 0.003227715972237173, 'g_ratio': np.float64(0.9997834859668187)}
+fig0.001_z_seed1_uncorrected {'depth_rms': 0.015586120283520284, 'min_over_mean': 0.8833750057027173, 'plane_dz_rms_um': 0.024301988439091607, 'plane_dz_pv_um': 0.17509329430489182, 'plane_dz_affine_res_rms_um': 0.015605822812853337, 'g_ratio': np.float64(0.8777422181823488)}
+fig0.001_z_seed1_openloop_perfect {'depth_rms': 0.0020014558466582674, 'min_over_mean': 0.9921762340598894, 'plane_dz_rms_um': 0.000611254706034511, 'plane_dz_pv_um': 0.0027326372012330246, 'plane_dz_affine_res_rms_um': 0.0004172616058766057, 'g_ratio': np.float64(0.9994191367910515)}
+fig0.001_z_seed2_uncorrected {'depth_rms': 0.04051052592822997, 'min_over_mean': 0.7996864449293783, 'plane_dz_rms_um': 0.058155477478967356, 'plane_dz_pv_um': 0.3078783031805734, 'plane_dz_affine_res_rms_um': 0.05266259332632065, 'g_ratio': np.float64(0.6831682810835497)}
+fig0.001_z_seed2_openloop_perfect {'depth_rms': 0.0021853882407805074, 'min_over_mean': 0.99345736944319, 'plane_dz_rms_um': 0.0008897391186980288, 'plane_dz_pv_um': 0.005209581745790588, 'plane_dz_affine_res_rms_um': 0.0007193575885933442, 'g_ratio': np.float64(0.9993998169296816)}
+  closed loop seed 1 round 0: 13.396 %  G 0.984/0.825
+  closed loop seed 1 round 1: 6.849 %  G 0.990/0.872
+  closed loop seed 1 round 2: 3.332 %  G 0.994/0.866
+  closed loop seed 1 round 3: 2.304 %  G 0.995/0.887
+  closed loop seed 1 round 4: 1.712 %  G 0.995/0.887
+  closed loop seed 1 round 5: 1.224 %  G 0.994/0.890
+  closed loop seed 1 round 6: 1.406 %  G 0.994/0.897

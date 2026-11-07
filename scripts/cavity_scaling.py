@@ -138,6 +138,15 @@ def main(cfg_path):
             }
         row["inplane_rings"] = rings
         # Vertical ring.
+        row["adopted_inplane"] = sz["adopted_inplane"]
+        vs = jload(sz["vertical_scaled_design_json"]) if sz.get("vertical_scaled_design_json") else None
+        if vs:
+            c = vs["cases"]
+            row["vertical_ring_scaled_10to6_design"] = {
+                "ideal": c["ideal"], "spectrum_x": vs.get("spectrum_x"),
+                "x_uncorrected": [c[k]["depth_rms"] for k in c if "_x_" in k and k.endswith("uncorrected")],
+                "x_perfect": [c[k]["depth_rms"] for k in c if "_x_" in k and k.endswith("openloop_perfect")],
+                "closed_loop": [{"start": c[k]["history"][0]["depth_rms"], "final": c[k]["history"][-1]["depth_rms"]} for k in c if k.endswith("closedloop")]}
         vert = jload(sz["vertical_json"])
         vm = jload(sz["vertical_mirrors_json"])
         if vert:
@@ -152,10 +161,12 @@ def main(cfg_path):
                                  "g_x": cs[k]["history"][-1]["g_ratio_x"], "g_z": cs[k]["history"][-1]["g_ratio_z"]} for k in cs if k.endswith("closedloop")],
             }
         if vm:
-            row["vertical_mirrors"] = {name: {"peak_kW_cm2_max": max(x[str(cfg["depth_mK"])] for x in v["peak_intensity_kW_cm2"].values()),
+            dk = str(cfg["depth_mK"])
+            mir = lambda d: {m: x for m, x in d.items() if not m.startswith("atoms")}  # mirrors only, not the crossing
+            row["vertical_mirrors"] = {name: {"peak_kW_cm2_max": max(x[dk] for x in mir(v["peak_intensity_kW_cm2"]).values()),
                                               "peak_kW_cm2": {m: x[str(cfg["depth_mK"])] for m, x in v["peak_intensity_kW_cm2"].items()},
-                                              "min_defect_um_fused_silica": min(x[str(cfg["depth_mK"])] for x in v["max_defect_radius_um"]["fused_silica"].values()),
-                                              "min_defect_um_sapphire": min(x[str(cfg["depth_mK"])] for x in v["max_defect_radius_um"]["sapphire"].values()),
+                                              "min_defect_um_fused_silica": min(x[dk] for x in mir(v["max_defect_radius_um"]["fused_silica"]).values()),
+                                              "min_defect_um_sapphire": min(x[dk] for x in mir(v["max_defect_radius_um"]["sapphire"]).values()),
                                               "ideal_depth_rms": v["ideal"]["depth_rms"], "g_ratio_z": v["ideal"]["g_ratio_z"],
                                               "z_uncorrected": [v[k]["depth_rms"] for k in v if k.endswith("uncorrected")],
                                               "z_perfect": [v[k]["depth_rms"] for k in v if k.endswith("openloop_perfect")],
@@ -211,23 +222,30 @@ def plot(rep, path):
     ax[0].set_ylabel("Laser power at the optics input (W)", color=INK2)
     ax[0].set_title("(a) Power, 0.2 mK barrier", color=INK, loc="left")
     ax[0].legend(frameon=False, fontsize=8)
-    for (lab, ring, kind, mk), c in zip([("Telescope ring, uncorrected", "telescope", "fig1000_uncorrected", "^"), ("Telescope ring, atom loop", "telescope", "fig1000_atom_loop", "v"),
-                                         ("Plain ring, uncorrected", "plain", "fig1000_uncorrected", "s"), ("Plain ring, atom loop", "plain", "fig1000_atom_loop", "D")], SERIES):
-        xs, ys = [], []
-        for x, k in zip(n, keys):
-            e = rep["sizes"][k]["inplane_rings"].get(ring, {}).get("errors", {}).get(kind)
-            if e:
-                xs.append(x)
-                ys.append(100 * float(np.median([v["depth_rms"] for v in e])))
-        ax[1].plot(xs, ys, color=c, lw=2, marker=mk, ms=8, label=lab)
+    def err(k, ring, kind):
+        e = rep["sizes"][k]["inplane_rings"].get(ring, {}).get("errors", {}).get(kind)
+        return 100 * float(np.median([v["depth_rms"] for v in e])) if e else None
+
+    lines_b = [("Adopted design, uncorrected", lambda k: err(k, rep["sizes"][k]["adopted_inplane"], "fig1000_uncorrected"), "^"),
+               ("Adopted design, atom loop", lambda k: err(k, rep["sizes"][k]["adopted_inplane"], "fig1000_atom_loop"), "v"),
+               ("0.2x telescope ring at every size, uncorrected", lambda k: err(k, "telescope", "fig1000_uncorrected"), "s"),
+               ("Plain ring at every size, uncorrected", lambda k: err(k, "plain", "fig1000_uncorrected"), "D")]
+    order = [2, 3, 0, 1]  # comparisons (dashed) underneath, adopted design on top
+    for i in order:
+        (lab, f, mk), c = lines_b[i], SERIES[i]
+        pts = [(x, f(k)) for x, k in zip(n, keys) if f(k) is not None]
+        if pts:
+            ax[1].plot(*zip(*pts), color=c, lw=2 if i < 2 else 1.5, ls="-" if i < 2 else "--", marker=mk, ms=8 if i < 2 else 10,
+                       mfc=c if i < 2 else "none", mew=2, label=lab, zorder=3 if i < 2 else 2)
+    h, l = ax[1].get_legend_handles_labels()
+    ax[1].legend([h[l.index(x[0])] for x in lines_b if x[0] in l], [x[0] for x in lines_b if x[0] in l], frameon=False, fontsize=8)
     ax[1].set_yscale("log")
     ax[1].set_ylabel("Depth non-uniformity, rms (%)", color=INK2)
     ax[1].set_title("(b) $\\lambda$/1000 figure error on every mirror", color=INK, loc="left")
-    ax[1].legend(frameon=False, fontsize=8)
-    for (lab, getter, mk), c in zip([("In-plane, telescope ring", lambda r: max(r["inplane_rings"]["telescope"]["peak_intensity_kW_cm2"].values()), "^"),
+    for (lab, getter, mk), c in zip([("In-plane, 0.2x telescope ring (10^6 design)", lambda r: max(r["inplane_rings"]["telescope"]["peak_intensity_kW_cm2"].values()), "^"),
                                      ("In-plane, plain ring", lambda r: max(r["inplane_rings"]["plain"]["peak_intensity_kW_cm2"].values()), "s"),
-                                     ("Vertical ring, as folded", lambda r: r["vertical_mirrors"]["no_z_telescope"]["peak_kW_cm2_max"], "o"),
-                                     ("Vertical ring, 8x vertical telescope", lambda r: r["vertical_mirrors"]["z_expand_8x"]["peak_kW_cm2_max"], "D")], SERIES):
+                                     ("Vertical ring, adopted design", lambda r: r["vertical_mirrors"]["no_z_telescope"]["peak_kW_cm2_max"], "o"),
+                                     ("Vertical ring, adopted + 8x vertical telescope", lambda r: r["vertical_mirrors"]["z_expand_8x"]["peak_kW_cm2_max"], "D")], SERIES):
         xs, ys = [], []
         for x, k in zip(n, keys):
             try:

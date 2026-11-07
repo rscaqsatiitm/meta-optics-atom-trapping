@@ -1,0 +1,67 @@
+{
+  "config": {
+    "run_id": "cavity_vertical_mirrors_plain_n1e5",
+    "vertical_config": "configs/cavity_vertical_plain_n1e5.yaml",
+    "layout_json": "results/cavity_vertical_layout/vertical_layout.json",
+    "budget_json": "results/cavity_budget/budget.json",
+    "thermal_config": "configs/cavity_thermal.yaml",
+    "n_sites": 100000.0,
+    "depths_mK": [
+      0.2
+    ],
+    "spectrum_grid_n": 2048,
+    "error_seeds": [
+      1,
+      2
+    ],
+    "z_variants": [
+      {
+        "name": "no_z_telescope",
+        "telescope": false
+      },
+      {
+        "name": "z_expand_4x",
+        "telescope": {
+          "mag": 4.0
+        },
+        "grid_n": 16384,
+        "grid_width_um": 40000.0,
+        "ap1_um": 15000.0,
+        "ap2_um": 15000.0,
+        "ap_g_um": 15000.0
+      },
+      {
+        "name": "z_expand_8x",
+        "telescope": {
+          "mag": 8.0
+        },
+        "grid_n": 16384,
+        "grid_width_um": 40000.0,
+        "ap1_um": 15000.0,
+        "ap2_um": 15000.0,
+        "ap_g_um": 15000.0
+      }
+    ],
+    "_config_path": "configs/cavity_vertical_mirrors_plain_n1e5.yaml"
+  },
+  "git": {
+    "commit": "adc646b1aa312f4b05706080f5b3c1357f7b0fe7",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-07T05:33:28+00:00"
+}

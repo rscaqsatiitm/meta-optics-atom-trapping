@@ -1,0 +1,148 @@
+{
+  "x_design": {
+    "w_um": 364.83836633190487,
+    "W_eq_um": 686.1465074025498
+  },
+  "z_design": {
+    "w_um": 32.02039097844705,
+    "H_eq_um": 56.84526567152678
+  },
+  "spectrum_z": {
+    "fundamental_loss": 2.4309526914789714e-06,
+    "fundamental_overlap": 0.9999986385600202,
+    "modes": [
+      {
+        "dphase_rad": 0.035297678287980125,
+        "loss": 0.002206993943102753
+      },
+      {
+        "dphase_rad": 0.653989329116493,
+        "loss": 0.0059177927236767625
+      },
+      {
+        "dphase_rad": 0.6539946134766289,
+        "loss": 0.005943497326483582
+      },
+      {
+        "dphase_rad": 0.7957158397195139,
+        "loss": 0.00229436930613125
+      }
+    ],
+    "lowest_loss_modes": [
+      {
+        "dphase_rad": 1.6898927536662387,
+        "loss": 6.101177785211576e-09
+      },
+      {
+        "dphase_rad": 1.6898927536577997,
+        "loss": 6.108640260293896e-09
+      },
+      {
+        "dphase_rad": 1.626615922395075,
+        "loss": 9.444908388722695e-08
+      },
+      {
+        "dphase_rad": 1.6266159223013308,
+        "loss": 9.470968542757419e-08
+      }
+    ]
+  },
+  "spectrum_x": {
+    "fundamental_loss": 1.7361464116794068e-05,
+    "fundamental_overlap": 0.9999426483693705,
+    "modes": [],
+    "lowest_loss_modes": [
+      {
+        "dphase_rad": 2.9531470125898522,
+        "loss": 0.02916788053183783
+      },
+      {
+        "dphase_rad": -1.4399868189669476,
+        "loss": 0.0345054043235099
+      },
+      {
+        "dphase_rad": -1.4915752463659833,
+        "loss": 0.04892093999263192
+      },
+      {
+        "dphase_rad": 1.104241596866689,
+        "loss": 0.05093316855611085
+      }
+    ]
+  },
+  "cases": {
+    "ideal": {
+      "depth_rms": 0.03152702517569525,
+      "min_over_mean": 0.9412365067106111,
+      "plane_dz_rms_um": 8.913248409960884e-05,
+      "plane_dz_pv_um": 0.0005577219372561651,
+      "plane_dz_affine_res_rms_um": 8.907048412600579e-05,
+      "g_ratio_x": 0.9973539528047346,
+      "g_ratio_z": 0.9907817906428427
+    },
+    "fig0.001_x_seed1_uncorrected": {
+      "depth_rms": 0.040800967391866096,
+      "min_over_mean": 0.9107532543756761,
+      "plane_dz_rms_um": 0.009104360584109107,
+      "plane_dz_pv_um": 0.049654701668495435,
+      "plane_dz_affine_res_rms_um": 0.009048807360264964,
+      "g_ratio": 0.8795938465062904
+    },
+    "fig0.001_x_seed1_openloop_perfect": {
+      "depth_rms": 0.032178184500908716,
+      "min_over_mean": 0.9347931551781414,
+      "plane_dz_rms_um": 0.0046392025438373695,
+      "plane_dz_pv_um": 0.021353351290795675,
+      "plane_dz_affine_res_rms_um": 0.004567494470832095,
+      "g_ratio": 0.9928814086291403
+    },
+    "fig0.001_x_seed2_uncorrected": {
+      "depth_rms": 0.05100232957488464,
+      "min_over_mean": 0.8774521180816519,
+      "plane_dz_rms_um": 0.08071090986018062,
+      "plane_dz_pv_um": 0.3268683454199569,
+      "plane_dz_affine_res_rms_um": 0.08009916529898355,
+      "g_ratio": 0.7061118465854549
+    },
+    "fig0.001_x_seed2_openloop_perfect": {
+      "depth_rms": 0.04978918109695179,
+      "min_over_mean": 0.8835756681846533,
+      "plane_dz_rms_um": 0.009223539887371585,
+      "plane_dz_pv_um": 0.039962984188965586,
+      "plane_dz_affine_res_rms_um": 0.009187894638167148,
+      "g_ratio": 0.9397660440791296
+    },
+    "fig0.001_z_seed1_uncorrected": {
+      "depth_rms": 0.058121807224292346,
+      "min_over_mean": 0.9099990152291053,
+      "plane_dz_rms_um": 0.30779137280143193,
+      "plane_dz_pv_um": 2.0256856110959207,
+      "plane_dz_affine_res_rms_um": 0.05163397433348512,
+      "g_ratio": 0.6833396781134188
+    },
+    "fig0.001_z_seed1_openloop_perfect": {
+      "depth_rms": 0.03252702440255725,
+      "min_over_mean": 0.9396918873212846,
+      "plane_dz_rms_um": 0.0023844986742362043,
+      "plane_dz_pv_um": 0.015507710276163045,
+      "plane_dz_affine_res_rms_um": 0.0014611368816843386,
+      "g_ratio": 0.9903392616825889
+    },
+    "fig0.001_z_seed2_uncorrected": {
+      "depth_rms": 0.07359744354506724,
+      "min_over_mean": 0.8797007926863578,
+      "plane_dz_rms_um": 0.5856211440652542,
+      "plane_dz_pv_um": 2.0661000223723454,
+      "plane_dz_affine_res_rms_um": 0.10815632142556837,
+      "g_ratio": 0.10110103438011826
+    },
+    "fig0.001_z_seed2_openloop_perfect": {
+      "depth_rms": 0.03081792918940406,
+      "min_over_mean": 0.9416308244514985,
+      "plane_dz_rms_um": 0.001326521687285631,
+      "plane_dz_pv_um": 0.007394991003863802,
+      "plane_dz_affine_res_rms_um": 0.001297646859515161,
+      "g_ratio": 0.9906423849817724
+    }
+  }
+}

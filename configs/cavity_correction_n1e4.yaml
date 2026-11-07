@@ -4,7 +4,7 @@ run_id: cavity_correction_n1e4
 foxli_config: configs/cavity_foxli_n1e4.yaml
 g_target: 300.0
 map_sites_per_side: 101
-variants: [telK_M0.2_d70, plane150]
+variants: [plane150]   # telescope-ring keys from the first pass are kept (resumable)
 cases:
   - {name: fig1000, fig_waves: 0.001, corr_um: 198.2, seeds: [1, 2], closed_loop: true}
   - {name: fig1000_c0.5, fig_waves: 0.001, corr_um: 49.5, seeds: [1], closed_loop: true}
