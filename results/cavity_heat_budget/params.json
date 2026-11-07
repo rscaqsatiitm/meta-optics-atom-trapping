@@ -1,0 +1,89 @@
+{
+  "config": {
+    "run_id": "cavity_heat_budget",
+    "wavelength_nm": 1075.0,
+    "scaling_json": "results/cavity_scaling/scaling.json",
+    "mode_matching": 0.95,
+    "reflections": 10,
+    "mirror_loss": 5e-05,
+    "enhancements": [
+      {
+        "G": 300,
+        "graded_extra_loss": 0.001
+      },
+      {
+        "G": 1500,
+        "graded_extra_loss": 0.0
+      }
+    ],
+    "absorption_cases": [
+      {
+        "name": "IBS 1 ppm",
+        "alpha_per_reflection": 1e-06,
+        "graded_loss_absorbed_fraction": 0.0
+      },
+      {
+        "name": "IBS 10 ppm",
+        "alpha_per_reflection": 1e-05,
+        "graded_loss_absorbed_fraction": 0.0
+      },
+      {
+        "name": "10 ppm + graded loss absorbed",
+        "alpha_per_reflection": 1e-05,
+        "graded_loss_absorbed_fraction": 1.0
+      }
+    ],
+    "emissivity": 0.9,
+    "chamber_K": 295.0,
+    "mirrors": {
+      "inplane_graded": {
+        "substrate": "fused_silica",
+        "radius_m": 0.0127,
+        "thickness_m": 0.00635,
+        "spot_radius_m": 0.00043,
+        "density_kg_m3": 2201.0,
+        "heat_capacity_J_kgK": 740.0
+      },
+      "vertical_graded": {
+        "substrate": "sapphire",
+        "radius_m": 0.0044,
+        "thickness_m": 0.006,
+        "spot_radius_m": 0.00094,
+        "density_kg_m3": 3980.0,
+        "heat_capacity_J_kgK": 760.0
+      }
+    },
+    "stability": {
+      "cte_per_K": {
+        "ULE glass": 3e-08,
+        "Invar 36": 1.3e-06,
+        "stainless steel 304": 1.7e-05,
+        "aluminium 6061": 2.3e-05
+      },
+      "tilt_tolerance_rad": 1e-06,
+      "plate_thickness_m": 0.025,
+      "lever_m": 0.15
+    },
+    "_config_path": "configs/cavity_heat_budget.yaml"
+  },
+  "git": {
+    "commit": "41e4d10528553aa1882460a601d440f39bb536c7",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-07T11:40:02+00:00"
+}

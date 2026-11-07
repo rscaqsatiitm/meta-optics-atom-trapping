@@ -74,7 +74,10 @@ telescope. All corrections are static; drift must stay below these levels betwee
 < 0.5 K (IBS, 1 to 10 ppm). Every surface near the waist of the in-plane rings sees 4.5 to 19 kW/cm^2 at 0.2 mK,
 comparable to the test masses of gravitational-wave detectors. The largest tolerable fully
 absorbing defect falls to 0.36 to 1.5 um on fused silica, against 92 um for the 200 W
-metasurface of the present design, and to 9 to 37 um on sapphire. The vertical ring, which carries
+metasurface of the present design, and to 9 to 37 um on sapphire. The heat itself is small: at
+10^6 sites 10 to 99 mW is absorbed inside the vacuum system (IBS, 1 to 10 ppm), the mirrors need
+conducting mounts but no water cooling, and the binding thermal requirement is temperature stability of
+the ring (about 10 mK for a metal ring, kelvins for ULE; Section 5b). The vertical ring, which carries
 785 of the 989 W, is worse: as first folded in Figure 5 its mirrors see 14 to 170 kW/cm^2 (defects
 <= 0.04 um on fused silica, 1 um on sapphire), and its 4 mm strip mirrors clip the narrow vertical
 flat-top (1.2e-2 per round trip). The adopted design adds a 4x vertical telescope: 32 to 55 kW/cm^2
@@ -739,11 +742,84 @@ results/cavity_thermal_foxli/thermal_foxli.json), with a bulge profile proportio
 depth rms changes from 0.231 to 0.232 % for 10 ppm IBS and to 0.252 % for 100 ppm. The Si-rich SiN film
 raises it to 0.53 % on fused silica and 0.32 % on sapphire; the enhancement changes by < 4e-4. A static
 bulge is also within reach of the closed loop of Section 4b. The vertical ring's mirrors absorb 7.7x more
-(785 W) on smaller spots; their deformation was not computed, and scaling the centre bulge with the
-absorbed power gives ~0.3 nm for 10 ppm (DERIVED, rough). The cell
+(785 W) on smaller spots; on its sapphire graded mirror the bulge is 0.12 nm for 10 ppm (Section 5b). The cell
 windows (through-cell variant) absorb 4 ppm per pass in bulk (0.4 mW at 102 W), which is negligible
 thermally. Their surfaces carry the defect constraint of the table above, the reason to prefer
 mirrors in vacuum.
+
+## 5b. Heat load and cooling: are chillers needed?
+
+Model (scripts/cavity_heat_budget.py, configs/cavity_heat_budget.yaml; results/cavity_heat_budget/heat.json).
+In steady state every watt that enters a ring leaves it in one of three ways (DERIVED): with the
+over-coupled coupler T = 3L and mode matching eta = 0.95, a fraction 1 - 0.75 eta = 0.29 of the input is
+reflected to an external beam dump, and 0.75 eta = 0.71 is dissipated in the ring as P_circ L. The loss L
+(10 reflections of 50 ppm, plus 1e-3 on each graded mirror at G = 300) splits into coating absorption
+(1 or 10 ppm per reflection `[VALUE?]`), a fraction of the graded-mirror loss that is absorbed rather than
+scattered (0 for figured IBS mirrors, 1 as a worst case), and light scattered or transmitted out of the
+mode. Mirror temperatures follow from the axisymmetric conduction model of Section 5 with the faces
+cooled only by radiation in vacuum (h = 4 eps sigma T^3 = 5.2 W/m^2/K for eps = 0.9 `[VALUE?]`), and the
+rim either clamped to a mount at chamber temperature or radiating (a free mirror). The hottest mirror of
+each ring is its graded mirror (smallest spot): a 1 inch fused-silica mirror in the in-plane rings, a
+12 x 5 mm sapphire strip (as an equal-area disc, 6 mm thick `[CONFIRM?]`) in the vertical ring.
+
+| 10^6 sites, 0.2 mK, G = 300 | Total, three rings | In-plane ring (each) | Vertical ring |
+|---|---|---|---|
+| Laser input | 3.47 W | 0.36 W | 2.75 W |
+| Reflected to the external dump | 1.00 W | 0.10 W | 0.79 W |
+| Absorbed in vacuum, IBS 1 / 10 ppm | 9.9 / 99 mW | 1.0 / 10 mW | 7.8 / 79 mW |
+| Scattered or transmitted out of the mode (to walls, mounts, cameras) | 2.4 W | 0.25 W | 1.9 W |
+| Hottest mirror, absorbed (10 ppm) | | 1.0 mW | 7.9 mW |
+| Its temperature rise: clamped / free (10 ppm) | | 0.55 / 0.66 K | 0.07 / 5.3 K |
+| Its surface bulge, clamped (10 ppm) | | 0.036 nm | 0.12 nm |
+| Worst case, graded-mirror loss fully absorbed: absorbed; clamped rise; bulge | 2.1 W in total | 0.10 W; 55 K; 3.6 nm | 0.79 W; 7.4 K; 12 nm |
+
+At 10^5 and 10^4 sites the input is 0.50 and 0.23 W and the absorbed power 14 and 6.5 mW (10 ppm).
+At G = 1500 the input falls to 0.69 W at 10^6, while the absorbed power, set by the circulating power, is
+unchanged.
+
+What the budget shows. (i) The heat to be removed is small. With IBS coatings, 10 to 99 mW is absorbed
+inside the vacuum system at 10^6 sites, and 2.4 W of scattered light is spread over the chamber walls and
+mounts. The reflected watt goes to an air-cooled dump outside. None of this needs water cooling: it is
+three orders of magnitude below the 1.4 kW that the tweezer route would pass through its meta-optics.
+(ii) The mirrors must be heat-sunk by conduction, not by water. A free sapphire strip in the vertical
+ring would warm by 5.3 K, with a radiative time constant of about 12 min; clamped in a conducting mount
+it warms by 0.07 K. A mount conductance of order 0.1 W/K keeps the whole mirror within 0.1 K of the
+mount at 7.9 mW (DERIVED). (iii) The graded-mirror loss must be scatter, not absorption. If the 1e-3 per
+graded mirror assumed at G = 300 were absorbed, the vertical graded mirror would take 0.79 W and bulge
+by 12 nm, eleven times the lambda/1000 figure tolerance; the in-plane one would bulge by 3.6 nm and warm by
+55 K. The bulge reaches lambda/1000 at an absorbed fraction of about 9e-5 of the circulating power
+(vertical) and 3e-4 (in-plane), i.e. ten times the coating absorption. This excludes absorbing
+metasurfaces as graded mirrors (Si-rich SiN, 5.9e-4) on thermal grounds as well as loss, and it is met by
+figured surfaces under IBS coatings `[VALUE?: absorption of a figured graded mirror]`.
+
+The real requirement is temperature stability. A uniform temperature change of the ring material is
+benign for the lattice: all paths scale together, the lock retunes the laser, and the angles do not change.
+It shifts the resonance by nu alpha per kelvin, which the lock must follow and which changes the 100 MHz
+detuning between rings if they drift differently. A temperature gradient through the base plate bends it
+and tilts the mirrors. For a 25 mm plate over a 150 mm mirror spacing `[CONFIRM?]` and the 1 urad tilt
+tolerance of Section 4 (DERIVED, expansion coefficients `[VALUE?: approximate, verify]`):
+
+| Ring material (expansion coefficient) | Resonance shift per K | Through-plate gradient for 1 urad tilt | Uniform change that shifts the resonance by 100 MHz |
+|---|---|---|---|
+| ULE glass (approx. 3e-8 /K) | 8.4 MHz | 5.6 K | 12 K |
+| Invar 36 (approx. 1.3e-6 /K) | 0.36 GHz | 0.13 K | 0.28 K |
+| Stainless steel (approx. 1.7e-5 /K) | 4.7 GHz | 10 mK | 21 mK |
+| Aluminium (approx. 2.3e-5 /K) | 6.4 GHz | 7 mK | 16 mK |
+
+Hence a metal ring needs gradients held to about 10 mK, while a monolithic low-expansion assembly (as in
+Park et al.) tolerates kelvin-scale changes. Water cooling of the ring would work against both
+requirements. Flowing water is a source of vibration, and Section 6c requires each mirror to move by less
+than 0.32 pm/rtHz at the 20 kHz trap frequency `[VALUE?: vibration spectrum of a water-cooled mount]`.
+A chiller loop is also a strong temperature disturbance at the plate unless it is itself regulated to
+millikelvins. Our recommendation is therefore: (i) no water cooling on the cavity assembly; (ii) mirrors
+clamped in conducting mounts on a monolithic ULE or Invar ring; (iii) the ring on the chamber or an
+optical table, with slow temperature control at the 0.1 K level (ULE) or 10 mK level (metal), passive or by
+thermoelectric control far from the mirrors; (iv) constant circulating power, so that the 12 min mirror
+time constant never produces a transient during an experiment. Chillers remain needed elsewhere: for the
+laser only on the tweezer route (kilowatt amplifiers), and very likely for the MOT coils of a 10^8 to
+10^9-atom MOT, which are not designed here `[VALUE?: coil dissipation]`. The cavity lattice's own laser
+(3.5 W at 10^6 sites) is an amplifier class that is often air-cooled `[VALUE?: verify for the chosen
+amplifier]`.
 
 ## 6. Site quality and registration
 
@@ -1026,9 +1102,8 @@ rearrangement into the lattice; neither is simulated here (Section 6b gives the 
 
 Next simulations. (i) The vertical ring with propagation along an array side (a narrower beam) as an
 alternative to its diagonal layout. (ii) A time-dependent simulation of depth and site position under laser and lock noise, and a
-vibration model of the ring mounts, against the requirements of Section 6c. (iii) Absorption-induced
-deformation of the vertical ring's mirrors at 785 W, fed into Fox-Li (done for the in-plane rings,
-Section 5). (iv) A model-based closed loop for large starting errors (a lower gain was tested and does
+vibration model of the ring mounts, against the requirements of Section 6c. (iii) The vertical ring's thermal bulge (0.12 nm, Section 5b) fed into Fox-Li (done for the
+in-plane rings, Section 5). (iv) A model-based closed loop for large starting errors (a lower gain was tested and does
 not help, Section 4b), and the effect of drift during a correction cycle. (v) Mounts, MOT coils and the vacuum envelope around
 the layout of Figures 3 and 5, and the windows for the tilted MOT and pumping beams. (vi) Loading
 dynamics: accumulation of atoms in the in-plane sheets from the tilted MOT and plane selection. (vii) A stopping rule or a model-based
@@ -1074,7 +1149,6 @@ Provenance ledger:
 | Lower-gain closed loop (gain 0.25, 0.1) | Section 4b | SIM, review before submission | results/cavity_correction/correction.json (keys *_gain*) |
 | Absorption bulge fed into Fox-Li | Section 5 | SIM, review before submission | results/cavity_thermal_foxli/thermal_foxli.json |
 | Vertical-ring mirror intensities, defect limits, z-telescope variants | Section 5, Result, Design summary | SIM, review before submission | results/cavity_vertical_mirrors/mirrors.json |
-| Vertical-ring bulge ~0.3 nm at 10 ppm | Section 5 | DERIVED (rough scaling) | 0.035 nm x 7.7 in absorbed power |
 | Input power per ring, design summary | Design summary | DERIVED | P_circ / (0.95 G), results/cavity_budget/budget.json |
 | Scaling study at 10^4 and 10^5: designs, spectra, errors, correction, vertical ring, mirror intensities | Section 6d, Result (viii) | SIM, review before submission | results/cavity_foxli_n1e4, _n1e5; results/cavity_correction_n1e4, _n1e5; results/cavity_vertical_plain_n1e4, _n1e5; results/cavity_vertical_mirrors_plain_n1e4, _n1e5; results/cavity_vertical_n1e5 |
 | Scaling comparison: powers, defect limits, angle requirement, MOT atom numbers | Section 6d | DERIVED (code) | results/cavity_scaling/scaling.json |
@@ -1082,6 +1156,7 @@ Provenance ledger:
 | Vertical ring with 4x / 8x vertical telescope: errors, closed loop (6 and 12 rounds) | Sections 4b, 5, Design summary | SIM, review before submission | results/cavity_vertical_ztel4, _ztel8, _ztel4_r12 /vertical.json |
 | Vertical-ring strip heights: aperture loss, beam extents, layout check | Sections 2, 5 | SIM / DERIVED (code) | results/cavity_vertical_beam_heights/heights.json, results/cavity_vertical_layout_check/check.json; aperture losses from session runs of the build() function of scripts/cavity_vertical.py |
 | 10^4 loop diagnosis (24 bins, camera); Gaussian vertical ring at 10^4 | Section 6d | SIM, review before submission | results/cavity_correction_n1e4_loop, results/cavity_vertical_gauss_n1e4, results/cavity_vertical_mirrors_gauss_n1e4 (intensities scaled by the power ratio 5.87 in scripts/cavity_scaling.py) |
+| Heat budget: power flow, absorbed and scattered power, mirror temperatures and bulge, time constants, stability table | Section 5b, Result (iv) | DERIVED (code) / SIM (conduction model) | results/cavity_heat_budget/heat.json |
 | Lock correction | Section 4 | SIM | 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in results/cavity_foxli/relock_before.json |
 | SiN phase slope vs width | Section 4 | DATA (analysis of library) | data/library_main.h5, data/library_est_1075.h5 |
 | Vertical Gaussian design, layout | Section 2, 6 | DERIVED (code) | results/cavity_layout/layout.json |
@@ -1102,7 +1177,9 @@ agreement approx. 0.4 nm]`, `[VALUE?: loss and stability of an intracavity defor
 mount, chamber windows, mounts]`, `[VALUE?: grating diffraction angle]`, `[VALUE?: ~0.5 collisional
 filling]`, `[VALUE?: atom temperature 10 uK in the lattice]`, `[VALUE?: RIN of a stabilised
 1075 nm fibre amplifier]`, `[VALUE?: coating Brownian noise approx. 1e-17 m/rtHz]`, `[VALUE?: mount vibration
-spectrum at 10 to 40 kHz]`, `[VALUE?: tolerable vertical depth non-uniformity]`. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
+spectrum at 10 to 40 kHz]`, `[VALUE?: tolerable vertical depth non-uniformity]`, `[VALUE?: expansion coefficients of ULE, Invar,
+stainless steel, aluminium]`, `[VALUE?: emissivity 0.9]`, `[VALUE?: absorption of a figured graded mirror]`,
+`[VALUE?: vibration of a water-cooled mount]`, `[VALUE?: MOT coil dissipation]`, `[VALUE?: amplifier cooling]`. Unverified: Nshii et al., Nature Nanotechnology 8, 321 (2013), DOI 10.1038/nnano.2013.47,
 grating-MOT atom number (seen only in a search snippet, not used).
 
 Sourcing gaps. The 12,000-finesse microstructured-mirror cavity (Dickmann et al., Commun. Phys. 2023,

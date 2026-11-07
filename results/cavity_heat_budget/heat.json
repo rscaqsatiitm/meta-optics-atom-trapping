@@ -1,0 +1,1187 @@
+{
+  "h_rad_W_m2K": 5.240591225099105,
+  "cases": [
+    {
+      "n_sites": 10000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "IBS 1 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 10.141978273933931,
+          "P_in_W": 0.03558588868046993,
+          "reflected_W": 0.010230942995635109,
+          "dissipated_W": 0.025354945684834828,
+          "absorbed_coatings_W": 0.00010141978273933931,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.025253525902095487,
+          "absorbed_per_plain_mirror_W": 1.0141978273933932e-05,
+          "absorbed_graded_mirror_W": 1.0141978273933932e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.0054092624167167425,
+              "dT_rim_K": 1.5924647956155205e-06,
+              "bulge_centre_minus_edge_nm": 0.00035221802575510194,
+              "bulge_waves": 3.27644675121025e-07
+            },
+            "radiating": {
+              "dT_peak_K": 0.0065790361993056535,
+              "dT_rim_K": 0.0012313882163900167,
+              "bulge_centre_minus_edge_nm": 0.00035197029816240607,
+              "bulge_waves": 3.274142308487498e-07
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 45.21393935136997,
+          "P_in_W": 0.1586454012328771,
+          "reflected_W": 0.04561055285445218,
+          "dissipated_W": 0.11303484837842494,
+          "absorbed_coatings_W": 0.00045213939351369966,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.11258270898491124,
+          "absorbed_per_plain_mirror_W": 4.521393935136997e-05,
+          "absorbed_graded_mirror_W": 4.521393935136997e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.00042135775775960883,
+              "dT_rim_K": 3.4818503448402145e-07,
+              "bulge_centre_minus_edge_nm": 0.0006813538914634613,
+              "bulge_waves": 6.338175734543825e-07
+            },
+            "radiating": {
+              "dT_peak_K": 0.030413015967964942,
+              "dT_rim_K": 0.030003865601917017,
+              "bulge_centre_minus_edge_nm": 0.0006682048184019319,
+              "bulge_waves": 6.215858775831925e-07
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.22981717859381695,
+        "reflected_W": 0.06607243884572239,
+        "absorbed_in_vacuum_W": 0.0006549789589923783,
+        "scattered_or_transmitted_W": 0.1630897607891022
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "IBS 10 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 10.141978273933931,
+          "P_in_W": 0.03558588868046993,
+          "reflected_W": 0.010230942995635109,
+          "dissipated_W": 0.025354945684834828,
+          "absorbed_coatings_W": 0.0010141978273933933,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.024340747857441433,
+          "absorbed_per_plain_mirror_W": 0.00010141978273933933,
+          "absorbed_graded_mirror_W": 0.00010141978273933933,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.05409262416716741,
+              "dT_rim_K": 1.592464795615521e-05,
+              "bulge_centre_minus_edge_nm": 0.003522180257551023,
+              "bulge_waves": 3.2764467512102534e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.0657903619930565,
+              "dT_rim_K": 0.012313882163900168,
+              "bulge_centre_minus_edge_nm": 0.0035197029816240737,
+              "bulge_waves": 3.27414230848751e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 45.21393935136997,
+          "P_in_W": 0.1586454012328771,
+          "reflected_W": 0.04561055285445218,
+          "dissipated_W": 0.11303484837842494,
+          "absorbed_coatings_W": 0.004521393935136998,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.10851345444328794,
+          "absorbed_per_plain_mirror_W": 0.00045213939351369976,
+          "absorbed_graded_mirror_W": 0.00045213939351369976,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.004213577577596085,
+              "dT_rim_K": 3.4818503448402126e-06,
+              "bulge_centre_minus_edge_nm": 0.006813538914634603,
+              "bulge_waves": 6.338175734543816e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.30413015967964974,
+              "dT_rim_K": 0.30003865601917024,
+              "bulge_centre_minus_edge_nm": 0.00668204818401601,
+              "bulge_waves": 6.2158587758288464e-06
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.22981717859381695,
+        "reflected_W": 0.06607243884572239,
+        "absorbed_in_vacuum_W": 0.006549789589923784,
+        "scattered_or_transmitted_W": 0.1571949501581708
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "10 ppm + graded loss absorbed",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 10.141978273933931,
+          "P_in_W": 0.03558588868046993,
+          "reflected_W": 0.010230942995635109,
+          "dissipated_W": 0.025354945684834828,
+          "absorbed_coatings_W": 0.0010141978273933933,
+          "absorbed_graded_extra_W": 0.020283956547867864,
+          "scattered_or_transmitted_W": 0.004056791309573569,
+          "absorbed_per_plain_mirror_W": 0.00010141978273933933,
+          "absorbed_graded_mirror_W": 0.010243398056673271,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 5.463355040883908,
+              "dT_rim_K": 0.0016083894435716761,
+              "bulge_centre_minus_edge_nm": 0.3557402060126546,
+              "bulge_waves": 0.00033092112187223683
+            },
+            "radiating": {
+              "dT_peak_K": 6.644826561298706,
+              "dT_rim_K": 1.2437020985539164,
+              "bulge_centre_minus_edge_nm": 0.3554900011440309,
+              "bulge_waves": 0.000330688373157238
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 45.21393935136997,
+          "P_in_W": 0.1586454012328771,
+          "reflected_W": 0.04561055285445218,
+          "dissipated_W": 0.11303484837842494,
+          "absorbed_coatings_W": 0.004521393935136998,
+          "absorbed_graded_extra_W": 0.09042787870273995,
+          "scattered_or_transmitted_W": 0.01808557574054799,
+          "absorbed_per_plain_mirror_W": 0.00045213939351369976,
+          "absorbed_graded_mirror_W": 0.045666078744883674,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.42557133533720454,
+              "dT_rim_K": 0.00035166688482886143,
+              "bulge_centre_minus_edge_nm": 0.6881674303780952,
+              "bulge_waves": 0.0006401557491889257
+            },
+            "radiating": {
+              "dT_peak_K": 30.71714612764459,
+              "dT_rim_K": 30.303904257936193,
+              "bulge_centre_minus_edge_nm": 0.6748868665858636,
+              "bulge_waves": 0.0006278017363589428
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.22981717859381695,
+        "reflected_W": 0.06607243884572239,
+        "absorbed_in_vacuum_W": 0.13754558138839945,
+        "scattered_or_transmitted_W": 0.026199158359695128
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "IBS 1 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 10.141978273933931,
+          "P_in_W": 0.007117177736093987,
+          "reflected_W": 0.002046188599127022,
+          "dissipated_W": 0.005070989136966966,
+          "absorbed_coatings_W": 0.00010141978273933931,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.0049695693542276265,
+          "absorbed_per_plain_mirror_W": 1.0141978273933932e-05,
+          "absorbed_graded_mirror_W": 1.0141978273933932e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.0054092624167167425,
+              "dT_rim_K": 1.5924647956155205e-06,
+              "bulge_centre_minus_edge_nm": 0.00035221802575510194,
+              "bulge_waves": 3.27644675121025e-07
+            },
+            "radiating": {
+              "dT_peak_K": 0.0065790361993056535,
+              "dT_rim_K": 0.0012313882163900167,
+              "bulge_centre_minus_edge_nm": 0.00035197029816240607,
+              "bulge_waves": 3.274142308487498e-07
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 45.21393935136997,
+          "P_in_W": 0.03172908024657542,
+          "reflected_W": 0.009122110570890437,
+          "dissipated_W": 0.022606969675684988,
+          "absorbed_coatings_W": 0.00045213939351369966,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.02215483028217129,
+          "absorbed_per_plain_mirror_W": 4.521393935136997e-05,
+          "absorbed_graded_mirror_W": 4.521393935136997e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.00042135775775960883,
+              "dT_rim_K": 3.4818503448402145e-07,
+              "bulge_centre_minus_edge_nm": 0.0006813538914634613,
+              "bulge_waves": 6.338175734543825e-07
+            },
+            "radiating": {
+              "dT_peak_K": 0.030413015967964942,
+              "dT_rim_K": 0.030003865601917017,
+              "bulge_centre_minus_edge_nm": 0.0006682048184019319,
+              "bulge_waves": 6.215858775831925e-07
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.04596343571876339,
+        "reflected_W": 0.013214487769144481,
+        "absorbed_in_vacuum_W": 0.0006549789589923783,
+        "scattered_or_transmitted_W": 0.03209396899062654
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "IBS 10 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 10.141978273933931,
+          "P_in_W": 0.007117177736093987,
+          "reflected_W": 0.002046188599127022,
+          "dissipated_W": 0.005070989136966966,
+          "absorbed_coatings_W": 0.0010141978273933933,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.004056791309573573,
+          "absorbed_per_plain_mirror_W": 0.00010141978273933933,
+          "absorbed_graded_mirror_W": 0.00010141978273933933,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.05409262416716741,
+              "dT_rim_K": 1.592464795615521e-05,
+              "bulge_centre_minus_edge_nm": 0.003522180257551023,
+              "bulge_waves": 3.2764467512102534e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.0657903619930565,
+              "dT_rim_K": 0.012313882163900168,
+              "bulge_centre_minus_edge_nm": 0.0035197029816240737,
+              "bulge_waves": 3.27414230848751e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 45.21393935136997,
+          "P_in_W": 0.03172908024657542,
+          "reflected_W": 0.009122110570890437,
+          "dissipated_W": 0.022606969675684988,
+          "absorbed_coatings_W": 0.004521393935136998,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.01808557574054799,
+          "absorbed_per_plain_mirror_W": 0.00045213939351369976,
+          "absorbed_graded_mirror_W": 0.00045213939351369976,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.004213577577596085,
+              "dT_rim_K": 3.4818503448402126e-06,
+              "bulge_centre_minus_edge_nm": 0.006813538914634603,
+              "bulge_waves": 6.338175734543816e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.30413015967964974,
+              "dT_rim_K": 0.30003865601917024,
+              "bulge_centre_minus_edge_nm": 0.00668204818401601,
+              "bulge_waves": 6.2158587758288464e-06
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.04596343571876339,
+        "reflected_W": 0.013214487769144481,
+        "absorbed_in_vacuum_W": 0.006549789589923784,
+        "scattered_or_transmitted_W": 0.026199158359695135
+      }
+    },
+    {
+      "n_sites": 10000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "10 ppm + graded loss absorbed",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 10.141978273933931,
+          "P_in_W": 0.007117177736093987,
+          "reflected_W": 0.002046188599127022,
+          "dissipated_W": 0.005070989136966966,
+          "absorbed_coatings_W": 0.0010141978273933933,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.004056791309573573,
+          "absorbed_per_plain_mirror_W": 0.00010141978273933933,
+          "absorbed_graded_mirror_W": 0.00010141978273933933,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.05409262416716741,
+              "dT_rim_K": 1.592464795615521e-05,
+              "bulge_centre_minus_edge_nm": 0.003522180257551023,
+              "bulge_waves": 3.2764467512102534e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.0657903619930565,
+              "dT_rim_K": 0.012313882163900168,
+              "bulge_centre_minus_edge_nm": 0.0035197029816240737,
+              "bulge_waves": 3.27414230848751e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 45.21393935136997,
+          "P_in_W": 0.03172908024657542,
+          "reflected_W": 0.009122110570890437,
+          "dissipated_W": 0.022606969675684988,
+          "absorbed_coatings_W": 0.004521393935136998,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.01808557574054799,
+          "absorbed_per_plain_mirror_W": 0.00045213939351369976,
+          "absorbed_graded_mirror_W": 0.00045213939351369976,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.004213577577596085,
+              "dT_rim_K": 3.4818503448402126e-06,
+              "bulge_centre_minus_edge_nm": 0.006813538914634603,
+              "bulge_waves": 6.338175734543816e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.30413015967964974,
+              "dT_rim_K": 0.30003865601917024,
+              "bulge_centre_minus_edge_nm": 0.00668204818401601,
+              "bulge_waves": 6.2158587758288464e-06
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.04596343571876339,
+        "reflected_W": 0.013214487769144481,
+        "absorbed_in_vacuum_W": 0.006549789589923784,
+        "scattered_or_transmitted_W": 0.026199158359695135
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "IBS 1 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 32.29326418468181,
+          "P_in_W": 0.11330969889362039,
+          "reflected_W": 0.03257653843191587,
+          "dissipated_W": 0.08073316046170452,
+          "absorbed_coatings_W": 0.0003229326418468181,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.0804102278198577,
+          "absorbed_per_plain_mirror_W": 3.229326418468181e-05,
+          "absorbed_graded_mirror_W": 3.229326418468181e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.01722373441838849,
+              "dT_rim_K": 5.0705971715387996e-06,
+              "bulge_centre_minus_edge_nm": 0.0011215040546428492,
+              "bulge_waves": 1.0432595857142782e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.02094843316819221,
+              "dT_rim_K": 0.003920886429819024,
+              "bulge_centre_minus_edge_nm": 0.001120715260545612,
+              "bulge_waves": 1.0425258237633598e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 78.13188240175504,
+          "P_in_W": 0.2741469557956317,
+          "reflected_W": 0.07881724979124413,
+          "dissipated_W": 0.1953297060043876,
+          "absorbed_coatings_W": 0.0007813188240175503,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.19454838718037004,
+          "absorbed_per_plain_mirror_W": 7.813188240175503e-05,
+          "absorbed_graded_mirror_W": 7.813188240175503e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.0007281266629412466,
+              "dT_rim_K": 6.01680644478776e-07,
+              "bulge_centre_minus_edge_nm": 0.0011774126051723524,
+              "bulge_waves": 1.0952675396952116e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.05255516818885057,
+              "dT_rim_K": 0.05184813649147371,
+              "bulge_centre_minus_edge_nm": 0.0011546903685149053,
+              "bulge_waves": 1.0741305753627025e-06
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.5007663535828725,
+        "reflected_W": 0.14397032665507586,
+        "absorbed_in_vacuum_W": 0.0014271841077111865,
+        "scattered_or_transmitted_W": 0.3553688428200854
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "IBS 10 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 32.29326418468181,
+          "P_in_W": 0.11330969889362039,
+          "reflected_W": 0.03257653843191587,
+          "dissipated_W": 0.08073316046170452,
+          "absorbed_coatings_W": 0.0032293264184681814,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.07750383404323634,
+          "absorbed_per_plain_mirror_W": 0.0003229326418468181,
+          "absorbed_graded_mirror_W": 0.0003229326418468181,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.1722373441838848,
+              "dT_rim_K": 5.070597171538801e-05,
+              "bulge_centre_minus_edge_nm": 0.011215040546428488,
+              "bulge_waves": 1.0432595857142779e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.20948433168192213,
+              "dT_rim_K": 0.03920886429819024,
+              "bulge_centre_minus_edge_nm": 0.011207152605456133,
+              "bulge_waves": 1.0425258237633611e-05
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 78.13188240175504,
+          "P_in_W": 0.2741469557956317,
+          "reflected_W": 0.07881724979124413,
+          "dissipated_W": 0.1953297060043876,
+          "absorbed_coatings_W": 0.007813188240175505,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.18751651776421208,
+          "absorbed_per_plain_mirror_W": 0.0007813188240175504,
+          "absorbed_graded_mirror_W": 0.0007813188240175504,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.007281266629412468,
+              "dT_rim_K": 6.016806444787761e-06,
+              "bulge_centre_minus_edge_nm": 0.011774126051723512,
+              "bulge_waves": 1.0952675396952103e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.5255516818885059,
+              "dT_rim_K": 0.5184813649147373,
+              "bulge_centre_minus_edge_nm": 0.011546903685149053,
+              "bulge_waves": 1.0741305753627025e-05
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.5007663535828725,
+        "reflected_W": 0.14397032665507586,
+        "absorbed_in_vacuum_W": 0.014271841077111868,
+        "scattered_or_transmitted_W": 0.3425241858506848
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "10 ppm + graded loss absorbed",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 32.29326418468181,
+          "P_in_W": 0.11330969889362039,
+          "reflected_W": 0.03257653843191587,
+          "dissipated_W": 0.08073316046170452,
+          "absorbed_coatings_W": 0.0032293264184681814,
+          "absorbed_graded_extra_W": 0.06458652836936363,
+          "scattered_or_transmitted_W": 0.012917305673872712,
+          "absorbed_per_plain_mirror_W": 0.0003229326418468181,
+          "absorbed_graded_mirror_W": 0.03261619682652863,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 17.395971762572394,
+              "dT_rim_K": 0.005121303143254188,
+              "bulge_centre_minus_edge_nm": 1.1327190951892772,
+              "bulge_waves": 0.0010536921815714204
+            },
+            "radiating": {
+              "dT_peak_K": 21.157917499874124,
+              "dT_rim_K": 3.960095294117218,
+              "bulge_centre_minus_edge_nm": 1.1319224131510748,
+              "bulge_waves": 0.0010529510820009996
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 78.13188240175504,
+          "P_in_W": 0.2741469557956317,
+          "reflected_W": 0.07881724979124413,
+          "dissipated_W": 0.1953297060043876,
+          "absorbed_coatings_W": 0.007813188240175505,
+          "absorbed_graded_extra_W": 0.15626376480351006,
+          "scattered_or_transmitted_W": 0.03125275296070201,
+          "absorbed_per_plain_mirror_W": 0.0007813188240175504,
+          "absorbed_graded_mirror_W": 0.07891320122577258,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.7354079295706588,
+              "dT_rim_K": 0.0006076974509235638,
+              "bulge_centre_minus_edge_nm": 1.1891867312240754,
+              "bulge_waves": 0.001106220215092163
+            },
+            "radiating": {
+              "dT_peak_K": 53.08071987073912,
+              "dT_rim_K": 52.366617856388444,
+              "bulge_centre_minus_edge_nm": 1.1662372722002958,
+              "bulge_waves": 0.0010848718811165541
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.5007663535828725,
+        "reflected_W": 0.14397032665507586,
+        "absorbed_in_vacuum_W": 0.2997086626193492,
+        "scattered_or_transmitted_W": 0.057087364308447436
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "IBS 1 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 32.29326418468181,
+          "P_in_W": 0.022661939778724077,
+          "reflected_W": 0.006515307686383174,
+          "dissipated_W": 0.016146632092340907,
+          "absorbed_coatings_W": 0.0003229326418468181,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.01582369945049409,
+          "absorbed_per_plain_mirror_W": 3.229326418468181e-05,
+          "absorbed_graded_mirror_W": 3.229326418468181e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.01722373441838849,
+              "dT_rim_K": 5.0705971715387996e-06,
+              "bulge_centre_minus_edge_nm": 0.0011215040546428492,
+              "bulge_waves": 1.0432595857142782e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.02094843316819221,
+              "dT_rim_K": 0.003920886429819024,
+              "bulge_centre_minus_edge_nm": 0.001120715260545612,
+              "bulge_waves": 1.0425258237633598e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 78.13188240175504,
+          "P_in_W": 0.05482939115912634,
+          "reflected_W": 0.01576344995824883,
+          "dissipated_W": 0.039065941200877516,
+          "absorbed_coatings_W": 0.0007813188240175503,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.038284622376859964,
+          "absorbed_per_plain_mirror_W": 7.813188240175503e-05,
+          "absorbed_graded_mirror_W": 7.813188240175503e-05,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.0007281266629412466,
+              "dT_rim_K": 6.01680644478776e-07,
+              "bulge_centre_minus_edge_nm": 0.0011774126051723524,
+              "bulge_waves": 1.0952675396952116e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.05255516818885057,
+              "dT_rim_K": 0.05184813649147371,
+              "bulge_centre_minus_edge_nm": 0.0011546903685149053,
+              "bulge_waves": 1.0741305753627025e-06
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.1001532707165745,
+        "reflected_W": 0.028794065331015178,
+        "absorbed_in_vacuum_W": 0.0014271841077111865,
+        "scattered_or_transmitted_W": 0.06993202127784814
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "IBS 10 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 32.29326418468181,
+          "P_in_W": 0.022661939778724077,
+          "reflected_W": 0.006515307686383174,
+          "dissipated_W": 0.016146632092340907,
+          "absorbed_coatings_W": 0.0032293264184681814,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.012917305673872725,
+          "absorbed_per_plain_mirror_W": 0.0003229326418468181,
+          "absorbed_graded_mirror_W": 0.0003229326418468181,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.1722373441838848,
+              "dT_rim_K": 5.070597171538801e-05,
+              "bulge_centre_minus_edge_nm": 0.011215040546428488,
+              "bulge_waves": 1.0432595857142779e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.20948433168192213,
+              "dT_rim_K": 0.03920886429819024,
+              "bulge_centre_minus_edge_nm": 0.011207152605456133,
+              "bulge_waves": 1.0425258237633611e-05
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 78.13188240175504,
+          "P_in_W": 0.05482939115912634,
+          "reflected_W": 0.01576344995824883,
+          "dissipated_W": 0.039065941200877516,
+          "absorbed_coatings_W": 0.007813188240175505,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.03125275296070201,
+          "absorbed_per_plain_mirror_W": 0.0007813188240175504,
+          "absorbed_graded_mirror_W": 0.0007813188240175504,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.007281266629412468,
+              "dT_rim_K": 6.016806444787761e-06,
+              "bulge_centre_minus_edge_nm": 0.011774126051723512,
+              "bulge_waves": 1.0952675396952103e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.5255516818885059,
+              "dT_rim_K": 0.5184813649147373,
+              "bulge_centre_minus_edge_nm": 0.011546903685149053,
+              "bulge_waves": 1.0741305753627025e-05
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.1001532707165745,
+        "reflected_W": 0.028794065331015178,
+        "absorbed_in_vacuum_W": 0.014271841077111868,
+        "scattered_or_transmitted_W": 0.057087364308447464
+      }
+    },
+    {
+      "n_sites": 100000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "10 ppm + graded loss absorbed",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 32.29326418468181,
+          "P_in_W": 0.022661939778724077,
+          "reflected_W": 0.006515307686383174,
+          "dissipated_W": 0.016146632092340907,
+          "absorbed_coatings_W": 0.0032293264184681814,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.012917305673872725,
+          "absorbed_per_plain_mirror_W": 0.0003229326418468181,
+          "absorbed_graded_mirror_W": 0.0003229326418468181,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.1722373441838848,
+              "dT_rim_K": 5.070597171538801e-05,
+              "bulge_centre_minus_edge_nm": 0.011215040546428488,
+              "bulge_waves": 1.0432595857142779e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.20948433168192213,
+              "dT_rim_K": 0.03920886429819024,
+              "bulge_centre_minus_edge_nm": 0.011207152605456133,
+              "bulge_waves": 1.0425258237633611e-05
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 78.13188240175504,
+          "P_in_W": 0.05482939115912634,
+          "reflected_W": 0.01576344995824883,
+          "dissipated_W": 0.039065941200877516,
+          "absorbed_coatings_W": 0.007813188240175505,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.03125275296070201,
+          "absorbed_per_plain_mirror_W": 0.0007813188240175504,
+          "absorbed_graded_mirror_W": 0.0007813188240175504,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.007281266629412468,
+              "dT_rim_K": 6.016806444787761e-06,
+              "bulge_centre_minus_edge_nm": 0.011774126051723512,
+              "bulge_waves": 1.0952675396952103e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.5255516818885059,
+              "dT_rim_K": 0.5184813649147373,
+              "bulge_centre_minus_edge_nm": 0.011546903685149053,
+              "bulge_waves": 1.0741305753627025e-05
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.1001532707165745,
+        "reflected_W": 0.028794065331015178,
+        "absorbed_in_vacuum_W": 0.014271841077111868,
+        "scattered_or_transmitted_W": 0.057087364308447464
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "IBS 1 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 102.3417807642424,
+          "P_in_W": 0.359093967593833,
+          "reflected_W": 0.10323951568322702,
+          "dissipated_W": 0.255854451910606,
+          "absorbed_coatings_W": 0.001023417807642424,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.2548310341029636,
+          "absorbed_per_plain_mirror_W": 0.00010234178076424239,
+          "absorbed_graded_mirror_W": 0.00010234178076424239,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.05458437529595986,
+              "dT_rim_K": 1.6069417483029346e-05,
+              "bulge_centre_minus_edge_nm": 0.003554200078074209,
+              "bulge_waves": 3.306232630766706e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.06638845619299338,
+              "dT_rim_K": 0.012425826547208342,
+              "bulge_centre_minus_edge_nm": 0.0035517002814569945,
+              "bulge_waves": 3.3039072385646458e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 784.7120754996179,
+          "P_in_W": 2.753375703507431,
+          "reflected_W": 0.7915955147583867,
+          "dissipated_W": 1.9617801887490447,
+          "absorbed_coatings_W": 0.007847120754996178,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 1.9539330679940485,
+          "absorbed_per_plain_mirror_W": 0.0007847120754996179,
+          "absorbed_graded_mirror_W": 0.0007847120754996179,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.007312889019686563,
+              "dT_rim_K": 6.042937310650054e-06,
+              "bulge_centre_minus_edge_nm": 0.011825260837481833,
+              "bulge_waves": 1.1000242639517983e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.5278341419658158,
+              "dT_rim_K": 0.520733118751762,
+              "bulge_centre_minus_edge_nm": 0.011597051648873846,
+              "bulge_waves": 1.0787955022208227e-05
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 3.471563638695097,
+        "reflected_W": 0.9980745461248408,
+        "absorbed_in_vacuum_W": 0.009893956370281025,
+        "scattered_or_transmitted_W": 2.4635951361999755
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "IBS 10 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 102.3417807642424,
+          "P_in_W": 0.359093967593833,
+          "reflected_W": 0.10323951568322702,
+          "dissipated_W": 0.255854451910606,
+          "absorbed_coatings_W": 0.01023417807642424,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.24562027383418178,
+          "absorbed_per_plain_mirror_W": 0.001023417807642424,
+          "absorbed_graded_mirror_W": 0.001023417807642424,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.5458437529595985,
+              "dT_rim_K": 0.00016069417483029343,
+              "bulge_centre_minus_edge_nm": 0.0355420007807421,
+              "bulge_waves": 3.306232630766707e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.6638845619299338,
+              "dT_rim_K": 0.12425826547208349,
+              "bulge_centre_minus_edge_nm": 0.035517002814569994,
+              "bulge_waves": 3.303907238564651e-05
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 784.7120754996179,
+          "P_in_W": 2.753375703507431,
+          "reflected_W": 0.7915955147583867,
+          "dissipated_W": 1.9617801887490447,
+          "absorbed_coatings_W": 0.07847120754996179,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 1.8833089811990829,
+          "absorbed_per_plain_mirror_W": 0.00784712075499618,
+          "absorbed_graded_mirror_W": 0.00784712075499618,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.07312889019686566,
+              "dT_rim_K": 6.042937310650058e-05,
+              "bulge_centre_minus_edge_nm": 0.11825260837481817,
+              "bulge_waves": 0.00011000242639517968
+            },
+            "radiating": {
+              "dT_peak_K": 5.278341419658154,
+              "dT_rim_K": 5.207331187517619,
+              "bulge_centre_minus_edge_nm": 0.11597051648868552,
+              "bulge_waves": 0.00010787955022203303
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 3.471563638695097,
+        "reflected_W": 0.9980745461248408,
+        "absorbed_in_vacuum_W": 0.09893956370281026,
+        "scattered_or_transmitted_W": 2.3745495288674463
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "G": 300,
+      "L": 0.0025,
+      "absorption": "10 ppm + graded loss absorbed",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 102.3417807642424,
+          "P_in_W": 0.359093967593833,
+          "reflected_W": 0.10323951568322702,
+          "dissipated_W": 0.255854451910606,
+          "absorbed_coatings_W": 0.01023417807642424,
+          "absorbed_graded_extra_W": 0.2046835615284848,
+          "scattered_or_transmitted_W": 0.04093671230569698,
+          "absorbed_per_plain_mirror_W": 0.001023417807642424,
+          "absorbed_graded_mirror_W": 0.10336519857188484,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 55.13021904891947,
+              "dT_rim_K": 0.016230111657859633,
+              "bulge_centre_minus_edge_nm": 3.5897420788549574,
+              "bulge_waves": 0.0033392949570743785
+            },
+            "radiating": {
+              "dT_peak_K": 67.05234075492336,
+              "dT_rim_K": 12.550084812680424,
+              "bulge_centre_minus_edge_nm": 3.58721728427156,
+              "bulge_waves": 0.003336946310950288
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 784.7120754996179,
+          "P_in_W": 2.753375703507431,
+          "reflected_W": 0.7915955147583867,
+          "dissipated_W": 1.9617801887490447,
+          "absorbed_coatings_W": 0.07847120754996179,
+          "absorbed_graded_extra_W": 1.5694241509992357,
+          "scattered_or_transmitted_W": 0.31388483019984714,
+          "absorbed_per_plain_mirror_W": 0.00784712075499618,
+          "absorbed_graded_mirror_W": 0.7925591962546141,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 7.386017909883432,
+              "dT_rim_K": 0.006103366683756562,
+              "bulge_centre_minus_edge_nm": 11.943513445856642,
+              "bulge_waves": 0.011110245065913155
+            },
+            "radiating": {
+              "dT_peak_K": 533.1124833854744,
+              "dT_rim_K": 525.9404499392799,
+              "bulge_centre_minus_edge_nm": 11.713022165369042,
+              "bulge_waves": 0.010895834572436317
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 3.471563638695097,
+        "reflected_W": 0.9980745461248408,
+        "absorbed_in_vacuum_W": 2.077730837759016,
+        "scattered_or_transmitted_W": 0.3957582548112411
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "IBS 1 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 102.3417807642424,
+          "P_in_W": 0.07181879351876659,
+          "reflected_W": 0.020647903136645402,
+          "dissipated_W": 0.0511708903821212,
+          "absorbed_coatings_W": 0.001023417807642424,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.050147472574478776,
+          "absorbed_per_plain_mirror_W": 0.00010234178076424239,
+          "absorbed_graded_mirror_W": 0.00010234178076424239,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.05458437529595986,
+              "dT_rim_K": 1.6069417483029346e-05,
+              "bulge_centre_minus_edge_nm": 0.003554200078074209,
+              "bulge_waves": 3.306232630766706e-06
+            },
+            "radiating": {
+              "dT_peak_K": 0.06638845619299338,
+              "dT_rim_K": 0.012425826547208342,
+              "bulge_centre_minus_edge_nm": 0.0035517002814569945,
+              "bulge_waves": 3.3039072385646458e-06
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 784.7120754996179,
+          "P_in_W": 0.5506751407014863,
+          "reflected_W": 0.15831910295167734,
+          "dissipated_W": 0.39235603774980893,
+          "absorbed_coatings_W": 0.007847120754996178,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.38450891699481277,
+          "absorbed_per_plain_mirror_W": 0.0007847120754996179,
+          "absorbed_graded_mirror_W": 0.0007847120754996179,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.007312889019686563,
+              "dT_rim_K": 6.042937310650054e-06,
+              "bulge_centre_minus_edge_nm": 0.011825260837481833,
+              "bulge_waves": 1.1000242639517983e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.5278341419658158,
+              "dT_rim_K": 0.520733118751762,
+              "bulge_centre_minus_edge_nm": 0.011597051648873846,
+              "bulge_waves": 1.0787955022208227e-05
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.6943127277390194,
+        "reflected_W": 0.19961490922496813,
+        "absorbed_in_vacuum_W": 0.009893956370281025,
+        "scattered_or_transmitted_W": 0.4848038621437703
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "IBS 10 ppm",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 102.3417807642424,
+          "P_in_W": 0.07181879351876659,
+          "reflected_W": 0.020647903136645402,
+          "dissipated_W": 0.0511708903821212,
+          "absorbed_coatings_W": 0.01023417807642424,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.04093671230569696,
+          "absorbed_per_plain_mirror_W": 0.001023417807642424,
+          "absorbed_graded_mirror_W": 0.001023417807642424,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.5458437529595985,
+              "dT_rim_K": 0.00016069417483029343,
+              "bulge_centre_minus_edge_nm": 0.0355420007807421,
+              "bulge_waves": 3.306232630766707e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.6638845619299338,
+              "dT_rim_K": 0.12425826547208349,
+              "bulge_centre_minus_edge_nm": 0.035517002814569994,
+              "bulge_waves": 3.303907238564651e-05
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 784.7120754996179,
+          "P_in_W": 0.5506751407014863,
+          "reflected_W": 0.15831910295167734,
+          "dissipated_W": 0.39235603774980893,
+          "absorbed_coatings_W": 0.07847120754996179,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.31388483019984714,
+          "absorbed_per_plain_mirror_W": 0.00784712075499618,
+          "absorbed_graded_mirror_W": 0.00784712075499618,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.07312889019686566,
+              "dT_rim_K": 6.042937310650058e-05,
+              "bulge_centre_minus_edge_nm": 0.11825260837481817,
+              "bulge_waves": 0.00011000242639517968
+            },
+            "radiating": {
+              "dT_peak_K": 5.278341419658154,
+              "dT_rim_K": 5.207331187517619,
+              "bulge_centre_minus_edge_nm": 0.11597051648868552,
+              "bulge_waves": 0.00010787955022203303
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.6943127277390194,
+        "reflected_W": 0.19961490922496813,
+        "absorbed_in_vacuum_W": 0.09893956370281026,
+        "scattered_or_transmitted_W": 0.39575825481124105
+      }
+    },
+    {
+      "n_sites": 1000000.0,
+      "G": 1500,
+      "L": 0.0005,
+      "absorption": "10 ppm + graded loss absorbed",
+      "rings": {
+        "in-plane (each of two)": {
+          "P_circ_W": 102.3417807642424,
+          "P_in_W": 0.07181879351876659,
+          "reflected_W": 0.020647903136645402,
+          "dissipated_W": 0.0511708903821212,
+          "absorbed_coatings_W": 0.01023417807642424,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.04093671230569696,
+          "absorbed_per_plain_mirror_W": 0.001023417807642424,
+          "absorbed_graded_mirror_W": 0.001023417807642424,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.5458437529595985,
+              "dT_rim_K": 0.00016069417483029343,
+              "bulge_centre_minus_edge_nm": 0.0355420007807421,
+              "bulge_waves": 3.306232630766707e-05
+            },
+            "radiating": {
+              "dT_peak_K": 0.6638845619299338,
+              "dT_rim_K": 0.12425826547208349,
+              "bulge_centre_minus_edge_nm": 0.035517002814569994,
+              "bulge_waves": 3.303907238564651e-05
+            }
+          }
+        },
+        "vertical": {
+          "P_circ_W": 784.7120754996179,
+          "P_in_W": 0.5506751407014863,
+          "reflected_W": 0.15831910295167734,
+          "dissipated_W": 0.39235603774980893,
+          "absorbed_coatings_W": 0.07847120754996179,
+          "absorbed_graded_extra_W": 0.0,
+          "scattered_or_transmitted_W": 0.31388483019984714,
+          "absorbed_per_plain_mirror_W": 0.00784712075499618,
+          "absorbed_graded_mirror_W": 0.00784712075499618,
+          "graded_mirror": {
+            "clamped": {
+              "dT_peak_K": 0.07312889019686566,
+              "dT_rim_K": 6.042937310650058e-05,
+              "bulge_centre_minus_edge_nm": 0.11825260837481817,
+              "bulge_waves": 0.00011000242639517968
+            },
+            "radiating": {
+              "dT_peak_K": 5.278341419658154,
+              "dT_rim_K": 5.207331187517619,
+              "bulge_centre_minus_edge_nm": 0.11597051648868552,
+              "bulge_waves": 0.00010787955022203303
+            }
+          }
+        }
+      },
+      "total": {
+        "input_W": 0.6943127277390194,
+        "reflected_W": 0.19961490922496813,
+        "absorbed_in_vacuum_W": 0.09893956370281026,
+        "scattered_or_transmitted_W": 0.39575825481124105
+      }
+    }
+  ],
+  "stability": {
+    "ULE glass": {
+      "cte_per_K": 3e-08,
+      "resonance_shift_MHz_per_K": 8.366301153488372,
+      "gradient_K_for_tilt_tolerance": 5.555555555555555,
+      "uniform_K_for_100MHz_detuning_change": 11.952713411267116
+    },
+    "Invar 36": {
+      "cte_per_K": 1.3e-06,
+      "resonance_shift_MHz_per_K": 362.5397166511628,
+      "gradient_K_for_tilt_tolerance": 0.1282051282051282,
+      "uniform_K_for_100MHz_detuning_change": 0.275831847952318
+    },
+    "stainless steel 304": {
+      "cte_per_K": 1.7e-05,
+      "resonance_shift_MHz_per_K": 4740.903986976744,
+      "gradient_K_for_tilt_tolerance": 0.00980392156862745,
+      "uniform_K_for_100MHz_detuning_change": 0.02109302366694197
+    },
+    "aluminium 6061": {
+      "cte_per_K": 2.3e-05,
+      "resonance_shift_MHz_per_K": 6414.164217674418,
+      "gradient_K_for_tilt_tolerance": 0.007246376811594203,
+      "uniform_K_for_100MHz_detuning_change": 0.015590495753826672
+    }
+  },
+  "time_constants_s": {
+    "inplane_graded": 657.8455595153714,
+    "vertical_graded": 732.5832269424197
+  }
+}

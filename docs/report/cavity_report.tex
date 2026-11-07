@@ -65,7 +65,7 @@ imaging objective, a MOT and further beams (Sections~\ref{sec:architecture} and~
 (iii) give its power and loss budget (Section~\ref{sec:budget}); (iv) simulate its flat-top mode,
 tolerances and correction with a Fox--Li model (Sections~\ref{sec:foxli} and~\ref{sec:correction});
 (v) evaluate the intensities, defect limits and thermal deformation on the mirrors
-(Section~\ref{sec:defects}); (vi) derive the noise requirements set by heating
+and the heat load and cooling needs (Section~\ref{sec:defects}); (vi) derive the noise requirements set by heating
 (Section~\ref{sec:noise}); and (vii) repeat the analysis at $10^{4}$ and $10^{5}$ sites to see which
 constraints are specific to $10^{6}$ (Section~\ref{sec:scaling}). Section~\ref{sec:discussion} separates what is shown from what depends
 on the model, and lists the next steps. A parameter summary, the commands that reproduce every
@@ -838,12 +838,80 @@ the thermal profile and hence conservative, on both graded mirrors of the \SI{70
 depth rms changes from 0.231 to \SI{0.232}{\percent} for \SI{10}{\ppm} IBS and to \SI{0.252}{\percent}
 for \SI{100}{\ppm}; the Si-rich SiN film raises it to \SI{0.53}{\percent} on fused silica and
 \SI{0.32}{\percent} on sapphire, and the enhancement changes by less than $4\times10^{-4}$. A static bulge
-is also within reach of the closed loop. The vertical ring's mirrors absorb 7.7 times more on smaller
-spots; we did not compute their deformation, and scaling the centre bulge with the absorbed power gives
-about \SI{0.3}{\nano\metre} for \SI{10}{\ppm}, a rough estimate. The cell windows of the through-cell
+is also within reach of the closed loop. The vertical ring's mirrors absorb 7.7 times more on smaller spots; on its sapphire graded mirror the bulge is \SI{0.12}{\nano\metre} for \SI{10}{\ppm} (Section~\ref{sec:heat}). The cell windows of the through-cell
 variant absorb \SI{4}{\ppm} per pass in bulk (\SI{0.4}{\milli\watt} at \SI{102}{\watt}), which is
 negligible thermally, but their surfaces carry the defect constraint of Table~\ref{tab:defects}; this
 is the reason to prefer mirrors in vacuum.
+
+\subsection{Heat load and cooling}
+\label{sec:heat}
+
+Are chillers needed? In steady state every watt that enters a ring leaves it in one of three ways. With the
+over-coupled coupler $T = 3L$ and mode matching $\eta = 0.95$, a fraction $1 - 0.75\eta = 0.29$ of the input
+is reflected to an external beam dump, and $0.75\eta = 0.71$ is dissipated in the ring as $P_\mathrm{circ}L$.
+The loss splits into coating absorption (1 or \SI{10}{\ppm} per reflection \placeholder{[VALUE?]}), the part of
+the graded-mirror loss that is absorbed rather than scattered (none for figured IBS mirrors; all of it as a
+worst case), and light scattered or transmitted out of the mode. We compute the mirror temperatures with the
+conduction model of Section~\ref{sec:defects}, the faces cooled only by radiation in vacuum
+($h = 4\epsilon\sigma T^{3} = \SI{5.2}{\watt\per\metre\squared\per\kelvin}$ for $\epsilon = 0.9$
+\placeholder{[VALUE?]}), and the rim either clamped to a mount at the chamber temperature or radiating (a free
+mirror). Here, $\epsilon$ is the emissivity and $\sigma$ the Stefan--Boltzmann constant. The hottest mirror of each
+ring is its graded mirror: a 1 inch fused-silica mirror in the in-plane rings, and a $12\times\SI{5}{\milli\metre}$
+sapphire strip in the vertical ring (Table~\ref{tab:heat}).
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Heat budget at $10^{6}$ sites, \SI{0.2}{\milli\kelvin}, $G = 300$. Mirror values for the hottest
+(graded) mirror of each ring with \SI{10}{\ppm} coating absorption unless stated.}
+\label{tab:heat}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.4cm}>{\centering\arraybackslash}p{2.6cm}>{\centering\arraybackslash}p{2.6cm}@{}}
+\toprule
+ & Three rings & In-plane ring (each) & Vertical ring \\
+\midrule
+Laser input & \SI{3.47}{\watt} & \SI{0.36}{\watt} & \SI{2.75}{\watt} \\
+Reflected to the external dump & \SI{1.00}{\watt} & \SI{0.10}{\watt} & \SI{0.79}{\watt} \\
+Absorbed in vacuum, IBS 1 / \SI{10}{\ppm} & 9.9 / \SI{99}{\milli\watt} & 1.0 / \SI{10}{\milli\watt} & 7.8 / \SI{79}{\milli\watt} \\
+Scattered or transmitted out of the mode & \SI{2.4}{\watt} & \SI{0.25}{\watt} & \SI{1.9}{\watt} \\
+Hottest mirror: absorbed power & & \SI{1.0}{\milli\watt} & \SI{7.9}{\milli\watt} \\
+Its temperature rise, clamped / free & & 0.55 / \SI{0.66}{\kelvin} & 0.07 / \SI{5.3}{\kelvin} \\
+Its surface bulge, clamped & & \SI{0.036}{\nano\metre} & \SI{0.12}{\nano\metre} \\
+Worst case, graded-mirror loss absorbed: absorbed; rise; bulge & \SI{2.1}{\watt} & \SI{0.10}{\watt}; \SI{55}{\kelvin}; \SI{3.6}{\nano\metre} & \SI{0.79}{\watt}; \SI{7.4}{\kelvin}; \SI{12}{\nano\metre} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Three results follow. (i) The heat to be removed is small. With IBS coatings 10 to \SI{99}{\milli\watt} is
+absorbed inside the vacuum system at $10^{6}$ sites (14 and \SI{6.5}{\milli\watt} at $10^{5}$ and $10^{4}$), and
+\SI{2.4}{\watt} of scattered light is spread over the chamber walls and mounts. None of this needs water
+cooling; it is three orders of magnitude below the \SI{1.4}{\kilo\watt} that the tweezer route would pass
+through its meta-optics. (ii) The mirrors must be heat-sunk by conduction. A free sapphire strip in the
+vertical ring would warm by \SI{5.3}{\kelvin}, with a radiative time constant of about \SI{12}{\minute};
+clamped in a conducting mount it warms by \SI{0.07}{\kelvin}. (iii) The graded-mirror loss must be scatter,
+not absorption. If the $10^{-3}$ per graded mirror assumed at $G = 300$ were absorbed, the vertical graded mirror
+would bulge by \SI{12}{\nano\metre}, eleven times the $\lambda/1000$ tolerance. The bulge reaches $\lambda/1000$
+at an absorbed fraction of about $9\times10^{-5}$ of the circulating power (vertical) and $3\times10^{-4}$
+(in-plane), ten times the coating absorption. This excludes absorbing metasurfaces as graded mirrors on thermal
+grounds as well as on loss.
+
+The binding requirement is temperature stability, not heat removal. A uniform temperature change of the ring is
+benign for the lattice, because all paths scale together and the lock retunes the laser; it shifts the
+resonance by $\nu\alpha$ per kelvin. Here, $\nu$ is the laser frequency and $\alpha$ the expansion coefficient
+of the ring material. A gradient through the base plate bends it and tilts the mirrors. For a
+\SI{25}{\milli\metre} plate over a \SI{150}{\milli\metre} mirror spacing \placeholder{[CONFIRM?]} and the
+\SI{1}{\micro\radian} tilt tolerance, a stainless-steel ring tolerates a gradient of about \SI{10}{\milli\kelvin}
+and shifts its resonance by \SI{4.7}{\giga\hertz\per\kelvin}, while a ULE ring tolerates about \SI{5.6}{\kelvin}
+and shifts by \SI{8.4}{\mega\hertz\per\kelvin} (approximate expansion coefficients
+\placeholder{[VALUE?: verify]}). Water cooling of the ring would work against both requirements: flowing water is
+a source of vibration, while each mirror must move by less than \SI{0.32}{\pico\metre}\rtHz{} at the trap
+frequency (Section~\ref{sec:noise}), and a chiller loop is a strong temperature disturbance unless it is itself
+regulated to millikelvins. We therefore recommend (i) no water cooling on the cavity assembly; (ii) mirrors
+clamped in conducting mounts on a monolithic ULE or Invar ring, as in Ref.~\cite{Park2022}; (iii) slow
+temperature control of the ring at the \SI{0.1}{\kelvin} (ULE) or \SI{10}{\milli\kelvin} (metal) level, away
+from the mirrors; and (iv) constant circulating power, so that the mirror time constant never produces a
+transient during an experiment. Chillers remain needed elsewhere: for the laser only on the tweezer route, and
+very likely for the coils of a $10^{8}$ to $10^{9}$-atom MOT, which are not designed here
+\placeholder{[VALUE?: coil dissipation]}.
 
 %======================================================================
 \section{Site quality, optical access and loading}
@@ -1232,8 +1300,7 @@ rings and \SI{3.0}{\micro\metre} on the sapphire mirrors of the vertical ring wi
 vertical telescope, and vibration below \SI{0.3}{\pico\metre}\rtHz{} at the trap frequency. The next steps
 are (i) a model-based closed loop, with a stopping rule, for large starting errors and for the vertical
 ring, whose loop drifts after its best round; (ii) a time-dependent simulation of depth and site position under laser
-and lock noise, with a vibration model of the ring mounts; and (iii) the absorption-induced deformation
-of the vertical ring's mirrors, and the loading of a single plane of the vertical lattice from the
+and lock noise, with a vibration model of the ring mounts; and (iii) the loading of a single plane of the vertical lattice from the
 tilted MOT.
 
 \bibliographystyle{unsrtnat}
