@@ -154,10 +154,30 @@ def evaluate(r, cfg, inplane):
             "aoi_deg": {k: v["aoi"] for k, v in m.items()}}
 
 
+def check_chosen(cfg, out, th, inplane):
+    """Re-evaluate the chosen fold geometry with other mirror strip sizes and beam heights (no search)."""
+    ch = json.loads((REPO_ROOT / cfg["check_chosen"]["layout_json"]).read_text())["chosen"]
+    f12 = ch["f1_mm"] + ch["f2_mm"]
+    h1, h2 = ch["half1"], ch["half2"]
+    r = ring_v(th, ch["d0_mm"], f12, h1["L_mm"], h1["alpha_deg"], h2["alpha_deg"], h1["G_side"], h2["G_side"], L2=h2["L_mm"])
+    rep = {}
+    for case in cfg["check_chosen"]["cases"]:
+        c = dict(cfg, mirror_half_height_mm=case["mirror_half_height_mm"], beam_half_in_plane_mm=case["beam_half_in_plane_mm"], min_clearance_mm=0.0)
+        ev = evaluate(r, c, inplane)
+        rep[case["name"]] = dict(case, **{k: v for k, v in ev.items() if k != "aoi_deg"})
+        print(case["name"], {k: (round(v, 1) if isinstance(v, float) else v) for k, v in rep[case["name"]].items() if k not in ("name",)}, flush=True)
+    write_json(out / "check.json", rep)
+
+
 def main(cfg_path):
     cfg = load_config(cfg_path)
     out = run_dir(cfg["run_id"])
     write_params(out, cfg)
+    if cfg.get("check_chosen"):
+        th = B.crossing_half_angle(cfg["vertical_period_um"], cfg["wavelength_nm"] * 1e-3)
+        inplane = json.loads((REPO_ROOT / cfg["inplane_layout_json"]).read_text())["layout"]
+        check_chosen(cfg, out, th, inplane)
+        return
     th = B.crossing_half_angle(cfg["vertical_period_um"], cfg["wavelength_nm"] * 1e-3)
     inplane = json.loads((REPO_ROOT / cfg["inplane_layout_json"]).read_text())["layout"]
     best = []

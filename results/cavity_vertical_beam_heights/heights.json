@@ -1,0 +1,93 @@
+{
+  "clip": 0.0001,
+  "x": {
+    "110mm": {
+      "rms_half_width_um": 2010.1571859588714,
+      "enclosed_half_width_um": 3913.57421875
+    },
+    "294mm": {
+      "rms_half_width_um": 302.3923844516354,
+      "enclosed_half_width_um": 786.1328125
+    },
+    "414mm": {
+      "rms_half_width_um": 307.8551172073392,
+      "enclosed_half_width_um": 1401.3671875
+    },
+    "534mm": {
+      "rms_half_width_um": 336.20313446896057,
+      "enclosed_half_width_um": 2467.7734375
+    },
+    "718mm": {
+      "rms_half_width_um": 2180.4375669175347,
+      "enclosed_half_width_um": 13415.52734375
+    }
+  },
+  "z": {
+    "no_z_telescope": {
+      "110mm": {
+        "rms_half_width_um": 196.012447309407,
+        "enclosed_half_width_um": 1268.5546875
+      },
+      "294mm": {
+        "rms_half_width_um": 314.5765633033607,
+        "enclosed_half_width_um": 2827.1484375
+      },
+      "414mm": {
+        "rms_half_width_um": 410.01811175413866,
+        "enclosed_half_width_um": 3911.1328125
+      },
+      "534mm": {
+        "rms_half_width_um": 510.27725530083984,
+        "enclosed_half_width_um": 4998.046875
+      },
+      "718mm": {
+        "rms_half_width_um": 664.1385043959973,
+        "enclosed_half_width_um": 5695.3125
+      }
+    },
+    "z_expand_4x": {
+      "110mm": {
+        "rms_half_width_um": 196.0124473087851,
+        "enclosed_half_width_um": 1267.08984375
+      },
+      "294mm": {
+        "rms_half_width_um": 714.4912785582376,
+        "enclosed_half_width_um": 3513.18359375
+      },
+      "414mm": {
+        "rms_half_width_um": 723.667281842193,
+        "enclosed_half_width_um": 3767.08984375
+      },
+      "534mm": {
+        "rms_half_width_um": 733.7256930448569,
+        "enclosed_half_width_um": 4013.671875
+      },
+      "718mm": {
+        "rms_half_width_um": 171.69183845395563,
+        "enclosed_half_width_um": 617.67578125
+      }
+    },
+    "z_expand_8x": {
+      "110mm": {
+        "rms_half_width_um": 196.0124473087851,
+        "enclosed_half_width_um": 1267.08984375
+      },
+      "294mm": {
+        "rms_half_width_um": 1491.2070646892303,
+        "enclosed_half_width_um": 8596.19140625
+      },
+      "414mm": {
+        "rms_half_width_um": 1496.5951559538096,
+        "enclosed_half_width_um": 8698.73046875
+      },
+      "534mm": {
+        "rms_half_width_um": 1502.2171130853646,
+        "enclosed_half_width_um": 8818.359375
+      },
+      "718mm": {
+        "rms_half_width_um": 180.31857536497893,
+        "enclosed_half_width_um": 935.05859375
+      }
+    }
+  }
+}
