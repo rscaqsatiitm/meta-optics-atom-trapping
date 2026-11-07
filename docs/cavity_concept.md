@@ -7,6 +7,8 @@ magnitude, and which design and simulations support it? All numbers are SIM (rev
 submission) or DERIVED unless marked; SOURCE values were retrieved and read in this session.
 Code: src/metatrap/cavity/, scripts/cavity_*.py, configs/cavity_*.yaml; results in
 results/cavity_*/ (one params.json per run with config, git state and versions).
+LaTeX editions: docs/report/ (cavity_report.tex, edited; cavity_concept_faithful.tex, generated
+from this file).
 
 ## Result
 
@@ -254,8 +256,8 @@ Meta-optics. (i) Input mode converters, Gaussian to flat-top sheet (a Gaussian i
 Figure 3. Arrangement. (a) Top view to scale: the y-lattice ring (blue) and the x-lattice ring
 (orange), each a self-intersecting ring with a 0.2x cylindrical telescope (primary P1, f = 100 mm,
 70 mm from the crossing; secondary P2, f = 20 mm) and two graded mirrors G1, G2; circles are the
-mirror apertures (10 and 5 mm). Dashed diagonals: corridor for the vertical-lattice ring, whose
-fold geometry is not designed. The input (green) is the flat-top sheet from an extracavity meta-optic
+mirror apertures (10 and 5 mm). Dashed diagonals: corridor for the vertical-lattice ring, whose fold
+geometry is shown in Figure 5 (the sketch predates it). The input (green) is the flat-top sheet from an extracavity meta-optic
 converter; the light leaked by a fold mirror (pink) goes to the mode camera. (b) The crossing of one
 axis to scale: the two flat-top sheets (equivalent width 5.5 mm, 2 theta = 15.4 deg) cover the 4 mm
 array; inset, the computed intensity of the two incoherent in-plane axes (plane waves, 4 um pitch).
