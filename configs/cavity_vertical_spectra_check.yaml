@@ -1,0 +1,10 @@
+# Grid convergence of the vertical-mode spectra of the adopted 10^6 vertical ring (docs/cavity_concept.md, Sections 4b, 5).
+run_id: cavity_vertical_spectra_check
+vertical_config: configs/cavity_vertical_chosen.yaml
+k: 12                           # eigenvalues computed per grid (ARPACK, largest magnitude)
+grids: [[2048, 40000.0], [4096, 40000.0], [8192, 40000.0], [16384, 40000.0], [16384, 20000.0]]   # [points, width um]
+variants:
+  - {name: z_no_telescope_5mm, direction: z, ap1_um: 5000.0, ap2_um: 5000.0, ap_g_um: 5000.0}
+  - {name: z_telescope_4x, direction: z, telescope: {mag: 4.0}, ap1_um: 5000.0, ap2_um: 8000.0, ap_g_um: 8000.0}
+  - {name: z_telescope_8x, direction: z, telescope: {mag: 8.0}, ap1_um: 5000.0, ap2_um: 12000.0, ap_g_um: 12000.0}
+  - {name: x_horizontal, direction: x}

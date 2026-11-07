@@ -1,0 +1,110 @@
+{
+ "assumptions": {
+  "objective": {
+   "z0_mm": 38.0,
+   "radius_mm": 26.0
+  },
+  "mount_margin_mm": 5.0,
+  "beam_length_mm": 250.0
+ },
+ "mot_standard_xyz": {
+  "clearance_mm": [
+   -17.499999999999993,
+   -17.5,
+   -36.0
+  ]
+ },
+ "mot_standard_diagonals": {
+  "clearance_mm": [
+   -13.93393032033676,
+   -6.75300812689717,
+   -36.0
+  ]
+ },
+ "mot_best_triad": {
+  "min_clearance_mm": 15.865292458860914,
+  "clearance_mm": [
+   16.001980184154043,
+   18.851597044926834,
+   15.865292458860914
+  ],
+  "axes": [
+   {
+    "theta_deg": 55.10590090294487,
+    "phi_deg": 254.55361568293478
+   },
+   {
+    "theta_deg": 55.10590090294488,
+    "phi_deg": 135.44638431706522
+   },
+   {
+    "theta_deg": 54.0,
+    "phi_deg": 14.999999999999998
+   }
+  ],
+  "pairwise_dot": [
+   2.5654193868035746e-18,
+   1.575400204375801e-17,
+   6.0078812119948114e-18
+  ]
+ },
+ "extra_lines_pumping_raman": [
+  {
+   "theta_deg": 56.5,
+   "phi_deg": 117.0,
+   "clearance_mm": 26.8508289059098,
+   "clearance_mot_size_mm": 21.8508289059098
+  },
+  {
+   "theta_deg": 56.5,
+   "phi_deg": 297.0,
+   "clearance_mm": 26.8508289059098,
+   "clearance_mot_size_mm": 21.8508289059098
+  },
+  {
+   "theta_deg": 56.5,
+   "phi_deg": 333.0,
+   "clearance_mm": 26.8508289059098,
+   "clearance_mot_size_mm": 21.8508289059098
+  },
+  {
+   "theta_deg": 56.5,
+   "phi_deg": 155.0,
+   "clearance_mm": 26.850828905909793,
+   "clearance_mot_size_mm": 21.850828905909793
+  }
+ ],
+ "grating_mot": {
+  "chip_z_mm": -8.0,
+  "chip_half_mm": 11.0,
+  "n_beams": 3,
+  "azimuth0_deg": 0.0,
+  "diffraction_deg": 45.0,
+  "diffracted_half_width_mm": 8.0,
+  "chip_to_ring_beams_mm": {
+   "y_lattice": 8.0,
+   "y_lattice_lower": 8.0,
+   "x_lattice": 8.0,
+   "x_lattice_lower": 8.0,
+   "vertical_half1": 8.0,
+   "vertical_half2": 6.9375823096317255
+  },
+  "diffracted_beams": [
+   {
+    "azimuth_deg": 0.0,
+    "clearance_mm": 6.682911646246382
+   },
+   {
+    "azimuth_deg": 119.99999999999999,
+    "clearance_mm": 6.6829116462463745
+   },
+   {
+    "azimuth_deg": 239.99999999999997,
+    "clearance_mm": 6.682911646246382
+   }
+  ],
+  "retro_beam_through_chip_hole_to_first_vertical_mirror_mm": 96.04379091283434
+ }
+}
+mot 0.33858024691358024 [{'theta_deg': 56.5, 'phi_deg': 117.0, 'clearance_mm': 21.8508289059098}, {'theta_deg': 56.5, 'phi_deg': 297.0, 'clearance_mm': 21.8508289059098}, {'theta_deg': 56.5, 'phi_deg': 333.0, 'clearance_mm': 21.8508289059098}]
+pumping_raman 0.452037037037037 [{'theta_deg': 56.5, 'phi_deg': 117.0, 'clearance_mm': 26.8508289059098}, {'theta_deg': 56.5, 'phi_deg': 297.0, 'clearance_mm': 26.8508289059098}, {'theta_deg': 56.5, 'phi_deg': 333.0, 'clearance_mm': 26.8508289059098}]

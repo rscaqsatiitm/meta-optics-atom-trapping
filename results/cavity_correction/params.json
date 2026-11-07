@@ -135,7 +135,7 @@
     "_config_path": "configs/cavity_correction.yaml"
   },
   "git": {
-    "commit": "1dc3d7acf28fb60e3905ffd10b347b50203c1e4a",
+    "commit": "188001ea926b7058d21489b8b19723680fbd57e8",
     "dirty": "True"
   },
   "versions": {
@@ -153,5 +153,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-06T18:20:37+00:00"
+  "utc": "2026-11-07T15:08:56+00:00"
 }

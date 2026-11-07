@@ -51,7 +51,7 @@
     "_config_path": "configs/cavity_correction_n1e4_loop.yaml"
   },
   "git": {
-    "commit": "1edd95ccb7b0fbaafaf7e9baa1bcd1c6d4b49cec",
+    "commit": "188001ea926b7058d21489b8b19723680fbd57e8",
     "dirty": "True"
   },
   "versions": {
@@ -69,5 +69,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-07T11:12:43+00:00"
+  "utc": "2026-11-07T15:08:56+00:00"
 }

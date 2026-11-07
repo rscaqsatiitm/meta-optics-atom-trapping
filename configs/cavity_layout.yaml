@@ -5,6 +5,8 @@ period_um: 4.0
 w_z_m: 75.0e-6                 # vertical waist at the crossing (S1, S3)
 telescope: {f1_m: 0.100, mag: 0.2, d0_m: 0.070, L_m: 0.100, ap1_mm: 5.0, ap2_mm: 2.5}   # S3 variant telK_M0.2_d70 (d0 = 50 mm overlapped, see rings)
 f_z_scan_m: [0.02, 0.03, 0.04, 0.05, 0.06, 0.08, 0.1, 0.15, 0.3, 1.0e+6]   # vertical focal length of the primary (1e6 = flat); chosen 0.04 for d0 = 70 mm (0.03 for d0 = 50 mm)
+reference_vertical:             # the first 50 mm ring of docs/cavity_concept.md Section 2 (vertical design only)
+  - {d0_m: 0.050, f_z_m: [0.03]}
 rings:                          # fold angle of the primary and orientation of each in-plane ring
   y_lattice: {turn_deg: 157.0, rotation_deg: 0.0}
   x_lattice: {turn_deg: 157.0, rotation_deg: 90.0}   # with d0 = 50 mm the two rings overlapped by 4.2 mm

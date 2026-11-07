@@ -153,8 +153,8 @@ def main(cfg_path):
     sx, sz = build(cfg, cfg["x"]), build(cfg, cfg["z"])
     rep = {"x_design": {"w_um": sx["w"], "W_eq_um": LA.supergauss_equivalent_width(sx["w"], cfg["x"]["order"])},
            "z_design": {"w_um": sz["w"], "H_eq_um": LA.supergauss_equivalent_width(sz["w"], cfg["z"]["order"])},
-           "spectrum_z": FL.dense_spectrum(build(cfg, dict(cfg["z"], grid_n=2048))["ring"], build(cfg, dict(cfg["z"], grid_n=2048))["F"], n_modes=4),
-           "spectrum_x": FL.dense_spectrum(build(cfg, dict(cfg["x"], grid_n=4096))["ring"], build(cfg, dict(cfg["x"], grid_n=4096))["F"], n_modes=4),
+           "spectrum_z": FL.sparse_spectrum(sz["ring"], sz["F"]),   # on the field grid (coarse dense grids were not converged)
+           "spectrum_x": FL.sparse_spectrum(sx["ring"], sx["F"]),
            "cases": {}}
     ex0, ez0 = solve(cfg, sx, sx["ring"]), solve(cfg, sz, sz["ring"])
     rep["cases"]["ideal"] = dict(depth_map(cfg, sx, ex0[:2], sz, ez0[:2]), g_ratio_x=ex0[2], g_ratio_z=ez0[2])

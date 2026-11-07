@@ -67,8 +67,7 @@ def main(cfg_path):
         sz = V.build(vcfg, dz)
         ez0 = V.solve(vcfg, sz, sz["ring"])
         res = {"ideal": dict(V.depth_map(vcfg, sx, ex0[:2], sz, ez0[:2]), g_ratio_x=ex0[2], g_ratio_z=ez0[2])}
-        sp = V.build(vcfg, dict(dz, grid_n=max(cfg["spectrum_grid_n"], dz["grid_n"] // 4)))
-        res["spectrum_z"] = FL.dense_spectrum(sp["ring"], sp["F"], n_modes=4)
+        res["spectrum_z"] = FL.sparse_spectrum(sz["ring"], sz["F"])   # on the field grid
         iz = stop_fields(sz)
         res["peak_intensity_kW_cm2"] = {}
         for z, nm in names.items():

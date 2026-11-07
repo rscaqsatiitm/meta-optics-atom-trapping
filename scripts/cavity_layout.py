@@ -7,7 +7,8 @@ at the secondary and the graded mirror). Vertical: a Gaussian mode with waist w_
 crossing, shaped by a vertical curvature on the primary (focal length f_z) and on the graded
 mirror (radius R_z); the half trip is symmetric about G, so the vertical round trip is that of
 a two-element system unfolded about G. For each f_z we solve R_z for the target waist and
-report the stability, the round-trip Gouy phase and the vertical beam size on each mirror.
+report the stability, the transverse-mode spacing per round trip (arccos of half the trace of the
+round-trip matrix) and the vertical beam size on each mirror (P1, P2, G).
 Ring layout in the atom plane: arms cross at X at +-theta; the telescope folds outward and the
 graded mirrors sit on the bisector normal. Writes layout.json and layout.png.
 """
@@ -52,20 +53,13 @@ def beam_size(q, M):
     return q2
 
 
-def main(cfg_path):
-    cfg = load_config(cfg_path)
-    out = run_dir(cfg["run_id"])
-    write_params(out, cfg)
-    lam = cfg["wavelength_nm"] * 1e-9
-    t = cfg["telescope"]
-    f1, M = t["f1_m"], t["mag"]
-    f2 = M * f1
-    d0, L = t["d0_m"], t["L_m"]
+def vertical_designs(lam, d0, f1, f2, L, f_z_list, w0_target):
+    """Vertical Gaussian designs for a list of primary focal lengths f_z: R_z solved for the target waist.
+    Beam sizes on P1 (d0), P2 (d0 + f1 + f2; P2 has no vertical power) and G (d0 + f1 + f2 + L).
+    The transverse-mode spacing per round trip is arccos((A + D) / 2) of the round-trip matrix."""
     D = f1 + f2 + L  # primary -> graded mirror
-    w0_target = cfg["w_z_m"]
     rows = []
-    for f_z in cfg["f_z_scan_m"]:
-        # Solve R_z (bisection on log R) for the target waist.
+    for f_z in f_z_list:
         best = None
         for R in np.geomspace(0.01, 100.0, 20001):
             _, half = vertical_roundtrip(d0, D, f_z, R)
@@ -81,14 +75,34 @@ def main(cfg_path):
         rt, half = vertical_roundtrip(d0, D, f_z, R)
         q0 = 1j * np.pi * w**2 / lam
         q_p1 = beam_size(q0, abcd_prop(d0))
+        q_p2 = beam_size(q0, abcd_prop(f1 + f2) @ abcd_lens(f_z) @ abcd_prop(d0))
         q_g = beam_size(q0, abcd_prop(D) @ abcd_lens(f_z) @ abcd_prop(d0))
         wz = lambda q: float(np.sqrt(-lam / (np.pi * np.imag(1 / q))))  # noqa: E731
-        gouy_rt = float(2 * np.arccos(np.clip((rt[0, 0] + rt[1, 1]) / 2, -1, 1)))
+        spacing = float(np.arccos(np.clip((rt[0, 0] + rt[1, 1]) / 2, -1, 1)))
         # Misalignment sensitivity: dR/R of 1e-3 -> relative waist change.
         _, half2 = vertical_roundtrip(d0, D, f_z, R * (1 + 1e-3))
         w2, _ = waist_from_half(half2, lam)
-        rows.append({"f_z_m": f_z, "R_z_m": R, "w0_m": w, "half_trip_m": m, "gouy_roundtrip_rad": gouy_rt,
-                     "w_z_at_primary_m": wz(q_p1), "w_z_at_graded_m": wz(q_g), "waist_change_per_1e-3_dR": float((w2 - w) / w)})
+        rows.append({"f_z_m": f_z, "R_z_m": R, "w0_m": w, "half_trip_m": m, "mode_spacing_roundtrip_rad": spacing,
+                     "w_z_at_primary_m": wz(q_p1), "w_z_at_secondary_m": wz(q_p2), "w_z_at_graded_m": wz(q_g),
+                     "waist_change_per_1e-3_dR": float((w2 - w) / w)})
+    return rows
+
+
+def main(cfg_path):
+    cfg = load_config(cfg_path)
+    out = run_dir(cfg["run_id"])
+    write_params(out, cfg)
+    lam = cfg["wavelength_nm"] * 1e-9
+    t = cfg["telescope"]
+    f1, M = t["f1_m"], t["mag"]
+    f2 = M * f1
+    d0, L = t["d0_m"], t["L_m"]
+    D = f1 + f2 + L  # primary -> graded mirror
+    w0_target = cfg["w_z_m"]
+    rows = vertical_designs(lam, d0, f1, f2, L, cfg["f_z_scan_m"], w0_target)
+    # Reference designs at other primary distances (e.g. the first 50 mm ring), same telescope.
+    ref = {f"d0_{r['d0_m'] * 1e3:.0f}mm": vertical_designs(lam, r["d0_m"], f1, f2, L, r["f_z_m"], w0_target)
+           for r in cfg.get("reference_vertical", [])}
     # Ring layout in the atom plane: X at origin; each ring's arms cross at +-theta about its axis.
     th = B.crossing_half_angle(cfg["period_um"], cfg["wavelength_nm"] * 1e-3)
     rings = {name: ring_geometry(th, d0, f1, f2, L, np.radians(r["turn_deg"]), np.radians(r["rotation_deg"]), t["ap1_mm"], t["ap2_mm"])
@@ -101,7 +115,7 @@ def main(cfg_path):
                                  "aoi_deg": rg["aoi_deg"], "mirrors_mm": {k: v.tolist() for k, v in rg["mirrors"].items()},
                                  "diagonal_clearance_mm": diagonal_clearance(rg, cfg["diagonal_min_radius_mm"])}
     layout["ring_clearance_mm"] = clearance(rings[names[0]], rings[names[1]], cfg["beam_margin_mm"])
-    rep = {"vertical_designs": rows, "layout": layout}
+    rep = {"vertical_designs": rows, "reference_vertical_designs": ref, "layout": layout}
     write_json(out / "layout.json", rep)
     for r in rows:
         print(r)

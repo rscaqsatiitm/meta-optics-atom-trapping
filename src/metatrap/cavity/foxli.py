@@ -362,3 +362,24 @@ def dense_spectrum(ring: RingStrip, target, max_loss=0.01, n_modes=12):
         "modes": [{"dphase_rad": float(d[j]), "loss": float(loss[j])} for j in order],
         "lowest_loss_modes": [{"dphase_rad": float(d[j]), "loss": float(loss[j])} for j in lowest],
     }
+
+
+def sparse_spectrum(ring: RingStrip, target, k=12, max_loss=0.01):
+    """Spectrum near the fundamental from the k largest round-trip eigenvalues (ARPACK), on the ring's
+    own grid. Same keys as dense_spectrum. Preferred for large grids: dense diagonalisation forces a
+    coarse grid, which mis-resolves strongly focused modes (scripts/cavity_vertical_spectra_check.py)."""
+    target = np.asarray(target, dtype=complex)
+    vals, vecs = eigenmodes(ring, k=k, v0=target)
+    ov = np.abs(vecs.conj().T @ target) ** 2 / (np.vdot(target, target).real * np.sum(np.abs(vecs) ** 2, axis=0))
+    i0 = int(np.argmax(ov))
+    d = np.angle(vals / vals[i0])
+    loss = 1 - np.abs(vals) ** 2
+    order = [j for j in np.argsort(np.abs(d)) if j != i0 and loss[j] < max_loss]
+    lowest = [j for j in np.argsort(loss) if j != i0]
+    return {
+        "fundamental_loss": float(loss[i0]),
+        "fundamental_overlap": float(ov[i0]),
+        "modes": [{"dphase_rad": float(d[j]), "loss": float(loss[j])} for j in order],
+        "lowest_loss_modes": [{"dphase_rad": float(d[j]), "loss": float(loss[j])} for j in lowest],
+        "method": f"arpack k={k}, n={ring.grid.n}",
+    }

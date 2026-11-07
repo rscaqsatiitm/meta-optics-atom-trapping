@@ -10,4 +10,4 @@ lock_noise_bandwidth_Hz: 1.0e+5  # residual laser-cavity detuning noise assumed 
 lock_offset_fraction: 0.01       # static lock offset, fraction of the linewidth
 axes:                            # in-plane ring of the layout (d0 = 70 mm) and the vertical ring (Figure 5)
   - {name: in-plane, period_um: 4.0, L1_m: 0.580, Lrt_m: 1.160, fsr_Hz: 258.4e+6, typical_aoi_deg: 30.0}
-  - {name: vertical, period_um: 8.0, L1_m: 0.828, Lrt_m: 1.656, fsr_Hz: 181.0e+6, typical_aoi_deg: 30.0}
+  - {name: vertical, period_um: 8.0, L1_m: 0.828, Lrt_m: 1.656, fsr_Hz: 181.0e+6, typical_aoi_deg: 30.0, angle_lever: plane_tilt}

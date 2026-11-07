@@ -1,0 +1,266 @@
+{
+  "z_no_telescope_5mm": {
+    "2048_40mm": {
+      "fundamental_loss": 2.830600150494078e-05,
+      "fundamental_overlap": 0.9999426541488675,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.1460596878834934,
+        "loss": 0.00399799081819574
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 2.1460596878834934,
+        "loss": 0.00399799081819574
+      },
+      "dx_um": 19.53125
+    },
+    "4096_40mm": {
+      "fundamental_loss": 2.8559485770962567e-05,
+      "fundamental_overlap": 0.9999417319205355,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.146059618023732,
+        "loss": 0.003997717301449266
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 2.146059618023732,
+        "loss": 0.003997717301449266
+      },
+      "dx_um": 9.765625
+    },
+    "8192_40mm": {
+      "fundamental_loss": 2.869479633782479e-05,
+      "fundamental_overlap": 0.9999412564900246,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.1460595286302535,
+        "loss": 0.003997882780126916
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 2.1460595286302535,
+        "loss": 0.003997882780126916
+      },
+      "dx_um": 4.8828125
+    },
+    "16384_40mm": {
+      "fundamental_loss": 2.8765393831120534e-05,
+      "fundamental_overlap": 0.9999410144241666,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.1460594651889426,
+        "loss": 0.003997955711192991
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 2.1460594651889426,
+        "loss": 0.003997955711192991
+      },
+      "dx_um": 2.44140625
+    },
+    "16384_20mm": {
+      "fundamental_loss": 2.880203508004442e-05,
+      "fundamental_overlap": 0.9999408872056349,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.146059441317366,
+        "loss": 0.003998102530681447
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 2.146059441317366,
+        "loss": 0.003998102530681447
+      },
+      "dx_um": 1.220703125
+    }
+  },
+  "z_telescope_4x": {
+    "2048_40mm": {
+      "fundamental_loss": 2.086817621149706e-06,
+      "fundamental_overlap": 0.9999990648228297,
+      "lowest_loss_mode": {
+        "dphase_rad": -1.8862408955299015,
+        "loss": 0.0003617073078576727
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.07779131155464275,
+        "loss": 0.0006825325673556204
+      },
+      "dx_um": 19.53125
+    },
+    "4096_40mm": {
+      "fundamental_loss": 1.1970989088894157e-08,
+      "fundamental_overlap": 0.9999999530197534,
+      "lowest_loss_mode": {
+        "dphase_rad": -1.540613291929022,
+        "loss": 0.0009976168570857702
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 0.11818659655777748,
+        "loss": 0.0045337913759940784
+      },
+      "dx_um": 9.765625
+    },
+    "8192_40mm": {
+      "fundamental_loss": 1.1930637588974946e-08,
+      "fundamental_overlap": 0.9999999542207183,
+      "lowest_loss_mode": {
+        "dphase_rad": -1.5406430829429971,
+        "loss": 0.0008905949676499825
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 0.11820864664861949,
+        "loss": 0.004388720509447497
+      },
+      "dx_um": 4.8828125
+    },
+    "16384_40mm": {
+      "fundamental_loss": 1.1920806786136495e-08,
+      "fundamental_overlap": 0.999999954266433,
+      "lowest_loss_mode": {
+        "dphase_rad": -1.5406454178414961,
+        "loss": 0.0008895453262957043
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 0.11821168661379321,
+        "loss": 0.004375820380541073
+      },
+      "dx_um": 2.44140625
+    },
+    "16384_20mm": {
+      "fundamental_loss": 1.192147380812969e-08,
+      "fundamental_overlap": 0.9999999541785519,
+      "lowest_loss_mode": {
+        "dphase_rad": -1.5406412200598685,
+        "loss": 0.0008884064438132722
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 0.1182127950715864,
+        "loss": 0.0043964142111999616
+      },
+      "dx_um": 1.220703125
+    }
+  },
+  "z_telescope_8x": {
+    "2048_40mm": {
+      "fundamental_loss": 8.935494785733411e-05,
+      "fundamental_overlap": 0.9999848161843643,
+      "lowest_loss_mode": {
+        "dphase_rad": -2.490548564408687,
+        "loss": 0.019588828427113847
+      },
+      "dx_um": 19.53125
+    },
+    "4096_40mm": {
+      "fundamental_loss": 5.327443192371106e-06,
+      "fundamental_overlap": 0.9999984650899476,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.6512027805620377,
+        "loss": 0.000483980246698712
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 1.5551839106971657,
+        "loss": 0.0005215054879968983
+      },
+      "dx_um": 9.765625
+    },
+    "8192_40mm": {
+      "fundamental_loss": 1.645649065007415e-05,
+      "fundamental_overlap": 0.999991050890001,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.998878768697895,
+        "loss": 0.004761632733459642
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.04207866056204292,
+        "loss": 0.009654537875432023
+      },
+      "dx_um": 4.8828125
+    },
+    "16384_40mm": {
+      "fundamental_loss": 1.643795868400133e-05,
+      "fundamental_overlap": 0.9999910557406223,
+      "lowest_loss_mode": {
+        "dphase_rad": 2.998879112279201,
+        "loss": 0.004761913669205864
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.04207906559824199,
+        "loss": 0.00966387453648676
+      },
+      "dx_um": 2.44140625
+    },
+    "16384_20mm": {
+      "fundamental_loss": 1.4699352846037073e-13,
+      "fundamental_overlap": 0.9999999999999996,
+      "lowest_loss_mode": {
+        "dphase_rad": 1.3797547010474445,
+        "loss": 0.003177097785195815
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": 1.3797409503766278,
+        "loss": 0.0032635070286406442
+      },
+      "dx_um": 1.220703125
+    }
+  },
+  "x_horizontal": {
+    "2048_40mm": {
+      "fundamental_loss": 4.0258761602185444e-07,
+      "fundamental_overlap": 0.9999997289567164,
+      "lowest_loss_mode": {
+        "dphase_rad": 0.6505097983042587,
+        "loss": 0.0009056593110169375
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.29774467686145756,
+        "loss": 0.005111386507785531
+      },
+      "dx_um": 19.53125
+    },
+    "4096_40mm": {
+      "fundamental_loss": 3.446619539770879e-07,
+      "fundamental_overlap": 0.9999999192285307,
+      "lowest_loss_mode": {
+        "dphase_rad": -0.30029361884662753,
+        "loss": 0.007751495822256649
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.30029361884662753,
+        "loss": 0.007751495822256649
+      },
+      "dx_um": 9.765625
+    },
+    "8192_40mm": {
+      "fundamental_loss": 3.5076908277975605e-07,
+      "fundamental_overlap": 0.9999999181782695,
+      "lowest_loss_mode": {
+        "dphase_rad": -0.30029356547423264,
+        "loss": 0.007780637614416719
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.30029356547423264,
+        "loss": 0.007780637614416719
+      },
+      "dx_um": 4.8828125
+    },
+    "16384_40mm": {
+      "fundamental_loss": 3.538111126299981e-07,
+      "fundamental_overlap": 0.9999999175032138,
+      "lowest_loss_mode": {
+        "dphase_rad": -0.30029285569831565,
+        "loss": 0.007766561291438268
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.30029285569831565,
+        "loss": 0.007766561291438268
+      },
+      "dx_um": 2.44140625
+    },
+    "16384_20mm": {
+      "fundamental_loss": 3.550191221002308e-07,
+      "fundamental_overlap": 0.9999999168369708,
+      "lowest_loss_mode": {
+        "dphase_rad": -0.3002920182311743,
+        "loss": 0.0077591254022427725
+      },
+      "nearest_mode_below_1pct_loss": {
+        "dphase_rad": -0.3002920182311743,
+        "loss": 0.0077591254022427725
+      },
+      "dx_um": 1.220703125
+    }
+  }
+}

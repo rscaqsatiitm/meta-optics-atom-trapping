@@ -242,8 +242,18 @@ def camera_profile(e, x, px, knots, pattern, random, rng):
     """Log-amplitude profile (on the knots) of a beam's intensity seen by a camera: sampled on pixels,
     multiplied by the static pattern and by fresh random noise, then averaged into bins."""
     ip = np.interp(px, x, np.abs(e) ** 2) * pattern * (1.0 + random * rng.standard_normal(len(px)))
-    idx = np.clip(np.searchsorted(knots, px) - 1, 0, len(knots) - 1)
-    mean = np.array([ip[idx == i].mean() if np.any(idx == i) else np.nan for i in range(len(knots))])
+    # Linear (hat) weights onto the two neighbouring knots, as in fit_profiles: the binned profile is
+    # centred on the knots (assigning each pixel to the lower knot shifted it by half a bin).
+    nb = len(knots)
+    f = np.clip(np.interp(px, knots, np.arange(nb)), 0, nb - 1 - 1e-9)
+    i0 = np.floor(f).astype(int)
+    a = f - i0
+    num, den = np.zeros(nb), np.zeros(nb)
+    np.add.at(num, i0, (1 - a) * ip)
+    np.add.at(den, i0, 1 - a)
+    np.add.at(num, i0 + 1, a * ip)
+    np.add.at(den, i0 + 1, a)
+    mean = np.where(den > 0, num / np.where(den > 0, den, 1.0), np.nan)
     mean = np.where(np.isfinite(mean), mean, np.nanmean(mean))
     return 0.5 * np.log(np.clip(mean, 1e-12, None))
 

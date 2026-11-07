@@ -175,7 +175,9 @@ def main(cfg_path):
     run("ideal_2d", ring0)
     sizes, (gx, gz) = beam_sizes(ring0, F)
     rep["beam_sizes_um"] = {"stops": sizes, "G": [gx, gz]}
-    W_x = 2 * np.sqrt(np.sum(g.X**2 * np.abs(F) ** 2) / np.sum(np.abs(F) ** 2))
+    # Correlation lengths referred to the crossing and scaled by (2 x rms beam size on each mirror) / w,
+    # w the super-Gaussian parameter: the convention of make_errors in scripts/cavity_correction.py (1D runs).
+    W_x = w
     for seed in cfg["seeds"]:
         rng = np.random.default_rng(seed)
         rms = 4 * np.pi * cfg["fig_waves"]

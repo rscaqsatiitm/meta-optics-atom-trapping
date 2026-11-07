@@ -13,7 +13,8 @@ Couplings in the self-intersecting ring (DERIVED, docs/cavity_concept.md Section
         shift = a L1 dnu / c
   - normal displacement d of one mirror at incidence AOI, laser locked to the round trip L_rt
     (the lock re-tunes k):  shift = a (2 d cos AOI / lambda) (1 - L1 / L_rt)  [= a d cos AOI / lambda for L1 = L_rt / 2]
-  - crossing-angle change dtheta: pitch change cot(theta) dtheta, edge-site shift (S/2) cot(theta) dtheta
+  - crossing-angle change dtheta: pitch change cot(theta) dtheta, edge-site shift (S/2) cot(theta) dtheta (in-plane);
+    vertical lattice: plane tilt dtheta / 2 from a single-arm change, edge shift S / (2 sqrt 2) dtheta
   - residual laser-cavity detuning dnu_r (Gaussian, flat spectrum over bandwidth B, linewidth kappa FWHM):
         eps = -(2 dnu_r / kappa)^2, S_eps ~ 32 S_dnu^2 B / kappa^4 (zero offset);
         with a static offset d0: S_eps = 64 d0^2 S_dnu / kappa^4.
@@ -64,7 +65,15 @@ def main(cfg_path):
                 s_x = heating_position_limit(nu, T_s, x2)
                 lever_mirror = a * 2 * np.cos(np.radians(ax["typical_aoi_deg"])) / lam * (1 - ax["L1_m"] / ax["Lrt_m"])
                 lever_freq = a * ax["L1_m"] / C
-                lever_angle = cfg["array_side_um"] * 1e-6 / 2 / np.tan(theta)
+                if ax.get("angle_lever", "pitch") == "pitch":
+                    # In-plane lattice: the pitch changes and edge sites at S/2 along the lattice vector move.
+                    lever_angle = cfg["array_side_um"] * 1e-6 / 2 / np.tan(theta)
+                else:
+                    # Vertical lattice ("plane_tilt"): the array is perpendicular to the lattice vector, so a
+                    # symmetric angle change only rescales the period about the loaded plane at the crossing; a
+                    # single-arm change dtheta tilts the planes by dtheta / 2, moving edge sites at the
+                    # half-diagonal S / sqrt(2) by S / (2 sqrt(2)) dtheta (Provisional, plane at the crossing).
+                    lever_angle = cfg["array_side_um"] * 1e-6 / np.sqrt(2) / 2
                 row = {"axis": ax["name"], "depth_mK": depth_mK, "trap_freq_kHz": nu / 1e3, "x_rms_um": float(np.sqrt(x2) * 1e6),
                        "heating_time_s": T_s,
                        "heating_rate_uK_per_s": float(cfg["atom_temperature_K"] / T_s * 1e6),
