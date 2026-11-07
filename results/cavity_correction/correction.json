@@ -5073,5 +5073,286 @@
       "pv_nm": 10.273403143828268
     },
     "seconds": 28.884376049041748
+  },
+  "telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct": {
+    "history": [
+      {
+        "round": 0,
+        "depth_rms": 0.018140878061694336,
+        "min_over_mean": 0.9515461194631152,
+        "g_ratio": 0.9920932188139318,
+        "dy_affine_res_nm": 2.1793395956047656
+      },
+      {
+        "round": 1,
+        "depth_rms": 0.009409015262429724,
+        "min_over_mean": 0.9723680599923421,
+        "g_ratio": 0.9972045216031669,
+        "dy_affine_res_nm": 2.0600898776130303
+      },
+      {
+        "round": 2,
+        "depth_rms": 0.005625512687191583,
+        "min_over_mean": 0.983444813192419,
+        "g_ratio": 0.9985044943929196,
+        "dy_affine_res_nm": 2.0331796154829473
+      },
+      {
+        "round": 3,
+        "depth_rms": 0.0042321992574394065,
+        "min_over_mean": 0.9889443621674728,
+        "g_ratio": 0.9987913936817013,
+        "dy_affine_res_nm": 2.03039401021325
+      },
+      {
+        "round": 4,
+        "depth_rms": 0.003838425389991268,
+        "min_over_mean": 0.9903098613545094,
+        "g_ratio": 0.9988339562796966,
+        "dy_affine_res_nm": 2.0367800767412385
+      },
+      {
+        "round": 5,
+        "depth_rms": 0.003877627201347556,
+        "min_over_mean": 0.9888191300268161,
+        "g_ratio": 0.9988273936144607,
+        "dy_affine_res_nm": 2.045187467641068
+      },
+      {
+        "round": 6,
+        "depth_rms": 0.0038987808113420345,
+        "min_over_mean": 0.9882584994278834,
+        "g_ratio": 0.9988197516532267,
+        "dy_affine_res_nm": 2.0474156896698794
+      }
+    ],
+    "final": {
+      "round": 6,
+      "depth_rms": 0.0038987808113420345,
+      "min_over_mean": 0.9882584994278834,
+      "g_ratio": 0.9988197516532267,
+      "dy_affine_res_nm": 2.0474156896698794
+    },
+    "camera": {
+      "name": "rand0.5pct_flat1pct",
+      "random": 0.005,
+      "fixed_smooth": 0.01,
+      "smooth_corr_um": 1000.0
+    },
+    "stroke_G1": {
+      "rms_nm": 1.296465718430685,
+      "pv_nm": 10.967900165749146
+    },
+    "seconds": 30.83895254135132
+  },
+  "telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct": {
+    "history": [
+      {
+        "round": 0,
+        "depth_rms": 0.028706601593154323,
+        "min_over_mean": 0.9333900187099989,
+        "g_ratio": 0.9925113488317481,
+        "dy_affine_res_nm": 5.181751501757501
+      },
+      {
+        "round": 1,
+        "depth_rms": 0.015310085155834458,
+        "min_over_mean": 0.9594093534452753,
+        "g_ratio": 0.9969701352191155,
+        "dy_affine_res_nm": 4.7687497876608145
+      },
+      {
+        "round": 2,
+        "depth_rms": 0.009032915476066947,
+        "min_over_mean": 0.9707159684368333,
+        "g_ratio": 0.9978870838245666,
+        "dy_affine_res_nm": 4.5852862343178975
+      },
+      {
+        "round": 3,
+        "depth_rms": 0.0064980217044652375,
+        "min_over_mean": 0.9761728666572629,
+        "g_ratio": 0.9980941228551043,
+        "dy_affine_res_nm": 4.468550031362729
+      },
+      {
+        "round": 4,
+        "depth_rms": 0.0056770104949293,
+        "min_over_mean": 0.9787841159894394,
+        "g_ratio": 0.9981407768027779,
+        "dy_affine_res_nm": 4.431488609166889
+      },
+      {
+        "round": 5,
+        "depth_rms": 0.0054788844048921535,
+        "min_over_mean": 0.979580038864154,
+        "g_ratio": 0.9981475144716538,
+        "dy_affine_res_nm": 4.434828657171144
+      },
+      {
+        "round": 6,
+        "depth_rms": 0.005426642455239126,
+        "min_over_mean": 0.9803858855568154,
+        "g_ratio": 0.9981580552425106,
+        "dy_affine_res_nm": 4.404539539949642
+      }
+    ],
+    "final": {
+      "round": 6,
+      "depth_rms": 0.005426642455239126,
+      "min_over_mean": 0.9803858855568154,
+      "g_ratio": 0.9981580552425106,
+      "dy_affine_res_nm": 4.404539539949642
+    },
+    "camera": {
+      "name": "rand0.5pct",
+      "random": 0.005
+    },
+    "stroke_G1": {
+      "rms_nm": 1.1650797796612005,
+      "pv_nm": 8.0386575448039
+    },
+    "seconds": 30.693151473999023
+  },
+  "telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct": {
+    "history": [
+      {
+        "round": 0,
+        "depth_rms": 0.028706601593154323,
+        "min_over_mean": 0.9333900187099989,
+        "g_ratio": 0.9925113488317481,
+        "dy_affine_res_nm": 5.181751501757501
+      },
+      {
+        "round": 1,
+        "depth_rms": 0.015497141089492291,
+        "min_over_mean": 0.9586391297617625,
+        "g_ratio": 0.996937906774859,
+        "dy_affine_res_nm": 4.7873541524521315
+      },
+      {
+        "round": 2,
+        "depth_rms": 0.009294261200249185,
+        "min_over_mean": 0.9697335404359759,
+        "g_ratio": 0.9978525641360272,
+        "dy_affine_res_nm": 4.617218537559027
+      },
+      {
+        "round": 3,
+        "depth_rms": 0.00675366906425893,
+        "min_over_mean": 0.9751568918038673,
+        "g_ratio": 0.9980549335953631,
+        "dy_affine_res_nm": 4.509356677079992
+      },
+      {
+        "round": 4,
+        "depth_rms": 0.0059012047308640205,
+        "min_over_mean": 0.9778192120150918,
+        "g_ratio": 0.9980826497003789,
+        "dy_affine_res_nm": 4.482300617813931
+      },
+      {
+        "round": 5,
+        "depth_rms": 0.005683767493885625,
+        "min_over_mean": 0.9789229757037902,
+        "g_ratio": 0.9980582347808075,
+        "dy_affine_res_nm": 4.493769870719972
+      },
+      {
+        "round": 6,
+        "depth_rms": 0.005602235215233531,
+        "min_over_mean": 0.9800505154930993,
+        "g_ratio": 0.9980338023686353,
+        "dy_affine_res_nm": 4.473642171576625
+      }
+    ],
+    "final": {
+      "round": 6,
+      "depth_rms": 0.005602235215233531,
+      "min_over_mean": 0.9800505154930993,
+      "g_ratio": 0.9980338023686353,
+      "dy_affine_res_nm": 4.473642171576625
+    },
+    "camera": {
+      "name": "rand0.5pct_prnu1pct",
+      "random": 0.005,
+      "fixed_white": 0.01
+    },
+    "stroke_G1": {
+      "rms_nm": 1.1466985745348235,
+      "pv_nm": 7.4530923992331255
+    },
+    "seconds": 30.042591094970703
+  },
+  "telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct": {
+    "history": [
+      {
+        "round": 0,
+        "depth_rms": 0.028706601593154323,
+        "min_over_mean": 0.9333900187099989,
+        "g_ratio": 0.9925113488317481,
+        "dy_affine_res_nm": 5.181751501757501
+      },
+      {
+        "round": 1,
+        "depth_rms": 0.016379022159642483,
+        "min_over_mean": 0.9571044884913249,
+        "g_ratio": 0.9970231161236941,
+        "dy_affine_res_nm": 4.747525165441321
+      },
+      {
+        "round": 2,
+        "depth_rms": 0.010630368729725217,
+        "min_over_mean": 0.9679525712845735,
+        "g_ratio": 0.997900077986705,
+        "dy_affine_res_nm": 4.575150566729719
+      },
+      {
+        "round": 3,
+        "depth_rms": 0.008078884807848765,
+        "min_over_mean": 0.9729072663487751,
+        "g_ratio": 0.9980822806539883,
+        "dy_affine_res_nm": 4.475225708999434
+      },
+      {
+        "round": 4,
+        "depth_rms": 0.007080126109551984,
+        "min_over_mean": 0.975420022364684,
+        "g_ratio": 0.9981032581596715,
+        "dy_affine_res_nm": 4.461120228498649
+      },
+      {
+        "round": 5,
+        "depth_rms": 0.0067417019123458925,
+        "min_over_mean": 0.9766709547499561,
+        "g_ratio": 0.9981052238622738,
+        "dy_affine_res_nm": 4.458766270419819
+      },
+      {
+        "round": 6,
+        "depth_rms": 0.00649759729901902,
+        "min_over_mean": 0.9775748477204962,
+        "g_ratio": 0.9981095050633786,
+        "dy_affine_res_nm": 4.443171335963297
+      }
+    ],
+    "final": {
+      "round": 6,
+      "depth_rms": 0.00649759729901902,
+      "min_over_mean": 0.9775748477204962,
+      "g_ratio": 0.9981095050633786,
+      "dy_affine_res_nm": 4.443171335963297
+    },
+    "camera": {
+      "name": "rand0.5pct_flat1pct",
+      "random": 0.005,
+      "fixed_smooth": 0.01,
+      "smooth_corr_um": 1000.0
+    },
+    "stroke_G1": {
+      "rms_nm": 1.1817085051994587,
+      "pv_nm": 8.330679770659746
+    },
+    "seconds": 29.769479274749756
   }
 }

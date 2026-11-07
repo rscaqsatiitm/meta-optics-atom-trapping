@@ -1,0 +1,33 @@
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 0: 1.814 % G/G0 0.992
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 1: 0.941 % G/G0 0.997
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 2: 0.563 % G/G0 0.999
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 3: 0.423 % G/G0 0.999
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 4: 0.384 % G/G0 0.999
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 5: 0.388 % G/G0 0.999
+  telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct round 6: 0.390 % G/G0 0.999
+telK_M0.2_tilt1_seed2_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.018140878061694336, "min_over_mean": 0.9515461194631152, "g_ratio": 0.9920932188139318, "dy_affine_res_nm": 2.1793395956047656}, {"round": 1, "depth_rms": 0.009409015262429724, "min_over_mean": 0.9723680599923421, "g_ratio": 0.9972045216031669, "dy_affine_res
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 0: 2.871 % G/G0 0.993
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 1: 1.531 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 2: 0.903 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 3: 0.650 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 4: 0.568 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 5: 0.548 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct round 6: 0.543 % G/G0 0.998
+telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct {"history": [{"round": 0, "depth_rms": 0.028706601593154323, "min_over_mean": 0.9333900187099989, "g_ratio": 0.9925113488317481, "dy_affine_res_nm": 5.181751501757501}, {"round": 1, "depth_rms": 0.015310085155834458, "min_over_mean": 0.9594093534452753, "g_ratio": 0.9969701352191155, "dy_affine_res_
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 0: 2.871 % G/G0 0.993
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 1: 1.550 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 2: 0.929 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 3: 0.675 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 4: 0.590 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 5: 0.568 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct round 6: 0.560 % G/G0 0.998
+telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_prnu1pct {"history": [{"round": 0, "depth_rms": 0.028706601593154323, "min_over_mean": 0.9333900187099989, "g_ratio": 0.9925113488317481, "dy_affine_res_nm": 5.181751501757501}, {"round": 1, "depth_rms": 0.015497141089492291, "min_over_mean": 0.9586391297617625, "g_ratio": 0.996937906774859, "dy_affine_res_n
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 0: 2.871 % G/G0 0.993
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 1: 1.638 % G/G0 0.997
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 2: 1.063 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 3: 0.808 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 4: 0.708 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 5: 0.674 % G/G0 0.998
+  telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct round 6: 0.650 % G/G0 0.998
+telK_M0.2_fig1000_tilt0.3_seed1_closedloop_camera_rand0.5pct_flat1pct {"history": [{"round": 0, "depth_rms": 0.028706601593154323, "min_over_mean": 0.9333900187099989, "g_ratio": 0.9925113488317481, "dy_affine_res_nm": 5.181751501757501}, {"round": 1, "depth_rms": 0.016379022159642483, "min_over_mean": 0.9571044884913249, "g_ratio": 0.9970231161236941, "dy_affine_res_
+done
