@@ -4,9 +4,9 @@ Technical report. Question (USER): for scaling a neutral-atom array with meta-op
 combination of a build-up cavity and meta-optics cut the power requirement by an order of
 magnitude, and which design and simulations support it? All numbers are SIM (review before
 submission) or DERIVED unless marked; SOURCE values were retrieved and read in this session.
-Code: \texttt{src/metatrap/cavity/}, \texttt{scripts/cavity\_*.py}, \texttt{configs/cavity\_*.yaml}; results in
-\texttt{results/cavity\_*/} (one params.json per run with config, git state and versions).
-LaTeX editions: \texttt{docs/report/} (\texttt{cavity\_report.tex}, edited; \texttt{cavity\_concept\_faithful.tex}, generated
+Code: \nolinkurl{src/metatrap/cavity/}, \nolinkurl{scripts/cavity_*.py}, \nolinkurl{configs/cavity_*.yaml}; results in
+\nolinkurl{results/cavity_*/} (one params.json per run with config, git state and versions).
+LaTeX editions: \nolinkurl{docs/report/} (\nolinkurl{cavity_report.tex}, edited; \nolinkurl{cavity_concept_faithful.tex}, generated
 from this file).
 
 \hypertarget{result}{%
@@ -142,7 +142,7 @@ Figure 1. Laser power at the input of the trapping optics versus the number of s
 (lenslet) mK x site / W from the Phase A simulations. Lattice lines: two in-plane axes and one
 vertical axis (8 \(\upmu\mathrm{m}\) period), flat-top x Gaussian sheets (\(w_z\) = 75 \(\upmu\mathrm{m}\)), mode matching 0.95; cavity
 enhancement for the over-coupled design T = 3L with 10 reflections of 50 ppm per round trip, plus
-8 AR surfaces of 0.1 \% (through cell) or 8 Brewster surfaces of \(1\times10^{-4}\). Data: \texttt{results/cavity\_budget/budget.json.}
+8 AR surfaces of 0.1 \% (through cell) or 8 Brewster surfaces of \(1\times10^{-4}\). Data: \nolinkurl{results/cavity_budget/budget.json.}
 
 \hypertarget{design-summary}{%
 \section{Design summary}\label{design-summary}}
@@ -182,16 +182,16 @@ Noise for a 10 s heating time at 10 \(\upmu\mathrm{K}\) & RIN \textless{} -106 d
 
 Total circulating power 989 W; total input 3.5 W at G = 300 (0.69 W at G = 1500), against 1.04 kW
 for the same lattice in free space and 1.40 kW for meta-hologram tweezers. Input powers per ring are
-DERIVED from the circulating powers (\texttt{results/cavity\_budget/budget.json}) as \(P_\mathrm{circ}\) / (0.95 G).
+DERIVED from the circulating powers (\nolinkurl{results/cavity_budget/budget.json}) as \(P_\mathrm{circ}\) / (0.95 G).
 
 \hypertarget{why-the-tweezer-array-cannot-be-cavity-enhanced-tenfold}{%
 \section{1. Why the tweezer array cannot be cavity-enhanced tenfold}\label{why-the-tweezer-array-cannot-be-cavity-enhanced-tenfold}}
 
 Enhancement. A ring cavity with input transmission T and all other round-trip losses L has
 G = T / (1 - r)\(^{2}\) on resonance, r = sqrt((1 - T)(1 - L)), with the maximum G = 1 / L at T = L
-(\texttt{src/metatrap/cavity/budget.py}; \texttt{tests/test\_cavity.py}). For G = 10 the round-trip loss must stay
+(\nolinkurl{src/metatrap/cavity/budget.py}; \nolinkurl{tests/test_cavity.py}). For G = 10 the round-trip loss must stay
 below 10 \%. An NA 0.5 tweezer array is not an eigenmode of a mirror pair; the focusing optic must
-sit inside the cavity. Hence (\texttt{results/cavity\_tweezer\_bounds/bounds.json}):
+sit inside the cavity. Hence (\nolinkurl{results/cavity_tweezer_bounds/bounds.json}):
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
@@ -265,25 +265,25 @@ the two in-plane rings overlap by 4.2 mm: half trip 290 mm, round trip 1.16 m, f
 258 MHz, angles of incidence 15 deg (P1), 44 deg (P2) and 24 deg (G). The 70 mm ring is equivalent
 in the Fox-Li model: depth uniform to 0.23 \% rms, fundamental loss \(1.6\times10^{-8}\) per round trip, nearest
 competitor \(3.3\times10^{-3}\) (against \(1.1\times10^{-2}\) at 50 mm), and \(\lambda\)/1000 errors on all ten mirrors give 2.0 and
-4.0 \% uncorrected, 0.42 and 0.75 \% after six rounds of atom feedback (\texttt{results/cavity\_foxli},
-\texttt{design\_telK\_M0.2\_d70}; \texttt{results/cavity\_correction\_d70}). The other Fox-Li results of Sections 4 and 4b
+4.0 \% uncorrected, 0.42 and 0.75 \% after six rounds of atom feedback (\nolinkurl{results/cavity_foxli},
+\nolinkurl{design_telK_M0.2_d70}; \nolinkurl{results/cavity_correction_d70}). The other Fox-Li results of Sections 4 and 4b
 are for the 50 mm ring.
 
 Vertical mode. For the 50 mm ring, a 30 mm vertical focal length on P1 and a 166 mm vertical
 radius on G give the 75 \(\upmu\mathrm{m}\) waist with a half-trip stability parameter m = 0.07, a round-trip Gouy
 phase of -0.29 rad (mod 2 \(\pi\)), 0.24 mm on P1 and 0.65 mm on G, and a 0.4 \% waist change per 0.1 \%
 radius error. For the 70 mm ring of the layout, 40 mm and 143 mm give m = -0.24, a Gouy phase of
--0.99 rad, 0.33 mm on P1 and 0.55 mm on G, and 0.32 \% per 0.1 \% (\texttt{results/cavity\_layout/layout.json}).
+-0.99 rad, 0.33 mm on P1 and 0.55 mm on G, and 0.32 \% per 0.1 \% (\nolinkurl{results/cavity_layout/layout.json}).
 
 Vertical confinement. The in-plane sheets alone give 0.7 kHz vertically (Gaussian profile of 75 \(\upmu\mathrm{m}\), 0.4 mK at the site). A third ring crosses at
 2 \(\theta_z\) in a vertical plane (period 8 \(\upmu\mathrm{m}\), \(\theta_z\) = 3.85 deg), propagating along the array
 diagonal. Its beams walk off vertically by \(\pm0.19\) mm across the array, so they must be flat-topped
 vertically as well (width 6.9 mm; equivalent height 0.57 mm with an order-10 edge, because an
-order-20 edge has a \(4\times10^{-4}\) design loss at this small size, \texttt{results/cavity\_vertical}). This axis takes
+order-20 edge has a \(4\times10^{-4}\) design loss at this small size, \nolinkurl{results/cavity_vertical}). This axis takes
 785 W of the 989 W circulating at \(10^{6}\) sites and 0.2 mK; Section 3 discusses alternatives.
 
-Vertical ring, fold geometry (Figure 5; \texttt{scripts/cavity\_vertical\_layout.py},
-\texttt{configs/cavity\_vertical\_layout.yaml}; \texttt{results/cavity\_vertical\_layout/vertical\_layout.json}). The ring is
+Vertical ring, fold geometry (Figure 5; \nolinkurl{scripts/cavity_vertical_layout.py},
+\nolinkurl{configs/cavity_vertical_layout.yaml}; \nolinkurl{results/cavity_vertical_layout/vertical_layout.json}). The ring is
 planar, in the vertical plane through the atoms that contains the array diagonal. A planar ring has
 no image or polarisation rotation, so the 6.9 mm flat-top axis and the polarisation stay horizontal,
 perpendicular to the ring plane (s-polarised at every mirror), and the cylindrical telescope mirrors
@@ -308,7 +308,7 @@ of the in-plane rings (2.5 m), which partly compensates the wider beam (Section 
 
 Meta-optics. (i) Input mode converters, Gaussian to flat-top sheet (a Gaussian input couples
 0.918 of the power into the flat-top mode; a flat-top converter is assumed to reach 0.95, \placeholder{[VALUE?]});
-(ii) the 852 nm imaging and addressing objective (\texttt{docs/metalens\_report.md}, \texttt{docs/million\_sites.md});
+(ii) the 852 nm imaging and addressing objective (\nolinkurl{docs/metalens_report.md}, \nolinkurl{docs/million_sites.md});
 (iii) tweezers for loading and rearrangement. None of them sees the circulating power.
 
 \includegraphics{../../results/cavity_layout/sketch_layout.png}
@@ -323,15 +323,15 @@ axis to scale: the two flat-top sheets (equivalent width 5.5 mm, 2 \(\theta\) = 
 array; inset, the computed intensity of the two incoherent in-plane axes (plane waves, 4 \(\upmu\mathrm{m}\) pitch).
 (c) Side view, schematic, not to scale: in-plane sheets, the two vertical-lattice beams (\(\pm3.85\) deg,
 8 \(\upmu\mathrm{m}\) planes), and the 852 nm NA 0.5 meta-objective above the cell. Geometry from
-\texttt{results/cavity\_layout/layout.json}; \texttt{scripts/plot\_cavity\_sketch.py.}
+\nolinkurl{results/cavity_layout/layout.json}; \nolinkurl{scripts/plot_cavity_sketch.py.}
 
 \includegraphics{../../results/cavity_layout/sketch_ring.png}
 
 Figure 4. (a) The beam along one unfolded half trip of the 70 mm ring, from the crossing on arm A
-through P1, P2, G1, P2', P1' to the crossing on arm B (Fox-Li, design \texttt{telK\_M0.2\_d70}, 8192 points;
+through P1, P2, G1, P2', P1' to the crossing on arm B (Fox-Li, design \nolinkurl{telK_M0.2_d70}, 8192 points;
 intensity normalised in each plane). The flat-top is compressed fivefold by the telescope, passes a
 line focus between P1 and P2, and is shaped back by G1. Right: the profiles at the crossing and on G.
-(b) Optics and control chain for \(10^{6}\) sites at 0.2 mK with G = 300 (\texttt{results/cavity\_budget/budget.json},
+(b) Optics and control chain for \(10^{6}\) sites at 0.2 mK with G = 300 (\nolinkurl{results/cavity_budget/budget.json},
 mode matching 0.95): 0.36 W into each in-plane ring (102 W circulating), 2.8 W into the vertical ring
 (785 W circulating). The graded-mirror correction of Section 4b closes the loop from the mode cameras
 and the atom depth maps.
@@ -345,8 +345,8 @@ and P1', and returns on the lower-left arm; half trip 2 (dark green) leaves on t
 folds via P3, P4, G2 (104 mm below), P4', P3'. Black bars: mirror faces (4 mm strips in the ring
 plane; widths along the horizontal flat-top axis are 12 and 5 mm). Telescope f1 = 160 mm,
 f2 = 24 mm. Yellow: the 42 mm imaging objective and its mount \placeholder{[CONFIRM?]} and the NA 0.5 light cone.
-(b) The exit and return mirrors near P1, P3. Geometry from \texttt{results/cavity\_vertical\_layout}; drawn by
-\texttt{scripts/plot\_cavity\_sketch.py.}
+(b) The exit and return mirrors near P1, P3. Geometry from \nolinkurl{results/cavity_vertical_layout}; drawn by
+\nolinkurl{scripts/plot_cavity_sketch.py.}
 
 Precedents. A two-cavity Sr lattice reached finesse 5025 and power enhancement 1132 at 914 nm,
 489 \(\upmu\mathrm{m}\) waists, 80 mW per arm and \(\sim92\) W circulating, in a monolithic ULE assembly in vacuum, with
@@ -362,7 +362,7 @@ mode over several millimetres, and neither addressed the degeneracy that such a 
 \hypertarget{power-and-loss-budget}{%
 \section{3. Power and loss budget}\label{power-and-loss-budget}}
 
-Model (\texttt{results/cavity\_budget/budget.json}). Each crossing beam needs the peak intensity
+Model (\nolinkurl{results/cavity_budget/budget.json}). Each crossing beam needs the peak intensity
 I1 = U / (4 c \(\kappa\)), with \(\kappa\) = \(2.53\times10^{-13}\) K per W/m\(^{2}\) for Cs at 1075 nm (Steck polarisability,
 \(\alpha\) = 1125 a.u.), i.e.~19.8 kW/cm\(^{2}\) for U = 0.2 mK. The circulating power per in-plane axis is
 I1 x \(W_\mathrm{eq}\) x sqrt(\(\pi\)/2) \(w_z\), independent of the number of beams per axis because one mode supplies
@@ -397,7 +397,7 @@ Hologram tweezers
 \(10^{6}\), 0.3 mK & 154 W & 1,177 W & 1,484 W & 2,098 W \\
 \end{longtable}
 
-The hologram column reproduces the 210 W of \texttt{docs/scaling\_100k.md} for \(10^{5}\) sites at 0.3 mK.
+The hologram column reproduces the 210 W of \nolinkurl{docs/scaling_100k.md} for \(10^{5}\) sites at 0.3 mK.
 
 Round-trip loss and enhancement (10 reflections of 50 ppm; per-mirror bound of Norcia et al.):
 
@@ -446,11 +446,11 @@ vertical barrier, if imaging tolerates it. Without the vertical axis the in-plan
 \hypertarget{the-flat-top-cavity-mode-fox-li}{%
 \section{4. The flat-top cavity mode (Fox-Li)}\label{the-flat-top-cavity-mode-fox-li}}
 
-Method (\texttt{scripts/cavity\_foxli.py}, \texttt{configs/cavity\_foxli.yaml}; \texttt{results/cavity\_foxli/foxli.json}).
+Method (\nolinkurl{scripts/cavity_foxli.py}, \nolinkurl{configs/cavity_foxli.yaml}; \nolinkurl{results/cavity_foxli/foxli.json}).
 One-dimensional strip model of the horizontal profile on 8192 points over 24 mm (2.9 \(\upmu\mathrm{m}\)), exact
 scalar angular-spectrum propagation, hard apertures at every mirror, graded-phase design through
 the actual elements. The vertical profile is separable (a separable 2D propagation agrees with
-the product of 1D propagations to \(2\times10^{-3}\), \texttt{tests/test\_cavity.py}). The driven steady state
+the product of 1D propagations to \(2\times10^{-3}\), \nolinkurl{tests/test_cavity.py}). The driven steady state
 (I - r e\^{}\{i \(\psi\)\} R) E = t \(E_\mathrm{in}\) is solved by GMRES. The laser is locked to the \(\psi\) of maximum
 circulating power, found by re-centring on the round-trip phase of the circulating field
 followed by a golden-section search. The field of arm A at the crossing and its image after the
@@ -460,7 +460,7 @@ min / mean of the barrier depth, and the site displacement along the fringe norm
 its affine part (a uniform pitch change or rotation is a calibration, not an error). Unless stated,
 the input is the target flat-top, G = 300, lumped loss \(3\times10^{-4}\). Anchors: the strip Gaussian mode of a
 plane-concave design and its TEM1 Gouy phase (to \(1\times10^{-4}\)), and the driven enhancement against
-T / (1 - r)\(^{2}\) (to \(1\times10^{-4}\)) (\texttt{tests/test\_cavity.py}). The results do not change between 4096, 8192 and
+T / (1 - r)\(^{2}\) (to \(1\times10^{-4}\)) (\nolinkurl{tests/test_cavity.py}). The results do not change between 4096, 8192 and
 16384 points (depth rms 0.23148 / 0.23149 / 0.23149 \%).
 
 Ideal designs. Every design reproduces the target. Over \(10^{6}\) sites the barrier depth is uniform
@@ -525,7 +525,7 @@ Entries: barrier-depth non-uniformity over the \(10^{6}\)-site array (rms, media
 and, in parentheses, the lowest enhancement relative to the analytic value. K Keplerian, G Galilean;
 P1 rows: the same figure error or tilt on the incoming primary of both half trips, i.e.~two of the
 four large telescope mirrors carry identical errors (Section 4b treats independent errors on all ten
-mirrors). Generated by \texttt{scripts/cavity\_report\_tables.py.}
+mirrors). Generated by \nolinkurl{scripts/cavity_report_tables.py.}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
@@ -594,8 +594,8 @@ A plain cavity without graded mirrors (plane folds and telescope, same flat-top 
 Metasurface realisation of the graded phase. Quantising \(\phi_G\) to 8, 16 or 32 levels gives 19, 12
 and 4.5 \% rms, at 0.14, 0.23 and 0.52 of the ideal enhancement. White pixel phase noise of 0.02, 0.05 and 0.1 rad gives 1.5, 3.8 and 7.4 \% rms and
 reduces the enhancement to 0.89, 0.52 and 0.15 of the ideal. The repository's SiN libraries at 1075 nm
-(LPCVD and Si-rich, p = 0.45 to 0.5 \(\upmu\mathrm{m}\), h = 1.3 to 1.6 \(\upmu\mathrm{m}\), \texttt{data/library\_main.h5},
-\texttt{data/library\_est\_1075.h5}) give a phase slope of 19 to 31 rad/\(\upmu\mathrm{m}\) over the 2 \(\pi\) range. Hence 5 nm rms
+(LPCVD and Si-rich, p = 0.45 to 0.5 \(\upmu\mathrm{m}\), h = 1.3 to 1.6 \(\upmu\mathrm{m}\), \nolinkurl{data/library_main.h5},
+\nolinkurl{data/library_est_1075.h5}) give a phase slope of 19 to 31 rad/\(\upmu\mathrm{m}\) over the 2 \(\pi\) range. Hence 5 nm rms
 width noise is 0.10 to 0.15 rad in transmission, and about twice that in a reflective double pass
 (an estimate; no reflective library was simulated). The noise model sets white noise per 2.9 \(\upmu\mathrm{m}\) grid
 cell, so it overstates the mode distortion from 0.5 \(\upmu\mathrm{m}\) pixels, whose scatter leaves the cavity at
@@ -610,7 +610,7 @@ Figure 2. Barrier-depth non-uniformity over the \(10^{6}\)-site array (rms over 
 versus the rms figure error of both graded mirrors (left, median over realisations) and the tilt of
 one graded mirror (right), for plane-fold rings of p = 150 and 300 mm and for telescope rings.
 Fox-Li strip model, 8192 points, G = 300, flat-top input, \(w_z\) = 75 \(\upmu\mathrm{m}\). Data:
-\texttt{results/cavity\_foxli/foxli.json.}
+\nolinkurl{results/cavity_foxli/foxli.json.}
 
 \hypertarget{b.-correcting-the-residual-non-uniformity}{%
 \section{4b. Correcting the residual non-uniformity}\label{b.-correcting-the-residual-non-uniformity}}
@@ -620,14 +620,14 @@ A lattice offers no per-site trim. Its depth map per axis is the product \textba
 crossing beams' transverse profiles, and the two graded mirrors control them: G1 shapes the half trip
 from arm A to arm B, G2 the return. We ask how much of the error this pair can remove.
 
-Method (\texttt{scripts/cavity\_correction.py}, \texttt{configs/cavity\_correction.yaml};
-\texttt{results/cavity\_correction/correction.json}). Independent smooth figure errors, random tilts, or both,
+Method (\nolinkurl{scripts/cavity_correction.py}, \nolinkurl{configs/cavity_correction.yaml};
+\nolinkurl{results/cavity_correction/correction.json}). Independent smooth figure errors, random tilts, or both,
 on every mirror of the ring: 8 telescope reflections and 2 graded mirrors for the 0.2\(\times\) ring, 4 folds
 and 2 graded mirrors for the plain 150 mm ring. Correlation lengths are referred to the crossing and
 scaled by the beam size on each mirror. Three corrections:
 (i) open loop: G1 and G2 redesigned through the half trips as measured, \(\phi\) = arg(\(K_\mathrm{out}\)\^{}+ T) -
 arg(\(K_\mathrm{in}\) T), which reduces to the conjugation design for a symmetric, unperturbed half trip
-(\texttt{tests/test\_cavity.py}). Metrology noise is a smooth random error map of the stated surface rms on
+(\nolinkurl{tests/test_cavity.py}). Metrology noise is a smooth random error map of the stated surface rms on
 every mirror, plus 0.1 \(\upmu\mathrm{rad}\) of tilt error when tilts are present;
 (ii) closed loop from the atoms, with no knowledge of the errors. Each round the barrier depth at
 101 \(\times\) 101 sampled sites is measured with 0 or 1 \% multiplicative noise per site. It is fitted as
@@ -723,7 +723,7 @@ What the tables show. (i) Perfect metrology removes 64 to 92 \% of the non-unifo
 telescope ring: \(\lambda\)/1000 errors on all ten mirrors fall from 2.0 to 4.8 \% to 0.49 to 0.54 \%, and
 1 \(\upmu\mathrm{rad}\) tilts to 0.43 to 0.58 \%. The floor arises because a phase error on a mirror away from G
 becomes partly an amplitude error at G and at the crossing, which a phase-only mirror cannot
-undo. In the test ring of \texttt{tests/test\_cavity.py}, a redesign through a half trip with an error on its
+undo. In the test ring of \nolinkurl{tests/test_cavity.py}, a redesign through a half trip with an error on its
 primary reduced the round-trip infidelity only fourfold, from \(1.5\times10^{-3}\) to \(3.2\times10^{-4}\), not to zero. Errors on a 0.5 mm scale leave 2.3 to 2.4 \%.
 (ii) The open loop is only as good as the metrology. At 0.1 nm rms per mirror the gain is kept, 0.3
 nm leaves 1.3 to 1.4 \%, and 1 nm (3.9 to 4.6 \%) is no better than no correction. Is 0.1 to
@@ -751,7 +751,7 @@ realisation). One \(\lambda\)/1000 realisation stalls at 1.9 \% with 0.94 of the
 enhancement) diverges. Hence the feedback works when the uncorrected mode is close to the flat-top
 (starts up to \(\sim7\) \% here) and fails when the mode is no longer the designed one. Per-site
 measurement noise of 1 \% changes nothing, because the separable fit averages over \(10^{4}\) sampled sites.
-A lower loop gain does not help (keys \texttt{*\_gain0.25\_r12} and \texttt{*\_gain0.1\_r16}). At gain 0.25 for 12 rounds the
+A lower loop gain does not help (keys \nolinkurl{*_gain0.25_r12} and \nolinkurl{*_gain0.1_r16}). At gain 0.25 for 12 rounds the
 stalled \(\lambda\)/1000 realisation ends at 1.89 \% (1.93 \% at gain 0.5), and the 0.5 mm case at 2.1 to
 2.3 \% with its enhancement falling to 0.85. From the 22 \% start, gain 0.25 and 0.1 still collapse the
 enhancement to 0.02 and 0.07, although at gain 0.1 the depth rms falls to 12 \%. Hence the stall and the
@@ -778,8 +778,8 @@ actuated graded mirror. The loss and stability of an intracavity deformable mirr
 0.1 nm of metrology leaves 0.7 to 2.1 \%, and the closed loop converges in only four of nine error
 sets (from starts of 4.8 to 42 \%); it fails in the others, one of them starting at 19 \%. Correction does not replace the telescope.
 
-Separability (\texttt{scripts/cavity\_2d\_check.py}, \texttt{configs/cavity\_2d\_check.yaml};
-\texttt{results/cavity\_2d\_check/check2d.json}). A 2D Fox-Li of the 0.2\(\times\) ring (1024 \(\times\) 192 points over
+Separability (\nolinkurl{scripts/cavity_2d_check.py}, \nolinkurl{configs/cavity_2d_check.yaml};
+\nolinkurl{results/cavity_2d_check/check2d.json}). A 2D Fox-Li of the 0.2\(\times\) ring (1024 \(\times\) 192 points over
 14 \(\times\) 2.4 mm, vertical focal length 30 mm on the primaries, 2D conjugation design, G = 30 for speed).
 Isotropic smooth \(\lambda\)/1000 errors on all ten mirrors vary across the vertical beam on the small
 mirrors, so they are non-separable:
@@ -814,8 +814,8 @@ reaches 0.44 \% in four rounds, still falling. The full 2D phase-only redesign d
 x projection. We attribute this to the phase-only matching of the whole 2D field, which spreads the
 residual amplitude error over the vertical profile, including the atom plane (not tested further).
 
-Vertical ring (\texttt{scripts/cavity\_vertical.py}, \texttt{configs/cavity\_vertical.yaml};
-\texttt{results/cavity\_vertical/vertical.json}). The same 0.2\(\times\) telescope in the horizontal direction, with
+Vertical ring (\nolinkurl{scripts/cavity_vertical.py}, \nolinkurl{configs/cavity_vertical.yaml};
+\nolinkurl{results/cavity_vertical/vertical.json}). The same 0.2\(\times\) telescope in the horizontal direction, with
 a 6.9 mm equivalent width, and an order-10 flat-top of 0.19 mm flat half-height vertically. That is
 two 1D modes, each driven and locked separately. Ideal: depth uniform to
 0.078 \% rms, lattice planes flat to 9 pm peak-to-valley. \(\lambda\)/1000 errors on
@@ -828,7 +828,7 @@ brings a competing mode to 0.14 rad with \(3\times10^{-4}\) loss. A perfect-metr
 results file). Hence the vertical ring is the most error-sensitive of the three.
 
 The adopted fold geometry (Section 2, Figure 5: 0.15\(\times\), f1 = 160 mm, P1 at 110 mm, L = 120 mm;
-\texttt{configs/cavity\_vertical\_chosen.yaml}, \texttt{results/cavity\_vertical\_chosen/vertical.json}) gives: in the
+\nolinkurl{configs/cavity_vertical_chosen.yaml}, \nolinkurl{results/cavity_vertical_chosen/vertical.json}) gives: in the
 wide direction a fundamental loss of \(3.6\times10^{-7}\) per round trip and a nearest competing mode at 0.30 rad
 with \(7.8\times10^{-3}\) loss (against 0.14 rad and \(3.1\times10^{-4}\) for the unconstrained 0.2\(\times\) design); ideal depth
 uniform to 0.19 \% rms (min / mean 0.988); \(\lambda\)/1000 errors on all ten mirrors in the
@@ -846,10 +846,10 @@ power for this ring. The lattice planes stay flat to \(\leq\) 0.5 \(\upmu\mathrm
 \hypertarget{intensities-defects-and-heating-inside-the-cavity}{%
 \section{5. Intensities, defects and heating inside the cavity}\label{intensities-defects-and-heating-inside-the-cavity}}
 
-Model (\texttt{scripts/cavity\_thermal.py}; \texttt{results/cavity\_thermal/thermal.json}). Each beam's peak intensity
+Model (\nolinkurl{scripts/cavity_thermal.py}; \nolinkurl{results/cavity_thermal/thermal.json}). Each beam's peak intensity
 at the atoms is I1, set by the barrier depth. On a mirror it is I1 times the one-dimensional peak
 ratio from Fox-Li (5.7 on P2 and 6.5 on G for the 0.2\(\times\) design), times the vertical size ratio
-from Section 2 (70 mm ring of the layout). The defect criterion is that of \texttt{thermal/damage.py}: a fully absorbing disc of
+from Section 2 (70 mm ring of the layout). The defect criterion is that of \nolinkurl{thermal/damage.py}: a fully absorbing disc of
 radius a on a half-space heats by I a / \(\kappa\), limited to 50 K.
 
 \begin{longtable}[]{@{}
@@ -877,10 +877,10 @@ Vertical ring, mirror with 3\(\times\) beam expansion (placeholder; superseded b
 
 At equal radial frequency (0.86 mK) every intensity is 4.3\(\times\) higher and the defect limits 4.3\(\times\)
 smaller (0.08 to 0.35 \(\upmu\mathrm{m}\) on fused silica). For comparison, the present 18.4 mm metasurface at 200 W
-sees 75 W/cm\(^{2}\) and tolerates 92 \(\upmu\mathrm{m}\) (\texttt{docs/prefab\_checks\_report.md}).
+sees 75 W/cm\(^{2}\) and tolerates 92 \(\upmu\mathrm{m}\) (\nolinkurl{docs/prefab_checks_report.md}).
 
-Vertical-ring mirrors (\texttt{scripts/cavity\_vertical\_mirrors.py}, \texttt{configs/cavity\_vertical\_mirrors.yaml};
-\texttt{results/cavity\_vertical\_mirrors/mirrors.json}). The last row of the table assumed a mirror with a
+Vertical-ring mirrors (\nolinkurl{scripts/cavity_vertical_mirrors.py}, \nolinkurl{configs/cavity_vertical_mirrors.yaml};
+\nolinkurl{results/cavity_vertical_mirrors/mirrors.json}). The last row of the table assumed a mirror with a
 threefold beam expansion in both directions, which the adopted fold geometry (Section 2, Figure 5)
 does not provide. Its 0.15\(\times\) telescope compresses the 6.9 mm horizontal width on P2 and G, and the
 0.19 mm vertical flat-top has no telescope, so it spreads only by diffraction. We compute the peak
@@ -969,8 +969,8 @@ Si-rich SiN metasurface (\(5.9\times10^{-4}\)), sapphire & 60 mW & 1.3 K & 0.9 n
 
 With IBS coatings the deformation is three orders of magnitude below the \(\lambda\)/1000 figure
 tolerance. A Si-rich SiN film inside the cavity would reach the tolerance on its own. Fed into the
-Fox-Li ring (\texttt{scripts/cavity\_thermal\_foxli.py}, \texttt{configs/cavity\_thermal\_foxli.yaml};
-\texttt{results/cavity\_thermal\_foxli/thermal\_foxli.json}), with a bulge profile proportional to the intensity on G
+Fox-Li ring (\nolinkurl{scripts/cavity_thermal_foxli.py}, \nolinkurl{configs/cavity_thermal_foxli.yaml};
+\nolinkurl{results/cavity_thermal_foxli/thermal_foxli.json}), with a bulge profile proportional to the intensity on G
 (sharper than the thermal profile, hence conservative) on both graded mirrors of the 70 mm ring, the
 depth rms changes from 0.231 to 0.232 \% for 10 ppm IBS and to 0.252 \% for 100 ppm. The Si-rich SiN film
 raises it to 0.53 \% on fused silica and 0.32 \% on sapphire; the enhancement changes by \textless{} \(4\times10^{-4}\). A static
@@ -984,7 +984,7 @@ mirrors in vacuum.
 \hypertarget{site-quality-and-registration}{%
 \section{6. Site quality and registration}\label{site-quality-and-registration}}
 
-Trap frequencies (\texttt{scripts/cavity\_lattice.py}; \texttt{results/cavity\_lattice/lattice.json}; plane-wave model,
+Trap frequencies (\nolinkurl{scripts/cavity_lattice.py}; \nolinkurl{results/cavity_lattice/lattice.json}; plane-wave model,
 numerical Hessian, equal to the analytic (\(\pi\) / a) sqrt(2U / m) to \(1\times10^{-6}\)):
 
 \begin{longtable}[]{@{}
@@ -1028,7 +1028,7 @@ for every telescope case with depth non-uniformity below 5 \%. Hence site positi
 small fraction of the 4 \(\upmu\mathrm{m}\) pitch, provided the crossing angle is held to \(\sim1\) \(\upmu\mathrm{rad}\). The rearrangement
 and addressing optics must be registered to the lattice, as in the Atom Computing scheme.
 
-Layout (Figure 3; \texttt{results/cavity\_layout/layout.json}, \texttt{scripts/cavity\_layout.py}). With the primary
+Layout (Figure 3; \nolinkurl{results/cavity_layout/layout.json}, \nolinkurl{scripts/cavity_layout.py}). With the primary
 70 mm from the crossing and the same fold angle (157 deg) for both rings, the two in-plane rings fit
 within \(\pm150\) mm. Their mirrors and beams keep at least 15.5 mm from each other (mirror apertures and
 a 3 mm beam allowance included), the folded beams stay at least 35.8 mm from the atoms, and both
@@ -1040,11 +1040,11 @@ the in-plane rings' mirrors. Mounts, coils and the vacuum envelope are not desig
 \hypertarget{b.-optical-access-mot-and-loading}{%
 \section{6b. Optical access, MOT and loading}\label{b.-optical-access-mot-and-loading}}
 
-Model (\texttt{scripts/cavity\_access.py}, \texttt{configs/cavity\_access.yaml}; \texttt{results/cavity\_access/access.json},
+Model (\nolinkurl{scripts/cavity_access.py}, \nolinkurl{configs/cavity_access.yaml}; \nolinkurl{results/cavity_access/access.json},
 access.png). For every line through the atoms we compute the clearance of a beam of given radius
 (250 mm each way) from all twenty mirrors of the three rings, each with a 5 mm mount allowance, and
 from the imaging objective above the atoms. The objective is the 42 mm aplanatic doublet that images
-\(10^{6}\) sites (\texttt{docs/million\_sites.md}), with its first plate 38 mm above the atoms and a 26 mm radius
+\(10^{6}\) sites (\nolinkurl{docs/million_sites.md}), with its first plate 38 mm above the atoms and a 26 mm radius
 including the mount \placeholder{[CONFIRM?]}. Ring beams are light only and may be crossed; windows are assumed
 wherever needed \placeholder{[CONFIRM?:\ chamber]}.
 
@@ -1082,7 +1082,7 @@ Figure 6. Clearance of a beam through the atoms versus its direction (angle of t
 vertical, azimuth from +x; the vertical ring's plane is at 45 and 225 deg), for 20 mm (left) and
 10 mm (right) beams; black contour: zero clearance. Stars: the axes of the tilted six-beam MOT and
 their opposite ends; circles: the four pumping / Raman lines. Obstacles: all ring mirrors with a 5 mm
-mount allowance and the 42 mm objective from 38 mm above the atoms \placeholder{[CONFIRM?]}. \texttt{scripts/cavity\_access.py.}
+mount allowance and the 42 mm objective from 38 mm above the atoms \placeholder{[CONFIRM?]}. \nolinkurl{scripts/cavity_access.py.}
 
 How many atoms does loading need (DERIVED)? A lattice site is 4 \(\times\) 4 \(\times\) 8 \(\upmu\mathrm{m}^{3}\) = \(1.3\times10^{-10}\) cm\(^{3}\). With
 the usual collisional loading of about one atom in two sites \placeholder{[VALUE?:\ \textasciitilde{}0.5\ filling,\ light-assisted\ collisions]}, each site of the loaded plane must first see about two atoms, i.e.~a density of
@@ -1113,13 +1113,13 @@ the grating MOT as a compact fallback for smaller arrays or with iterative loadi
 \hypertarget{c.-noise-and-heating-requirements}{%
 \section{6c. Noise and heating requirements}\label{c.-noise-and-heating-requirements}}
 
-Model (\texttt{scripts/cavity\_noise.py}, \texttt{configs/cavity\_noise.yaml}; \texttt{results/cavity\_noise/noise.json}). We use
+Model (\nolinkurl{scripts/cavity_noise.py}, \nolinkurl{configs/cavity_noise.yaml}; \nolinkurl{results/cavity_noise/noise.json}). We use
 the parametric-heating rates of Savard, O'Hara and Thomas, Phys. Rev.~A 56, R1095 (1997) (text read
 in session): intensity noise gives an energy e-folding time 1/\(T_I\) = \(\pi^{2}\) \(\nu^{2}\) \(S_\epsilon\)(2 \(\nu\)), and
 position noise an energy-doubling time 1/\(T_x\) = \(\pi^{2}\) \(\nu^{2}\) \(S_x\)(\(\nu\)) / \textless x\(^{2}\)\textgreater. Here, \(\nu\) is the trap
 frequency in Hz, \(S_\epsilon\) and \(S_x\) are one-sided power spectral densities of the fractional intensity
-and of the trap position, and \textless x\(^{2}\)\textgreater{} = \texttt{k\_B} T / (m (2 \(\pi\) \(\nu\))\(^{2}\)). The script reproduces their numerical
-examples (\(3.2\times10^{-6}\) /\(\sqrt{\mathrm{Hz}}\) and \(3.2\times10^{-12}\) m/\(\sqrt{\mathrm{Hz}}\) for 100 s at 10 kHz; \texttt{tests/test\_cavity.py}). The position
+and of the trap position, and \textless x\(^{2}\)\textgreater{} = \nolinkurl{k_B} T / (m (2 \(\pi\) \(\nu\))\(^{2}\)). The script reproduces their numerical
+examples (\(3.2\times10^{-6}\) /\(\sqrt{\mathrm{Hz}}\) and \(3.2\times10^{-12}\) m/\(\sqrt{\mathrm{Hz}}\) for 100 s at 10 kHz; \nolinkurl{tests/test_cavity.py}). The position
 term is a constant heating rate, dE/dt = 4 \(\pi^{4}\) m \(\nu^{4}\) \(S_x\), independent of temperature; we quote it
 for atoms at T = 10 \(\upmu\mathrm{K}\) \placeholder{[VALUE?:\ temperature\ after\ cooling\ in\ the\ lattice]}, so that a 10 s doubling
 time is 1 \(\upmu\mathrm{K}\)/s, i.e.~about one vibrational quantum per second at 20 kHz. The couplings of the
@@ -1264,47 +1264,47 @@ Pointer
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Power budget, losses, enhancements & Result, Sections 1, 3 & DERIVED (code) & \texttt{results/cavity\_budget/budget.json} \\
-Tweezer anchors 143 and 80 mK x site / W & Section 3 & SIM (earlier runs) & \texttt{docs/scaling\_100k.md}, \texttt{docs/million\_sites.md} \\
-Cs depth per intensity \(2.53\times10^{-13}\) K / (W/m\(^{2}\)) & Section 3 & DERIVED from SOURCE & \texttt{atoms/alkali.py} (Steck data) \\
-Concentric ray trace & Section 1 & SIM, review before submission & \texttt{results/cavity\_tweezer\_bounds/bounds.json} \\
-Fox-Li designs, spectra, tolerances & Sections 4, Result & SIM, review before submission & \texttt{results/cavity\_foxli/foxli.json} (field .npz files are regenerated by the script, not versioned) \\
+Power budget, losses, enhancements & Result, Sections 1, 3 & DERIVED (code) & \nolinkurl{results/cavity_budget/budget.json} \\
+Tweezer anchors 143 and 80 mK x site / W & Section 3 & SIM (earlier runs) & \nolinkurl{docs/scaling_100k.md}, \nolinkurl{docs/million_sites.md} \\
+Cs depth per intensity \(2.53\times10^{-13}\) K / (W/m\(^{2}\)) & Section 3 & DERIVED from SOURCE & \nolinkurl{atoms/alkali.py} (Steck data) \\
+Concentric ray trace & Section 1 & SIM, review before submission & \nolinkurl{results/cavity_tweezer_bounds/bounds.json} \\
+Fox-Li designs, spectra, tolerances & Sections 4, Result & SIM, review before submission & \nolinkurl{results/cavity_foxli/foxli.json} (field .npz files are regenerated by the script, not versioned) \\
 Exploratory curved-fold spectra & Section 4 & SIM (exploratory, not saved) & session scratch scripts \\
-Correction study (open and closed loop, strokes) & Section 4b, Result & SIM, review before submission & \texttt{results/cavity\_correction/correction.json} \\
-Camera-loop correction & Section 4b, Result & SIM, review before submission & \texttt{results/cavity\_correction/correction.json} (keys \texttt{*\_closedloop\_camera\_*}) \\
+Correction study (open and closed loop, strokes) & Section 4b, Result & SIM, review before submission & \nolinkurl{results/cavity_correction/correction.json} \\
+Camera-loop correction & Section 4b, Result & SIM, review before submission & \nolinkurl{results/cavity_correction/correction.json} (keys \nolinkurl{*_closedloop_camera_*}) \\
 Transmitted power \(\sim5\) mW for 50 ppm at 100 W & Section 4b & DERIVED & \(5\times10^{-5}\) x 100 W \\
-2D separability check & Section 4b & SIM, review before submission & \texttt{results/cavity\_2d\_check/check2d.json} \\
-Vertical ring uniformity and plane flatness & Section 4b & SIM, review before submission & \texttt{results/cavity\_vertical/vertical.json} \\
+2D separability check & Section 4b & SIM, review before submission & \nolinkurl{results/cavity_2d_check/check2d.json} \\
+Vertical ring uniformity and plane flatness & Section 4b & SIM, review before submission & \nolinkurl{results/cavity_vertical/vertical.json} \\
 Vertical ring at 0.1\(\times\), vertical flat-top edge orders & Section 4b, Section 2 & SIM (exploratory, not saved) & session scripts \\
 Advanced LIGO substrate figure 0.08 to 0.23 nm rms (spec \textless{} 0.3 nm, 160 mm); coated 0.18 to 0.69 / 0.15 to 0.31 nm & Section 4b & SOURCE & arXiv:1411.4547, Table 4 and Section 4 text (PDF text read in session) \\
 LIGO metrology interferometer repeatability \textless{} 0.15 nm rms required, 0.1 nm goal & Section 4b & SOURCE & LIGO-E080508-v2 (PDF text read in session) \\
 LIGO ETM polishing spec \textless{} 0.3 nm rms over 160 mm, piston/tilt/power removed & Section 4b (via arXiv table) & SOURCE & LIGO-E080512-v5 (PDF text read in session) \\
 Zeiss EUV metrology 27 pm repeatability, 46 pm reproducibility; M6 figure 0.10 nm rms & Section 4b & SOURCE & Kurz et al., EUVL Symposium 2004, \url{https://euvlsymposium.lbl.gov/pdf/2004/presentations/day3/To03_Kurz.pdf} (PDF text read in session) \\
-70 mm ring: design, spectrum, correction check & Section 2, Figure 4 & SIM, review before submission & \texttt{results/cavity\_foxli/foxli.json} (\texttt{design\_telK\_M0.2\_d70}), \texttt{results/cavity\_correction\_d70/correction.json} \\
-Two-ring layout clearances, angles, vertical design at 70 mm & Sections 2, 6, Figure 3 & DERIVED (code) & \texttt{results/cavity\_layout/layout.json} \\
-Design sketches & Figures 3, 4 & DERIVED / SIM & \texttt{scripts/plot\_cavity\_sketch.py} \\
-Vertical-ring fold geometry and clearances & Section 2, Figure 5 & DERIVED (code) & \texttt{results/cavity\_vertical\_layout/vertical\_layout.json} \\
-Vertical ring, adopted geometry: uniformity, tolerances, closed loop & Section 4b & SIM, review before submission & \texttt{results/cavity\_vertical\_chosen/vertical.json} \\
+70 mm ring: design, spectrum, correction check & Section 2, Figure 4 & SIM, review before submission & \nolinkurl{results/cavity_foxli/foxli.json} (\nolinkurl{design_telK_M0.2_d70}), \nolinkurl{results/cavity_correction_d70/correction.json} \\
+Two-ring layout clearances, angles, vertical design at 70 mm & Sections 2, 6, Figure 3 & DERIVED (code) & \nolinkurl{results/cavity_layout/layout.json} \\
+Design sketches & Figures 3, 4 & DERIVED / SIM & \nolinkurl{scripts/plot_cavity_sketch.py} \\
+Vertical-ring fold geometry and clearances & Section 2, Figure 5 & DERIVED (code) & \nolinkurl{results/cavity_vertical_layout/vertical_layout.json} \\
+Vertical ring, adopted geometry: uniformity, tolerances, closed loop & Section 4b & SIM, review before submission & \nolinkurl{results/cavity_vertical_chosen/vertical.json} \\
 Vertical ring with the in-plane telescope at 60 mm (0.07 rad, \(1\times10^{-5}\); 7.7 to 69 \%) & Section 2 & SIM (exploratory, not saved) & session scripts \\
-Optical access map, MOT triad, pumping / Raman lines, grating-MOT checks & Section 6b, Result & DERIVED (code) & \texttt{results/cavity\_access/access.json}, access.png \\
+Optical access map, MOT triad, pumping / Raman lines, grating-MOT checks & Section 6b, Result & DERIVED (code) & \nolinkurl{results/cavity_access/access.json}, access.png \\
 Atom budget for loading (\(1.6\times10^{10}\) cm\(^{-3}\), \(\sim5\times10^{9}\), \(\sim4\times10^{7}\)) & Section 6b & DERIVED & site volume, Gaussian cloud, 19 planes in the sheets \\
 Cs molasses 1.1(1)e9 atoms, \(\sim1\times10^{10}\) atoms/s source & Section 6b & SOURCE & NIST, \url{https://www.nist.gov/node/735766} (Donley, Heavner, Jefferts) \\
 Cs 2D-MOT flux \(4.02\times10^{10}\) atoms/s & Section 6b & SOURCE & Huang et al., Chin. Phys. B 25, 063701 (2016), arXiv:1509.07213 \\
 Rb 3D grating MOT 2.46(7)e8 atoms from a 2D grating MOT & Section 6b & SOURCE & Imhof et al., Phys. Rev.~A 96, 033636 (2017), arXiv:1703.07926 \\
 Cs grating MOT \(7.0\times10^{6}\) atoms with a 69 \% retro beam; none at 24 \% & Section 6b & SOURCE & Takamizawa et al., Appl. Phys. Lett. 126, 244006 (2025), arXiv:2412.11502 \\
-Noise requirements (RIN, site position, mirror, frequency, angle, lock residual) & Section 6c & DERIVED (code) & \texttt{results/cavity\_noise/noise.json} \\
+Noise requirements (RIN, site position, mirror, frequency, angle, lock residual) & Section 6c & DERIVED (code) & \nolinkurl{results/cavity_noise/noise.json} \\
 Heating rates 1/\(T_I\) = \(\pi^{2}\) \(\nu^{2}\) \(S_\epsilon\)(2 \(\nu\)), 1/\(T_x\) = \(\pi^{2}\) \(\nu^{2}\) \(S_x\) / \textless x\(^{2}\)\textgreater{} and their numerical examples & Section 6c & SOURCE & Savard, O'Hara, Thomas, Phys. Rev.~A 56, R1095 (1997) (text read in session) \\
-Noise couplings of the self-intersecting ring, lock-residual conversion, mode-filter ratio \(\sim0.02\) & Section 6c & DERIVED & \texttt{scripts/cavity\_noise.py} docstring; 206 kHz / 8.9 MHz \\
-Lower-gain closed loop (gain 0.25, 0.1) & Section 4b & SIM, review before submission & \texttt{results/cavity\_correction/correction.json} (keys \texttt{*\_gain*}) \\
-Absorption bulge fed into Fox-Li & Section 5 & SIM, review before submission & \texttt{results/cavity\_thermal\_foxli/thermal\_foxli.json} \\
-Vertical-ring mirror intensities, defect limits, z-telescope variants & Section 5, Result, Design summary & SIM, review before submission & \texttt{results/cavity\_vertical\_mirrors/mirrors.json} \\
+Noise couplings of the self-intersecting ring, lock-residual conversion, mode-filter ratio \(\sim0.02\) & Section 6c & DERIVED & \nolinkurl{scripts/cavity_noise.py} docstring; 206 kHz / 8.9 MHz \\
+Lower-gain closed loop (gain 0.25, 0.1) & Section 4b & SIM, review before submission & \nolinkurl{results/cavity_correction/correction.json} (keys \nolinkurl{*_gain*}) \\
+Absorption bulge fed into Fox-Li & Section 5 & SIM, review before submission & \nolinkurl{results/cavity_thermal_foxli/thermal_foxli.json} \\
+Vertical-ring mirror intensities, defect limits, z-telescope variants & Section 5, Result, Design summary & SIM, review before submission & \nolinkurl{results/cavity_vertical_mirrors/mirrors.json} \\
 Vertical-ring bulge \(\sim0.3\) nm at 10 ppm & Section 5 & DERIVED (rough scaling) & 0.035 nm x 7.7 in absorbed power \\
-Input power per ring, design summary & Design summary & DERIVED & \(P_\mathrm{circ}\) / (0.95 G), \texttt{results/cavity\_budget/budget.json} \\
-Lock correction & Section 4 & SIM & 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in \texttt{results/cavity\_foxli/relock\_before.json} \\
-SiN phase slope vs width & Section 4 & DATA (analysis of library) & \texttt{data/library\_main.h5}, \texttt{data/library\_est\_1075.h5} \\
-Vertical Gaussian design, layout & Section 2, 6 & DERIVED (code) & \texttt{results/cavity\_layout/layout.json} \\
-Intensities, defects, deformation & Section 5 & SIM / DERIVED, review before submission & \texttt{results/cavity\_thermal/thermal.json} \\
-Trap frequencies, registration & Section 6 & DERIVED (code) & \texttt{results/cavity\_lattice/lattice.json} \\
+Input power per ring, design summary & Design summary & DERIVED & \(P_\mathrm{circ}\) / (0.95 G), \nolinkurl{results/cavity_budget/budget.json} \\
+Lock correction & Section 4 & SIM & 104 strongly perturbed cases were rerun with the self-consistent lock (25 had locked off the fundamental); their earlier values are in \nolinkurl{results/cavity_foxli/relock_before.json} \\
+SiN phase slope vs width & Section 4 & DATA (analysis of library) & \nolinkurl{data/library_main.h5}, \nolinkurl{data/library_est_1075.h5} \\
+Vertical Gaussian design, layout & Section 2, 6 & DERIVED (code) & \nolinkurl{results/cavity_layout/layout.json} \\
+Intensities, defects, deformation & Section 5 & SIM / DERIVED, review before submission & \nolinkurl{results/cavity_thermal/thermal.json} \\
+Trap frequencies, registration & Section 6 & DERIVED (code) & \nolinkurl{results/cavity_lattice/lattice.json} \\
 Gaussian waist 32 mm and 7\(\times\) power for 1 \% flatness & Result & DERIVED & w = h sqrt(2 / -ln 0.99); ratio sqrt(\(\pi\)/2) w / \(W_\mathrm{eq}\) \\
 Sheet-only vertical frequency 0.7 kHz & Section 2 & DERIVED & sqrt(4 \(\times\) 2U / (m \(w_z^{2}\))) \\
 Park et al.: F 5025, G 1132, 489 \(\upmu\mathrm{m}\), 80 mW, \(\sim92\) W, \(\sim100\) ppm, w\(^{4}\) sensitivity, 1 \% fringes & Section 2 & SOURCE & arXiv:2110.08073 (PDF text read in session) \\

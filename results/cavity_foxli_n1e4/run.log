@@ -1,0 +1,5 @@
+design_plane150: G/G0=1.000 depth_rms=0.0006 dy_rms=0.9 nm
+design_telK_M0.2_d70: G/G0=0.730 depth_rms=0.0444 dy_rms=18.9 nm
+resolution_check_plane150: G/G0=nan depth_rms=nan dy_rms=nan nm
+input_plane150_gaussian_best: G/G0=0.918 depth_rms=0.0044 dy_rms=2.3 nm
+done

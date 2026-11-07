@@ -1,0 +1,38 @@
+# How large a step is 10^6 sites? The same cavity-lattice models at 10^4, 10^5 and 10^6 sites
+# (docs/cavity_concept.md, Section 6d).
+run_id: cavity_scaling
+wavelength_nm: 1075.0
+period_um: 4.0
+vertical_period_um: 8.0
+depth_mK: 0.2
+mode_matching: 0.95
+w_z_um: 75.0                   # in-plane sheet thickness of the adopted design (all sizes)
+reference_side_um: 3996.0      # 10^6-site array; the scaled-w_z variant keeps the roll-off per side
+budget_json: results/cavity_budget/budget.json
+noise_json: results/cavity_noise/noise.json
+layout_json: results/cavity_layout/layout.json
+vertical_f_z_m: 0.04
+defect_dT_K: 50.0
+atoms_per_site_needed: 2.0     # [VALUE?] about 0.5 collisional filling, Section 6b
+cloud_peak_over_needed: [3.0, 5.0]
+cases: [fig1000, fig1000_c0.5, tilt1]
+sizes:
+  - n_sites: 1.0e+4
+    foxli_json: results/cavity_foxli_n1e4/foxli.json
+    correction_json: results/cavity_correction_n1e4/correction.json
+    vertical_json: results/cavity_vertical_n1e4/vertical.json
+    vertical_mirrors_json: results/cavity_vertical_mirrors_n1e4/mirrors.json
+    variant_keys: {telescope: telK_M0.2_d70, plain: plane150}
+  - n_sites: 1.0e+5
+    foxli_json: results/cavity_foxli_n1e5/foxli.json
+    correction_json: results/cavity_correction_n1e5/correction.json
+    vertical_json: results/cavity_vertical_n1e5/vertical.json
+    vertical_mirrors_json: results/cavity_vertical_mirrors_n1e5/mirrors.json
+    variant_keys: {telescope: telK_M0.2_d70, plain: plane150}
+  - n_sites: 1.0e+6            # main study: 70 mm telescope ring checked in cavity_correction_d70, plain ring in cavity_correction
+    foxli_json: results/cavity_foxli/foxli.json
+    correction_json: results/cavity_correction_d70/correction.json
+    correction_plain_json: results/cavity_correction/correction.json
+    vertical_json: results/cavity_vertical_chosen/vertical.json
+    vertical_mirrors_json: results/cavity_vertical_mirrors/mirrors.json
+    variant_keys: {telescope: telK_M0.2_d70, plain: plane150}

@@ -1,0 +1,15 @@
+# Scaling study: correction runs of configs/cavity_correction.yaml at 1e+04 sites; correlation lengths
+# scaled with the array side (same relative error structure as the 0.5 and 2 mm cases at 10^6 sites).
+run_id: cavity_correction_n1e4
+foxli_config: configs/cavity_foxli_n1e4.yaml
+g_target: 300.0
+map_sites_per_side: 101
+variants: [telK_M0.2_d70, plane150]
+cases:
+  - {name: fig1000, fig_waves: 0.001, corr_um: 198.2, seeds: [1, 2], closed_loop: true}
+  - {name: fig1000_c0.5, fig_waves: 0.001, corr_um: 49.5, seeds: [1], closed_loop: true}
+  - {name: tilt1, tilt_urad: 1.0, seeds: [1, 2], closed_loop: true}
+metrology_noise_nm: [0.0]
+metrology_corr_um: 1000.0
+metrology_tilt_urad: 0.1
+closed_loop: {rounds: 6, gain: 0.5, n_bins: 48, smooth: 1.0, measurement_noise: [0.01]}
