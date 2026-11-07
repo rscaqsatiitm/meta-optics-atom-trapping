@@ -27,8 +27,8 @@ extra deflections: <= 0.15 with a 25 mm objective and 10x demagnification.
 (ii) Imaging. For one common focal plane with Strehl >= 0.8 out to the 4 um-pitch corner, the
 aplanatic meta-doublet needs f ~ 42 mm at NA 0.5 (42 mm plates). In wave optics it then puts
 >= 0.90 of each atom's light in its 4 um box with <= 3.6 % in any neighbour, across the whole
-10^6-site array. At 3 um pitch f ~ 25 mm suffices: EE >= 0.86 and <= 5.1 % in a neighbour at
-the 2.12 mm corner (42 mm: 0.905 / 2.6 %). Higher NA costs
+10^6-site array. At 3 um pitch f ~ 25 mm suffices: EE >= 0.82 and <= 4.9 % in a neighbour at
+the 2.12 mm corner (42 mm: 0.864 / 2.5 %; diffraction limit 0.876 / 1.5 %). Higher NA costs
 field quickly: NA 0.6 needs f ~ 77 mm (92 mm plates) for the same field, and NA 0.7 does not
 reach it below 120 mm. The 16 mm doublet images to ~2.1 mm radius (66 % of the light in the
 site box) and fails at 2.83 mm (37 %).
@@ -117,27 +117,27 @@ Hence the 42 mm objective images the 10^6-site array at 4 um pitch with >= 0.90 
 3 um pitch, plane chosen for that field (results/million/imaging_ee_3um.json,
 configs/imaging_1M_3um.yaml). The 3.0 mm array (corner 2.12 mm) is evaluated with a 3 um box
 and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the table above used a
-4 um box and the plane of the 2.83 mm field. Entries as above; the diffraction limit for the
-3 um box is 0.916 / 0.016 (docs/scaling_100k.md).
+4 um box and the plane of the 2.83 mm field. Entries as above, relative to the total PSF power;
+the diffraction limit of this pupil for the 3 um box is 0.876 / 0.015 (docs/scaling_100k.md).
 
 | Objective f | 0 mm | 1.06 mm | 1.50 mm | 2.12 mm |
 |---|---|---|---|---|
-| 16 mm | 0.916 / 0.016 (S 1.00) | 0.911 / 0.023 (S 0.98) | 0.880 / 0.043 (S 0.87) | 0.631 / 0.115 (S 0.33) |
-| 25 mm | 0.914 / 0.016 (S 0.99) | 0.911 / 0.020 (S 0.99) | 0.908 / 0.025 (S 0.97) | 0.858 / 0.051 (S 0.80) |
-| 42 mm | 0.914 / 0.016 (S 1.00) | 0.914 / 0.017 (S 1.00) | 0.910 / 0.020 (S 0.99) | 0.905 / 0.026 (S 0.96) |
+| 16 mm | 0.876 / 0.015 (S 1.00) | 0.871 / 0.022 (S 0.98) | 0.838 / 0.041 (S 0.87) | 0.574 / 0.105 (S 0.33) |
+| 25 mm | 0.874 / 0.015 (S 0.99) | 0.871 / 0.019 (S 0.99) | 0.868 / 0.024 (S 0.97) | 0.815 / 0.049 (S 0.80) |
+| 42 mm | 0.874 / 0.015 (S 1.00) | 0.874 / 0.017 (S 1.00) | 0.870 / 0.019 (S 0.99) | 0.864 / 0.025 (S 0.96) |
 
 Hence at 3 um pitch the 42 mm objective images the whole 10^6-site array within 0.01 of the
-diffraction-limited ensquared energy (0.905 / 0.026 at the corner), and the 25 mm objective does
-so with 0.86 / 0.051 at the corner, i.e. it is adequate for the 3 um-pitch array with a modest
+diffraction-limited ensquared energy (0.864 / 0.025 at the corner), and the 25 mm objective does
+so with 0.82 / 0.049 at the corner, i.e. it is adequate for the 3 um-pitch array with a modest
 crosstalk penalty at the outermost sites. The 16 mm objective covers ~1.5 mm radius (about half
-of the 3 um-pitch array) with EE >= 0.88.
+of the 3 um-pitch array) with EE >= 0.84.
 
 Choice of the common plane. The plane is chosen to maximise the minimum ray Strehl ratio over
 the field. When the field edge cannot reach a useful Strehl ratio in any plane, this criterion
 trades the whole inner field for a marginal gain at the edge. For the 16 mm objective over
-0 to 2.83 mm it put the plane 4.24 um from focus: the on-axis Strehl ratio fell to 0.17 (EE 0.79)
+0 to 2.83 mm it put the plane 4.24 um from focus: the on-axis Strehl ratio fell to 0.17 (EE 0.76)
 for a corner Strehl ratio of 0.08. Over 0 to 2.12 mm the same lens keeps its plane within
-0.04 um of focus and images to 1.5 mm with EE >= 0.88; its 2.12 mm corner (EE 0.63, 11.5 %
+0.04 um of focus and images to 1.5 mm with EE >= 0.84; its 2.12 mm corner (EE 0.57, 10.5 %
 in a neighbour box) is beyond its field. Hence the 16 mm row of the 4 um table
 reflects a poorly posed plane choice as much as the lens; an EE-based plane criterion would
 raise its inner-field values (not recomputed). The 25 and 42 mm rows are not affected: their
