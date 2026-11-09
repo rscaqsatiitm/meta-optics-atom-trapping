@@ -125,9 +125,17 @@ pol_fourier formulation (< 1e-4) while the co-polarised t agrees to ~0.01. Much 
 set is therefore a numerical artefact of the formulation rather than of under-converged
 resonances, as this paragraph first stated. The lookup excludes entries above 0.05, i.e.
 above the artefact level, and the two selected families are unaffected (maximum 0.0095 for
-LPCVD and 0.012 for Si-rich within their fabricable widths at 1075 nm). Entries at 895 and
-852 nm with large cross-polarisation should be recomputed with pol_fourier before they are
-used for the meta-objective.
+LPCVD and 0.012 for Si-rich within their fabricable widths at 1075 nm). The library has since
+been recomputed with pol_fourier and otherwise identical settings (configs/library_main_pf.yaml,
+data/library_main_pf.h5; results/library_formulation_check/main.json). Over the fabricable widths
+the fraction of entries with cross-polarisation above 0.01 drops to zero (0.1 % for Si-rich at
+895 nm, where the largest remaining value is 0.044). The co-polarised phase changes little at
+1075 and 1064 nm (median 0.009 to 0.016 rad, 90th percentile <= 0.055 rad) and more at 895 and
+852 nm (Si-rich: median 0.03 rad, 90th percentile 0.15 to 0.27 rad), where the large changes sit
+on resonant curves with T0 near zero. The selected families are unchanged at 1075, 1064 and
+852 nm for both films, with eta_16 (+/-10 nm averaged) within 0.0006 of the values above
+(results/library_analysis_*_pf); only the minimum T0 of the 852 nm LPCVD family, set by one
+resonant width, moves (0.86 to 0.42) without changing its efficiency.
 
 Selection at 1075 nm (results/library_analysis_1075). Geometries are ranked by the
 first-order efficiency of a 16-level blazed grating in the local-periodic approximation,
@@ -463,6 +471,7 @@ quoted in this report (all SIM, review before submission):
 | Debye-design Strehl and field curvature vs radius | 4.1 | hologram/field_model.py; results/hologram_b1_cell20mm/aberration_*.png |
 | In-cell mode efficiencies and uniformities | 4.2, 4.4 | results/hologram_b1_cell20mm/metrics.json |
 | Full-pixel bench metrics (coarse render, soft edge, feedback) | 4.3 | results/fullpixel_bench5mm, results/fullpixel_bench5mm_softedge |
+| pol_fourier recompute of the library: cross-polarisation, phase changes, selections | 3 | results/library_formulation_check/main.json; results/library_analysis_*_pf |
 | Zero-order on axis, superseded clipped-grid values 0.463 (hard edge) and 0.0149 (10 % soft edge); the results files now hold the corrected 4.0e-4 (hard) and 1.3e-3 (soft) of the mean site peak | 4.3, Erratum | configs/fullpixel_zeroorder_2mm_edge0.yaml, _edge100.yaml; results/fullpixel_zeroorder_2mm_* |
 | Radius-resolved zero-order overlap | 4.3 | exploratory script, not committed; reproduce by comparing conj(lens) x field per annulus |
 | Site counts and depths vs power | 4.4 | PowerBudget with utilisation 0.736, NA_eff 0.531 |

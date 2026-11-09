@@ -1,0 +1,198 @@
+{
+  "old": "data/library_main.h5",
+  "new": "data/library_main_pf.h5",
+  "per_material_wavelength": {
+    "sin_lpcvd:1.0750": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.009679883023013114,
+        "dphi_rel_max_p90": 0.015599614827419762,
+        "dphi_rel_max_max": 0.05566457447954236,
+        "dabs_max_median": 0.00021691840957949182,
+        "xc_old_frac_mean": 0.015,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.12182204769868898,
+        "xc_new_max": 0.0005491415119887128
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.00935586096800714,
+        "dphi_rel_max_p90": 0.014710131862455348,
+        "dphi_rel_max_max": 0.05507446828465651,
+        "dabs_max_median": 0.00013752574840664167,
+        "xc_old_frac_mean": 0.008746902923635294,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.012803925359399521,
+        "xc_new_max": 0.0002226317159243847
+      }
+    },
+    "sin_lpcvd:1.0644": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.009562068048941962,
+        "dphi_rel_max_p90": 0.016204798994274672,
+        "dphi_rel_max_max": 0.12824787898857576,
+        "dabs_max_median": 0.00022691058484358706,
+        "xc_old_frac_mean": 0.016153846153846154,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.14981312468425756,
+        "xc_new_max": 0.0017970507000105707
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.009229772161485133,
+        "dphi_rel_max_p90": 0.014738209263390813,
+        "dphi_rel_max_max": 0.04264695018269853,
+        "dabs_max_median": 0.00013980066740626462,
+        "xc_old_frac_mean": 0.010016004192736565,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.01984284593643606,
+        "xc_new_max": 0.0002157483229807224
+      }
+    },
+    "sin_lpcvd:0.8950": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.013778155427305983,
+        "dphi_rel_max_p90": 0.12725790709059714,
+        "dphi_rel_max_max": 2.823922979319983,
+        "dabs_max_median": 0.0017675092580999863,
+        "xc_old_frac_mean": 0.08884615384615384,
+        "xc_new_frac_mean": 0.0003846153846153846,
+        "xc_old_max": 0.4055234190422431,
+        "xc_new_max": 0.09186244054948488
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.012310067106575047,
+        "dphi_rel_max_p90": 0.05448530301719918,
+        "dphi_rel_max_max": 2.819818930917355,
+        "dabs_max_median": 0.0002708344922648376,
+        "xc_old_frac_mean": 0.05992229599721538,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.23855153096900045,
+        "xc_new_max": 0.0008985599320353697
+      }
+    },
+    "sin_lpcvd:0.8520": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.01497163124916722,
+        "dphi_rel_max_p90": 0.0676976017058366,
+        "dphi_rel_max_max": 1.6657668816568938,
+        "dabs_max_median": 0.007165206266958157,
+        "xc_old_frac_mean": 0.0996153846153846,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.2523292436262553,
+        "xc_new_max": 0.0053769699089885855
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.01326073470550799,
+        "dphi_rel_max_p90": 0.04700401183488361,
+        "dphi_rel_max_max": 1.6460327472454106,
+        "dabs_max_median": 0.001848254547908157,
+        "xc_old_frac_mean": 0.06114400402451124,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.20866829831240277,
+        "xc_new_max": 0.000634984521863576
+      }
+    },
+    "sin_si_rich:1.0750": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.017569797231948812,
+        "dphi_rel_max_p90": 0.05493696597092627,
+        "dphi_rel_max_max": 0.7502341526618521,
+        "dabs_max_median": 0.0008136809426668723,
+        "xc_old_frac_mean": 0.10615384615384614,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.4622071900974861,
+        "xc_new_max": 0.0028872571724352096
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.015782605017482382,
+        "dphi_rel_max_p90": 0.03482623923790985,
+        "dphi_rel_max_max": 0.07728549810930216,
+        "dabs_max_median": 0.00033609909857701403,
+        "xc_old_frac_mean": 0.08090160210811162,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.03887096644553433,
+        "xc_new_max": 0.00042757756544675697
+      }
+    },
+    "sin_si_rich:1.0644": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.019981932672891153,
+        "dphi_rel_max_p90": 0.11753539205588846,
+        "dphi_rel_max_max": 0.929933757494907,
+        "dabs_max_median": 0.001105913492862154,
+        "xc_old_frac_mean": 0.11346153846153846,
+        "xc_new_frac_mean": 0.0003846153846153846,
+        "xc_old_max": 0.44877920655119785,
+        "xc_new_max": 0.02457488169789832
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.016432246400928448,
+        "dphi_rel_max_p90": 0.05500830326431894,
+        "dphi_rel_max_max": 0.14251902852857543,
+        "dabs_max_median": 0.00029587244045758965,
+        "xc_old_frac_mean": 0.08563401170815194,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.15692649515189583,
+        "xc_new_max": 0.0011514320731547663
+      }
+    },
+    "sin_si_rich:0.8950": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.04435885284229951,
+        "dphi_rel_max_p90": 0.35622789485942674,
+        "dphi_rel_max_max": 2.1328797340927625,
+        "dabs_max_median": 0.03958412711127493,
+        "xc_old_frac_mean": 0.22846153846153847,
+        "xc_new_frac_mean": 0.0007692307692307692,
+        "xc_old_max": 0.3148807829666204,
+        "xc_new_max": 0.04438463982599482
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.026797297370628574,
+        "dphi_rel_max_p90": 0.27360053177199817,
+        "dphi_rel_max_max": 2.1256976062492523,
+        "dabs_max_median": 0.02002367091704449,
+        "xc_old_frac_mean": 0.1862957850077622,
+        "xc_new_frac_mean": 0.0005305039787798408,
+        "xc_old_max": 0.24024769396678713,
+        "xc_new_max": 0.04438463982599482
+      }
+    },
+    "sin_si_rich:0.8520": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.051719916884565904,
+        "dphi_rel_max_p90": 0.22967089531768692,
+        "dphi_rel_max_max": 3.055770501720058,
+        "dabs_max_median": 0.03816223234474214,
+        "xc_old_frac_mean": 0.24692307692307694,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.5461103940003771,
+        "xc_new_max": 0.007338068538030241
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.03347578027262872,
+        "dphi_rel_max_p90": 0.14505413613414223,
+        "dphi_rel_max_max": 3.0571063040644293,
+        "dabs_max_median": 0.025582539920377012,
+        "xc_old_frac_mean": 0.1923022936131009,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.23837747656199118,
+        "xc_new_max": 0.0025187801056053465
+      }
+    }
+  }
+}
