@@ -1,0 +1,17 @@
+# Hole (inverse) vs pillar meta-atoms in the Si-rich SiN estimate film at 1075 nm (scripts/hole_vs_pillar.py).
+# Convergence (p 0.5, h 1.6 um holes): 197 terms / 256 grid agree with 317 terms to <= 0.02 rad.
+run_id: hole_vs_pillar
+wavelength_um: 1.075
+material: sin_si_rich_est       # n = 2.277 at 1075 nm (literature-based estimate, as the 10^5-site design)
+substrate: fused_silica
+families: [hole, pillar]
+pitches_um: [0.40, 0.45, 0.50, 0.55, 0.60]
+heights_um: [0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0]
+w_min_um: 0.06                  # widths/diameters from 0.06 um to p - 0.06 um; fabrication limits applied in the ranking
+n_widths: 40
+n_terms: 197
+n_grid: 256
+formulation: pol_fourier
+fab_limits:
+  baseline: {min_feature_um: 0.10, min_gap_um: 0.10, max_aspect: 10.0}
+  relaxed: {min_feature_um: 0.10, min_gap_um: 0.10, max_aspect: 15.0}
