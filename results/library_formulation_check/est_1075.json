@@ -1,0 +1,54 @@
+{
+  "old": "data/library_est_1075.h5",
+  "new": "data/library_est_1075_pf.h5",
+  "per_material_wavelength": {
+    "sin_si_rich_est:1.0750": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.015835531651137654,
+        "dphi_rel_max_p90": 0.05572693623835049,
+        "dphi_rel_max_max": 1.5379824890400335,
+        "dabs_max_median": 0.0007316855109726905,
+        "xc_old_frac_mean": 0.09730769230769232,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.23221545506950908,
+        "xc_new_max": 0.0025952449919927688
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.015154527256051101,
+        "dphi_rel_max_p90": 0.039780038321092615,
+        "dphi_rel_max_max": 1.5196943125031404,
+        "dabs_max_median": 0.0002883415453700522,
+        "xc_old_frac_mean": 0.07151342657563045,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.06125147078138392,
+        "xc_new_max": 0.00034724299190913214
+      }
+    },
+    "sin_lpcvd_k:1.0750": {
+      "all": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.009679302314381744,
+        "dphi_rel_max_p90": 0.015599614804013864,
+        "dphi_rel_max_max": 0.05565039435826386,
+        "dabs_max_median": 0.0002169196993024869,
+        "xc_old_frac_mean": 0.015,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.12180624207089372,
+        "xc_new_max": 0.0005491405079302646
+      },
+      "fab": {
+        "n_curves": 65,
+        "dphi_rel_max_median": 0.009355860928310172,
+        "dphi_rel_max_p90": 0.014710131814951502,
+        "dphi_rel_max_max": 0.0550603789599563,
+        "dabs_max_median": 0.0001375271016028634,
+        "xc_old_frac_mean": 0.008746902923635294,
+        "xc_new_frac_mean": 0.0,
+        "xc_old_max": 0.012802153087604493,
+        "xc_new_max": 0.0002226310173936756
+      }
+    }
+  }
+}

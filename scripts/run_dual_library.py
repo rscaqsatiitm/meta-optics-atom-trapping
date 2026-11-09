@@ -17,14 +17,14 @@ from metatrap.rcwa.solver import solve_eps
 from metatrap.runio import REPO_ROOT, load_config, run_dir, write_json, write_params
 
 
-def solve_group(fam, params, mat, sub, p, h, lam, n_terms, n_grid, batch):
+def solve_group(fam, params, mat, sub, p, h, lam, n_terms, n_grid, batch, formulation="jones_direct_fourier"):
     eps_p = complex(materials.get(mat).eps(lam))
     ns = float(materials.get(sub).n(lam))
     tx, T, R, tc = [], [], [], []
     for i in range(0, len(params), batch):
         m = masks(fam, params[i : i + batch], p, n_grid)
         eps = 1 + (eps_p - 1) * m
-        r = solve_eps(eps, p, h, lam, ns**2, 1.0, n_terms)
+        r = solve_eps(eps, p, h, lam, ns**2, 1.0, n_terms, formulation=formulation)
         tx.append(r.t_x)
         T.append(r.T)
         R.append(r.R)
@@ -34,6 +34,7 @@ def solve_group(fam, params, mat, sub, p, h, lam, n_terms, n_grid, batch):
 
 def main(cfg_path):
     cfg = load_config(cfg_path)
+    form = cfg.get("formulation", "jones_direct_fourier")  # pol_fourier: no spurious cross-polarisation (tests/test_rcwa.py)
     out = run_dir(cfg["run_id"])
     write_params(out, cfg)
     od = REPO_ROOT / cfg["output_dir"]
@@ -49,8 +50,8 @@ def main(cfg_path):
             lam = cfg["wavelengths_um"][0]
             c = candidates(fam, p, h, Rules(step_um=cfg["families"][fam]["step_um"], **rules0))
             pick = [c[i] for i in np.linspace(0, len(c) - 1, cv["n_atoms"]).astype(int)]
-            a = solve_group(fam, pick, mat, sub, p, h, lam, cfg["n_terms"], cfg["n_grid"], cfg["batch"])[0]
-            b = solve_group(fam, pick, mat, sub, p, h, lam, cv["n_terms"], cv["n_grid"], cfg["batch"])[0]
+            a = solve_group(fam, pick, mat, sub, p, h, lam, cfg["n_terms"], cfg["n_grid"], cfg["batch"], form)[0]
+            b = solve_group(fam, pick, mat, sub, p, h, lam, cv["n_terms"], cv["n_grid"], cfg["batch"], form)[0]
             dphi = np.angle(a * np.conj(b))
             rows.append({"family": fam, "material": mat, "params": pick, "dphase_rad": dphi.tolist(), "dabs_rel": (np.abs(a) / np.abs(b) - 1).tolist()})
             print("convergence", fam, mat, np.round(dphi, 3), np.round(np.abs(a) / np.abs(b) - 1, 4), flush=True)
@@ -63,7 +64,7 @@ def main(cfg_path):
                 if f.exists():
                     continue
                 t0 = time.time()
-                tx, T, R, tc, ns = solve_group(fam, params, mat, sub, p, h, lam, cfg["n_terms"], cfg["n_grid"], cfg["batch"])
+                tx, T, R, tc, ns = solve_group(fam, params, mat, sub, p, h, lam, cfg["n_terms"], cfg["n_grid"], cfg["batch"], form)
                 np.savez(f, params=np.array(params), t=tx, T=T, R=R, t_cross=tc, n_in=ns, pitch=p, height=h, lam=lam, substrate=sub)
                 print(f"{f.name}: {len(params)} atoms, {time.time()-t0:.0f} s", flush=True)
     print("dual library done", flush=True)

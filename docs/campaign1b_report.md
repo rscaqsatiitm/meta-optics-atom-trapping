@@ -97,6 +97,23 @@ Consequences (RCWA with complex index, configs/library_est_1075.yaml):
 | eta_16, +/-10 nm averaged | 0.959 | 0.960 |
 | Pillar absorption, phase-averaged (max) | 5.9e-4 (1.1e-3) | < 1e-5 (numerical floor) |
 
+Recompute with the pol_fourier formulation (2026-11). The library was computed with
+jones_direct_fourier, which gives square pillars a spurious cross-polarised amplitude of order
+1e-2 (tests/test_rcwa.py). Recomputed with pol_fourier and otherwise identical settings
+(configs/library_est_1075_pf.yaml, data/library_est_1075_pf.h5), the selection is unchanged for
+both films: same pitch, height and width range, eta_16 (+/-10 nm averaged) 0.9588 against 0.9592
+(Si-rich) and 0.9602 against 0.9601 (LPCVD), phase-averaged absorption 6.0e-4 against 5.9e-4
+(results/library_analysis_est_1075_pf). On the selected Si-rich curve the relative transmission
+phase changes by at most 0.014 rad and |t| by at most 3e-4 over the fabricable widths, and the
+cross-polarised amplitude falls from 0.0125 to 2.4e-4. Over the whole library the median change
+of the relative phase is 0.015 rad (90th percentile 0.04 rad); the only large changes (0.28 and
+1.5 rad) are on curves crossing a resonance with T0 near zero, where the phase is undefined and
+which the ranking never selects (results/library_formulation_check/est_1075.json). The fraction
+of entries with cross-polarisation above 0.01 drops from 7 % (Si-rich, fabricable widths) to zero.
+Hence the full-aperture hologram results that use this library (v1, v2, 10^5 sites) stand: a
+0.014 rad change of the meta-atom phase map costs of order 2e-4 in efficiency (DERIVED,
+1 - exp(-sigma^2)).
+
 The lower estimated index makes the selected Si-rich pillar 0.1 um taller than in
 campaign 1. Thermal consequences at 100 W (configs/thermal_film_estimates.yaml):
 
@@ -319,6 +336,7 @@ All values below are SIM (review before submission) unless marked.
 | Si-rich SiN n(lambda) (E0 = 5.83 eV, Ed = 23.5 eV) | 2 | DERIVED from SOURCE data (Luke 2015; Vogt 2015; Beliaev 2022); materials.py |
 | k = 1.8e-7 (LPCVD), 6.7e-5 (Si-rich), band 3e-5 to 3e-4 | 2 | SOURCE: Kumar et al. 2025 (DOI 10.1021/acsphotonics.5c01886); Steinlechner et al. 2017; band is an assumption |
 | Selected families, absorption 5.9e-4 / <1e-5 | 2 | results/library_analysis_est_1075 |
+| pol_fourier recompute: selection, eta_16, absorption, curve changes | 2 | results/library_analysis_est_1075_pf, results/library_formulation_check/est_1075.json |
 | Thermal focal shifts with estimated absorption | 2 | results/thermal_film_estimates |
 | Vector factors (0.923 soft edge, waists, circularity, fictitious field) | 3 | results/vector_check |
 | Vector peak factor 0.917 (hard top hat), used in the power budgets | 4, 5 | results/vector_offaxis |
