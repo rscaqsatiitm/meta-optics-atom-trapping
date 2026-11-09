@@ -1,0 +1,54 @@
+[
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 1.0,
+    "max_aspect": 10.0,
+    "n_atoms": 165,
+    "corrector_eta_852": 0.6797386630469732,
+    "corrector_eta_1064": 0.7121849211853615,
+    "focusing_eta_852": 0.668379933728393,
+    "focusing_eta_1064": 0.7068626574171328,
+    "doublet_lpa_852": 0.45432368255996236,
+    "doublet_lpa_1064": 0.5034169259614959
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 1.0,
+    "max_aspect": 15.0,
+    "n_atoms": 165,
+    "corrector_eta_852": 0.6797386630469732,
+    "corrector_eta_1064": 0.7121849211853615,
+    "focusing_eta_852": 0.668379933728393,
+    "focusing_eta_1064": 0.7068626574171328,
+    "doublet_lpa_852": 0.45432368255996236,
+    "doublet_lpa_1064": 0.5034169259614959
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 1.2,
+    "max_aspect": 10.0,
+    "n_atoms": 103,
+    "corrector_eta_852": 0.5517332009048781,
+    "corrector_eta_1064": 0.736604959084984,
+    "focusing_eta_852": 0.5358084696229388,
+    "focusing_eta_1064": 0.7284386184568127,
+    "doublet_lpa_852": 0.2956233220170082,
+    "doublet_lpa_1064": 0.5365714987443028
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 1.2,
+    "max_aspect": 15.0,
+    "n_atoms": 165,
+    "corrector_eta_852": 0.699485760150895,
+    "corrector_eta_1064": 0.7291394163528508,
+    "focusing_eta_852": 0.6890789839664215,
+    "focusing_eta_1064": 0.7177876790500332,
+    "doublet_lpa_852": 0.4820009369037588,
+    "doublet_lpa_1064": 0.5233672893678086
+  }
+]

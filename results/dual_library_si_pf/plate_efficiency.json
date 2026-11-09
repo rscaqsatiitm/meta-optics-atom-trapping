@@ -1,0 +1,80 @@
+[
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 0.6,
+    "max_aspect": 10.0,
+    "n_atoms": 66,
+    "corrector_eta_852": 0.46491457507243844,
+    "corrector_eta_1064": 0.5917460745115792,
+    "focusing_eta_852": 0.44501873534794,
+    "focusing_eta_1064": 0.5797567492402073,
+    "doublet_lpa_852": 0.20689569624356147,
+    "doublet_lpa_1064": 0.34306878053448664
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 0.6,
+    "max_aspect": 15.0,
+    "n_atoms": 66,
+    "corrector_eta_852": 0.46491457507243844,
+    "corrector_eta_1064": 0.5917460745115792,
+    "focusing_eta_852": 0.44501873534794,
+    "focusing_eta_1064": 0.5797567492402073,
+    "doublet_lpa_852": 0.20689569624356147,
+    "doublet_lpa_1064": 0.34306878053448664
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 0.8,
+    "max_aspect": 10.0,
+    "n_atoms": 66,
+    "corrector_eta_852": 0.38484194538760924,
+    "corrector_eta_1064": 0.6115039127621565,
+    "focusing_eta_852": 0.36777891231919957,
+    "focusing_eta_1064": 0.6116050434391287,
+    "doublet_lpa_852": 0.14153675208945973,
+    "doublet_lpa_1064": 0.37399887712809593
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 0.8,
+    "max_aspect": 15.0,
+    "n_atoms": 66,
+    "corrector_eta_852": 0.38484194538760924,
+    "corrector_eta_1064": 0.6115039127621565,
+    "focusing_eta_852": 0.36777891231919957,
+    "focusing_eta_1064": 0.6116050434391287,
+    "doublet_lpa_852": 0.14153675208945973,
+    "doublet_lpa_1064": 0.37399887712809593
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 1.0,
+    "max_aspect": 10.0,
+    "n_atoms": 66,
+    "corrector_eta_852": 0.5939724125145428,
+    "corrector_eta_1064": 0.6122179028898774,
+    "focusing_eta_852": 0.5787503680661874,
+    "focusing_eta_1064": 0.6098651564008402,
+    "doublet_lpa_852": 0.34376175236395295,
+    "doublet_lpa_1064": 0.37337036709732946
+  },
+  {
+    "material": "si_crystalline",
+    "pitch_um": 0.45,
+    "height_um": 1.0,
+    "max_aspect": 15.0,
+    "n_atoms": 66,
+    "corrector_eta_852": 0.5939724125145428,
+    "corrector_eta_1064": 0.6122179028898774,
+    "focusing_eta_852": 0.5787503680661874,
+    "focusing_eta_1064": 0.6098651564008402,
+    "doublet_lpa_852": 0.34376175236395295,
+    "doublet_lpa_1064": 0.37337036709732946
+  }
+]

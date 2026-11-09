@@ -272,14 +272,16 @@ offset of each wavelength optimised.
 
 | Film, height, aspect limit | Atoms | Uniform torus: eta 852 / 1064 | Same atoms, one wavelength only | Doublet (corrector x focusing plate, LPA): 852 / 1064 |
 |---|---|---|---|---|
-| Si-rich, 1.6 um, AR <= 10 | 58 | 0.67 / 0.56 | 0.94 / 0.95 | 0.45 / 0.33 |
-| Si-rich, 1.6 um, AR <= 15 | 137 | 0.73 / 0.71 | 0.97 / 0.97 | 0.55 / 0.52 |
-| Si-rich, 2.4 um, AR <= 15 | 63 | 0.75 / 0.71 | 0.96 / 0.95 | 0.57 / 0.51 |
-| LPCVD, 1.6 um, AR <= 10 | 58 | 0.53 / 0.55 | 0.93 / 0.96 | 0.29 / 0.31 |
+| Si-rich, 1.6 um, AR <= 10 | 58 | 0.67 / 0.56 | 0.94 / 0.94 | 0.44 / 0.33 |
+| Si-rich, 1.6 um, AR <= 15 | 137 | 0.73 / 0.71 | 0.97 / 0.97 | 0.54 / 0.52 |
+| Si-rich, 2.4 um, AR <= 15 | 63 | 0.75 / 0.70 | 0.96 / 0.95 | 0.56 / 0.51 |
+| LPCVD, 1.6 um, AR <= 10 | 58 | 0.52 / 0.55 | 0.93 / 0.96 | 0.29 / 0.31 |
 | LPCVD, 2.4 um, AR <= 15 | 63 | 0.70 / 0.63 | 0.94 / 0.95 | 0.49 / 0.41 |
 
-(Union of both families; results/dual_library/dual_efficiency.json and plate_efficiency.json
-list every family, height and limit.)
+(Union of both families; results/dual_library_pf/dual_efficiency.json and plate_efficiency.json
+list every family, height and limit. Values from the pol_fourier recompute of the dual libraries,
+which changes every entry of both tables by <= 0.01 against the jones_direct_fourier libraries,
+results/dual_library/; see the note after the second table.)
 
 Observations. (i) Within AR <= 10, heights of 2.0 and 2.4 um admit no rings and no two-pillar
 cells (walls and pillars would have to be >= 0.2 to 0.24 um), so only solid pillars remain,
@@ -330,14 +332,23 @@ LPA, before the deflection factor (~0.87) of Section 6:
 
 | Film, height | Aspect <= 10: 852 / 1064 nm | Aspect <= 15: 852 / 1064 nm | One wavelength only | Absorbed at 852 nm (median atom) |
 |---|---|---|---|---|
-| Si-rich SiN, 1.6 um | 0.53 / 0.40 | 0.63 / 0.58 | 0.97 to 0.98 | ~0 |
-| ALD TiO2, 1.6 um | 0.49 / 0.44 | 0.62 / 0.61 | 0.96 to 0.98 | ~0 |
+| Si-rich SiN, 1.6 um | 0.52 / 0.40 | 0.62 / 0.58 | 0.97 to 0.98 | ~0 |
+| ALD TiO2, 1.6 um | 0.49 / 0.44 | 0.61 / 0.61 | 0.96 to 0.98 | ~0 |
 | LPCVD SiN, 1.6 um | 0.31 / 0.36 | 0.43 / 0.43 | 0.97 | ~0 |
-| crystalline Si on sapphire, 1.0 um | 0.46 / 0.51 | 0.46 / 0.51 | 0.91 to 0.92 | 6 to 9 % |
+| crystalline Si on sapphire, 1.0 um | 0.45 / 0.50 | 0.45 / 0.50 | 0.91 to 0.92 | 6 to 9 % |
 | crystalline Si on sapphire, 1.2 um | 0.30 / 0.54 | 0.48 / 0.52 | 0.92 to 0.95 | 7 to 11 % |
-| GaN on sapphire, 1.6 um (0.02 um grid only) | 0.33 / 0.26 | 0.45 / 0.32 | 0.88 to 0.93 | ~0 |
+| GaN on sapphire, 1.6 um (0.02 um grid only) | 0.33 / 0.25 | 0.45 / 0.32 | 0.88 to 0.93 | ~0 |
 
-(results/dual_library_fine, dual_library_si_fine, dual_library_hi; plate_efficiency.json.)
+(results/dual_library_fine_pf, dual_library_si_fine_pf, dual_library_hi_pf; plate_efficiency.json.)
+
+Formulation check. The dual libraries were first computed with the jones_direct_fourier
+formulation, which gives C4v meta-atoms a spurious cross-polarised amplitude of order 1e-2
+(tests/test_rcwa.py). All five dual libraries were recomputed with pol_fourier and otherwise
+identical settings (configs/dual_library*_pf.yaml). Every corrector and focusing-plate efficiency
+changes by <= 0.011 (mostly <= 0.005), every doublet product in both tables by <= 0.01, and the
+uniform-torus efficiencies by <= 0.01; no conclusion changes. The jones values are kept in
+results/dual_library*/ for comparison. (One cell of the earlier table, Si-rich SiN at aspect 15,
+read 0.63 at 852 nm where its own data gave 0.62.)
 
 Findings. (i) TiO2 and GaN offer no index advantage over Si-rich SiN: their indices at
 852 to 1064 nm are only 0.03 to 0.05 higher. TiO2 performs like Si-rich SiN. GaN is worse
@@ -346,11 +357,12 @@ because sapphire forces the smaller pitch. Their practical value would lie in th
 middle column `[VALUE?: aspect ratios demonstrated for TiO2 and GaN metasurfaces at
 ~1.6 um height]`. (ii) Crystalline Si needs only 1.0 um, so the aspect-ratio rule never
 binds (h / 10 = 0.10 um = the minimum feature). It is the best film within aspect ratio 10
-at 1064 nm (0.51) and comparable to Si-rich SiN at 852 nm (0.46 against 0.53). However, it
+at 1064 nm (0.50) and comparable to Si-rich SiN at 852 nm (0.45 against 0.52). However, it
 absorbs 6 to 11 % at 852 nm in its resonant atoms, and its single-wavelength ceiling is lower
 (0.91 to 0.95). (iii) No film closes the gap. After the deflection factor, the best
-two-wavelength doublets reach ~0.54 / 0.51 (Si-rich SiN or TiO2, aspect ratio 15) or
-~0.40 to 0.46 (aspect ratio 10), against 0.80 to 0.83 for a single-wavelength doublet. The
+two-wavelength doublets reach ~0.54 / 0.50 (Si-rich SiN) or ~0.53 / 0.53 (TiO2) at aspect ratio
+15, or ~0.44 to 0.45 at aspect ratio 10 (best film at each wavelength), against 0.80 to 0.83 for a
+single-wavelength doublet. The
 limit is set by how densely a two-parameter, fabricable library covers the phase torus, not
 by the index (Provisional: LPA, screen numerics, two families, 0.01 um grid).
 
@@ -620,7 +632,7 @@ version of the design (layered spacer) and its tolerances.
 | Shared-lens Strehl ratios with pre-correctors | Section 8.2 | SIM, review before submission | results/multiwave/optics.json; 900 / 950 nm rows from an inline scan (not stored) |
 | Shared-lens wave check, supercells, module tolerances | Section 8.4 | SIM, review before submission | results/multiwave/wavecheck.json, supercells.json, doublet_efficiency.json, precorrector_tolerances.json |
 | Cross-wavelength atom efficiencies | Section 8.2 | SIM, review before submission | results/multiwave/atoms.json |
-| Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library/dual_efficiency.json, plate_efficiency.json |
+| Two-wavelength library efficiencies | Section 5b | SIM, review before submission | results/dual_library*_pf/ (pol_fourier); jones values in results/dual_library*/ |
 | Wave-optics Strehl, waists | Section 4 | SIM, review before submission | doublet.json, wave_axial |
 | Chief-ray direction cosine 3.6e-4 at 400 um | Section 1 | SIM (inline evaluation, not stored) | raytrace of the 16 mm design |
 | Polynomial-optimisation failures | Section 1 | SIM | results/metalens_study/metalens_study.json |
