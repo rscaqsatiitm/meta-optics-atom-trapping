@@ -1,0 +1,18 @@
+# Recomputed with the pol_fourier formulation (no spurious cross-polarisation for C4v cells; tests/test_rcwa.py).
+# Otherwise identical to configs/library_est_1075.yaml; the jones_direct_fourier library is kept for comparison.
+# Meta-atom library at 1075 nm with literature-based film estimates (absorbing):
+#  sin_si_rich_est: Si-rich PECVD, n(852) = 2.30 -> n(1075) = 2.277 (single-oscillator
+#                   extrapolation), k = 6.7e-5 (photothermal data, Kumar et al. 2025).
+#  sin_lpcvd_k:     LPCVD stoichiometric, Luke dispersion, k = 1.8e-7.
+run_id: library_est_1075_pf
+output: data/library_est_1075_pf.h5
+materials: [sin_si_rich_est, sin_lpcvd_k]
+substrate: fused_silica
+shape: square
+pitch_um: [0.40, 0.45, 0.50, 0.55, 0.60]
+height_um: {min: 0.8, max: 2.0, step: 0.1}
+wavelength_um: [1.075]
+width_frac: {min: 0.12, max: 0.90, n: 40}
+n_terms: 197
+n_grid: 256
+formulation: pol_fourier

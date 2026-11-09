@@ -1,0 +1,18 @@
+# Recomputed with the pol_fourier formulation; otherwise identical to configs/dual_library_fine.yaml (kept for comparison).
+# Fine geometry grid (0.01 um) for the best 1.6 um nitride and TiO2 libraries, for a like-for-
+# like comparison with the fine-grid crystalline Si screen (dual_library_si_fine).
+run_id: dual_library_fine_pf
+output_dir: data/dual_library_fine_pf
+wavelengths_um: [0.852, 1.0644]
+materials:
+  - {name: sin_si_rich, substrate: fused_silica, pitch_um: [0.55], height_um: [1.6]}
+  - {name: tio2_ald, substrate: fused_silica, pitch_um: [0.55], height_um: [1.6]}
+  - {name: sin_lpcvd, substrate: fused_silica, pitch_um: [0.55], height_um: [1.6]}
+families:
+  ring: {step_um: 0.01}
+  duo: {step_um: 0.01}
+rules: {min_feature_um: 0.10, max_aspect: 15.0}
+n_terms: 121
+n_grid: 128
+batch: 24
+formulation: pol_fourier

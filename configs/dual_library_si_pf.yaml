@@ -1,0 +1,19 @@
+# Recomputed with the pol_fourier formulation; otherwise identical to configs/dual_library_si.yaml (kept for comparison).
+# Crystalline Si on sapphire, full numerics (197 terms, 256 grid; checked against 289). Two-wavelength (852 / 1064 nm) screen for other films: ALD TiO2 on fused silica, GaN on
+# sapphire and crystalline Si on sapphire. Same families, rules and numerics as dual_library.
+# Pitch on sapphire is 0.45 um: below lambda / n_sapphire = 0.484 um at 852 nm (no diffraction
+# into the substrate at normal incidence).
+run_id: dual_library_si_pf
+output_dir: data/dual_library_si_pf
+wavelengths_um: [0.852, 1.0644]
+materials:
+  - {name: si_crystalline, substrate: sapphire_o, pitch_um: [0.45], height_um: [0.6, 0.8, 1.0]}  # silicon on sapphire [CONFIRM?: film thickness]
+families:
+  ring: {step_um: 0.02}
+  duo: {step_um: 0.02}
+rules: {min_feature_um: 0.10, max_aspect: 15.0}
+n_terms: 197
+n_grid: 256
+batch: 24
+convergence: {n_atoms: 6, n_terms: 289, n_grid: 256}
+formulation: pol_fourier
