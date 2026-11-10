@@ -1,0 +1,90 @@
+{
+  "config": {
+    "run_id": "fold_window_v2",
+    "wavelength_um": 1.075,
+    "na": 0.55,
+    "stack": [
+      [
+        2500,
+        "air"
+      ],
+      [
+        4000,
+        "fused_silica"
+      ],
+      [
+        9000,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.0,
+    "sites": {
+      "kind": "square",
+      "nx": 142,
+      "ny": 142,
+      "pitch_um": 4.0
+    },
+    "pupil_guard": 1.25,
+    "render_upsample": 8,
+    "upsample": 4,
+    "block_rows": 64,
+    "library": {
+      "path": "data/library_est_1075.h5",
+      "material": "sin_si_rich_est",
+      "pitch_um": 0.5,
+      "height_um": 1.6
+    },
+    "array_defocus_um": 0.0,
+    "metrics_tile_px": 1024,
+    "n_folds": [
+      4096,
+      18432
+    ],
+    "cases": [
+      {
+        "name": "v2_ideal",
+        "state": "data/designs/fullaperture_v2_state.npz",
+        "pillars": "ideal"
+      },
+      {
+        "name": "v2_library",
+        "state": "data/designs/fullaperture_v2_state.npz",
+        "pillars": "library"
+      },
+      {
+        "name": "v2_library_sigma5nm",
+        "state": "data/designs/fullaperture_v2_state.npz",
+        "pillars": "library",
+        "errors": {
+          "sigma_um": 0.005,
+          "seed": 1
+        }
+      }
+    ],
+    "_config_path": "configs/fold_window_v2.yaml"
+  },
+  "git": {
+    "commit": "4f7de4ed5aa820b0e8ede050b2d0bed2c105ca5b",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-10T05:31:35+00:00"
+}
