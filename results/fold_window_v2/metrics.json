@@ -54,6 +54,61 @@
         }
       },
       "seconds": 759.3439745903015
+    },
+    "v2_library": {
+      "state": "data/designs/fullaperture_v2_state.npz",
+      "pillars": "library",
+      "errors": null,
+      "metasurface_transmission": 0.9712906684802244,
+      "windows": {
+        "4096": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.05477951218286751,
+          "depth_min_over_mean": 0.7795311306672339,
+          "array_efficiency": 0.8225879332908711,
+          "core_efficiency": 0.6810275056163245,
+          "cell_power_nonuniformity_rms": 0.06586067992178818,
+          "waist_mean_um": 0.8668040194354865,
+          "waist_std_um": 0.02180122511389242,
+          "position_error_rms_um": 0.08401003965724792,
+          "axis_intensity_over_mean_site_peak": 0.4013647302657745,
+          "interstitial_median": 0.01277480253381683,
+          "interstitial_p99": 0.08656811998969259,
+          "interstitial_max": 0.4013647302657745,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            1.7356934187874407e-09,
+            -2.1808403774256623e-09
+          ],
+          "background_band_over_mean_peak": 0.0008411838242002388,
+          "window_mm": 2.048,
+          "seconds": 5.272186756134033
+        },
+        "18432": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.05246485348857151,
+          "depth_min_over_mean": 0.7860893051718483,
+          "array_efficiency": 0.8213009686758825,
+          "core_efficiency": 0.6806192399563638,
+          "cell_power_nonuniformity_rms": 0.06510301927582977,
+          "waist_mean_um": 0.866938415036105,
+          "waist_std_um": 0.02086092253276736,
+          "position_error_rms_um": 0.08361492349811525,
+          "axis_intensity_over_mean_site_peak": 0.3556997913210949,
+          "interstitial_median": 0.012383809491611948,
+          "interstitial_p99": 0.08687856634136504,
+          "interstitial_max": 0.3556997913210949,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -2.218799141902749e-06,
+            1.2533580095870154e-06
+          ],
+          "background_band_over_mean_peak": 0.0006616520643075131,
+          "window_mm": 9.216,
+          "seconds": 52.76217341423035
+        }
+      },
+      "seconds": 740.8570828437805
     }
   },
   "background_band_um": [
