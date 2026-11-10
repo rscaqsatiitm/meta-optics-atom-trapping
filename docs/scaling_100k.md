@@ -62,6 +62,38 @@ the 15.5 and 25 mm entries are upper bounds by ~15 to 30 %.
 
 ## Full 100,000-site design at the cell geometry
 
+Correction (review 3, 2026-11-10). Every depth non-uniformity, efficiency and axis-light value
+in the tables of this section up to "Feedback on the unfolded grid" was measured in a 2.048 mm
+fold window of the folded propagation (propagation/folded.py). Folding makes the focal field
+periodic with that period, so all light landing outside the window, the WGS design noise
+(the coarse pupil grid spans ~2.2 mm here) and the stray light of the library pillars (zero
+order, ghost foci, scatter), wraps back onto the sites; a smooth wide field adds coherently over
+the (18.4 mm / W)^2 copies. The feedback loops measured in the same window and corrected the
+alias pattern, so their reported convergence (0.015 % with ideal pillars, 0.45 % with library
+pillars, 3.5 % with 5 nm width noise, and the "library floor") is in-sample and wrong. The same
+designs re-measured with larger windows (scripts/fold_window_study.py,
+configs/fold_window_100k.yaml, results/fold_window_100k):
+
+| Design (pillars) | 2.048 mm window (as reported) | 4.6 / 6.1 / 9.2 mm windows | Array efficiency, 2.048 / 9.2 mm | Axis light / mean peak, 2.048 / 9.2 mm |
+|---|---|---|---|---|
+| Round 2 (ideal) | 7.14 % | 7.83 / 7.75 / 7.74 % | 0.857 / 0.840 | 0.102 / 0.060 |
+| Round 8, pupil-phase feedback (ideal) | 0.015 % | 6.33 / 6.18 / 6.22 % | 0.857 / 0.841 | 0.108 / 0.060 |
+| Round 17, library pillars in the loop (library) | 0.45 % | 6.81 / 6.60 / 6.72 % | 0.828 / 0.809 | 0.106 / 0.055 |
+| Round 17, sigma 5 nm width noise | 3.47 % | 6.93 / 6.67 / 6.75 % | 0.802 / 0.778 | 0.120 / 0.053 |
+
+The three larger windows agree to 0.2 percentage points, and the per-site errors of the round-8
+and round-17 designs in the 2.048 and 9.2 mm windows are uncorrelated (r = -0.02 and 0.03), so
+the in-loop values carry no information about the true errors. On the unfolded grid (36,864^2,
+18.4 mm period, so nothing within the aperture footprint is aliased) the round-17 design gives
+6.71 %, the 9.2 mm value. The array efficiency was 0.02 high in the 2.048 mm window, as was the
+axis light (0.10 to 0.12 against 0.05 to 0.06). The v2 design (20,164 sites, 0.57 mm array) is
+not affected: 5.33 / 5.48 / 5.76 % (ideal / library / sigma 5 nm) at 2.048 mm against 5.24 /
+5.25 / 5.26 % at 9.2 mm, efficiency within 0.003 (configs/fold_window_v2.yaml,
+results/fold_window_v2). The earlier folded validation (results/folded_validation_5mm) used ideal
+pixels and an array filling 0.21 of the window, so it could not show the effect. The feedback
+was therefore redone on the unfolded grid ("Feedback on the unfolded grid", below); the tables
+that follow until then are kept as the record of what was run.
+
 Run: 316 x 316 = 99,856 sites at 4.0 um pitch (array corner 891 um from the axis), NA 0.55,
 1075 nm, 18.4 mm metasurface (1.36 x 10^9 pixels), present cell stack, array 50 um beyond the
 lens focus. Settings as v2 (configs/fullaperture_100k.yaml; results/fullaperture_100k): 60
@@ -84,7 +116,8 @@ pillar cases.
 | + 5 nm rms width noise | 8.5 % | 0.70 | 0.803 | 0.865 um | 0.098 um | 0.10 / 0.28 | 0.071 mK | 212 W |
 | v2 (20,164 sites), library pillars, for comparison | 5.4 % | 0.84 | 0.826 | 0.869 um | 0.083 um | 0.09 / 0.12 | 0.370 mK | - |
 
-What the full design shows. (i) The physics scales as predicted above. The array efficiency
+What the full design shows (values in the 2.048 mm window; see the correction above for what
+changes). (i) The physics scales as predicted above. The array efficiency
 (0.83 with library pillars) and the spot size and position are those of the 20,164-site
 design. The power for 0.3 mK, 205 W, matches the 202 W estimate. The depth shows no field
 dependence: the radially binned mean (100 um bins) stays within 0.993 to 1.002 from the axis to
@@ -252,22 +285,67 @@ new error that each correction introduces through the mapping of the phase onto 
 pillars (Provisional). With sigma 5 nm width errors the final design gives 3.47 %, i.e. a random
 contribution of 3.44 % in quadrature, the same as for the gain-1.2 design.
 
-(iii) The brightest interstitial point rises to 0.26 to 0.28 of the mean site depth
-(v2: 0.12), at 460 to 570 um from the axis, while the 99th percentile is unchanged (0.10). At
-0.3 mK this is a ~80 uK spurious maximum at isolated points. Interstitial suppression in the
-feedback (dark targets) would address it.
+Feedback on the unfolded grid (configs/fullaperture_100k_full.yaml;
+results/fullaperture_100k_full). Pupil-phase feedback with library pillars in the loop, gain
+1.0, from the round-17 design, with every round measured on the unfolded 36,864^2 grid
+(fold_dtype complex64, the field propagated in place, ~11 GB; ~12.5 min per round on 4 cores).
 
-Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 99,856
-traps with 0.83 efficiency. With pupil-phase feedback (six rounds from the round-2 design) the
-depth non-uniformity is 0.015 % rms with ideal pillars and 2.7 % with library pillars (min / mean
-0.91), against 7.5 % after the original two WGS-target rounds; four further WGS-target rounds
-reach only 4.8 % (ideal) and 5.5 % (library pillars). Further pupil-phase rounds with the
-library pillars in the loop reach 0.45 % (min / mean 0.98; five rounds at gain 1.2, then four at
-0.8), and 3.5 % with random width errors of sigma 5 nm. 0.3 mK traps need ~205 W of 1075 nm (Si-rich SiN on fused silica is then
-outside its thermal limits; use LPCVD SiN or sapphire). The design residual and the deterministic
-library error are no longer limitations; the remaining non-uniformity is set by random pillar
-width errors (~3.4 % rms at sigma 5 nm), i.e. by fabrication, and by the local-periodic model
-used for the pillars, which a full-wave check of the metasurface would have to confirm.
+| Round | Depth non-uniformity rms (library pillars) | Min / mean | Array efficiency | Axis intensity / mean peak | Orbit-error slope |
+|---|---|---|---|---|---|
+| 18 (round-17 design, unfolded) | 6.71 % | 0.75 | 0.809 | 0.054 | - |
+| 19 | 1.46 % | 0.92 | 0.809 | 0.063 | 0.18 |
+| 20 | 0.46 % | 0.97 | 0.809 | 0.064 | 0.29 |
+| 21 | 0.17 % | 0.99 | 0.809 | 0.064 | 0.34 |
+| 22 | 0.077 % | 0.995 | 0.809 | 0.064 | 0.37 |
+| 23 | 0.040 % | 0.997 | 0.809 | 0.064 | 0.38 |
+| 24 | 0.024 % | 0.997 | 0.809 | 0.064 | 0.33 |
+| 25 | 0.017 % | 0.999 | 0.809 | 0.064 | 0.21 |
+| 26 | 0.014 % | 0.997 | 0.809 | 0.064 | - |
+
+Final design with fabrication errors (same grid; error models as in configs/checks_v2.yaml):
+
+| Case | Depth non-uniformity rms | Min / mean | Array efficiency | Axis intensity / mean peak | Interstitial p99 / max |
+|---|---|---|---|---|---|
+| Library pillars (LPA) | 0.014 % | 0.997 | 0.809 | 0.064 | 0.093 / 0.22 |
+| Uncorrelated width noise, sigma 5 nm (seeds 1 / 2 / 3) | 0.37 / 0.37 / 0.37 % | 0.982 / 0.984 / 0.985 | 0.778 | 0.063 to 0.065 | 0.093 / 0.22 |
+| Correlated width error, 5 nm rms over 50 um | 5.5 % | 0.76 | 0.790 | 0.105 | 0.099 / 0.27 |
+| Combined (100 um stitching fields, 20 nm stitch, 2 nm field bias, 3 nm over 5 um, 3 nm random) | [pending: run in progress] | | | | |
+
+With an alias-free measurement the feedback converges as it did on the 16 x 16 test: the error
+falls by a factor 3 to 4 per round at first and ~1.5 at the end, with positive orbit-error
+slopes of 0.18 to 0.38 (each correction removes most of the previous pattern without overshoot),
+and no loss of efficiency (0.809). The design residual and the deterministic library error are
+both removed (0.014 % rms, in-sample but without aliasing); the "floor set by the discrete
+library pillars" of the folded runs was an alias. The remaining limits are therefore (i) the
+local-periodic model of the pillars, which these runs cannot test (a full-wave check of a
+metasurface section is needed), and (ii) fabrication. Uncorrelated pixel-level width noise of
+5 nm costs only 0.37 % rms and 0.031 in efficiency (identical for three draws), against 3.4 %
+claimed from the folded runs. Smooth width errors of the same rms over 50 um (dose drift,
+proximity effect) cost 5.5 % rms and drop the weakest site to 0.76 of the mean, because they
+act like a slowly varying phase error that moves light between neighbouring regions of the
+array. The fabrication specification is therefore on correlated width errors: to stay below
+~1 % rms they must be held to ~1 nm over tens of um (DERIVED, assuming the rms scales linearly
+with the error amplitude, untested), or measured after fabrication and corrected in a second
+design iteration.
+
+(iii) The brightest interstitial point is 0.22 of the mean site depth on the unfolded grid
+(final design, at 568 um from the axis; 0.26 to 0.28 in the 2.048 mm window), against 0.12 for
+v2, with the 99th percentile at 0.093. At 0.3 mK this is a ~65 uK spurious maximum at isolated
+points. Interstitial suppression in the feedback (dark targets) would address it.
+
+Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 99,856 traps
+with an array efficiency of 0.81 (library pillars, unfolded grid; 0.83 in the earlier folded
+runs, which overstated it by 0.02). The folded runs with a 2.048 mm window aliased stray light
+and design noise onto the array, and all their feedback results were in-sample artefacts: the
+true non-uniformity of those designs is 6.2 to 7.7 %. Pupil-phase feedback measured on the
+unfolded grid, with library pillars in the loop, removes the design residual and the
+deterministic library error in eight rounds (6.71 to 0.014 % rms, min / mean 0.997, efficiency
+unchanged). Uncorrelated 5 nm width noise then adds only 0.37 %, but smooth width errors of 5 nm
+over 50 um give 5.5 % (min / mean 0.76): the uniformity is set by correlated fabrication errors
+and by the validity of the local-periodic pillar model, which a full-wave check must confirm.
+0.3 mK traps need ~210 W [pending: power budget of the unfolded run] of 1075 nm (Si-rich SiN on fused silica is then outside its thermal
+limits; use LPCVD SiN or sapphire). A fold window of 9.2 mm reproduces the unfolded result for
+this design (6.72 against 6.71 %), so the 10^6-site run (configs/fullaperture_1M.yaml) uses it.
 
 ## Discussion
 
