@@ -308,7 +308,9 @@ Final design with fabrication errors (same grid; error models as in configs/chec
 |---|---|---|---|---|---|
 | Library pillars (LPA) | 0.014 % | 0.997 | 0.809 | 0.064 | 0.093 / 0.22 |
 | Uncorrelated width noise, sigma 5 nm (seeds 1 / 2 / 3; upper bound, see text) | 0.37 / 0.37 / 0.37 % | 0.982 / 0.984 / 0.985 | 0.778 | 0.063 to 0.065 | 0.093 / 0.22 |
-| Correlated width error, 5 nm rms over 50 um | 5.5 % | 0.76 | 0.790 | 0.105 | 0.099 / 0.27 |
+| Correlated width error, 5 nm rms over 50 um (seeds 15 / 16 / 17) | 5.54 / 5.59 / 5.54 % | 0.76 / 0.78 / 0.77 | 0.790 | 0.075 to 0.105 | 0.099 / 0.24 to 0.27 |
+| Correlated, 2.5 nm over 50 um | 2.76 % | 0.87 | 0.797 | 0.083 | - / 0.25 |
+| Correlated, 5 nm over 20 um / over 200 um | 5.04 / 5.84 % | 0.77 / 0.77 | 0.788 / 0.792 | 0.033 / 0.070 | - / 0.26 / 0.24 |
 | Combined (100 um stitching fields: 20 nm stitch, 2 nm field bias; 3 nm over 5 um; 3 nm random) | 3.3 % | 0.86 | 0.783 | 0.069 | 0.095 / 0.25 |
 
 With an alias-free measurement the feedback converges as it did on the 16 x 16 test: the error
@@ -330,10 +332,15 @@ physical value is lower still, probably below 0.2 % (Provisional, from that 1 / 
 proximity effect) cost 5.5 % rms and drop the weakest site to 0.76 of the mean, because they
 act like a slowly varying phase error that moves light between neighbouring regions of the
 array. The combined case of configs/checks_v2.yaml (stitching, field bias, short-range correlated
-and random errors) gives 3.3 % (min / mean 0.86). The fabrication specification is therefore on correlated width errors: to stay below
-~1 % rms they must be held to ~1 nm over tens of um (DERIVED, assuming the rms scales linearly
-with the error amplitude, untested), or measured after fabrication and corrected in a second
-design iteration.
+and random errors) gives 3.3 % (min / mean 0.86). The fabrication specification is therefore on correlated width errors. Three
+realisations at 5 nm over 50 um agree to 0.05 percentage points; halving the amplitude halves
+the non-uniformity (2.76 against 5.54 %, ratio 0.50), and the correlation length matters little
+between 20 and 200 um (5.04 to 5.84 %). Hence the non-uniformity is ~1.0 to 1.2 % per nm of rms
+correlated width error over this range (results/corr_errors_100k, configs/corr_errors_100k.yaml).
+Against the 10 % rms target the errors may reach ~8 nm; for <= 1 % rms, or for the weakest site
+above ~0.95 of the mean, they must be held to ~1 nm rms over tens to hundreds of um (DERIVED from
+the measured linear scaling; one smooth-noise model, bilinear value noise), or measured after
+fabrication and corrected in a second design iteration.
 
 (iii) The brightest interstitial point is 0.22 of the mean site depth on the unfolded grid
 (final design, at 568 um from the axis; 0.26 to 0.28 in the 2.048 mm window), against 0.12 for
@@ -353,7 +360,8 @@ true non-uniformity of those designs is 6.2 to 7.7 %. Pupil-phase feedback measu
 unfolded grid, with library pillars in the loop, removes the design residual and the
 deterministic library error in eight rounds (6.71 to 0.014 % rms, min / mean 0.997, efficiency
 unchanged; in-sample). Uncorrelated 5 nm width noise then adds at most 0.37 %, but smooth width
-errors of 5 nm over 50 um give 5.5 % (min / mean 0.76, one realisation): the uniformity is set by
+errors of 5 nm over 20 to 200 um give 5.0 to 5.8 % (min / mean 0.76 to 0.78; ~1.1 % per nm,
+linear in amplitude, three seeds): the uniformity is set by
 correlated fabrication errors and by the validity of the local-periodic pillar model.
 0.3 mK traps need ~207 W of 1075 nm (0.073 mK at 50 W, utilisation 0.64; 0.070 mK with the
 combined errors) (Si-rich SiN on fused silica is then outside its thermal

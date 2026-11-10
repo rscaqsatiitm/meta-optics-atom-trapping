@@ -200,8 +200,9 @@ that aliased stray light and design noise onto the array; the loop had corrected
 the same designs give 6.2 to 6.7 % in windows of 4.6 to 9.2 mm. Redone with every round measured
 on the unfolded 36,864^2 grid, the feedback with library pillars in the loop converges from 6.71
 to 0.014 % rms in eight rounds (min / mean 0.997, efficiency 0.809). Uncorrelated 5 nm width
-noise then adds at most 0.37 %, while smooth width errors of 5 nm over 50 um give 5.5 % (min / mean
-0.76), so correlated fabrication errors set the uniformity. The 10^6 run uses a 9.2 mm fold
+noise then adds at most 0.37 %, while smooth width errors of 5 nm over 20 to 200 um give 5.0 to
+5.8 % (min / mean 0.76 to 0.78; ~1.1 % per nm, linear in amplitude), so correlated fabrication
+errors set the uniformity. The 10^6 run uses a 9.2 mm fold
 window to fit in memory; for the 10^5 design that window differs from the unfolded grid by
 0.48 % rms per site, so its feedback has a floor of ~0.5 % unless the last rounds or the final
 evaluation use the unfolded grid (~12 GB).
