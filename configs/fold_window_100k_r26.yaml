@@ -1,0 +1,25 @@
+# Review 4, objection 2: the final unfolded-feedback design (round 26, 0.014 % on the unfolded grid)
+# measured in the 9.216 mm fold window used by configs/fullaperture_1M.yaml. Per-site comparison with
+# results/fullaperture_100k_full/per_site_library_lpa.npz: scripts/compare_per_site.py.
+# Run: python scripts/fold_window_study.py configs/fold_window_100k_r26.yaml
+run_id: fold_window_100k_r26
+wavelength_um: 1.075
+na: 0.55
+stack:
+- [2500, air]
+- [4000, fused_silica]
+- [9000, air]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.0
+sites: {kind: square, nx: 316, ny: 316, pitch_um: 4.0}
+pupil_guard: 1.25
+render_upsample: 5
+upsample: 4
+array_defocus_um: 50.0
+block_rows: 64
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}
+metrics_tile_px: 1024
+n_folds: [18432]
+cases:
+- {name: r26_library, state: data/designs/fullaperture_100k_full_round26_state.npz, pillars: library}
