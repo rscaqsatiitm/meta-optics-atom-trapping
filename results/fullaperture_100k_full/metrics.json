@@ -109,6 +109,28 @@
       ],
       "metasurface_transmission": 0.9562696533063997,
       "seconds": 1117.04509806633
+    },
+    "library_combined": {
+      "n_sites": 99856,
+      "depth_nonuniformity_rms": 0.03257160290082086,
+      "depth_min_over_mean": 0.8634219972842566,
+      "array_efficiency": 0.7826132173954068,
+      "core_efficiency": 0.6404021752074057,
+      "cell_power_nonuniformity_rms": 0.05388545416357811,
+      "waist_mean_um": 0.8668650903178988,
+      "waist_std_um": 0.018985340883698198,
+      "position_error_rms_um": 0.089925371319467,
+      "axis_intensity_over_mean_site_peak": 0.06884626620371427,
+      "interstitial_median": 0.014515021519187866,
+      "interstitial_p99": 0.09491295142377562,
+      "interstitial_max": 0.2487516391130183,
+      "interstitial_max_radius_um": 568.0,
+      "mean_site_offset_um": [
+        0.0001356102719773497,
+        -0.00012770351766796587
+      ],
+      "metasurface_transmission": 0.9563567315097877,
+      "seconds": 1211.5721652507782
     }
   },
   "feedback_history": [
@@ -187,5 +209,48 @@
   ],
   "aperture_mm": 18.42760311771506,
   "n_pixels": 1358954496,
-  "n_sites": 99856
+  "n_sites": 99856,
+  "power_budget": {
+    "library_lpa": {
+      "utilisation": 0.639530910564536,
+      "depth_mK_at_50W": 0.07257334091016465,
+      "depth_mK_at_100W": 0.1451466818203293
+    },
+    "library_sigma5nm": {
+      "utilisation": 0.6148013859515138,
+      "depth_mK_at_50W": 0.06976705869512219,
+      "depth_mK_at_100W": 0.13953411739024438
+    },
+    "library_sigma5nm_seed2": {
+      "utilisation": 0.6148040747506138,
+      "depth_mK_at_50W": 0.06976736381740871,
+      "depth_mK_at_100W": 0.13953472763481742
+    },
+    "library_sigma5nm_seed3": {
+      "utilisation": 0.6148042741990081,
+      "depth_mK_at_50W": 0.06976738645061697,
+      "depth_mK_at_100W": 0.13953477290123395
+    },
+    "library_smooth5nm_L50um": {
+      "utilisation": 0.6190718692306301,
+      "depth_mK_at_50W": 0.07025166895202577,
+      "depth_mK_at_100W": 0.14050333790405153
+    },
+    "library_combined": {
+      "utilisation": 0.6169232356330644,
+      "depth_mK_at_50W": 0.07000784411730508,
+      "depth_mK_at_100W": 0.14001568823461016
+    }
+  },
+  "power_budget_inputs": {
+    "core_fraction_ideal": 0.783,
+    "na_eff": 0.574,
+    "extra_factors": {
+      "edge_vs_lpa": 0.879,
+      "substrate_entrance_ar": 0.995,
+      "cell_wall_ar": 0.99,
+      "beam_shaper": 0.95,
+      "vector_peak": 0.917
+    }
+  }
 }

@@ -309,7 +309,7 @@ Final design with fabrication errors (same grid; error models as in configs/chec
 | Library pillars (LPA) | 0.014 % | 0.997 | 0.809 | 0.064 | 0.093 / 0.22 |
 | Uncorrelated width noise, sigma 5 nm (seeds 1 / 2 / 3) | 0.37 / 0.37 / 0.37 % | 0.982 / 0.984 / 0.985 | 0.778 | 0.063 to 0.065 | 0.093 / 0.22 |
 | Correlated width error, 5 nm rms over 50 um | 5.5 % | 0.76 | 0.790 | 0.105 | 0.099 / 0.27 |
-| Combined (100 um stitching fields, 20 nm stitch, 2 nm field bias, 3 nm over 5 um, 3 nm random) | [pending: run in progress] | | | | |
+| Combined (100 um stitching fields: 20 nm stitch, 2 nm field bias; 3 nm over 5 um; 3 nm random) | 3.3 % | 0.86 | 0.783 | 0.069 | 0.095 / 0.25 |
 
 With an alias-free measurement the feedback converges as it did on the 16 x 16 test: the error
 falls by a factor 3 to 4 per round at first and ~1.5 at the end, with positive orbit-error
@@ -323,7 +323,8 @@ metasurface section is needed), and (ii) fabrication. Uncorrelated pixel-level w
 claimed from the folded runs. Smooth width errors of the same rms over 50 um (dose drift,
 proximity effect) cost 5.5 % rms and drop the weakest site to 0.76 of the mean, because they
 act like a slowly varying phase error that moves light between neighbouring regions of the
-array. The fabrication specification is therefore on correlated width errors: to stay below
+array. The combined case of configs/checks_v2.yaml (stitching, field bias, short-range correlated
+and random errors) gives 3.3 % (min / mean 0.86). The fabrication specification is therefore on correlated width errors: to stay below
 ~1 % rms they must be held to ~1 nm over tens of um (DERIVED, assuming the rms scales linearly
 with the error amplitude, untested), or measured after fabrication and corrected in a second
 design iteration.
@@ -343,7 +344,8 @@ deterministic library error in eight rounds (6.71 to 0.014 % rms, min / mean 0.9
 unchanged). Uncorrelated 5 nm width noise then adds only 0.37 %, but smooth width errors of 5 nm
 over 50 um give 5.5 % (min / mean 0.76): the uniformity is set by correlated fabrication errors
 and by the validity of the local-periodic pillar model, which a full-wave check must confirm.
-0.3 mK traps need ~210 W [pending: power budget of the unfolded run] of 1075 nm (Si-rich SiN on fused silica is then outside its thermal
+0.3 mK traps need ~207 W of 1075 nm (0.073 mK at 50 W, utilisation 0.64; 0.070 mK with the
+combined errors) (Si-rich SiN on fused silica is then outside its thermal
 limits; use LPCVD SiN or sapphire). A fold window of 9.2 mm reproduces the unfolded result for
 this design (6.72 against 6.71 %), so the 10^6-site run (configs/fullaperture_1M.yaml) uses it.
 
