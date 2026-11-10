@@ -71,6 +71,42 @@
         }
       },
       "seconds": 906.2026400566101
+    },
+    "smooth2p5nm_L50um_seed15": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": {
+        "corr_sigma_um": 0.0025,
+        "corr_length_um": 50.0,
+        "seed": 15
+      },
+      "metasurface_transmission": 0.9590528898979448,
+      "windows": {
+        "36864": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.027576510193386743,
+          "depth_min_over_mean": 0.8743811585759297,
+          "array_efficiency": 0.7971574290827649,
+          "core_efficiency": 0.6526866098707844,
+          "cell_power_nonuniformity_rms": 0.051609847140641464,
+          "waist_mean_um": 0.8666989373810502,
+          "waist_std_um": 0.01879194188271628,
+          "position_error_rms_um": 0.08957937691243141,
+          "axis_intensity_over_mean_site_peak": 0.0828079537171812,
+          "interstitial_median": 0.01447163608282361,
+          "interstitial_p99": 0.09445051737931144,
+          "interstitial_max": 0.24713517962938092,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            -0.00012876303259328408,
+            -0.0001198549833029635
+          ],
+          "background_band_over_mean_peak": 0.0024727648538189727,
+          "window_mm": 18.432,
+          "seconds": 155.1014368534088
+        }
+      },
+      "seconds": 907.8767995834351
     }
   },
   "background_band_um": [
