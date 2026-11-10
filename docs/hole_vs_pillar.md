@@ -17,8 +17,11 @@ transmission, which is what we test here.
 
 Holes are not competitive. With the same solver settings and fabrication limits, the best hole
 family reaches a 16-level efficiency (local-periodic approximation, averaged over a +/-10 nm width
-bias) of 0.861, against 0.958 for pillars, needs a 2.8 um film instead of 1.6 um, does not reach
-2 pi of phase coverage within the fabrication limits, and absorbs 5.7 times more power in the film.
+bias) of 0.861, against 0.958 for pillars, needs a 2.8 um film instead of 1.6 um, has only
+5.47 rad of phase coverage in its selected family, and absorbs 5.7 times more power in the film.
+The hole optimum lies inside the searched box (pitch 0.40 to 0.70 um, height 0.8 to 4.0 um for
+holes): extending the search past p 0.60 um and h 3.0 um, where the first sweep ended, found no
+better hole family (review 3).
 The continuous film was expected to help with heat; it does the opposite, because the hole family
 keeps two thirds of the film in the beam and is nearly twice as thick.
 
@@ -39,7 +42,9 @@ film of 1.6 um absorbs 1.25e-3 and one of 2.8 um 2.19e-3. Selected family: the s
 Square lattice, light incident from the fused-silica substrate, exit into air, normal incidence.
 Holes: circular air holes through a film of thickness h (film continuous around them). Pillars:
 square pillars of height h, as in the existing library. Pitches 0.40 to 0.60 um, heights 0.8 to
-3.0 um, 40 widths or diameters from 0.06 um to p - 0.06 um (results/hole_vs_pillar/sweep.json;
+3.0 um, extended for holes to pitches 0.65 and 0.70 um (below lambda / n_sub = 0.742 um, the
+onset of substrate diffraction; heights 0.8 and 2.0 to 4.0 um) and to heights 3.2 to 4.0 um at
+pitches 0.50 to 0.60 um; 40 widths or diameters from 0.06 um to p - 0.06 um (results/hole_vs_pillar/sweep.json;
 configs/hole_vs_pillar.yaml; scripts/hole_vs_pillar.py). Both families are computed with fmmax in
 the pol_fourier formulation, which shows no spurious cross-polarisation for C4v cells
 (tests/test_rcwa.py): t_cross <= 8e-4 for the selected families and <= 9e-3 over the whole sweep
@@ -63,8 +68,11 @@ hole cannot remove more than ~50 % of the film at p 0.5 um while keeping a 100 n
 be narrower than h / 10, so its effective index stays between ~1.6 and ~2.2, a contrast of ~0.6
 (Provisional, from the fill fractions of the selected families). Hence the film must be about
 twice as thick for the same coverage. The thicker film raises the aspect ratio of the smallest
-hole, which in turn removes the small holes that carried the high-index end of the range, so the
-coverage stays below 2 pi within the fabrication limits. The selected hole families also have
+hole, which in turn removes the small holes that carried the high-index end of the range. Within
+aspect 10 none of the ten best hole families reaches 2 pi (at most 5.98 rad, p 0.65 um,
+h 3.6 um). At aspect 15 some do (up to 7.25 rad, p 0.55 um, h 3.6 um; an earlier version of this
+note said none did), but with lower robust efficiency than the selected 0.50 um / 3.0 um family:
+coverage is not what limits holes there; the resonances of the thick film are. The selected hole families also have
 lower and more strongly varying T0 (0.77 to 0.78 minimum), from Fabry-Perot and slab-guided
 resonances of the thick continuous film, as Goldberg et al. note for their visible devices.
 
