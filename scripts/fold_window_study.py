@@ -62,15 +62,22 @@ def geometry(cfg):
     return dict(lam=lam, na=na, dx=dx, stack=stack, stack_sites=stack_sites, ill=ill, sites=sites, fs=fs, fstab=fstab, g=g, tab=tab, n=n)
 
 
-def band_background(foc, dx, x_in, x_out):
-    """Mean |E|^2 over the square band x_in < max(|x|, |y|) < x_out (um), axis at N//2."""
+def band_background(foc, dx, x_in, x_out, rows=512):
+    """Mean |E|^2 over the square band x_in < max(|x|, |y|) < x_out (um), axis at N//2.
+
+    Evaluated in row blocks, so the unfolded 36,864^2 grid (a RolledView) is never copied whole."""
     c = foc.shape[0] // 2
     k = int(x_out / dx)
-    sub = foc[c - k : c + k, c - k : c + k]
     ax = (np.arange(-k, k)) * dx
-    m = np.maximum(np.abs(ax)[:, None], np.abs(ax)[None, :])
-    sel = (m > x_in) & (m < x_out)
-    return float(np.mean(np.abs(sub[sel]) ** 2))
+    total, count = 0.0, 0
+    for r0 in range(0, 2 * k, rows):
+        r1 = min(2 * k, r0 + rows)
+        sub = foc[c - k + r0 : c - k + r1, c - k : c + k]
+        m = np.maximum(np.abs(ax[r0:r1])[:, None], np.abs(ax)[None, :])
+        sel = (m > x_in) & (m < x_out)
+        total += float(np.sum(np.abs(sub[sel]) ** 2))
+        count += int(sel.sum())
+    return total / count
 
 
 def main(cfg_path):
@@ -88,7 +95,8 @@ def main(cfg_path):
     res = json.load(open(mpath)) if mpath.exists() else {}
     res.setdefault("cases", {})
     half_array = float(np.abs(G["sites"]).max())
-    bg_band = (half_array + 40.0, min(n_folds) * G["dx"] / 2 - 20.0)
+    # Band outside the array, capped at the 2.048 mm window's band so all runs compare like with like.
+    bg_band = (half_array + 40.0, min(min(n_folds) * G["dx"] / 2 - 20.0, 1004.0))
     res["background_band_um"] = bg_band
     res["n_metasurface"] = G["n"]
     for case in cfg["cases"]:
