@@ -3,7 +3,8 @@
 Technical note. Question (USER): would moving the metasurface closer to the atoms (in vacuum,
 e.g. 3 mm) help to reach 100,000 traps? All numbers are SIM (review before submission) or
 DERIVED. Code: scripts/scaling_100k.py, configs/scaling_100k.yaml, configs/scaling_sc_*.yaml;
-results: results/scaling_100k/{scaling,summary}.json, results/scaling_100k_sc_si_rich.
+results: results/scaling_100k/{scaling,table}.json (table.json from scripts/scaling_100k_table.py
+holds every number of the Results table), results/scaling_100k_sc_si_rich.
 
 ## Result
 
@@ -11,7 +12,7 @@ No. A shorter working distance does not remove any of the constraints that bind 
 100,000 sites, and it tightens two of them. The trapping hologram tolerates short distances
 well, because exact-kernel design has no field aberration. At 3 mm the corner site of a
 316 x 316 array at 4 um pitch keeps 0.89 of the axial depth, which costs 4 % more power. The
-binding constraints are three. (i) Total power: ~200 W for 0.3 mK, ~120 W for 0.18 mK. This is
+binding constraints are three. (i) Total power: ~210 W for 0.3 mK, ~126 W for 0.18 mK. This is
 independent of the distance, but the intensity on the metasurface grows as 1 / WD^2, to
 1.7 kW/cm^2 at 3 mm. (ii) The field of the imaging and addressing lens: at 3 mm it images only
 ~25,000 sites at 4 um pitch. (iii) The design computation (~30 to 50 GB of kernels), which is

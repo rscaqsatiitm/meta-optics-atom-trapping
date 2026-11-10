@@ -52,7 +52,7 @@ def render_fold(cfg, stack, lam, na, ill, g, fs, fstab, tab, d, lookup, errors, 
     holo = S.render_grid_symmetric(g, stack, na, ill, fs, fstab, d.coeffs, tab, lam, upsample=cfg.get("render_upsample", 8))
     blocks = metasurface_blocks(n, dx, stack, lam, na, None, None, ill, holo=holo, lookup=lookup, pillar_errors=errors,
                                 block=cfg.get("block_rows", 128), with_incident=True)
-    F, p_pix, p_inc_pix = fold_blocks(blocks, n, nf)
+    F, p_pix, p_inc_pix = fold_blocks(blocks, n, nf, dtype=np.dtype(cfg.get("fold_dtype", "complex128")))
     del holo
     gc.collect()
     return F, p_pix, p_inc_pix

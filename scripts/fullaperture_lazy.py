@@ -12,7 +12,9 @@ longer scales with (pupil samples x sites).
          (hologram/tiled.py); required for 10^6 sites on a 16 GB machine. The fine
          hologram values are evaluated by a windowed-sinc interpolant of the coarse pupil
          grid (closer to the exact field than the FFT-upsampled grid, tests/test_tiled.py),
-         and the focal field is upsampled and measured tile by tile.
+         and the focal field is upsampled and measured tile by tile. With fold_dtype:
+         complex64 and n_fold equal to the metasurface size (36,864 at 18.4 mm), the field
+         is not folded at all (unfolded grid, ~11 GB, propagated in place).
 """
 
 import importlib.util
@@ -56,7 +58,7 @@ def install(gpu=False, tiled=False):
                                  kernel=lambda *a: KC(*a))
         blocks = FA.metasurface_blocks(n, dx, stack, lam, na, None, None, ill, holo=holo, lookup=lookup, pillar_errors=errors,
                                        block=cfg.get("block_rows", 128), with_incident=True)
-        F, p_pix, p_inc_pix = FA.fold_blocks(blocks, n, nf)
+        F, p_pix, p_inc_pix = FA.fold_blocks(blocks, n, nf, dtype=np.dtype(cfg.get("fold_dtype", "complex128")))
         del holo
         FA.gc.collect()
         return F, p_pix, p_inc_pix

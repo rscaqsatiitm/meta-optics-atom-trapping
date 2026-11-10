@@ -32,7 +32,8 @@ Mechanical tolerances (852 nm, Strehl >= 0.92 over the field after refocusing):
 (iii) cell-wall thickness within +/-50 um (0.988);
 (iv) relative plate tilt <= 0.1 deg, after its coma is nulled by decentring the focusing plate;
 uncorrected, a 0.1 deg tilt is equivalent to a 28 um decentre and fails;
-(v) tilt of the cell relative to the objective <= 0.1 deg (0.93 at the corner).
+(v) tilt of the cell relative to the objective <= 0.1 deg (0.93 at the corner with the atom
+plane fixed to the cell, 0.97 with the plane perpendicular to the objective; Section 7).
 
 Efficiency (Section 6): blazed-supercell RCWA of the single-pillar libraries gives an estimated
 doublet focusing efficiency of 0.80 to 0.83 at 852 and 1064 nm (LPCVD or Si-rich SiN). The loss
@@ -427,9 +428,9 @@ Tilts are modelled as exact rotations of the downstream optics (raytrace.Frame).
 | plate tilt 0.1 deg, coma nulled by a 31 um decentre | 0.962 / 0.985 / 0.999 / 0.994 / 0.962 | | |
 | plate tilt 0.25 deg, nulled (78 um) | 0.78 / 0.93 / 0.999 / 0.95 / 0.78 | | |
 | plate tilt 0.5 deg, nulled (155 um) | 0.34 / 0.76 / 0.998 / 0.80 / 0.34 | | |
-| cell tilt 0.1 deg | 0.933 / 0.967 / 0.971 / 0.957 / 0.933 | -0.14 um | |
-| cell tilt 0.25 deg | 0.65 / 0.80 / 0.84 / 0.78 / 0.65 | | |
-| cell tilt 0.5 deg | 0.20 / 0.40 / 0.48 / 0.38 / 0.20 | | |
+| cell tilt 0.1 deg | 0.933 / 0.967 / 0.971 / 0.957 / 0.933 | -0.14 um | plane perpendicular to the objective: 0.969 to 0.973 |
+| cell tilt 0.25 deg | 0.65 / 0.80 / 0.84 / 0.78 / 0.65 | | same: 0.831 to 0.840 |
+| cell tilt 0.5 deg | 0.20 / 0.40 / 0.48 / 0.38 / 0.20 | | same: 0.477 to 0.488 |
 
 Interpretation. The decentre sensitivity comes from the corrector. Its ~155 waves of
 aspheric phase cancel the spherical aberration of the focusing plate, and a lateral offset
@@ -443,7 +444,12 @@ nulling), with tip/tilt kept within ~0.1 deg (autocollimation resolves far less)
 required centring, <= 2 to 5 um, is comparable to that of high-NA refractive objectives
 `[REF?: typical centring tolerances of NA 0.5 objectives]`. It is set by mount
 adjustment, not by the lithography, whose overlay between plates is irrelevant once the
-plates are aligned optically. The cell tilt (<= 0.1 deg) is the same specification as for the
+plates are aligned optically. The cell-tilt rows evaluate the plane fixed to the tilted cell, so
+the field edge is defocused by h x tilt (0.7 um at 400 um and 0.1 deg); with the evaluation
+plane perpendicular to the objective axis (atom plane set by the optics) only the wall
+aberration remains, and the Strehl ratio is nearly uniform over the field (Notes column;
+results/cell_tilt_planes.json, scripts/cell_tilt_planes.py). The on-axis value, 0.971 at 0.1 deg
+and 0.84 at 0.25 deg, is the same in both cases. The cell tilt (<= 0.1 deg) is the same specification as for the
 hologram (docs/prefab_checks_report.md, Section 2), so one alignment of the cell normal
 serves both sides. The wall thickness must be known to +/-50 um, or the design recomputed
 for the measured value: a +200 um error leaves 0.85, uncorrectable by refocusing.
@@ -462,7 +468,8 @@ This is the same air-spaced aplanatic doublet at NA 0.55 (as the side-A hologram
 Strehl ratio is >= 0.9992 over 0 to 400 um; at free focus it is 0.968 at 1.0 mm and 0.890 at
 1.3 mm. The axisymmetric wave check gives 0.9974. Tolerances (Strehl over -400 / 0 / 400 um):
 decentre 2 um 0.984 to 0.988, 5 um 0.913 to 0.921; spacing +50 um 0.990; wall +50 um 0.983;
-plate tilt 0.1 deg with coma nulled 0.959 / 0.998; cell tilt 0.1 deg 0.929 / 0.965. The
+plate tilt 0.1 deg with coma nulled 0.959 / 0.998; cell tilt 0.1 deg 0.929 / 0.965 (plane fixed
+to the cell). The
 focusing plate needs a deflection of 0.55 at R2 (0.63 at the field-extended radius). The
 estimated doublet efficiency from the 1075 nm supercells is 0.80 (LPCVD) / 0.82 (Si-rich).
 The LPCVD supercells reach only s = 0.45, so the outer ring is extrapolated and this value

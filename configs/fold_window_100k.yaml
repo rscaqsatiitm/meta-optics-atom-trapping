@@ -1,0 +1,33 @@
+# Fold-window study of the stored 100k designs (review finding 1 and 2): each case rendered once,
+# folded onto windows of 2.048, 4.608, 6.144 and 9.216 mm, propagated and measured with the
+# --tiled metrics of scripts/fullaperture_lazy.py. Same geometry as fullaperture_100k_pplib_g08.
+# r17_library: final design (in-sample 0.45 % at 2.048 mm); r2_ideal: before pupil-phase feedback
+# (7.14 %); pp8_ideal: pupil-phase feedback, ideal pillars (in-sample 0.015 %).
+# Run: python scripts/fold_window_study.py configs/fold_window_100k.yaml
+run_id: fold_window_100k
+wavelength_um: 1.075
+na: 0.55
+stack:
+- [2500, air]
+- [4000, fused_silica]
+- [9000, air]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.0
+sites: {kind: square, nx: 316, ny: 316, pitch_um: 4.0}
+pupil_guard: 1.25
+render_upsample: 5
+upsample: 4
+array_defocus_um: 50.0
+block_rows: 64
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}
+metrics_tile_px: 1024
+n_folds: [4096, 9216, 12288, 18432]
+cases:
+- {name: r17_library, state: data/designs/fullaperture_100k_pplib_round17_state.npz, pillars: library}
+- {name: r2_ideal, state: data/designs/fullaperture_100k_round2_state.npz, pillars: ideal}
+- {name: pp8_ideal, state: data/designs/fullaperture_100k_pp_round8_state.npz, pillars: ideal}
+- name: r17_library_sigma5nm
+  state: data/designs/fullaperture_100k_pplib_round17_state.npz
+  pillars: library
+  errors: {sigma_um: 0.005, seed: 1}

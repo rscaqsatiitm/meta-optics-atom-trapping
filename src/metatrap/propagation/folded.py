@@ -11,7 +11,12 @@ modulo W:
 Hence  E_focal(x) (periodised) = IFFT_{N_f}[ FFT_{N_f}(E_fold) H ],  with H the
 transfer function of the layer stack sampled at df. The result is exact for points
 whose true focal field has negligible copies from |x + k W| (k != 0), i.e. it aliases
-only the stray light that falls more than W/2 from the axis. The metasurface field is
+only the stray light that falls more than W/2 from the axis. That stray light is not
+negligible for library pillars: a smooth, wide field (zero order, ghost foci) adds coherently
+over the (aperture / W)^2 copies, and scattered light incoherently. For the 10^5-site design
+(18.4 mm aperture) a 2.048 mm window gave 0.45 % rms against 6.6 to 6.8 % at 4.6 to 6.1 mm
+(scripts/fold_window_study.py). Use a window that holds the whole aperture footprint, or check
+the metrics against the window size. The metasurface field is
 generated and folded block by block, so the memory needed is that of one block plus the
 N_f x N_f buffer, independent of the aperture size. Validation against a full-grid FFT:
 scripts/validate_folded.py.
@@ -26,16 +31,17 @@ from .angular_spectrum import WORKERS, propagate, transfer_function
 from .layers import LayerStack
 
 
-def fold_blocks(blocks, n: int, n_fold: int):
+def fold_blocks(blocks, n: int, n_fold: int, dtype=np.complex128):
     """Fold (row_start, block[, incident]) pieces of an n x n field (axis at n//2) modulo n_fold.
 
     Returns (folded field with the axis at index 0, transmitted power sum |E|^2 per pixel
     area); if the pieces carry an incident-power term, a third item with its sum is returned.
-    n must be a multiple of n_fold.
+    n must be a multiple of n_fold. dtype=complex64 halves the buffer (n_fold = n: the unfolded
+    36,864^2 grid in 10.9 GB); the per-block sums are formed in complex128.
     """
     if n % n_fold:
         raise ValueError("n must be a multiple of n_fold")
-    F = np.zeros((n_fold, n_fold), np.complex128)
+    F = np.zeros((n_fold, n_fold), dtype)
     power = 0.0
     incident = None
     c = n // 2
@@ -46,12 +52,39 @@ def fold_blocks(blocks, n: int, n_fold: int):
         b = blk.shape[0]
         power += float(np.sum(np.abs(blk) ** 2))
         cols = np.roll(blk, -c, axis=1).astype(np.complex128)  # column c -> 0; n % n_fold == 0
-        cols = cols.reshape(b, n // n_fold, n_fold).sum(axis=1)
+        cols = cols.reshape(b, n // n_fold, n_fold).sum(axis=1).astype(dtype, copy=False)
         rows = (np.arange(r0, r0 + b) - c) % n_fold
         np.add.at(F, rows, cols)
     if incident is not None:
         return F, power, incident
     return F, power
+
+
+def fold_blocks_multi(blocks, n: int, n_folds, dtype=np.complex64):
+    """Fold the same stream of blocks onto several windows at once (one render, several W).
+
+    Returns ([F for each n_fold], transmitted power sum, incident power sum or None). Each
+    n_fold must divide n. complex64 accumulation keeps an 18432^2 window at 2.7 GB; the
+    relative rounding error of a sum of (n / n_fold)^2 terms is ~1e-7 x that number.
+    """
+    for nf in n_folds:
+        if n % nf:
+            raise ValueError("n must be a multiple of every n_fold")
+    Fs = [np.zeros((nf, nf), dtype) for nf in n_folds]
+    power, incident = 0.0, None
+    c = n // 2
+    for item in blocks:
+        r0, blk = item[0], item[1]
+        if len(item) > 2:
+            incident = (incident or 0.0) + item[2]
+        b = blk.shape[0]
+        power += float(np.sum(np.abs(blk) ** 2))
+        rolled = np.roll(blk, -c, axis=1)
+        for F, nf in zip(Fs, n_folds):
+            cols = rolled.reshape(b, n // nf, nf).sum(axis=1, dtype=np.complex128).astype(dtype)
+            rows = (np.arange(r0, r0 + b) - c) % nf
+            np.add.at(F, rows, cols)
+    return Fs, power, incident
 
 
 def propagate_folded(F: np.ndarray, dx: float, lam_um: float, stack: LayerStack, fresnel: bool = False, low_memory: bool = False) -> np.ndarray:

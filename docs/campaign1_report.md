@@ -422,8 +422,8 @@ full-pixel run would quantify (the renderer accepts a lookup table; not yet run)
 (iii) Supercell factor below 13 deg. Supercells were computed down to sin(theta) = 0.22
 (LPCVD) and 0.27 (Si-rich); the ratio is interpolated to 1 at normal incidence. If the
 inter-pillar coupling loss persists at small deflections, the factor is lower by up to
-~0.05 (Provisional). The supercell results themselves are converged to 0.4 % in Fourier
-order and grid.
+~0.05 (Provisional). The supercell results themselves are converged to within 1 % in Fourier
+order and grid (0.817 to 0.821 at N = 4, 0.869 to 0.877 at N = 8; Section 3).
 
 (iv) The full-pixel validation is limited to a 5 mm aperture by memory (10^8 pixels,
 ~5 GB). The 18 to 20 mm in-cell design is evaluated only with the pupil model and the

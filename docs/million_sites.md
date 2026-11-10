@@ -37,13 +37,15 @@ site box, with a plane fitted over 0 to 2.83 mm) and fails at 2.83 mm (29 %).
 Shrinking the beam on it reduces the NA, not the number of sites. The lenslet-array
 architecture does it naturally: each illuminated lenslet makes one trap, so a flat-top beam of
 side sqrt(N) p sets N at constant depth per trap. For 10x demagnification and 4 um pitch the
-beam side runs from 0.13 mm (N = 10) to 40 mm (N = 10^6), at a constant 0.14 kW/cm^2 on the
+beam side runs from 0.13 mm (N = 10) to 40 mm (N = 10^6), at a constant 0.15 kW/cm^2 on the
 lenslet array for 0.2 mK.
 
 What must improve: wafer-scale (40 to 50 mm) metasurface fabrication, which needs DUV
 lithography rather than e-beam; GPU-class computation for direct holograms beyond ~10^5 sites;
-a large-format camera (>= 16 Mpx); and the pupil fill of the lenslet route, which a square
-lenslet limits to 0.785 and a hexagonal lenslet raises to 0.91 to 0.93 (Section 4).
+a large-format camera (>= 16 Mpx); and the depth per watt of the lenslet route. At the relay's
+Fresnel number of 0.93 a square lenslet delivers, in the bulk of the array, 0.62 to 0.74 of the
+peak per watt of a uniformly filled pupil, depending on the per-lenslet piston pattern
+(Section 4).
 
 ![Field radius versus focal length and NA; ensquared energy across the 10^6-site field](../results/million/million_summary.png)
 
@@ -114,6 +116,15 @@ Entries: ensquared energy in the 4 um box / largest neighbour-box fraction, both
 
 Hence the 42 mm objective images the 10^6-site array at 4 um pitch with >= 0.87 of the light in the site box and <= 3.4 % in any neighbour (within 0.03 of the diffraction limit), the 25 mm objective does so to 2.12 mm (0.86 / 0.042) and degrades to 0.68 / 0.077 at 2.83 mm, and the 16 mm objective, whose single plane is a compromise over the whole field, keeps 0.61 / 0.067 at 2.12 mm and fails at 2.83 mm (0.29 / 0.19).
 
+Scope of these numbers. They are ideal-mask values: unit transmission, a meta-atom phase that does
+not depend on the angle of incidence, and scalar optics. No angular meta-atom response is modelled
+anywhere in this code. The focusing plates need local deflections (change of direction cosine) of
+0.50 at the pupil edge on axis and, at the 2.83 mm corner, about 0.67 (16 mm), 0.61 (25 mm) and
+0.56 (42 mm) (DERIVED from the plate phase gradients along a chief-ray footprint estimate), beyond
+the largest supercell deflection computed (0.54, at 1075 nm; Section 3 of campaign1_report.md).
+The ensquared energies are therefore upper bounds on the field quality; the efficiency and any
+field-dependent loss of contrast from the meta-atoms at these angles remain to be computed.
+
 3 um pitch, plane chosen for that field (results/million/imaging_ee_3um.json,
 configs/imaging_1M_3um.yaml). The 3.0 mm array (corner 2.12 mm) is evaluated with a 3 um box
 and a common plane chosen over 0 to 2.12 mm only; the 2.12 mm column of the table above used a
@@ -153,19 +164,22 @@ scripts/million_tolerances.py):
 | Plate spacing +50 um / +200 um | 0.68 / 0.99 / 0.68; 0.23 / 0.96 / 0.23 |
 | Cell wall +50 um (refocus -33 um) | 0.81 / 0.98 / 0.81 |
 | Focusing plate decentred 2 / 5 / 10 um | 0.76 / 0.98 / 0.90; 0.61 / 0.91 / 0.96; 0.37 / 0.70 / 0.92 |
-| Cell tilted 0.05 deg | 0.49 / 0.99 / 0.49 |
-| Cell tilted 0.1 deg | 0.67 / 0.27 / 0.07 (refocus -3.7 um) |
+| Cell tilted 0.05 deg, atom plane fixed to the cell / perpendicular to the objective | 0.49 / 0.99 / 0.49; 0.78 / 0.99 / 0.89 |
+| Cell tilted 0.1 deg, same two planes | 0.67 / 0.27 / 0.07 (refocus -3.7 um); 0.72 / 0.97 / 0.93 |
 
 Used to the edge of its field, the objective has no Strehl margin there. To hold the 0.8
 criterion the spacing must be held to about 10 to 25 um and the plate centring to about 1 um
 (DERIVED: linear and quadratic interpolation between the nominal and the 50 um and 2 um cases). The
-wall thickness is uncritical, since a refocus absorbs it. The cell tilt rows are pessimistic:
-they keep the evaluation plane perpendicular to the objective axis, while the atom plane tilts
-with the cell. The depth of focus (+-lambda / (2 NA^2) = +-1.7 um) over the +-2.83 mm field
+wall thickness is uncritical, since a refocus absorbs it. The first value of each cell-tilt row
+evaluates the plane fixed to the tilted cell, so at the field edge the atoms lie h x tilt
+= 2.5 um (0.05 deg) from the focal surface; the second keeps the plane perpendicular to the
+objective axis, which leaves only the aberration of the tilted wall (results/cell_tilt_planes.json,
+scripts/cell_tilt_planes.py; an earlier version of this paragraph described the two planes the
+wrong way round). The depth of focus (+-lambda / (2 NA^2) = +-1.7 um) over the +-2.83 mm field
 requires the atom plane and the objective axis to be perpendicular to ~0.6 mrad (0.03 deg),
 or a matching tilt of the objective (DERIVED). For imaging, the ensquared energy is the
 relevant metric and is far more forgiving than the Strehl ratio: the 25 mm objective at
-2.83 mm (Strehl 0.30) still puts 0.73 of the light in the site box. Hence these tolerances
+2.83 mm (Strehl 0.30) still puts 0.68 of the light in the site box. Hence these tolerances
 bound the Strehl criterion, not the imaging fidelity (Provisional; ensquared energy not
 recomputed per case).
 
@@ -226,8 +240,9 @@ arXiv:2310.09191, read in session).
 Geometry (results/million/mla.json; DERIVED). The lenslet pitch is p = M a and the lenslet
 NA is NA_L = NA / M (it fills the objective pupil). The focal length is
 f_L = M^2 a / (2 NA). The Fresnel number N_F = a NA / (2 lambda) is independent of M: 0.93 at
-a = 4 um, 0.70 at 3 um (1075 nm). Each lenslet focus is therefore a Fourier-optics focus, and
-its aperture field maps one-to-one onto the objective pupil.
+a = 4 um, 0.70 at 3 um (1075 nm). Each lenslet focus is therefore a low-Fresnel-number focus:
+the objective-pupil field is the Fresnel-diffracted lenslet aperture, not a scaled copy of it
+(pupil field, below).
 
 | a | M | p | NA_L | f_L | MLA side for 10^6 | Lenslets per cm^2 |
 |---|---|---|---|---|---|---|
@@ -258,41 +273,70 @@ of the correction (Provisional). Hence the trapping side reaches
 <= 0.15 of correction deflection), or even with the present 16 mm objective at M = 20. The
 plates must cover R2 plus the field (an 8.1 + 2.8 mm radius for the 16 mm design).
 
-Pupil fill. Because N_F ~ 1, each lenslet aperture is imaged into the objective pupil: the
-uniformly lit aperture shape is the pupil amplitude. A phase on the lenslet cannot reshape it
-into a disc. (An earlier draft of this report assumed a square-to-circle phase mapping with
-~0.95 fill. That mapping needs geometric-optics propagation over many Fresnel lengths, which
-the lenslet does not have.) The focal peak per watt, relative to a uniformly filled disc, is
-|S n D|^2 / (|S| pi) for an aperture S and the pupil disc D (results/million/pupil_fill.json,
-scripts/million_pupil_fill.py; DERIVED, numerical):
+Pupil field. An earlier version of this section took the objective-pupil amplitude to be the
+uniformly lit lenslet aperture and found a peak per watt of 0.785 for a square lenslet
+circumscribing the stop (0.91 to 0.93 for hexagons). That geometric mapping needs N_F >> 1 and
+does not hold here. Referred to the lenslet focal plane (which the relay images onto the atoms),
+the pupil field of one square lenslet is F(sigma_x) F(sigma_y) with, per axis,
+F(sigma) = int_{-1}^{1} exp[-i pi N_F (u + sigma)^2] du. Here, u is the aperture coordinate in
+units of the lenslet half-width and sigma the pupil coordinate in units of the stop radius
+(sigma = 1 at NA 0.5). For N_F = 0.93 this Fresnel-integral profile carries amplitude and phase
+ripple and spills past the geometric edge. For an infinite lattice the pupil field is sampled at
+the reciprocal-lattice points, spaced lambda / (a NA) = 1 / (2 N_F) = 0.54 in sigma, so the bulk
+site field per unit lenslet power is Delta^2 sum_G F(G) over the orders G inside the stop
+(Delta = 0.54). Equal pistons put G at integer multiples of Delta, alternating pistons shift them
+by Delta / 2 along one axis (rows) or both (checkerboard). Results for a lenslet circumscribing
+the stop, scalar and with an aberration-free relay, the atom plane refocused for the largest
+peak (results/million/lenslet_fresnel.json, scripts/million_lenslet_fresnel.py; DERIVED,
+numerical):
 
-| Lenslet aperture (scaled to the stop radius R1) | Transmitted through the stop | Peak per watt |
+| a = 4 um, NA 0.5 (N_F = 0.93) | Uniform pupil (earlier) | Fresnel pupil |
 |---|---|---|
-| Square, circumscribing the stop (half-width R1) | 0.785 | 0.785 |
-| Square, inscribed (half-width 0.71 R1) | 1.00 | 0.637 |
-| Square, optimum (half-width 0.91 R1) | 0.888 | 0.831 |
-| Hexagon, circumscribing (inradius R1) | 0.907 | 0.907 |
-| Hexagon, optimum (inradius 0.96 R1) | 0.956 | 0.929 |
+| Single lenslet: fraction through the stop | 0.785 | 0.716 |
+| Single lenslet: peak per watt / uniform disc | 0.785 | 0.626 (0.630 refocused by 0.4 um) |
+| Bulk, equal pistons: peak per watt (/ single lenslet) | 0.54 (0.69) | 0.556 at the single-lenslet focus, 0.625 refocused by 2.2 um (0.89 to 0.99) |
+| Bulk, checkerboard 0 / pi: peak per watt (/ single lenslet) | 0.96 (1.22) | 0.666 (1.06) |
+| Bulk, rows alternating 0 / pi: peak per watt (/ single lenslet) | 0.96 (1.22) | 0.737 (1.17) |
+| Bulk, fraction through the stop: equal / checkerboard / rows | 0.785 | 0.80 / 0.63 / 0.75 |
+| Bulk, brightest point >= a / 4 from a site, / site peak: equal / checkerboard / rows | - | 0.17 / 0.09 / 0.18 |
 
-A hexagonal lenslet array gains 18 % in depth per watt over the circumscribed square, but
-produces a triangular trap lattice. A square lattice keeps the square lenslet, best slightly
-under-filled (0.831). Light outside the stop is lost there, not scattered towards the atoms.
+(Uniform-pupil bulk values: 0.785 x (n_G / n_P)^2, with the factors of the infinite-lattice check
+below.) Four points follow. (i) The stop transmission depends on the piston pattern, because the
+lattice samples the pupil field at different points; the earlier product "pupil fill x
+interference factor" is therefore not separable, and the bulk peak per watt is the quantity to
+use. (ii) The advantage of checkerboard pistons over equal ones falls from 1.77 to 1.07 to 1.20
+(depending on the equal-piston plane). Alternating rows are best at a = 4 um, 0.737. Scanning
+the lenslet focal length (geometric edge angle 0 to 2 times the stop radius) raises the
+checkerboard to 0.725 at 0.6 times the stop and changes the other two patterns by < 0.01.
+(iii) At a = 3 um (N_F = 0.70) only four orders fall inside the stop for the checkerboard,
+which drops to 0.287; equal pistons give 0.591 and rows 0.545, but the brightest point away
+from the sites reaches 0.45 to 0.5 of the site peak, so 3 um traps are poorly isolated in the
+bulk with this relay. (iv) Hexagonal lenslets were not recomputed with the Fresnel pupil; the
+geometric values 0.91 to 0.93 no longer apply. Finite-patch check: a 51 x 51 patch built from
+the 2D single-lenslet PSF (FFT convolution, kernel radius 40 um, central 15 x 15, plane of the
+single-lenslet optimum) gives 0.562 / 0.651 / 0.747 for equal / checkerboard / row pistons at
+4 um, within 2.3 % of the lattice values, and 10.5 % rms with min / mean 0.73 for random
+pistons (three draws; 18.6 % and 0.57 at 3 um). Light outside the stop is lost there, not
+scattered towards the atoms.
 
 Power scaling at constant depth. Efficiency chain (Provisional): lenslet ~0.95 (eta at
-s <= 0.1 from the supercell curve); pupil fill 0.785 (square) or 0.929 (hexagon, optimum);
-tube lens ~0.98 `[VALUE?]`; meta-objective ~0.80; total 0.585 (square) or 0.692 (hexagon).
-Relative to the direct hologram (0.83), and with NA 0.5 instead of 0.55, the depth per watt per
-site is ~87 mK x site/W (square) or ~102 mK x site/W (hexagon), against the hologram's
+s <= 0.1 from the supercell curve); bulk peak per watt relative to a uniformly filled disc,
+including the stop loss and the interference between traps, 0.737 (rows alternating 0 / pi),
+0.666 (checkerboard) or 0.625 (equal pistons); tube lens ~0.98 `[VALUE?]`; meta-objective
+~0.80; total 0.549 (rows), 0.496 (checkerboard) or 0.466 (equal). Relative to the direct
+hologram (0.83), and with NA 0.5 instead of 0.55, the depth per watt per site in the bulk is
+~81 mK x site/W (rows), ~73 (checkerboard) or ~69 (equal), against the hologram's
 148.7 mK x site/W (the v2 library-pillar design, with the corrected power budget; DERIVED:
-148.7 x (eta / 0.83) x (0.5 / 0.55)^2). These treat the traps as independent; the bulk
-interference factors below multiply them. For 0.2 mK traps (square lenslets):
+148.7 x (eta / 0.83) x (0.5 / 0.55)^2). The earlier values (~87 mK x site/W for independent
+traps, multiplied by 1.2 for alternating pistons) assumed the uniform pupil and are withdrawn.
+For 0.2 mK traps (rows alternating, a = 4 um):
 
-| N | Flat-top side on the MLA (M = 10, a = 4 um) | Power (pi/4 fill) | Intensity on the MLA |
+| N | Flat-top side on the MLA (M = 10, a = 4 um) | Power | Intensity on the MLA |
 |---|---|---|---|
-| 10 | 0.13 mm | 23 mW | 0.14 kW/cm^2 |
-| 10^3 | 1.3 mm | 2.3 W | 0.14 kW/cm^2 |
-| 10^5 | 12.6 mm | 231 W | 0.14 kW/cm^2 |
-| 10^6 | 40 mm | 2.3 kW | 0.14 kW/cm^2 |
+| 10 | 0.13 mm | 25 mW | 0.15 kW/cm^2 |
+| 10^3 | 1.3 mm | 2.5 W | 0.15 kW/cm^2 |
+| 10^5 | 12.6 mm | 246 W | 0.15 kW/cm^2 |
+| 10^6 | 40 mm | 2.5 kW | 0.15 kW/cm^2 |
 
 The depth per trap stays fixed because the intensity on the MLA stays fixed; only the beam
 size changes. A zoom range of 300 is impractical in one telescope. Two to three exchangeable
@@ -308,7 +352,11 @@ as a plane wave of relative intensity ~0.03 x (pi w^2 / 2) / a^2 ~ 2 x 10^-3 of 
 (DERIVED), which is negligible.
 
 Wave simulation of a lenslet patch (results/million/patch.json, scripts/million_patch.py,
-configs/million.yaml: patch). A 7 x 7 patch of traps at 4 um pitch is propagated through the
+configs/million.yaml: patch). This simulation and the larger patches below use the uniform-pupil
+model (each lenslet fills the stop as a plane wave). Their absolute depth factors are superseded
+by the Fresnel-pupil values above; the field dependence (what per-lenslet correction does at the
+2.83 mm corner) concerns the aberrations, not the pupil amplitude, and is kept (Provisional).
+A 7 x 7 patch of traps at 4 um pitch is propagated through the
 25 mm meta-objective (NA 0.5, 1075 nm, air gap 10 mm) by the superposition method. Each lenslet
 fills the circular stop as a plane wave at the field angle of its site (square lenslet
 circumscribing the stop), with or without its pre-compensation -W_j. All traps come from one
@@ -379,21 +427,24 @@ At a = 4 um, NA 0.5, 1075 nm: equal pistons n_G = 9 (orders (0,0), (1,0), (1,1) 
 images), giving 0.69; alternating pistons shift the reciprocal lattice by (1/2, 1/2)/a, n_G = 12,
 giving 1.22. The patch values (0.59 to 0.67 depending on the kernel radius, and 1.17) agree to
 ~5 %, the residual being the pupil apodisation and the slowly converging lattice sum
-(Provisional).
+(Provisional). These uniform-pupil factors are superseded for the lenslet relay: with the
+Fresnel pupil the bulk depth relative to a single lenslet is 0.89 to 0.99 (equal), 1.06
+(checkerboard) and 1.17 (rows), i.e. 0.625, 0.666 and 0.737 of the uniform-disc peak per watt
+(pupil field, above).
 
-Three points follow. (i) Interference sets the depth per watt of the lenslet route at the
-level of tens of per cent, and the per-lenslet piston pattern is the control: alternating 0 / pi
-pistons give 1.17 to 1.22 times the single-trap depth in the bulk, equal pistons 0.6 to 0.7
-times. Hence the power table above (which assumes independent traps) should be multiplied by
-~1/1.2 for alternating pistons and ~1/0.65 for equal ones. The value depends on the pitch in
+Three points follow (uniform-pupil patches; magnitudes superseded as stated). (i) Interference
+changes the depth per watt of the lenslet route by tens of per cent, and the per-lenslet piston
+pattern is the control. With the Fresnel pupil the spread between patterns is smaller than the
+uniform-pupil patches suggested (0.625 to 0.737 instead of 0.54 to 0.96 per watt), and the power
+table above already includes it. The value depends on the pitch in
 steps, as reciprocal-lattice orders enter or leave the pupil, so a and the piston pattern
 should be chosen together. (ii) With periodic pistons the bulk is uniform: alternating pistons
 reach 0.33 % rms over the central 7 x 7 of a 31 x 31 patch. Equal pistons converge more slowly
 (1.8 % at 31 x 31, with the edge 48 to 60 um away), and their edge rows differ by +12 to +21 %
 from the bulk, against <= 4 % for alternating pistons. The outer few rows of a finite array
 therefore need a piston or amplitude adjustment, most for equal pistons. (iii) Random pistons
-give 13 to 14 % rms in the bulk, independent of patch size, with min / mean ~0.65 to 0.7; they
-must be avoided. Alternating pistons raise the brightest interstitial point to 0.08 of a trap
+give 13 to 14 % rms in the bulk (Fresnel pupil: 10.5 %), independent of patch size, with
+min / mean ~0.65 to 0.7 (Fresnel pupil: 0.73); they must be avoided. Alternating pistons raise the brightest interstitial point to 0.08 of a trap
 peak (equal: 0.012), i.e. ~25 uK at 0.3 mK, the price of their higher depth.
 
 
@@ -402,7 +453,7 @@ peak (equal: 0.012), i.e. ~25 uK at 0.3 mK, the price of their higher depth.
 | Element | Size for 10^6 (4 um pitch) | Status | What must improve |
 |---|---|---|---|
 | Direct hologram (route A) | 18.4 mm chip (as now) | fabrication as for v2 | design computation on GPU (~1 GPU-day); more feedback rounds for uniformity |
-| Lenslet array (route B) | 40 mm (M = 10) | low NA_L, easy meta-atoms | wafer-scale patterning (DUV lithography `[REF?]`); pupil fill (0.785 square, 0.93 hexagon) |
+| Lenslet array (route B) | 40 mm (M = 10) | low NA_L, easy meta-atoms | wafer-scale patterning (DUV lithography `[REF?]`); bulk peak per watt 0.62 to 0.74 (square lenslet, N_F 0.93) |
 | Trapping meta-objective (route B) | 25 mm plates | as the present doublet, scaled | plate size; alignment as Section 7 of the metalens report |
 | Imaging meta-objective | 42 mm plates at NA 0.5 (25 mm at 3 um pitch) | design exists (aplanat) | 42 to 50 mm wafer-scale metasurfaces; or field-dependent correction in image space (below) |
 | Camera | >= 4000 x 4000 pixels | `[VALUE?: large-format sCMOS]` | or field splitting onto 4 cameras |
@@ -452,13 +503,14 @@ aberration correction) relayed by a 25 mm aplanatic meta-objective. N follows th
 size at constant depth.
 (ii) Imaging: a 42 mm aplanatic meta-objective at NA 0.5 on the other side of the cell, or 25 mm
 at 3 um pitch, with a >= 16 Mpx camera.
-(iii) Keep the direct hologram as the high-efficiency option for a fixed N (0.83 against ~0.6),
+(iii) Keep the direct hologram as the high-efficiency option for a fixed N (0.83 against ~0.55),
 once GPU design is available.
 Done since the first version: the lenslet-patch wave simulation with and without correction
 and the bulk interference values (Section 4); the GPU and tiled versions of the design code
 (docs/gpu_run.md; not yet run on a GPU). Withdrawn: the square-to-circle lenslet (a phase cannot
 reshape the imaged aperture). Next logical steps: run the 10^6-site hologram design on a GPU;
-choose the lenslet piston pattern and pitch together (bulk depth factors 0.69 / 1.22) and design
+choose the lenslet piston pattern and pitch together (bulk peak per watt 0.625 / 0.666 / 0.737
+for equal / checkerboard / row pistons at 4 um; the checkerboard fails at 3 um, 0.29) and design
 the edge-row correction; simulate the imaging corrector array itself (fill factor, overlap of
 neighbouring beams); and a full-wave check of a metasurface section.
 
@@ -473,10 +525,11 @@ Provenance ledger:
 | Ensquared energies, 3 um pitch | Section 2 | SIM, review before submission | results/million/imaging_ee_3um.json |
 | Image-space correction | Section 5 | SIM, review before submission | results/million/imaging_corrected.json |
 | 42 mm objective tolerances | Section 2 | SIM, review before submission | results/million/tolerances_f42.json |
-| Pupil fill | Section 4 | DERIVED (numerical) | results/million/pupil_fill.json |
+| Pupil fill, geometric mapping (superseded) | Section 4 | DERIVED (numerical) | results/million/pupil_fill.json |
+| Fresnel-pupil lenslet: stop transmission, peak per watt, bulk lattice and 51 x 51 patch values | Section 4 | DERIVED (numerical) | results/million/lenslet_fresnel.json |
 | Lenslet patch interference | Section 4 | SIM, review before submission | results/million/patch.json |
 | Bulk interference (larger patches) | Section 4 | SIM, review before submission | results/million/patch_bulk.json |
-| Infinite-lattice depth factors 0.69 / 1.22 | Section 4 | DERIVED | (n_G / n_P)^2 in text |
+| Infinite-lattice depth factors 0.69 / 1.22 (uniform pupil, superseded) | Section 4 | DERIVED | (n_G / n_P)^2 in text |
 | Lenslet pre-compensation | Section 4 | SIM, review before submission | results/million/mla.json, mla_wavecheck.json |
 | Hologram large-field depth | Section 3 | SIM | results/scaling_100k/hologram_large_field.json |
 | 10^5-site design results | Section 3 | SIM | results/fullaperture_100k |
