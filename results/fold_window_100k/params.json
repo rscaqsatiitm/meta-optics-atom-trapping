@@ -1,0 +1,98 @@
+{
+  "config": {
+    "run_id": "fold_window_100k",
+    "wavelength_um": 1.075,
+    "na": 0.55,
+    "stack": [
+      [
+        2500,
+        "air"
+      ],
+      [
+        4000,
+        "fused_silica"
+      ],
+      [
+        9000,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.0,
+    "sites": {
+      "kind": "square",
+      "nx": 316,
+      "ny": 316,
+      "pitch_um": 4.0
+    },
+    "pupil_guard": 1.25,
+    "render_upsample": 5,
+    "upsample": 4,
+    "array_defocus_um": 50.0,
+    "block_rows": 64,
+    "library": {
+      "path": "data/library_est_1075.h5",
+      "material": "sin_si_rich_est",
+      "pitch_um": 0.5,
+      "height_um": 1.6
+    },
+    "metrics_tile_px": 1024,
+    "n_folds": [
+      4096,
+      9216,
+      12288,
+      18432
+    ],
+    "scratch_dir": "/tmp/claude-0/-home-user-meta-optics-atom-trapping/5783b44d-13b1-5307-97a8-559cfd9333e8/scratchpad/fold_tmp",
+    "cases": [
+      {
+        "name": "r17_library",
+        "state": "data/designs/fullaperture_100k_pplib_round17_state.npz",
+        "pillars": "library"
+      },
+      {
+        "name": "r2_ideal",
+        "state": "data/designs/fullaperture_100k_round2_state.npz",
+        "pillars": "ideal"
+      },
+      {
+        "name": "pp8_ideal",
+        "state": "data/designs/fullaperture_100k_pp_round8_state.npz",
+        "pillars": "ideal"
+      },
+      {
+        "name": "r17_library_sigma5nm",
+        "state": "data/designs/fullaperture_100k_pplib_round17_state.npz",
+        "pillars": "library",
+        "errors": {
+          "sigma_um": 0.005,
+          "seed": 1
+        }
+      }
+    ],
+    "_config_path": "configs/fold_window_100k.yaml"
+  },
+  "git": {
+    "commit": "509b43bc5d2f6020e400391d8907a02b0849cd18",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-10T04:27:54+00:00"
+}

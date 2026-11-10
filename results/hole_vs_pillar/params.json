@@ -31,6 +31,37 @@
     ],
     "w_min_um": 0.06,
     "n_widths": 40,
+    "extensions": {
+      "hole": [
+        {
+          "pitches_um": [
+            0.65,
+            0.7
+          ],
+          "heights_um": [
+            0.8,
+            2.0,
+            2.4,
+            2.8,
+            3.2,
+            3.6,
+            4.0
+          ]
+        },
+        {
+          "pitches_um": [
+            0.5,
+            0.55,
+            0.6
+          ],
+          "heights_um": [
+            3.2,
+            3.6,
+            4.0
+          ]
+        }
+      ]
+    },
     "n_terms": 197,
     "n_grid": 256,
     "formulation": "pol_fourier",
@@ -49,7 +80,7 @@
     "_config_path": "configs/hole_vs_pillar.yaml"
   },
   "git": {
-    "commit": "188001ea926b7058d21489b8b19723680fbd57e8",
+    "commit": "c0c87fa687bb80662e624ecf586f0226e77c683f",
     "dirty": "True"
   },
   "versions": {
@@ -67,5 +98,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-07T17:48:03+00:00"
+  "utc": "2026-11-10T05:02:45+00:00"
 }
