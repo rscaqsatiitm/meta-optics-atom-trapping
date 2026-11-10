@@ -193,12 +193,16 @@ is 0.61 to 0.69, where the Si-rich supercells (p 0.50, h 1.5 um) give eta ~ 0.71
 10^6-site field at 4 um pitch with ~4 % depth roll-off at the corners, which the design weights
 remove.
 
-Demonstrated so far. 99,856 sites (docs/scaling_100k.md): efficiency 0.83. After the original
-two WGS-target feedback rounds the depth non-uniformity was 7.5 % rms with library pillars,
-uncorrelated site-to-site scatter with no field dependence; re-rendering with an exact-accurate
-render (below) showed that the render grid was not its cause. Pupil-phase feedback, which keeps
-the design and corrects it by small steps, then removed it: 0.015 % with ideal pillars, and
-0.45 % with the library pillars in the feedback loop (3.5 % with random 5 nm width errors).
+Demonstrated so far. 99,856 sites (docs/scaling_100k.md): efficiency 0.81 with library pillars
+on the unfolded grid. An earlier version of this paragraph quoted 0.83, 0.015 % (ideal pillars)
+and 0.45 % (library pillars) after pupil-phase feedback, all measured in a 2.048 mm fold window
+that aliased stray light and design noise onto the array; the loop had corrected the alias, and
+the same designs give 6.2 to 6.7 % in windows of 4.6 to 9.2 mm. Redone with every round measured
+on the unfolded 36,864^2 grid, the feedback with library pillars in the loop converges from 6.71
+to 0.014 % rms in eight rounds (min / mean 0.997, efficiency 0.809). Uncorrelated 5 nm width
+noise then adds 0.37 %, while smooth width errors of 5 nm over 50 um give 5.5 % (min / mean
+0.76), so correlated fabrication errors set the uniformity. The 10^6 run uses a 9.2 mm fold
+window, which reproduces the unfolded result for the 10^5 design (6.72 against 6.71 %).
 
 Computation at 10^6 (DERIVED from the 10^5 run). The wedge pupil grows with the field as
 (r_max)^2: ~5.2 x 10^6 samples at 4 um pitch (2.9 x 10^6 at 3 um) against 0.52 x 10^6 for
@@ -452,7 +456,7 @@ peak (equal: 0.012), i.e. ~25 uK at 0.3 mK, the price of their higher depth.
 
 | Element | Size for 10^6 (4 um pitch) | Status | What must improve |
 |---|---|---|---|
-| Direct hologram (route A) | 18.4 mm chip (as now) | fabrication as for v2 | design computation on GPU (~1 GPU-day); more feedback rounds for uniformity |
+| Direct hologram (route A) | 18.4 mm chip (as now) | fabrication as for v2 | design computation on GPU (~1 GPU-day); feedback measured in a window that holds the stray light (>= 9.2 mm); correlated width errors <~ 1 nm over tens of um |
 | Lenslet array (route B) | 40 mm (M = 10) | low NA_L, easy meta-atoms | wafer-scale patterning (DUV lithography `[REF?]`); bulk peak per watt 0.62 to 0.74 (square lenslet, N_F 0.93) |
 | Trapping meta-objective (route B) | 25 mm plates | as the present doublet, scaled | plate size; alignment as Section 7 of the metalens report |
 | Imaging meta-objective | 42 mm plates at NA 0.5 (25 mm at 3 um pitch) | design exists (aplanat) | 42 to 50 mm wafer-scale metasurfaces; or field-dependent correction in image space (below) |
