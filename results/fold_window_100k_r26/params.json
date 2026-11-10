@@ -1,0 +1,75 @@
+{
+  "config": {
+    "run_id": "fold_window_100k_r26",
+    "wavelength_um": 1.075,
+    "na": 0.55,
+    "stack": [
+      [
+        2500,
+        "air"
+      ],
+      [
+        4000,
+        "fused_silica"
+      ],
+      [
+        9000,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.0,
+    "sites": {
+      "kind": "square",
+      "nx": 316,
+      "ny": 316,
+      "pitch_um": 4.0
+    },
+    "pupil_guard": 1.25,
+    "render_upsample": 5,
+    "upsample": 4,
+    "array_defocus_um": 50.0,
+    "block_rows": 64,
+    "library": {
+      "path": "data/library_est_1075.h5",
+      "material": "sin_si_rich_est",
+      "pitch_um": 0.5,
+      "height_um": 1.6
+    },
+    "metrics_tile_px": 1024,
+    "n_folds": [
+      18432
+    ],
+    "cases": [
+      {
+        "name": "r26_library",
+        "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+        "pillars": "library"
+      }
+    ],
+    "_config_path": "configs/fold_window_100k_r26.yaml"
+  },
+  "git": {
+    "commit": "6fb42d4773d8f9ac9e327cbbd50c45c821fb5346",
+    "dirty": "False"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-10T18:43:54+00:00"
+}
