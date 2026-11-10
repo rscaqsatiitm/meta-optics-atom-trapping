@@ -1,0 +1,75 @@
+{
+  "aperture_radius_m": 0.009213801558857529,
+  "die_radius_m": 0.0125,
+  "thickness_m": 0.0005,
+  "dT_limit_K": 50,
+  "defects": {
+    "50": {
+      "intensity_W_cm2": 18.74745944248016,
+      "fused_silica": {
+        "a_max_plate_um": 255.83930877497698,
+        "a_max_half_space_um": 368.049869432718,
+        "dT_at_half_space_radius_K": 81.06312241930341,
+        "half_space_check_dT_K": 34.75606568877566
+      },
+      "sapphire": {
+        "a_max_plate_um": 1919.67808179732,
+        "a_max_half_space_um": 8801.192529912822,
+        "dT_at_half_space_radius_K": 363.17895084899783,
+        "half_space_check_dT_K": 10.905783933670719
+      }
+    },
+    "100": {
+      "intensity_W_cm2": 37.49491888496032,
+      "fused_silica": {
+        "a_max_plate_um": 146.61263162183593,
+        "a_max_half_space_um": 184.024934716359,
+        "dT_at_half_space_radius_K": 65.71231759606098,
+        "half_space_check_dT_K": 39.83499079834281
+      },
+      "sapphire": {
+        "a_max_plate_um": 1234.2136625902924,
+        "a_max_half_space_um": 4400.596264956411,
+        "dT_at_half_space_radius_K": 332.9321562146304,
+        "half_space_check_dT_K": 14.023254898646304
+      }
+    },
+    "150": {
+      "intensity_W_cm2": 56.242378327440484,
+      "fused_silica": {
+        "a_max_plate_um": 103.82403601334865,
+        "a_max_half_space_um": 122.68328981090602,
+        "dT_at_half_space_radius_K": 60.454692199410275,
+        "half_space_check_dT_K": 42.31384574597508
+      },
+      "sapphire": {
+        "a_max_plate_um": 953.8603944316338,
+        "a_max_half_space_um": 2933.7308433042745,
+        "dT_at_half_space_radius_K": 282.5444472528752,
+        "half_space_check_dT_K": 16.256780962177437
+      }
+    },
+    "200": {
+      "intensity_W_cm2": 74.98983776992064,
+      "fused_silica": {
+        "a_max_plate_um": 80.61032785986254,
+        "a_max_half_space_um": 92.0124673581795,
+        "dT_at_half_space_radius_K": 57.806788989175665,
+        "half_space_check_dT_K": 43.80402470138556
+      },
+      "sapphire": {
+        "a_max_plate_um": 793.5097969646836,
+        "a_max_half_space_um": 2200.2981324782054,
+        "dT_at_half_space_radius_K": 245.06820730922678,
+        "half_space_check_dT_K": 18.03186998279524
+      }
+    }
+  },
+  "global_rise_fs0.5_sirich_nominal_100W_K": {
+    "h10_rim_fixed": 6.005728209416848,
+    "h0_rim_fixed": 10.981253019745791,
+    "h5_rim_fixed": 7.786889066817249,
+    "h20_rim_fixed": 4.0904898566978,
+    "h10_rim_convective_h10": 7.815882282016293
+  }
+}

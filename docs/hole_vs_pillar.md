@@ -2,8 +2,10 @@
 
 Technical note. Question: can circular air holes etched into a continuous Si-rich SiN film
 replace the free-standing pillars of the B1 meta-hologram? The question was prompted by
-reflective UV Mie-void metasurfaces in silicon (Schwab, Arslan et al., Advanced Photonics 2026,
-doi:10.1117/1.AP.9.1.016002; read through the press release and a review, not the paper) and by
+reflective UV Mie-void metasurfaces in silicon (Schwab, Arslan et al., Advanced Photonics 9(1),
+016002, doi:10.1117/1.AP.9.1.016002, volume and DOI as in the publisher URL supplied by the user;
+the year of the issue was not checked; read through the press release and a review, not the
+paper) and by
 transmission-mode Mie-void metasurfaces in silicon-rich nitride (Goldberg, Mazurski and Levy,
 arXiv:2604.10488, abstract only). The UV devices use the geometric phase of rotated elliptical
 voids, which needs circular polarisation, and rely on the near-metallic reflectance of silicon at

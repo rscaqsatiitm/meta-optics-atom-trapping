@@ -54,7 +54,7 @@ def masks(family: str, params, pitch: float, n_grid: int, subpixel: int = 4) -> 
 @dataclass(frozen=True)
 class Rules:
     min_feature_um: float = 0.10  # smallest pillar, wall, hole or gap
-    max_aspect: float = 10.0  # height / smallest solid feature (pillar width or ring wall)
+    max_aspect: float = 10.0  # height / smallest feature (pillar width, ring wall or ring hole)
     step_um: float = 0.01
 
 
@@ -66,7 +66,7 @@ def candidates(family: str, pitch: float, height: float, rules: Rules):
     if family == "ring":
         for wo in np.arange(solid_min, pitch - mf + 1e-9, st):
             out.append((round(wo, 4), 0.0))
-            for wh in np.arange(mf, wo - 2 * solid_min + 1e-9, st):
+            for wh in np.arange(solid_min, wo - 2 * solid_min + 1e-9, st):  # the hole obeys the aspect limit too
                 out.append((round(wo, 4), round(wh, 4)))
     elif family == "duo":
         # Squares at the centre (w1) and at the corners (w2) are offset by (p/2, p/2): their

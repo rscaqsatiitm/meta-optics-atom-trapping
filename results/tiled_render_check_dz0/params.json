@@ -1,0 +1,60 @@
+{
+  "config": {
+    "run_id": "tiled_render_check_dz0",
+    "wavelength_um": 1.075,
+    "na": 0.55,
+    "stack": [
+      [
+        300,
+        "air"
+      ],
+      [
+        500,
+        "fused_silica"
+      ],
+      [
+        800,
+        "air"
+      ]
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "pixel_um": 0.5,
+    "site_pitch_um": 4.0,
+    "sites": {
+      "kind": "square",
+      "nx": 16,
+      "ny": 16,
+      "pitch_um": 4.0
+    },
+    "pupil_guard": 1.25,
+    "render_upsample": 5,
+    "upsample": 4,
+    "array_defocus_um": 0.0,
+    "block_rows": 64,
+    "metrics_tile_px": 32,
+    "state": "data/designs/tiled_render_check_dz0_state.npz",
+    "_config_path": "configs/tiled_render_check_dz0.yaml"
+  },
+  "git": {
+    "commit": "c0c87fa687bb80662e624ecf586f0226e77c683f",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-10T04:57:28+00:00"
+}

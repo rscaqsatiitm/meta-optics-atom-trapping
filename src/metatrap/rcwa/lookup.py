@@ -109,7 +109,14 @@ def best_widths(wd, td, target_phases, offset=0.0):
 
 
 def eta_n(wd, td, n_ratio: float, n_levels: int, n_offsets: int = 64):
-    """eta_N maximised over the global offset; returns (eta, offset)."""
+    """eta_N maximised over the global offset; returns (eta, offset).
+
+    A sampled-phasor overlap (one complex transmission per level), equal to 1 for exact phasors
+    at any N. It has no staircase envelope: at sub-wavelength pitch the orders that a
+    piecewise-constant profile would feed are evanescent. Inter-pillar coupling is not in it
+    either; the supercell RCWA ratio (scripts/edge_factor.py) carries that, and the pixel-level
+    propagations share this representation, so the two factors are not double counted
+    (docs/campaign1_report.md, Section 3)."""
     phases = 2 * np.pi * np.arange(n_levels) / n_levels
     best = (-1.0, 0.0)
     for off in np.linspace(0, 2 * np.pi, n_offsets, endpoint=False):

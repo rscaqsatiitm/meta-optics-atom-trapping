@@ -61,9 +61,11 @@ proposal's site counts are therefore conservative.
 (vi) High power (H2a): with the die heat-sunk at its rim, substrate heating produces an
 almost pure focal shift (refocused Strehl > 0.9999), -0.18 um per 100 W per 0.1 % film
 absorption on 0.5 mm fused silica, ~7x less on sapphire. Explaining the 19 % deficit of
-ref. 4 thermally requires ~1.2 % film absorption, so the proposal's thermal hypothesis is
-plausible only for strongly absorbing films and should be tested by measuring the
-absorption directly.
+ref. 4 thermally requires ~1.2 % film absorption if its power was measured in a fixed plane,
+and 22 % (excluded) if it was inferred from the atoms' light shift, so the proposal's thermal
+hypothesis is plausible only for strongly absorbing films and should be tested by measuring
+the absorption directly. The predicted focal shift neglects the air thermal lens, which is of
+comparable size (Section 5).
 
 The main limitations are scalar optics (~5 to 10 % on absolute depths), the
 local-periodic treatment of meta-atom errors in the uniformity figures, and full-pixel
@@ -101,8 +103,10 @@ and 7.5 mW). (`tests/test_atoms.py`)
 
 ## 3. Meta-atom library
 
-Numerics (results/rcwa_convergence, SIM). With the Jones-direct-Fourier formulation the
-relative transmission phase converges to 0.003 rad at 197 Fourier terms. The
+Numerics (results/rcwa_convergence, SIM). At ~197 Fourier terms (193 in the convergence run,
+against 437) the relative transmission phase is converged to 0.003 to 0.0045 rad with the
+Jones-direct-Fourier formulation and to 0.005 to 0.010 rad with pol_fourier (used for the
+recomputed libraries, data/*_pf.h5), and T0 to <= 1e-3. The
 permittivity grid changes the phase by at most 0.016 rad (LPCVD) and 0.027 rad (Si-rich) between
 256 and 1024 points for the selected families within their fabricable widths, and by up to
 0.14 rad at a 60 nm gap, which the fabrication limits exclude (results/rcwa_grid_convergence.json,
@@ -134,7 +138,8 @@ the fraction of entries with cross-polarisation above 0.01 drops to zero (0.1 % 
 852 nm (Si-rich: median 0.03 rad, 90th percentile 0.15 to 0.27 rad), where the large changes sit
 on resonant curves with T0 near zero. The selected families are unchanged at 1075, 1064 and
 852 nm for both films, with eta_16 (+/-10 nm averaged) within 0.0006 of the values above
-(results/library_analysis_*_pf); only the minimum T0 of the 852 nm LPCVD family, set by one
+(results/library_analysis_*_pf; differences this small are below the ~1e-3 resolution set by
+the Fourier and grid convergence); only the minimum T0 of the 852 nm LPCVD family, set by one
 resonant width, moves (0.86 to 0.42) without changing its efficiency.
 
 Selection at 1075 nm (results/library_analysis_1075). Geometries are ranked by the
@@ -203,6 +208,20 @@ hologram is then 0.96 x 0.886 = 0.85 before the pupil-model design efficiency.
 Optimising widths for the supercell environment rather than for the periodic array
 (e.g. by inverse design on 2 to 4 neighbours) is the standard remedy and is not yet
 done.
+
+Is the edge factor double counted? The local-periodic value (0.96 to 0.97) is the overlap of the
+sampled phasors t(w_k) with the ideal ramp, one complex value per pillar; for exact phasors it is
+1 at any N. The full-pixel and folded propagations use the same representation (one complex
+transmission per 0.5 um pixel, no sub-pixel structure), so they contain the local-periodic
+efficiency and nothing else: no staircase envelope and no inter-pillar coupling. A
+piecewise-constant staircase would multiply the first order by sinc^2(1 / N) (0.81 at N = 4,
+0.95 at N = 8) and send the rest into the orders 1 / (N p) +/- m / p, which are evanescent in
+air at p = 0.5 um < lambda, so they carry no power. The RCWA loss is found instead in
+reflection and in the zero and -1 orders, and its N dependence is weaker than sinc^2 (ratio
+0.90 at N = 8 against 0.95). Hence the supercell factor represents physics that the
+pixel models omit, and multiplying them by it is not double counting (Provisional: the
+attribution to near-field coupling rests on where the RCWA power goes, not on a decomposition of
+the field).
 
 ## 4. Hologram design: field aberration of the standard (Debye) design
 
@@ -382,12 +401,25 @@ film at 850 nm, 1.16 % absorption corresponds to an extinction coefficient of or
 SiN values `[VALUE?: measured k of CNNP films]`. With the same a_film, the ref. 14 case
 (2.5 W on 5 mm, w/R = 1.44) has a fixed-plane Strehl of 0.998, consistent with its
 unchanged efficiency. Hence substrate heating explains the ref. 4 deficit only if the film
-absorbs at the per-cent level; at 0.01 to 0.1 % it is negligible. We therefore regard the
-thermal explanation in the proposal as Speculative. The model points to two inexpensive,
+absorbs at the per-cent level; at 0.01 to 0.1 % it is negligible. Which of the two scenarios
+applies depends on how ref. 4 inferred the 12.2 W. If it was inferred from the atoms' light
+shift, the atoms sit where the focus is, only the refocused case applies, and substrate heating
+would need 22 % absorption, i.e. it is excluded. The fixed-plane case applies only if the power
+was measured in a fixed plane, e.g. with a camera focused at the cold focal plane
+`[CONFIRM?: measurement method of the 12.2 W in ref. 4, not checked]`. We therefore regard the
+thermal explanation in the proposal as Speculative, and as excluded if the light-shift reading
+holds. The model points to two inexpensive,
 discriminating measurements for H2a: the film absorption itself (photothermal or
 calorimetric, at 1075 nm), and the focal-plane position against power. The model predicts
 the focus moves by -0.18 um per 100 W per 0.1 % absorption on 0.5 mm fused silica with
-a top-hat beam.
+a top-hat beam. This prediction omits the thermal lens of the air on both faces of the heated
+part. With dn/dT of air ~ -0.9e-6 /K `[VALUE?: approx., recalled, verify]`, a mean rise of 5 K
+over a ~5 mm convective boundary layer changes the optical path by ~-25 nm per face (DERIVED;
+layer thickness and temperature `[VALUE?]`), comparable to the substrate path change (~35 to
+50 nm for a 7 to 10 K rise, chi ~ 1e-5 /K over 0.5 mm; DERIVED) and of opposite sign; it is
+also unsteady. A focal-shift measurement therefore discriminates H2a only if the air path is
+controlled (enclosure, or a helium-purged or evacuated mount) or measured separately, e.g. with
+an unpatterned absorbing reference plate of the same size (Provisional).
 Thermo-optic changes inside the pillars are negligible by comparison: for LPCVD SiN
 (dn/dT ~ 2.5e-5 /K `[VALUE?]`) at dT = 10 K, dn = 2.5e-4 changes the pillar phase by
 ~2 mrad (DERIVED, dphi/dn ~ k0 h ~ 9 rad); even the Si-rich value of 1.65e-4 /K
@@ -408,7 +440,8 @@ high-NA focus, so the full-pixel reference, not the pupil model, understates the
 direction, and the later power budgets (campaign1b, the 10^5-site design) use NA_eff 0.574
 without it. A linearly polarised
 focus at NA 0.55 is also slightly elliptical, and its depth differs from the scalar value
-by a few per cent `[VALUE?: quantify with a vector Debye-Wolf model]`. Absolute trap depths
+by a few per cent (since quantified with a vector Richards-Wolf model: peak ratio 0.917 for
+the hard top-hat pupil at NA 0.55, used in the power budgets of the later reports). Absolute trap depths
 therefore carry a ~5 to 10 % model uncertainty. Relative quantities (uniformity, Strehl
 ratio, field dependence) are less affected.
 
@@ -417,7 +450,9 @@ metasurface. Meta-atom amplitude and phase errors enter through the 16-level LPA
 efficiency (0.96) and the aperture-averaged supercell factor (0.886 for Si-rich SiN),
 treated as multiplicative factors. Their effect on uniformity was not simulated. They add
 a diffuse background and site-to-site noise that a full-wave or library-rendered
-full-pixel run would quantify (the renderer accepts a lookup table; not yet run).
+full-pixel run would quantify (since run: docs/campaign1b_report.md, docs/prefab_checks_report.md
+and docs/scaling_100k.md, with library pillars and width errors; their uniformity values at a
+2.048 mm fold window are affected by aliasing, docs/scaling_100k.md).
 
 (iii) Supercell factor below 13 deg. Supercells were computed down to sin(theta) = 0.22
 (LPCVD) and 0.27 (Si-rich); the ratio is interpolated to 1 at normal incidence. If the
@@ -429,7 +464,9 @@ order and grid (0.817 to 0.821 at N = 4, 0.869 to 0.877 at N = 8; Section 3).
 ~5 GB). The 18 to 20 mm in-cell design is evaluated only with the pupil model and the
 ray-traced aberration model, which the 5 mm case validates for field dependence but not
 for the edge-generated zero order (Section 4.3). Block-wise propagation of the full
-aperture, as in refs. 4 and 14, is the next numerical step.
+aperture, as in refs. 4 and 14, has since been implemented (propagation/folded.py) and run for
+18.4 mm apertures; see the erratum at the top of this report and docs/scaling_100k.md for the
+aliasing limit of the folded window.
 
 (v) Thermal model. Steady state, rim held at ambient, linear face losses, photo-elastic
 terms neglected. The substrate of ref. 4, the dn/dT of sapphire and of our films, and
@@ -439,22 +476,38 @@ the film absorption are not known and are marked `[VALUE?]`.
 writing are not modelled beyond a uniform width bias, a height offset and an index
 error.
 
+(vii) Trap-laser linewidth. The hologram is a diffractive lens, so its focal distance scales as
+1 / lambda: dz / dlambda = -f_eq / lambda = -13.3 um/nm, with f_eq = 14.3 mm the air-equivalent
+distance of the in-cell stack (2.5 mm air, 4 mm fused silica at n = 1.449, 9.05 mm vacuum), and
+the site positions scale as lambda, 0.83 um/nm at the 100k corner (891 um) (DERIVED). The
+spectral components of a broadband source are mutually incoherent and each focuses in its own
+plane. For a flat spectrum of full width Delta lambda and a Gaussian focus (w0 = 0.87 um,
+z_R = 2.2 um in vacuum), the spectrally averaged peak is (z_R / Z) arctan(Z / z_R) with
+Z = 6.65 um/nm x Delta lambda: 0.99 at 0.05 nm, 0.97 at 0.1 nm, 0.90 at 0.2 nm and 0.65 at
+0.5 nm (DERIVED). The lateral smear at the corner (0.08 um at 0.1 nm) is negligible against
+w0. Hence the trap laser needs Delta lambda <~ 0.1 nm FWHM for a <= 3 % depth loss. This is a
+constraint on the choice of the 50 to 200 W source: many high-power ytterbium fibre lasers near
+1075 nm are specified with linewidths of a few nm `[VALUE?: linewidth of 50 to 200 W 1070 to
+1080 nm fibre lasers and amplifiers, from vendor specifications]`, which would be unusable; a
+narrow-linewidth seed with a fibre amplifier is the expected solution `[REF?]`. A drift of the
+centre wavelength moves the whole array, 0.13 um axially and 8 nm at the corner per 0.01 nm,
+which matters only relative to the imaging focus.
+
 ## 7. Next steps
 
 1. Measure n and k of the CNNP ICP-PECVD and CoE-CPPICS LPCVD films at 1075 nm
    (ellipsometry for n, photothermal or calorimetric for k), load them through
    `materials.from_csv`, and rebuild the library. The index is the dominant
    tolerance (Section 3) and k sets the thermal margin (Section 5).
-2. Run the 5 mm full-pixel validation with the library lookup instead of ideal phases,
-   and with Monte Carlo width errors, to quantify meta-atom-induced non-uniformity
-   and stray light.
-3. Block-wise full-aperture propagation for the 18 to 20 mm in-cell design, to check the
-   zero order and the edge-zone efficiency at full scale.
-4. Vector Debye-Wolf focusing at NA 0.55 for absolute depths and spot ellipticity.
-5. Second campaign: the dispersion-engineered library at 852/895/1064 nm (the
-   single-pillar library at these wavelengths is being completed in data/library_main.h5)
-   and the doublet meta-objective (B2), reusing the propagation, exact-kernel and
-   aberration code.
+2. (Done; docs/campaign1b_report.md, docs/prefab_checks_report.md.) Run the full-pixel
+   validation with the library lookup and Monte Carlo width errors.
+3. (Done; docs/scaling_100k.md.) Block-wise full-aperture propagation for the 18 to 20 mm
+   in-cell design; the fold window must hold the stray light (review 3).
+4. (Done; vector peak factor 0.917.) Vector focusing at NA 0.55 for absolute depths and spot
+   ellipticity.
+5. (Done; data/library_main.h5 and data/library_main_pf.h5, docs/metalens_report.md.) Second
+   campaign: the library at 852/895/1064 nm and the doublet meta-objective (B2), reusing the
+   propagation, exact-kernel and aberration code.
 6. Confirm the placeholders below with the PI and the fabrication centres.
 
 ## Provenance ledger and open placeholders
@@ -465,7 +518,7 @@ quoted in this report (all SIM, review before submission):
 | Value | Section | Pointer |
 |---|---|---|
 | alpha_Cs = 1171 a.u. (1064 nm), 1125 a.u. (1075 nm); ref. 4 depth 0.306 mK | 2 | tests/test_atoms.py |
-| RCWA convergence 0.003 rad at 197 terms; grid 0.01 to 0.03 rad | 3 | results/rcwa_convergence |
+| RCWA convergence 0.003 to 0.010 rad at ~197 terms (formulation dependent); grid 0.016 to 0.027 rad | 3 | results/rcwa_convergence, results/rcwa_grid_convergence.json |
 | Selected families, eta_16, tolerances | 3 | results/library_analysis_1075 (selection, ranking, sensitivity) |
 | Supercell efficiencies, edge factors 0.842 to 0.900 | 3 | results/library_analysis_1075 (supercell, edge_factor); convergence: results/supercell_convergence |
 | Debye-design Strehl and field curvature vs radius | 4.1 | hologram/field_model.py; results/hologram_b1_cell20mm/aberration_*.png |

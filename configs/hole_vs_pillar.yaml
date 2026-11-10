@@ -9,6 +9,10 @@ pitches_um: [0.40, 0.45, 0.50, 0.55, 0.60]
 heights_um: [0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0]
 w_min_um: 0.06                  # widths/diameters from 0.06 um to p - 0.06 um; fabrication limits applied in the ranking
 n_widths: 40
+extensions:                     # review 3: the hole optimum lay on the search boundary (p 0.60, h 2.8 to 3.0 um)
+  hole:
+    - {pitches_um: [0.65, 0.70], heights_um: [0.8, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0]}   # p < lambda / n_sub = 0.742 um
+    - {pitches_um: [0.50, 0.55, 0.60], heights_um: [3.2, 3.6, 4.0]}
 n_terms: 197
 n_grid: 256
 formulation: pol_fourier

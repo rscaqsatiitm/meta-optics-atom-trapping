@@ -26,11 +26,18 @@ radius) the model gives 0.306 mK against the measured 0.305(17) mK.
 
 ## 2. Meta-atom library
 
-RCWA with fmmax 1.7.1, Jones-direct-Fourier formulation (vector FMM), square pillars on
-fused silica, light incident from the substrate, exit into air, normal incidence.
-Convergence (results/rcwa_convergence, SIM): relative phase converged to 0.003 rad at
-197 Fourier terms; permittivity-grid dependence 0.01 to 0.03 rad between 256 and 1024
-points (largest at gaps below 60 nm). Library numerics: 197 terms, 256 grid. The
+RCWA with fmmax 1.7.1, square pillars on fused silica, light incident from the substrate, exit
+into air, normal incidence. The libraries were first computed with the Jones-direct-Fourier
+formulation (data/library_main.h5, data/library_est_1075.h5; used by the stored full-aperture
+designs), which leaves a spurious cross-polarised amplitude of ~1e-2 for C4v cells, and were
+recomputed with pol_fourier (data/*_pf.h5; tests/test_rcwa.py). The selected families are
+unchanged and the co-polarised phase changes by a median 0.009 to 0.016 rad at 1064 to 1075 nm
+(docs/campaign1_report.md, Section 3; docs/campaign1b_report.md).
+Convergence (results/rcwa_convergence, SIM): relative phase converged to 0.003 to 0.0045 rad
+(Jones-direct-Fourier) and 0.005 to 0.010 rad (pol_fourier) at ~197 Fourier terms, T0 to
+<= 1e-3; permittivity-grid dependence 0.016 to 0.027 rad between 256 and 1024 points at
+fabricable widths (0.14 rad at a 60 nm gap; results/rcwa_grid_convergence.json). Efficiency
+differences below ~1e-3 between families are therefore not resolved. Library numerics: 197 terms, 256 grid. The
 plain-FFT (Laurent) formulation converges slowly (0.07 rad error at 317 terms); grcwa,
 which uses it, agrees with fmmax-FFT to 1e-4 rad at 437 terms, an independent check of
 the wrapper and phase conventions.
@@ -85,7 +92,7 @@ P/(sqrt(2 pi) kappa w) (5 %).
 | Sapphire (o) Sellmeier | materials.py | SOURCE | Malitson and Dodge (1972); Dodge, CRC Handbook IV (1986) |
 | Si-rich SiN n = 2.3 | materials.py | USER | proposal Section 4 quoting ref. 14; `[VALUE?: verify, dispersion]` |
 | Pyrex n = 1.47 | materials.py | `[VALUE?]` | used only for the ref. 4 geometry |
-| Fused silica kappa 1.38 W/m/K | axisym_fd.py | SOURCE (secondary) | Corning HPFS figure quoted in search; sheet read gives 1.30 |
+| Fused silica kappa 1.38 W/m/K | axisym_fd.py | SOURCE (secondary), inconsistent with the primary | Corning HPFS figure quoted in a search snippet; the Corning 7980 sheet actually read gives 1.30. All fused-silica temperature rises and focal shifts scale as 1 / kappa, so with the read value they are 6 % larger and the power limits 6 % lower; not rerun |
 | Fused silica dn/dT 9.6 ppm/K (1064 nm), alpha 0.52 ppm/K | axisym_fd.py | SOURCE | Corning 7980 sheet |
 | Sapphire kappa 33.0 W/m/K (perp. c), alpha 5.0 ppm/K | axisym_fd.py | SOURCE | Alkor sapphire data sheet |
 | Sapphire dn/dT 13 ppm/K | axisym_fd.py | `[VALUE?]` | vendor value at 0.546 um, verify at 1075 nm |

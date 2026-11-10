@@ -17,7 +17,11 @@ pupil_guard: 1.25
 wgs_iter: 60
 wgs_fix: 30
 render_upsample: 5            # defines the fine coordinates only (tiled render evaluates on demand)
-n_fold: 10240                # 5.12 mm focal window for a 4.0 mm array
+n_fold: 18432                # 9.216 mm focal window. A 5.12 mm window aliased the design noise
+                             # and stray light back onto the array (fold-window study of the 10^5
+                             # design, results/fold_window_100k): the window must exceed the
+                             # WGS pupil-grid field period (~1.25 x array diagonal = 7.1 mm here).
+fold_dtype: complex64        # 2.7 GB fold buffer
 upsample: 4
 metrics_tile_px: 1024
 feedback_rounds: 2

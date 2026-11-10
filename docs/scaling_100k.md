@@ -2,7 +2,7 @@
 
 Technical note. Question (USER): would moving the metasurface closer to the atoms (in vacuum,
 e.g. 3 mm) help to reach 100,000 traps? All numbers are SIM (review before submission) or
-DERIVED. Code: scripts/scaling_100k.py, configs/scaling_100k.yaml, configs/scaling_sc_*.yaml;
+DERIVED. Code: scripts/scaling_100k.py, configs/scaling_100k.yaml; supercells: scripts/multiwave_supercells.py configs/scaling_sc_*.yaml;
 results: results/scaling_100k/{scaling,table}.json (table.json from scripts/scaling_100k_table.py
 holds every number of the Results table), results/scaling_100k_sc_si_rich.
 
@@ -55,7 +55,10 @@ gives the number of sites inside the inscribed square, N = 2 r^2 / a^2 (DERIVED)
 | 25 mm | 32.9 mm | 1.00 / 1.00 | 1.001 | 0.78 / 0.78 um | 0.57 | 202 W (121 W) | 24 W/cm^2 | 292 um | 2,020 um | 510,000 / 907,000 |
 
 The axial spot is 0.78 um (Airy 1/e^2 radius 0.41 lambda / NA = 0.80 um). The 100,000-site
-array corner lies at 891 um (4 um pitch) or 669 um (3 um pitch).
+array corner lies at 891 um (4 um pitch) or 669 um (3 um pitch). The defect column uses the half-space formula
+a = 50 K x kappa / I; for radii approaching the 0.5 mm plate thickness the lateral spreading
+lowers it (147 um instead of 184 um at 37 W/cm^2; docs/prefab_checks_report.md, Section 5), so
+the 15.5 and 25 mm entries are upper bounds by ~15 to 30 %.
 
 ## Full 100,000-site design at the cell geometry
 
@@ -97,9 +100,15 @@ We first attributed the slower convergence, provisionally, to the coarser render
 (5 x instead of 8 x upsampling of a pupil field that now has 2.2 times finer structure per
 axis). A later test rules this out. We re-rendered the final design with a render that
 evaluates the hologram field at each metasurface pixel by a windowed-sinc interpolant of the
-pupil grid, with no fine grid in memory (hologram/tiled.py). On a 16 x 16-site test this
-render matches an exact per-pixel kernel sum to 1e-4 rms in per-site depth, against 2.1 % for
-the FFT-upsampled grid (tests/test_tiled.py). With it, the round-2 design gives 7.14 % rms (ideal
+pupil grid, with no fine grid in memory (hologram/tiled.py). On 16 x 16-site tests (unfolded
+grid, ideal pillars) this render matches an exact per-pixel kernel sum to 1.2e-4 rms in per-site
+depth (array 50 um beyond focus) and 0.9e-4 (array in focus), against 0.4 % and 1.5 % for the
+FFT-upsampled grid (results/tiled_render_check*/metrics.json, scripts/tiled_render_check.py;
+tests/test_tiled.py checks the interpolant itself). The agreement requires the coarse pupil grid
+to cover the array plus the defocus blur (+-33 um at 50 um and NA 0.55): with the default
+guard of 1.25 times the 16 x 16 array diagonal it does not, and the exact render differs by
+~6 % rms, because the design controls only the coarse samples. For the 10^5-site array the guard
+covers 2.24 mm against 1.79 mm plus 0.07 mm. With it, the round-2 design gives 7.14 % rms (ideal
 pillars; results/fullaperture_100k_tiled), against 7.05 % with the 5 x render grid, and 7.6 % against
 7.5 % with library pillars (efficiency 0.828 in both). The per-site
 depths of the two renders differ by 1.7 % rms (correlation 0.97). Hence the render adds an

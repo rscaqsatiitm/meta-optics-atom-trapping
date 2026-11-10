@@ -227,7 +227,13 @@ with the detuning. A single phase map therefore serves only a band of about +/-1
 (Strehl >= 0.8; computed for positive detunings, interpolated as exp(-(2 pi W_rms)^2)). (iii) 852/895/1064 nm co-focal operation through one objective requires
 independent phase maps per wavelength. With independent maps (common stop radius), each
 wavelength reproduces the single-wavelength results above (Sections 3 and 4), since the
-construction is exact per wavelength.
+construction is exact per wavelength. (iv) For a trapping beam through such a lens the source
+linewidth matters, because the spectral components focus in different planes and add
+incoherently. With column (a), Strehl ratio 1 - c delta^2 and c = 26 nm^-2 (from 0.74 at
+0.1 nm), the peak averaged over a flat spectrum of full width Delta lambda is 1 - c
+Delta lambda^2 / 12: 0.995 at 0.05 nm, 0.978 at 0.1 nm and 0.91 at 0.2 nm (DERIVED, f = 16 mm;
+the focal shift scales as f / lambda). The trap laser therefore needs Delta lambda <~ 0.1 nm
+FWHM, as for the hologram (campaign1_report.md, Section 6 (vii)).
 
 What the meta-atoms must supply. The two focusing-plate maps differ by 473 waves (852/1064)
 and 112 waves (852/895) at the edge. The required phase pairs (phi_852 mod 2 pi,
@@ -263,8 +269,8 @@ layer heights are 1.6, 2.0 and 2.4 um, for Si-rich and LPCVD SiN on fused silica
 852 and 1064.4 nm by RCWA. The numerics are reduced for a screen: 121 Fourier terms and a
 128 grid. A spot check against 197 terms and a 256 grid on 12 atoms gives |dphi| <= 0.08 rad,
 except one near-resonant ring at 0.17 rad. Geometries are on a 0.02 um grid with features
->= 0.10 um. We report two aspect-ratio limits (height / smallest solid feature): 10, the
-working assumption for the etch, and 15. The figure of merit is the focusing efficiency at
+>= 0.10 um. We report two aspect-ratio limits (height / smallest feature: pillar width, ring
+wall or ring hole): 10, the working assumption for the etch, and 15. The figure of merit is the focusing efficiency at
 each wavelength when every required phase pair must be realised. The atom for a target pair
 maximises Re[t_852 e^{-i theta_852}] + Re[t_1064 e^{-i theta_1064}], and the efficiency is
 |<t e^{-i theta}>|^2 (times n_out / n_in) over the targets. We use two target sets: (a) a
@@ -273,16 +279,18 @@ offset of each wavelength optimised.
 
 | Film, height, aspect limit | Atoms | Uniform torus: eta 852 / 1064 | Same atoms, one wavelength only | Doublet (corrector x focusing plate, LPA): 852 / 1064 |
 |---|---|---|---|---|
-| Si-rich, 1.6 um, AR <= 10 | 58 | 0.67 / 0.56 | 0.94 / 0.94 | 0.44 / 0.33 |
-| Si-rich, 1.6 um, AR <= 15 | 137 | 0.73 / 0.71 | 0.97 / 0.97 | 0.54 / 0.52 |
-| Si-rich, 2.4 um, AR <= 15 | 63 | 0.75 / 0.70 | 0.96 / 0.95 | 0.56 / 0.51 |
-| LPCVD, 1.6 um, AR <= 10 | 58 | 0.52 / 0.55 | 0.93 / 0.96 | 0.29 / 0.31 |
-| LPCVD, 2.4 um, AR <= 15 | 63 | 0.70 / 0.63 | 0.94 / 0.95 | 0.49 / 0.41 |
+| Si-rich, 1.6 um, AR <= 10 | 55 | 0.66 / 0.56 | 0.94 / 0.94 | 0.44 / 0.34 |
+| Si-rich, 1.6 um, AR <= 15 | 130 | 0.73 / 0.70 | 0.97 / 0.97 | 0.54 / 0.51 |
+| Si-rich, 2.4 um, AR <= 15 | 60 | 0.76 / 0.68 | 0.96 / 0.95 | 0.58 / 0.48 |
+| LPCVD, 1.6 um, AR <= 10 | 55 | 0.52 / 0.54 | 0.93 / 0.96 | 0.29 / 0.30 |
+| LPCVD, 2.4 um, AR <= 15 | 60 | 0.69 / 0.62 | 0.94 / 0.95 | 0.49 / 0.40 |
 
 (Union of both families; results/dual_library_pf/dual_efficiency.json and plate_efficiency.json
 list every family, height and limit. Values from the pol_fourier recompute of the dual libraries,
 which changes every entry of both tables by <= 0.01 against the jones_direct_fourier libraries,
-results/dual_library/; see the note after the second table.)
+results/dual_library/; see the note after the second table. Since review 3 the aspect limit also
+applies to the etched hole of a ring, which an earlier version ignored: this removes 3 to 7 atoms
+per library and changes the entries by <= 0.03, most by <= 0.01.)
 
 Observations. (i) Within AR <= 10, heights of 2.0 and 2.4 um admit no rings and no two-pillar
 cells (walls and pillars would have to be >= 0.2 to 0.24 um), so only solid pillars remain,
@@ -290,7 +298,7 @@ and these give 0.45 to 0.55. Solid pillars alone are not hopeless, because their
 by different amounts at the two wavelengths (11.6 against 8.4 rad at 1.6 um, Si-rich), but
 they fill the torus only along a few lines. (ii) The second geometric parameter is what fills
 the torus. It needs thin walls or close pillar pairs, hence the strong dependence on the
-aspect-ratio limit (Si-rich 1.6 um: 0.56 to 0.71 at 1064 nm). (iii) The corrector does not
+aspect-ratio limit (Si-rich 1.6 um: 0.56 to 0.70 at 1064 nm). (iii) The corrector does not
 benefit from its weaker phase profile: its required pairs, sampled along the radius, still
 fill the torus nearly as uniformly as those of the focusing plate. (iv) Including the
 deflection losses of the focusing plate (Section 6, factor ~0.87 relative to the LPA), we
@@ -334,11 +342,11 @@ LPA, before the deflection factor (~0.87) of Section 6:
 | Film, height | Aspect <= 10: 852 / 1064 nm | Aspect <= 15: 852 / 1064 nm | One wavelength only | Absorbed at 852 nm (median atom) |
 |---|---|---|---|---|
 | Si-rich SiN, 1.6 um | 0.52 / 0.40 | 0.62 / 0.58 | 0.97 to 0.98 | ~0 |
-| ALD TiO2, 1.6 um | 0.49 / 0.44 | 0.61 / 0.61 | 0.96 to 0.98 | ~0 |
-| LPCVD SiN, 1.6 um | 0.31 / 0.36 | 0.43 / 0.43 | 0.97 | ~0 |
+| ALD TiO2, 1.6 um | 0.49 / 0.44 | 0.62 / 0.61 | 0.96 to 0.98 | ~0 |
+| LPCVD SiN, 1.6 um | 0.31 / 0.35 | 0.43 / 0.43 | 0.97 | ~0 |
 | crystalline Si on sapphire, 1.0 um | 0.45 / 0.50 | 0.45 / 0.50 | 0.91 to 0.92 | 6 to 9 % |
-| crystalline Si on sapphire, 1.2 um | 0.30 / 0.54 | 0.48 / 0.52 | 0.92 to 0.95 | 7 to 11 % |
-| GaN on sapphire, 1.6 um (0.02 um grid only) | 0.33 / 0.25 | 0.45 / 0.32 | 0.88 to 0.93 | ~0 |
+| crystalline Si on sapphire, 1.2 um | 0.29 / 0.51 | 0.48 / 0.52 | 0.92 to 0.95 | 7 to 11 % |
+| GaN on sapphire, 1.6 um (0.02 um grid only) | 0.33 / 0.25 | 0.44 / 0.31 | 0.88 to 0.93 | ~0 |
 
 (results/dual_library_fine_pf, dual_library_si_fine_pf, dual_library_hi_pf; plate_efficiency.json.)
 
@@ -361,7 +369,7 @@ binds (h / 10 = 0.10 um = the minimum feature). It is the best film within aspec
 at 1064 nm (0.50) and comparable to Si-rich SiN at 852 nm (0.45 against 0.52). However, it
 absorbs 6 to 11 % at 852 nm in its resonant atoms, and its single-wavelength ceiling is lower
 (0.91 to 0.95). (iii) No film closes the gap. After the deflection factor, the best
-two-wavelength doublets reach ~0.54 / 0.50 (Si-rich SiN) or ~0.53 / 0.53 (TiO2) at aspect ratio
+two-wavelength doublets reach ~0.54 / 0.50 (Si-rich SiN) or ~0.54 / 0.53 (TiO2) at aspect ratio
 15, or ~0.44 to 0.45 at aspect ratio 10 (best film at each wavelength), against 0.80 to 0.83 for a
 single-wavelength doublet. The
 limit is set by how densely a two-parameter, fabricable library covers the phase torus, not

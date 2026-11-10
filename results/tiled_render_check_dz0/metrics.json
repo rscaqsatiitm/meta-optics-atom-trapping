@@ -1,0 +1,24 @@
+{
+  "n_metasurface": 4096,
+  "n_fold": 4096,
+  "state": "data/designs/tiled_render_check_dz0_state.npz",
+  "exact": {
+    "depth_nonuniformity_rms": 0.11437365099538463,
+    "array_efficiency": 0.8439518510313927,
+    "core_efficiency": 0.7152808628353764
+  },
+  "tiled": {
+    "depth_nonuniformity_rms": 0.11435599443901888,
+    "array_efficiency": 0.843953219436118,
+    "core_efficiency": 0.7152834114576928
+  },
+  "fft": {
+    "depth_nonuniformity_rms": 0.1207265769600066,
+    "array_efficiency": 0.8445750397428199,
+    "core_efficiency": 0.715650160475913
+  },
+  "tiled_vs_exact_depth_rms": 8.768427112403218e-05,
+  "tiled_vs_exact_depth_max": 0.00032619784455989453,
+  "fft_vs_exact_depth_rms": 0.015473076589860985,
+  "fft_vs_exact_depth_max": 0.036612882391405144
+}

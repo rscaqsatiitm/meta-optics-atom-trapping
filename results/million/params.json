@@ -1,0 +1,19 @@
+{
+ "note": "Written retroactively (review 3) for results produced before this file existed; the producing runs did not record a params.json. Regenerate any file with the listed command; the git hash below is the commit at which this file was written, not that of the original runs.",
+ "written_at_commit": "c0c87fa687bb80662e624ecf586f0226e77c683f",
+ "date": "2026-11-10",
+ "files": {
+  "imaging_ee.json": "python scripts/million_imaging.py configs/million.yaml",
+  "imaging_ee_3um.json": "python scripts/million_imaging.py configs/imaging_1M_3um.yaml",
+  "imaging_corrected.json": "python scripts/million_imaging_corrected.py configs/million.yaml",
+  "mla.json": "python scripts/million_mla.py configs/million.yaml",
+  "mla_wavecheck.json": "python scripts/million_mla_wavecheck.py configs/million.yaml",
+  "objective_field.json": "python scripts/objective_field_scan.py configs/million.yaml",
+  "patch.json": "python scripts/million_patch.py configs/million.yaml",
+  "patch_bulk.json": "python scripts/million_patch_bulk.py configs/million.yaml",
+  "pupil_fill.json": "python scripts/million_pupil_fill.py (geometric mapping; superseded by lenslet_fresnel.json)",
+  "lenslet_fresnel.json": "python scripts/million_lenslet_fresnel.py",
+  "tolerances_f42.json": "python scripts/million_tolerances.py configs/million.yaml",
+  "million_summary.png": "python scripts/plot_million.py"
+ }
+}

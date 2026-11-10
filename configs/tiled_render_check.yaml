@@ -1,0 +1,24 @@
+# Render accuracy (scripts/tiled_render_check.py): exact per-pixel kernel render vs windowed-sinc
+# (tiled) and FFT-upsampled renders, 16 x 16 sites, short stack, unfolded 4096^2 grid, ideal pillars,
+# array 50 um beyond focus. The design (WGS, 40 + 20 iterations, no feedback; made with
+# scripts/fullaperture_lazy.py --tiled and these settings) uses pupil_guard 2.0: with 1.25 the coarse
+# pupil grid does not cover the 64 um array plus the +-33 um defocus blur, and the exact render then
+# differs from the interpolated ones by ~6 % rms (the design only controls the coarse samples).
+run_id: tiled_render_check
+wavelength_um: 1.075
+na: 0.55
+stack:
+- [300, air]
+- [500, fused_silica]
+- [800, air]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.0
+sites: {kind: square, nx: 16, ny: 16, pitch_um: 4.0}
+pupil_guard: 2.0
+render_upsample: 5
+upsample: 4
+array_defocus_um: 50.0
+block_rows: 64
+metrics_tile_px: 32
+state: data/designs/tiled_render_check_dz50_g2_state.npz
