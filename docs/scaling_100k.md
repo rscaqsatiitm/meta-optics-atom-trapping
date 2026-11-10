@@ -307,7 +307,7 @@ Final design with fabrication errors (same grid; error models as in configs/chec
 | Case | Depth non-uniformity rms | Min / mean | Array efficiency | Axis intensity / mean peak | Interstitial p99 / max |
 |---|---|---|---|---|---|
 | Library pillars (LPA) | 0.014 % | 0.997 | 0.809 | 0.064 | 0.093 / 0.22 |
-| Uncorrelated width noise, sigma 5 nm (seeds 1 / 2 / 3) | 0.37 / 0.37 / 0.37 % | 0.982 / 0.984 / 0.985 | 0.778 | 0.063 to 0.065 | 0.093 / 0.22 |
+| Uncorrelated width noise, sigma 5 nm (seeds 1 / 2 / 3; upper bound, see text) | 0.37 / 0.37 / 0.37 % | 0.982 / 0.984 / 0.985 | 0.778 | 0.063 to 0.065 | 0.093 / 0.22 |
 | Correlated width error, 5 nm rms over 50 um | 5.5 % | 0.76 | 0.790 | 0.105 | 0.099 / 0.27 |
 | Combined (100 um stitching fields: 20 nm stitch, 2 nm field bias; 3 nm over 5 um; 3 nm random) | 3.3 % | 0.86 | 0.783 | 0.069 | 0.095 / 0.25 |
 
@@ -315,12 +315,18 @@ With an alias-free measurement the feedback converges as it did on the 16 x 16 t
 falls by a factor 3 to 4 per round at first and ~1.5 at the end, with positive orbit-error
 slopes of 0.18 to 0.38 (each correction removes most of the previous pattern without overshoot),
 and no loss of efficiency (0.809). The design residual and the deterministic library error are
-both removed (0.014 % rms, in-sample but without aliasing); the "floor set by the discrete
+both removed (0.014 % rms). This value is in-sample: it is the loop's own measurement, with no
+aliasing within the aperture footprint, but light scattered beyond the 18.4 mm period still wraps
+(below), so it is not an independent test at the 0.01 % level. The "floor set by the discrete
 library pillars" of the folded runs was an alias. The remaining limits are therefore (i) the
 local-periodic model of the pillars, which these runs cannot test (a full-wave check of a
 metasurface section is needed), and (ii) fabrication. Uncorrelated pixel-level width noise of
-5 nm costs only 0.37 % rms and 0.031 in efficiency (identical for three draws), against 3.4 %
-claimed from the folded runs. Smooth width errors of the same rms over 50 um (dose drift,
+5 nm costs at most 0.37 % rms and 0.031 in efficiency (identical for three draws), against 3.4 %
+claimed from the folded runs. It is an upper bound: pixel-scale scatter spreads over tens of mm
+in the focal plane, and the unfolded grid still wraps it at the 18.4 mm period. In the fold-window
+study the noise contribution (subtracted in quadrature) times the window width was 5.6 to
+5.9 % mm at 4.6 to 9.2 mm, which predicts 0.31 % at 18.4 mm, close to the 0.37 % found; the
+physical value is lower still, probably below 0.2 % (Provisional, from that 1 / W scaling). Smooth width errors of the same rms over 50 um (dose drift,
 proximity effect) cost 5.5 % rms and drop the weakest site to 0.76 of the mean, because they
 act like a slowly varying phase error that moves light between neighbouring regions of the
 array. The combined case of configs/checks_v2.yaml (stitching, field bias, short-range correlated
@@ -334,16 +340,21 @@ design iteration.
 v2, with the 99th percentile at 0.093. At 0.3 mK this is a ~65 uK spurious maximum at isolated
 points. Interstitial suppression in the feedback (dark targets) would address it.
 
-Conclusion. A single 18.4 mm metasurface at the present cell geometry generates 99,856 traps
-with an array efficiency of 0.81 (library pillars, unfolded grid; 0.83 in the earlier folded
-runs, which overstated it by 0.02). The folded runs with a 2.048 mm window aliased stray light
+Conclusion. Two limits frame every number below. The forward model is scalar with
+local-periodic pillars, and the supercell RCWA shows a 10 to 20 % efficiency shortfall from
+inter-pillar coupling, far larger than anything the feedback corrects; a full-wave check of a
+metasurface section is needed before the uniformity values describe a device. And a fabricated
+metasurface is static: its errors can be corrected only by measuring it and fabricating a second
+iteration. Within that model, a single 18.4 mm metasurface at the present cell geometry generates
+99,856 traps with an array efficiency of 0.81 (library pillars, unfolded grid; 0.83 in the earlier
+folded runs, which overstated it by 0.02). The folded runs with a 2.048 mm window aliased stray light
 and design noise onto the array, and all their feedback results were in-sample artefacts: the
 true non-uniformity of those designs is 6.2 to 7.7 %. Pupil-phase feedback measured on the
 unfolded grid, with library pillars in the loop, removes the design residual and the
 deterministic library error in eight rounds (6.71 to 0.014 % rms, min / mean 0.997, efficiency
-unchanged). Uncorrelated 5 nm width noise then adds only 0.37 %, but smooth width errors of 5 nm
-over 50 um give 5.5 % (min / mean 0.76): the uniformity is set by correlated fabrication errors
-and by the validity of the local-periodic pillar model, which a full-wave check must confirm.
+unchanged; in-sample). Uncorrelated 5 nm width noise then adds at most 0.37 %, but smooth width
+errors of 5 nm over 50 um give 5.5 % (min / mean 0.76, one realisation): the uniformity is set by
+correlated fabrication errors and by the validity of the local-periodic pillar model.
 0.3 mK traps need ~207 W of 1075 nm (0.073 mK at 50 W, utilisation 0.64; 0.070 mK with the
 combined errors) (Si-rich SiN on fused silica is then outside its thermal
 limits; use LPCVD SiN or sapphire). A fold window of 9.2 mm reproduces the unfolded result for

@@ -200,7 +200,7 @@ that aliased stray light and design noise onto the array; the loop had corrected
 the same designs give 6.2 to 6.7 % in windows of 4.6 to 9.2 mm. Redone with every round measured
 on the unfolded 36,864^2 grid, the feedback with library pillars in the loop converges from 6.71
 to 0.014 % rms in eight rounds (min / mean 0.997, efficiency 0.809). Uncorrelated 5 nm width
-noise then adds 0.37 %, while smooth width errors of 5 nm over 50 um give 5.5 % (min / mean
+noise then adds at most 0.37 %, while smooth width errors of 5 nm over 50 um give 5.5 % (min / mean
 0.76), so correlated fabrication errors set the uniformity. The 10^6 run uses a 9.2 mm fold
 window, which reproduces the unfolded result for the 10^5 design (6.72 against 6.71 %).
 
@@ -507,7 +507,7 @@ aberration correction) relayed by a 25 mm aplanatic meta-objective. N follows th
 size at constant depth.
 (ii) Imaging: a 42 mm aplanatic meta-objective at NA 0.5 on the other side of the cell, or 25 mm
 at 3 um pitch, with a >= 16 Mpx camera.
-(iii) Keep the direct hologram as the high-efficiency option for a fixed N (0.83 against ~0.55),
+(iii) Keep the direct hologram as the high-efficiency option for a fixed N (0.81 against ~0.55),
 once GPU design is available.
 Done since the first version: the lenslet-patch wave simulation with and without correction
 and the bulk interference values (Section 4); the GPU and tiled versions of the design code
