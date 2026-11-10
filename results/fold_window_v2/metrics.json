@@ -1,0 +1,64 @@
+{
+  "cases": {
+    "v2_ideal": {
+      "state": "data/designs/fullaperture_v2_state.npz",
+      "pillars": "ideal",
+      "errors": null,
+      "metasurface_transmission": 1.0,
+      "windows": {
+        "4096": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.053340582340739566,
+          "depth_min_over_mean": 0.768032065128839,
+          "array_efficiency": 0.8539556089260645,
+          "core_efficiency": 0.7072654106457498,
+          "cell_power_nonuniformity_rms": 0.06550402127257038,
+          "waist_mean_um": 0.8668323234654778,
+          "waist_std_um": 0.02099774622602176,
+          "position_error_rms_um": 0.08374288823988081,
+          "axis_intensity_over_mean_site_peak": 0.38125816156497117,
+          "interstitial_median": 0.012505980851589698,
+          "interstitial_p99": 0.08729118953015844,
+          "interstitial_max": 0.38125816156497117,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -5.425980281799855e-06,
+            8.782876535195734e-07
+          ],
+          "background_band_over_mean_peak": 0.0007701021075925506,
+          "window_mm": 2.048,
+          "seconds": 5.415987730026245
+        },
+        "18432": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.052372341188370995,
+          "depth_min_over_mean": 0.7845108476764852,
+          "array_efficiency": 0.8532086230009082,
+          "core_efficiency": 0.7070652069596404,
+          "cell_power_nonuniformity_rms": 0.0650678143410516,
+          "waist_mean_um": 0.8669470730837175,
+          "waist_std_um": 0.020843428829698713,
+          "position_error_rms_um": 0.08356357386718391,
+          "axis_intensity_over_mean_site_peak": 0.3555130573546793,
+          "interstitial_median": 0.012414609199258927,
+          "interstitial_p99": 0.08737981572582691,
+          "interstitial_max": 0.3555130573546793,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -7.217082388849765e-06,
+            -1.0716692999064461e-06
+          ],
+          "background_band_over_mean_peak": 0.0006594671571443099,
+          "window_mm": 9.216,
+          "seconds": 58.75170588493347
+        }
+      },
+      "seconds": 759.3439745903015
+    }
+  },
+  "background_band_um": [
+    322.0,
+    1004.0
+  ],
+  "n_metasurface": 36864
+}
