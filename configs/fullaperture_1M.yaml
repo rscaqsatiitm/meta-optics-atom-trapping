@@ -21,6 +21,10 @@ n_fold: 18432                # 9.216 mm focal window. A 5.12 mm window aliased t
                              # and stray light back onto the array (fold-window study of the 10^5
                              # design, results/fold_window_100k): the window must exceed the
                              # WGS pupil-grid field period (~1.25 x array diagonal = 7.1 mm here).
+                             # For the 10^5 design a 9.2 mm window still differs from the unfolded
+                             # grid by 0.48 % rms per site (results/fold_window_100k_r26), so the
+                             # feedback cannot be trusted below ~0.5 %; evaluate the final design
+                             # with n_fold 36864 (unfolded, ~12 GB) where memory allows.
 fold_dtype: complex64        # 2.7 GB fold buffer
 upsample: 4
 metrics_tile_px: 1024

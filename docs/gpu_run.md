@@ -8,7 +8,7 @@ This note covers the full-aperture design and simulation of the 1000 x 1000-site
 |---|---|---|
 | WGS design, 60 + 2 x 30 iterations, two kernel products each | 5.2e12 kernel evaluations per product | GPU (`--gpu`) |
 | Render of the 18.4 mm metasurface, 1.07e9 pixels inside the aperture | windowed-sinc lookup, 256 taps per pixel; 1.1 M pixel/s on a shared 4-vCPU container (about 16 min); expected faster on 14 cores | CPU (numba) |
-| Folded propagation, 18432^2 (9.2 mm window) | complex64, folded and propagated in place, about 2 copies of 2.7 GB | CPU |
+| Folded propagation, 18432^2 (9.2 mm window) | complex64, folded and propagated in place, about 2 copies of 2.7 GB; aliasing floor ~0.5 % rms per site (10^5 design); the unfolded 36864^2 grid needs ~12 GB | CPU |
 | Tiled focal metrics, 10^6 sites | 1024^2 tiles upsampled x4, per-site loop | CPU |
 
 At the 100k design's measured CPU rate (6.9e8 evaluations/s on 4 vCPU), one 10^6 product would take about 2 h. With about 240 products, the CPU-only design would need several weeks on 4 vCPU and roughly a week on 14 cores. The GPU is therefore needed for the design step only.

@@ -202,7 +202,9 @@ on the unfolded 36,864^2 grid, the feedback with library pillars in the loop con
 to 0.014 % rms in eight rounds (min / mean 0.997, efficiency 0.809). Uncorrelated 5 nm width
 noise then adds at most 0.37 %, while smooth width errors of 5 nm over 50 um give 5.5 % (min / mean
 0.76), so correlated fabrication errors set the uniformity. The 10^6 run uses a 9.2 mm fold
-window, which reproduces the unfolded result for the 10^5 design (6.72 against 6.71 %).
+window to fit in memory; for the 10^5 design that window differs from the unfolded grid by
+0.48 % rms per site, so its feedback has a floor of ~0.5 % unless the last rounds or the final
+evaluation use the unfolded grid (~12 GB).
 
 Computation at 10^6 (DERIVED from the 10^5 run). The wedge pupil grows with the field as
 (r_max)^2: ~5.2 x 10^6 samples at 4 um pitch (2.9 x 10^6 at 3 um) against 0.52 x 10^6 for

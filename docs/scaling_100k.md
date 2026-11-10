@@ -357,8 +357,13 @@ errors of 5 nm over 50 um give 5.5 % (min / mean 0.76, one realisation): the uni
 correlated fabrication errors and by the validity of the local-periodic pillar model.
 0.3 mK traps need ~207 W of 1075 nm (0.073 mK at 50 W, utilisation 0.64; 0.070 mK with the
 combined errors) (Si-rich SiN on fused silica is then outside its thermal
-limits; use LPCVD SiN or sapphire). A fold window of 9.2 mm reproduces the unfolded result for
-this design (6.72 against 6.71 %), so the 10^6-site run (configs/fullaperture_1M.yaml) uses it.
+limits; use LPCVD SiN or sapphire). A 9.2 mm fold window agrees with the unfolded grid only at the
+level of the round-17 errors (6.72 against 6.71 %). The final round-26 design, 0.014 % unfolded,
+gives 0.48 % in the 9.2 mm window, and the per-site difference between the two is 0.48 % rms
+(maximum 2.0 %, correlation 0.03; results/fold_window_100k_r26/compare_unfolded.json,
+scripts/compare_per_site.py). Hence a feedback loop measured in a 9.2 mm window cannot be trusted
+below ~0.5 %, which is the floor of the planned 10^6-site run (configs/fullaperture_1M.yaml)
+unless its final rounds or its evaluation use the unfolded grid.
 
 ## Discussion
 
