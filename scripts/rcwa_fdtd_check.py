@@ -87,7 +87,7 @@ def fdtd_t(width_um, d_um, layer="grating", n_layer=N_RIDGE):
     g = fdtd.Grid((nx, ny, 1), grid_spacing=d, permittivity=eps, courant_number=courant)
     g[0, :, :] = fdtd.PeriodicBoundary(name="xper")
     g[:, 0:npml, :] = fdtd.PML(name="pml_lo")
-    g[:, ny - npml : ny, :] = fdtd.PML(name="pml_hi")
+    g[:, -npml:, :] = fdtd.PML(name="pml_hi")
     y_src, y_mon = npml + int(round(0.3 / d_um)), y1 + int(round(0.8 / d_um))
     omega = 2 * np.pi / n_per  # per step
     n_ramp, n_win = 10 * n_per, 20 * n_per
@@ -126,14 +126,25 @@ def main(brk):
            "break": brk}
     t0 = time.time()
     # C1: FDTD against the analytic layer.
+    # FDTD phasors are cached (the --break run reuses them; the corruptions act on the comparisons).
+    out = REPO_ROOT / "results" / "rcwa_fdtd_check"
+    out.mkdir(parents=True, exist_ok=True)
+    cache_path = out / "fdtd_phasors.json"
+    key = json.dumps(res["case"], sort_keys=True)
+    cache = json.load(open(cache_path)) if cache_path.exists() else {}
+    if cache.get("key") != key:
+        cache = {"key": key}
+        for d in (0.010, 0.005):
+            runs = {"slab": fdtd_t(0, d, "slab"), "air": fdtd_t(0, d, "air")}
+            runs.update({str(w): fdtd_t(w, d, "grating") for w in WIDTHS})
+            cache[str(d)] = {k: [v[0].real, v[0].imag, v[1]] for k, v in runs.items()}
+            print(f"FDTD d = {d} um done ({time.time() - t0:.0f}s)", flush=True)
+        json.dump(cache, open(cache_path, "w"), indent=1)
     fd = {}
     for d in (0.010, 0.005):
-        ts, ss = fdtd_t(0, d, "slab")
-        ta, sa = fdtd_t(0, d, "air")
-        grat = {w: fdtd_t(w, d, "grating") for w in WIDTHS}
-        fd[d] = {"slab_over_air": ts / ta, "steady": max([ss, sa] + [v[1] for v in grat.values()]),
-                 "ratios": {w: grat[w][0] / grat[W_REF][0] for w in WIDTHS}}
-        print(f"FDTD d = {d} um done ({time.time() - t0:.0f}s), steady-state change {fd[d]['steady']:.1e}", flush=True)
+        ph = {k: complex(v[0], v[1]) for k, v in cache[str(d)].items()}
+        fd[d] = {"slab_over_air": ph["slab"] / ph["air"], "steady": max(v[2] for v in cache[str(d)].values()),
+                 "ratios": {w: ph[str(w)] / ph[str(W_REF)] for w in WIDTHS}}
     n_an = 2.05 if brk else N_RIDGE
     ana = airy_t(N_SUB, n_an, 1.0, H, LAM) / airy_t(N_SUB, 1.0, 1.0, H, LAM)
     c1 = {}
