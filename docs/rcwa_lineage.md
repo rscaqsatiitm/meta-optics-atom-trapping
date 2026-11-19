@@ -70,6 +70,33 @@ implementation, at the Laurent-rule level. It cannot detect a failure in layers 
   budget of this container; the check is on a 1D-periodic grating with the field parallel to
   the ridges.
 
-## Results
+## Results (results/rcwa_fdtd_check/metrics.json, metrics_break.json)
 
-(Appended after the run; see below.)
+| Check | Threshold (declared first) | Result | Verdict |
+|---|---|---|---|
+| C1 FDTD uniform layer against Airy, 10 nm / 5 nm grid | amp 0.01, phase 0.03 rad | amp 3.2e-4 / 7.8e-5, phase 0.0051 / 0.0013 rad | PASS |
+| C2 FDTD 10 nm against 5 nm, grating ratios (w 0.15 / 0.35 um) | amp 0.01, phase 0.02 rad | amp 0.0013 / 0.0023, phase 0.057 / 0.040 rad | FAIL |
+| C3 fmmax (pol_fourier, 197 terms) against FDTD 5 nm (w 0.15 / 0.35 um) | amp 0.02, phase 0.05 rad | amp 6.6e-4 / 1.2e-3, phase 0.0027 / 0.0029 rad | within thresholds, but INCONCLUSIVE (C2 failed) |
+| C4 effective-medium limit, p 0.05 um | phase 0.10 rad | TE 0.0074 rad, TM 0.016 rad; E parallel to the ridges is wrapper output t_y | PASS |
+
+Verdict: OPEN. The FDTD route reproduces the analytic layer (C1), and fmmax agrees with the
+5 nm FDTD grating results to 0.003 rad and 0.1 % in amplitude (C3). However, the FDTD grating
+result itself changes by 0.04 to 0.06 rad between the 10 and 5 nm grids (C2), more than the
+declared 0.02 rad, so the 5 nm FDTD is not shown to be converged to the level at which C3
+agrees, and by the rule declared beforehand C3 does not certify the RCWA. The uniform layer
+converges much faster than the grating (C1: 0.005 to 0.001 rad), which points at the
+ridge-edge discretisation of the FDTD (field discontinuities at the vertical air-ridge
+interfaces, not present in a uniform layer) as the slow part. Next step, not run: a 2.5 nm
+FDTD grid (about 8 times the 5 nm cost, ~3 h on 4 cores, so a restructure is preferable, e.g.
+sub-cell permittivity averaging at the ridge edges, or Richardson extrapolation from three
+grids with its own threshold declared first).
+
+Deliberate breaks (all four checks must fail; recorded in metrics_break.json): C1 with n = 2.05
+in the analytic layer, phase error 0.28 rad, FAIL; C2 comparing different widths, FAIL; C3 with
+the polarisation perpendicular to the ridges, 0.59 rad at w = 0.35 um, FAIL (at w = 0.15 um the
+two polarisations differ by only 0.047 rad, inside the threshold, so the check relies on the
+wider ridge to see a polarisation error); C4 with ridge index 2.1, 0.37 rad, FAIL. The first
+version of the C3 and C4 breaks could not fail (C4 infers the orientation from the data, which
+also undid the C3 swap); this was found by the break run and the breaks were replaced (see the
+script docstring). C4 therefore tests the effective indices, and reports the orientation
+(t_y), rather than testing an orientation fixed in advance.

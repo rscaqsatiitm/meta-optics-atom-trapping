@@ -33,7 +33,10 @@ Checks and thresholds (declared before the first run; never changed after a resu
 
 --break applies one deliberate corruption per check (C1: n = 2.05 in the analytic layer;
 C2: the 5 nm ratios compared with the 10 nm ones of a different width; C3: the RCWA
-polarisation swapped; C4: the two effective indices swapped) and must make every check fail.
+polarisation perpendicular to the ridges; C4: ridge index 2.1 in the effective-medium limit)
+and must make every check fail. (A first version swapped the two effective indices for C4;
+the break run showed that C4 infers the orientation from the data, so a swap cannot make it
+fail, and that the C3 swap was undone by the same inference. Both breaks were replaced.)
 Output: results/rcwa_fdtd_check/metrics.json (or metrics_break.json). Exit status 0 only if
 every check passes (without --break) or every check fails (with --break).
 """
@@ -163,13 +166,14 @@ def main(brk):
     # parallel polarisation is the second axis (t_y) if the first axis is x; C4 decides.
     tx, ty = rcwa_t(WIDTHS)
     tx4, ty4 = rcwa_t([0.025], period=0.05)
-    nte = np.sqrt(0.5 * N_RIDGE**2 + 0.5)
-    ntm = 1 / np.sqrt(0.5 / N_RIDGE**2 + 0.5)
+    n_emt = N_RIDGE + 0.1 if brk else N_RIDGE  # break: wrong ridge index in the analytic limit
+    nte = np.sqrt(0.5 * n_emt**2 + 0.5)
+    ntm = 1 / np.sqrt(0.5 / n_emt**2 + 0.5)
     a_te, a_tm = airy_t(N_SUB, nte, 1.0, H, LAM), airy_t(N_SUB, ntm, 1.0, H, LAM)
-    if brk:
-        a_te, a_tm = a_tm, a_te
     # C4: which wrapper output is E || ridges.
-    par_is_y = abs(np.angle(ty4[0] / a_te)) < abs(np.angle(tx4[0] / a_te))
+    # Orientation from the unperturbed effective index (so the C4 break cannot flip it).
+    a_te0 = airy_t(N_SUB, np.sqrt(0.5 * N_RIDGE**2 + 0.5), 1.0, H, LAM)
+    par_is_y = abs(np.angle(ty4[0] / a_te0)) < abs(np.angle(tx4[0] / a_te0))
     t_par4, t_perp4 = (ty4[0], tx4[0]) if par_is_y else (tx4[0], ty4[0])
     c4 = {"parallel_output": "t_y" if par_is_y else "t_x", "phi_err_TE": float(abs(np.angle(t_par4 / a_te))),
           "phi_err_TM": float(abs(np.angle(t_perp4 / a_tm)))}
