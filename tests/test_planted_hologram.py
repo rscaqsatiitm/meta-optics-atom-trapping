@@ -119,7 +119,7 @@ def design():
     c0 = N // 2 - w // 2
     I = np.abs(fourier_upsample(foc[c0 : c0 + w, c0 : c0 + w], 4)) ** 2  # propagate keeps the axis at N//2
     m = E.spot_metrics(I, DX / 4, sites, PITCH, LAM, NA, 1.0)
-    return {"sites": sites, "plant": plant, "f": f, "as": m["per_site"]}
+    return {"sites": sites, "plant": plant, "f": f, "as": m["per_site"], "rs": rs_spots(f, sites)}
 
 
 def recovery_errors(spots, sites, plant):
@@ -151,14 +151,14 @@ def test_plant_recovered_by_production_as(design):
 
 
 def test_plant_recovered_by_rayleigh_sommerfeld(design):
-    rs = rs_spots(design["f"], design["sites"])
+    rs = design["rs"]
     pos, powr = recovery_errors(rs, design["sites"], design["plant"])
     print(f"RS recovery: max position error {pos:.4f} um (tol {POS_TOL}), max power error {powr:.4f} (tol {POW_TOL})")
     assert recovered(rs, design["sites"], design["plant"])
 
 
 def test_angular_spectrum_agrees_with_rayleigh_sommerfeld(design):
-    rs = rs_spots(design["f"], design["sites"])
+    rs = design["rs"]
     pk, pos, powr = agreement(design["as"], rs)
     print(f"AS vs RS: peak {pk:.2e} (tol {AGREE_PK}), position {pos:.2e} um (tol {AGREE_POS}), core power {powr:.2e} (tol {AGREE_POW})")
     assert agree(design["as"], rs)
@@ -169,6 +169,6 @@ def test_negative_controls_fail(design):
     sites, plant, f = design["sites"], design["plant"], design["f"]
     transposed = planted_power(sites[:, 1], sites[:, 0])  # x <-> y swapped plant
     assert not recovered(design["as"], sites, transposed)
-    assert not recovered(rs_spots(f, sites), sites, transposed)
+    assert not recovered(design["rs"], sites, transposed)
     assert not agree(design["as"], rs_spots(f, sites, shift_px=1))
     assert not agree(design["as"], rs_spots(f, sites, z=Z * 1.01))
