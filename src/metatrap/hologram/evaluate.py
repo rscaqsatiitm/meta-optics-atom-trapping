@@ -25,8 +25,10 @@ def disc_distances(rr: int, ox: float, oy: float, dx: float) -> np.ndarray:
     sub-pixel peak, which lies ox pixels along the first array axis and oy along the second.
 
     Used for the cell and core discs in spot_metrics and tiled._site_metrics."""
-    yy, xx = np.mgrid[-rr : rr + 1, -rr : rr + 1]
-    return np.hypot((xx - ox) * dx, (yy - oy) * dx)
+    a0, a1 = np.mgrid[-rr : rr + 1, -rr : rr + 1]  # offsets along the first and second axis
+    # (Before 2026-11-20 the offsets were paired with the wrong axes, displacing the discs by up to
+    # 0.7 pixel; tests/test_spot_metrics.py, docs/planted_truth_hologram.md.)
+    return np.hypot((a0 - ox) * dx, (a1 - oy) * dx)
 
 
 def _quad_peak(patch: np.ndarray):
