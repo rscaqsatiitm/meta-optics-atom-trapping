@@ -1,0 +1,59 @@
+{
+  "planted_3x3": {
+    "array_efficiency": {
+      "legacy": 10857.250325490737,
+      "fixed": 10858.094155467454,
+      "change": 0.8438299767167337
+    },
+    "core_efficiency": {
+      "legacy": 9674.861663378915,
+      "fixed": 9674.881934170568,
+      "change": 0.020270791652365006
+    },
+    "cell_power_nonuniformity_rms": {
+      "legacy": 0.2886453312268449,
+      "fixed": 0.28851114276732553,
+      "change": -0.00013418845951934655
+    },
+    "p_core_per_site_max_rel_change": 0.0007571930933700788,
+    "p_cell_per_site_max_rel_change": 0.0008006871099697221
+  },
+  "render_check_16x16": {
+    "array_efficiency": {
+      "legacy": 0.8544871277668561,
+      "fixed": 0.8546345864195736,
+      "change": 0.00014745865271748038
+    },
+    "core_efficiency": {
+      "legacy": 0.7265844220020217,
+      "fixed": 0.7266334870296159,
+      "change": 4.9065027594275e-05
+    },
+    "cell_power_nonuniformity_rms": {
+      "legacy": 0.06707421998613226,
+      "fixed": 0.06703563035599007,
+      "change": -3.8589630142193965e-05
+    },
+    "p_core_per_site_max_rel_change": 0.0034715857725160504,
+    "p_cell_per_site_max_rel_change": 0.006985682433485185
+  },
+  "fullaperture_100k_round26": {
+    "array_efficiency": {
+      "legacy": 0.808962956844422,
+      "fixed": 0.809155204471322,
+      "change": 0.00019224762690006614
+    },
+    "core_efficiency": {
+      "legacy": 0.663870255782519,
+      "fixed": 0.6635421472407945,
+      "change": -0.0003281085417244922
+    },
+    "cell_power_nonuniformity_rms": {
+      "legacy": 0.04472186333628099,
+      "fixed": 0.044799541338535746,
+      "change": 7.767800225475657e-05
+    },
+    "p_core_per_site_max_rel_change": 0.01830951661530178,
+    "p_cell_per_site_max_rel_change": 0.016541855899790514
+  }
+}

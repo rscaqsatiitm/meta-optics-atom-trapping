@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "pitch_um": 16.0,
+      "guard": 1.6,
+      "n": 64,
+      "period_over_field": 2.1333333333333333,
+      "pupil_samples": 2661,
+      "point_power_error": 0.030686591772439042
+    },
+    {
+      "pitch_um": 16.0,
+      "guard": 3.2,
+      "n": 98,
+      "period_over_field": 3.266666666666667,
+      "pupil_samples": 6173,
+      "point_power_error": 0.023363451503615407
+    },
+    {
+      "pitch_um": 16.0,
+      "guard": 4.3,
+      "n": 132,
+      "period_over_field": 4.400000000000001,
+      "pupil_samples": 11149,
+      "point_power_error": 0.016255651965684015
+    },
+    {
+      "pitch_um": 8.0,
+      "guard": 1.6,
+      "n": 64,
+      "period_over_field": 4.266666666666667,
+      "pupil_samples": 2661,
+      "point_power_error": 0.006076241555036832
+    },
+    {
+      "pitch_um": 8.0,
+      "guard": 8.6,
+      "n": 132,
+      "period_over_field": 8.800000000000002,
+      "pupil_samples": 11149,
+      "point_power_error": 0.006969162058442113
+    }
+  ]
+}

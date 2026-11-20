@@ -1,0 +1,39 @@
+{
+  "pitch8_baseline": {
+    "position_um": 0.12890529519304592,
+    "core_power": 0.06585925605156473,
+    "peak_power": 0.011718348802215006,
+    "point_power": 0.006076241555036832
+  },
+  "D1_point_power_error": 0.006076241555036832,
+  "D1_rule_met": true,
+  "D3_feedback_rounds": [
+    {
+      "position_um": 0.1294396680336249,
+      "core_power": 0.06155481798344398,
+      "peak_power": 0.004005613081367598,
+      "point_power": 0.0056621151733420305
+    },
+    {
+      "position_um": 0.12959757097756708,
+      "core_power": 0.060002394971307105,
+      "peak_power": 0.003100634585220474,
+      "point_power": 0.004758180901667575
+    },
+    {
+      "position_um": 0.12967845687842405,
+      "core_power": 0.059176016950345134,
+      "peak_power": 0.0020903433015293515,
+      "point_power": 0.004872329635910222
+    }
+  ],
+  "D3_peak_rule_met": true,
+  "D3_recovery_after_feedback": false,
+  "D2_pitch16": {
+    "position_um": 0.030280744906192918,
+    "core_power": 0.04139955635878567,
+    "peak_power": 0.030584194925011632,
+    "point_power": 0.030686591772439042
+  },
+  "D2_rule_met": true
+}

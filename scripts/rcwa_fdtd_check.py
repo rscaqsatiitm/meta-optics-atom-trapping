@@ -1,6 +1,13 @@
 """Independent route for the RCWA meta-atom response: 2D FDTD of a lamellar grating, plus two
 analytic limits.
 
+SUPERSEDED (2026-11-20) by scripts/rcwa_fdtd_convergence.py. The FDTD set-up here has two
+geometry defects: fdtd.PeriodicBoundary identifies the first and last cell, so Nx = p / d cells
+give a period of p - d (0.49 / 0.495 um on the 10 / 5 nm grids); and ridges centred on cell
+centres have 14 / 24 / 34 cells on the 10 nm grid (0.01 um too narrow). Its C2 failure and its
+C3 agreement are therefore not evidence either way. Kept, unchanged otherwise, as the record of
+results/rcwa_fdtd_check.
+
 Usage: python scripts/rcwa_fdtd_check.py [--break]
 
 Why. fmmax and grcwa are both Fourier modal methods (RCWA) and share the layers where their
