@@ -18,6 +18,30 @@ Acceptance criteria, written before the pilot output was seen:
 3. With three pilot sizes, the largest relative fit residual of each model <= 10 %.
 If a criterion fails, the projection is not used for the 10^6 run until the cause is found.
 
-## Result
+## Result of the first validation: FAIL
 
-(Appended after the run.)
+Pilots at scales 0.1 / 0.2 / 0.3 (results/bench_pilot, first version of the pilot mode):
+
+| Criterion | Projected | Required | Verdict |
+|---|---|---|---|
+| 1. Time per feedback round | 393 s (kernel product 51 + render and fold 145 + propagation and metrics 196) | 530 to 980 s | FAIL |
+| 2. Peak memory | 11.5 GB | 10.9 to 15 GB | PASS |
+| 3. Fit residuals | render 183 %, propagation 6.5 %, memory 0.1 % | <= 10 % | FAIL (render) |
+
+Diagnosis: (i) the render-and-fold model a + b n^2 used the padded grid size n; the 0.2 pilot was
+padded to twice its fold window, while the render cost follows the pixels inside the aperture,
+hence the 183 % residual; (ii) the pilot rendered ideal pixels, whereas the measured run renders
+library pillars (lookup per pixel). The projection is therefore not used.
+
+Changes: the render model becomes a + b N_ap, with N_ap = pi (R / dx)^2 the aperture pixel count,
+and the pilot renders library pillars whenever the config uses them (feedback_pillars: library or
+pillar cases). A re-check against the same 755 s run is no longer blind (the expected value can be
+estimated by hand from the pilot numbers above), so the fixed projector is validated blind against
+a different measured run, declared here before it is run:
+
+Blind validation (declared before running): configs/fullaperture_100k_pplib_g08.yaml (10^5 sites,
+2.048 mm fold window, complex128 fold buffer, library pillars). Measured: one evaluation (render,
+fold, propagation, tiled metrics; the `seconds` of results/fullaperture_100k_pplib_g08,
+library_lpa) took 473 s. Criterion: projected render-and-fold plus propagation-and-metrics time per
+evaluation within +/-30 % of 473 s (331 to 615 s), with fit residuals <= 10 %. The rerun of the
+100k_full case is reported as well, labelled post hoc.

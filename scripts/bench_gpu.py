@@ -23,7 +23,9 @@ its basis and written to results/bench_pilot/<config stem>.json):
                        x fundamental sites, counted exactly for the config), at the mean pilot rate;
                        the number of products and of full evaluations follows the config (fresh
                        WGS or initial_state, WGS-target or pupil-phase feedback, pillar cases)
-  render and fold      a + b n^2 (metasurface pixels), fitted to the two pilots
+  render and fold      a + b N_ap (pixels inside the aperture, pi (R / dx)^2), with library pillars
+                       when the config renders them (an earlier version used the padded n^2 and
+                       ideal pixels and failed its validation, docs/bench_pilot_validation.md)
   propagation, metrics a + b n_fold^2 log2(n_fold), fitted to the two pilots
   peak memory          a + b n_fold^2 x itemsize, fitted to the two pilots
 These are extrapolations over the ratio of target to pilot size, stated in the output. With three
@@ -101,11 +103,20 @@ def _pilot_worker(args):
         reps += 1
     t_k = (time.time() - t0) / reps
     pairs_ = 8.0 * len(G["fs"]) * len(wp_.opl0)
+    lookup = None
+    if cfg.get("library") and (cfg.get("feedback_pillars") == "library" or cfg.get("pillar_cases")):
+        import importlib.util as _iu
+        from pathlib import Path as _P
+
+        _spec = _iu.spec_from_file_location("fa", _P(__file__).with_name("fullaperture.py"))
+        _fa = _iu.module_from_spec(_spec)
+        _spec.loader.exec_module(_fa)
+        lookup = _fa.build_lookup(cfg, lam)  # the run renders library pillars: include the lookup cost
     t0 = time.time()
     holo = TL.tiled_render_grid(G["g"], G["stack"], na, ill, G["fs"], G["fstab"], c, tab_, lam, upsample=cfg.get("render_upsample", 5),
                                 kernel=lambda *a: KC(*a))
-    blocks = metasurface_blocks(G["n"], G["dx"], G["stack"], lam, na, None, None, ill, holo=holo, block=cfg.get("block_rows", 64),
-                                with_incident=True)
+    blocks = metasurface_blocks(G["n"], G["dx"], G["stack"], lam, na, None, None, ill, holo=holo, lookup=lookup,
+                                block=cfg.get("block_rows", 64), with_incident=True)
     F, _, p_inc = fold_blocks(blocks, G["n"], G["nf"], dtype=np.dtype(cfg.get("fold_dtype", "complex128")))
     t_render = time.time() - t0
     del holo
@@ -114,7 +125,8 @@ def _pilot_worker(args):
     TL.focal_metrics_tiled(cfg, None, G["dx"], lam, na, G["sites"], p_inc * G["dx"] ** 2, foc=foc, tile_px=cfg.get("metrics_tile_px", 1024))
     t_prop = time.time() - t0
     peak_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
-    return {"scale": s, "n": G["n"], "n_fold": G["nf"], "n_sites": len(G["sites"]), "pairs": pairs_, "t_kernel_s": t_k,
+    return {"scale": s, "n": G["n"], "n_aperture_px": float(np.pi * (G["R"] / G["dx"]) ** 2), "library_pillars": lookup is not None,
+            "n_fold": G["nf"], "n_sites": len(G["sites"]), "pairs": pairs_, "t_kernel_s": t_k,
             "rate_per_s": pairs_ / t_k, "t_render_fold_s": t_render, "t_prop_metrics_s": t_prop, "peak_rss_mb": peak_mb,
             "itemsize": np.dtype(cfg.get("fold_dtype", "complex128")).itemsize}
 
@@ -170,17 +182,18 @@ def pilot(cfg_path, scales, gpu):
         resid = float(np.max(np.abs(A @ [a, b] - ys) / ys)) if len(xs) > 2 else float("nan")
         return float(a), float(b), resid
 
-    xr = [r["n"] ** 2 for r in rows]
+    xr = [r["n_aperture_px"] for r in rows]  # render cost follows the pixels inside the aperture, not the padded grid
+    nap_t = float(np.pi * (R / dx) ** 2)
     xp = [r["n_fold"] ** 2 * np.log2(r["n_fold"]) for r in rows]
     xm = [r["n_fold"] ** 2 * r["itemsize"] / 2**20 for r in rows]
     ar, br, rr = fit(xr, [r["t_render_fold_s"] for r in rows])
     ap, bp, rp = fit(xp, [r["t_prop_metrics_s"] for r in rows])
     am, bm, rm = fit(xm, [r["peak_rss_mb"] for r in rows])
     itemsize = np.dtype(cfg.get("fold_dtype", "complex128")).itemsize
-    t_eval = (ar + br * n_t**2) + (ap + bp * nf_t**2 * np.log2(nf_t))
+    t_eval = (ar + br * nap_t) + (ap + bp * nf_t**2 * np.log2(nf_t))
     proj = {
         "kernel_product_s": pairs_t / rate, "n_products": n_products, "products_total_h": n_products * pairs_t / rate / 3600,
-        "render_fold_s_per_evaluation": ar + br * n_t**2,
+        "render_fold_s_per_evaluation": ar + br * nap_t,
         "prop_metrics_s_per_evaluation": ap + bp * nf_t**2 * np.log2(nf_t),
         "n_evaluations": n_evaluations, "evaluations_total_h": n_evaluations * t_eval / 3600,
         "total_h": (n_products * pairs_t / rate + n_evaluations * t_eval) / 3600,
@@ -188,7 +201,8 @@ def pilot(cfg_path, scales, gpu):
         "fit_max_relative_residual": {"render": rr, "propagation": rp, "memory": rm},
         "basis": {"kernel": f"mean pilot rate {rate:.3g} evaluations/s ({'GPU' if gpu else 'CPU LazyKG'}), "
                             f"{pairs_t:.3g} evaluations per product (exact count), extrapolated x{pairs_t / max(r['pairs'] for r in rows):.0f}",
-                  "render": f"a + b n^2 fitted to n = {[r['n'] for r in rows]}, target n = {n_t} (x{n_t**2 / max(xr):.0f} in pixels)",
+                  "render": f"a + b N_aperture fitted to {[round(x / 1e6, 1) for x in xr]} Mpx, target {nap_t / 1e6:.0f} Mpx "
+                            f"(x{nap_t / max(xr):.0f}); library pillars: {rows[0]['library_pillars']}",
                   "propagation": f"a + b n_fold^2 log2 n_fold fitted to n_fold = {[r['n_fold'] for r in rows]}, target {nf_t}",
                   "memory": f"a + b n_fold^2 itemsize fitted to peak RSS {[round(r['peak_rss_mb']) for r in rows]} MB, target n_fold {nf_t}"},
     }
