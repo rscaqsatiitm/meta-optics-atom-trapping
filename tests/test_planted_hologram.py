@@ -23,6 +23,16 @@ Tolerances, fixed before the first run (never loosened after a result):
   AGREE_POW 0.01      max |RS / AS - 1| of the per-site core power
 Negative controls (each must make its check fail): planted powers transposed x <-> y; the RS
 input shifted by one pixel; the RS evaluated 1 % further away (z x 1.01).
+
+Change of 2026-11-20 (the thresholds are unchanged). The first version compared the AS spots
+from spot_metrics with RS spots from a separate estimator (1D quadratic fits on a 0.125 um grid)
+and failed the position criterion at 0.0138 um, although the two intensity maps agree to 0.52 %
+of the peak (docs/planted_truth_hologram.md): it tested the estimators as much as the
+propagators. The AS-RS comparison now applies one measurement chain to both fields: each field
+is sampled on the same 96 x 96 window of 0.5 um pixels, upsampled x 4 by fourier_upsample and
+measured by spot_metrics, so the shared layers are the window, the upsampling and the estimator,
+and the check isolates the propagators. The RS recovery check keeps its own estimator
+(rs_spots), so that recovery is still measured by code independent of the production metrics.
 """
 
 import numpy as np
@@ -100,6 +110,16 @@ def rs_spots(f, sites, z=Z, shift_px=0, h=0.125):
     return {k: np.array(v) for k, v in res.items()}
 
 
+def rs_window_spots(f, sites, z=Z, shift_px=0, w=96):
+    """RS field sampled on the AS measurement window, then the production measurement chain."""
+    idx = (np.arange(w) - w // 2) * DX
+    X_, Y_ = np.meshgrid(idx, idx, indexing="ij")
+    pts = np.column_stack([X_.ravel(), Y_.ravel()])
+    win = rs_field(f, DX, z, LAM, pts, shift_px).reshape(w, w)
+    I = np.abs(fourier_upsample(win, 4)) ** 2
+    return E.spot_metrics(I, DX / 4, sites, PITCH, LAM, NA, 1.0)["per_site"]
+
+
 # ---------------------------------------------------------------- production design and AS route
 @pytest.fixture(scope="module")
 def design():
@@ -119,7 +139,8 @@ def design():
     c0 = N // 2 - w // 2
     I = np.abs(fourier_upsample(foc[c0 : c0 + w, c0 : c0 + w], 4)) ** 2  # propagate keeps the axis at N//2
     m = E.spot_metrics(I, DX / 4, sites, PITCH, LAM, NA, 1.0)
-    return {"sites": sites, "plant": plant, "f": f, "as": m["per_site"], "rs": rs_spots(f, sites)}
+    return {"sites": sites, "plant": plant, "f": f, "as": m["per_site"], "rs": rs_spots(f, sites),
+            "rs_win": rs_window_spots(f, sites)}
 
 
 def recovery_errors(spots, sites, plant):
@@ -158,7 +179,7 @@ def test_plant_recovered_by_rayleigh_sommerfeld(design):
 
 
 def test_angular_spectrum_agrees_with_rayleigh_sommerfeld(design):
-    rs = design["rs"]
+    rs = design["rs_win"]  # same window, upsampling and estimator as the AS route
     pk, pos, powr = agreement(design["as"], rs)
     print(f"AS vs RS: peak {pk:.2e} (tol {AGREE_PK}), position {pos:.2e} um (tol {AGREE_POS}), core power {powr:.2e} (tol {AGREE_POW})")
     assert agree(design["as"], rs)
@@ -170,5 +191,5 @@ def test_negative_controls_fail(design):
     transposed = planted_power(sites[:, 1], sites[:, 0])  # x <-> y swapped plant
     assert not recovered(design["as"], sites, transposed)
     assert not recovered(design["rs"], sites, transposed)
-    assert not agree(design["as"], rs_spots(f, sites, shift_px=1))
-    assert not agree(design["as"], rs_spots(f, sites, z=Z * 1.01))
+    assert not agree(design["as"], rs_window_spots(f, sites, shift_px=1))
+    assert not agree(design["as"], rs_window_spots(f, sites, z=Z * 1.01))
