@@ -87,3 +87,31 @@ the trap depth (peak intensity) is the claim, the recovered quantity is the peak
 the design meets after feedback (0.21 %). If trap positions matter at the 0.05 um level, the
 design must control the location of the maxima (e.g. position terms in the feedback), which it
 does not today; the recovery tolerances would then stay and the design would change.
+
+## Revision for the trap-depth claim (2026-11-20)
+
+The PI decided that the design claims trap depth. tests/test_planted_hologram.py now recovers the
+normalised peak intensity after the production feedback (three pupil-phase rounds, gain 1.0, on
+the AS-measured peaks) with DEPTH_TOL = 1 %, measured by the production AS route (in-sample) and
+by the RS route with its own estimator (independent of the loop and of the production metrics).
+Positions and core powers are reported, not asserted. Provenance of the threshold: chosen after
+diagnostics D1 to D3 had shown 1.2 % (AS, no feedback) and 0.21 % (AS, three rounds); the RS value
+after feedback had not been computed; the level is that of the claim.
+
+| Quantity | No feedback | After 3 rounds | Tolerance |
+|---|---|---|---|
+| Trap-depth error, AS (in-sample) | 1.17 % | 0.21 % | 1 %: PASS |
+| Trap-depth error, RS (independent) | - | 0.56 % | 1 %: PASS |
+| Position error, AS / RS (reported only) | 0.129 um | 0.130 / 0.124 um | - |
+| Core-power error, AS / RS (reported only) | 6.6 % | 5.9 % / 5.9 % | - |
+| AS against RS, one measurement chain: peak / position / core power | - | 0.43 % / 0.007 um / 7e-5 | 1 % / 0.01 um / 1 %: PASS |
+
+Negative controls (all fail as required): planted powers transposed x <-> y; one planted power
+changed by 2 %; RS input shifted by one pixel; RS at z x 1.01.
+
+The independent route confirms the trap-depth claim with a factor ~1.8 margin. Its own resolution
+is set by the AS-RS difference (0.43 % in absolute peak, 0.35 points between the two recovery
+values), so the independent route cannot confirm relative trap depths below ~0.5 % in this
+case; the in-loop 0.21 % is not independently confirmed at that level. Trap positions are not
+part of the claim; they are offset by up to 0.13 um here by neighbour interference and are not
+controlled by the design.
