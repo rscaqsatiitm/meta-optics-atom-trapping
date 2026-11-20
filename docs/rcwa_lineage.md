@@ -100,3 +100,34 @@ version of the C3 and C4 breaks could not fail (C4 infers the orientation from t
 also undid the C3 swap); this was found by the break run and the breaks were replaced (see the
 script docstring). C4 therefore tests the effective indices, and reports the orientation
 (t_y), rather than testing an orientation fixed in advance.
+
+## Superseding check with converged references (2026-11-20; scripts/rcwa_fdtd_convergence.py)
+
+The results above are not evidence either way: the FDTD set-up of scripts/rcwa_fdtd_check.py had
+a period of p - d (fdtd.PeriodicBoundary identifies the first and last cell) and, on the 10 nm
+grid, ridges one cell too narrow. With the period exact, every width and layer on whole cells
+(grids 25 / 12.5 / 6.25 nm), both polarisations, and RCWA at 437 terms on a 400-point grid
+(thresholds declared in the script and committed before the run; results/rcwa_fdtd_convergence):
+
+| Check | Threshold | Result | Verdict |
+|---|---|---|---|
+| C1 FDTD uniform layer against Airy, 25 / 12.5 / 6.25 nm | 0.03 rad, 0.01 amp | 0.0320 / 0.0079 / 0.0020 rad; 2.1e-3 / 4.9e-4 / 1.2e-4 amp | FAIL (25 nm grid, by 0.002 rad) |
+| C2 FDTD sampling, Richardson over the three grids | order 0.7 to 3.5; correction 0.02 rad, 0.01 amp | TE converged (finest two grids within 1e-3); TM order 2.00 / 2.07, correction 5e-4 / 4e-4 rad | PASS |
+| C5 RCWA digits: 317 vs 437 terms, grid 200 vs 400 | 0.005 rad, 0.002 amp | <= 4.8e-4 rad (TM, terms), <= 4e-5 rad (grid) | PASS |
+| C3 fmmax (437 terms, grid 400) against extrapolated FDTD, TE and TM | 0.05 rad, 0.02 amp | <= 3e-4 rad, <= 2e-4 amp | PASS, formally INCONCLUSIVE (C1) |
+
+Deliberate breaks (metrics_break.json): all four checks fail (C1 with n = 2.05: 0.26 rad; C2 with
+the coarsest ratio of another width: fails on TM, while the TE entries are skipped as converged,
+so the C2 break does not exercise the TE order test; C5 with 41 terms; C3 with RCWA TM against
+FDTD TE).
+
+Verdict: OPEN by the rule declared beforehand, because C1 fails on the coarsest grid. The failure
+is understood: the uniform-layer error falls exactly as d^2 (ratios 4.05 and 3.95), the grid
+dispersion of the Yee scheme, and the two finer grids pass with margin; the 25 nm grid enters
+only the Richardson estimate, whose observed order (2.0) is the scheme's. Within that
+qualification, fmmax (pol_fourier) and an FDTD route that shares no Fourier expansion,
+eigenproblem or scattering matrix agree on the lamellar grating to 3e-4 rad and 2e-4 in
+amplitude for both polarisations, with each side converged to better than 5e-4 rad. The earlier
+C2 failure (0.04 to 0.06 rad between 10 and 5 nm) is explained by the two set-up defects: on
+aligned grids the change between the two finer grids is <= 0.0015 rad. Not covered: 2D-periodic
+pillars (a 3D FDTD case) and the material values, which both routes share.
