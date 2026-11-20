@@ -131,3 +131,30 @@ amplitude for both polarisations, with each side converged to better than 5e-4 r
 C2 failure (0.04 to 0.06 rad between 10 and 5 nm) is explained by the two set-up defects: on
 aligned grids the change between the two finer grids is <= 0.0015 rad. Not covered: 2D-periodic
 pillars (a 3D FDTD case) and the material values, which both routes share.
+
+## Finer grid sequence (2026-11-20; `scripts/rcwa_fdtd_convergence.py --fine`)
+
+Declared after the run above and before this one: the same checks and thresholds on the three
+finest grids, 12.5 / 6.25 / 3.125 nm (3.125 nm runs made four at a time in parallel, ~17 min
+each; results/rcwa_fdtd_convergence/metrics_fine.json).
+
+| Check | Threshold | Result | Verdict |
+|---|---|---|---|
+| C1 FDTD uniform layer against Airy, 12.5 / 6.25 / 3.125 nm | 0.03 rad, 0.01 amp | 0.0079 / 0.0020 / 0.0005 rad; 4.9e-4 / 1.2e-4 / 3e-5 amp | PASS |
+| C2 FDTD sampling | finest two grids within 1e-3, else Richardson order and correction | every case within 1e-3 (max 3.9e-4, TM w 0.15 um); no extrapolation applied | PASS |
+| C5 RCWA digits (as before) | 0.005 rad, 0.002 amp | <= 4.8e-4 rad | PASS |
+| C3 fmmax (437 terms, grid 400) against FDTD at 3.125 nm, TE and TM | 0.05 rad, 0.02 amp | <= 2.1e-4 rad, <= 6e-5 amp | PASS, conclusive |
+
+Deliberate breaks (metrics_fine_break.json): C1, C5 and C3 fail as required. The declared C2 break
+(coarsest-grid ratio of another width) did not fire: in the converged branch C2 does not read the
+coarsest grid, so that corruption cannot reach it. A control on the middle grid, the clause C2
+actually used, was added after this result (`--break-c2-mid`, metrics_fine_break_c2_mid.json)
+and makes C2 fail. Both the non-firing declared break and the added control are on record.
+
+Verdict: CLOSED for the stated scope. fmmax with the pol_fourier formulation (the solver and
+formulation of the libraries) agrees with an FDTD route that shares no Fourier expansion,
+eigenproblem or scattering matrix to 2.1e-4 rad and 6e-5 in amplitude, for both polarisations,
+on a lamellar grating (substrate 1.45, ridges 2.0, period 0.5 um, height 1.0 um, 1.075 um,
+widths 0.15 to 0.35 um), with each route converged to better than 5e-4 rad. Not covered:
+2D-periodic pillars (a 3D FDTD case), oblique incidence, other indices and heights, and the
+material values, which both routes share.
