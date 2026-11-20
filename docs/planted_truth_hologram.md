@@ -142,3 +142,23 @@ outer sites, 6.4 deg here). The feedback loop removes such residuals in the prod
 without feedback, a larger guard than the 1.25 used for the full-aperture designs would reduce
 the pre-feedback residual at a kernel cost proportional to n^2 (Provisional: not tested on the
 full-aperture designs).
+
+### Rim or field angle? (scripts/planted_truth_pitch16_causes.py, results/planted_truth_pitch16/causes.json)
+
+At a matched focal period of 4.4 times the field extent (interpretation rules declared first):
+
+| Case | Largest field angle | Point-power error (no feedback) |
+|---|---|---|
+| 8 um pitch, on axis | 3.2 deg | 0.62 % |
+| 16 um pitch, on axis, hard edge | 6.5 deg | 1.63 % |
+| 16 um pitch, raised-cosine edge (10 % of the radius) | 6.5 deg | 2.02 % |
+| 8 um pitch, centred at (16, 16) um | 9.6 deg | 2.39 % |
+
+(a) The aperture rim is not supported: a soft edge makes the error larger, not smaller (rule:
+<= 1.0 %). (b) The field angle is supported (rule: displaced 8 um array >= 1.3 %): at matched
+sampling the error grows roughly linearly with the largest field angle, ~0.25 % per degree, for
+both pitches. The mechanism, i.e. which part of the pupil model departs from the full-pixel
+field with angle, is not identified (Provisional). Relevance: the 10^5-site corner lies at
+3.3 deg and the 10^6-site corner at ~10 deg from the axis (15.5 mm stack), so the
+pre-feedback residual of the 10^6 design may carry a field-dependent part of a few per cent,
+which the feedback must remove (measured alias-free, docs/scaling_100k.md).
