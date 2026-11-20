@@ -58,7 +58,8 @@ the simulations here with these meanings:
 
 - Before any full-aperture run, run `scripts/bench_gpu.py` on a small aperture and extrapolate
   the time and the memory of the full run; write the projection, with its basis, in the run's
-  config header or log before launching. (As of 2026-11-19 the script needs a CUDA GPU, keeps
-  the 18.4 mm aperture fixed while its argument scales the site count, and reports time but not
-  memory, so the memory part must be extrapolated by hand from a small CPU run until the script
-  is extended.)
+  config header or log before launching. Use `python scripts/bench_gpu.py --pilot CONFIG [--gpu]`
+  (three scaled pilots, each in its own process; time and peak-memory projection with its basis,
+  results/bench_pilot/). Its validation is open (docs/bench_pilot_validation.md): measured
+  evaluation times were reproduced to +7 to +24 % on two 10^5-site configurations, but the
+  fit-quality criterion was not met, so quote its projections with a +/-30 % allowance.

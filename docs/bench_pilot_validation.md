@@ -45,3 +45,26 @@ fold, propagation, tiled metrics; the `seconds` of results/fullaperture_100k_ppl
 library_lpa) took 473 s. Criterion: projected render-and-fold plus propagation-and-metrics time per
 evaluation within +/-30 % of 473 s (331 to 615 s), with fit residuals <= 10 %. The rerun of the
 100k_full case is reported as well, labelled post hoc.
+
+## Result of the blind validation: time criterion met, fit criterion not met
+
+Fixed projector, pilots 0.1 / 0.2 / 0.3, configs/fullaperture_100k_pplib_g08.yaml
+(results/bench_pilot/fullaperture_100k_pplib_g08.json):
+
+| Criterion | Projected | Required | Verdict |
+|---|---|---|---|
+| Time per evaluation (render and fold 567 s + propagation and metrics 18 s) | 585 s against 473 s measured (+24 %) | 331 to 615 s | PASS |
+| Fit residuals | render 11.6 %, propagation 29 %, memory 0.7 % | <= 10 % | FAIL |
+
+Post hoc (not blind; the same run as the first validation), configs/fullaperture_100k_full.yaml:
+kernel product 58 s + render and fold 556 s + propagation and metrics 198 s = 812 s per round
+against 724 to 787 s measured (+7 % on 755 s); peak memory 11.4 GB (within the 10.9 to 15 GB
+bounds; the real peak was not recorded); fit residuals render 11.6 %, propagation 7.2 %,
+memory 0.4 %.
+
+Verdict: OPEN. The projector now reproduces the measured evaluation times to +7 to +24 % on two
+10^5-site configurations, but the declared fit-quality criterion fails: the render model is off
+by 11.6 % at one of the three pilots (both configurations), and the propagation model by 29 %
+where the pilots' fold windows (384 to 1216) are small enough for fixed costs to dominate. Use
+its projections with a +/-30 % allowance and pilot fold windows of several thousand; a further
+model change (e.g. a per-row cost in the render) would need a new blind validation.
