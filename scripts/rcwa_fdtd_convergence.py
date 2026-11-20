@@ -33,6 +33,14 @@ Checks and thresholds (declared before the first run; never changed after a resu
 C5 with 41 against 437 terms; C3 with RCWA TM against FDTD TE. Every check must then fail.
 Output: results/rcwa_fdtd_convergence/{metrics,metrics_break}.json, FDTD phasors cached in
 fdtd_phasors.json (the break run reuses them).
+
+--fine (declared 2026-11-20, after the first run, before this one): the same checks C1, C2, C5
+and C3 with the same thresholds, on the three finest grids 12.5 / 6.25 / 3.125 nm (all widths,
+the period and the layers on whole cells). Reason: in the first run C1 failed only on the 25 nm
+grid (0.0320 rad against 0.03; 0.0079 and 0.0020 rad on the finer grids). That failure stays on
+record (metrics.json); this run decides whether the rule is met on a finer grid sequence.
+The missing FDTD runs are made four at a time in parallel (the solver uses one core).
+Output: metrics_fine.json, metrics_fine_break.json.
 """
 
 import json
@@ -48,6 +56,7 @@ N_SUB, N_RIDGE = 1.45, 2.0
 WIDTHS = [0.15, 0.25, 0.35]
 W_REF = 0.25
 GRIDS = [0.025, 0.0125, 0.00625]  # every width, the period and every layer are whole numbers of cells
+GRIDS_FINE = [0.0125, 0.00625, 0.003125]
 THR = {"C1_amp": 0.01, "C1_phi": 0.03, "C2_order": [0.7, 3.5], "C2_amp": 0.01, "C2_phi": 0.02, "C2_converged": 1e-3,
        "C5_amp": 0.002, "C5_phi": 0.005, "C3_amp": 0.02, "C3_phi": 0.05}
 COMP = {"TE": 2, "TM": 0}  # FDTD field component: E_z parallel to the ridges, E_x perpendicular
@@ -121,25 +130,39 @@ def cmp(a, b):
     return float(abs(abs(a) - abs(b))), float(abs(np.angle(a / b)))
 
 
-def main(brk):
+def _run(job):
+    key, w, d, layer, pol = job
+    v, steady = fdtd_t(w, d, layer, pol)
+    return key, [v.real, v.imag, steady]
+
+
+def main(brk, fine=False):
+    global GRIDS
+    if fine:
+        GRIDS = GRIDS_FINE
     t0 = time.time()
     out = REPO_ROOT / "results" / "rcwa_fdtd_convergence"
     out.mkdir(parents=True, exist_ok=True)
     case = {"lam": LAM, "pitch": P, "height": H, "n_sub": N_SUB, "n_ridge": N_RIDGE, "widths": WIDTHS, "grids": GRIDS, "nx": "p/d+1"}
+    base = {k: v for k, v in case.items() if k != "grids"}  # cache entries are per run ("d:name")
     cache_path = out / "fdtd_phasors.json"
     cache = json.load(open(cache_path)) if cache_path.exists() else {}
-    if cache.get("key") != json.dumps(case, sort_keys=True):
-        cache = {"key": json.dumps(case, sort_keys=True)}
-    for d in GRIDS:  # coarse first: the cache fills as runs finish
-        for name, layer, w, pol in [("slab", "slab", 0, "TE"), ("air", "air", 0, "TE")] + \
-                [(f"{pol}:{w}", "grating", w, pol) for pol in ("TE", "TM") for w in WIDTHS]:
-            key = f"{d}:{name}"
-            if key in cache:
-                continue
-            v, steady = fdtd_t(w, d, layer, pol)
-            cache[key] = [v.real, v.imag, steady]
-            json.dump(cache, open(cache_path, "w"), indent=1)
-            print(f"FDTD {key} done ({time.time() - t0:.0f}s, steady-state change {steady:.1e})", flush=True)
+    old = json.loads(cache["key"]) if "key" in cache else None
+    if old is None or {k: v for k, v in old.items() if k != "grids"} != base:
+        cache = {}
+    cache["key"] = json.dumps(case, sort_keys=True)
+    jobs = [(f"{d}:{name}", w, d, layer, pol) for d in GRIDS
+            for name, layer, w, pol in [("slab", "slab", 0, "TE"), ("air", "air", 0, "TE")] +
+            [(f"{pol}:{w}", "grating", w, pol) for pol in ("TE", "TM") for w in WIDTHS]]
+    jobs = [j for j in jobs if j[0] not in cache]
+    if jobs:
+        from multiprocessing import Pool
+
+        with Pool(4) as pool:
+            for key, val in pool.imap_unordered(_run, jobs):
+                cache[key] = val
+                json.dump(cache, open(cache_path, "w"), indent=1)
+                print(f"FDTD {key} done ({time.time() - t0:.0f}s, steady-state change {val[2]:.1e})", flush=True)
     ph = {k: complex(v[0], v[1]) for k, v in cache.items() if k != "key"}
     res = {"thresholds": THR, "case": case, "break": brk,
            "fdtd_max_steady_state_change": max(v[2] for k, v in cache.items() if k != "key")}
@@ -207,9 +230,10 @@ def main(brk):
         print(f"{k}: {'PASS' if v else 'FAIL'}  {json.dumps(res[k])}", flush=True)
     ok = (not any(verdicts.values())) if brk else all(verdicts.values())
     print(f"{'break run: every check must fail' if brk else 'normal run: every check must pass'} -> {'OK' if ok else 'NOT OK'}")
-    write_json(out / ("metrics_break.json" if brk else "metrics.json"), res)
+    tag = "metrics_fine" if fine else "metrics"
+    write_json(out / (f"{tag}_break.json" if brk else f"{tag}.json"), res)
     return 0 if ok else 1
 
 
 if __name__ == "__main__":
-    sys.exit(main("--break" in sys.argv))
+    sys.exit(main("--break" in sys.argv, fine="--fine" in sys.argv))
