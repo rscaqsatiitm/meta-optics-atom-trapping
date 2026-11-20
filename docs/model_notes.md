@@ -92,7 +92,7 @@ P/(sqrt(2 pi) kappa w) (5 %).
 | Sapphire (o) Sellmeier | materials.py | SOURCE | Malitson and Dodge (1972); Dodge, CRC Handbook IV (1986) |
 | Si-rich SiN n = 2.3 | materials.py | USER | proposal Section 4 quoting ref. 14; `[VALUE?: verify, dispersion]` |
 | Pyrex n = 1.47 | materials.py | `[VALUE?]` | used only for the ref. 4 geometry |
-| Fused silica kappa 1.38 W/m/K | axisym_fd.py | SOURCE (secondary), inconsistent with the primary | Corning HPFS figure quoted in a search snippet; the Corning 7980 sheet actually read gives 1.30. All fused-silica temperature rises and focal shifts scale as 1 / kappa, so with the read value they are 6 % larger and the power limits 6 % lower; not rerun |
+| Fused silica kappa 1.30 W/m/K | axisym_fd.py | SOURCE | Corning 7980 sheet (uqgoptics copy, read 2026-10-31). Until 2026-11-20 the code used 1.38, a Corning HPFS figure seen only in a search snippet and never read; the thermal runs were then repeated (thermal_h2a, thermal_film_estimates, damage_v2, scaling_100k table; cavity runs listed in docs/cavity_concept.md). With face cooling the fused-silica rises grew by 3 to 4 % (not the 6 % of a pure 1/kappa scaling) and the half-space defect radii fell by 6 % |
 | Fused silica dn/dT 9.6 ppm/K (1064 nm), alpha 0.52 ppm/K | axisym_fd.py | SOURCE | Corning 7980 sheet |
 | Sapphire kappa 33.0 W/m/K (perp. c), alpha 5.0 ppm/K | axisym_fd.py | SOURCE | Alkor sapphire data sheet |
 | Sapphire dn/dT 13 ppm/K | axisym_fd.py | `[VALUE?]` | vendor value at 0.546 um, verify at 1075 nm |
