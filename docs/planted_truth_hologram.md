@@ -39,3 +39,51 @@ Findings (reported, not fixed; no reported number was changed):
    centred with the sub-pixel offsets swapped between the axes (`yy, xx = np.mgrid[...]`, then
    `hypot(xx - ox, yy - oy)` with ox the first-axis offset). The displacement is at most
    0.7 grid step; its effect on reported powers was not quantified. Not changed.
+
+## Follow-up (2026-11-20)
+
+**Finding 3 fixed.** `evaluate.disc_distances` (now shared by `spot_metrics` and
+`tiled._site_metrics`) pairs each sub-pixel offset with its own axis. The new unit test
+(tests/test_spot_metrics.py, thresholds declared first) failed on the legacy formula (disc
+centroid (-0.245, 0.348) px for a peak at (0.3, -0.2) px) and passes with the fix (centroid
+error 0.048 px against 0.05 px; the margin is the pixelation of a 15-pixel disc). Impact on the
+same intensity maps, legacy against fixed (scripts/disc_fix_impact.py,
+results/disc_fix_impact/metrics.json; decision rule declared first: erratum if a reported
+quantity changes by more than its quoted precision, 0.0005 for efficiencies):
+
+| Case | Array efficiency | Core efficiency | Cell-power non-uniformity | Max per-site change, core / cell |
+|---|---|---|---|---|
+| 10^5-site design, round 26, unfolded | 0.80896 -> 0.80916 (+1.9e-4) | 0.66387 -> 0.66354 (-3.3e-4) | 4.472 -> 4.480 % | 1.8 % / 1.7 % |
+| 16 x 16 render-check design | +1.5e-4 | +4.9e-5 | -0.004 points of % | 0.35 % / 0.70 % |
+| Planted 3 x 3 | +8e-5 (relative) | +2e-6 (relative) | -0.013 points of % | 0.08 % / 0.08 % |
+
+No reported number changes at its quoted precision, so no erratum. Per-site powers move by up
+to 1.8 %, but they are not reported individually.
+
+**Finding 2 resolved.** With one measurement chain for both fields (same window, upsampling and
+estimator; thresholds unchanged), AS and RS agree: peak 4.3e-3, position 0.0069 um, core power
+7.2e-5. The negative controls (RS input shifted by one pixel, RS at z x 1.01) still fail on the
+new chain.
+
+**Finding 1 diagnosed** (scripts/planted_truth_diagnostics.py, results/planted_truth_diagnostics;
+interpretation rules declared first):
+
+| Diagnostic | Result | Rule |
+|---|---|---|
+| D1 field at the nominal site points against the plant (8 um pitch) | 0.61 % | <= 1 %: met. The design delivers what the WGS optimises. |
+| D3 three pupil-phase feedback rounds on the measured peaks | peak 1.17 -> 0.21 %; core power 6.6 -> 5.9 %; position 0.129 -> 0.130 um | peak rule met; recovery still fails, so the rest is the metric definition |
+| D2 pitch 16 um, same plant | position 0.030 um, core power 4.1 % | <= 0.05 um and <= 5 %: met. Neighbour interference is the dominant cause. |
+
+Hence the recovery failure is not a defect of the design or of the propagation: at 8 um pitch
+(3.6 Airy radii at NA 0.3) the Airy tails of neighbouring spots shift the intensity maxima by
+0.13 um and add to each core integral, while the WGS controls only the field at the nominal
+points, and feedback on the peak values does not move the peaks. The full-aperture designs sit
+at a similar pitch-to-spot ratio (4 um at NA 0.55, 3.4 Airy radii) and report ~0.09 um rms
+position errors, the same effect (Provisional). Not explained by these rules: at 16 um the
+point and peak power errors rise to 3.1 % (0.6 % and 1.2 % at 8 um); left open.
+
+Decision needed before the recovery tests are revised: which quantities the design claims. If
+the trap depth (peak intensity) is the claim, the recovered quantity is the peak power, which
+the design meets after feedback (0.21 %). If trap positions matter at the 0.05 um level, the
+design must control the location of the maxima (e.g. position terms in the feedback), which it
+does not today; the recovery tolerances would then stay and the design would change.
