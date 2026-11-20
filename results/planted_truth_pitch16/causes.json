@@ -1,0 +1,61 @@
+{
+  "ref_16_hard": {
+    "pitch_um": 16.0,
+    "centre_um": [
+      0,
+      0
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "n": 132,
+    "period_over_extent": 4.400000000000001,
+    "max_field_angle_deg": 6.454830247455114,
+    "point_power_error": 0.016255644779854084
+  },
+  "a_16_soft_edge": {
+    "pitch_um": 16.0,
+    "centre_um": [
+      0,
+      0
+    ],
+    "illumination": {
+      "kind": "top_hat",
+      "edge_um": 6.28970902033151
+    },
+    "n": 132,
+    "period_over_extent": 4.400000000000001,
+    "max_field_angle_deg": 6.454830247455114,
+    "point_power_error": 0.020227586605845116
+  },
+  "ref_8_axis": {
+    "pitch_um": 8.0,
+    "centre_um": [
+      0,
+      0
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "n": 66,
+    "period_over_extent": 4.400000000000001,
+    "max_field_angle_deg": 3.2376881462291047,
+    "point_power_error": 0.006161203892405931
+  },
+  "b_8_off_axis": {
+    "pitch_um": 8.0,
+    "centre_um": [
+      16.0,
+      16.0
+    ],
+    "illumination": {
+      "kind": "top_hat"
+    },
+    "n": 154,
+    "period_over_extent": 4.4,
+    "max_field_angle_deg": 9.631651961403799,
+    "point_power_error": 0.023921619735622457
+  },
+  "a_supported": false,
+  "b_supported": true
+}

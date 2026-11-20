@@ -1,0 +1,73 @@
+{
+  "config": "configs/fullaperture_100k_full.yaml",
+  "gpu": false,
+  "pilots": [
+    {
+      "scale": 0.1,
+      "n": 3712,
+      "n_aperture_px": 10668112.157470087,
+      "library_pillars": true,
+      "n_fold": 3712,
+      "n_sites": 1024,
+      "pairs": 5567296.0,
+      "t_kernel_s": 0.006421567537845709,
+      "rate_per_s": 866968379.1673865,
+      "t_render_fold_s": 5.665017127990723,
+      "t_prop_metrics_s": 1.925292730331421,
+      "peak_rss_mb": 1180.328125,
+      "itemsize": 8
+    },
+    {
+      "scale": 0.2,
+      "n": 14720,
+      "n_aperture_px": 42672448.62988035,
+      "library_pillars": true,
+      "n_fold": 7360,
+      "n_sites": 4096,
+      "pairs": 88391424.0,
+      "t_kernel_s": 0.10135091434825551,
+      "rate_per_s": 872132477.229313,
+      "t_render_fold_s": 24.02236318588257,
+      "t_prop_metrics_s": 7.3875439167022705,
+      "peak_rss_mb": 1506.6171875,
+      "itemsize": 8
+    },
+    {
+      "scale": 0.3,
+      "n": 11072,
+      "n_aperture_px": 96013009.4172308,
+      "library_pillars": true,
+      "n_fold": 11072,
+      "n_sites": 8836,
+      "pairs": 408083328.0,
+      "t_kernel_s": 0.43240801493326825,
+      "rate_per_s": 943745985.0576031,
+      "t_render_fold_s": 50.33289051055908,
+      "t_prop_metrics_s": 16.216717004776,
+      "peak_rss_mb": 2034.1484375,
+      "itemsize": 8
+    }
+  ],
+  "projection": {
+    "kernel_product_s": 58.123284996571456,
+    "n_products": 8,
+    "products_total_h": 0.12916285554793658,
+    "render_fold_s_per_evaluation": 555.8392443267668,
+    "prop_metrics_s_per_evaluation": 198.24048506176476,
+    "n_evaluations": 15,
+    "evaluations_total_h": 3.1419988724522145,
+    "total_h": 3.2711617280001515,
+    "peak_memory_gb": 11.445476832051057,
+    "fit_max_relative_residual": {
+      "render": 0.11577633381051507,
+      "propagation": 0.07202750486165263,
+      "memory": 0.004047188893080174
+    },
+    "basis": {
+      "kernel": "mean pilot rate 8.94e+08 evaluations/s (CPU LazyKG), 5.2e+10 evaluations per product (exact count), extrapolated x127",
+      "render": "a + b N_aperture fitted to [10.7, 42.7, 96.0] Mpx, target 1067 Mpx (x11); library pillars: True",
+      "propagation": "a + b n_fold^2 log2 n_fold fitted to n_fold = [3712, 7360, 11072], target 36864",
+      "memory": "a + b n_fold^2 itemsize fitted to peak RSS [1180, 1507, 2034] MB, target n_fold 36864"
+    }
+  }
+}
