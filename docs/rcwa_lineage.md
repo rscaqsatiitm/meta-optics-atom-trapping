@@ -158,3 +158,34 @@ on a lamellar grating (substrate 1.45, ridges 2.0, period 0.5 um, height 1.0 um,
 widths 0.15 to 0.35 um), with each route converged to better than 5e-4 rad. Not covered:
 2D-periodic pillars (a 3D FDTD case), oblique incidence, other indices and heights, and the
 material values, which both routes share.
+
+## Square pillars, 3D FDTD (2026-11-20; scripts/rcwa_fdtd_pillars.py, results/rcwa_fdtd_pillars)
+
+The lamellar check does not exercise the 2D Fourier treatment of a pillar. Square pillars (the
+library geometry: substrate 1.45, pillars 2.0, lattice 0.5 um, height 1.0 um, 1.075 um, widths
+0.15 / 0.25 / 0.35 um), 3D FDTD on 25 / 16.7 / 12.5 nm grids (all geometry on whole cells; a
+6.25 nm grid would cost ~7 h per run here), fmmax pol_fourier at 437 terms on a 400-point grid.
+Thresholds declared before the run; the uniform-layer threshold applies to the finest grid,
+together with a second-order convergence requirement, a choice made knowing the coarse-grid
+result of the lamellar check (stated in the script).
+
+| Check | Threshold | Result | Verdict |
+|---|---|---|---|
+| P1 FDTD uniform layer against Airy | finest grid 0.03 rad, 0.01 amp; order 1.5 to 2.5 | 0.0330 / 0.0145 / 0.0082 rad (amp 2.3e-3 / 9.8e-4 / 5.4e-4); order 2.01 | PASS |
+| P2 FDTD sampling, Richardson for unequal steps | order 0.7 to 3.5; correction 0.02 rad, 0.01 amp | order 1.97 / 2.02; correction 2.0e-3 / 2.5e-3 rad, 1e-4 amp | PASS |
+| P5 RCWA digits: 317 vs 437 terms, grid 200 vs 400 | 0.005 rad, 0.002 amp | <= 4.0e-4 rad (terms), <= 5e-5 rad (grid) | PASS |
+| P3 fmmax against extrapolated FDTD | 0.05 rad, 0.02 amp | 2.2e-3 rad (w 0.15 um), 4.9e-4 rad (w 0.35 um); amp <= 1.6e-4 | PASS, conclusive |
+
+Deliberate breaks (metrics_break.json), all fail as required: P1 with n = 2.05 (0.26 rad); P2
+with the middle- and coarsest-grid ratios of another width (the clause used); P5 with 41 terms
+(0.018 rad); P3 with RCWA at widths 0.025 um larger (0.16 rad).
+
+Verdict: CLOSED for square pillars in the stated case. fmmax (pol_fourier) agrees with a 3D FDTD
+that shares no Fourier expansion, eigenproblem or scattering matrix to 2.2e-3 rad and 1.6e-4 in
+amplitude, with the FDTD extrapolated from three grids (second order observed) and RCWA converged
+to 4e-4 rad. The 2.2e-3 rad at the narrowest pillar is within the uncertainty of the extrapolated
+FDTD (correction 2.0e-3 rad). Note for the libraries: they are computed at 197 terms on a
+256-point grid, for which docs/campaign1_report.md gives 0.005 to 0.010 rad (Fourier) and
+0.016 to 0.027 rad (grid), larger than the agreement shown here; this check certifies the
+solver and formulation, not the library's coarser numerics. Still not covered: oblique
+incidence, other indices and heights, and the material values, which both routes share.
