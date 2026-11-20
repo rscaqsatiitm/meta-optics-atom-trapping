@@ -43,7 +43,7 @@
             "P2": 23.24026114847375,
             "G": 2.0327370112627787
           },
-          "max_defect_um_fused_silica": 0.29689855703076473,
+          "max_defect_um_fused_silica": 0.27968704647825665,
           "max_defect_um_sapphire": 7.099748102909592,
           "errors": {
             "fig1000_uncorrected": [
@@ -104,7 +104,7 @@
             "fold": 4.230782362480138,
             "G": 3.390650347142648
           },
-          "max_defect_um_fused_silica": 1.6309040288130379,
+          "max_defect_um_fused_silica": 1.536358867722427,
           "max_defect_um_sapphire": 38.999878949876994,
           "errors": {
             "fig1000_uncorrected": [
@@ -374,7 +374,7 @@
             "P2": 61.961407574018324,
             "G": 18.010157355070422
           },
-          "max_defect_um_fused_silica": 0.1113596393328758,
+          "max_defect_um_fused_silica": 0.10490400806720185,
           "max_defect_um_sapphire": 2.6629478970905085,
           "errors": {
             "fig1000_uncorrected": [
@@ -429,7 +429,7 @@
             "fold": 4.230782362480138,
             "G": 2.7278750858259486
           },
-          "max_defect_um_fused_silica": 1.6309040288130379,
+          "max_defect_um_fused_silica": 1.536358867722427,
           "max_defect_um_sapphire": 38.999878949876994,
           "errors": {
             "fig1000_uncorrected": [
@@ -803,7 +803,7 @@
             "P2": 48.12879291958665,
             "G": 17.428297628688497
           },
-          "max_defect_um_fused_silica": 0.143365324194365,
+          "max_defect_um_fused_silica": 0.13505429090773519,
           "max_defect_um_sapphire": 3.428301230734816,
           "errors": {
             "fig1000_uncorrected": [
@@ -870,7 +870,7 @@
             "fold": 4.230782362480138,
             "G": 2.152727046396628
           },
-          "max_defect_um_fused_silica": 1.6309040288130379,
+          "max_defect_um_fused_silica": 1.536358867722427,
           "max_defect_um_sapphire": 38.999878949876994,
           "errors": {
             "fig1000_uncorrected": [

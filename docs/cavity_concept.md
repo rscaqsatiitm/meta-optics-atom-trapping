@@ -72,10 +72,10 @@ vertical-lattice ring, whose beam is 6.9 mm wide, is the most sensitive (3.6 to 
 telescope. All corrections are static; drift must stay below these levels between corrections.
 
 (iv) Heat is no longer a constraint; defects are. Coating absorption heats the mirrors by
-at most 0.55 K when clamped (IBS, 1 to 10 ppm; Section 5b). Every surface near the waist of the in-plane rings sees 4.5 to 48 kW/cm^2 at 0.2 mK,
+at most 0.58 K when clamped (IBS, 1 to 10 ppm; Section 5b). Every surface near the waist of the in-plane rings sees 4.5 to 48 kW/cm^2 at 0.2 mK,
 comparable to the test masses of gravitational-wave detectors. The largest tolerable fully
-absorbing defect falls to 0.14 to 1.5 um on fused silica, against 92 um for the 200 W
-metasurface of the present design, and to 3.4 to 37 um on sapphire. The heat itself is small: at
+absorbing defect falls to 0.14 to 1.4 um on fused silica, against 87 um for the 200 W
+metasurface of the present design (same half-space criterion; 77 um in the plate model), and to 3.4 to 37 um on sapphire. The heat itself is small: at
 10^6 sites 10 to 99 mW is absorbed inside the vacuum system (IBS, 1 to 10 ppm), the mirrors need
 conducting mounts but no water cooling, and the binding thermal requirement is temperature stability of
 the ring (about 10 mK for a metal ring, kelvins for ULE; Section 5b). The vertical ring, which carries
@@ -110,7 +110,7 @@ trap frequency. The last calls for a monolithic ring assembly with controlled me
 that a plain ring without telescope is non-degenerate there (nearest mode 0.78 and 0.17 rad away, with
 2.4e-2 and 2.5e-4 loss), needs 0.23 and 0.50 W of input at G = 300 (tweezers: 14 and 140 W), gives 1.6
 to 3.0 % for lambda/1000 errors on every mirror (the atom loop corrects 10^5 to 0.20 to 0.49 %), and
-keeps the in-plane mirrors at 4.2 kW/cm^2 (defects up to 1.6 um on fused silica). The 10^6 telescope
+keeps the in-plane mirrors at 4.2 kW/cm^2 (defects up to 1.5 um on fused silica). The 10^6 telescope
 design does not scale down (4.4 % ideal at 10^4). At 10^6 the degeneracy brings the telescope, a 0.14 um
 defect limit, up to 55 kW/cm^2 on the vertical ring with its vertical telescope, a threefold tighter angle stability than at 10^5,
 and a 10^9-atom MOT.
@@ -670,18 +670,20 @@ radius a on a half-space heats by I a / kappa, limited to 50 K.
 
 | Surface (0.2 mK, 10^6 sites) | Peak intensity | Largest absorbing defect, fused silica / sapphire |
 |---|---|---|
-| Cell wall, 15 mm from the atoms `[CONFIRM?]` (through-cell variant) | 14.6 kW/cm^2 | 0.47 / 11 um |
-| Telescope primary P1 | 4.5 kW/cm^2 | 1.5 / 37 um |
+| Cell wall, 15 mm from the atoms `[CONFIRM?]` (through-cell variant) | 14.6 kW/cm^2 | 0.45 / 11 um |
+| Telescope primary P1 | 4.5 kW/cm^2 | 1.4 / 37 um |
 | Telescope secondary P2 | 48.1 kW/cm^2 | 0.14 / 3.4 um |
-| Graded mirror G | 17.4 kW/cm^2 | 0.40 / 9.5 um |
-| Vertical ring, mirror with 3x beam expansion (placeholder; superseded below) | 2.2 kW/cm^2 | 3.1 / 75 um |
+| Graded mirror G | 17.4 kW/cm^2 | 0.37 / 9.5 um |
+| Vertical ring, mirror with 3x beam expansion (placeholder; superseded below) | 2.2 kW/cm^2 | 3.0 / 75 um |
 
 At equal radial frequency (0.86 mK) every intensity is 4.3x higher and the defect limits 4.3x
-smaller (0.033 to 0.35 um on fused silica). For comparison, the present 18.4 mm metasurface at 200 W
-sees 75 W/cm^2 and tolerates 92 um (docs/prefab_checks_report.md).
+smaller (0.031 to 0.33 um on fused silica). For comparison, the present 18.4 mm metasurface at 200 W
+sees 75 W/cm^2 and tolerates 87 um by the same half-space criterion, 77 um in the plate model
+(docs/prefab_checks_report.md; fused silica kappa 1.30 W/m/K, docs/model_notes.md).
 
 Vertical-ring mirrors (scripts/cavity_vertical_mirrors.py, configs/cavity_vertical_mirrors.yaml;
-results/cavity_vertical_mirrors/mirrors.json). The last row of the table assumed a mirror with a
+results/cavity_vertical_mirrors/mirrors.json; defect limits from its intensities with the current
+conductivities, results/cavity_defect_radii/defect_radii.json). The last row of the table assumed a mirror with a
 threefold beam expansion in both directions, which the adopted fold geometry (Section 2, Figure 5)
 does not provide. Its 0.15x telescope compresses the 6.9 mm horizontal width on P2 and G, and the
 0.19 mm vertical flat-top has no telescope, so it spreads only by diffraction. We compute the peak
@@ -692,9 +694,9 @@ f1z + f2z = 184 mm, i.e. P1 curved in the plane of incidence with f1z = 36.8 or 
 
 | Vertical ring, 0.2 mK | P1 / P2 / G / P2 return / P1 return | Smallest defect, fused silica / sapphire | Nearest z mode (phase, loss); fundamental loss (converged spectra) | lambda/1000 z errors: uncorrected, perfect redesign (G / G0) |
 |---|---|---|---|---|
-| Adopted, no z telescope | 32 / 170 / 145 / 112 / 14 kW/cm^2 | 0.041 / 0.97 um (P2) | 2.15 rad, 4.0e-3; 2.9e-5 | 1.5 and 0.69 % (0.58, 0.97); 0.33 and 0.33 % (0.93, 0.96) |
-| z telescope 4x | 32 / 51 / 55 / 55 / 35 kW/cm^2 | 0.13 / 3.0 um (G) | 0.118 rad, 4.4e-3; 1.2e-8 | 5.0 and 8.3 % (0.99, 0.98); 2.0 and 1.4 % (1.00, 1.00) |
-| z telescope 8x | 32 / 27 / 32 / 32 / 37 kW/cm^2 | 0.19 / 4.4 um (P1 return) | 0.042 rad, 9.7e-3; 1.6e-5 | 23 and 6.8 % (0.79, 0.98); 2.8 and 0.41 % (0.99, 1.00) |
+| Adopted, no z telescope | 32 / 170 / 145 / 112 / 14 kW/cm^2 | 0.038 / 0.97 um (P2) | 2.15 rad, 4.0e-3; 2.9e-5 | 1.5 and 0.69 % (0.58, 0.97); 0.33 and 0.33 % (0.93, 0.96) |
+| z telescope 4x | 32 / 51 / 55 / 55 / 35 kW/cm^2 | 0.12 / 3.0 um (G) | 0.118 rad, 4.4e-3; 1.2e-8 | 5.0 and 8.3 % (0.99, 0.98); 2.0 and 1.4 % (1.00, 1.00) |
+| z telescope 8x | 32 / 27 / 32 / 32 / 37 kW/cm^2 | 0.17 / 4.4 um (P1 return) | 0.042 rad, 9.7e-3; 1.6e-5 | 23 and 6.8 % (0.79, 0.98); 2.8 and 0.41 % (0.99, 1.00) |
 
 The ideal depth uniformity is 0.19, 0.073 and 0.16 % rms. Hence, as folded, the vertical ring puts up
 to 170 kW/cm^2 on P2, 3.5 times the in-plane maximum (48 kW/cm^2 on P2), and tolerates absorbing defects only up to
@@ -743,10 +745,10 @@ Thermal deformation of the graded mirror (102 W circulating, equal-area disc of 
 
 | Absorber on G | Absorbed power | Surface temperature rise | Bulge, centre to edge | Bulge rms over the spot |
 |---|---|---|---|---|
-| IBS HR, 1 ppm `[VALUE?]` | 0.1 mW | 0.05 K | 0.004 nm | 1e-6 waves |
-| IBS HR, 10 ppm | 1 mW | 0.5 K | 0.035 nm | 1e-5 waves |
-| LPCVD SiN metasurface (3.5e-6) | 0.36 mW | 0.19 K | 0.012 nm | 3e-6 waves |
-| Si-rich SiN metasurface (5.9e-4), fused silica | 60 mW | 32 K | 2.1 nm | 5.6e-4 waves |
+| IBS HR, 1 ppm `[VALUE?]` | 0.1 mW | 0.06 K | 0.004 nm | 1e-6 waves |
+| IBS HR, 10 ppm | 1 mW | 0.6 K | 0.038 nm | 1e-5 waves |
+| LPCVD SiN metasurface (3.5e-6) | 0.36 mW | 0.20 K | 0.013 nm | 4e-6 waves |
+| Si-rich SiN metasurface (5.9e-4), fused silica | 60 mW | 34 K | 2.2 nm | 6.0e-4 waves |
 | Si-rich SiN metasurface (5.9e-4), sapphire | 60 mW | 1.3 K | 0.9 nm | 2.4e-4 waves |
 
 With IBS coatings the deformation is three orders of magnitude below the lambda/1000 figure
@@ -754,8 +756,8 @@ tolerance. A Si-rich SiN film inside the cavity would reach the tolerance on its
 Fox-Li ring (scripts/cavity_thermal_foxli.py, configs/cavity_thermal_foxli.yaml;
 results/cavity_thermal_foxli/thermal_foxli.json), with a bulge profile proportional to the intensity on G
 (sharper than the thermal profile, hence conservative) on both graded mirrors of the 70 mm ring, the
-depth rms changes from 0.231 to 0.232 % for 10 ppm IBS and to 0.252 % for 100 ppm. The Si-rich SiN film
-raises it to 0.53 % on fused silica and 0.32 % on sapphire; the enhancement changes by < 4e-4. A static
+depth rms changes from 0.231 to 0.232 % for 10 ppm IBS and to 0.254 % for 100 ppm. The Si-rich SiN film
+raises it to 0.56 % on fused silica and 0.32 % on sapphire; the enhancement changes by < 5e-4. A static
 bulge is also within reach of the closed loop of Section 4b. The vertical ring's mirrors absorb 7.7x more
 (785 W) on smaller spots; on its sapphire graded mirror the bulge is 0.12 nm for 10 ppm (Section 5b). The cell
 windows (through-cell variant) absorb 4 ppm per pass in bulk (0.4 mW at 102 W), which is negligible
@@ -784,9 +786,9 @@ each ring is its graded mirror (smallest spot): a 1 inch fused-silica mirror in 
 | Absorbed in vacuum, IBS 1 / 10 ppm | 9.9 / 99 mW | 1.0 / 10 mW | 7.8 / 79 mW |
 | Scattered or transmitted out of the mode (to walls, mounts, cameras) | 2.4 W | 0.25 W | 1.9 W |
 | Hottest mirror, absorbed (10 ppm) | | 1.0 mW | 7.9 mW |
-| Its temperature rise: clamped / free (10 ppm) | | 0.55 / 0.66 K | 0.07 / 5.3 K |
-| Its surface bulge, clamped (10 ppm) | | 0.036 nm | 0.12 nm |
-| Worst case, graded-mirror loss fully absorbed: absorbed; clamped rise; bulge | 2.1 W in total | 0.10 W; 55 K; 3.6 nm | 0.79 W; 7.4 K; 12 nm |
+| Its temperature rise: clamped / free (10 ppm) | | 0.58 / 0.70 K | 0.07 / 5.3 K |
+| Its surface bulge, clamped (10 ppm) | | 0.038 nm | 0.12 nm |
+| Worst case, graded-mirror loss fully absorbed: absorbed; clamped rise; bulge | 2.1 W in total | 0.10 W; 59 K; 3.8 nm | 0.79 W; 7.4 K; 12 nm |
 
 At 10^5 and 10^4 sites the input is 0.50 and 0.23 W and the absorbed power 14 and 6.5 mW (10 ppm).
 At G = 1500 the input falls to 0.69 W at 10^6, while the absorbed power, set by the circulating power, is
@@ -801,8 +803,8 @@ ring would warm by 5.3 K, with a radiative time constant of about 12 min; clampe
 it warms by 0.07 K. A mount conductance of order 0.1 W/K keeps the whole mirror within 0.1 K of the
 mount at 7.9 mW (DERIVED). (iii) The graded-mirror loss must be scatter, not absorption. If the 1e-3 per
 graded mirror assumed at G = 300 were absorbed, the vertical graded mirror would take 0.79 W and bulge
-by 12 nm, eleven times the lambda/1000 figure tolerance; the in-plane one would bulge by 3.6 nm and warm by
-55 K. The bulge reaches lambda/1000 at an absorbed fraction of about 9e-5 of the circulating power
+by 12 nm, eleven times the lambda/1000 figure tolerance; the in-plane one would bulge by 3.8 nm and warm by
+59 K. The bulge reaches lambda/1000 at an absorbed fraction of about 9e-5 of the circulating power
 (vertical) and 3e-4 (in-plane), i.e. ten times the coating absorption. This excludes absorbing
 metasurfaces as graded mirrors (Si-rich SiN, 5.9e-4) on thermal grounds as well as loss, and it is met by
 figured surfaces under IBS coatings `[VALUE?: absorption of a figured graded mirror]`.
@@ -1052,7 +1054,7 @@ it loses 1.6e-8 and 3.4e-5 (results/cavity_vertical_apertures/apertures.json).
 | 1 urad tilts on every mirror, uncorrected | 0.08, 0.10 % | 1.1, 0.19 % | 1.1 % |
 | The plain ring at this size, lambda/1000, uncorrected | 2.0, 3.0 % | 1.6, 2.6 % | 20, 42 % |
 | Peak intensity on the hottest in-plane mirror | 4.2 kW/cm^2 (fold) | 4.2 kW/cm^2 (fold) | 48 kW/cm^2 (P2) |
-| Largest absorbing defect, in-plane, fused silica / sapphire | 1.6 / 39 um | 1.6 / 39 um | 0.14 / 3.4 um |
+| Largest absorbing defect, in-plane, fused silica / sapphire | 1.5 / 39 um | 1.5 / 39 um | 0.14 / 3.4 um |
 | Vertical ring: ideal; lambda/1000 uncorrected (h, v); after atom loop | 0.24 %; 2.9, 3.4 % (h), 0.28, 0.24 % (v); 0.43 % (one run) | 0.20 %; 10, 12 % (h), 1.6, 4.1 % (v); 1.4 % (one run) | 0.073 %; 5.7, 12 % (h), 5.4, 7.3 % (v); 1.06, 0.96 % (best round) |
 | Vertical ring, hottest mirror | 25 kW/cm^2 (P1) | 7.4 kW/cm^2 (P1) | 55 kW/cm^2 (G, P2') |
 | Edge-site crossing-angle requirement, 10 s at 10 uK | 0.70 nrad/rtHz | 0.22 nrad/rtHz | 0.070 nrad/rtHz |
@@ -1079,7 +1081,7 @@ after its best round (to 1.9 and 4.2 % after six). A camera loop on the transmit
 2.2 % after six. Hence correction at 10^4 is limited to about 1 % by the phase-only graded mirrors, and the
 loop needs a stopping rule. (iii) Defects and heat. The
 intensity at the atoms is set by the depth, 19.8 kW/cm^2 per beam at every size. Without the telescope
-the in-plane mirrors see at most 4.2 kW/cm^2, so the defect limit is 1.6 um on fused silica (39 um on
+the in-plane mirrors see at most 4.2 kW/cm^2, so the defect limit is 1.5 um on fused silica (39 um on
 sapphire) at 10^4 and 10^5, against 0.14 um at 10^6 (P2 of the telescope ring, 48 kW/cm^2). The 10^5 vertical ring needs no vertical
 telescope: its hottest mirror sees 7.4 kW/cm^2, against 170 kW/cm^2 for the 10^6 ring as folded. (iv)
 Vertical ring at 10^4. Its vertical flat-top is only 19 um high (0.057 mm equivalent height) and
@@ -1169,6 +1171,7 @@ Provenance ledger:
 | Lower-gain closed loop (gain 0.25, 0.1) | Section 4b | SIM, review before submission | results/cavity_correction/correction.json (keys *_gain*) |
 | Absorption bulge fed into Fox-Li | Section 5 | SIM, review before submission | results/cavity_thermal_foxli/thermal_foxli.json |
 | Vertical-ring mirror intensities, defect limits, z-telescope variants | Section 5, Result, Design summary | SIM, review before submission | results/cavity_vertical_mirrors/mirrors.json |
+| Vertical-ring fused-silica and sapphire defect limits with fused silica kappa 1.30 W/m/K (the mirrors.json radii used 1.38) | Section 5 | DERIVED (code) from the SIM intensities | results/cavity_defect_radii/defect_radii.json |
 | Input power per ring, design summary | Design summary | DERIVED | P_circ / (0.95 G), results/cavity_budget/budget.json |
 | Scaling study at 10^4 and 10^5: designs, spectra, errors, correction, vertical ring, mirror intensities | Section 6d, Result (viii) | SIM, review before submission | results/cavity_foxli_n1e4, _n1e5; results/cavity_correction_n1e4, _n1e5; results/cavity_vertical_plain_n1e4, _n1e5; results/cavity_vertical_mirrors_plain_n1e4, _n1e5; results/cavity_vertical_n1e5 |
 | Scaling comparison: powers, defect limits, angle requirement, MOT atom numbers | Section 6d | DERIVED (code) | results/cavity_scaling/scaling.json |

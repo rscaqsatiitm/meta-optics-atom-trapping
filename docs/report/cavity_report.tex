@@ -729,18 +729,18 @@ $10^{6}$ sites.}
 \toprule
 Surface & Peak intensity & Largest absorbing defect, fused silica / sapphire \\
 \midrule
-Cell wall at \SI{15}{\milli\metre} \placeholder{[CONFIRM?]} (through-cell variant) & \SI{14.6}{\kilo\watt\per\centi\metre\squared} & 0.47 / \SI{11}{\micro\metre} \\
-Telescope primary P1 & \SI{4.5}{\kilo\watt\per\centi\metre\squared} & 1.5 / \SI{37}{\micro\metre} \\
+Cell wall at \SI{15}{\milli\metre} \placeholder{[CONFIRM?]} (through-cell variant) & \SI{14.6}{\kilo\watt\per\centi\metre\squared} & 0.45 / \SI{11}{\micro\metre} \\
+Telescope primary P1 & \SI{4.5}{\kilo\watt\per\centi\metre\squared} & 1.4 / \SI{37}{\micro\metre} \\
 Telescope secondary P2 & \SI{48.1}{\kilo\watt\per\centi\metre\squared} & 0.14 / \SI{3.4}{\micro\metre} \\
-Graded mirror G & \SI{17.4}{\kilo\watt\per\centi\metre\squared} & 0.40 / \SI{9.5}{\micro\metre} \\
+Graded mirror G & \SI{17.4}{\kilo\watt\per\centi\metre\squared} & 0.37 / \SI{9.5}{\micro\metre} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 At equal radial frequency (\SI{0.86}{\milli\kelvin}) every intensity is 4.3 times higher and every
-defect limit 4.3 times smaller (0.033 to \SI{0.35}{\micro\metre} on fused silica). For comparison, the
+defect limit 4.3 times smaller (0.031 to \SI{0.33}{\micro\metre} on fused silica). For comparison, the
 present \SI{18.4}{\milli\metre} metasurface at \SI{200}{\watt} sees \SI{75}{\watt\per\centi\metre\squared}
-and tolerates \SI{92}{\micro\metre}. The cavity therefore trades a kilowatt laser and a hot metasurface
+and tolerates \SI{87}{\micro\metre} by the same half-space criterion (\SI{77}{\micro\metre} in the plate model; fused silica $\kappa = \SI{1.30}{\watt\per\metre\per\kelvin}$). The cavity therefore trades a kilowatt laser and a hot metasurface
 for watt-level input and mirrors at \si{\kilo\watt\per\centi\metre\squared}. Point absorbers at these
 intensities limit the stored power of Advanced LIGO~\cite{Brooks2021}. The fully absorbing disc model is
 pessimistic for sub-micron particles, whose absorption cross-section is below the geometric one.
@@ -767,9 +767,9 @@ after a perfect-metrology redesign, with $G/G_0$ in parentheses.}
 \toprule
 Variant & P1 / P2 / G / P2$'$ / P1$'$ & Smallest defect, silica / sapphire & Nearest mode; fundamental loss & Errors: uncorrected; redesign \\
 \midrule
-Adopted, no vertical telescope & 32 / 170 / 145 / 112 / 14 & 0.041 / \SI{0.97}{\micro\metre} (P2) & \SI{2.15}{\radian}, $4.0\times10^{-3}$; $2.9\times10^{-5}$ & 1.5 and 0.69\% (0.58, 0.97); 0.33 and 0.33\% (0.93, 0.96) \\
-Vertical telescope $4\times$ & 32 / 51 / 55 / 55 / 35 & 0.13 / \SI{3.0}{\micro\metre} (G) & \SI{0.118}{\radian}, $4.4\times10^{-3}$; $1.2\times10^{-8}$ & 5.0 and 8.3\% (0.99, 0.98); 2.0 and 1.4\% (1.00, 1.00) \\
-Vertical telescope $8\times$ & 32 / 27 / 32 / 32 / 37 & 0.19 / \SI{4.4}{\micro\metre} (P1$'$) & \SI{0.042}{\radian}, $9.7\times10^{-3}$; $1.6\times10^{-5}$ & 23 and 6.8\% (0.79, 0.98); 2.8 and 0.41\% (0.99, 1.00) \\
+Adopted, no vertical telescope & 32 / 170 / 145 / 112 / 14 & 0.038 / \SI{0.97}{\micro\metre} (P2) & \SI{2.15}{\radian}, $4.0\times10^{-3}$; $2.9\times10^{-5}$ & 1.5 and 0.69\% (0.58, 0.97); 0.33 and 0.33\% (0.93, 0.96) \\
+Vertical telescope $4\times$ & 32 / 51 / 55 / 55 / 35 & 0.12 / \SI{3.0}{\micro\metre} (G) & \SI{0.118}{\radian}, $4.4\times10^{-3}$; $1.2\times10^{-8}$ & 5.0 and 8.3\% (0.99, 0.98); 2.0 and 1.4\% (1.00, 1.00) \\
+Vertical telescope $8\times$ & 32 / 27 / 32 / 32 / 37 & 0.17 / \SI{4.4}{\micro\metre} (P1$'$) & \SI{0.042}{\radian}, $9.7\times10^{-3}$; $1.6\times10^{-5}$ & 23 and 6.8\% (0.79, 0.98); 2.8 and 0.41\% (0.99, 1.00) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -835,10 +835,10 @@ expansion coefficient of the substrate.
 \toprule
 Absorber on G & Absorbed power & Surface $\Delta T$ & Bulge, centre to edge & Bulge rms over the spot \\
 \midrule
-IBS HR, \SI{1}{\ppm} \placeholder{[VALUE?]} & \SI{0.1}{\milli\watt} & \SI{0.05}{\kelvin} & \SI{0.004}{\nano\metre} & $10^{-6}$ waves \\
-IBS HR, \SI{10}{\ppm} & \SI{1}{\milli\watt} & \SI{0.5}{\kelvin} & \SI{0.035}{\nano\metre} & $10^{-5}$ waves \\
-LPCVD SiN metasurface ($3.5\times10^{-6}$) & \SI{0.36}{\milli\watt} & \SI{0.19}{\kelvin} & \SI{0.012}{\nano\metre} & $3\times10^{-6}$ waves \\
-Si-rich SiN metasurface ($5.9\times10^{-4}$), fused silica & \SI{60}{\milli\watt} & \SI{32}{\kelvin} & \SI{2.1}{\nano\metre} & $5.6\times10^{-4}$ waves \\
+IBS HR, \SI{1}{\ppm} \placeholder{[VALUE?]} & \SI{0.1}{\milli\watt} & \SI{0.06}{\kelvin} & \SI{0.004}{\nano\metre} & $10^{-6}$ waves \\
+IBS HR, \SI{10}{\ppm} & \SI{1}{\milli\watt} & \SI{0.6}{\kelvin} & \SI{0.038}{\nano\metre} & $10^{-5}$ waves \\
+LPCVD SiN metasurface ($3.5\times10^{-6}$) & \SI{0.36}{\milli\watt} & \SI{0.20}{\kelvin} & \SI{0.013}{\nano\metre} & $4\times10^{-6}$ waves \\
+Si-rich SiN metasurface ($5.9\times10^{-4}$), fused silica & \SI{60}{\milli\watt} & \SI{34}{\kelvin} & \SI{2.2}{\nano\metre} & $6.0\times10^{-4}$ waves \\
 Si-rich SiN metasurface ($5.9\times10^{-4}$), sapphire & \SI{60}{\milli\watt} & \SI{1.3}{\kelvin} & \SI{0.9}{\nano\metre} & $2.4\times10^{-4}$ waves \\
 \bottomrule
 \end{tabularx}
@@ -848,9 +848,9 @@ With IBS coatings the deformation is three orders of magnitude below the $\lambd
 tolerance, while a Si-rich SiN film inside the cavity would reach the tolerance on its own. We fed the
 bulge into the Fox--Li ring with a profile proportional to the intensity on G, which is sharper than
 the thermal profile and hence conservative, on both graded mirrors of the \SI{70}{\milli\metre} ring. The
-depth rms changes from 0.231 to \SI{0.232}{\percent} for \SI{10}{\ppm} IBS and to \SI{0.252}{\percent}
-for \SI{100}{\ppm}; the Si-rich SiN film raises it to \SI{0.53}{\percent} on fused silica and
-\SI{0.32}{\percent} on sapphire, and the enhancement changes by less than $4\times10^{-4}$. A static bulge
+depth rms changes from 0.231 to \SI{0.232}{\percent} for \SI{10}{\ppm} IBS and to \SI{0.254}{\percent}
+for \SI{100}{\ppm}; the Si-rich SiN film raises it to \SI{0.56}{\percent} on fused silica and
+\SI{0.32}{\percent} on sapphire, and the enhancement changes by less than $5\times10^{-4}$. A static bulge
 is also within reach of the closed loop. The vertical ring's mirrors absorb 7.7 times more on smaller spots; on its sapphire graded mirror the bulge is \SI{0.12}{\nano\metre} for \SI{10}{\ppm} (Section~\ref{sec:heat}). The cell windows of the through-cell
 variant absorb \SI{4}{\ppm} per pass in bulk (\SI{0.4}{\milli\watt} at \SI{102}{\watt}), which is
 negligible thermally, but their surfaces carry the defect constraint of Table~\ref{tab:defects}; this
@@ -887,9 +887,9 @@ Reflected to the external dump & \SI{1.00}{\watt} & \SI{0.10}{\watt} & \SI{0.79}
 Absorbed in vacuum, IBS 1 / \SI{10}{\ppm} & 9.9 / \SI{99}{\milli\watt} & 1.0 / \SI{10}{\milli\watt} & 7.8 / \SI{79}{\milli\watt} \\
 Scattered or transmitted out of the mode & \SI{2.4}{\watt} & \SI{0.25}{\watt} & \SI{1.9}{\watt} \\
 Hottest mirror: absorbed power & & \SI{1.0}{\milli\watt} & \SI{7.9}{\milli\watt} \\
-Its temperature rise, clamped / free & & 0.55 / \SI{0.66}{\kelvin} & 0.07 / \SI{5.3}{\kelvin} \\
-Its surface bulge, clamped & & \SI{0.036}{\nano\metre} & \SI{0.12}{\nano\metre} \\
-Worst case, graded-mirror loss absorbed: absorbed; rise; bulge & \SI{2.1}{\watt} & \SI{0.10}{\watt}; \SI{55}{\kelvin}; \SI{3.6}{\nano\metre} & \SI{0.79}{\watt}; \SI{7.4}{\kelvin}; \SI{12}{\nano\metre} \\
+Its temperature rise, clamped / free & & 0.58 / \SI{0.70}{\kelvin} & 0.07 / \SI{5.3}{\kelvin} \\
+Its surface bulge, clamped & & \SI{0.038}{\nano\metre} & \SI{0.12}{\nano\metre} \\
+Worst case, graded-mirror loss absorbed: absorbed; rise; bulge & \SI{2.1}{\watt} & \SI{0.10}{\watt}; \SI{59}{\kelvin}; \SI{3.8}{\nano\metre} & \SI{0.79}{\watt}; \SI{7.4}{\kelvin}; \SI{12}{\nano\metre} \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1214,7 +1214,7 @@ The same, \SI{0.5}{\milli\metre}-scale errors (scaled) & 4.2\%; 2.4\%; 5.8\% & 6
 \SI{1}{\micro\radian} tilts on every mirror, uncorrected & 0.08, 0.10\% & 1.1, 0.19\% & 1.1\% \\
 Plain ring at this size, $\lambda/1000$, uncorrected & 2.0, 3.0\% & 1.6, 2.6\% & 20, 42\% \\
 Hottest in-plane mirror & \SI{4.2}{\kilo\watt\per\centi\metre\squared} (fold) & \SI{4.2}{\kilo\watt\per\centi\metre\squared} (fold) & \SI{48}{\kilo\watt\per\centi\metre\squared} (P2) \\
-Largest absorbing defect, in-plane, silica / sapphire & 1.6 / \SI{39}{\micro\metre} & 1.6 / \SI{39}{\micro\metre} & 0.14 / \SI{3.4}{\micro\metre} \\
+Largest absorbing defect, in-plane, silica / sapphire & 1.5 / \SI{39}{\micro\metre} & 1.5 / \SI{39}{\micro\metre} & 0.14 / \SI{3.4}{\micro\metre} \\
 Vertical ring: ideal; $\lambda/1000$ uncorrected; after atom loop & 0.24\%; 2.9, 3.4\% (h), 0.28, 0.24\% (v); 0.43\% (one run) & 0.20\%; 10, 12\% (h), 1.6, 4.1\% (v); 1.4\% (one run) & 0.073\%; 5.7, 12\% (h), 5.4, 7.3\% (v); 1.06, 0.96\% (best round) \\
 Vertical ring, hottest mirror & \SI{25}{\kilo\watt\per\centi\metre\squared} (P1) & \SI{7.4}{\kilo\watt\per\centi\metre\squared} (P1) & \SI{55}{\kilo\watt\per\centi\metre\squared} (G, P2$'$) \\
 Edge-site crossing-angle requirement, \SI{10}{\second} at \SI{10}{\micro\kelvin} & 0.70\,nrad\rtHz & 0.22\,nrad\rtHz & 0.070\,nrad\rtHz \\
@@ -1257,7 +1257,7 @@ on the transmitted beams behaves the same way (best 1.3 and \SI{1.9}{\percent}, 
 \SI{2.2}{\percent}). Correction at $10^{4}$ is therefore limited to about \SI{1}{\percent} by the phase-only
 graded mirrors, and the loop needs a stopping rule. (iii) The intensity at the atoms is set by the depth, so it is the same at every size.
 Without the telescope the in-plane mirrors see at most \SI{4.2}{\kilo\watt\per\centi\metre\squared}, and the
-defect limit is \SI{1.6}{\micro\metre} on fused silica at $10^{4}$ and $10^{5}$, against
+defect limit is \SI{1.5}{\micro\metre} on fused silica at $10^{4}$ and $10^{5}$, against
 \SI{0.14}{\micro\metre} at $10^{6}$ (P2 of the telescope ring, \SI{48}{\kilo\watt\per\centi\metre\squared}). The $10^{5}$ vertical ring needs no vertical telescope: its hottest mirror
 sees \SI{7.4}{\kilo\watt\per\centi\metre\squared}, against \SI{55}{\kilo\watt\per\centi\metre\squared} at
 $10^{6}$ with its vertical telescope (\SI{170}{\kilo\watt\per\centi\metre\squared} without). (iv) At $10^{4}$ the vertical flat-top is only \SI{19}{\micro\metre} high and diffracts

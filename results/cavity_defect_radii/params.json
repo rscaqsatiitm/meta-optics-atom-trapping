@@ -1,0 +1,33 @@
+{
+  "config": {
+    "run_id": "cavity_defect_radii",
+    "defect_dT_K": 50.0,
+    "mirrors_json": [
+      "results/cavity_vertical_mirrors/mirrors.json",
+      "results/cavity_vertical_mirrors_gauss_n1e4/mirrors.json",
+      "results/cavity_vertical_mirrors_plain_n1e4/mirrors.json",
+      "results/cavity_vertical_mirrors_plain_n1e5/mirrors.json"
+    ],
+    "_config_path": "configs/cavity_defect_radii.yaml"
+  },
+  "git": {
+    "commit": "319da4f5db4acc0059f7ad874a871545e2d5fbd6",
+    "dirty": "True"
+  },
+  "versions": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.12.0.1",
+    "fmmax": "1.7.1",
+    "grcwa": "0.1.2",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2",
+    "metatrap": "0.1.0"
+  },
+  "host": {
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "utc": "2026-11-20T11:43:05+00:00"
+}
