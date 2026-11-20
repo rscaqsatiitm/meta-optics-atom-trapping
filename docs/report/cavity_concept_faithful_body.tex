@@ -46,8 +46,8 @@ Power at the optics input
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Meta-hologram tweezers (NA 0.55, this repository) & 1.40 kW \\
-Lenslet-array tweezers (this repository) & 2.50 kW \\
+Meta-hologram tweezers (NA 0.55, this repository) & 1.35 kW \\
+Lenslet-array tweezers (this repository) & 2.47 kW \\
 Lattice in free space (two in-plane axes and one vertical axis) & 1.04 kW \\
 Cavity lattice, mirrors in vacuum, over-coupled to G = 300 & 3.5 W \\
 Cavity lattice, mirrors in vacuum, G = 1500 & 0.69 W \\
@@ -134,7 +134,7 @@ telescope. All corrections are static; drift must stay below these levels betwee
 \item
   The large step is from \(10^{5}\) to \(10^{6}\) sites (Section 6d). The same models at \(10^{4}\) and \(10^{5}\) show
   that a plain ring without telescope is non-degenerate there (nearest mode 0.78 and 0.17 rad away, with
-  \(2.4\times10^{-2}\) and \(2.5\times10^{-4}\) loss), needs 0.23 and 0.50 W of input at G = 300 (tweezers: 14 and 140 W), gives 1.6
+  \(2.4\times10^{-2}\) and \(2.5\times10^{-4}\) loss), needs 0.23 and 0.50 W of input at G = 300 (tweezers: 13 and 134 W), gives 1.6
   to 3.0 \% for \(\lambda\)/1000 errors on every mirror (the atom loop corrects \(10^{5}\) to 0.20 to 0.49 \%), and
   keeps the in-plane mirrors at 4.2 kW/cm\(^{2}\) (defects up to 1.5 \(\upmu\mathrm{m}\) on fused silica). The \(10^{6}\) telescope
   design does not scale down (4.4 \% ideal at \(10^{4}\)). At \(10^{6}\) the degeneracy brings the telescope, a 0.14 \(\upmu\mathrm{m}\)
@@ -152,7 +152,7 @@ first-order design.
 \includegraphics{../../results/cavity_budget/power_scaling.png}
 
 Figure 1. Laser power at the input of the trapping optics versus the number of sites, for a
-0.2 mK barrier (tweezer depth) at 1075 nm and 4 \(\upmu\mathrm{m}\) pitch. Tweezer lines: 143 (hologram) and 80
+0.2 mK barrier (tweezer depth) at 1075 nm and 4 \(\upmu\mathrm{m}\) pitch. Tweezer lines: 148.7 (hologram) and 81
 (lenslet) mK x site / W from the Phase A simulations. Lattice lines: two in-plane axes and one
 vertical axis (8 \(\upmu\mathrm{m}\) period), flat-top x Gaussian sheets (\(w_z\) = 75 \(\upmu\mathrm{m}\)), mode matching 0.95; cavity
 enhancement for the over-coupled design T = 3L with 10 reflections of 50 ppm per round trip, plus
@@ -196,7 +196,7 @@ Noise for a 10 s heating time at 10 \(\upmu\mathrm{K}\) & RIN \textless{} -106 d
 \end{longtable}
 
 Total circulating power 989 W; total input 3.5 W at G = 300 (0.69 W at G = 1500), against 1.04 kW
-for the same lattice in free space and 1.40 kW for meta-hologram tweezers. Input powers per ring are
+for the same lattice in free space and 1.35 kW for meta-hologram tweezers. Input powers per ring are
 DERIVED from the circulating powers (\nolinkurl{results/cavity_budget/budget.json}) as \(P_\mathrm{circ}\) / (0.95 G).
 
 \hypertarget{why-the-tweezer-array-cannot-be-cavity-enhanced-tenfold}{%
@@ -409,13 +409,13 @@ Hologram tweezers
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(10^{5}\), 0.2 mK & 32 W & 78 W & 143 W & 140 W \\
-\(10^{5}\), 0.3 mK & 48 W & 117 W & 214 W & 210 W \\
-\(10^{6}\), 0.2 mK & 102 W & 785 W & 989 W & 1,399 W \\
-\(10^{6}\), 0.3 mK & 154 W & 1,177 W & 1,484 W & 2,098 W \\
+\(10^{5}\), 0.2 mK & 32 W & 78 W & 143 W & 134 W \\
+\(10^{5}\), 0.3 mK & 48 W & 117 W & 214 W & 202 W \\
+\(10^{6}\), 0.2 mK & 102 W & 785 W & 989 W & 1,345 W \\
+\(10^{6}\), 0.3 mK & 154 W & 1,177 W & 1,484 W & 2,017 W \\
 \end{longtable}
 
-The hologram column reproduces the 210 W of \nolinkurl{docs/scaling_100k.md} for \(10^{5}\) sites at 0.3 mK.
+The hologram column reproduces the 202 W of \nolinkurl{docs/scaling_100k.md} (WD 10 to 25 mm) for \(10^{5}\) sites at 0.3 mK.
 
 Round-trip loss and enhancement (10 reflections of 50 ppm; per-mirror bound of Norcia et al.):
 
@@ -1096,7 +1096,7 @@ unchanged.
 What the budget shows. (i) The heat to be removed is small. With IBS coatings, 10 to 99 mW is absorbed
 inside the vacuum system at \(10^{6}\) sites, and 2.4 W of scattered light is spread over the chamber walls and
 mounts. The reflected watt goes to an air-cooled dump outside. None of this needs water cooling: it is
-three orders of magnitude below the 1.4 kW that the tweezer route would pass through its meta-optics.
+three orders of magnitude below the 1.35 kW that the tweezer route would pass through its meta-optics.
 (ii) The mirrors must be heat-sunk by conduction, not by water. A free sapphire strip in the vertical
 ring would warm by 5.3 K, with a radiative time constant of about 12 min; clamped in a conducting mount
 it warms by 0.07 K. A mount conductance of order 0.1 W/K keeps the whole mirror within 0.1 K of the
@@ -1438,10 +1438,10 @@ it loses \(1.6\times10^{-8}\) and \(3.4\times10^{-5}\) (\nolinkurl{results/cavit
 \bottomrule\noalign{}
 \endlastfoot
 Array side; in-plane flat-top equivalent width & 0.40 mm; 0.55 mm & 1.26 mm; 1.74 mm & 4.00 mm; 5.51 mm \\
-Hologram tweezers, input & 14 W & 140 W & 1399 W \\
+Hologram tweezers, input & 13 W & 134 W & 1345 W \\
 Lattice in free space, input & 69 W & 150 W & 1041 W \\
 Cavity lattice, input at G = 300 / 1500 & 0.23 / 0.046 W & 0.50 / 0.10 W & 3.5 / 0.69 W \\
-Tweezer power / cavity input at G = 300 & 61 & 279 & 403 \\
+Tweezer power / cavity input at G = 300 & 59 & 269 & 387 \\
 Vertical ring share of the circulating power & 69 \% & 55 \% & 79 \% \\
 Adopted vertical ring & plain, Gaussian vertical profile (w = 266 \(\upmu\mathrm{m}\)) & plain, order-10 vertical flat-top & 0.15\(\times\) horizontal, 4\(\times\) vertical telescope \\
 Adopted in-plane ring & plain, p = 150 mm & plain, p = 150 mm & 0.2\(\times\) telescope \\
@@ -1459,11 +1459,11 @@ Edge-site crossing-angle requirement, 10 s at 10 \(\upmu\mathrm{K}\) & 0.70 \(\m
 MOT atoms needed (cloud matched at the corners; into the sheets) & \(4.7\times10^{6}\) to \(5.0\times10^{6}\); \(3.7\times10^{5}\) & \(1.5\times10^{8}\) to \(1.6\times10^{8}\); \(3.7\times10^{6}\) & \(4.8\times10^{9}\) to \(5.1\times10^{9}\); \(3.7\times10^{7}\) \\
 \end{longtable}
 
-What the comparison shows. (i) Power. Laser power is not a constraint at \(10^{4}\) (14 W of tweezers), and
+What the comparison shows. (i) Power. Laser power is not a constraint at \(10^{4}\) (13 W of tweezers), and
 a lattice in free space needs more than tweezers below about \(10^{5}\), because its in-plane power scales
-as the array side and the tweezer power as the number of sites. The cavity reduces the input 61, 279 and 403 times against tweezers
+as the array side and the tweezer power as the number of sites. The cavity reduces the input 59, 269 and 387 times against tweezers
 at \(10^{4}\), \(10^{5}\) and \(10^{6}\). Hence the cavity is a convenience at \(10^{4}\), a large saving at \(10^{5}\) (0.50 W
-against 140 W) and necessary at \(10^{6}\). The vertical ring takes 55 \% of the power at \(10^{5}\) and 79 \% at
+against 134 W) and necessary at \(10^{6}\). The vertical ring takes 55 \% of the power at \(10^{5}\) and 79 \% at
 \(10^{6}\), because its vertical flat-top must cover a walk-off that grows with the array side; at \(10^{4}\) its
 share is 69 \% because the adopted Gaussian profile (item (iv)) is wider than a flat-top would be. A sheet thickness \(w_z\) scaled as
 sqrt(side), which keeps the same 1 \% roll-off per array length, would lower the \(10^{4}\) input to 0.18 W (with the
@@ -1556,7 +1556,7 @@ Pointer
 \bottomrule\noalign{}
 \endlastfoot
 Power budget, losses, enhancements & Result, Sections 1, 3 & DERIVED (code) & \nolinkurl{results/cavity_budget/budget.json} \\
-Tweezer anchors 143 and 80 mK x site / W & Section 3 & SIM (earlier runs) & \nolinkurl{docs/scaling_100k.md}, \nolinkurl{docs/million_sites.md} \\
+Tweezer anchors 148.7 and 81 mK x site / W (corrected power budget; 143 and 80 before 2026-11-20) & Section 3 & SIM / DERIVED & \nolinkurl{docs/scaling_100k.md}, \nolinkurl{docs/million_sites.md} \\
 Cs depth per intensity \(2.53\times10^{-13}\) K / (W/m\(^{2}\)) & Section 3 & DERIVED from SOURCE & \nolinkurl{atoms/alkali.py} (Steck data) \\
 Concentric ray trace & Section 1 & SIM, review before submission & \nolinkurl{results/cavity_tweezer_bounds/bounds.json} \\
 Fox-Li designs, spectra, tolerances & Sections 4, Result & SIM, review before submission & \nolinkurl{results/cavity_foxli/foxli.json} (field .npz files are regenerated by the script, not versioned) \\

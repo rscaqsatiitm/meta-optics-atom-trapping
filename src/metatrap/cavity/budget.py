@@ -20,9 +20,10 @@ i.e. the barrier between neighbouring sites along this axis, is 4 c sqrt(I_a I_b
 period is a = lambda / (2 sin theta).
 
 Tweezer baselines (SIM, this repository). Direct meta-hologram at NA 0.55, 1075 nm:
-143 mK x site / W including its array efficiency (docs/scaling_100k.md, from the 20,164-site
-v2 design; the 99,856-site design reproduces it to 2 %). Lenslet array relayed by the
-meta-objective: 80 (square) to 95 (hexagonal) mK x site / W (docs/million_sites.md, Section 4).
+148.7 mK x site / W including its array efficiency (docs/scaling_100k.md, Method: the 20,164-site
+v2 design with the corrected power budget; 143 before that correction). Lenslet array relayed by
+the meta-objective, square array with rows of alternating piston: ~81 mK x site / W
+(docs/million_sites.md, Section 4; 80 before, and the hexagonal 95 was withdrawn there).
 """
 
 from __future__ import annotations
@@ -32,9 +33,8 @@ import numpy as np
 from ..atoms.alkali import depth_K
 from ..constants import AMU, CESIUM, KB, AlkaliLines
 
-HOLOGRAM_MK_SITE_PER_W = 143.0  # SIM, docs/scaling_100k.md (Method), results/scaling_100k
-LENSLET_SQUARE_MK_SITE_PER_W = 80.0  # SIM/DERIVED, docs/million_sites.md Section 4
-LENSLET_HEX_MK_SITE_PER_W = 95.0  # SIM/DERIVED, docs/million_sites.md Section 4
+HOLOGRAM_MK_SITE_PER_W = 148.7  # SIM/DERIVED, docs/scaling_100k.md (Method), results/scaling_100k
+LENSLET_SQUARE_MK_SITE_PER_W = 81.0  # SIM/DERIVED, docs/million_sites.md Section 4 (rows alternating 0 / pi)
 TWEEZER_WAIST_UM = 0.866  # SIM, mean curvature waist, library pillars, results/fullaperture_100k
 
 

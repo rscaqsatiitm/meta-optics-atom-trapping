@@ -13,7 +13,7 @@ for $10^{5}$ to $10^{6}$ cesium atoms}
 \maketitle
 
 \begin{abstract}
-Static meta-optic tweezer arrays for $10^{6}$ cesium atoms need about \SI{1.4}{\kilo\watt} of
+Static meta-optic tweezer arrays for $10^{6}$ cesium atoms need about \SI{1.35}{\kilo\watt} of
 trapping light at \SI{1075}{\nano\metre}, which makes laser power, heat in the metasurface and
 damage by absorbing defects the limits on scaling. We show that a build-up cavity cannot reduce the
 power of such an array tenfold, because every intracavity focusing element is passed at least twice
@@ -40,9 +40,9 @@ or less, and keeps its in-plane mirrors at \SI{4.2}{\kilo\watt\per\centi\metre\s
 \label{sec:intro}
 
 A neutral-atom array of $10^{5}$ to $10^{6}$ sites, trapped by meta-optic tweezers, needs trapping
-light in proportion to the number of sites. With the meta-hologram of this project (\SI{143}{\milli\kelvin}
-site per watt) a \SI{0.2}{\milli\kelvin} trap at every one of $10^{6}$ sites needs \SI{1.40}{\kilo\watt}
-at the optics input, and the lenslet array \SI{2.50}{\kilo\watt}. At this power three limits act
+light in proportion to the number of sites. With the meta-hologram of this project (\SI{148.7}{\milli\kelvin}
+site per watt) a \SI{0.2}{\milli\kelvin} trap at every one of $10^{6}$ sites needs \SI{1.35}{\kilo\watt}
+at the optics input, and the lenslet array \SI{2.47}{\kilo\watt}. At this power three limits act
 together: (i) the laser power itself; (ii) the heat deposited in the metasurface and its substrate;
 and (iii) damage, and thermal lensing, caused by absorbing defects on surfaces that carry the full
 beam. A build-up cavity is the standard way to reduce the input power, because the light is reused
@@ -304,7 +304,7 @@ The vertical axis scales close to $N$, because its beams must also cover the ver
 \begin{table}[htbp]
 \centering
 \caption{Circulating power of the three lattice axes and the input power of hologram tweezers of the
-same depth. The hologram column reproduces the \SI{210}{\watt} of the earlier $10^{5}$-site study at
+same depth. The hologram column reproduces the \SI{202}{\watt} of the earlier $10^{5}$-site study (WD 10 to \SI{25}{\milli\metre}) at
 \SI{0.3}{\milli\kelvin}.}
 \label{tab:power}
 \small
@@ -312,10 +312,10 @@ same depth. The hologram column reproduces the \SI{210}{\watt} of the earlier $1
 \toprule
 $N$, barrier & Per in-plane axis & Vertical axis & Total circulating & Hologram tweezers \\
 \midrule
-$10^{5}$, \SI{0.2}{\milli\kelvin} & \SI{32}{\watt} & \SI{78}{\watt} & \SI{143}{\watt} & \SI{140}{\watt} \\
-$10^{5}$, \SI{0.3}{\milli\kelvin} & \SI{48}{\watt} & \SI{117}{\watt} & \SI{214}{\watt} & \SI{210}{\watt} \\
-$10^{6}$, \SI{0.2}{\milli\kelvin} & \SI{102}{\watt} & \SI{785}{\watt} & \SI{989}{\watt} & \SI{1399}{\watt} \\
-$10^{6}$, \SI{0.3}{\milli\kelvin} & \SI{154}{\watt} & \SI{1177}{\watt} & \SI{1484}{\watt} & \SI{2098}{\watt} \\
+$10^{5}$, \SI{0.2}{\milli\kelvin} & \SI{32}{\watt} & \SI{78}{\watt} & \SI{143}{\watt} & \SI{134}{\watt} \\
+$10^{5}$, \SI{0.3}{\milli\kelvin} & \SI{48}{\watt} & \SI{117}{\watt} & \SI{214}{\watt} & \SI{202}{\watt} \\
+$10^{6}$, \SI{0.2}{\milli\kelvin} & \SI{102}{\watt} & \SI{785}{\watt} & \SI{989}{\watt} & \SI{1345}{\watt} \\
+$10^{6}$, \SI{0.3}{\milli\kelvin} & \SI{154}{\watt} & \SI{1177}{\watt} & \SI{1484}{\watt} & \SI{2017}{\watt} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -360,7 +360,7 @@ the in-vacuum lattice needs \SI{1.4}{\watt} at $G = 1500$ and \SI{6.9}{\watt} th
 \includegraphics[width=0.85\linewidth]{cavity_budget/power_scaling.png}
 \caption{Laser power at the input of the trapping optics versus the number of sites, for a
 \SI{0.2}{\milli\kelvin} barrier at \SI{1075}{\nano\metre} and \SI{4}{\micro\metre} pitch. Tweezer
-lines: 143 (hologram) and 80 (lenslet) \si{\milli\kelvin} site per watt from earlier simulations of
+lines: 148.7 (hologram) and 81 (lenslet) \si{\milli\kelvin} site per watt from earlier simulations of
 this project. Lattice lines: two in-plane axes and one vertical axis (\SI{8}{\micro\metre} period),
 flat-top times Gaussian sheets ($w_z = \SI{75}{\micro\metre}$), mode matching 0.95; cavity enhancement
 for $T = 3L$ with 10 reflections of \SI{50}{\ppm} per round trip, plus 8 AR surfaces of
@@ -897,7 +897,7 @@ Worst case, graded-mirror loss absorbed: absorbed; rise; bulge & \SI{2.1}{\watt}
 Three results follow. (i) The heat to be removed is small. With IBS coatings 10 to \SI{99}{\milli\watt} is
 absorbed inside the vacuum system at $10^{6}$ sites (14 and \SI{6.5}{\milli\watt} at $10^{5}$ and $10^{4}$), and
 \SI{2.4}{\watt} of scattered light is spread over the chamber walls and mounts. None of this needs water
-cooling; it is three orders of magnitude below the \SI{1.4}{\kilo\watt} that the tweezer route would pass
+cooling; it is three orders of magnitude below the \SI{1.35}{\kilo\watt} that the tweezer route would pass
 through its meta-optics. (ii) The mirrors must be heat-sunk by conduction. A free sapphire strip in the
 vertical ring would warm by \SI{5.3}{\kelvin}, with a radiative time constant of about \SI{12}{\minute};
 clamped in a conducting mount it warms by \SI{0.07}{\kelvin}. (iii) The graded-mirror loss must be scatter,
@@ -1200,10 +1200,10 @@ horizontal and vertical direction of the vertical ring.}
  & $10^{4}$ sites & $10^{5}$ sites & $10^{6}$ sites \\
 \midrule
 Array side; in-plane flat-top equivalent width & 0.40; \SI{0.55}{\milli\metre} & 1.26; \SI{1.74}{\milli\metre} & 4.00; \SI{5.51}{\milli\metre} \\
-Hologram tweezers, input & \SI{14}{\watt} & \SI{140}{\watt} & \SI{1399}{\watt} \\
+Hologram tweezers, input & \SI{13}{\watt} & \SI{134}{\watt} & \SI{1345}{\watt} \\
 Lattice in free space, input & \SI{69}{\watt} & \SI{150}{\watt} & \SI{1041}{\watt} \\
 Cavity lattice, input at $G = 300$ / 1500 & 0.23 / \SI{0.046}{\watt} & 0.50 / \SI{0.10}{\watt} & 3.5 / \SI{0.69}{\watt} \\
-Tweezer power over cavity input ($G = 300$) & 61 & 279 & 403 \\
+Tweezer power over cavity input ($G = 300$) & 59 & 269 & 387 \\
 Vertical ring share of circulating power & \SI{69}{\percent} & \SI{55}{\percent} & \SI{79}{\percent} \\
 Adopted vertical ring & plain, Gaussian vertical profile ($w = \SI{266}{\micro\metre}$) & plain, order-10 vertical flat-top & $0.15\times$ horizontal, $4\times$ vertical telescope \\
 Adopted in-plane ring & plain, $p = \SI{150}{\milli\metre}$ & plain, $p = \SI{150}{\milli\metre}$ & $0.2\times$ telescope \\
@@ -1236,11 +1236,11 @@ the hottest mirror. Fox--Li strip models, 8192 points, $G = 300$.}
 \label{fig:scaling}
 \end{figure}
 
-Six results follow. (i) Laser power is not a constraint at $10^{4}$ (\SI{14}{\watt} of tweezers), and a
+Six results follow. (i) Laser power is not a constraint at $10^{4}$ (\SI{13}{\watt} of tweezers), and a
 lattice in free space needs more than tweezers below about $10^{5}$, because its in-plane power scales as
-the array side and the tweezer power as the number of sites. The cavity reduces the input 61, 279 and
-403 times against tweezers. Thus the cavity is a convenience at $10^{4}$, a large saving at $10^{5}$
-(\SI{0.50}{\watt} against \SI{140}{\watt}) and necessary at $10^{6}$. The vertical ring takes 55 and
+the array side and the tweezer power as the number of sites. The cavity reduces the input 59, 269 and
+387 times against tweezers. Thus the cavity is a convenience at $10^{4}$, a large saving at $10^{5}$
+(\SI{0.50}{\watt} against \SI{134}{\watt}) and necessary at $10^{6}$. The vertical ring takes 55 and
 \SI{79}{\percent} of the power at $10^{5}$ and $10^{6}$, because its vertical flat-top must cover a walk-off
 that grows with the array side; at $10^{4}$ it takes \SI{69}{\percent}, because the adopted Gaussian profile
 (item (iv)) is wider than a flat-top would be. A sheet thickness scaled as the square root of the side, which keeps the same \SI{1}{\percent}
@@ -1357,7 +1357,7 @@ Noise for a \SI{10}{\second} heating time at \SI{10}{\micro\kelvin} & RIN below 
 
 The total circulating power is \SI{989}{\watt} and the total input \SI{3.5}{\watt} at $G = 300$
 (\SI{0.69}{\watt} at $G = 1500$), against \SI{1.04}{\kilo\watt} for the same lattice in free space and
-\SI{1.40}{\kilo\watt} for meta-hologram tweezers.
+\SI{1.35}{\kilo\watt} for meta-hologram tweezers.
 
 \section{Reproducibility}
 \label{app:repro}
@@ -1399,8 +1399,8 @@ DERIVED values are calculations from stated inputs, and SOURCE values are taken 
 listed above, each of which was retrieved and read. The precedent values of Park et al., Norcia et al.,
 LIGO, Zeiss, the Cs MOT and grating-MOT experiments, and the heating rates of Savard et al.\ are SOURCE;
 the cesium polarisability is the repository's implementation of Steck's data (DERIVED from a source not
-re-read for this report); the tweezer anchors of 143 and \SI{80}{\milli\kelvin} site per watt are SIM
-from earlier studies of this project; all Fox--Li, correction, two-dimensional, vertical-ring,
+re-read for this report); the tweezer anchors of 148.7 and \SI{81}{\milli\kelvin} site per watt are SIM
+and DERIVED from earlier studies of this project (corrected power budget); all Fox--Li, correction, two-dimensional, vertical-ring,
 deformation and access results are SIM; the budget, layout, trap frequencies, loading estimate and noise
 requirements are DERIVED. The full ledger, with one row per value and its file pointer, is in the
 working edition (\texttt{docs/cavity\_concept.md}, Verification notes).

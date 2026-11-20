@@ -374,8 +374,8 @@
         "total_circulating_W": 142.71841077111867,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 139.86013986013987,
-      "tweezer_lenslet_W": 250.0,
+      "tweezer_hologram_W": 134.4989912575656,
+      "tweezer_lenslet_W": 246.91358024691357,
       "free_space_lattice_W": 150.22990607486176,
       "cavity_input_W": {
         "vacuum": {
@@ -424,8 +424,8 @@
         "total_circulating_W": 384.70246055300106,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 139.86013986013987,
-      "tweezer_lenslet_W": 250.0,
+      "tweezer_hologram_W": 134.4989912575656,
+      "tweezer_lenslet_W": 246.91358024691357,
       "free_space_lattice_W": 404.9499584768432,
       "cavity_input_W": {
         "vacuum": {
@@ -474,8 +474,8 @@
         "total_circulating_W": 214.07761615667798,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 209.7902097902098,
-      "tweezer_lenslet_W": 375.0,
+      "tweezer_hologram_W": 201.74848688634836,
+      "tweezer_lenslet_W": 370.3703703703704,
       "free_space_lattice_W": 225.34485911229262,
       "cavity_input_W": {
         "vacuum": {
@@ -524,8 +524,8 @@
         "total_circulating_W": 577.0536908295015,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 209.7902097902098,
-      "tweezer_lenslet_W": 375.0,
+      "tweezer_hologram_W": 201.74848688634836,
+      "tweezer_lenslet_W": 370.3703703703704,
       "free_space_lattice_W": 607.4249377152648,
       "cavity_input_W": {
         "vacuum": {
@@ -574,8 +574,8 @@
         "total_circulating_W": 989.3956370281027,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 1398.6013986013986,
-      "tweezer_lenslet_W": 2500.0,
+      "tweezer_hologram_W": 1344.9899125756558,
+      "tweezer_lenslet_W": 2469.135802469136,
       "free_space_lattice_W": 1041.4690916085292,
       "cavity_input_W": {
         "vacuum": {
@@ -624,8 +624,8 @@
         "total_circulating_W": 1944.2485300821613,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 1398.6013986013986,
-      "tweezer_lenslet_W": 2500.0,
+      "tweezer_hologram_W": 1344.9899125756558,
+      "tweezer_lenslet_W": 2469.135802469136,
       "free_space_lattice_W": 2046.5774000864858,
       "cavity_input_W": {
         "vacuum": {
@@ -674,8 +674,8 @@
         "total_circulating_W": 1484.0934555421538,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 2097.902097902098,
-      "tweezer_lenslet_W": 3750.0,
+      "tweezer_hologram_W": 2017.4848688634836,
+      "tweezer_lenslet_W": 3703.703703703704,
       "free_space_lattice_W": 1562.2036374127936,
       "cavity_input_W": {
         "vacuum": {
@@ -724,8 +724,8 @@
         "total_circulating_W": 2916.3727951232413,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 2097.902097902098,
-      "tweezer_lenslet_W": 3750.0,
+      "tweezer_hologram_W": 2017.4848688634836,
+      "tweezer_lenslet_W": 3703.703703703704,
       "free_space_lattice_W": 3069.866100129728,
       "cavity_input_W": {
         "vacuum": {
@@ -774,8 +774,8 @@
         "total_circulating_W": 7.011594415235904,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 1.3986013986013985,
-      "tweezer_lenslet_W": 2.5,
+      "tweezer_hologram_W": 1.3449899125756557,
+      "tweezer_lenslet_W": 2.4691358024691357,
       "free_space_lattice_W": 7.38062570024832,
       "cavity_input_W": {
         "vacuum": {
@@ -824,8 +824,8 @@
         "total_circulating_W": 28.120813719568474,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 1.3986013986013985,
-      "tweezer_lenslet_W": 2.5,
+      "tweezer_hologram_W": 1.3449899125756557,
+      "tweezer_lenslet_W": 2.4691358024691357,
       "free_space_lattice_W": 29.600856546914184,
       "cavity_input_W": {
         "vacuum": {
@@ -874,8 +874,8 @@
         "total_circulating_W": 10.517391622853854,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 2.097902097902098,
-      "tweezer_lenslet_W": 3.75,
+      "tweezer_hologram_W": 2.017484868863484,
+      "tweezer_lenslet_W": 3.7037037037037037,
       "free_space_lattice_W": 11.070938550372478,
       "cavity_input_W": {
         "vacuum": {
@@ -924,8 +924,8 @@
         "total_circulating_W": 42.18122057935271,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 2.097902097902098,
-      "tweezer_lenslet_W": 3.75,
+      "tweezer_hologram_W": 2.017484868863484,
+      "tweezer_lenslet_W": 3.7037037037037037,
       "free_space_lattice_W": 44.40128482037128,
       "cavity_input_W": {
         "vacuum": {
@@ -974,8 +974,8 @@
         "total_circulating_W": 13.290818906206143,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 4.195804195804196,
-      "tweezer_lenslet_W": 7.5,
+      "tweezer_hologram_W": 4.034969737726968,
+      "tweezer_lenslet_W": 7.407407407407407,
       "free_space_lattice_W": 13.99033569074331,
       "cavity_input_W": {
         "vacuum": {
@@ -1024,8 +1024,8 @@
         "total_circulating_W": 50.70022828853691,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 4.195804195804196,
-      "tweezer_lenslet_W": 7.5,
+      "tweezer_hologram_W": 4.034969737726968,
+      "tweezer_lenslet_W": 7.407407407407407,
       "free_space_lattice_W": 53.36866135635465,
       "cavity_input_W": {
         "vacuum": {
@@ -1074,8 +1074,8 @@
         "total_circulating_W": 19.936228359309215,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 6.293706293706293,
-      "tweezer_lenslet_W": 11.25,
+      "tweezer_hologram_W": 6.052454606590451,
+      "tweezer_lenslet_W": 11.11111111111111,
       "free_space_lattice_W": 20.985503536114965,
       "cavity_input_W": {
         "vacuum": {
@@ -1124,8 +1124,8 @@
         "total_circulating_W": 76.05034243280535,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 6.293706293706293,
-      "tweezer_lenslet_W": 11.25,
+      "tweezer_hologram_W": 6.052454606590451,
+      "tweezer_lenslet_W": 11.11111111111111,
       "free_space_lattice_W": 80.05299203453195,
       "cavity_input_W": {
         "vacuum": {
@@ -1174,8 +1174,8 @@
         "total_circulating_W": 27.990324629635072,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 13.986013986013987,
-      "tweezer_lenslet_W": 25.0,
+      "tweezer_hologram_W": 13.449899125756557,
+      "tweezer_lenslet_W": 24.691358024691358,
       "free_space_lattice_W": 29.463499610142183,
       "cavity_input_W": {
         "vacuum": {
@@ -1224,8 +1224,8 @@
         "total_circulating_W": 98.0968498384309,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 13.986013986013987,
-      "tweezer_lenslet_W": 25.0,
+      "tweezer_hologram_W": 13.449899125756557,
+      "tweezer_lenslet_W": 24.691358024691358,
       "free_space_lattice_W": 103.25984193519042,
       "cavity_input_W": {
         "vacuum": {
@@ -1274,8 +1274,8 @@
         "total_circulating_W": 41.9854869444526,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 20.97902097902098,
-      "tweezer_lenslet_W": 37.5,
+      "tweezer_hologram_W": 20.174848688634835,
+      "tweezer_lenslet_W": 37.03703703703704,
       "free_space_lattice_W": 44.19524941521327,
       "cavity_input_W": {
         "vacuum": {
@@ -1324,8 +1324,8 @@
         "total_circulating_W": 147.14527475764632,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 20.97902097902098,
-      "tweezer_lenslet_W": 37.5,
+      "tweezer_hologram_W": 20.174848688634835,
+      "tweezer_lenslet_W": 37.03703703703704,
       "free_space_lattice_W": 154.8897629027856,
       "cavity_input_W": {
         "vacuum": {
@@ -1374,8 +1374,8 @@
         "total_circulating_W": 58.59975734856569,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 41.95804195804196,
-      "tweezer_lenslet_W": 75.0,
+      "tweezer_hologram_W": 40.34969737726967,
+      "tweezer_lenslet_W": 74.07407407407408,
       "free_space_lattice_W": 61.68395510375336,
       "cavity_input_W": {
         "vacuum": {
@@ -1424,8 +1424,8 @@
         "total_circulating_W": 184.01521809817262,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 41.95804195804196,
-      "tweezer_lenslet_W": 75.0,
+      "tweezer_hologram_W": 40.34969737726967,
+      "tweezer_lenslet_W": 74.07407407407408,
       "free_space_lattice_W": 193.70022957702383,
       "cavity_input_W": {
         "vacuum": {
@@ -1474,8 +1474,8 @@
         "total_circulating_W": 87.89963602284854,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 62.93706293706294,
-      "tweezer_lenslet_W": 112.5,
+      "tweezer_hologram_W": 60.52454606590451,
+      "tweezer_lenslet_W": 111.11111111111111,
       "free_space_lattice_W": 92.52593265563004,
       "cavity_input_W": {
         "vacuum": {
@@ -1524,8 +1524,8 @@
         "total_circulating_W": 276.0228271472589,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 62.93706293706294,
-      "tweezer_lenslet_W": 112.5,
+      "tweezer_hologram_W": 60.52454606590451,
+      "tweezer_lenslet_W": 111.11111111111111,
       "free_space_lattice_W": 290.5503443655357,
       "cavity_input_W": {
         "vacuum": {
@@ -1574,8 +1574,8 @@
         "total_circulating_W": 347.04174992815274,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 419.5804195804196,
-      "tweezer_lenslet_W": 750.0,
+      "tweezer_hologram_W": 403.4969737726967,
+      "tweezer_lenslet_W": 740.7407407407408,
       "free_space_lattice_W": 365.3071051875292,
       "cavity_input_W": {
         "vacuum": {
@@ -1624,8 +1624,8 @@
         "total_circulating_W": 801.560096985027,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 419.5804195804196,
-      "tweezer_lenslet_W": 750.0,
+      "tweezer_hologram_W": 403.4969737726967,
+      "tweezer_lenslet_W": 740.7407407407408,
       "free_space_lattice_W": 843.7474705105548,
       "cavity_input_W": {
         "vacuum": {
@@ -1674,8 +1674,8 @@
         "total_circulating_W": 520.5626248922291,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 629.3706293706293,
-      "tweezer_lenslet_W": 1125.0,
+      "tweezer_hologram_W": 605.2454606590451,
+      "tweezer_lenslet_W": 1111.111111111111,
       "free_space_lattice_W": 547.9606577812938,
       "cavity_input_W": {
         "vacuum": {
@@ -1724,8 +1724,8 @@
         "total_circulating_W": 1202.3401454775403,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 629.3706293706293,
-      "tweezer_lenslet_W": 1125.0,
+      "tweezer_hologram_W": 605.2454606590451,
+      "tweezer_lenslet_W": 1111.111111111111,
       "free_space_lattice_W": 1265.621205765832,
       "cavity_input_W": {
         "vacuum": {
@@ -1774,8 +1774,8 @@
         "total_circulating_W": 2710.800906690725,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 4195.804195804196,
-      "tweezer_lenslet_W": 7500.0,
+      "tweezer_hologram_W": 4034.969737726967,
+      "tweezer_lenslet_W": 7407.407407407408,
       "free_space_lattice_W": 2853.4746386218158,
       "cavity_input_W": {
         "vacuum": {
@@ -1824,8 +1824,8 @@
         "total_circulating_W": 4714.067120102992,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 4195.804195804196,
-      "tweezer_lenslet_W": 7500.0,
+      "tweezer_hologram_W": 4034.969737726967,
+      "tweezer_lenslet_W": 7407.407407407408,
       "free_space_lattice_W": 4962.175915897887,
       "cavity_input_W": {
         "vacuum": {
@@ -1874,8 +1874,8 @@
         "total_circulating_W": 4066.201360036087,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 6293.706293706294,
-      "tweezer_lenslet_W": 11250.0,
+      "tweezer_hologram_W": 6052.4546065904515,
+      "tweezer_lenslet_W": 11111.111111111111,
       "free_space_lattice_W": 4280.211957932724,
       "cavity_input_W": {
         "vacuum": {
@@ -1924,8 +1924,8 @@
         "total_circulating_W": 7071.100680154486,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 6293.706293706294,
-      "tweezer_lenslet_W": 11250.0,
+      "tweezer_hologram_W": 6052.4546065904515,
+      "tweezer_lenslet_W": 11111.111111111111,
       "free_space_lattice_W": 7443.263873846828,
       "cavity_input_W": {
         "vacuum": {
@@ -1974,8 +1974,8 @@
         "total_circulating_W": 8505.575739572865,
         "beam_intensity_W_cm2": 19760.912553393122
       },
-      "tweezer_hologram_W": 13986.013986013986,
-      "tweezer_lenslet_W": 25000.0,
+      "tweezer_hologram_W": 13449.899125756558,
+      "tweezer_lenslet_W": 24691.35802469136,
       "free_space_lattice_W": 8953.237620603017,
       "cavity_input_W": {
         "vacuum": {
@@ -2024,8 +2024,8 @@
         "total_circulating_W": 13408.16172063323,
         "beam_intensity_W_cm2": 85432.17147726097
       },
-      "tweezer_hologram_W": 13986.013986013986,
-      "tweezer_lenslet_W": 25000.0,
+      "tweezer_hologram_W": 13449.899125756558,
+      "tweezer_lenslet_W": 24691.35802469136,
       "free_space_lattice_W": 14113.854442771823,
       "cavity_input_W": {
         "vacuum": {
@@ -2074,8 +2074,8 @@
         "total_circulating_W": 12758.363609359298,
         "beam_intensity_W_cm2": 29641.368830089683
       },
-      "tweezer_hologram_W": 20979.020979020977,
-      "tweezer_lenslet_W": 37500.0,
+      "tweezer_hologram_W": 20174.848688634836,
+      "tweezer_lenslet_W": 37037.03703703704,
       "free_space_lattice_W": 13429.856430904525,
       "cavity_input_W": {
         "vacuum": {
@@ -2124,8 +2124,8 @@
         "total_circulating_W": 20112.24258094984,
         "beam_intensity_W_cm2": 128148.25721589144
       },
-      "tweezer_hologram_W": 20979.020979020977,
-      "tweezer_lenslet_W": 37500.0,
+      "tweezer_hologram_W": 20174.848688634836,
+      "tweezer_lenslet_W": 37037.03703703704,
       "free_space_lattice_W": 21170.78166415773,
       "cavity_input_W": {
         "vacuum": {

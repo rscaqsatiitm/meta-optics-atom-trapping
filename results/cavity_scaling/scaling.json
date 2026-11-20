@@ -12,8 +12,8 @@
         "w_z_scaled_um": 23.610007040075875
       },
       "power": {
-        "tweezer_hologram_W": 13.986013986013987,
-        "tweezer_lenslet_W": 25.0,
+        "tweezer_hologram_W": 13.449899125756557,
+        "tweezer_lenslet_W": 24.691358024691358,
         "free_space_lattice_W": 68.9451535781451,
         "circulating_inplane_per_axis_W": 10.141978273933931,
         "circulating_vertical_W": 45.21393935136997,
@@ -25,7 +25,7 @@
         "input_vertical_ring_G300_W": 0.1586454012328771,
         "inplane_per_axis_scaled_wz_W": 3.1926957126383564,
         "input_total_G300_scaled_wz_W": 0.1810502834268305,
-        "tweezer_over_cavity_G300": 60.85713031371394
+        "tweezer_over_cavity_G300": 58.524341861876884
       },
       "inplane_rings": {
         "telescope": {
@@ -343,8 +343,8 @@
         "w_z_scaled_um": 42.12993134292617
       },
       "power": {
-        "tweezer_hologram_W": 139.86013986013987,
-        "tweezer_lenslet_W": 250.0,
+        "tweezer_hologram_W": 134.4989912575656,
+        "tweezer_lenslet_W": 246.91358024691357,
         "free_space_lattice_W": 150.22990607486176,
         "circulating_inplane_per_axis_W": 32.29326418468181,
         "circulating_vertical_W": 78.13188240175504,
@@ -356,7 +356,7 @@
         "input_vertical_ring_G300_W": 0.2741469557956317,
         "inplane_per_axis_scaled_wz_W": 18.140173372528285,
         "input_total_G300_scaled_wz_W": 0.40144641805898806,
-        "tweezer_over_cavity_G300": 279.2922065539577
+        "tweezer_over_cavity_G300": 268.58631834038977
       },
       "inplane_rings": {
         "telescope": {
@@ -772,8 +772,8 @@
         "w_z_scaled_um": 75.0
       },
       "power": {
-        "tweezer_hologram_W": 1398.6013986013986,
-        "tweezer_lenslet_W": 2500.0,
+        "tweezer_hologram_W": 1344.9899125756558,
+        "tweezer_lenslet_W": 2469.135802469136,
         "free_space_lattice_W": 1041.4690916085292,
         "circulating_inplane_per_axis_W": 102.3417807642424,
         "circulating_vertical_W": 784.7120754996179,
@@ -785,7 +785,7 @@
         "input_vertical_ring_G300_W": 2.753375703507431,
         "inplane_per_axis_scaled_wz_W": 102.3417807642424,
         "input_total_G300_scaled_wz_W": 3.471563638695097,
-        "tweezer_over_cavity_G300": 402.873616664308
+        "tweezer_over_cavity_G300": 387.43057957630157
       },
       "inplane_rings": {
         "telescope": {
