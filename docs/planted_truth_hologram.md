@@ -115,3 +115,30 @@ values), so the independent route cannot confirm relative trap depths below ~0.5
 case; the in-loop 0.21 % is not independently confirmed at that level. Trap positions are not
 part of the claim; they are offset by up to 0.13 um here by neighbour interference and are not
 controlled by the design.
+
+## The 16 um pitch excess (2026-11-20; scripts/planted_truth_pitch16.py, results/planted_truth_pitch16)
+
+At 16 um pitch the full-pixel field at the nominal sites misses the plant by 3.07 % (no feedback),
+against 0.61 % at 8 um, although the pupil model and the exact pupil sum reproduce the plant to
+~1e-7 at both pitches. Render upsampling (8 or 16), AS grid (512 or 1024) and window size change
+it by <= 0.2 points. Both designs had the same pupil grid (64-point floor of
+PupilGrid.for_sites), whose focal period is 4.3 times the field extent at 8 um but 2.1 times at
+16 um. Raising the guard:
+
+| Pitch | Guard | Pupil grid n | Focal period / field | Point-power error |
+|---|---|---|---|---|
+| 16 um | 1.6 | 64 | 2.13 | 3.07 % |
+| 16 um | 3.2 | 98 | 3.27 | 2.34 % |
+| 16 um | 4.3 | 132 | 4.40 | 1.63 % |
+| 8 um | 1.6 | 64 | 4.27 | 0.61 % |
+| 8 um | 8.6 | 132 | 8.80 | 0.70 % |
+
+Hence coarse pupil sampling accounts for about half of the 16 um excess: the phase-only field
+between pupil samples departs from what the sample sum predicts when the site separations are a
+larger fraction of the focal period. At matched period-to-field ratio (4.4) the 16 um case still
+misses by 1.6 % against 0.6 %, so the remainder has another cause, not identified (candidates not
+tested: the treatment of the partially covered rim cells, and the larger field angles of the
+outer sites, 6.4 deg here). The feedback loop removes such residuals in the production designs;
+without feedback, a larger guard than the 1.25 used for the full-aperture designs would reduce
+the pre-feedback residual at a kernel cost proportional to n^2 (Provisional: not tested on the
+full-aperture designs).
