@@ -33,27 +33,32 @@ def main(cfg_path):
     lam = cfg["wavelength_um"]
     n_f = complex(M.get(cfg["material"]).n(lam))
     n_s = float(M.get(cfg["substrate"]).n(lam))
+    jobs = []
     for fam in cfg["families"]:
-        for p in cfg["pitches_um"]:
-            w = np.linspace(cfg["w_min_um"], p - cfg["w_min_um"], cfg["n_widths"])
-            for h in cfg["heights_um"]:
-                key = f"{fam}:{p:.2f}:{h:.2f}"
-                if key in res:
-                    continue
-                t0 = time.time()
-                if fam == "hole":
-                    m = PillarCell(pitch=p, height=h, shape="circle").mask(w, cfg["n_grid"])
-                    eps = n_f**2 + (1.0 - n_f**2) * m  # air inside the hole
-                else:
-                    m = PillarCell(pitch=p, height=h, shape="square").mask(w, cfg["n_grid"])
-                    eps = 1.0 + (n_f**2 - 1.0) * m  # film material inside the pillar
-                r = solve_eps(eps.astype(complex), p, h, lam, n_s**2, 1.0, n_terms=cfg["n_terms"], formulation=cfg["formulation"])
-                res[key] = {"family": fam, "pitch_um": p, "height_um": h, "widths_um": w.tolist(),
-                            "t_re": np.real(r.t_x).tolist(), "t_im": np.imag(r.t_x).tolist(), "T": np.real(r.T).tolist(),
-                            "R": np.real(r.R).tolist(), "t_cross_max": float(np.max(r.t_cross)), "n_terms": int(r.n_terms),
-                            "seconds": time.time() - t0}
-                print(key, f"{time.time() - t0:.0f}s, phase range {np.ptp(np.unwrap(np.angle(r.t_x))):.2f} rad, max t_cross {np.max(r.t_cross):.1e}", flush=True)
-                write_json(path, res)
+        # extensions: extra (pitches, heights) grids per family, e.g. to move the hole search
+        # boundary away from the optimum.
+        grids = [(cfg["pitches_um"], cfg["heights_um"])] + [(g["pitches_um"], g["heights_um"]) for g in cfg.get("extensions", {}).get(fam, [])]
+        for ps, hs in grids:
+            jobs += [(fam, p, h) for p in ps for h in hs]
+    for fam, p, h in jobs:
+        w = np.linspace(cfg["w_min_um"], p - cfg["w_min_um"], cfg["n_widths"])
+        key = f"{fam}:{p:.2f}:{h:.2f}"
+        if key in res:
+            continue
+        t0 = time.time()
+        if fam == "hole":
+            m = PillarCell(pitch=p, height=h, shape="circle").mask(w, cfg["n_grid"])
+            eps = n_f**2 + (1.0 - n_f**2) * m  # air inside the hole
+        else:
+            m = PillarCell(pitch=p, height=h, shape="square").mask(w, cfg["n_grid"])
+            eps = 1.0 + (n_f**2 - 1.0) * m  # film material inside the pillar
+        r = solve_eps(eps.astype(complex), p, h, lam, n_s**2, 1.0, n_terms=cfg["n_terms"], formulation=cfg["formulation"])
+        res[key] = {"family": fam, "pitch_um": p, "height_um": h, "widths_um": w.tolist(),
+                    "t_re": np.real(r.t_x).tolist(), "t_im": np.imag(r.t_x).tolist(), "T": np.real(r.T).tolist(),
+                    "R": np.real(r.R).tolist(), "t_cross_max": float(np.max(r.t_cross)), "n_terms": int(r.n_terms),
+                    "seconds": time.time() - t0}
+        print(key, f"{time.time() - t0:.0f}s, phase range {np.ptp(np.unwrap(np.angle(r.t_x))):.2f} rad, max t_cross {np.max(r.t_cross):.1e}", flush=True)
+        write_json(path, res)
 
 
 if __name__ == "__main__":

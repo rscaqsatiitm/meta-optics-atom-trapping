@@ -20,6 +20,7 @@ import numpy as np
 import scipy.fft as sfft
 from numba import njit, prange
 
+from ..propagation.angular_spectrum import propagate
 from ..propagation.folded import propagate_folded
 from .evaluate import _quad_peak
 
@@ -181,10 +182,34 @@ def _site_metrics(I, origin_ij, dxu, sites, pitch, lam, na, out, idx):
         out["waist"][k] = np.sqrt(-4.0 * peak / curv) if curv < 0 else np.nan
 
 
-def focal_metrics_tiled(cfg, F, dx, lam, na, sites, p_in, H=None, stack_eval=None, site_shift=(0.0, 0.0), tile_px: int = 1024):
-    """Tiled counterpart of fullaperture.focal_metrics (same keys; I is returned as None)."""
-    nf = F.shape[0]
-    foc = propagate_folded(F, dx, lam, stack_eval, low_memory=True) if H is None else np.fft.fftshift(np.fft.ifft2(np.fft.fft2(F) * H))
+class RolledView:
+    """Read-only view of a field with the axis at index 0, sliced as if fftshifted (axis at N//2).
+
+    Avoids the full copy of np.fft.fftshift (10.9 GB for the unfolded 36,864^2 grid)."""
+
+    def __init__(self, a):
+        self.a, self.shape, self.c = a, a.shape, a.shape[0] // 2
+
+    def __getitem__(self, key):
+        si, sj = key
+        n = self.shape[0]
+        ii = (np.arange(si.start, si.stop) - self.c) % n
+        jj = (np.arange(sj.start, sj.stop) - self.c) % n
+        return self.a[np.ix_(ii, jj)]
+
+
+def focal_metrics_tiled(cfg, F, dx, lam, na, sites, p_in, H=None, stack_eval=None, site_shift=(0.0, 0.0), tile_px: int = 1024,
+                        foc=None):
+    """Tiled counterpart of fullaperture.focal_metrics (same keys; I is returned as None).
+
+    foc: an already propagated focal field (axis at index N//2, or a RolledView); F is then
+    ignored. Without H, a complex64 F is propagated in place and overwritten (no copy)."""
+    if foc is None:
+        if H is None:
+            foc = RolledView(propagate(F.astype(np.complex64, copy=False), dx, lam, stack_eval))
+        else:
+            foc = np.fft.fftshift(np.fft.ifft2(np.fft.fft2(F) * H))
+    nf = foc.shape[0]
     up = cfg.get("upsample", 4)
     dxu = dx / up
     pitch = cfg["site_pitch_um"]

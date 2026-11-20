@@ -86,8 +86,11 @@ Absorption. Photothermal measurements at 1064 nm give an absorption coefficient 
 7.94 +/- 0.50 cm^-1 for Si-rich low-stress SiNx (k ~ 6.7 x 10^-5) (Kumar et al., ACS Photonics
 12, 6381 (2025), DOI 10.1021/acsphotonics.5c01886), consistent with 6.9 +/- 0.7 cm^-1 for
 similar membranes (Steinlechner et al., Phys. Rev. D 96, 022007 (2017)). Those films are
-LPCVD; PECVD and ICP-PECVD films contain more hydrogen, so we carry a band of
-k = 3 x 10^-5 to 3 x 10^-4 for our Si-rich film (Provisional).
+LPCVD membranes measured at 1064 nm; PECVD and ICP-PECVD films contain more hydrogen, so we carry
+a band of k = 3 x 10^-5 to 3 x 10^-4 for our Si-rich film (Provisional). The central value thus
+rests on one film type at a neighbouring wavelength, transferred to a different deposition
+method; the band is an assumption, not a measured spread, and the retrieval of the two sources
+was not recorded (treat both as unverified until re-read). The CNNP film must be measured.
 
 Consequences (RCWA with complex index, configs/library_est_1075.yaml):
 
@@ -119,14 +122,14 @@ campaign 1. Thermal consequences at 100 W (configs/thermal_film_estimates.yaml):
 
 | Absorption | 0.5 mm fused silica | 1 mm fused silica | 0.5 mm sapphire |
 |---|---|---|---|
-| LPCVD, 3.5e-6 | -0.001 um | -0.001 um | 0 |
+| LPCVD, <= 3.5e-6 (numerical floor: a lossless film gives 3.6e-6) | <= -0.001 um | <= -0.001 um | 0 |
 | Si-rich, nominal 5.9e-4 | -0.11 um (dT = 6 K) | -0.14 um | -0.015 um |
 | Si-rich, upper band 2.7e-3 | -0.50 um (dT = 27 K) | -0.65 um | -0.07 um |
 
 All are inside the 1 um focal-shift budget. With these estimates, explaining the 19 %
-deficit of ref. 4 thermally (a_film = 1.16 %, campaign 1) would need a film absorbing
-~20 times more than the nominal Si-rich estimate, which strengthens the conclusion that
-substrate heating is unlikely to be the cause.
+deficit of ref. 4 thermally (a_film = 1.16 %, campaign 1, in the fixed-plane scenario; 22 % if
+the atoms follow the focus) would need a film absorbing ~20 times more than the nominal Si-rich
+estimate, which strengthens the conclusion that substrate heating is unlikely to be the cause.
 
 ## 3. Vector focusing at NA 0.55
 

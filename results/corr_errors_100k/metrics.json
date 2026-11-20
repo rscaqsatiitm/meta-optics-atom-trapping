@@ -1,0 +1,189 @@
+{
+  "cases": {
+    "smooth5nm_L50um_seed16": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": {
+        "corr_sigma_um": 0.005,
+        "corr_length_um": 50.0,
+        "seed": 16
+      },
+      "metasurface_transmission": 0.956305158375757,
+      "windows": {
+        "36864": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.055879408669155535,
+          "depth_min_over_mean": 0.7823776132905437,
+          "array_efficiency": 0.7903568819969587,
+          "core_efficiency": 0.642634638160836,
+          "cell_power_nonuniformity_rms": 0.06851134330932879,
+          "waist_mean_um": 0.8668979040656386,
+          "waist_std_um": 0.019656051892825977,
+          "position_error_rms_um": 0.09193734202214636,
+          "axis_intensity_over_mean_site_peak": 0.07529291537633381,
+          "interstitial_median": 0.015202282251240743,
+          "interstitial_p99": 0.09854274730294747,
+          "interstitial_max": 0.23991484654470013,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            0.0006389373343818302,
+            1.2667503891655072e-05
+          ],
+          "background_band_over_mean_peak": 0.0025659308886832382,
+          "window_mm": 18.432,
+          "seconds": 149.00763463974
+        }
+      },
+      "seconds": 890.5541784763336
+    },
+    "smooth5nm_L50um_seed17": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": {
+        "corr_sigma_um": 0.005,
+        "corr_length_um": 50.0,
+        "seed": 17
+      },
+      "metasurface_transmission": 0.956263323373974,
+      "windows": {
+        "36864": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.05537815800957715,
+          "depth_min_over_mean": 0.7647634822517493,
+          "array_efficiency": 0.7903638124160192,
+          "core_efficiency": 0.6426621092807007,
+          "cell_power_nonuniformity_rms": 0.06791312941479383,
+          "waist_mean_um": 0.8669239226158633,
+          "waist_std_um": 0.01970546129690382,
+          "position_error_rms_um": 0.09208590166242506,
+          "axis_intensity_over_mean_site_peak": 0.09434920853725713,
+          "interstitial_median": 0.015136072577943391,
+          "interstitial_p99": 0.09875731009152093,
+          "interstitial_max": 0.246876389960948,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            -0.00020058852307866027,
+            0.00020191132899602792
+          ],
+          "background_band_over_mean_peak": 0.0025665539307392162,
+          "window_mm": 18.432,
+          "seconds": 158.17798018455505
+        }
+      },
+      "seconds": 906.2026400566101
+    },
+    "smooth2p5nm_L50um_seed15": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": {
+        "corr_sigma_um": 0.0025,
+        "corr_length_um": 50.0,
+        "seed": 15
+      },
+      "metasurface_transmission": 0.9590528898979448,
+      "windows": {
+        "36864": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.027576510193386743,
+          "depth_min_over_mean": 0.8743811585759297,
+          "array_efficiency": 0.7971574290827649,
+          "core_efficiency": 0.6526866098707844,
+          "cell_power_nonuniformity_rms": 0.051609847140641464,
+          "waist_mean_um": 0.8666989373810502,
+          "waist_std_um": 0.01879194188271628,
+          "position_error_rms_um": 0.08957937691243141,
+          "axis_intensity_over_mean_site_peak": 0.0828079537171812,
+          "interstitial_median": 0.01447163608282361,
+          "interstitial_p99": 0.09445051737931144,
+          "interstitial_max": 0.24713517962938092,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            -0.00012876303259328408,
+            -0.0001198549833029635
+          ],
+          "background_band_over_mean_peak": 0.0024727648538189727,
+          "window_mm": 18.432,
+          "seconds": 155.1014368534088
+        }
+      },
+      "seconds": 907.8767995834351
+    },
+    "smooth5nm_L20um_seed15": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": {
+        "corr_sigma_um": 0.005,
+        "corr_length_um": 20.0,
+        "seed": 15
+      },
+      "metasurface_transmission": 0.956275266243793,
+      "windows": {
+        "36864": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.05043171431858781,
+          "depth_min_over_mean": 0.7722166588891649,
+          "array_efficiency": 0.7881904971441617,
+          "core_efficiency": 0.6418971595160614,
+          "cell_power_nonuniformity_rms": 0.06515503891842288,
+          "waist_mean_um": 0.8668638638724665,
+          "waist_std_um": 0.019461121999226796,
+          "position_error_rms_um": 0.09149682383331567,
+          "axis_intensity_over_mean_site_peak": 0.033012013683654425,
+          "interstitial_median": 0.015047640343081039,
+          "interstitial_p99": 0.09813914445498796,
+          "interstitial_max": 0.2549879419629596,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            0.0001541494613236314,
+            -0.00011282966766962671
+          ],
+          "background_band_over_mean_peak": 0.0027287105046061113,
+          "window_mm": 18.432,
+          "seconds": 159.02197170257568
+        }
+      },
+      "seconds": 945.8292338848114
+    },
+    "smooth5nm_L200um_seed15": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": {
+        "corr_sigma_um": 0.005,
+        "corr_length_um": 200.0,
+        "seed": 15
+      },
+      "metasurface_transmission": 0.9562299045450772,
+      "windows": {
+        "36864": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.05842175779901704,
+          "depth_min_over_mean": 0.7709927744435532,
+          "array_efficiency": 0.7915870374262006,
+          "core_efficiency": 0.6430967452827112,
+          "cell_power_nonuniformity_rms": 0.06964299001346796,
+          "waist_mean_um": 0.8668644742285416,
+          "waist_std_um": 0.01972400756641526,
+          "position_error_rms_um": 0.09233022433626156,
+          "axis_intensity_over_mean_site_peak": 0.06993356234115382,
+          "interstitial_median": 0.015158257896997108,
+          "interstitial_p99": 0.09942409487885648,
+          "interstitial_max": 0.23865504722280564,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            0.00224951884472711,
+            0.00044316434609217745
+          ],
+          "background_band_over_mean_peak": 0.0024899360438618476,
+          "window_mm": 18.432,
+          "seconds": 160.16493916511536
+        }
+      },
+      "seconds": 915.8261601924896
+    }
+  },
+  "background_band_um": [
+    670.0,
+    1004.0
+  ],
+  "n_metasurface": 36864
+}

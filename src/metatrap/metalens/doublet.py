@@ -63,6 +63,11 @@ class Perturbation:
     m2_decentre_um: float = 0.0  # focusing plate, along x
     m2_tilt_rad: float = 0.0  # focusing plate about its centre
     cell_tilt_rad: float = 0.0  # cell (wall and atom plane) relative to the objective
+    # Evaluation plane for a cell tilt: "cell" (perpendicular to the tilted cell normal, i.e. the
+    # atoms lie in a plane fixed to the cell; the field edge is then defocused by h x tilt) or
+    # "objective" (perpendicular to the objective axis: the atom plane is set by the optics, as
+    # for traps made through the same objective; only the aberration of the tilted wall remains).
+    cell_tilt_plane: str = "cell"
 
 
 def system(d: Doublet, lam_um: float, pert: Perturbation | None = None, m1=None, m2=None) -> System:
@@ -84,6 +89,10 @@ def system(d: Doublet, lam_um: float, pert: Perturbation | None = None, m1=None,
     if pert.cell_tilt_rad:
         el += [Frame(pert.cell_tilt_rad, 0.0, 0.0, n_after)]
     el += cell_media
+    if pert.cell_tilt_rad and pert.cell_tilt_plane == "objective":
+        el += [Frame(-pert.cell_tilt_rad, 0.0, 0.0, cell_media[-1].n)]
+    elif pert.cell_tilt_plane not in ("cell", "objective"):
+        raise ValueError("cell_tilt_plane must be 'cell' or 'objective'")
     return System(el)
 
 

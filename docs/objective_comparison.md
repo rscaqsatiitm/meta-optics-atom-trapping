@@ -16,8 +16,11 @@ path minus best defocus). The Strehl ratio stays above 0.8 only below NA ~0.25. 
 refractive alternative is therefore a custom, window-corrected, multi-element objective. An
 example is the Special Optics NA 0.65 objective of the 6,100-atom Caltech array, with a field
 of view of 1.5 mm diameter (SOURCE). Against that benchmark, the metasurface lenses of this
-project offer the following. (i) Equal or better field quality at NA 0.5 to 0.55 (ray-traced
-Strehl >= 0.999 over +/-400 um, >= 0.8 to +/-1.4 mm, SIM). (ii) A power-handling advantage
+project offer the following. (i) In ideal-phase models (unit transmission, angle-independent
+meta-atom phase, scalar optics) a field quality at NA 0.5 to 0.55 comparable to that benchmark
+(ray-traced Strehl >= 0.999 over +/-400 um, >= 0.8 to +/-1.4 mm, SIM). The angular response of
+the meta-atoms, which a built objective includes, is not modelled, so this comparison is an upper
+bound for the metasurface. (ii) A power-handling advantage
 that targets the limitation reported for the refractive objective (thermal aberrations above
 ~35 W). (iii) Direct generation of 20,000 traps without an SLM. They pay for this with lower
 efficiency (0.80 for one wavelength, 0.5 to 0.7 when shared between wavelengths, SIM, against

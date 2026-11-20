@@ -1,0 +1,14 @@
+metatrap: Phase A simulations of SiN meta-optics for cesium tweezer arrays
+
+This repository includes third-party material:
+
+1. BootLoops skills (verbatim copies, unmodified)
+   Files:    .claude/skills/planted-truth/SKILL.md
+             .claude/skills/acceptance-gate/SKILL.md
+             .claude/skills/independence-bookkeeping/SKILL.md
+             .claude/skills/timing-discipline/SKILL.md
+   Source:   https://github.com/BootLoops-ai/skills, commit ca892277dcf0468d995f0036f3bd6d753a8afe7d
+   Credit:   BootLoops 1.0, Anthropic, PBC and Matthew D. Schwartz (2026), https://www.bootloops.ai
+   Licence:  skill texts CC BY 4.0 (.claude/skills/LICENSE-CC-BY-4.0); upstream scripts and
+             manifests MIT (.claude/skills/LICENSE-MIT). No upstream script is included.
+   Details:  .claude/skills/UPSTREAM.md (commit, date, sha256 of each file).

@@ -1,0 +1,9 @@
+{
+ "note": "Written retroactively (review 3) for results produced before this file existed; the producing runs did not record a params.json. Regenerate any file with the listed command; the git hash below is the commit at which this file was written, not that of the original runs.",
+ "written_at_commit": "c0c87fa687bb80662e624ecf586f0226e77c683f",
+ "date": "2026-11-10",
+ "files": {
+  "main.json": "python scripts/compare_library_formulations.py data/library_main.h5 data/library_main_pf.h5 main",
+  "est_1075.json": "python scripts/compare_library_formulations.py data/library_est_1075.h5 data/library_est_1075_pf.h5 est_1075"
+ }
+}

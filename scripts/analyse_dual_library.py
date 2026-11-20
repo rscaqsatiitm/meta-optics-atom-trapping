@@ -4,7 +4,7 @@ Usage: python scripts/analyse_dual_library.py configs/dual_library.yaml
 
 For each material, pitch and height: the ring family, the two-pillar family and their union
 (same lattice and height, so they can share one metasurface), with the aspect-ratio limit 10
-and 15. The figure of merit is molecules.dual_efficiency: the focusing efficiency at each
+and 15 applied to the smallest pillar, ring wall or ring hole. The figure of merit is molecules.dual_efficiency: the focusing efficiency at each
 wavelength when every phase pair on the torus must be realised (the aplanatic doublet needs a
 nearly uniform torus, docs/metalens_report.md Section 5). The single-wavelength optimum of
 the same atoms is given for reference. Output: results/<run_id>/dual_efficiency.json and a
@@ -21,9 +21,11 @@ from metatrap.runio import REPO_ROOT, load_config, run_dir, write_json
 
 
 def min_feature(fam, params):
+    """Smallest feature that sets the aspect ratio: pillar width, ring wall, and (review 3) the
+    ring's etched hole, which has the same depth as the wall (as in docs/hole_vs_pillar.md)."""
     p = np.asarray(params, float)
     if fam == "ring":
-        return np.where(p[:, 1] > 0, (p[:, 0] - p[:, 1]) / 2, p[:, 0])
+        return np.where(p[:, 1] > 0, np.minimum((p[:, 0] - p[:, 1]) / 2, p[:, 1]), p[:, 0])
     w = np.where(p > 0, p, np.inf)
     return w.min(axis=1)
 

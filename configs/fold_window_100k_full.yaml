@@ -1,0 +1,30 @@
+# Unfolded reference for configs/fold_window_100k.yaml: the whole 36,864^2 metasurface grid
+# (W = 18.432 mm, no folding) propagated in place, same cases and metrics.
+# Run: python scripts/fold_window_study.py configs/fold_window_100k_full.yaml   (peak ~12 GB)
+run_id: fold_window_100k_full
+wavelength_um: 1.075
+na: 0.55
+stack:
+- [2500, air]
+- [4000, fused_silica]
+- [9000, air]
+illumination: {kind: top_hat}
+pixel_um: 0.5
+site_pitch_um: 4.0
+sites: {kind: square, nx: 316, ny: 316, pitch_um: 4.0}
+pupil_guard: 1.25
+render_upsample: 5
+upsample: 4
+array_defocus_um: 50.0
+block_rows: 64
+library: {path: data/library_est_1075.h5, material: sin_si_rich_est, pitch_um: 0.5, height_um: 1.6}
+metrics_tile_px: 1024
+n_folds: [36864]
+cases:
+- {name: r17_library, state: data/designs/fullaperture_100k_pplib_round17_state.npz, pillars: library}
+- {name: r2_ideal, state: data/designs/fullaperture_100k_round2_state.npz, pillars: ideal}
+- {name: pp8_ideal, state: data/designs/fullaperture_100k_pp_round8_state.npz, pillars: ideal}
+- name: r17_library_sigma5nm
+  state: data/designs/fullaperture_100k_pplib_round17_state.npz
+  pillars: library
+  errors: {sigma_um: 0.005, seed: 1}

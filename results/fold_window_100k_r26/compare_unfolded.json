@@ -1,0 +1,11 @@
+{
+ "a": "results/fullaperture_100k_full/per_site_library_lpa.npz:peak",
+ "b": "results/fold_window_100k_r26/per_site_r26_library.npz:peak_18432",
+ "n_sites": 99856,
+ "rms_a": 0.00013541080258027785,
+ "rms_b": 0.004797009777415896,
+ "rms_difference": 0.004795020357573229,
+ "max_abs_difference": 0.019614816190916873,
+ "correlation": 0.02880277459176399,
+ "mean_ratio_b_over_a": 1.000044517574006
+}

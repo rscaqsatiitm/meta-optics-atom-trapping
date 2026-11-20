@@ -1,0 +1,177 @@
+{
+  "cases": {
+    "v2_ideal": {
+      "state": "data/designs/fullaperture_v2_state.npz",
+      "pillars": "ideal",
+      "errors": null,
+      "metasurface_transmission": 1.0,
+      "windows": {
+        "4096": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.053340582340739566,
+          "depth_min_over_mean": 0.768032065128839,
+          "array_efficiency": 0.8539556089260645,
+          "core_efficiency": 0.7072654106457498,
+          "cell_power_nonuniformity_rms": 0.06550402127257038,
+          "waist_mean_um": 0.8668323234654778,
+          "waist_std_um": 0.02099774622602176,
+          "position_error_rms_um": 0.08374288823988081,
+          "axis_intensity_over_mean_site_peak": 0.38125816156497117,
+          "interstitial_median": 0.012505980851589698,
+          "interstitial_p99": 0.08729118953015844,
+          "interstitial_max": 0.38125816156497117,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -5.425980281799855e-06,
+            8.782876535195734e-07
+          ],
+          "background_band_over_mean_peak": 0.0007701021075925506,
+          "window_mm": 2.048,
+          "seconds": 5.415987730026245
+        },
+        "18432": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.052372341188370995,
+          "depth_min_over_mean": 0.7845108476764852,
+          "array_efficiency": 0.8532086230009082,
+          "core_efficiency": 0.7070652069596404,
+          "cell_power_nonuniformity_rms": 0.0650678143410516,
+          "waist_mean_um": 0.8669470730837175,
+          "waist_std_um": 0.020843428829698713,
+          "position_error_rms_um": 0.08356357386718391,
+          "axis_intensity_over_mean_site_peak": 0.3555130573546793,
+          "interstitial_median": 0.012414609199258927,
+          "interstitial_p99": 0.08737981572582691,
+          "interstitial_max": 0.3555130573546793,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -7.217082388849765e-06,
+            -1.0716692999064461e-06
+          ],
+          "background_band_over_mean_peak": 0.0006594671571443099,
+          "window_mm": 9.216,
+          "seconds": 58.75170588493347
+        }
+      },
+      "seconds": 759.3439745903015
+    },
+    "v2_library": {
+      "state": "data/designs/fullaperture_v2_state.npz",
+      "pillars": "library",
+      "errors": null,
+      "metasurface_transmission": 0.9712906684802244,
+      "windows": {
+        "4096": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.05477951218286751,
+          "depth_min_over_mean": 0.7795311306672339,
+          "array_efficiency": 0.8225879332908711,
+          "core_efficiency": 0.6810275056163245,
+          "cell_power_nonuniformity_rms": 0.06586067992178818,
+          "waist_mean_um": 0.8668040194354865,
+          "waist_std_um": 0.02180122511389242,
+          "position_error_rms_um": 0.08401003965724792,
+          "axis_intensity_over_mean_site_peak": 0.4013647302657745,
+          "interstitial_median": 0.01277480253381683,
+          "interstitial_p99": 0.08656811998969259,
+          "interstitial_max": 0.4013647302657745,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            1.7356934187874407e-09,
+            -2.1808403774256623e-09
+          ],
+          "background_band_over_mean_peak": 0.0008411838242002388,
+          "window_mm": 2.048,
+          "seconds": 5.272186756134033
+        },
+        "18432": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.05246485348857151,
+          "depth_min_over_mean": 0.7860893051718483,
+          "array_efficiency": 0.8213009686758825,
+          "core_efficiency": 0.6806192399563638,
+          "cell_power_nonuniformity_rms": 0.06510301927582977,
+          "waist_mean_um": 0.866938415036105,
+          "waist_std_um": 0.02086092253276736,
+          "position_error_rms_um": 0.08361492349811525,
+          "axis_intensity_over_mean_site_peak": 0.3556997913210949,
+          "interstitial_median": 0.012383809491611948,
+          "interstitial_p99": 0.08687856634136504,
+          "interstitial_max": 0.3556997913210949,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -2.218799141902749e-06,
+            1.2533580095870154e-06
+          ],
+          "background_band_over_mean_peak": 0.0006616520643075131,
+          "window_mm": 9.216,
+          "seconds": 52.76217341423035
+        }
+      },
+      "seconds": 740.8570828437805
+    },
+    "v2_library_sigma5nm": {
+      "state": "data/designs/fullaperture_v2_state.npz",
+      "pillars": "library",
+      "errors": {
+        "sigma_um": 0.005,
+        "seed": 1
+      },
+      "metasurface_transmission": 0.9562776495875093,
+      "windows": {
+        "4096": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.05755928918907715,
+          "depth_min_over_mean": 0.7611647240126329,
+          "array_efficiency": 0.7920527738667399,
+          "core_efficiency": 0.6551749741297718,
+          "cell_power_nonuniformity_rms": 0.0665610649285996,
+          "waist_mean_um": 0.8666375685373107,
+          "waist_std_um": 0.023539794249923057,
+          "position_error_rms_um": 0.08464746416084168,
+          "axis_intensity_over_mean_site_peak": 0.398084324429504,
+          "interstitial_median": 0.01280918611812694,
+          "interstitial_p99": 0.08739015350894311,
+          "interstitial_max": 0.398084324429504,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            3.219360175386051e-05,
+            4.474660421155966e-05
+          ],
+          "background_band_over_mean_peak": 0.0009949748267318603,
+          "window_mm": 2.048,
+          "seconds": 6.019207000732422
+        },
+        "18432": {
+          "n_sites": 20164,
+          "depth_nonuniformity_rms": 0.05257318368924861,
+          "depth_min_over_mean": 0.7833507186017191,
+          "array_efficiency": 0.789579679823035,
+          "core_efficiency": 0.6543024375993726,
+          "cell_power_nonuniformity_rms": 0.06513916926928033,
+          "waist_mean_um": 0.866927543821682,
+          "waist_std_um": 0.020967822747486937,
+          "position_error_rms_um": 0.08360475229795655,
+          "axis_intensity_over_mean_site_peak": 0.35631439121600794,
+          "interstitial_median": 0.012380312304899794,
+          "interstitial_p99": 0.08670887973114295,
+          "interstitial_max": 0.35631439121600794,
+          "interstitial_max_radius_um": 0.0,
+          "mean_site_offset_um": [
+            -1.576041698967157e-05,
+            -2.0274897246440302e-05
+          ],
+          "background_band_over_mean_peak": 0.0006671116886954012,
+          "window_mm": 9.216,
+          "seconds": 59.981497287750244
+        }
+      },
+      "seconds": 928.8243033885956
+    }
+  },
+  "background_band_um": [
+    322.0,
+    1004.0
+  ],
+  "n_metasurface": 36864
+}

@@ -30,13 +30,13 @@
     "pitch_um": 0.45,
     "height_um": 1.2,
     "max_aspect": 10.0,
-    "n_atoms": 103,
-    "corrector_eta_852": 0.5517332009048781,
-    "corrector_eta_1064": 0.736604959084984,
-    "focusing_eta_852": 0.5358084696229388,
-    "focusing_eta_1064": 0.7284386184568127,
-    "doublet_lpa_852": 0.2956233220170082,
-    "doublet_lpa_1064": 0.5365714987443028
+    "n_atoms": 100,
+    "corrector_eta_852": 0.5461443673504968,
+    "corrector_eta_1064": 0.7213684313989257,
+    "focusing_eta_852": 0.5303625688643653,
+    "focusing_eta_1064": 0.7109460608647727,
+    "doublet_lpa_852": 0.28965452963881305,
+    "doublet_lpa_1064": 0.5128540447352663
   },
   {
     "material": "si_crystalline",

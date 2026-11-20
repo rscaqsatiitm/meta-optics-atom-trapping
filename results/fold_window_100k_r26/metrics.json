@@ -1,0 +1,41 @@
+{
+  "cases": {
+    "r26_library": {
+      "state": "data/designs/fullaperture_100k_full_round26_state.npz",
+      "pillars": "library",
+      "errors": null,
+      "metasurface_transmission": 0.9712930083972138,
+      "windows": {
+        "18432": {
+          "n_sites": 99856,
+          "depth_nonuniformity_rms": 0.004797009777415896,
+          "depth_min_over_mean": 0.9814401393946136,
+          "array_efficiency": 0.809071947869324,
+          "core_efficiency": 0.6639162785620678,
+          "cell_power_nonuniformity_rms": 0.044813131539779665,
+          "waist_mean_um": 0.8666344237873626,
+          "waist_std_um": 0.018698122164698978,
+          "position_error_rms_um": 0.088810208784836,
+          "axis_intensity_over_mean_site_peak": 0.06917325748399858,
+          "interstitial_median": 0.014151670945530253,
+          "interstitial_p99": 0.09260839271819804,
+          "interstitial_max": 0.22326512981270152,
+          "interstitial_max_radius_um": 568.0,
+          "mean_site_offset_um": [
+            -2.017978694308253e-07,
+            -2.0636136843015477e-07
+          ],
+          "background_band_over_mean_peak": 0.00021068653111307322,
+          "window_mm": 9.216,
+          "seconds": 64.97748446464539
+        }
+      },
+      "seconds": 513.4568419456482
+    }
+  },
+  "background_band_um": [
+    670.0,
+    4588.0
+  ],
+  "n_metasurface": 36864
+}

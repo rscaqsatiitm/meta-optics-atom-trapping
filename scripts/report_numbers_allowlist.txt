@@ -1,0 +1,5 @@
+# Numbers in a LaTeX edition that legitimately do not occur, as values, in its Markdown source.
+# One entry per line: <tex file> | <number as printed> | <reason>. Every entry needs a reason that
+# was checked against both sources; scripts/check_report_numbers.py fails on stale entries.
+cavity_report.tex | -1 | exponent fragment of "(a,b)^{-1/2}" (the parser reads "-1" from "-1/2"); not a reported value
+cavity_report.tex | 25.4 | mirror diameter written as 25.4 mm; the Markdown source states it as "1 inch" (docs/cavity_concept.md, mirror sections)

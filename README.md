@@ -4,8 +4,10 @@ Simulation code for Phase A of the ANRF proposal ANRF/ARG/2026/009937
 ("integrated meta-optics and PIC control engine for neutral-atom qubits").
 The first campaign targets element B1, the direct-projection SiN meta-hologram that
 generates the static 1075 nm cesium array, and the high-power thermal behaviour of
-SiN meta-optics (hypothesis H2a). The doublet meta-objective (B2) follows in a second
-campaign and reuses the same library and propagation code.
+SiN meta-optics (hypothesis H2a). Later work, on the same library and propagation code, added
+the doublet meta-objective (B2), the pre-fabrication checks, full-aperture designs with 2,304,
+20,164 and 99,856 sites, the 10^6-site scaling study (direct hologram and lenslet-array relay),
+and a comparison of hole and pillar meta-atoms (see the docs rows of the layout table).
 
 ## Install
 
@@ -32,6 +34,10 @@ numpy/scipy for propagation and the thermal solver.
 | `scripts/` | Entry points; each writes `results/<run_id>/params.json` (config, git hash, versions) |
 | `docs/model_notes.md` | Equations, assumptions and the provenance ledger |
 | `docs/campaign1_report.md` | Results of the first campaign |
+| `docs/campaign1b_report.md`, `docs/prefab_checks_report.md` | Literature film estimates and their consequences; pre-fabrication checks and damage model |
+| `docs/metalens_report.md`, `docs/objective_comparison.md` | B2 doublet meta-objective; comparison with refractive objectives |
+| `docs/scaling_100k.md`, `docs/million_sites.md`, `docs/gpu_run.md` | 10^5-site design, 10^6-site routes, running the 10^6 design on a GPU |
+| `docs/hole_vs_pillar.md` | Hole (inverse) against pillar meta-atoms at 1075 nm |
 | `src/metatrap/cavity/`, `docs/cavity_concept.md` | Cavity-enhanced large-period lattice with graded-phase flat-top modes for 10^5 to 10^6 sites: power budget, Fox-Li model, tolerances, defects |
 | `docs/report/` | LaTeX editions of the cavity report: `cavity_report.tex` (edited, readable) and `cavity_concept_faithful.tex` (generated from the Markdown); build with `bash docs/report/build.sh` (needs TeX Live) |
 
@@ -44,6 +50,13 @@ the report points to the config and results directory that produced it.
 ## Tests
 
 ```bash
-python -m pytest            # fast anchors
-python -m pytest -m slow    # RCWA cross-checks and convergence
+python -m pytest            # all tests (about 1 min on 4 cores); tests/test_lazy_gpu.py runs only with a CUDA GPU
+```
+
+No test is currently marked `slow` (the marker is defined in pyproject.toml for future use). The
+RCWA convergence and solver cross-checks are scripts, not tests: `scripts/rcwa_grid_convergence.py`,
+`scripts/compare_library_formulations.py` and the convergence configs.
+
+```bash
+python -m pytest tests/test_rcwa.py   # RCWA conventions against thin-film results
 ```
