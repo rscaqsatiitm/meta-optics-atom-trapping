@@ -22,7 +22,7 @@ from numba import njit, prange
 
 from ..propagation.angular_spectrum import propagate
 from ..propagation.folded import propagate_folded
-from .evaluate import _quad_peak
+from .evaluate import _quad_peak, disc_distances
 
 
 def fourier_interp_2d(x: np.ndarray, factor: int) -> np.ndarray:
@@ -164,7 +164,6 @@ def _site_metrics(I, origin_ij, dxu, sites, pitch, lam, na, out, idx):
     r_search = max(1, int(round(0.35 * pitch / dxu)))
     r_cell, r_core = 0.5 * pitch, 0.61 * lam / na
     rr = int(np.ceil(r_cell / dxu)) + 2
-    yy, xx = np.mgrid[-rr : rr + 1, -rr : rr + 1]
     oi, oj, c = origin_ij
     for k, (sx, sy) in zip(idx, sites):
         i0, j0 = c + int(round(sx / dxu)) - oi, c + int(round(sy / dxu)) - oj
@@ -175,7 +174,7 @@ def _site_metrics(I, origin_ij, dxu, sites, pitch, lam, na, out, idx):
         out["peak"][k] = peak
         out["x"][k], out["y"][k] = (pi + oi - c + ox) * dxu, (pj + oj - c + oy) * dxu
         sub = I[pi - rr : pi + rr + 1, pj - rr : pj + rr + 1]
-        d = np.hypot((xx - ox) * dxu, (yy - oy) * dxu)
+        d = disc_distances(rr, ox, oy, dxu)
         out["p_cell"][k] = np.sum(sub[d <= r_cell]) * dxu * dxu
         out["p_core"][k] = np.sum(sub[d <= r_core]) * dxu * dxu
         curv = 0.5 * (dxx + dyy) / dxu**2

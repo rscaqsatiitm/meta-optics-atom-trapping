@@ -20,6 +20,15 @@ from __future__ import annotations
 import numpy as np
 
 
+def disc_distances(rr: int, ox: float, oy: float, dx: float) -> np.ndarray:
+    """Distance (um) of every pixel of the (2 rr + 1)^2 window around the peak pixel from the
+    sub-pixel peak, which lies ox pixels along the first array axis and oy along the second.
+
+    Used for the cell and core discs in spot_metrics and tiled._site_metrics."""
+    yy, xx = np.mgrid[-rr : rr + 1, -rr : rr + 1]
+    return np.hypot((xx - ox) * dx, (yy - oy) * dx)
+
+
 def _quad_peak(patch: np.ndarray):
     """Sub-pixel peak and curvatures from a 3x3 patch (log-free quadratic fit)."""
     c = patch[1, 1]
@@ -42,7 +51,6 @@ def spot_metrics(intensity: np.ndarray, dx: float, sites_um: np.ndarray, pitch_u
     r_cell = 0.5 * pitch_um
     r_core = 0.61 * lam_um / na
     rr = int(np.ceil(r_cell / dx)) + 2
-    yy, xx = np.mgrid[-rr : rr + 1, -rr : rr + 1]
     out = {k: np.zeros(len(sites_um)) for k in ("peak", "x", "y", "p_cell", "p_core", "waist")}
     pix_area = dx * dx
     for j, (sx, sy) in enumerate(sites_um):
@@ -53,7 +61,7 @@ def spot_metrics(intensity: np.ndarray, dx: float, sites_um: np.ndarray, pitch_u
         peak, ox, oy, dxx, dyy = _quad_peak(intensity[pi - 1 : pi + 2, pj - 1 : pj + 2])
         px, py = (pi - c + ox) * dx, (pj - c + oy) * dx
         sub = intensity[pi - rr : pi + rr + 1, pj - rr : pj + rr + 1]
-        d = np.hypot((xx - ox) * dx, (yy - oy) * dx)
+        d = disc_distances(rr, ox, oy, dx)
         out["peak"][j] = peak
         out["x"][j], out["y"][j] = px, py
         out["p_cell"][j] = np.sum(sub[d <= r_cell]) * pix_area
