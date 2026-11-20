@@ -112,7 +112,7 @@
     "_config_path": "configs/thermal_film_estimates.yaml"
   },
   "git": {
-    "commit": "f5a228f70bd43fe5431a4c59618a3f2a3ebd79d1",
+    "commit": "66e65b966d5c35acc9283c827a3031f7173408fd",
     "dirty": "True"
   },
   "versions": {
@@ -130,5 +130,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-01T08:36:19+00:00"
+  "utc": "2026-11-20T11:36:37+00:00"
 }

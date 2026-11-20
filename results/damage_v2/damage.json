@@ -13,18 +13,18 @@
       "at_ref_power": {
         "P_W": 100,
         "intensity_W_cm2": 37.49491888496033,
-        "dT_max_K": 6.006224207911081,
-        "sigma_membrane_MPa": 0.10473424756127381,
-        "sigma_through_thickness_MPa": 0.00012800075293126404,
-        "sigma_tensile_max_MPa": 0.10486224831420506,
-        "film_mismatch_stress_MPa": -1.561618294056881,
-        "focal_shift_um": -0.10874522972074686,
-        "strehl_refocused": 0.999991206611797
+        "dT_max_K": 6.199620749100159,
+        "sigma_membrane_MPa": 0.1082563161645897,
+        "sigma_through_thickness_MPa": 0.00013441893329482765,
+        "sigma_tensile_max_MPa": 0.10839073509788452,
+        "film_mismatch_stress_MPa": -1.6119013947660412,
+        "focal_shift_um": -0.11207393611368575,
+        "strehl_refocused": 0.9999902343471132
       },
       "power_limit_W": {
-        "stress": 7138.617000929056,
-        "temperature": 832.4697558599735,
-        "focal_shift": 919.5805669526447,
+        "stress": 6906.230757595798,
+        "temperature": 806.5009461628314,
+        "focal_shift": 892.2681175270031,
         "binding": "temperature"
       },
       "allowable_stress_MPa": 7.485714285714286
@@ -41,18 +41,18 @@
       "at_ref_power": {
         "P_W": 100,
         "intensity_W_cm2": 37.49491888496033,
-        "dT_max_K": 27.486110781965976,
-        "sigma_membrane_MPa": 0.4792923193482022,
-        "sigma_through_thickness_MPa": 0.00058576615748186,
-        "sigma_tensile_max_MPa": 0.47987808550568406,
-        "film_mismatch_stress_MPa": -7.1463888033111544,
-        "focal_shift_um": -0.4976476614333505,
-        "strehl_refocused": 0.9998158604513467
+        "dT_max_K": 28.37114580096685,
+        "sigma_membrane_MPa": 0.49541026041422354,
+        "sigma_through_thickness_MPa": 0.0006151374913492424,
+        "sigma_tensile_max_MPa": 0.49602539790557276,
+        "film_mismatch_stress_MPa": -7.376497908251381,
+        "focal_shift_um": -0.5128807245872342,
+        "strehl_refocused": 0.9997955022687047
       },
       "power_limit_W": {
-        "stress": 1559.9200113141274,
-        "temperature": 181.91005776199412,
-        "focal_shift": 200.9453831491438,
+        "stress": 1509.139313696861,
+        "temperature": 176.23539193928525,
+        "focal_shift": 194.97710716361954,
         "binding": "temperature"
       },
       "allowable_stress_MPa": 7.485714285714286
@@ -69,18 +69,18 @@
       "at_ref_power": {
         "P_W": 100,
         "intensity_W_cm2": 37.49491888496033,
-        "dT_max_K": 0.03563014360625221,
-        "sigma_membrane_MPa": 0.0006213048584143367,
-        "sigma_through_thickness_MPa": 7.593265004396225e-07,
-        "sigma_tensile_max_MPa": 0.0006220641849147764,
-        "film_mismatch_stress_MPa": -0.03526244052423569,
-        "focal_shift_um": -0.0006450988203775725,
-        "strehl_refocused": 0.9999999996905504
+        "dT_max_K": 0.03677741122347546,
+        "sigma_membrane_MPa": 0.0006421984857221425,
+        "sigma_through_thickness_MPa": 7.974004517491495e-07,
+        "sigma_tensile_max_MPa": 0.0006429958861738916,
+        "film_mismatch_stress_MPa": -0.0363978683396492,
+        "focal_shift_um": -0.000664845383724518,
+        "strehl_refocused": 0.9999999996563353
       },
       "power_limit_W": {
-        "stress": 1203366.8658708967,
-        "temperature": 140330.61598782396,
-        "focal_shift": 155015.00985766892,
+        "stress": 1164193.1848518625,
+        "temperature": 135953.0166388775,
+        "focal_shift": 150410.91124043285,
         "binding": "temperature"
       },
       "allowable_stress_MPa": 7.485714285714286
@@ -98,18 +98,18 @@
       "at_ref_power": {
         "P_W": 100,
         "intensity_W_cm2": 37.49491888496033,
-        "dT_max_K": 6.011294640085256,
-        "sigma_membrane_MPa": 0.10482305844274636,
-        "sigma_through_thickness_MPa": 0.000127967079078614,
-        "sigma_tensile_max_MPa": 0.10495102552182498,
-        "film_mismatch_stress_MPa": -1.5629366064221666,
-        "focal_shift_um": -0.10883744178468129,
-        "strehl_refocused": 0.9999911916925756
+        "dT_max_K": 6.204853976528663,
+        "sigma_membrane_MPa": 0.10834811700782741,
+        "sigma_through_thickness_MPa": 0.00013438195445173915,
+        "sigma_tensile_max_MPa": 0.10848249896227914,
+        "film_mismatch_stress_MPa": -1.6132620338974526,
+        "focal_shift_um": -0.11216897429598899,
+        "strehl_refocused": 0.9999902177777055
       },
       "power_limit_W": {
-        "stress": 7132.578503635109,
-        "temperature": 831.7675807567946,
-        "focal_shift": 918.8014561922096,
+        "stress": 6900.388871312018,
+        "temperature": 805.82073629995,
+        "focal_shift": 891.5121193505989,
         "binding": "temperature"
       },
       "allowable_stress_MPa": 7.485714285714286
@@ -126,18 +126,18 @@
       "at_ref_power": {
         "P_W": 100,
         "intensity_W_cm2": 37.49491888496033,
-        "dT_max_K": 17.974551551417584,
-        "sigma_membrane_MPa": 0.30679663523583683,
-        "sigma_through_thickness_MPa": 0.0012825884328972047,
-        "sigma_tensile_max_MPa": 0.3080792236687341,
-        "film_mismatch_stress_MPa": -4.673383403368572,
-        "focal_shift_um": -0.6532090179334312,
-        "strehl_refocused": 0.9997908926963305
+        "dT_max_K": 18.74341979622564,
+        "sigma_membrane_MPa": 0.3201309773328374,
+        "sigma_through_thickness_MPa": 0.001349694207098408,
+        "sigma_tensile_max_MPa": 0.3214806715399358,
+        "film_mismatch_stress_MPa": -4.873289147018666,
+        "focal_shift_um": -0.6805106886773254,
+        "strehl_refocused": 0.9997664031301757
       },
       "power_limit_W": {
-        "stress": 2429.801723261738,
-        "temperature": 278.1710567686274,
-        "focal_shift": 153.09035431931383,
+        "stress": 2328.5114622464557,
+        "temperature": 266.7602846416986,
+        "focal_shift": 146.94846335825378,
         "binding": "focal_shift"
       },
       "allowable_stress_MPa": 7.485714285714286
@@ -232,28 +232,28 @@
     "fused_silica": {
       "50W": {
         "intensity_W_cm2": 18.747459442480164,
-        "max_absorbing_defect_radius_um_for_dT": 368.04986943271797,
-        "dT_for_100um_radius_defect_K": 13.585115538029106
+        "max_absorbing_defect_radius_um_for_dT": 346.7136451177778,
+        "dT_for_100um_radius_defect_K": 14.421122648061663
       },
       "100W": {
         "intensity_W_cm2": 37.49491888496033,
-        "max_absorbing_defect_radius_um_for_dT": 184.02493471635898,
-        "dT_for_100um_radius_defect_K": 27.17023107605821
+        "max_absorbing_defect_radius_um_for_dT": 173.3568225588889,
+        "dT_for_100um_radius_defect_K": 28.842245296123327
       },
       "150W": {
         "intensity_W_cm2": 56.24237832744049,
-        "max_absorbing_defect_radius_um_for_dT": 122.68328981090599,
-        "dT_for_100um_radius_defect_K": 40.75534661408732
+        "max_absorbing_defect_radius_um_for_dT": 115.57121503925926,
+        "dT_for_100um_radius_defect_K": 43.263367944185
       },
       "200W": {
         "intensity_W_cm2": 74.98983776992065,
-        "max_absorbing_defect_radius_um_for_dT": 92.01246735817949,
-        "dT_for_100um_radius_defect_K": 54.34046215211642
+        "max_absorbing_defect_radius_um_for_dT": 86.67841127944445,
+        "dT_for_100um_radius_defect_K": 57.684490592246654
       },
       "300W": {
         "intensity_W_cm2": 112.48475665488098,
-        "max_absorbing_defect_radius_um_for_dT": 61.341644905452995,
-        "dT_for_100um_radius_defect_K": 81.51069322817465
+        "max_absorbing_defect_radius_um_for_dT": 57.78560751962963,
+        "dT_for_100um_radius_defect_K": 86.52673588837
       }
     },
     "sapphire": {

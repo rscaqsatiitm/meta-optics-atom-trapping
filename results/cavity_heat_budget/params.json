@@ -67,7 +67,7 @@
     "_config_path": "configs/cavity_heat_budget.yaml"
   },
   "git": {
-    "commit": "41e4d10528553aa1882460a601d440f39bb536c7",
+    "commit": "66e65b966d5c35acc9283c827a3031f7173408fd",
     "dirty": "True"
   },
   "versions": {
@@ -85,5 +85,5 @@
     "machine": "x86_64",
     "system": "Linux"
   },
-  "utc": "2026-11-07T11:40:02+00:00"
+  "utc": "2026-11-20T11:35:28+00:00"
 }

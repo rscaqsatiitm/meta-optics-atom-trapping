@@ -1,0 +1,12 @@
+# Fused-silica and sapphire absorbing-defect limits of the vertical-ring mirrors, recomputed from the
+# stored peak intensities (kappa-independent) with the current substrate conductivities.
+# The mirrors.json files were written with fused silica kappa = 1.38 W/m/K; the read value is 1.30
+# (docs/model_notes.md). Rerunning the Fox-Li scripts would only rescale this closed-form column,
+# a = defect_dT_K x kappa / I (criterion of scripts/cavity_thermal.py).
+run_id: cavity_defect_radii
+defect_dT_K: 50.0
+mirrors_json:
+  - results/cavity_vertical_mirrors/mirrors.json
+  - results/cavity_vertical_mirrors_gauss_n1e4/mirrors.json
+  - results/cavity_vertical_mirrors_plain_n1e4/mirrors.json
+  - results/cavity_vertical_mirrors_plain_n1e5/mirrors.json

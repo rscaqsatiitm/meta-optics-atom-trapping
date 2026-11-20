@@ -8,7 +8,7 @@ relative depth D(r) = I_rel(r) x eta(r) / eta(0); corner depths at 894 um (316 x
 and 670 um (3 um pitch); array power factor F = mean(1 / D_j) over the 316 x 316 sites (D
 interpolated in r); power for 0.3 mK P = 0.3 x N x F / K, with K = depth x N / P of the v2
 library-pillar design (NA 0.55); intensity P / (pi R^2); largest fully absorbing defect on fused
-silica for a 50 K rise, a = 50 K x kappa / I (kappa 1.38 W/m/K); sites imageable N = 2 r^2 / a^2.
+silica for a 50 K rise, a = 50 K x kappa / I (kappa of fused silica from metatrap.thermal.axisym_fd); sites imageable N = 2 r^2 / a^2.
 Output: results/scaling_100k/table.json (and the markdown rows on stdout).
 """
 
@@ -18,6 +18,7 @@ import sys
 import numpy as np
 
 from metatrap.runio import REPO_ROOT, load_config, write_json
+from metatrap.thermal.axisym_fd import FUSED_SILICA
 
 
 def main(cfg_path):
@@ -40,7 +41,7 @@ def main(cfg_path):
         F = float(np.mean(1 / Dj))
         P = 0.3 * n_side**2 * F / K
         I = P / (np.pi * (R * 1e-4) ** 2)  # W/cm^2
-        a_def = 50 * 1.38 / (I * 1e4) * 1e6  # um
+        a_def = 50 * FUSED_SILICA.kappa / (I * 1e4) * 1e6  # um
         r_img = g["lens"]["field_radius_strehl08_um"]
         corner = g["sites"]["894"] if "894" in g["sites"] else None
         row = {"WD_um": WD, "aperture_mm": 2 * R / 1000, "D_corner_4um": float(np.interp(894, rs, D)), "D_corner_3um": float(np.interp(670, rs, D)),

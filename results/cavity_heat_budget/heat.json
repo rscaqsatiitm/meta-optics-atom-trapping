@@ -19,16 +19,16 @@
           "absorbed_graded_mirror_W": 1.0141978273933932e-05,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.0054092624167167425,
-              "dT_rim_K": 1.5924647956155205e-06,
-              "bulge_centre_minus_edge_nm": 0.00035221802575510194,
-              "bulge_waves": 3.27644675121025e-07
+              "dT_peak_K": 0.005740736255568306,
+              "dT_rim_K": 1.685134692163442e-06,
+              "bulge_centre_minus_edge_nm": 0.00037385696221800053,
+              "bulge_waves": 3.4777391834232606e-07
             },
             "radiating": {
-              "dT_peak_K": 0.0065790361993056535,
-              "dT_rim_K": 0.0012313882163900167,
-              "bulge_centre_minus_edge_nm": 0.00035197029816240607,
-              "bulge_waves": 3.274142308487498e-07
+              "dT_peak_K": 0.006904511203962239,
+              "dT_rim_K": 0.0012288895125526227,
+              "bulge_centre_minus_edge_nm": 0.0003735953383136768,
+              "bulge_waves": 3.475305472685365e-07
             }
           }
         },
@@ -83,16 +83,16 @@
           "absorbed_graded_mirror_W": 0.00010141978273933933,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.05409262416716741,
-              "dT_rim_K": 1.592464795615521e-05,
-              "bulge_centre_minus_edge_nm": 0.003522180257551023,
-              "bulge_waves": 3.2764467512102534e-06
+              "dT_peak_K": 0.05740736255568304,
+              "dT_rim_K": 1.6851346921634424e-05,
+              "bulge_centre_minus_edge_nm": 0.0037385696221799917,
+              "bulge_waves": 3.4777391834232477e-06
             },
             "radiating": {
-              "dT_peak_K": 0.0657903619930565,
-              "dT_rim_K": 0.012313882163900168,
-              "bulge_centre_minus_edge_nm": 0.0035197029816240737,
-              "bulge_waves": 3.27414230848751e-06
+              "dT_peak_K": 0.06904511203962244,
+              "dT_rim_K": 0.01228889512552622,
+              "bulge_centre_minus_edge_nm": 0.0037359533831367617,
+              "bulge_waves": 3.4753054726853593e-06
             }
           }
         },
@@ -147,16 +147,16 @@
           "absorbed_graded_mirror_W": 0.010243398056673271,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 5.463355040883908,
-              "dT_rim_K": 0.0016083894435716761,
-              "bulge_centre_minus_edge_nm": 0.3557402060126546,
-              "bulge_waves": 0.00033092112187223683
+              "dT_peak_K": 5.798143618123987,
+              "dT_rim_K": 0.0017019860390850767,
+              "bulge_centre_minus_edge_nm": 0.37759553184017963,
+              "bulge_waves": 0.0003512516575257485
             },
             "radiating": {
-              "dT_peak_K": 6.644826561298706,
-              "dT_rim_K": 1.2437020985539164,
-              "bulge_centre_minus_edge_nm": 0.3554900011440309,
-              "bulge_waves": 0.000330688373157238
+              "dT_peak_K": 6.97355631600186,
+              "dT_rim_K": 1.241178407678149,
+              "bulge_centre_minus_edge_nm": 0.377331291696811,
+              "bulge_waves": 0.00035100585274121953
             }
           }
         },
@@ -211,16 +211,16 @@
           "absorbed_graded_mirror_W": 1.0141978273933932e-05,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.0054092624167167425,
-              "dT_rim_K": 1.5924647956155205e-06,
-              "bulge_centre_minus_edge_nm": 0.00035221802575510194,
-              "bulge_waves": 3.27644675121025e-07
+              "dT_peak_K": 0.005740736255568306,
+              "dT_rim_K": 1.685134692163442e-06,
+              "bulge_centre_minus_edge_nm": 0.00037385696221800053,
+              "bulge_waves": 3.4777391834232606e-07
             },
             "radiating": {
-              "dT_peak_K": 0.0065790361993056535,
-              "dT_rim_K": 0.0012313882163900167,
-              "bulge_centre_minus_edge_nm": 0.00035197029816240607,
-              "bulge_waves": 3.274142308487498e-07
+              "dT_peak_K": 0.006904511203962239,
+              "dT_rim_K": 0.0012288895125526227,
+              "bulge_centre_minus_edge_nm": 0.0003735953383136768,
+              "bulge_waves": 3.475305472685365e-07
             }
           }
         },
@@ -275,16 +275,16 @@
           "absorbed_graded_mirror_W": 0.00010141978273933933,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.05409262416716741,
-              "dT_rim_K": 1.592464795615521e-05,
-              "bulge_centre_minus_edge_nm": 0.003522180257551023,
-              "bulge_waves": 3.2764467512102534e-06
+              "dT_peak_K": 0.05740736255568304,
+              "dT_rim_K": 1.6851346921634424e-05,
+              "bulge_centre_minus_edge_nm": 0.0037385696221799917,
+              "bulge_waves": 3.4777391834232477e-06
             },
             "radiating": {
-              "dT_peak_K": 0.0657903619930565,
-              "dT_rim_K": 0.012313882163900168,
-              "bulge_centre_minus_edge_nm": 0.0035197029816240737,
-              "bulge_waves": 3.27414230848751e-06
+              "dT_peak_K": 0.06904511203962244,
+              "dT_rim_K": 0.01228889512552622,
+              "bulge_centre_minus_edge_nm": 0.0037359533831367617,
+              "bulge_waves": 3.4753054726853593e-06
             }
           }
         },
@@ -339,16 +339,16 @@
           "absorbed_graded_mirror_W": 0.00010141978273933933,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.05409262416716741,
-              "dT_rim_K": 1.592464795615521e-05,
-              "bulge_centre_minus_edge_nm": 0.003522180257551023,
-              "bulge_waves": 3.2764467512102534e-06
+              "dT_peak_K": 0.05740736255568304,
+              "dT_rim_K": 1.6851346921634424e-05,
+              "bulge_centre_minus_edge_nm": 0.0037385696221799917,
+              "bulge_waves": 3.4777391834232477e-06
             },
             "radiating": {
-              "dT_peak_K": 0.0657903619930565,
-              "dT_rim_K": 0.012313882163900168,
-              "bulge_centre_minus_edge_nm": 0.0035197029816240737,
-              "bulge_waves": 3.27414230848751e-06
+              "dT_peak_K": 0.06904511203962244,
+              "dT_rim_K": 0.01228889512552622,
+              "bulge_centre_minus_edge_nm": 0.0037359533831367617,
+              "bulge_waves": 3.4753054726853593e-06
             }
           }
         },
@@ -403,16 +403,16 @@
           "absorbed_graded_mirror_W": 3.229326418468181e-05,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.01722373441838849,
-              "dT_rim_K": 5.0705971715387996e-06,
-              "bulge_centre_minus_edge_nm": 0.0011215040546428492,
-              "bulge_waves": 1.0432595857142782e-06
+              "dT_peak_K": 0.018279186516511742,
+              "dT_rim_K": 5.365669135839938e-06,
+              "bulge_centre_minus_edge_nm": 0.0011904050000992059,
+              "bulge_waves": 1.1073534884643774e-06
             },
             "radiating": {
-              "dT_peak_K": 0.02094843316819221,
-              "dT_rim_K": 0.003920886429819024,
-              "bulge_centre_minus_edge_nm": 0.001120715260545612,
-              "bulge_waves": 1.0425258237633598e-06
+              "dT_peak_K": 0.021984784265285294,
+              "dT_rim_K": 0.003912930259833169,
+              "bulge_centre_minus_edge_nm": 0.0011895719584941898,
+              "bulge_waves": 1.1065785660411066e-06
             }
           }
         },
@@ -467,16 +467,16 @@
           "absorbed_graded_mirror_W": 0.0003229326418468181,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.1722373441838848,
-              "dT_rim_K": 5.070597171538801e-05,
-              "bulge_centre_minus_edge_nm": 0.011215040546428488,
-              "bulge_waves": 1.0432595857142779e-05
+              "dT_peak_K": 0.18279186516511756,
+              "dT_rim_K": 5.3656691358399385e-05,
+              "bulge_centre_minus_edge_nm": 0.011904050000992065,
+              "bulge_waves": 1.1073534884643781e-05
             },
             "radiating": {
-              "dT_peak_K": 0.20948433168192213,
-              "dT_rim_K": 0.03920886429819024,
-              "bulge_centre_minus_edge_nm": 0.011207152605456133,
-              "bulge_waves": 1.0425258237633611e-05
+              "dT_peak_K": 0.2198478426528533,
+              "dT_rim_K": 0.039129302598331715,
+              "bulge_centre_minus_edge_nm": 0.011895719584941905,
+              "bulge_waves": 1.1065785660411073e-05
             }
           }
         },
@@ -531,16 +531,16 @@
           "absorbed_graded_mirror_W": 0.03261619682652863,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 17.395971762572394,
-              "dT_rim_K": 0.005121303143254188,
-              "bulge_centre_minus_edge_nm": 1.1327190951892772,
-              "bulge_waves": 0.0010536921815714204
+              "dT_peak_K": 18.461978381676865,
+              "dT_rim_K": 0.005419325827198335,
+              "bulge_centre_minus_edge_nm": 1.2023090501001996,
+              "bulge_waves": 0.0011184270233490228
             },
             "radiating": {
-              "dT_peak_K": 21.157917499874124,
-              "dT_rim_K": 3.960095294117218,
-              "bulge_centre_minus_edge_nm": 1.1319224131510748,
-              "bulge_waves": 0.0010529510820009996
+              "dT_peak_K": 22.20463210793816,
+              "dT_rim_K": 3.952059562431503,
+              "bulge_centre_minus_edge_nm": 1.2014676780791254,
+              "bulge_waves": 0.0011176443517015118
             }
           }
         },
@@ -595,16 +595,16 @@
           "absorbed_graded_mirror_W": 3.229326418468181e-05,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.01722373441838849,
-              "dT_rim_K": 5.0705971715387996e-06,
-              "bulge_centre_minus_edge_nm": 0.0011215040546428492,
-              "bulge_waves": 1.0432595857142782e-06
+              "dT_peak_K": 0.018279186516511742,
+              "dT_rim_K": 5.365669135839938e-06,
+              "bulge_centre_minus_edge_nm": 0.0011904050000992059,
+              "bulge_waves": 1.1073534884643774e-06
             },
             "radiating": {
-              "dT_peak_K": 0.02094843316819221,
-              "dT_rim_K": 0.003920886429819024,
-              "bulge_centre_minus_edge_nm": 0.001120715260545612,
-              "bulge_waves": 1.0425258237633598e-06
+              "dT_peak_K": 0.021984784265285294,
+              "dT_rim_K": 0.003912930259833169,
+              "bulge_centre_minus_edge_nm": 0.0011895719584941898,
+              "bulge_waves": 1.1065785660411066e-06
             }
           }
         },
@@ -659,16 +659,16 @@
           "absorbed_graded_mirror_W": 0.0003229326418468181,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.1722373441838848,
-              "dT_rim_K": 5.070597171538801e-05,
-              "bulge_centre_minus_edge_nm": 0.011215040546428488,
-              "bulge_waves": 1.0432595857142779e-05
+              "dT_peak_K": 0.18279186516511756,
+              "dT_rim_K": 5.3656691358399385e-05,
+              "bulge_centre_minus_edge_nm": 0.011904050000992065,
+              "bulge_waves": 1.1073534884643781e-05
             },
             "radiating": {
-              "dT_peak_K": 0.20948433168192213,
-              "dT_rim_K": 0.03920886429819024,
-              "bulge_centre_minus_edge_nm": 0.011207152605456133,
-              "bulge_waves": 1.0425258237633611e-05
+              "dT_peak_K": 0.2198478426528533,
+              "dT_rim_K": 0.039129302598331715,
+              "bulge_centre_minus_edge_nm": 0.011895719584941905,
+              "bulge_waves": 1.1065785660411073e-05
             }
           }
         },
@@ -723,16 +723,16 @@
           "absorbed_graded_mirror_W": 0.0003229326418468181,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.1722373441838848,
-              "dT_rim_K": 5.070597171538801e-05,
-              "bulge_centre_minus_edge_nm": 0.011215040546428488,
-              "bulge_waves": 1.0432595857142779e-05
+              "dT_peak_K": 0.18279186516511756,
+              "dT_rim_K": 5.3656691358399385e-05,
+              "bulge_centre_minus_edge_nm": 0.011904050000992065,
+              "bulge_waves": 1.1073534884643781e-05
             },
             "radiating": {
-              "dT_peak_K": 0.20948433168192213,
-              "dT_rim_K": 0.03920886429819024,
-              "bulge_centre_minus_edge_nm": 0.011207152605456133,
-              "bulge_waves": 1.0425258237633611e-05
+              "dT_peak_K": 0.2198478426528533,
+              "dT_rim_K": 0.039129302598331715,
+              "bulge_centre_minus_edge_nm": 0.011895719584941905,
+              "bulge_waves": 1.1065785660411073e-05
             }
           }
         },
@@ -787,16 +787,16 @@
           "absorbed_graded_mirror_W": 0.00010234178076424239,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.05458437529595986,
-              "dT_rim_K": 1.6069417483029346e-05,
-              "bulge_centre_minus_edge_nm": 0.003554200078074209,
-              "bulge_waves": 3.306232630766706e-06
+              "dT_peak_K": 0.05792924766982559,
+              "dT_rim_K": 1.7004540984558364e-05,
+              "bulge_centre_minus_edge_nm": 0.0037725566187452723,
+              "bulge_waves": 3.5093549941816486e-06
             },
             "radiating": {
-              "dT_peak_K": 0.06638845619299338,
-              "dT_rim_K": 0.012425826547208342,
-              "bulge_centre_minus_edge_nm": 0.0035517002814569945,
-              "bulge_waves": 3.3039072385646458e-06
+              "dT_peak_K": 0.06967279487634621,
+              "dT_rim_K": 0.012400612353940098,
+              "bulge_centre_minus_edge_nm": 0.0037699165957107332,
+              "bulge_waves": 3.5068991588006816e-06
             }
           }
         },
@@ -851,16 +851,16 @@
           "absorbed_graded_mirror_W": 0.001023417807642424,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.5458437529595985,
-              "dT_rim_K": 0.00016069417483029343,
-              "bulge_centre_minus_edge_nm": 0.0355420007807421,
-              "bulge_waves": 3.306232630766707e-05
+              "dT_peak_K": 0.5792924766982558,
+              "dT_rim_K": 0.0001700454098455837,
+              "bulge_centre_minus_edge_nm": 0.03772556618745274,
+              "bulge_waves": 3.50935499418165e-05
             },
             "radiating": {
-              "dT_peak_K": 0.6638845619299338,
-              "dT_rim_K": 0.12425826547208349,
-              "bulge_centre_minus_edge_nm": 0.035517002814569994,
-              "bulge_waves": 3.303907238564651e-05
+              "dT_peak_K": 0.6967279487634626,
+              "dT_rim_K": 0.12400612353940099,
+              "bulge_centre_minus_edge_nm": 0.03769916595710741,
+              "bulge_waves": 3.506899158800689e-05
             }
           }
         },
@@ -915,16 +915,16 @@
           "absorbed_graded_mirror_W": 0.10336519857188484,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 55.13021904891947,
-              "dT_rim_K": 0.016230111657859633,
-              "bulge_centre_minus_edge_nm": 3.5897420788549574,
-              "bulge_waves": 0.0033392949570743785
+              "dT_peak_K": 58.508540146523885,
+              "dT_rim_K": 0.01717458639440396,
+              "bulge_centre_minus_edge_nm": 3.810282184932716,
+              "bulge_waves": 0.0035444485441234568
             },
             "radiating": {
-              "dT_peak_K": 67.05234075492336,
-              "dT_rim_K": 12.550084812680424,
-              "bulge_centre_minus_edge_nm": 3.58721728427156,
-              "bulge_waves": 0.003336946310950288
+              "dT_peak_K": 70.36952282510974,
+              "dT_rim_K": 12.524618477479505,
+              "bulge_centre_minus_edge_nm": 3.8076157616678383,
+              "bulge_waves": 0.0035419681503886867
             }
           }
         },
@@ -979,16 +979,16 @@
           "absorbed_graded_mirror_W": 0.00010234178076424239,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.05458437529595986,
-              "dT_rim_K": 1.6069417483029346e-05,
-              "bulge_centre_minus_edge_nm": 0.003554200078074209,
-              "bulge_waves": 3.306232630766706e-06
+              "dT_peak_K": 0.05792924766982559,
+              "dT_rim_K": 1.7004540984558364e-05,
+              "bulge_centre_minus_edge_nm": 0.0037725566187452723,
+              "bulge_waves": 3.5093549941816486e-06
             },
             "radiating": {
-              "dT_peak_K": 0.06638845619299338,
-              "dT_rim_K": 0.012425826547208342,
-              "bulge_centre_minus_edge_nm": 0.0035517002814569945,
-              "bulge_waves": 3.3039072385646458e-06
+              "dT_peak_K": 0.06967279487634621,
+              "dT_rim_K": 0.012400612353940098,
+              "bulge_centre_minus_edge_nm": 0.0037699165957107332,
+              "bulge_waves": 3.5068991588006816e-06
             }
           }
         },
@@ -1043,16 +1043,16 @@
           "absorbed_graded_mirror_W": 0.001023417807642424,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.5458437529595985,
-              "dT_rim_K": 0.00016069417483029343,
-              "bulge_centre_minus_edge_nm": 0.0355420007807421,
-              "bulge_waves": 3.306232630766707e-05
+              "dT_peak_K": 0.5792924766982558,
+              "dT_rim_K": 0.0001700454098455837,
+              "bulge_centre_minus_edge_nm": 0.03772556618745274,
+              "bulge_waves": 3.50935499418165e-05
             },
             "radiating": {
-              "dT_peak_K": 0.6638845619299338,
-              "dT_rim_K": 0.12425826547208349,
-              "bulge_centre_minus_edge_nm": 0.035517002814569994,
-              "bulge_waves": 3.303907238564651e-05
+              "dT_peak_K": 0.6967279487634626,
+              "dT_rim_K": 0.12400612353940099,
+              "bulge_centre_minus_edge_nm": 0.03769916595710741,
+              "bulge_waves": 3.506899158800689e-05
             }
           }
         },
@@ -1107,16 +1107,16 @@
           "absorbed_graded_mirror_W": 0.001023417807642424,
           "graded_mirror": {
             "clamped": {
-              "dT_peak_K": 0.5458437529595985,
-              "dT_rim_K": 0.00016069417483029343,
-              "bulge_centre_minus_edge_nm": 0.0355420007807421,
-              "bulge_waves": 3.306232630766707e-05
+              "dT_peak_K": 0.5792924766982558,
+              "dT_rim_K": 0.0001700454098455837,
+              "bulge_centre_minus_edge_nm": 0.03772556618745274,
+              "bulge_waves": 3.50935499418165e-05
             },
             "radiating": {
-              "dT_peak_K": 0.6638845619299338,
-              "dT_rim_K": 0.12425826547208349,
-              "bulge_centre_minus_edge_nm": 0.035517002814569994,
-              "bulge_waves": 3.303907238564651e-05
+              "dT_peak_K": 0.6967279487634626,
+              "dT_rim_K": 0.12400612353940099,
+              "bulge_centre_minus_edge_nm": 0.03769916595710741,
+              "bulge_waves": 3.506899158800689e-05
             }
           }
         },

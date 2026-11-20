@@ -48,16 +48,16 @@ gives the number of sites inside the inscribed square, N = 2 r^2 / a^2 (DERIVED)
 
 | WD (vacuum) | Aperture | Corner depth D, 4 um / 3 um pitch | Power factor F | Corner spot half-widths (radial / tangential) | Max deflection, corner | Power for 0.3 mK (0.18 mK) | Intensity on metasurface | Max absorbing defect (FS, 50 K) | Imaging-lens field radius | Sites imageable, 4 / 3 um pitch |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 3 mm | 3.95 mm | 0.89 / 0.94 | 1.043 | 0.84 / 0.80 um | 0.69 | 210 W (126 W) | 1,710 W/cm^2 | 4.0 um | 450 um | 25,000 / 45,000 |
-| 6 mm | 7.9 mm | 0.97 / 0.98 | 1.011 | 0.80 / 0.80 um | 0.63 | 204 W (122 W) | 415 W/cm^2 | 17 um | 760 um | 73,000 / 129,000 |
-| 10 mm | 13.2 mm | 0.99 / 0.99 | 1.004 | 0.80 / 0.78 um | 0.60 | 202 W (121 W) | 148 W/cm^2 | 47 um | 1,160 um | 167,000 / 296,000 |
-| 15.5 mm | 20.4 mm | 1.00 / 1.00 | 1.002 | 0.78 / 0.78 um | 0.58 | 202 W (121 W) | 62 W/cm^2 | 112 um | 1,610 um | 324,000 / 577,000 |
-| 25 mm | 32.9 mm | 1.00 / 1.00 | 1.001 | 0.78 / 0.78 um | 0.57 | 202 W (121 W) | 24 W/cm^2 | 292 um | 2,020 um | 510,000 / 907,000 |
+| 3 mm | 3.95 mm | 0.89 / 0.94 | 1.043 | 0.84 / 0.80 um | 0.69 | 210 W (126 W) | 1,710 W/cm^2 | 3.8 um | 450 um | 25,000 / 45,000 |
+| 6 mm | 7.9 mm | 0.97 / 0.98 | 1.011 | 0.80 / 0.80 um | 0.63 | 204 W (122 W) | 415 W/cm^2 | 16 um | 760 um | 73,000 / 129,000 |
+| 10 mm | 13.2 mm | 0.99 / 0.99 | 1.004 | 0.80 / 0.78 um | 0.60 | 202 W (121 W) | 148 W/cm^2 | 44 um | 1,160 um | 167,000 / 296,000 |
+| 15.5 mm | 20.4 mm | 1.00 / 1.00 | 1.002 | 0.78 / 0.78 um | 0.58 | 202 W (121 W) | 62 W/cm^2 | 105 um | 1,610 um | 324,000 / 577,000 |
+| 25 mm | 32.9 mm | 1.00 / 1.00 | 1.001 | 0.78 / 0.78 um | 0.57 | 202 W (121 W) | 24 W/cm^2 | 275 um | 2,020 um | 510,000 / 907,000 |
 
 The axial spot is 0.78 um (Airy 1/e^2 radius 0.41 lambda / NA = 0.80 um). The 100,000-site
 array corner lies at 891 um (4 um pitch) or 669 um (3 um pitch). The defect column uses the half-space formula
 a = 50 K x kappa / I; for radii approaching the 0.5 mm plate thickness the lateral spreading
-lowers it (147 um instead of 184 um at 37 W/cm^2; docs/prefab_checks_report.md, Section 5), so
+lowers it (140 um instead of 173 um at 37 W/cm^2; docs/prefab_checks_report.md, Section 5), so
 the 15.5 and 25 mm entries are upper bounds by ~15 to 30 %.
 
 ## Full 100,000-site design at the cell geometry
@@ -388,11 +388,11 @@ the distance. 100,000 sites at 0.3 mK need ~200 W of 1075 nm at NA 0.55 and arra
 0.83, whatever the distance. A higher NA is the lever, since the depth per watt scales as
 NA^2, so NA 0.7 would need ~125 W. However, at NA 0.7 the metasurface edge deflection rises
 to 0.7 to 0.8, where eta ~ 0.66. (ii) Damage. The same power on a smaller aperture raises the
-intensity as 1 / WD^2. At 3 mm a single absorbing particle larger than 4 um radius heats by
+intensity as 1 / WD^2. At 3 mm a single absorbing particle larger than 3.8 um radius heats by
 more than 50 K on fused silica. The global temperature rise of a thin plate depends little
 on the aperture, so the film choice is the same at every distance: at ~200 W only LPCVD SiN,
 or any film on sapphire, stays within the limits of docs/prefab_checks_report.md (Si-rich SiN
-on fused silica at the upper absorption estimate is limited to 150 to 180 W). (iii) Imaging and
+on fused silica at the upper absorption estimate is limited to 145 to 175 W). (iii) Imaging and
 addressing. A lens images a field whose radius in angle is fixed by its design. At a
 short distance that angle covers a small area, so a 3 mm doublet images only a quarter of a
 100,000-site array, and a 6 mm doublet three quarters at 4 um pitch. (iv) Computation. The

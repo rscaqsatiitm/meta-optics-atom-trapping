@@ -123,11 +123,11 @@ campaign 1. Thermal consequences at 100 W (configs/thermal_film_estimates.yaml):
 | Absorption | 0.5 mm fused silica | 1 mm fused silica | 0.5 mm sapphire |
 |---|---|---|---|
 | LPCVD, <= 3.5e-6 (numerical floor: a lossless film gives 3.6e-6) | <= -0.001 um | <= -0.001 um | 0 |
-| Si-rich, nominal 5.9e-4 | -0.11 um (dT = 6 K) | -0.14 um | -0.015 um |
-| Si-rich, upper band 2.7e-3 | -0.50 um (dT = 27 K) | -0.65 um | -0.07 um |
+| Si-rich, nominal 5.9e-4 | -0.11 um (dT = 6 K) | -0.15 um | -0.015 um |
+| Si-rich, upper band 2.7e-3 | -0.51 um (dT = 28 K) | -0.68 um | -0.07 um |
 
 All are inside the 1 um focal-shift budget. With these estimates, explaining the 19 %
-deficit of ref. 4 thermally (a_film = 1.16 %, campaign 1, in the fixed-plane scenario; 22 % if
+deficit of ref. 4 thermally (a_film = 1.11 %, campaign 1, in the fixed-plane scenario; 21 % if
 the atoms follow the focus) would need a film absorbing ~20 times more than the nominal Si-rich
 estimate, which strengthens the conclusion that substrate heating is unlikely to be the cause.
 

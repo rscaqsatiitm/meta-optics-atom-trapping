@@ -22,7 +22,7 @@ over 50 um: 7.5 % rms, minimum 0.70 to 0.75 over three realisations).
 waist (peak 0.917 of scalar, fictitious field 0.63 G per mK).
 (v) Damage: thermo-elastic stress is never binding (<= 1.5 MPa at 100 W). The binding
 limits are the thermal focal shift and the temperature, for Si-rich SiN on fused silica at the
-upper absorption estimate (150 to 180 W). Sapphire or LPCVD SiN raises every limit above
+upper absorption estimate (145 to 175 W). Sapphire or LPCVD SiN raises every limit above
 1 kW. Absorbing particles larger than ~100 um radius must be excluded on fused silica above
 150 W.
 
@@ -198,17 +198,17 @@ and CTE 2.6 ppm/K; LPCVD E 260 GPa; strength scatter of glass: Weibull modulus 4
 
 | Case (at 100 W) | Peak dT | Max tensile stress | Film mismatch stress | Focal shift | Power limit (binding criterion) |
 |---|---|---|---|---|---|
-| FS 0.5 mm, Si-rich nominal (a = 5.9e-4) | 6.0 K | 0.11 MPa | -1.6 MPa | -0.11 um | 832 W (temperature) |
-| FS 0.5 mm, Si-rich upper (a = 2.7e-3) | 27.5 K | 0.48 MPa | -7.2 MPa | -0.50 um | 182 W (temperature) |
-| FS 1.0 mm, Si-rich upper | 18.0 K | 0.31 MPa | -4.7 MPa | -0.65 um | 153 W (focal shift) |
+| FS 0.5 mm, Si-rich nominal (a = 5.9e-4) | 6.2 K | 0.11 MPa | -1.6 MPa | -0.11 um | 807 W (temperature) |
+| FS 0.5 mm, Si-rich upper (a = 2.7e-3) | 28.4 K | 0.50 MPa | -7.4 MPa | -0.51 um | 176 W (temperature) |
+| FS 1.0 mm, Si-rich upper | 18.7 K | 0.32 MPa | -4.9 MPa | -0.68 um | 147 W (focal shift) |
 | FS 0.5 mm, LPCVD (a <= 3.5e-6, the RCWA numerical floor) | 0.04 K | 0.001 MPa | -0.04 MPa | -0.001 um | > 10^5 W |
 | Sapphire 0.5 mm, Si-rich nominal | 0.44 K | 0.34 MPa | +0.13 MPa | -0.015 um | 6.8 kW (focal shift) |
 | Sapphire 0.5 mm, Si-rich upper | 2.0 K | 1.5 MPa | +0.6 MPa | -0.07 um | 1.5 kW (focal shift) |
 
 The LPCVD absorption, 3.5e-6, is at the numerical floor of the RCWA absorption (a lossless film
-gives 3.6e-6) and is used as an upper bound. The fused-silica conductivity used, 1.38 W/m/K, is a
-secondary figure; the Corning sheet read gives 1.30, which would raise the fused-silica rises by
-6 % and lower their power limits by 6 % (docs/model_notes.md). Bulk absorption of the substrates (10 ppm/cm for fused silica, 30 ppm/cm for sapphire,
+gives 3.6e-6) and is used as an upper bound. The fused-silica conductivity is 1.30 W/m/K (Corning 7980 sheet,
+read); an earlier version used 1.38, a secondary figure never read, and gave fused-silica rises
+3 to 4 % lower and power limits 3 to 4 % higher (docs/model_notes.md). Bulk absorption of the substrates (10 ppm/cm for fused silica, 30 ppm/cm for sapphire,
 `[VALUE?]`) changes none of these numbers measurably, since the film absorbs 10^2 to 10^3 times
 more. Stress is never binding: the largest value, 1.5 MPa, is below the conservative 3.4 MPa
 guideline for fused-silica vacuum windows
@@ -226,10 +226,10 @@ parentheses):
 
 | Power | Intensity | Fused silica 0.5 mm | Sapphire 0.5 mm |
 |---|---|---|---|
-| 50 W | 19 W/cm^2 | 256 um (370 um) | 1.92 mm (8.8 mm) |
-| 100 W | 37 W/cm^2 | 147 um (184 um) | 1.23 mm (4.4 mm) |
-| 150 W | 56 W/cm^2 | 104 um (123 um) | 0.95 mm (2.9 mm) |
-| 200 W | 75 W/cm^2 | 81 um (92 um) | 0.79 mm (2.2 mm) |
+| 50 W | 19 W/cm^2 | 246 um (347 um) | 1.92 mm (8.8 mm) |
+| 100 W | 37 W/cm^2 | 140 um (173 um) | 1.23 mm (4.4 mm) |
+| 150 W | 56 W/cm^2 | 99 um (116 um) | 0.95 mm (2.9 mm) |
+| 200 W | 75 W/cm^2 | 77 um (87 um) | 0.79 mm (2.2 mm) |
 
 The half-space radius on sapphire at 100 W (4.4 mm) heats by 333 K in the plate model. The
 defect rise adds to the global rise of the part.
@@ -245,16 +245,16 @@ RCWA absorption values already include.
 Design guidance from the damage model. (i) Global damage does not limit the design up to
 several hundred watts for any film/substrate combination considered; the binding criteria are
 the thermal focal shift and the temperature of the mount, and only for Si-rich films on fused
-silica at the upper absorption estimate (150 to 180 W). (ii) Sapphire raises every limit above
-1 kW and tolerates absorbing defects about 8 times larger than fused silica (1.2 mm against
-0.15 mm radius at 100 W), not insensitivity to contamination; with fused silica, absorbing
+silica at the upper absorption estimate (145 to 175 W). (ii) Sapphire raises every limit above
+1 kW and tolerates absorbing defects about 9 times larger than fused silica (1.2 mm against
+0.14 mm radius at 100 W), not insensitivity to contamination; with fused silica, absorbing
 particles or residues (e.g. from the Cr hard mask) larger than ~100 um radius must be excluded
 above 150 W, which sets a cleanliness specification. (iii) LPCVD stoichiometric SiN removes thermal
 limits altogether. (iv) Limitations: steady state only (no turn-on transients), rim held at
 ambient, no damage of the cell window coatings modelled. The global rise depends about equally
 on the face coefficient h = 10 W/m^2/K (an assumption for still air) and on the ideal rim sink:
-for fused silica 0.5 mm, Si-rich nominal, 100 W, the peak rise is 6.0 K as modelled, 4.1 K at
-h = 20, 7.8 K at h = 5, 11.0 K with the rim as the only sink (h = 0), and 7.8 K with a
+for fused silica 0.5 mm, Si-rich nominal, 100 W, the peak rise is 6.2 K as modelled, 4.2 K at
+h = 20, 8.1 K at h = 5, 11.7 K with the rim as the only sink (h = 0), and 7.9 K with a
 convective rim (h_rim = 10) instead of a fixed one (results/damage_v2/defect_plate.json). The
 power limits of the table scale inversely with these rises.
 

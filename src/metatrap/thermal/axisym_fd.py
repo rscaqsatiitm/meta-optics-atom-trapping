@@ -45,11 +45,11 @@ class Substrate:
 
 # Values with provenance; see docs/model_notes.md.
 FUSED_SILICA = Substrate(
-    name="fused_silica", kappa=1.38, dndT=9.6e-6, alpha_exp=0.52e-6, poisson=0.16, n=1.4495,
+    name="fused_silica", kappa=1.30, dndT=9.6e-6, alpha_exp=0.52e-6, poisson=0.16, n=1.4495,
     youngs_GPa=72.7, strength_MPa=52.4,
     source=(
-        "kappa 1.38 W/m/K (Corning HPFS 7980 product information as quoted in search; the 2003 sheet "
-        "read this session gives 1.30); dn/dT 9.6 ppm/K at 1064 nm, alpha 0.52 ppm/K (5-35 C), E 72.7 GPa, "
+        "kappa 1.30 W/m/K: Corning 7980 sheet (read; replaces 1.38, a figure seen only in a search "
+        "snippet and never read, changed 2026-11-20); dn/dT 9.6 ppm/K at 1064 nm, alpha 0.52 ppm/K (5-35 C), E 72.7 GPa, "
         "nu 0.16, modulus of rupture (abraded) 52.4 MPa: Corning 7980 sheet (uqgoptics copy, read 2026-10-31)"
     ),
 )

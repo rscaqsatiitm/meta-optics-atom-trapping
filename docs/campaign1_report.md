@@ -59,10 +59,10 @@ factor of 0.886.
 proposal's site counts are therefore conservative.
 
 (vi) High power (H2a): with the die heat-sunk at its rim, substrate heating produces an
-almost pure focal shift (refocused Strehl > 0.9999), -0.18 um per 100 W per 0.1 % film
-absorption on 0.5 mm fused silica, ~7x less on sapphire. Explaining the 19 % deficit of
-ref. 4 thermally requires ~1.2 % film absorption if its power was measured in a fixed plane,
-and 22 % (excluded) if it was inferred from the atoms' light shift, so the proposal's thermal
+almost pure focal shift (refocused Strehl > 0.9999), -0.19 um per 100 W per 0.1 % film
+absorption on 0.5 mm fused silica, ~8x less on sapphire. Explaining the 19 % deficit of
+ref. 4 thermally requires ~1.1 % film absorption if its power was measured in a fixed plane,
+and 21 % (excluded) if it was inferred from the atoms' light shift, so the proposal's thermal
 hypothesis is plausible only for strongly absorbing films and should be tested by measuring
 the absorption directly. The predicted focal shift neglects the air thermal lens, which is of
 comparable size (Section 5).
@@ -363,21 +363,21 @@ config configs/thermal_h2a.yaml):
 
 | Substrate | Beam | P (W) | a_film | dT_max (K) | Focal shift (um) | Strehl, refocused | Strehl, fixed plane |
 |---|---|---|---|---|---|---|---|
-| fused silica 0.5 mm | top hat | 50 | 1e-3 | 5.1 | -0.09 | 1.0000 | 0.9993 |
-| fused silica 0.5 mm | top hat | 100 | 1e-3 | 10.2 | -0.18 | 1.0000 | 0.9974 |
-| fused silica 1.0 mm | top hat | 100 | 1e-3 | 6.7 | -0.24 | 1.0000 | 0.9955 |
+| fused silica 0.5 mm | top hat | 50 | 1e-3 | 5.3 | -0.09 | 1.0000 | 0.9993 |
+| fused silica 0.5 mm | top hat | 100 | 1e-3 | 10.5 | -0.19 | 1.0000 | 0.9972 |
+| fused silica 1.0 mm | top hat | 100 | 1e-3 | 6.9 | -0.25 | 1.0000 | 0.9951 |
 | sapphire 0.5 mm | top hat | 100 | 1e-3 | 0.75 | -0.025 | 1.0000 | 1.0000 |
-| fused silica 0.5 mm | Gaussian, w = R (13.5 % clipped) | 100 | 1e-3 | 14.6 | -0.33 | 1.0000 | 0.9920 |
+| fused silica 0.5 mm | Gaussian, w = R (13.5 % clipped) | 100 | 1e-3 | 15.1 | -0.34 | 1.0000 | 0.9913 |
 
 Three results follow. First, with the die heat-sunk at its rim the substrate thermal
 lens is almost a pure defocus over the NA 0.55 pupil: the Strehl ratio after refocusing
 stays above 0.9999 in every case run, so substrate heating does not degrade the spots,
 it moves them. Second, the error-budget limit of 1 um focal shift at 100 W is reached
-at a_film = 5.4e-3 (0.5 mm fused silica, top hat), 4.1e-3 (1 mm fused silica) and
-4.0e-2 (0.5 mm sapphire); for a Gaussian beam with w = R it drops to 3.0e-3 on 0.5 mm
-fused silica, because the absorbed power is concentrated near the centre. The sapphire margin is ~7x rather than the 24x ratio of
+at a_film = 5.3e-3 (0.5 mm fused silica, top hat), 4.0e-3 (1 mm fused silica) and
+4.0e-2 (0.5 mm sapphire); for a Gaussian beam with w = R it drops to 2.9e-3 on 0.5 mm
+fused silica, because the absorbed power is concentrated near the centre. The sapphire margin is ~8x rather than the 25x ratio of
 thermal conductivities for two reasons: face cooling already limits the fused-silica
-temperature, so the temperature ratio is 13.6x (10.2 K against 0.75 K), and the
+temperature, so the temperature ratio is 14.0x (10.5 K against 0.75 K), and the
 thermo-optic path coefficient chi = dn/dT + (n - 1)(1 + nu) alpha is ~1.8x larger for
 sapphire (with its dn/dT still `[VALUE?]`).
 Third, the proposal's footnote 1 scaling, dT ~ P_abs / (kappa w), holds for a
@@ -393,25 +393,25 @@ model ref. 4 with its stated geometry (2.5 mm air, 3.5 mm Pyrex, 9 mm vacuum, NA
 850 nm) and a Gaussian beam whose 1/e^2 diameter equals the aperture (w = R, which
 reproduces its 86.5 % truncated transmission); its substrate is not stated, so we assume
 1 mm fused silica `[VALUE?]`. If the 19 % deficit were a Strehl loss of the refocused
-spots, it would need a_film = 22 % and a 560 K temperature rise, which is not plausible.
+spots, it would need a_film = 21 % and a 555 K temperature rise, which is not plausible.
 As a fixed-plane loss (atoms held at the cold focal plane while the focus moves) it
-needs a_film = 1.16 %, a 29 K rise and a -1.18 um focal shift. For a 1.15 um Si-rich
-film at 850 nm, 1.16 % absorption corresponds to an extinction coefficient of order
-1.4e-3 [DERIVED: k ~ a lambda / (4 pi h f), fill fraction f ~ 0.5], well above typical
+needs a_film = 1.11 %, a 29 K rise and a -1.18 um focal shift. For a 1.15 um Si-rich
+film at 850 nm, 1.11 % absorption corresponds to an extinction coefficient of order
+1.3e-3 [DERIVED: k ~ a lambda / (4 pi h f), fill fraction f ~ 0.5], well above typical
 SiN values `[VALUE?: measured k of CNNP films]`. With the same a_film, the ref. 14 case
 (2.5 W on 5 mm, w/R = 1.44) has a fixed-plane Strehl of 0.998, consistent with its
 unchanged efficiency. Hence substrate heating explains the ref. 4 deficit only if the film
 absorbs at the per-cent level; at 0.01 to 0.1 % it is negligible. Which of the two scenarios
 applies depends on how ref. 4 inferred the 12.2 W. If it was inferred from the atoms' light
 shift, the atoms sit where the focus is, only the refocused case applies, and substrate heating
-would need 22 % absorption, i.e. it is excluded. The fixed-plane case applies only if the power
+would need 21 % absorption, i.e. it is excluded. The fixed-plane case applies only if the power
 was measured in a fixed plane, e.g. with a camera focused at the cold focal plane
 `[CONFIRM?: measurement method of the 12.2 W in ref. 4, not checked]`. We therefore regard the
 thermal explanation in the proposal as Speculative, and as excluded if the light-shift reading
 holds. The model points to two inexpensive,
 discriminating measurements for H2a: the film absorption itself (photothermal or
 calorimetric, at 1075 nm), and the focal-plane position against power. The model predicts
-the focus moves by -0.18 um per 100 W per 0.1 % absorption on 0.5 mm fused silica with
+the focus moves by -0.19 um per 100 W per 0.1 % absorption on 0.5 mm fused silica with
 a top-hat beam. This prediction omits the thermal lens of the air on both faces of the heated
 part. With dn/dT of air ~ -0.9e-6 /K `[VALUE?: approx., recalled, verify]`, a mean rise of 5 K
 over a ~5 mm convective boundary layer changes the optical path by ~-25 nm per face (DERIVED;

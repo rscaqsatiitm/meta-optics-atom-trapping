@@ -162,3 +162,43 @@ field with angle, is not identified (Provisional). Relevance: the 10^5-site corn
 3.3 deg and the 10^6-site corner at ~10 deg from the axis (15.5 mm stack), so the
 pre-feedback residual of the 10^6 design may carry a field-dependent part of a few per cent,
 which the feedback must remove (measured alias-free, docs/scaling_100k.md).
+
+### Mechanism: obliquity of the off-axis foci (scripts/planted_truth_field_angle.py, results/planted_truth_pitch16/field_angle.json)
+
+Hypothesis, declared with its thresholds before the first run (commit of the script precedes its
+results): the pupil model gives every site the same peak intensity per unit mode power (a
+single-site design has E_j = 1 for any x_j), whereas the Rayleigh-Sommerfeld field at the focus
+of an exact converging spherical wave, U(x_j) = (1/2 pi) sum A z (1/R_j - i k)/R_j^2 dx^2, falls
+with |x_j| through the obliquity z/R_j and the spreading 1/R_j. The measured site powers then
+carry the gain G_j = |U(x_j)|^2 / mean |U|^2, which neither the design nor the comparison with the
+plant includes.
+
+| Check | Threshold | Result | |
+|---|---|---|---|
+| P0: single exact focus, production AS path against the RS prediction, x up to (32, 32) um (12.7 deg) | <= 0.2 % at every point; departure from 1 > 1 % at 12.7 deg | max 0.09 %; I(12.7 deg)/I(0) = 0.916 (AS), 0.916 (RS) | PASS |
+| P1: expectation plant x G | each case <= 1.0 %, spread <= 0.5 points | 0.82 / 0.60 / 1.03 % (8 um axis / 16 um axis / 8 um at (16,16)); spread 0.43 | FAIL (1.03 > 1.0) |
+| P2: design with target plant / G, compared with the plant | same | 0.83 / 0.58 / 0.86 %; spread 0.28 | PASS |
+| Consistency: G = 1 reproduces causes.json | 0.02 points | 0.62 / 1.63 / 2.39 % reproduced | PASS |
+| Declared break: target plant x G (wrong sign) must fail P2 | - | 0.81 / 3.06 / 4.76 % | fails as required |
+
+Hence, by the declared rule, H is not supported: P1 misses its threshold by 0.03 points in the
+displaced case. At the same time, the gain G_j has the size of the excess (G spread 0.6, 2.2 and
+4.4 % across the three arrays) and compensating it in the design target (P2) brings the 16 um
+and displaced cases from 1.63 and 2.39 % to 0.58 and 0.86 %, i.e. to the level of the on-axis
+8 um floor (0.6 to 0.8 %). What the checks show: (i) the obliquity gain of the off-axis foci
+is reproduced by the production propagator to 0.09 % and amounts to 1 - I(x)/I(0) = 1.7 theta^2
+at NA 0.3 (DERIVED from P0: 0.084 at theta = 0.2225 rad); (ii) it accounts for most of the
+field-angle excess; (iii) a residual of ~0.2 to 0.4 points above the on-axis floor in the
+displaced case, when the gain is applied to the expectation rather than to the design, is not
+accounted for (Provisional). Correction to the preceding section: the three-point data were
+described there as "roughly linear" in the largest field angle, ~0.25 %/deg; the mechanism
+tested here is quadratic in angle (cos^n-type), and the three points do not distinguish the two.
+
+Relevance (not tested on the full-aperture designs): the production designs are corrected by
+full-pixel feedback, which absorbs G_j; the in-sample feedback residual (0.014 %, 10^5 sites) is
+unaffected. Without feedback, or where the feedback is computed by a model that omits the
+obliquity (the pupil model itself), the 10^6-site corners at ~10 deg would carry a gain deficit
+of order 1.7 x (0.17)^2 ~ 5 % at NA 0.3 scaling (DERIVED, air, extrapolated in NA and angle;
+the NA 0.55 value through the glass stack is [VALUE?]). Compensating the target by 1/G_j before
+the design is a zero-cost first step; adopting it in production would change reported
+pre-feedback numbers and is left for a decision.

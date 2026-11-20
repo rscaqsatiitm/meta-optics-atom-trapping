@@ -16,12 +16,12 @@
       },
       "max_defect_radius_um": {
         "fused_silica": {
-          "cell wall (through-cell variant)": 0.4726939886286471,
-          "primary P1": 1.5270419521234013,
-          "secondary P2": 0.143365324194365,
-          "graded mirror G": 0.3959078589891647,
-          "vertical ring at the atoms": 0.3491741578915701,
-          "vertical ring, mirror with 3x expansion": 3.1425674210241312
+          "cell wall (through-cell variant)": 0.4452914385632183,
+          "primary P1": 1.438517780985813,
+          "secondary P2": 0.13505429090773519,
+          "graded mirror G": 0.3729566787579088,
+          "vertical ring at the atoms": 0.32893217772394284,
+          "vertical ring, mirror with 3x expansion": 2.960389599515486
         },
         "sapphire": {
           "cell wall (through-cell variant)": 11.303551901989387,
@@ -49,12 +49,12 @@
       },
       "max_defect_radius_um": {
         "fused_silica": {
-          "cell wall (through-cell variant)": 0.10933661654955719,
-          "primary P1": 0.3532128700404739,
-          "secondary P2": 0.03316115680552209,
-          "graded mirror G": 0.09157557914547823,
-          "vertical ring at the atoms": 0.08076582721342318,
-          "vertical ring, mirror with 3x expansion": 0.7268924449208086
+          "cell wall (through-cell variant)": 0.10299826196697416,
+          "primary P1": 0.3327367616323305,
+          "secondary P2": 0.031238770903752693,
+          "graded mirror G": 0.0862668499196534,
+          "vertical ring at the atoms": 0.07608375027351459,
+          "vertical ring, mirror with 3x expansion": 0.6847537524616313
         },
         "sapphire": {
           "cell wall (through-cell variant)": 2.6145712653154978,
@@ -82,12 +82,12 @@
       },
       "max_defect_radius_um": {
         "fused_silica": {
-          "cell wall (through-cell variant)": 0.3151293257524314,
-          "primary P1": 1.0180279680822677,
-          "secondary P2": 0.09557688279624336,
-          "graded mirror G": 0.26393857265944315,
-          "vertical ring at the atoms": 0.2327827719277134,
-          "vertical ring, mirror with 3x expansion": 2.0950449473494204
+          "cell wall (through-cell variant)": 0.29686095904214554,
+          "primary P1": 0.9590118539905421,
+          "secondary P2": 0.09003619393849012,
+          "graded mirror G": 0.24863778583860585,
+          "vertical ring at the atoms": 0.21928811848262858,
+          "vertical ring, mirror with 3x expansion": 1.973593066343657
         },
         "sapphire": {
           "cell wall (through-cell variant)": 7.535701267992925,
@@ -115,12 +115,12 @@
       },
       "max_defect_radius_um": {
         "fused_silica": {
-          "cell wall (through-cell variant)": 0.0728910776997048,
-          "primary P1": 0.23547524669364933,
-          "secondary P2": 0.022107437870348058,
-          "graded mirror G": 0.061050386096985515,
-          "vertical ring at the atoms": 0.0538438848089488,
-          "vertical ring, mirror with 3x expansion": 0.48459496328053925
+          "cell wall (through-cell variant)": 0.06866550797798278,
+          "primary P1": 0.22182450775488707,
+          "secondary P2": 0.020825847269168463,
+          "graded mirror G": 0.05751123327976896,
+          "vertical ring at the atoms": 0.05072250018234307,
+          "vertical ring, mirror with 3x expansion": 0.4565025016410877
         },
         "sapphire": {
           "cell wall (through-cell variant)": 1.7430475102103322,
@@ -142,9 +142,9 @@
       "P_circ_W": 102.3417807642424,
       "P_abs_W": 0.00010234178076424239,
       "spot_equivalent_radius_um": 432.3386523189371,
-      "dT_surface_max_K": 0.05405534901227281,
-      "bulge_centre_minus_edge_nm": 0.0035491092764407,
-      "bulge_rms_over_spot_waves": 9.5301089107745e-07
+      "dT_surface_max_K": 0.05735570056602536,
+      "bulge_centre_minus_edge_nm": 0.0037668255781642154,
+      "bulge_rms_over_spot_waves": 1.0114721099095263e-06
     },
     {
       "name": "IBS HR, 10 ppm, fused silica",
@@ -153,9 +153,9 @@
       "P_circ_W": 102.3417807642424,
       "P_abs_W": 0.001023417807642424,
       "spot_equivalent_radius_um": 432.3386523189371,
-      "dT_surface_max_K": 0.5405534901227281,
-      "bulge_centre_minus_edge_nm": 0.03549109276440694,
-      "bulge_rms_over_spot_waves": 9.530108910774471e-06
+      "dT_surface_max_K": 0.5735570056602539,
+      "bulge_centre_minus_edge_nm": 0.03766825578164232,
+      "bulge_rms_over_spot_waves": 1.0114721099095275e-05
     },
     {
       "name": "LPCVD SiN metasurface on HR, fused silica",
@@ -164,9 +164,9 @@
       "P_circ_W": 102.3417807642424,
       "P_abs_W": 0.0003581962326748484,
       "spot_equivalent_radius_um": 432.3386523189371,
-      "dT_surface_max_K": 0.18919372154295483,
-      "bulge_centre_minus_edge_nm": 0.01242188246754242,
-      "bulge_rms_over_spot_waves": 3.335538118771074e-06
+      "dT_surface_max_K": 0.2007449519810887,
+      "bulge_centre_minus_edge_nm": 0.013183889523574698,
+      "bulge_rms_over_spot_waves": 3.540152384683339e-06
     },
     {
       "name": "Si-rich SiN metasurface, nominal, fused silica",
@@ -175,9 +175,9 @@
       "P_circ_W": 102.3417807642424,
       "P_abs_W": 0.06038165065090302,
       "spot_equivalent_radius_um": 432.3386523189371,
-      "dT_surface_max_K": 31.892655917240955,
-      "bulge_centre_minus_edge_nm": 2.093974473100016,
-      "bulge_rms_over_spot_waves": 0.0005622764257356955
+      "dT_surface_max_K": 33.83986333395495,
+      "bulge_centre_minus_edge_nm": 2.2224270911168897,
+      "bulge_rms_over_spot_waves": 0.0005967685448466219
     },
     {
       "name": "Si-rich SiN metasurface, nominal, sapphire",
